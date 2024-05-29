@@ -75,7 +75,7 @@ export default {
       black: '#000000',
       white: '#FFFFFF',
       "broken-white": '#F8F8FC',
-      disabled: "#e1e8ec",
+      disabled: "#F8FAFC",
       gray: {
         '50': '#F8FAFC',
         '100': '#F1F5F9',
@@ -149,8 +149,7 @@ export default {
         '4-y-1': '0px 1px 4px 0px rgba(226, 232, 240, 1)',
       },
       borderColor: {
-          DEFAULT: '#E2E8F0',
-          input : '#D6D6D6',
+          DEFAULT: '#CBD5E1',
       },
       borderWidth: {
           DEFAULT: '1px',

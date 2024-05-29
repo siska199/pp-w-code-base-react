@@ -8,14 +8,14 @@ interface TProps extends HTMLProps<HTMLButtonElement>, VariantProps<typeof butto
 }
 
 const Button = (props: TProps) => {
-  const {variant,sizeCustome, isContained , children,className,...attrs} = props
+  const {variant,sizeCustome, isContained, isRounded, children,className,...attrs} = props
   
   const CompButton = 'button' as React.ElementType
 
   return (
     <CompButton
         {...attrs}
-        className={cn(buttonVariants({className,variant,sizeCustome, isContained }))}
+        className={cn(buttonVariants({className,variant,sizeCustome,isRounded, isContained }))}
     >
     {children}
     </CompButton>
@@ -28,8 +28,8 @@ const buttonVariants = cva(
   {
     variants : {
       variant : {
-        'primary' : 'bg-primary hover:!bg-primary-400 border-primary focus:ring-primary-300 !text-white disabled:bg-primary-300 disabled:border-primary-300',
-        'gray'    : 'bg-gray hover:!bg-gray-400 border-gray focus:ring-gray-300 !text-white disabled:bg-gray-300 disabled:border-gray-300',
+        'primary' : 'bg-primary hover:!bg-primary-400 border-primary focus:ring-primary-200 !text-white disabled:bg-primary-300 disabled:border-primary-300',
+        'gray'    : 'bg-gray hover:!bg-gray-400 border-gray focus:ring-gray-200 !text-white disabled:bg-gray-300 disabled:border-gray-300',
         'black'   : 'bg-black hover:!bg-black/75 border-black focus:ring-black/70 !text-white disabled:opacity-50 '
 
       },
@@ -37,7 +37,10 @@ const buttonVariants = cva(
         "false": "bg-white",
         "true" : ""
       },
-
+      isRounded:{
+        "false":"",
+        "true" : "rounded-full"
+      },
       sizeCustome:{
         "small"   : "py-1 px-4 ",
         "base"    : "py-2 px-4 ",
@@ -66,7 +69,8 @@ const buttonVariants = cva(
     defaultVariants : {
       variant     : "primary",
       sizeCustome : "base",
-      isContained :true
+      isContained : true,
+      isRounded   : false
     }
   }
 )
