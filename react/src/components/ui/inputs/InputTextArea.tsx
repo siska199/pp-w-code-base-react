@@ -12,7 +12,7 @@ const InputTextArea = (props: TProps) => {
     return (
         <ContainerInput<React.HTMLProps<HTMLTextAreaElement>> customeClass={{
             ...attrs?.customeClass,
-            ciV2:`${attrs?.customeClass?.ciV2} ${attrs?.variant==="v3"&&' !rounded-[1.75rem]'}`
+            ciV2:`${attrs?.customeClass?.ciV2} ${attrs?.variant==="v3"&&' !rounded-[1.5rem]'}`
         }} {...attrs} >
             {
                 (attrsInput)=><textarea {...attrsInput} placeholder={attrs?.variant==="v2"?"": attrsInput?.placeholder||""}/>

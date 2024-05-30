@@ -1,0 +1,42 @@
+import { TBasePropsInput } from '@/types/ui/index';
+import { IconPercentage } from '@assets/icons';
+import ContainerInput from "@components/ui/inputs/ContainerInput";
+import React from 'react';
+
+interface TProps extends TBasePropsInput,React.HTMLProps<HTMLInputElement>{
+    onChange    : (e:React.ChangeEvent<HTMLInputElement>) => void;
+    name        : string;
+    value       : string;
+}
+
+const InputPercentage = (props: TProps) => {
+    const { onChange,value, ...attrs } = props;
+
+    const handleOnChangeFormatedValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+        let valueFormatted = e.target.value;
+
+        valueFormatted = valueFormatted .replace(/[^\d.]+/g, "").replace(/(\.\d\d)\d+/g, "$1").replace(/^0+(?=\d)/, '');
+        
+        if((!/^\d+(\.\d*)?$/.test(valueFormatted) || parseFloat( valueFormatted)<0 || parseFloat(valueFormatted)>100) && valueFormatted!==""){
+            valueFormatted =value
+        }
+
+        e.target.value = valueFormatted
+        onChange(e)
+    }
+return (
+    <ContainerInput<React.HTMLProps<HTMLInputElement>>  {...attrs} customeElement={{
+        ...attrs?.customeElement,
+        end : <IconPercentage/>
+    }}>
+        {
+            (attrsInput) => <input  {...attrsInput} onChange={handleOnChangeFormatedValue} value={value} id={attrsInput?.name} placeholder={attrs?.variant === "v2" ? "" : attrsInput?.placeholder || ""} />
+        }
+    </ContainerInput>
+
+);
+    
+}
+
+
+export default InputPercentage;

@@ -15,6 +15,8 @@ interface TProps<TInput,>  extends TBasePropsInput  {
 const ContainerInput = <TInput,>(props: TProps<TInput>) => {
     const { name,children, label, variant="v1",type, errorMessage,customeElement,disabled,customeClass, ...attrsInput } = props;
     const [dynamicType, setDynamicType] = useState(type)
+    
+   
     const className = clsx({
         "peer w-full shrink !outline-none !border-none focus:border-none focus:ring-0 p-0 text-body-base placeholder:text-gray-400": true,
         "!bg-disabled": disabled,

@@ -1,18 +1,26 @@
 import { IconMessage, IconPaymentMethodVisa, IconRight } from "@assets/icons"
 import Container from "@components/ui/Container"
 import InputBase from "@components/ui/inputs/InputBase"
+import InputNPWP from "@components/ui/inputs/InputNPWP"
+import InputPercentage from "@components/ui/inputs/InputPercentage"
 import InputTextArea from "@components/ui/inputs/InputTextArea"
+import { useState } from "react"
 
 
 const ExampleInput = () => {
-
+  const [valuePercentage, setValuePercentage] = useState("")
+  const [valueNpwp, setValueNpwp] = useState("")
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const name = e?.target?.name
     const value = e?.target?.value
 
-    console.log("name: ", name)
-    console.log('value:', value)
+    if(name==="input-percentage"){
+      setValuePercentage(value)
+    }
+    if(name==="input-npwp"){
+      setValueNpwp(value)
+    }
   }
   return (
     <div className="flex flex-col gap-4">
@@ -281,13 +289,44 @@ const ExampleInput = () => {
       </div>
       <h4>Input Password</h4>
       <div className=" p-4 gap-4 flex w-[30rem]">
-
         <InputBase
             name={"random"}
             label={"Label"}
             placeholder="Input Placeholder"
             onChange={handleOnChange}
             type="password"
+          />
+      </div>
+      <h4>Input Number</h4>
+      <div className=" p-4 gap-4 flex w-[30rem]">
+        <InputBase
+            name={"random"}
+            label={"Label"}
+            placeholder="Input Placeholder"
+            onChange={handleOnChange}
+            type="number"
+          />
+      </div>
+      <h4>Input Percentage</h4>
+      <div className=" p-4 gap-4 flex w-[30rem]">
+        <InputPercentage
+            name={"input-percentage"}
+            label={"Label"}
+            placeholder="Input Placeholder"
+            value={valuePercentage}
+            onChange={handleOnChange}
+            type="percentage"
+          />
+      </div>
+      <h4>Input NPWP</h4>
+      <div className=" p-4 gap-4 flex w-[30rem]">
+        <InputNPWP
+            name={"input-npwp"}
+            label={"Label"}
+            placeholder="Input Placeholder"
+            value={valueNpwp}
+            onChange={handleOnChange}
+            type="npwp"
           />
       </div>
     </div>

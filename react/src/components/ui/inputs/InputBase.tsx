@@ -11,10 +11,7 @@ interface TProps extends  TBasePropsInput, React.HTMLProps<HTMLInputElement> {
 const InputBase = (props: TProps) => {
     const {...attrs } = props;
     return (
-        <ContainerInput<React.HTMLProps<HTMLInputElement>> customeClass={{
-            ...attrs?.customeClass,
-            ciV2:`${attrs?.customeClass?.ciV2} ${attrs?.variant==="v3"&&' !rounded-[1.75rem]'}`
-        }} {...attrs} >
+        <ContainerInput<React.HTMLProps<HTMLInputElement>>  {...attrs} >
             {
                 (attrsInput)=><input {...attrsInput} id={attrsInput?.name} placeholder={attrs?.variant==="v2"?"": attrsInput?.placeholder||""}/>
             }
@@ -23,18 +20,7 @@ const InputBase = (props: TProps) => {
     );
     
 }
-{/* <input
-id={name}
-{...attrs}
-className={clsx({
-    "peer w-full flex-grow !outline-none !border-none focus:border-none focus:ring-0 p-0 text-body-base placeholder:text-gray-400": true,
-    "!bg-disabled": disabled
-})}
-type={dynamicType}
-disabled={disabled}
-placeholder={variant === "v2" ? "" : placeholder}
 
-/> */}
 
 
 export default InputBase;
