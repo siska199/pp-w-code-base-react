@@ -1,79 +1,230 @@
 import { IconMessage, IconPaymentMethodVisa, IconRight } from "@assets/icons"
 import Container from "@components/ui/Container"
-import InputBase from "@components/ui/InputBase"
+import InputBase from "@components/ui/inputs/InputBase"
+import InputTextArea from "@components/ui/inputs/InputTextArea"
 
 
 const ExampleInput = () => {
   return (
-    <div className="flex gap-4">
-      <div className="w-[30rem] p-4 gap-4 flex flex-col ">
-        <InputBase 
+    <div className="flex flex-col gap-4">
+      <h2>Input Base</h2>
+      <div className=" p-4 gap-4 flex ">
+
+        <InputBase
           name={"random"}
           label={"Label"}
           placeholder="Input Placeholder"
-          customeElementStart={<IconMessage/>}
-          customeElementEnd={<Container fit variant={"hsc"} gap={"tiny"}>
-                                <p className="text-gray-400">Addons</p>
-                                <IconRight/>
-                                <IconPaymentMethodVisa/>
-                            </Container>}
+          customeElement={{
+            start: <IconMessage />,
+            end: <Container fit variant={"hsc"} gap={"tiny"}>
+              <p className="text-gray-400">Addons</p>
+              <IconRight />
+              <IconPaymentMethodVisa />
+            </Container>
+          }}
         />
-        <InputBase 
+        <InputBase
+          name={"random"}
+          label={"Label"}
+          placeholder="Input Placeholder"
+          customeElement={{
+            start: <IconMessage />,
+            end: <Container fit variant={"hsc"} gap={"tiny"}>
+              <p className="text-gray-400">Addons</p>
+              <IconRight />
+              <IconPaymentMethodVisa />
+            </Container>
+          }}
+        />
+        <InputBase
           name={"random1"}
           label={"Label"}
           placeholder="Input Placeholder"
-          customeElementStart={<IconMessage/>}
+          customeElement={{ start: <IconMessage /> }}
           disabled
         />
-          <InputBase 
-            name={"random2"}
-            label={"Label"}
-            placeholder="Input Placeholder"
-            customeElementStart={<IconMessage/>}
-            errorMessage="Helper text"
-          />
-          <InputBase 
-            name={"random3"}
-            label={"Label"}
-            placeholder="Input Placeholder"
-            customeElementStart={<IconMessage/>}
-            errorMessage="Helper text"
-            isRounded
-          />
-      </div>
-      <div className="w-[30rem] p-4 gap-4 flex flex-col ">
-        <InputBase 
-          key={2}
-          name={"random122"}
+        <InputBase
+          name={"random1"}
           label={"Label"}
           placeholder="Input Placeholder"
-          customeElementStart={<IconMessage/>}
-          isFloatingLabel
+          customeElement={{ start: <IconMessage /> }}
+          disabled
         />
-        <InputBase 
+        <InputBase
+          name={"random2"}
+          label={"Label"}
+          placeholder="Input Placeholder"
+          customeElement={{ start: <IconMessage /> }}
+          errorMessage="Helper text"
+        />
+      </div>
+
+      <div className=" p-4 gap-4 flex ">
+
+        <InputBase
           name={"random22"}
           label={"Label"}
           placeholder="Input Placeholder"
-          customeElementStart={<IconPaymentMethodVisa/>}
-          isFloatingLabel
-          labelClass="peer-focus:!ml-[-35px]"
+          customeElement={{ start: <IconPaymentMethodVisa /> }}
+          customeClass={{ label: "peer-focus:!ml-[-35px]" }}
+          variant="v2"
         />
-          <InputBase 
-            name={"random222"}
-            label={"Label"}
-            placeholder="Input Placeholder"
-            errorMessage="Helper text"
-            isFloatingLabel
+        <InputBase
+          name={"random222"}
+          label={"Label"}
+          placeholder="Input Placeholder"
+          errorMessage="Helper text"
+          variant="v2"
 
-          />
-          <InputBase 
-            name={"random322"}
-            label={"Label"}
-            placeholder="Input Placeholder"
-            errorMessage="Helper text"
-            isRounded
-            isFloatingLabel
-          />
+        />
+        <InputBase
+          name={"random222"}
+          label={"Label"}
+          placeholder="Input Placeholder"
+          errorMessage="Helper text"
+          variant="v2"
+
+        />
+        <InputBase
+          name={"random322"}
+          label={"Label"}
+          placeholder="Input Placeholder"
+          errorMessage="Helper text"
+          variant="v2"
+        />
+      </div>
+
+      <div className=" p-4 gap-4 flex ">
+        <InputBase
+          name={"random22"}
+          label={"Label"}
+          placeholder="Input Placeholder"
+          customeElement={{ start: <IconPaymentMethodVisa /> }}
+          customeClass={{ label: "peer-focus:!ml-[-35px]" }}
+          variant="v3"
+        />
+        <InputBase
+          name={"random222"}
+          label={"Label"}
+          placeholder="Input Placeholder"
+          errorMessage="Helper text"
+          variant="v3"
+
+        />
+        <InputBase
+          name={"random222"}
+          label={"Label"}
+          placeholder="Input Placeholder"
+          errorMessage="Helper text"
+          variant="v3"
+
+        />
+        <InputBase
+          name={"random322"}
+          label={"Label"}
+          placeholder="Input Placeholder"
+          errorMessage="Helper text"
+          variant="v3"
+        />
+      </div>
+
+      <div className=" p-4 gap-4 flex ">
+        <InputBase
+          name={"random22"}
+          label={"Label"}
+          placeholder="Input Placeholder"
+          customeElement={{ start: <IconPaymentMethodVisa /> }}
+          customeClass={{ label: "peer-focus:!ml-[-35px]" }}
+          variant="v4"
+        />
+        <InputBase
+          name={"random222"}
+          label={"Label"}
+          placeholder="Input Placeholder"
+          errorMessage="Helper text"
+          variant="v4"
+
+        />
+        <InputBase
+          name={"random322"}
+          label={"Label"}
+          placeholder="Input Placeholder"
+          variant="v4"
+        />
+        <InputBase
+          name={"random322"}
+          label={"Label"}
+          placeholder="Input Placeholder"
+          variant="v4"
+          disabled
+        />
+      </div>
+      <div className=" p-4 gap-4 flex ">
+        <InputBase
+          name={"random22"}
+          label={"Label"}
+          placeholder="Input Placeholder"
+          customeElement={{ start: <IconPaymentMethodVisa /> }}
+          customeClass={{ label: "peer-focus:!ml-[-35px]" }}
+          variant="v5"
+        />
+        <InputBase
+          name={"random222"}
+          label={"Label"}
+          placeholder="Input Placeholder"
+          errorMessage="Helper text"
+          variant="v5"
+
+        />
+        <InputBase
+          name={"random322"}
+          label={"Label"}
+          placeholder="Input Placeholder"
+          variant="v5"
+        />
+        <InputBase
+          name={"random322"}
+          label={"Label"}
+          placeholder="Input Placeholder"
+          variant="v5"
+          disabled
+        />
+      </div>
+      <h2>Input Text Area</h2>
+      <div className=" p-4 gap-4 flex ">
+        <InputTextArea
+          name={"random22"}
+          label={"Label"}
+          placeholder="Input Placeholder"
+          variant="v1"
+        />
+        <InputTextArea
+          name={"random222"}
+          label={"Label"}
+          errorMessage="Helper text"
+          variant="v2"
+
+        />
+        <InputTextArea
+          name={"random322"}
+          label={"Label"}
+          placeholder="Input Placeholder"
+          variant="v3"
+
+        />
+        <InputTextArea
+          name={"random322"}
+          label={"Label"}
+          placeholder="Input Placeholder"
+          variant="v4"
+        />
+        <InputTextArea
+          name={"random322"}
+          label={"Label"}
+          placeholder="Input Placeholder"
+          variant="v5"
+          disabled
+        />
       </div>
     </div>
   )

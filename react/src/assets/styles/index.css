@@ -38,14 +38,6 @@
 
 
 @layer utilities {
-
-    /* Input */
-    .container-input{
-        @apply py-2 px-3 rounded-md border 
-    }
-    .input{
-    }
-
     /* Create bounce effect while click component */
     .bounce-effect {
         @apply transition-all duration-[50] hover:scale-[1.03] active:scale-[0.98] disabled:!scale-[1] disabled:cursor-not-allowed
