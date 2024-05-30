@@ -12,9 +12,8 @@ const InputNPWP = (props: TProps) => {
     const { onChange,value, ...attrs } = props;
 
 
-    const formatTaxNumber = (value: string): string => {
+    const formatValue= (value: string): string => {
         const digitsOnly = value.replace(/\D/g, "")?.slice(0,15);
-        console.log("digit only: ", digitsOnly)
         let formattedValue = digitsOnly
 
         //XX.XXX.XXX.X-XXX.XXX
@@ -38,7 +37,7 @@ const InputNPWP = (props: TProps) => {
     };
 
     const handleOnChangeFormatedValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const formattedValue = formatTaxNumber(e.target.value);
+        const formattedValue = formatValue(e.target.value);
         e.target.value = formattedValue
         onChange(e);
     }

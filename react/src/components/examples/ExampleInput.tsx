@@ -3,6 +3,7 @@ import Container from "@components/ui/Container"
 import InputBase from "@components/ui/inputs/InputBase"
 import InputNPWP from "@components/ui/inputs/InputNPWP"
 import InputPercentage from "@components/ui/inputs/InputPercentage"
+import InputPhoneNumber from "@components/ui/inputs/InputPhoneNumber"
 import InputTextArea from "@components/ui/inputs/InputTextArea"
 import { useState } from "react"
 
@@ -10,6 +11,7 @@ import { useState } from "react"
 const ExampleInput = () => {
   const [valuePercentage, setValuePercentage] = useState("")
   const [valueNpwp, setValueNpwp] = useState("")
+  const [valuePhone, setValuePhone] = useState("")
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const name = e?.target?.name
@@ -20,6 +22,10 @@ const ExampleInput = () => {
     }
     if(name==="input-npwp"){
       setValueNpwp(value)
+    }
+    if(name==="input-phone"){
+      console.log("yang diterima")
+      setValuePhone(value)
     }
   }
   return (
@@ -327,6 +333,17 @@ const ExampleInput = () => {
             value={valueNpwp}
             onChange={handleOnChange}
             type="npwp"
+          />
+      </div>
+      <h4>Input Phone Number Indonesia</h4>
+      <div className=" p-4 gap-4 flex w-[30rem]">
+        <InputPhoneNumber
+            name={"input-phone"}
+            label={"Label"}
+            placeholder="Input Placeholder"
+            value={valuePhone}
+            onChange={handleOnChange}
+            type="phone"
           />
       </div>
     </div>
