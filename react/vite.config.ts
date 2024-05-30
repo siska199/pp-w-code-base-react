@@ -9,5 +9,8 @@ export default defineConfig({
   plugins: [react(),svgr(),tsconfigPaths()],
   build : {
     sourcemap: true,
+  },
+  optimizeDeps: {
+    exclude: ['js-big-decimal']
   }
 })

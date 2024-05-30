@@ -5,6 +5,9 @@ export default {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/styles/**/*.{js,ts,jsx,tsx,mdx,css,}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/*.{js,ts,jsx,tsx,mdx}',
+    "./node_modules/react-tailwindcss-datepicker/dist/index.esm.js",
+
   ],
 
   theme: {
@@ -71,77 +74,7 @@ export default {
       '80': '20rem',
       '96': '24rem'
     },
-    colors: {
-      black: '#000000',
-      white: '#FFFFFF',
-      "broken-white": '#F8F8FC',
-      disabled: "#F8FAFC",
-      gray: {
-        '50': '#F8FAFC',
-        '100': '#F1F5F9',
-        '200': '#E2E8F0',
-        '300': '#CBD5E1',
-        '400': '#94A3B8',
-        '500': '#64748B',
-        '600': '#475569',
-        '700': '#334155',
-        '800': '#1E293B',
-        '900': '#0F172A',
-        DEFAULT: '#64748B'
-      },
-      primary: {
-        '50': '#FDF2F8',
-        '100': '#FCE8F4',
-        '200': '#FBD0E8',
-        '300': '#F9A9D5',
-        '400': '#F471B5',
-        '500': '#EC4699',
-        '600': '#DB2979',
-        '700': '#BF185D',
-        '800': '#9B174C',
-        '900': '#811842',
-        DEFAULT: '#EC4699',
-      },
-      success: {
-        '50': '#F0FDF4',
-        '100': '#DCFCE7',
-        '200': '#BBF7D0',
-        '300': '#86EFAC',
-        '400': '#4ADE80',
-        '500': '#22C55E',
-        '600': '#16A34A',
-        '700': '#15803D',
-        '800': '#166534',
-        '900': '#14532D',
-        DEFAULT: '#22C55E'
-      },
-      warning: {
-        '50': '#FFFBEB',
-        '100': '#FEF3C7',
-        '200': '#FDE68A',
-        '300': '#FCD34D',
-        '400': '#FBBF24',
-        '500': '#F59E0B',
-        '600': '#D97706',
-        '700': '#B45309',
-        '800': '#92400E',
-        '900': '#78350F',
-        DEFAULT: '#F59E0B'
-      },
-      error: {
-        '50': '#FEF2F2',
-        '100': '#FEE2E2',
-        '200': '#FECACA',
-        '300': '#FCA5A5',
-        '400': '#F87171',
-        '500': '#EF4444',
-        '600': '#DC2626',
-        '700': '#B91C1C',
-        '800': '#991B1B',
-        '900': '#7F1D1D',
-        DEFAULT: '#EF4444'
-      }
-    },
+
 
     // Extend style form tailwind
     extend: {
@@ -149,10 +82,82 @@ export default {
         '4-y-1': '0px 1px 4px 0px rgba(226, 232, 240, 1)',
       },
       borderColor: {
-          DEFAULT: '#CBD5E1',
+        DEFAULT: '#E2E8F0',
       },
       borderWidth: {
-          DEFAULT: '1px',
+        DEFAULT: '1px',
+      },
+      colors: {
+        black: '#000000',
+        white: '#FFFFFF',
+        "broken-white": '#F8F8FC',
+        disabled: "#F8FAFC",
+        transparent:"transparent",
+        gray: {
+          '50': '#F8FAFC',
+          '100': '#F1F5F9',
+          '200': '#E2E8F0',
+          '300': '#CBD5E1',
+          '400': '#94A3B8',
+          '500': '#64748B',
+          '600': '#475569',
+          '700': '#334155',
+          '800': '#1E293B',
+          '900': '#0F172A',
+          DEFAULT: '#64748B'
+        },
+        primary: {
+          '50': '#FDF2F8',
+          '100': '#FCE8F4',
+          '200': '#FBD0E8',
+          '300': '#F9A9D5',
+          '400': '#F471B5',
+          '500': '#EC4699',
+          '600': '#DB2979',
+          '700': '#BF185D',
+          '800': '#9B174C',
+          '900': '#811842',
+          DEFAULT: '#EC4699',
+        },
+        success: {
+          '50': '#F0FDF4',
+          '100': '#DCFCE7',
+          '200': '#BBF7D0',
+          '300': '#86EFAC',
+          '400': '#4ADE80',
+          '500': '#22C55E',
+          '600': '#16A34A',
+          '700': '#15803D',
+          '800': '#166534',
+          '900': '#14532D',
+          DEFAULT: '#22C55E'
+        },
+        warning: {
+          '50': '#FFFBEB',
+          '100': '#FEF3C7',
+          '200': '#FDE68A',
+          '300': '#FCD34D',
+          '400': '#FBBF24',
+          '500': '#F59E0B',
+          '600': '#D97706',
+          '700': '#B45309',
+          '800': '#92400E',
+          '900': '#78350F',
+          DEFAULT: '#F59E0B'
+        },
+        error: {
+          '50': '#FEF2F2',
+          '100': '#FEE2E2',
+          '200': '#FECACA',
+          '300': '#FCA5A5',
+          '400': '#F87171',
+          '500': '#EF4444',
+          '600': '#DC2626',
+          '700': '#B91C1C',
+          '800': '#991B1B',
+          '900': '#7F1D1D',
+          DEFAULT: '#EF4444'
+        }
       },
     },
   },

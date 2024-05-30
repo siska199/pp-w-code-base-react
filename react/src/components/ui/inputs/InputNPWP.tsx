@@ -44,7 +44,7 @@ const InputNPWP = (props: TProps) => {
 return (
     <ContainerInput<React.HTMLProps<HTMLInputElement>>  {...attrs}>
         {
-            (attrsInput) => <input  {...attrsInput} onChange={handleOnChangeFormatedValue} value={value} id={attrsInput?.name} placeholder={attrs?.variant === "v2" ? "" : attrsInput?.placeholder || ""} />
+            (attrsInput) => <input  {...attrsInput} onChange={handleOnChangeFormatedValue} value={value} id={attrsInput?.name} placeholder={attrs?.variant === "v2" ? "" :"XX.XXX.XXX.X-XXX.XXX"} />
         }
     </ContainerInput>
 

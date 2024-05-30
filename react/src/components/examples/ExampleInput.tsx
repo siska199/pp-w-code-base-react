@@ -1,6 +1,7 @@
 import { IconMessage, IconPaymentMethodVisa, IconRight } from "@assets/icons"
 import Container from "@components/ui/Container"
 import InputBase from "@components/ui/inputs/InputBase"
+import InputDate from "@components/ui/inputs/InputDate"
 import InputNPWP from "@components/ui/inputs/InputNPWP"
 import InputPercentage from "@components/ui/inputs/InputPercentage"
 import InputPhoneNumber from "@components/ui/inputs/InputPhoneNumber"
@@ -13,20 +14,20 @@ const ExampleInput = () => {
   const [valueNpwp, setValueNpwp] = useState("")
   const [valuePhone, setValuePhone] = useState("")
 
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> ) => {
     const name = e?.target?.name
     const value = e?.target?.value
 
-    if(name==="input-percentage"){
+    if (name === "input-percentage") {
       setValuePercentage(value)
     }
-    if(name==="input-npwp"){
+    if (name === "input-npwp") {
       setValueNpwp(value)
     }
-    if(name==="input-phone"){
-      console.log("yang diterima")
+    if (name === "input-phone") {
       setValuePhone(value)
     }
+
   }
   return (
     <div className="flex flex-col gap-4">
@@ -296,55 +297,61 @@ const ExampleInput = () => {
       <h4>Input Password</h4>
       <div className=" p-4 gap-4 flex w-[30rem]">
         <InputBase
-            name={"random"}
-            label={"Label"}
-            placeholder="Input Placeholder"
-            onChange={handleOnChange}
-            type="password"
-          />
+          name={"random"}
+          label={"Label"}
+          placeholder="Input Placeholder"
+          onChange={handleOnChange}
+          type="password"
+        />
       </div>
       <h4>Input Number</h4>
       <div className=" p-4 gap-4 flex w-[30rem]">
         <InputBase
-            name={"random"}
-            label={"Label"}
-            placeholder="Input Placeholder"
-            onChange={handleOnChange}
-            type="number"
-          />
+          name={"random"}
+          label={"Label"}
+          placeholder="Input Placeholder"
+          onChange={handleOnChange}
+          type="number"
+        />
       </div>
       <h4>Input Percentage</h4>
       <div className=" p-4 gap-4 flex w-[30rem]">
         <InputPercentage
-            name={"input-percentage"}
-            label={"Label"}
-            placeholder="Input Placeholder"
-            value={valuePercentage}
-            onChange={handleOnChange}
-            type="percentage"
-          />
+          name={"input-percentage"}
+          label={"Label"}
+          placeholder="Input Placeholder"
+          value={valuePercentage}
+          onChange={handleOnChange}
+          type="percentage"
+        />
       </div>
       <h4>Input NPWP</h4>
       <div className=" p-4 gap-4 flex w-[30rem]">
         <InputNPWP
-            name={"input-npwp"}
-            label={"Label"}
-            placeholder="Input Placeholder"
-            value={valueNpwp}
-            onChange={handleOnChange}
-            type="npwp"
-          />
+          name={"input-npwp"}
+          label={"Label"}
+          placeholder="Input Placeholder"
+          value={valueNpwp}
+          onChange={handleOnChange}
+          type="npwp"
+        />
       </div>
       <h4>Input Phone Number Indonesia</h4>
       <div className=" p-4 gap-4 flex w-[30rem]">
         <InputPhoneNumber
-            name={"input-phone"}
-            label={"Label"}
-            placeholder="Input Placeholder"
-            value={valuePhone}
-            onChange={handleOnChange}
-            type="phone"
-          />
+          name={"input-phone"}
+          label={"Label"}
+          placeholder="Input Placeholder"
+          value={valuePhone}
+          onChange={handleOnChange}
+          type="phone"
+        />
+      </div>
+      <h4>Input Date</h4>
+      <div className=" p-[10rem] gap-4 flex w-[30rem] h-[50rem]">
+        <InputDate
+
+        />
       </div>
     </div>
   )

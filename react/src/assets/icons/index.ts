@@ -4,3 +4,5 @@ export { default as IconEye} from '@assets/icons/eye.svg?react';
 export { default as IconEyeClose} from '@assets/icons/eye-close.svg?react';
 export { default as IconPercentage} from '@assets/icons/percentage.svg?react';
 export { default as IconPaymentMethodVisa} from '@assets/icons/payment-method-visa.svg?react';
+export { default as IconChevronLeft} from '@assets/icons/chevron-left.svg?react';
+export { default as IconChevronRight} from '@assets/icons/chevron-right.svg?react';
