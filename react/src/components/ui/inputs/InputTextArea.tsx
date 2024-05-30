@@ -15,7 +15,7 @@ const InputTextArea = (props: TProps) => {
             ciV2:`${attrs?.customeClass?.ciV2} ${attrs?.variant==="v3"&&' !rounded-[1.75rem]'}`
         }} {...attrs} >
             {
-                (attrsInput)=><textarea {...attrsInput} placeholder={attrsInput?.placeholder||""}/>
+                (attrsInput)=><textarea {...attrsInput} placeholder={attrs?.variant==="v2"?"": attrsInput?.placeholder||""}/>
             }
         </ContainerInput>
 

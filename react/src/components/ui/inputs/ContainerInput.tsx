@@ -2,23 +2,29 @@ import Container from "@components/ui/Container";
 import HelperMessage from "@components/ui/HelperMessage";
 import clsx from "clsx";
 import { TBasePropsInput } from '@/types/ui/index';
+import { IconEye, IconEyeClose } from "@assets/icons";
+import { useState } from "react";
 
 interface TProps<TInput,>  extends TBasePropsInput  {
     children    : (attrsInput :TInput)=>React.ReactNode;
-    disabled?    : boolean;
-    name?        : string;
+    disabled?   : boolean;
+    name?       : string;
+    type?       : string;
 }
 
 const ContainerInput = <TInput,>(props: TProps<TInput>) => {
-
-    
-    const { children, label, variant="v1", errorMessage,customeElement,disabled,name,customeClass, ...attrsInput } = props;
-
+    const { name,children, label, variant="v1",type, errorMessage,customeElement,disabled,customeClass, ...attrsInput } = props;
+    const [dynamicType, setDynamicType] = useState(type)
     const className = clsx({
-        "peer w-full flex-grow !outline-none !border-none focus:border-none focus:ring-0 p-0 text-body-base placeholder:text-gray-400": true,
+        "peer w-full shrink !outline-none !border-none focus:border-none focus:ring-0 p-0 text-body-base placeholder:text-gray-400": true,
         "!bg-disabled": disabled,
         [customeClass?.input||'']:customeClass?.input
     })
+
+    const handleToggleTypePassword = ()=>{
+        setDynamicType(dynamicType==="password"?"text":"password")
+    }
+
     return (
         <>
             {/* Container input lv1 : ciV4 */}
@@ -42,10 +48,15 @@ const ContainerInput = <TInput,>(props: TProps<TInput>) => {
                             [customeClass?.ciV2||""]:customeClass?.ciV2
                         }
                     )}>
-                        {customeElement?.start}
+                        <div className={clsx({
+                            "hidden":true,
+                            "shrink-0 !flex" : customeElement?.start
+                        })} >
+                            {customeElement?.start}
+                        </div>
                         {/* Container input lv1 : ciV1 */}
-                        <div className="w-full relative">
-                        {children({...attrsInput as TInput,className})}
+                        <div className="flex flex-col w-full relative">
+                        {children({...attrsInput as TInput,className,name,type:dynamicType,disabled})}
                             {label && variant === "v2" && (
                                 <label
                                     id="floating-label"
@@ -61,7 +72,12 @@ const ContainerInput = <TInput,>(props: TProps<TInput>) => {
                                 </label>
                             )}
                         </div>
-                        {customeElement?.end}
+                        {customeElement?.end&&customeElement?.end}
+                        {type==="password" && <div onClick={handleToggleTypePassword} className="cursor-pointer-custome ">
+                            {
+                                dynamicType==="password"? <IconEye />:<IconEyeClose/>
+                            }
+                        </div>}
                     </div>
                 </section>
                 <HelperMessage variant={"error"} message={errorMessage} />
