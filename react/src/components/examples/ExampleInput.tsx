@@ -6,6 +6,7 @@ import InputNPWP from "@components/ui/inputs/InputNPWP"
 import InputPercentage from "@components/ui/inputs/InputPercentage"
 import InputPhoneNumber from "@components/ui/inputs/InputPhoneNumber"
 import InputTextArea from "@components/ui/inputs/InputTextArea"
+import { TCustomeEventOnChange } from "@types"
 import { useState } from "react"
 
 
@@ -13,19 +14,27 @@ const ExampleInput = () => {
   const [valuePercentage, setValuePercentage] = useState("")
   const [valueNpwp, setValueNpwp] = useState("")
   const [valuePhone, setValuePhone] = useState("")
+  const [valueDate, setValueDate] = useState<Date>()
 
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> ) => {
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | TCustomeEventOnChange<Date>) => {
     const name = e?.target?.name
     const value = e?.target?.value
 
+
     if (name === "input-percentage") {
-      setValuePercentage(value)
+      setValuePercentage(String(value))
     }
     if (name === "input-npwp") {
-      setValueNpwp(value)
+      setValueNpwp(String(value))
     }
+
     if (name === "input-phone") {
-      setValuePhone(value)
+      setValuePhone(String(value))
+    }
+    if (name === "input-date") {
+      console.log("value: ", value)
+      const date = new Date(value)
+      setValueDate(date)
     }
 
   }
@@ -348,9 +357,33 @@ const ExampleInput = () => {
         />
       </div>
       <h4>Input Date</h4>
-      <div className=" p-[10rem] gap-4 flex w-[30rem] h-[50rem]">
+      <div className="p-4 gap-4 flex flex-col w-[30rem] ">
         <InputDate
-
+          value={valueDate as Date}
+          onChange={handleOnChange}
+          name="input-date"
+          placeholder="Start Date"
+        />
+        <InputDate
+          value={valueDate as Date}
+          onChange={handleOnChange}
+          name="input-date"
+          placeholder="Start Date"
+          disabled
+        />
+        <InputDate
+          value={valueDate as Date}
+          onChange={handleOnChange}
+          name="input-date"
+          placeholder="Start Date"
+          errorMessage="Error message"
+        />
+        <InputDate
+          value={valueDate as Date}
+          onChange={handleOnChange}
+          name="input-date"
+          placeholder="Start Date"
+          iconPosition="end"
         />
       </div>
     </div>

@@ -23,7 +23,6 @@
 /* Customize input date */
 /* Remove border in the popper modal */
 .react-datepicker {
-    
     @apply !overflow-hidden mx-auto flex flex-col !border-gray-200 rounded-[16px] shadow-md  
     
 }
@@ -31,8 +30,23 @@
 .react-datepicker__header{
     @apply bg-white !border-none
 }
-.react-datepicker__input-container input {
-    @apply  block w-full text-body-base md:text-body-small bg-white rounded shadow-sm 
+
+.react-datepicker-wrapper{
+    @apply overflow-hidden
+}
+
+.react-datepicker__input-container {
+    @apply border 
+}
+.react-datepicker__input-container,.react-datepicker__view-calendar-icon{
+    @apply flex relative border-none gap-2 p-0
+}
+
+.react-datepicker__input-container input{
+    @apply flex relative p-0 !outline-none w-full
+}
+.react-datepicker-ignore-onclickoutside{
+    @apply w-auto
 }
 
 .react-datepicker-popper {
