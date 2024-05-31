@@ -6,7 +6,7 @@ interface TProps extends HTMLAttributes<HTMLParagraphElement>{
     message? : string;
     variant:"error"|"success"|"warning"
 }
-const ErrorMessage = (props:TProps) => {
+const HelperMessage = (props:TProps) => {
     const {message,variant,className, ...attrs} = props
 
   return (
@@ -22,4 +22,4 @@ const ErrorMessage = (props:TProps) => {
   )
 }
 
-export default ErrorMessage
+export default HelperMessage

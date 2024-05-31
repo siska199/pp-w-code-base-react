@@ -1,8 +1,10 @@
 import { IconMessage, IconPaymentMethodVisa, IconRight } from "@assets/icons"
 import Container from "@components/ui/Container"
 import InputBase from "@components/ui/inputs/InputBase"
+import InputCurrency from "@components/ui/inputs/InputCurrency"
 import InputDate from "@components/ui/inputs/InputDate"
 import InputNPWP from "@components/ui/inputs/InputNPWP"
+import InputOTP from "@components/ui/inputs/InputOTP"
 import InputPercentage from "@components/ui/inputs/InputPercentage"
 import InputPhoneNumber from "@components/ui/inputs/InputPhoneNumber"
 import InputTextArea from "@components/ui/inputs/InputTextArea"
@@ -15,8 +17,10 @@ const ExampleInput = () => {
   const [valueNpwp, setValueNpwp] = useState("")
   const [valuePhone, setValuePhone] = useState("")
   const [valueDate, setValueDate] = useState<Date>()
+  const [valueCurrency, setValueCurrency] = useState("")
+  const [valueIsOTPValid, setValueIsOTPValid] = useState<boolean>(true)
 
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | TCustomeEventOnChange<Date>) => {
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | TCustomeEventOnChange<Date | boolean>) => {
     const name = e?.target?.name
     const value = e?.target?.value
 
@@ -31,9 +35,16 @@ const ExampleInput = () => {
     if (name === "input-phone") {
       setValuePhone(String(value))
     }
-    if (name === "input-date") {
+    if (name === "input-date" && typeof(value)!=="boolean" ) {
       const date = new Date(value)
       setValueDate(date)
+    }
+    if (name === "input-currency") {
+      setValueCurrency(String(value))
+    }
+
+    if(name==="input-otp"){
+      setValueIsOTPValid(valueIsOTPValid)
     }
 
   }
@@ -385,6 +396,31 @@ const ExampleInput = () => {
           iconPosition="end"
         />
       </div>
+
+      <h4>Input Currency</h4>
+      <div className="p-4 gap-4 flex flex-col w-[30rem]">
+          <InputCurrency
+            name="input-currency"
+            value={valueCurrency}
+            onChange={handleOnChange}
+            customeElement={{
+              start:<div>RP</div>
+            }}
+            placeholder="Input Currency"
+          />
+      </div>
+
+      <h4>Input OTP</h4>
+      <div className="p-4 gap-4 flex flex-col w-[30rem]">
+          <InputOTP
+            name="input-otp"
+            numberOfDigits={4}
+            correctOTP="1234"
+            onChange={handleOnChange}
+          />
+      </div>
+
+
     </div>
   )
 }
