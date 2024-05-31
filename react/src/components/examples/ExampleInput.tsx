@@ -32,7 +32,6 @@ const ExampleInput = () => {
       setValuePhone(String(value))
     }
     if (name === "input-date") {
-      console.log("value: ", value)
       const date = new Date(value)
       setValueDate(date)
     }
