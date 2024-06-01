@@ -20,7 +20,22 @@ input[type="number"] {
 
 /* Input Radio Button */
 input[type="radio"]{
-    @apply w-5 h-5
+    -webkit-appearance: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+    outline: none;
+    accent-color: #EC4699;
+    box-shadow: 0 0 0 1px #E2E8F0;
+}
+
+input[type="radio"]:checked{
+    box-shadow: 0 0 0 1px #EC4699;
+}
+
+input[type="radio"]:disabled{
+    accent-color: #E2E8F0 !important;
+    box-shadow: 0 0 0 1px #E2E8F0 !important;
 }
 
 /* Customize input date */

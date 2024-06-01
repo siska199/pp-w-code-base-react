@@ -24,7 +24,8 @@ const ExampleInput = () => {
   const [valueDate, setValueDate] = useState<Date>()
   const [valueCurrency, setValueCurrency] = useState("")
   const [valueIsOTPValid, setValueIsOTPValid] = useState<boolean>(true)
-  const [valueCheckbox, setValueCheckbox] = useState<string[]>([])
+  const [valueCheckbox, setValueCheckbox] = useState<string[]>(["Songkang"])
+  const [valueRadio, setValueRadio] = useState<string>("Songkang")
 
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | TCustomeEventOnChange<Date | boolean | string[]>) => {
@@ -56,7 +57,9 @@ const ExampleInput = () => {
     if (name === "input-checkbox" && Array.isArray(value)) {
       setValueCheckbox(value)
     }
-
+    if (name === "input-radio") {
+      setValueRadio(String(value))
+    }
   }
   return (
     <div className="flex flex-col gap-4">
@@ -477,7 +480,43 @@ const ExampleInput = () => {
       <h4>Input Radio Button</h4>
       <div className="p-4 gap-4 flex flex-col w-[30rem]">
         <InputRadioButton
-
+          name="input-radio"
+          onChange={handleOnChange}
+          options={[
+            {
+              label: "Song kang",
+              value: "Songkang"
+            },
+            {
+              label: "Sun Jae",
+              value: "Sunjae"
+            },
+            {
+              label: "Makan bakso",
+              value: "makan bakso"
+            }
+          ]}
+          value={valueRadio}
+        />
+        <InputRadioButton
+          name="input-radio"
+          onChange={handleOnChange}
+          options={[
+            {
+              label: "Song kang",
+              value: "Songkang"
+            },
+            {
+              label: "Sun Jae",
+              value: "Sunjae"
+            },
+            {
+              label: "Makan bakso",
+              value: "makan bakso"
+            }
+          ]}
+          value={valueRadio}
+          disabled
         />
       </div>
 
