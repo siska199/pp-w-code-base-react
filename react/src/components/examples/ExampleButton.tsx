@@ -24,6 +24,13 @@ const ExampleButton = () => {
         <Button variant={"black"} isRounded>Button</Button>
 
       </div>
+      <div className="p-4 flex flex-col gap-4">
+        <Button variant={"white"}>Button</Button>
+        <Button variant={"white"} isContained={false}>Button</Button>
+        <Button  variant={"white"} disabled>Button</Button>
+        <Button variant={"white"} isRounded>Button</Button>
+
+      </div>
     </div>
   )
 }

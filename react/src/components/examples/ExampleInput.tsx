@@ -518,6 +518,27 @@ const ExampleInput = () => {
           value={valueRadio}
           disabled
         />
+                <InputRadioButton
+          name="input-radio"
+          onChange={handleOnChange}
+          options={[
+            {
+              label: "Song kang",
+              value: "Songkang"
+            },
+            {
+              label: "Sun Jae",
+              value: "Sunjae"
+            },
+            {
+              label: "Makan bakso",
+              value: "makan bakso"
+            }
+          ]}
+          value={valueRadio}
+          errorMessage="SISKA COMEL"
+          label="HOHO HIHI"
+        />
       </div>
 
 
