@@ -42,7 +42,7 @@ const ExampleInput = () => {
     if (name === "input-phone") {
       setValuePhone(String(value))
     }
-    if (name === "input-date") {
+    if (name === "input-date" && value instanceof Date) {
       const date = value
       setValueDate(new Date(date))
     }
