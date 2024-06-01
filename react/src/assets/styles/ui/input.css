@@ -1,3 +1,5 @@
+@import url('../index.css')
+
 @tailwind utilities;
 
 @layer utilities {
@@ -169,16 +171,3 @@
     @apply bg-transparent
 }
 
-
-Hide scrollbar
-.scrollbar-hidden::-webkit-scrollbar {
-    display: none;
-    }
-.scrollbar-hidden {
-    -ms-overflow-style: none;
-    scrollbar-width: none; /* Firefox */
-}
-
-.react-datepicker__children-container{
-    @apply w-auto 
-}
