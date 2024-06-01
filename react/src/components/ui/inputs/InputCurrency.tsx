@@ -1,6 +1,6 @@
 import { TBasePropsInput } from '@/types/ui/index';
 import ContainerInput from "@components/ui/inputs/ContainerInput";
-import React from 'react';
+import React, { useRef } from 'react';
 
 interface TProps extends TBasePropsInput,React.HTMLProps<HTMLInputElement>{
     onChange    : (e:React.ChangeEvent<HTMLInputElement>) => void;
@@ -10,22 +10,34 @@ interface TProps extends TBasePropsInput,React.HTMLProps<HTMLInputElement>{
 
 const InputCurrency = (props: TProps) => {
     const { onChange,value, ...attrs } = props;
-
+    const inputRef = useRef<HTMLInputElement>(null);
 
     const formatValue = (value: string): string => {
         let valueFormatted = value.replace(/[^\d.]+/g, "").replace(/(\.\d{2})\d+/g, "$1").replace(/^0+(?=\d)/, '');
-
         const parts = valueFormatted.split('.');
         parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    
         valueFormatted = parts.join('.');
         return valueFormatted;
     };
 
     const handleOnChangeFormatedValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { selectionStart } = e.target;
+        let cursorPosition = selectionStart;
         const formattedValue = formatValue(e.target.value);
+
+        if (inputRef.current) {
+            const inputLengthDifference = formattedValue.length - e.target.value.length;
+            cursorPosition = (selectionStart as number) + inputLengthDifference;
+        }
         e.target.value = formattedValue
+
         onChange(e);
+        setTimeout(() => {
+            if (inputRef.current) {
+                inputRef.current.selectionStart = cursorPosition;
+                inputRef.current.selectionEnd = cursorPosition;
+            }
+        }, 0);
     }
 
     const handleOnBlurFormattedValue = (e: React.FocusEvent<HTMLInputElement>) => {
@@ -47,8 +59,15 @@ const InputCurrency = (props: TProps) => {
     return (
         <ContainerInput<React.HTMLProps<HTMLInputElement>>  {...attrs}>
             {
-                (attrsInput) => <input  {...attrsInput}     onBlur={handleOnBlurFormattedValue}
-                onChange={handleOnChangeFormatedValue} value={value} id={attrsInput?.name} placeholder={attrs?.variant === "v2" ? "" :attrs?.placeholder} />
+                (attrsInput) => <input  
+                    {...attrsInput}     
+                    onBlur={handleOnBlurFormattedValue}
+                    onChange={handleOnChangeFormatedValue} 
+                    value={value} 
+                    id={attrsInput?.name} 
+                    placeholder={attrs?.variant === "v2" ? "" :attrs?.placeholder} 
+                    ref={inputRef}
+                />
             }
         </ContainerInput>
 

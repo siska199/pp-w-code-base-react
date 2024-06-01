@@ -14,13 +14,10 @@ const InputPercentage = (props: TProps) => {
 
     const handleOnChangeFormatedValue = (e: React.ChangeEvent<HTMLInputElement>) => {
         let valueFormatted = e.target.value;
-
         valueFormatted = valueFormatted .replace(/[^\d.]+/g, "").replace(/(\.\d\d)\d+/g, "$1").replace(/^0+(?=\d)/, '');
-        
         if((!/^\d+(\.\d*)?$/.test(valueFormatted) || parseFloat( valueFormatted)<0 || parseFloat(valueFormatted)>100) && valueFormatted!==""){
             valueFormatted =value
         }
-
         e.target.value = valueFormatted
         onChange(e)
     }
