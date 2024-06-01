@@ -43,7 +43,7 @@ const ExampleInput = () => {
     }
     if (name === "input-date") {
       const date = value
-      setValueDate(date)
+      setValueDate(new Date(date))
     }
     if (name === "input-currency") {
       setValueCurrency(String(value))

@@ -31,7 +31,7 @@ const InputDate = (props: TProps) => {
         onChange({
             target: {
                 name,
-                value: new Date(valueDate)
+                value: valueDate
             }
         })
 
@@ -93,7 +93,7 @@ const InputDate = (props: TProps) => {
                                     [ "date",""]?.includes(showTypeDate) && <span onClick={handleShowMonth} className='cursor-pointer'>{format(date||"", 'MMMM')}</span>
 
                                 }
-                                <span onClick={handleShowYear} className='cursor-pointer'>{showTypeDate === "year" ? format(value||"", 'yyyy') : format(date||"", 'yyyy')}</span>
+                                <span onClick={showTypeDate==="year"?()=>null: handleShowYear} className={showTypeDate==="year"?"":"cursor-pointer"}>{showTypeDate === "year" ? format(value||"", 'yyyy') : format(date||"", 'yyyy')}</span>
                             </div>
                             <Button
                                 isRounded
