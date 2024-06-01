@@ -31,7 +31,7 @@ const InputDate = (props: TProps) => {
         onChange({
             target: {
                 name,
-                value: valueDate
+                value: new Date(valueDate)
             }
         })
 

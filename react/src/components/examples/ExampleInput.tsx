@@ -1,29 +1,35 @@
 import { IconMessage, IconPaymentMethodVisa, IconRight } from "@assets/icons"
 import Container from "@components/ui/Container"
 import InputBase from "@components/ui/inputs/InputBase"
+import InputCheckbox from "@components/ui/inputs/InputCheckbox"
 import InputCurrency from "@components/ui/inputs/InputCurrency"
 import InputDate from "@components/ui/inputs/InputDate"
 import InputNPWP from "@components/ui/inputs/InputNPWP"
 import InputOTP from "@components/ui/inputs/InputOTP"
 import InputPercentage from "@components/ui/inputs/InputPercentage"
 import InputPhoneNumber from "@components/ui/inputs/InputPhoneNumber"
+import InputRadioButton from "@components/ui/inputs/InputRadioButton"
 import InputTextArea from "@components/ui/inputs/InputTextArea"
 import { TCustomeEventOnChange } from "@types"
 import { useState } from "react"
 
 
 const ExampleInput = () => {
+
+
+
   const [valuePercentage, setValuePercentage] = useState("")
   const [valueNpwp, setValueNpwp] = useState("")
   const [valuePhone, setValuePhone] = useState("")
   const [valueDate, setValueDate] = useState<Date>()
   const [valueCurrency, setValueCurrency] = useState("")
   const [valueIsOTPValid, setValueIsOTPValid] = useState<boolean>(true)
+  const [valueCheckbox, setValueCheckbox] = useState<string[]>([])
 
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | TCustomeEventOnChange<Date | boolean>) => {
+
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | TCustomeEventOnChange<Date | boolean | string[]>) => {
     const name = e?.target?.name
     const value = e?.target?.value
-
 
     if (name === "input-percentage") {
       setValuePercentage(String(value))
@@ -35,16 +41,20 @@ const ExampleInput = () => {
     if (name === "input-phone") {
       setValuePhone(String(value))
     }
-    if (name === "input-date" && typeof(value)!=="boolean" ) {
-      const date = new Date(value)
+    if (name === "input-date") {
+      const date = value
       setValueDate(date)
     }
     if (name === "input-currency") {
       setValueCurrency(String(value))
     }
 
-    if(name==="input-otp"){
+    if (name === "input-otp") {
       setValueIsOTPValid(valueIsOTPValid)
+    }
+
+    if (name === "input-checkbox" && Array.isArray(value)) {
+      setValueCheckbox(value)
     }
 
   }
@@ -52,7 +62,6 @@ const ExampleInput = () => {
     <div className="flex flex-col gap-4">
       <h4>Input Base</h4>
       <div className=" p-4 gap-4 flex ">
-
         <InputBase
           name={"random"}
           label={"Label"}
@@ -399,25 +408,77 @@ const ExampleInput = () => {
 
       <h4>Input Currency</h4>
       <div className="p-4 gap-4 flex flex-col w-[30rem]">
-          <InputCurrency
-            name="input-currency"
-            value={valueCurrency}
-            onChange={handleOnChange}
-            customeElement={{
-              start:<div>RP</div>
-            }}
-            placeholder="Input Currency"
-          />
+        <InputCurrency
+          name="input-currency"
+          value={valueCurrency}
+          onChange={handleOnChange}
+          customeElement={{
+            start: <div>RP</div>
+          }}
+          placeholder="Input Currency"
+        />
       </div>
 
       <h4>Input OTP</h4>
       <div className="p-4 gap-4 flex flex-col w-[30rem]">
-          <InputOTP
-            name="input-otp"
-            numberOfDigits={4}
-            correctOTP="1234"
-            onChange={handleOnChange}
-          />
+        <InputOTP
+          name="input-otp"
+          numberOfDigits={4}
+          correctOTP="1234"
+          onChange={handleOnChange}
+        />
+      </div>
+
+      <h4>Input Checkbox</h4>
+      <div className="p-4 gap-4 flex flex-col w-[30rem]">
+        <InputCheckbox
+          name="input-checkbox"
+          onChange={handleOnChange}
+          options={[
+            {
+              label: "Song kang",
+              value: "Songkang"
+            },
+            {
+              label: "Sun Jae",
+              value: "Sunjae"
+            },
+            {
+              label: "Makan bakso",
+              value: "makan bakso"
+            }
+          ]}
+          value={valueCheckbox}
+        />
+        <InputCheckbox
+          name="input-checkbox"
+          onChange={handleOnChange}
+          options={[
+            {
+              label: "Song kang",
+              value: "Songkang"
+            },
+            {
+              label: "Sun Jae",
+              value: "Sunjae"
+            },
+            {
+              label: "Makan bakso",
+              value: "makan bakso"
+            }
+          ]}
+          value={valueCheckbox}
+          disabled
+          label={'Siska Apriana Rifianti'}
+          errorMessage="Error message"
+        />
+      </div>
+
+      <h4>Input Radio Button</h4>
+      <div className="p-4 gap-4 flex flex-col w-[30rem]">
+        <InputRadioButton
+
+        />
       </div>
 
 
