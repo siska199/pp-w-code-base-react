@@ -74,7 +74,6 @@ const InputDate = (props: TProps) => {
                     prevMonthButtonDisabled,
                     nextMonthButtonDisabled,
                 }) => {
-                    console.log("value: ", value)
                     return (
                         <div className="flex items-center rounded-[16px] justify-between px-2  ">
                             <Button

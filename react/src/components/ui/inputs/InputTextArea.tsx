@@ -4,7 +4,7 @@ import React from 'react';
 
 interface TProps extends TBasePropsInput, React.HTMLProps<HTMLTextAreaElement> {
     name                    : string;
-    onChange?               : (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+    onChange               : (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 const InputTextArea = (props: TProps) => {

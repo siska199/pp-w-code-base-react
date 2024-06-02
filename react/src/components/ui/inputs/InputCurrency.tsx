@@ -9,7 +9,7 @@ interface TProps extends TBasePropsInput,React.HTMLProps<HTMLInputElement>{
 }
 
 const InputCurrency = (props: TProps) => {
-    const { onChange,value, ...attrs } = props;
+    const { onChange:handleOnChange,value, ...attrs } = props;
     const inputRef = useRef<HTMLInputElement>(null);
 
     const formatValue = (value: string): string => {
@@ -31,7 +31,7 @@ const InputCurrency = (props: TProps) => {
         }
         e.target.value = formattedValue
 
-        onChange(e);
+        handleOnChange(e);
         setTimeout(() => {
             if (inputRef.current) {
                 inputRef.current.selectionStart = cursorPosition;
@@ -53,11 +53,11 @@ const InputCurrency = (props: TProps) => {
             }
         }
         e.target.value = valueFormatted;
-        onChange(e);
+        handleOnChange(e);
     };
 
     return (
-        <ContainerInput<React.HTMLProps<HTMLInputElement>>  {...attrs}>
+        <ContainerInput<React.HTMLProps<HTMLInputElement>>  {...attrs} onChange={handleOnChange} value={value} isClerable>
             {
                 (attrsInput) => <input  
                     {...attrsInput}     

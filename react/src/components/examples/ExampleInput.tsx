@@ -31,7 +31,6 @@ const ExampleInput = () => {
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | TCustomeEventOnChange<Date | boolean | string[]>) => {
     const name = e?.target?.name
     const value = e?.target?.value
-    console.log("value: ", value)
     if (name === "input-percentage") {
       setValuePercentage(String(value))
     }

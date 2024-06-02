@@ -61,17 +61,17 @@ const InputOTP = (props: TProps) => {
     
     return (
         <div className='flex gap-4'>
-        {otp.map((digit, index)=>(
-            <input key={index} value={digit} maxLength={1}  
-                onChange={(e)=> handleChange(e.target.value, index)}
-                onKeyUp={(e)=> handleBackspaceAndEnter(e, index)}
-                ref={(reference) =>{
-                    return otpBoxReference.current[index]  = reference
-                }}
-                className={`border-gray-100 bg-gray-100 flex items-center justify-center text-center p-2 w-[2.5rem] h-[2.5rem] !outline-none `}
-            />
-        ))}
-        <HelperMessage message={otpError} variant='error'/>
+            {otp.map((digit, index)=>(
+                <input key={index} value={digit} maxLength={1}  
+                    onChange={(e)=> handleChange(e.target.value, index)}
+                    onKeyUp={(e)=> handleBackspaceAndEnter(e, index)}
+                    ref={(reference) =>{
+                        return otpBoxReference.current[index]  = reference
+                    }}
+                    className={`border-gray-100 bg-gray-100 flex items-center justify-center text-center p-2 w-[2.5rem] h-[2.5rem] !outline-none `}
+                />
+            ))}
+            <HelperMessage message={otpError} variant='error'/>
         </div>
 
     );

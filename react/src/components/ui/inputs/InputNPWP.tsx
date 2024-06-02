@@ -15,7 +15,7 @@ const InputNPWP = (props: TProps) => {
     const { inputRef, handleOnChangeFormattedValue } = useFormattedInput({ onChange: handleOnChange, formatPattern })
 
     return (
-        <ContainerInput<React.HTMLProps<HTMLInputElement>>  {...attrs} onChange={handleOnChange} isClerable>
+        <ContainerInput<React.HTMLProps<HTMLInputElement>>  {...attrs}  onChange={handleOnChange} isClerable>
             {
                 (attrsInput) => <input
                     ref={inputRef}
