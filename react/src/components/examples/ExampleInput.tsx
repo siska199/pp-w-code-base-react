@@ -552,7 +552,7 @@ const ExampleInput = () => {
           label={"Input Slect"}
           onChange={handleOnChange}
           value={valueSelect}
-          options={[{ label: "SISKA AP", value: "siska1" }, { label: "SISKA AP2", value: "siska2" }, { label: "SISKA AP3", value: "siska3" }]}
+          options={[{ label: "jiji", value: "jiji" },{ label: "jimbun", value: "jimbun" },{ label: "SISKA AP", value: "siska1" }, { label: "SISKA AP2", value: "siska2" }, { label: "SISKA AP3", value: "siska3" }, { label: "makan", value: "makan" },{ label: "lala", value: "lala" }]}
         />
       </div>
     </div>

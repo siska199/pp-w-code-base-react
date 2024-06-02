@@ -16,7 +16,10 @@ const InputSelect = (props: TProps) => {
     const ref = useRef<HTMLDivElement | null>(null);
     const inputRef = useRef<HTMLInputElement | null>(null);
 
+    const [searchQuery, setSearchQuery] = useState('');
     const [isOpen, setIsOpen] = useState(false)
+    const [isSearch, setisSearch] = useState(false)
+
 
     const handleOnClickOption = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, data: TOption) => {
         e?.stopPropagation()
@@ -27,7 +30,18 @@ const InputSelect = (props: TProps) => {
             }
         })
         setIsOpen(false)
+        setSearchQuery('');
+        setisSearch(false)
     }
+
+
+    const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchQuery(e.target.value);
+    };
+
+    const filteredOptions = options.filter(option =>
+        option.label.toLowerCase().includes(searchQuery.toLowerCase())
+    );
     return (
         <ContainerInput<React.HTMLProps<HTMLInputElement>>
             {...attrs}
@@ -42,11 +56,12 @@ const InputSelect = (props: TProps) => {
                 {
                     isOpen && <div className="py-0">
                         {
-                            options?.map((option, i) => {
+                            filteredOptions?.map((option, i) => {
                                 const isSelected = option?.value === attrs?.value
                                 return <div key={i} onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => handleOnClickOption(e, option)} className={clsx({
                                     "hover:bg-gray-100 block px-4 py-2 cursor-pointer": true,
-                                    "!bg-gray-100": isSelected
+                                    "!bg-primary !text-white": isSelected,
+                                    "!bg-gray-100":isSearch && i===0 && searchQuery
                                 })} >{option?.label}</div>
                             })
                         }
@@ -64,6 +79,11 @@ const InputSelect = (props: TProps) => {
                     }}
                     onBlur={() => { setTimeout(() => { setIsOpen(false) }, 100) }}
                     id={attrsInput?.name}
+                    onChange={(e) => {
+                        setisSearch(true)
+                        handleSearchChange(e);
+                    }}
+                    value={isSearch ? searchQuery : attrs?.value}
                     placeholder={attrs?.variant === "v2" ? "" : attrsInput?.placeholder || ""}
                     ref={inputRef}
                 />
