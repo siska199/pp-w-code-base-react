@@ -1,20 +1,23 @@
+import { TBasePropsInput } from '@/types/ui/index';
+import { IconClose, IconEye, IconEyeClose } from "@assets/icons";
 import Container from "@components/ui/Container";
 import HelperMessage from "@components/ui/HelperMessage";
 import clsx from "clsx";
-import { TBasePropsInput } from '@/types/ui/index';
-import { IconEye, IconEyeClose } from "@assets/icons";
 import { useState } from "react";
 
 interface TProps<TInput,> extends TBasePropsInput {
-    children        : React.ReactNode | ((attrsInput: TInput) => React.ReactNode);
-    disabled?       : boolean;
-    name?           : string;
-    type?           : string;
-    onlyContainer?  : boolean;
+    children: React.ReactNode | ((attrsInput: TInput) => React.ReactNode);
+    disabled?: boolean;
+    name?: string;
+    type?: string;
+    onlyContainer?: boolean;
+    isClerable?: boolean;
+    value?: any;
+    onChange?: (e: any) => void;
 }
 
 const ContainerInput = <TInput,>(props: TProps<TInput>) => {
-    const { name, children, label, variant = "v1", type,onlyContainer=false, errorMessage, customeElement, disabled, customeClass, ...attrsInput } = props;
+    const { name, children, label, variant = "v1", isClerable = false, type, onlyContainer = false, errorMessage, customeElement, disabled, customeClass, value, onChange, ...attrsInput } = props;
     const [dynamicType, setDynamicType] = useState(type)
 
 
@@ -26,6 +29,16 @@ const ContainerInput = <TInput,>(props: TProps<TInput>) => {
 
     const handleToggleTypePassword = () => {
         setDynamicType(dynamicType === "password" ? "text" : "password")
+    }
+
+    const handleOnClearValue = () => {
+        
+        onChange && onChange({
+            target: {
+                name : name || "", 
+                value: ""
+            }
+        })
     }
 
     return (
@@ -40,8 +53,9 @@ const ContainerInput = <TInput,>(props: TProps<TInput>) => {
                             "absolute top-[-0.65rem] left-[0.45rem] text-body-small bg-white px-1 z-[10]": variant === "v4"
                         })}>{label}</label>
                     )}
+                    {/* Container input lv1 : ciV2 */}
                     {
-                        onlyContainer && typeof(children)!=="function"? children : <div className={clsx(
+                        onlyContainer && typeof (children) !== "function" ? children : <div className={clsx(
                             "bg-white flex flex-nowrap items-center gap-2 text-body-base border border-input rounded-lg focus-within:ring-4 focus-within:ring-primary-200 focus-within:!border-primary w-full px-3 py-2",
                             {
                                 "!bg-disabled !border": disabled,
@@ -61,7 +75,7 @@ const ContainerInput = <TInput,>(props: TProps<TInput>) => {
                             <div className="flex flex-col w-full relative">
                                 {
                                     typeof (children) === "function" ? <>
-                                        {children({ ...attrsInput as TInput, className, name, type: dynamicType, disabled })}
+                                        {children({ ...attrsInput as TInput, className, name, type: dynamicType, disabled, value, onChange })}
                                         {label && variant === "v2" && (
                                             <label
                                                 id="floating-label"
@@ -81,15 +95,16 @@ const ContainerInput = <TInput,>(props: TProps<TInput>) => {
                                 }
 
                             </div>
+                            {isClerable && value && <IconClose className='cursor-pointer' onClick={handleOnClearValue} />}
                             {customeElement?.end && customeElement?.end}
                             {type === "password" && <div onClick={handleToggleTypePassword} className="cursor-pointer-custome ">
                                 {
                                     dynamicType === "password" ? <IconEye /> : <IconEyeClose />
                                 }
                             </div>}
-                        </div>                    }
+                        </div>
+                    }
 
-                    {/* Container input lv1 : ciV2 */}
                 </section>
                 <HelperMessage variant={"error"} message={errorMessage} />
             </Container>

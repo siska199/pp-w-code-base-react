@@ -11,7 +11,7 @@ interface TProps extends  TBasePropsInput, React.HTMLProps<HTMLInputElement> {
 const InputBase = (props: TProps) => {
     const {...attrs } = props;
     return (
-        <ContainerInput<React.HTMLProps<HTMLInputElement>>  {...attrs} >
+        <ContainerInput<React.HTMLProps<HTMLInputElement>>  {...attrs}  isClerable>
             {
                 (attrsInput)=><input {...attrsInput} id={attrsInput?.name} placeholder={attrs?.variant==="v2"?"": attrsInput?.placeholder||""}/>
             }

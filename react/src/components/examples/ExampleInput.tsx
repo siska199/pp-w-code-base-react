@@ -21,7 +21,7 @@ const ExampleInput = () => {
   const [valuePercentage, setValuePercentage] = useState("")
   const [valueNpwp, setValueNpwp] = useState("")
   const [valuePhone, setValuePhone] = useState("")
-  const [valueDate, setValueDate] = useState<Date| TEmptyValue>()
+  const [valueDate, setValueDate] = useState<Date|string | TEmptyValue>()
   const [valueCurrency, setValueCurrency] = useState("")
   const [valueIsOTPValid, setValueIsOTPValid] = useState<boolean>(true)
   const [valueCheckbox, setValueCheckbox] = useState<string[]>(["Songkang"])
@@ -31,7 +31,7 @@ const ExampleInput = () => {
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | TCustomeEventOnChange<Date | boolean | string[]>) => {
     const name = e?.target?.name
     const value = e?.target?.value
-
+    console.log("value: ", value)
     if (name === "input-percentage") {
       setValuePercentage(String(value))
     }
@@ -42,7 +42,6 @@ const ExampleInput = () => {
     if (name === "input-phone") {
       setValuePhone(String(value))
     }
-    console.log("value; ", value)
     if (name === "input-date" && (value instanceof Date || (!value && (typeof value !== "boolean")))) {
       const date = value
       setValueDate(date)

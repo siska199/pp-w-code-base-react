@@ -10,19 +10,19 @@ interface TProps extends TBasePropsInput, React.HTMLProps<HTMLInputElement> {
 }
 
 const InputNPWP = (props: TProps) => {
-    const { onChange, ...attrs } = props;
+    const { onChange: handleOnChange, ...attrs } = props;
     const formatPattern = "XX.XXX.XXX.X-XXX.XXX"
-    const { inputRef, handleOnChangeFormattedValue } = useFormattedInput({ onChange, formatPattern })
+    const { inputRef, handleOnChangeFormattedValue } = useFormattedInput({ onChange: handleOnChange, formatPattern })
 
     return (
-        <ContainerInput<React.HTMLProps<HTMLInputElement>>  {...attrs}>
+        <ContainerInput<React.HTMLProps<HTMLInputElement>>  {...attrs} onChange={handleOnChange} isClerable>
             {
-                (attrsInput) => <input 
+                (attrsInput) => <input
                     ref={inputRef}
-                    {...attrsInput} 
+                    {...attrsInput}
                     maxLength={formatPattern?.length}
-                    onChange={handleOnChangeFormattedValue} 
-                    placeholder={attrs?.variant === "v2" ? "" : "XX.XXX.XXX.X-XXX.XXX"} 
+                    onChange={handleOnChangeFormattedValue}
+                    placeholder={attrs?.variant === "v2" ? "" : "XX.XXX.XXX.X-XXX.XXX"}
                 />
             }
         </ContainerInput>
