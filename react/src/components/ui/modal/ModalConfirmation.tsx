@@ -4,7 +4,7 @@ import ContainerModal from '@components/ui/modal/ContainerModal';
 
 interface TProps extends TBaseModal {
     title?: string;
-    button: {
+    button?: {
         cancel: {
             name?: string;
             onClick: () => void;
@@ -20,7 +20,7 @@ const ModalConfirmation = (props: TProps) => {
     const { title, isShow, children, onClose: handleOnClose, button } = props;
 
     const handleConfirmationBtn = () => {
-        button.confirm.onClick && button?.confirm?.onClick()
+        button?.confirm.onClick && button?.confirm?.onClick()
     }
     return (
         <ContainerModal isShow={isShow} onClose={handleOnClose}>
