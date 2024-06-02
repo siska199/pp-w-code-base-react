@@ -9,6 +9,7 @@ import InputOTP from "@components/ui/inputs/InputOTP"
 import InputPercentage from "@components/ui/inputs/InputPercentage"
 import InputPhoneNumber from "@components/ui/inputs/InputPhoneNumber"
 import InputRadioButton from "@components/ui/inputs/InputRadioButton"
+import InputSelect from "@components/ui/inputs/InputSelect"
 import InputTextArea from "@components/ui/inputs/InputTextArea"
 import { TCustomeEventOnChange, TEmptyValue } from "@types"
 import { useState } from "react"
@@ -21,14 +22,15 @@ const ExampleInput = () => {
   const [valuePercentage, setValuePercentage] = useState("")
   const [valueNpwp, setValueNpwp] = useState("")
   const [valuePhone, setValuePhone] = useState("")
-  const [valueDate, setValueDate] = useState<Date|string | TEmptyValue>()
+  const [valueDate, setValueDate] = useState<Date | string | TEmptyValue>()
   const [valueCurrency, setValueCurrency] = useState("")
   const [valueIsOTPValid, setValueIsOTPValid] = useState<boolean>(true)
   const [valueCheckbox, setValueCheckbox] = useState<string[]>(["Songkang"])
   const [valueRadio, setValueRadio] = useState<string>("Songkang")
+  const [valueSelect, setValueSelect] = useState<string>("")
 
 
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | TCustomeEventOnChange<Date | boolean | string[]>) => {
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | TCustomeEventOnChange<Date | boolean | string[] | string>) => {
     const name = e?.target?.name
     const value = e?.target?.value
     if (name === "input-percentage") {
@@ -59,7 +61,12 @@ const ExampleInput = () => {
     if (name === "input-radio") {
       setValueRadio(String(value))
     }
+    if (name === "input-select") {
+      console.log("value")
+      setValueSelect(value)
+    }
   }
+
   return (
     <div className="flex flex-col gap-4">
       <h4>Input Base</h4>
@@ -387,6 +394,7 @@ const ExampleInput = () => {
           name="input-date"
           placeholder="Start Date"
           disabled
+          label={"Start Date"}
         />
         <InputDate
           value={valueDate as Date}
@@ -394,6 +402,7 @@ const ExampleInput = () => {
           name="input-date"
           placeholder="Start Date"
           errorMessage="Error message"
+          label={"End Date"}
         />
         <InputDate
           value={valueDate as Date}
@@ -513,7 +522,7 @@ const ExampleInput = () => {
           value={valueRadio}
           disabled
         />
-                <InputRadioButton
+        <InputRadioButton
           name="input-radio"
           onChange={handleOnChange}
           options={[
@@ -536,7 +545,16 @@ const ExampleInput = () => {
         />
       </div>
 
-
+      <h4>Input Select</h4>
+      <div className=" p-4 gap-4 flex w-[20rem] flex-col ">
+        <InputSelect
+          name="input-select"
+          label={"Input Slect"}
+          onChange={handleOnChange}
+          value={valueSelect}
+          options={[{ label: "SISKA AP", value: "siska1" }, { label: "SISKA AP2", value: "siska2" }, { label: "SISKA AP3", value: "siska3" }]}
+        />
+      </div>
     </div>
   )
 }
