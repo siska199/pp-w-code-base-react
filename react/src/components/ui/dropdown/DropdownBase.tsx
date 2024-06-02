@@ -16,12 +16,16 @@ interface TProps {
 }
 
 const DropdownBase = (props: TProps) => {
-    const ref = useRef<HTMLDivElement|null>(null);
+    const ref = useRef<HTMLDivElement | null>(null);
     const { options, label, onClick: handleOnClick, customeClass, isDefaultStyle = true } = props;
     const [isOpen, setIsOpen] = useState(false)
 
     useOnClickOutside<HTMLDivElement>({ ref, handler: () => setIsOpen(false) });
 
+    const handleOnClickOption = (data: TOption) => {
+        handleOnClick(data)
+        setIsOpen(false)
+    }
     return (
         <div className="relative inline-block text-left">
             <div onClick={() => setIsOpen(!isOpen)}>
@@ -44,10 +48,7 @@ const DropdownBase = (props: TProps) => {
                     isOpen && <div className="py-0">
                         {
                             options?.map((option, i) =>
-                                <div key={i} onClick={() => {
-                                    handleOnClick(option)
-                                    setIsOpen(false)
-                                }} className="hover:bg-gray-100 block px-4 py-2 cursor-pointer" >{option?.label}</div>
+                                <div key={i} onClick={() => handleOnClickOption(option)} className="hover:bg-gray-100 block px-4 py-2 cursor-pointer" >{option?.label}</div>
                             )
                         }
                     </div>

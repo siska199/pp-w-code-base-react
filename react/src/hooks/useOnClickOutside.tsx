@@ -2,25 +2,24 @@ import { RefObject, useEffect } from "react";
 
 interface TProps<T> {
     handler: () => void;
-    ref : RefObject<T>;
+    ref: RefObject<T>;
 }
 
-const useOnClickOutside = <T,>(props: TProps<T>) => {
+const useOnClickOutside = <T extends HTMLElement>(props: TProps<T>) => {
     const { ref, handler } = props
     useEffect(() => {
-        const handleListener = () => {
-            if (!ref.current) {
-                return;
-            }
-            handler();
-        };
+        const handleClickOutside = (event: MouseEvent | TouchEvent) => {
 
-        document.addEventListener("mousedown",handleListener);
-        document.addEventListener("touchstart", handleListener);
+            if (ref.current && !ref.current.contains(event.target as Node)) {
+                handler();
+            }
+        };
+        document.addEventListener("mousedown", handleClickOutside);
+        document.addEventListener("touchstart", handleClickOutside);
 
         return () => {
-            document.removeEventListener("mousedown", handleListener);
-            document.removeEventListener("touchstart", handleListener);
+            document.removeEventListener("mousedown", handleClickOutside);
+            document.removeEventListener("touchstart", handleClickOutside);
         };
     }, [ref, handler]);
 };
