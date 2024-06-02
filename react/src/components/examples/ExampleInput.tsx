@@ -125,7 +125,7 @@ const ExampleInput = () => {
           label={"Label"}
           placeholder="Input Placeholder"
           customeElement={{ start: <IconPaymentMethodVisa /> }}
-          customeClass={{ label: "peer-focus:!ml-[-35px]" }}
+          customeClass={{ label: "peer-placeholder-shown:ml-[0px] ml-[-35px]" }}
           variant="v2"
           onChange={handleOnChange}
         />
@@ -163,7 +163,7 @@ const ExampleInput = () => {
           label={"Label"}
           placeholder="Input Placeholder"
           customeElement={{ start: <IconPaymentMethodVisa /> }}
-          customeClass={{ label: "peer-focus:!ml-[-35px]" }}
+          customeClass={{ label: "peer-placeholder-shown:ml-[0px] ml-[-35px]" }}
           variant="v3"
           onChange={handleOnChange}
 
@@ -205,7 +205,7 @@ const ExampleInput = () => {
           label={"Label"}
           placeholder="Input Placeholder"
           customeElement={{ start: <IconPaymentMethodVisa /> }}
-          customeClass={{ label: "peer-focus:!ml-[-35px]" }}
+          customeClass={{ label: "peer-placeholder-shown:ml-[0px] ml-[-35px]" }}
           variant="v4"
           onChange={handleOnChange}
 
@@ -244,7 +244,7 @@ const ExampleInput = () => {
           label={"Label"}
           placeholder="Input Placeholder"
           customeElement={{ start: <IconPaymentMethodVisa /> }}
-          customeClass={{ label: "peer-focus:!ml-[-35px]" }}
+          customeClass={{ label: "peer-placeholder-shown:ml-[0px] ml-[-35px]" }}
           variant="v5"
           onChange={handleOnChange}
 

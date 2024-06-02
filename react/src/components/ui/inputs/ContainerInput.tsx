@@ -82,8 +82,9 @@ const ContainerInput = <TInput,>(props: TProps<TInput>) => {
                                                 htmlFor={name}
                                                 className={clsx(
                                                     {
-                                                        "font-medium peer-focus:ml-[-0.25rem] absolute left-0 text-sm text-gray duration-300 transform -translate-y-4 scale-75 top-0 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5 peer-focus:bg-white peer-focus:px-1 z-10": true,
-                                                        [customeClass?.label || "peer-focus:!ml-[-30px]"]: customeElement?.start
+                                                        "font-medium absolute left-0 text-sm text-gray duration-300 transform -translate-y-5 bg-white px-1 scale-75 top-0 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5 peer-focus:bg-white  z-10": true,
+                                                        [customeClass?.label || "ml-[-30px] peer-placeholder-shown:ml-[0px] peer-focus:ml-[-30px]"]: customeElement?.start,
+                                                        "ml-[-0.25rem] " : !customeElement?.start
                                                     }
                                                 )}
                                             >
