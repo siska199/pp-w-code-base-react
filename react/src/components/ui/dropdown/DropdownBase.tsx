@@ -11,6 +11,8 @@ interface TProps {
     onClick: (data: TOption) => void;
     customeClass?: {
         containerDropdown?: string;
+        btnDropdown?: string;
+
     };
     isDefaultStyle?: boolean;
 }
@@ -27,12 +29,15 @@ const DropdownBase = (props: TProps) => {
         setIsOpen(false)
     }
     return (
-        <div className="relative inline-block text-left">
+        <div className={clsx({
+            "relative inline-block text-left w-fit": true,
+            [customeClass?.containerDropdown || '']: customeClass?.containerDropdown
+        })}>
             <div onClick={() => setIsOpen(!isOpen)}>
                 <button type="button" className={clsx({
                     "inline-flex w-full justify-center items-center gap-x-1.5 ": true,
                     "rounded-md bg-white px-3 py-2 text-sm font-semibold shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50": isDefaultStyle,
-                    [customeClass?.containerDropdown || ""]: customeClass?.containerDropdown
+                    [customeClass?.btnDropdown || ""]: customeClass?.btnDropdown
                 })}>
                     {label}
                     <IconChevronDown />
