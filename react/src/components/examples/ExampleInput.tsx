@@ -10,7 +10,7 @@ import InputPercentage from "@components/ui/inputs/InputPercentage"
 import InputPhoneNumber from "@components/ui/inputs/InputPhoneNumber"
 import InputRadioButton from "@components/ui/inputs/InputRadioButton"
 import InputTextArea from "@components/ui/inputs/InputTextArea"
-import { TCustomeEventOnChange } from "@types"
+import { TCustomeEventOnChange, TEmptyValue } from "@types"
 import { useState } from "react"
 
 
@@ -21,7 +21,7 @@ const ExampleInput = () => {
   const [valuePercentage, setValuePercentage] = useState("")
   const [valueNpwp, setValueNpwp] = useState("")
   const [valuePhone, setValuePhone] = useState("")
-  const [valueDate, setValueDate] = useState<Date>()
+  const [valueDate, setValueDate] = useState<Date| TEmptyValue>()
   const [valueCurrency, setValueCurrency] = useState("")
   const [valueIsOTPValid, setValueIsOTPValid] = useState<boolean>(true)
   const [valueCheckbox, setValueCheckbox] = useState<string[]>(["Songkang"])
@@ -42,9 +42,10 @@ const ExampleInput = () => {
     if (name === "input-phone") {
       setValuePhone(String(value))
     }
-    if (name === "input-date" && value instanceof Date) {
+    console.log("value; ", value)
+    if (name === "input-date" && (value instanceof Date || (!value && (typeof value !== "boolean")))) {
       const date = value
-      setValueDate(new Date(date))
+      setValueDate(date)
     }
     if (name === "input-currency") {
       setValueCurrency(String(value))

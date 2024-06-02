@@ -1,12 +1,13 @@
 /*----------------GENERAL--------------------*/
 export interface TObject {
-    [key: string]: any
+  [key: string]: any
 }
 export interface TCustomeEventOnChange<V> {
-    target: {
-      name: string
-      value: V
-    }
+  target: {
+    name: string
+    value: V
+  }
 }
 
+export type TEmptyValue = "" | null | undefined 
 /*----------------FORM--------------------*/

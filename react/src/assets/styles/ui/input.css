@@ -187,3 +187,17 @@ input[type="radio"]:disabled{
     @apply bg-transparent
 }
 
+.react-datepicker__close-icon{
+    @apply flex items-center justify-center 
+}
+.react-datepicker__close-icon::after{
+   background-color:transparent;
+   content:"";
+   background-image: url('../../icons/close.svg');
+
+   background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
+

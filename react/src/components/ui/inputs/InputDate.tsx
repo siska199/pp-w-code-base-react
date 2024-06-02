@@ -74,6 +74,7 @@ const InputDate = (props: TProps) => {
                     prevMonthButtonDisabled,
                     nextMonthButtonDisabled,
                 }) => {
+                    console.log("value: ", value)
                     return (
                         <div className="flex items-center rounded-[16px] justify-between px-2  ">
                             <Button
@@ -93,7 +94,8 @@ const InputDate = (props: TProps) => {
                                     [ "date",""]?.includes(showTypeDate) && <span onClick={handleShowMonth} className='cursor-pointer'>{format(date||"", 'MMMM')}</span>
 
                                 }
-                                <span onClick={showTypeDate==="year"?()=>null: handleShowYear} className={showTypeDate==="year"?"":"cursor-pointer"}>{showTypeDate === "year" ? format(value||"", 'yyyy') : format(date||"", 'yyyy')}</span>
+                                
+                                <span onClick={showTypeDate==="year"?()=>null: handleShowYear} className={showTypeDate==="year"?"":"cursor-pointer"}>{showTypeDate === "year" ? format(value||date||"", 'yyyy') : format(date||"", 'yyyy')}</span>
                             </div>
                             <Button
                                 isRounded
@@ -124,7 +126,8 @@ const InputDate = (props: TProps) => {
                 showIcon={true}
                 icon={<IconCalender/>}
                 disabled={attrs?.disabled}
-                
+                isClearable={true}
+                toggleCalendarOnIconClick={true}
                 popperClassName="flex flex-col gap-2 z-[9999] justify-enter react-datepicker-left !shadow-none overflow-hidden"
                 wrapperClassName='w-full'
                 className={clsx({
@@ -138,6 +141,11 @@ const InputDate = (props: TProps) => {
                     "left-[-0.5rem] ":iconPosition==="start",
                     "right-[-0.5rem] ":iconPosition==="end",
                 })}
+                clearButtonClassName={clsx({
+                    "right-[-0.25rem] z-[99]":true,
+                    "right-[0.65rem]":iconPosition==="end"
+                })}
+                
             >
             </DatePicker>
         </ContainerInput>
