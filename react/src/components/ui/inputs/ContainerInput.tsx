@@ -45,7 +45,7 @@ const ContainerInput = <TInput,>(props: TProps<TInput>) => {
             {/* Container input lv1 : ciV4 */}
             <Container gap={"tiny"} className={`${customeClass?.ciV4} relative`}>
                 {/* Container input lv1 : ciV3 */}
-                <section className="relative flex flex-col gap-1 w-full">
+                <section className={`${customeClass?.ciV3} relative flex flex-col gap-1 w-full`}>
                     {label && variant !== "v2" && (
                         <label htmlFor={name} className={clsx({
                             "font-medium": true,
@@ -96,7 +96,12 @@ const ContainerInput = <TInput,>(props: TProps<TInput>) => {
 
                             </div>
                             {isClerable && value && <IconClose className='cursor-pointer' onClick={handleOnClearValue} />}
-                            {customeElement?.end && customeElement?.end}
+                            <div className={clsx({
+                                "hidden": true,
+                                "shrink-0 !flex": customeElement?.end
+                            })} >
+                                {customeElement?.end}
+                            </div>
                             {type === "password" && <div onClick={handleToggleTypePassword} className="cursor-pointer-custome ">
                                 {
                                     dynamicType === "password" ? <IconEye /> : <IconEyeClose />

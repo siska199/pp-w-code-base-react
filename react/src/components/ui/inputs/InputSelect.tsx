@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-handler-names */
 import { TBasePropsInput } from '@/types/ui/index';
+import { IconChevronDown } from '@assets/icons';
 import ContainerInput from '@components/ui/inputs/ContainerInput';
 import { TCustomeEventOnChange, TOption } from '@types';
 import clsx from 'clsx';
@@ -19,7 +20,7 @@ const InputSelect = (props: TProps) => {
     const [searchQuery, setSearchQuery] = useState('');
     const [isOpen, setIsOpen] = useState(false)
     const [isSearch, setisSearch] = useState(false)
-
+    const [isFocus, setIsFocus] = useState(false)
 
     const handleOnClickOption = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, data: TOption) => {
         e?.stopPropagation()
@@ -46,6 +47,20 @@ const InputSelect = (props: TProps) => {
         <ContainerInput<React.HTMLProps<HTMLInputElement>>
             {...attrs}
             isClerable
+            customeElement={{
+                ...attrs?.customeElement,
+                end: <IconChevronDown onClick={() => {
+                    const isOpenUpdate = !isOpen
+                    setIsOpen(isOpenUpdate)
+                    if (isOpenUpdate) {
+                        inputRef?.current?.focus()
+                    }
+                }}
+                    className='cursor-pointer' />
+            }}
+            customeClass={{
+                ...attrs?.customeClass,
+            }}
             childrenOverlay={<div ref={ref} className={clsx({
                 "absolute left-0  z-10 mt-[4.5rem]  transition-all overflow-hidden origin-top-right rounded-md bg-white  ring-1 ring-black ring-opacity-5 focus:outline-none": true,
                 " h-auto shadow-lg w-full": isOpen,
@@ -61,7 +76,7 @@ const InputSelect = (props: TProps) => {
                                 return <div key={i} onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => handleOnClickOption(e, option)} className={clsx({
                                     "hover:bg-gray-100 block px-4 py-2 cursor-pointer": true,
                                     "!bg-primary !text-white": isSelected,
-                                    "!bg-gray-100":isSearch && i===0 && searchQuery
+                                    "!bg-gray-100": isSearch && i === 0 && searchQuery
                                 })} >{option?.label}</div>
                             })
                         }
