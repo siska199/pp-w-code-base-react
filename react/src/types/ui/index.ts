@@ -22,3 +22,4 @@ export interface TBaseModal {
     onClose: () => void;
     children: React.ReactNode;
 }
+

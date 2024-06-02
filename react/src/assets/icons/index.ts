@@ -2,6 +2,7 @@ export { default as IconCalender } from '@assets/icons/calender.svg?react';
 export { default as IconChecked } from '@assets/icons/checked.svg?react';
 export { default as IconChevronLeft } from '@assets/icons/chevron-left.svg?react';
 export { default as IconChevronRight } from '@assets/icons/chevron-right.svg?react';
+export { default as IconChevronDown } from '@assets/icons/chevron-down.svg?react';
 export { default as IconClear } from '@assets/icons/clear.svg?react';
 export { default as IconClose } from '@assets/icons/close.svg?react';
 export { default as IconEyeClose } from '@assets/icons/eye-close.svg?react';

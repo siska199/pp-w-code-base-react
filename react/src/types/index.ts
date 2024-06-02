@@ -10,4 +10,9 @@ export interface TCustomeEventOnChange<V> {
 }
 
 export type TEmptyValue = "" | null | undefined 
+
+export interface TOption {
+  label : string;
+  value:string;
+}
 /*----------------FORM--------------------*/
