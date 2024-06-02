@@ -32,10 +32,10 @@ const ContainerInput = <TInput,>(props: TProps<TInput>) => {
     }
 
     const handleOnClearValue = () => {
-        
+
         onChange && onChange({
             target: {
-                name : name || "", 
+                name: name || "",
                 value: ""
             }
         })
@@ -83,8 +83,8 @@ const ContainerInput = <TInput,>(props: TProps<TInput>) => {
                                                 className={clsx(
                                                     {
                                                         "font-medium absolute left-0 text-sm text-gray duration-300 transform -translate-y-5 bg-white px-1 scale-75 top-0 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5 peer-focus:bg-white  z-10": true,
-                                                        [customeClass?.label || "ml-[-30px] peer-placeholder-shown:ml-[0px] peer-focus:ml-[-30px]"]: customeElement?.start,
-                                                        "ml-[-0.25rem] " : !customeElement?.start
+                                                        [customeClass?.label || "peer-placeholder-shown:ml-[0px] peer-focus:ml-[-35px] ml-[-35px]"]: customeElement?.start,
+                                                        "ml-[-0.25rem] ": !customeElement?.start
                                                     }
                                                 )}
                                             >
