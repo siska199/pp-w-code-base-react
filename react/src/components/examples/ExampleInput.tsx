@@ -79,6 +79,9 @@ const ExampleInput = () => {
     { label: "makan", value: "makan" },
     { label: "lala", value: "lala" },
     { label: "koko melon", value: "koko" },
+    { label: "lulu", value: "lulu" },
+    { label: "lili", value: "lili" },
+
   ]
   return (
     <div className="flex flex-col gap-4">

@@ -15,16 +15,19 @@ interface TProps<TInput,> extends TBasePropsInput {
     value?: any;
     onChange?: (e: any) => void;
     childrenOverlay?: React.ReactNode;
+    isNotUsingDefaultStyle?:{
+        input?:boolean
+    }
 }
 
 const ContainerInput = <TInput,>(props: TProps<TInput>) => {
-    const { name, children, childrenOverlay, label, variant = "v1", isClerable = false, type, onlyContainer = false, errorMessage, customeElement, disabled, customeClass, value, onChange, ...attrsInput } = props;
+    const { name, children,isNotUsingDefaultStyle, childrenOverlay, label, variant = "v1", isClerable = false, type, onlyContainer = false, errorMessage, customeElement, disabled, customeClass, value, onChange, ...attrsInput } = props;
     const [dynamicType, setDynamicType] = useState(type)
 
     const className = clsx({
-        "peer w-full shrink !outline-none !border-none focus:border-none focus:ring-0 p-0 text-body-base placeholder:text-gray-400": true,
+        "peer w-full shrink !outline-none border-none focus:border-none focus:ring-0 p-0 text-body-base placeholder:text-gray-400": !isNotUsingDefaultStyle?.input,
         "!bg-disabled": disabled,
-        [customeClass?.input || '']: customeClass?.input
+        [customeClass?.input || '']: customeClass?.input,
     })
 
     const handleToggleTypePassword = () => {
