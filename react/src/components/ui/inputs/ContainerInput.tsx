@@ -66,12 +66,12 @@ const ContainerInput = <TInput,>(props: TProps<TInput>) => {
                         )}>
                             <div className={clsx({
                                 "hidden": true,
-                                "shrink-0 !flex": customeElement?.start
+                                "shrink-0 !flex border": customeElement?.start
                             })} >
                                 {customeElement?.start}
                             </div>
                             {/* Container input lv1 : ciV1 */}
-                            <div className="flex flex-col w-full relative">
+                            <div className={`flex flex-col w-full relative ${customeClass?.ciV1}`}>
                                 {
                                     typeof (children) === "function" ? <>
                                         {children({ ...attrsInput as TInput, className, name, type: dynamicType, disabled, value, onChange })}

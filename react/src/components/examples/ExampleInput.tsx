@@ -28,6 +28,7 @@ const ExampleInput = () => {
   const [valueCheckbox, setValueCheckbox] = useState<string[]>(["Songkang"])
   const [valueRadio, setValueRadio] = useState<string>("Songkang")
   const [valueSelect, setValueSelect] = useState<string>("")
+  const [valueSelectMultiple, setValueSelectMultiple] = useState<string[]>([])
 
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | TCustomeEventOnChange<Date | boolean | string[] | string>) => {
@@ -62,11 +63,23 @@ const ExampleInput = () => {
       setValueRadio(String(value))
     }
     if (name === "input-select") {
-      console.log("value")
       setValueSelect(value)
     }
+    if (name === "input-select-multiple") {
+      console.log('yang diterima: ', value)
+      setValueSelectMultiple(value)
+    }
   }
-
+  const listOption = [
+    { label: "jiji", value: "jiji" },
+    { label: "jimbun", value: "jimbun" },
+    { label: "SISKA AP", value: "siska1" },
+    { label: "SISKA AP2", value: "siska2" },
+    { label: "SISKA AP3", value: "siska3" },
+    { label: "makan", value: "makan" },
+    { label: "lala", value: "lala" },
+    { label: "koko melon", value: "koko" },
+  ]
   return (
     <div className="flex flex-col gap-4">
       <h4>Input Base</h4>
@@ -552,7 +565,15 @@ const ExampleInput = () => {
           label={"Input Slect"}
           onChange={handleOnChange}
           value={valueSelect}
-          options={[{ label: "jiji", value: "jiji" },{ label: "jimbun", value: "jimbun" },{ label: "SISKA AP", value: "siska1" }, { label: "SISKA AP2", value: "siska2" }, { label: "SISKA AP3", value: "siska3" }, { label: "makan", value: "makan" },{ label: "lala", value: "lala" }]}
+          options={listOption}
+        />
+        <InputSelect
+          name="input-select-multiple"
+          label={"Input Select Multiple"}
+          onChange={handleOnChange}
+          value={valueSelectMultiple}
+          options={listOption}
+          isMultiple
         />
       </div>
     </div>
