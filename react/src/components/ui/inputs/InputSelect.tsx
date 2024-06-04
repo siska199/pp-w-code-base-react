@@ -5,11 +5,12 @@ import { TBasePropsInput } from '@/types/ui/index';
 import { IconChevronDown } from '@assets/icons';
 import ContainerInput from '@components/ui/inputs/ContainerInput';
 import useOnClickOutside from '@hooks/useOnClickOutside';
-import { isEmptyValue, isolateEvent, spreadArrayAttemp } from '@lib/utils/helper';
+import { getFielValueFromOptions, getFieldLabelFromOptions, isEmptyValue, isolateEvent, spreadArrayAttemp } from '@lib/utils/helper';
 import { TCustomeEventOnChange, TOption } from '@types';
 import clsx from 'clsx';
 import { useRef, useState } from 'react';
 import InputCheckbox from './InputCheckbox';
+import Badge from '@components/ui/Badge';
 
 type TProps = {
     name: string;
@@ -128,40 +129,47 @@ const InputSelect = (props: TProps) => {
         >
 
             {
-                (attrsInput) => <div ref={refContainerValue} onClick={(e) => {
-                    isolateEvent(e)
-                    if (isMultiple) {
-                        setIsOpen(!isOpen)
-                    }
-                }} className={clsx({
-                    'flex shrink gap-2  overflow-x-auto  scrollbar-hidden': true,
-                })}>
+                (attrsInput) => <div ref={refContainerValue}
+                    // onClick={(e) => {
+                    //     const updateIsOpen = !isOpen
+                    //     isolateEvent(e)
+                    //     if (isMultiple) {
+                    //         setIsOpen(updateIsOpen)
+                    //     }
+                    // }}
+                    className={clsx({
+                        'flex shrink gap-2 flex-wrap  overflow-x-auto  scrollbar-hidden': true,
+                    })}>
+
                     {
-                        isMultiple ? <div onClick={() => {
-                            setIsOpen(true)
-                        }} className='cursor-pointer table gap-1 h-full w-full '>
+                        isMultiple && !isEmptyValue(attrs?.value) && <div onClick={() => { setIsOpen(true) }} className='cursor-pointer  flex flex-wrap gap-1 h-full '>
                             {
-                                isEmptyValue(attrs?.value) ? <span className='opacity-0'>Siska</span> : (attrs?.value as string[])?.map((data, i: number) => <span key={i}>{data}, </span>)
+                                (attrs?.value as string[])?.map((data, i: number) => {
+                                    const labelValue = getFieldLabelFromOptions({ array: options, value: data })
+                                    console.log(labelValue)
+                                    return <Badge key={i} label={labelValue} />
+                                })
                             }
 
-                        </div> : <input
-                            {...attrsInput}
-                            onBlur={() => {
-                                setTimeout(() => {
-                                    setIsOpen(false)
-                                }, 100)
-                            }}
-                            onFocus={() => setIsOpen(true)}
-                            id={attrsInput?.name}
-                            onChange={(e) => {
-                                setIsSearch(true)
-                                handleSearchChange(e);
-                            }}
-                            value={isSearch || isMultiple ? searchQuery : attrs?.value}
-                            placeholder={attrs?.variant === "v2" ? "" : attrsInput?.placeholder || ""}
-                            ref={inputRef}
-                        />
+                        </div>
                     }
+                    <input
+                        {...attrsInput}
+                        onBlur={() => {
+                            setTimeout(() => {
+                                setIsOpen(false)
+                            }, 100)
+                        }}
+                        onFocus={() => setIsOpen(true)}
+                        id={attrsInput?.name}
+                        onChange={(e) => {
+                            setIsSearch(true)
+                            handleSearchChange(e);
+                        }}
+                        value={isSearch || isMultiple ? searchQuery : attrs?.value}
+                        placeholder={attrs?.variant === "v2" ? "" : attrsInput?.placeholder || ""}
+                        ref={inputRef}
+                    />
                 </div>
 
 

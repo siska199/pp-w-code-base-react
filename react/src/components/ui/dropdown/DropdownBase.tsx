@@ -37,9 +37,7 @@ const DropdownBase = (props: TProps) => {
         })}>
             <div
                 ref={refBtn}
-                onClick={(e) => {
-                    e?.stopPropagation();
-                    e?.preventDefault()
+                onClick={() => {
                     setIsOpen(!isOpen)
                 }} >
                 <button type="button" className={clsx({

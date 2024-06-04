@@ -9,12 +9,12 @@ interface TProps extends  React.HTMLProps<HTMLDivElement> , VariantProps<typeof 
 const Badge = (props: TProps) => {
     const {label,className,variant, isRounded,withIconClose, ...attrs} =props
   return (
-    <div className={cn(badgeVariants({className,variant,isRounded}))} {...attrs}>
+    <span className={cn(badgeVariants({className,variant,isRounded}))} {...attrs}>
         {label}
         {
             withIconClose &&<IconClose className="w-[0.75rem] pt-1"/>
         }
-    </div>
+    </span>
   )
 }
 

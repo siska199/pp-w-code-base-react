@@ -41,3 +41,8 @@ export const getFielValueFromObjectList = (params: TParamsFieldFromObjectList) =
     const { array, fieldNameTarget, fieldNameValue, value, } = params
     return array?.filter(data => data?.[fieldNameValue] === value)?.[0]?.[fieldNameTarget]
 }
+
+export const getFieldLabelFromOptions = (params: Pick<TParamsFieldFromObjectList, "array" | "value">) => {
+    const { array, value, } = params
+    return array?.filter(data => data?.value === value)?.[0]?.label
+}
