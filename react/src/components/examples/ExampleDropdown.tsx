@@ -4,7 +4,7 @@ import { TOption } from "@types"
 
 const ExampleDropdown = () => {
     const handleOnClick = (data: TOption) => {
-        console.log("name: ", data)
+        // console.log("name: ", data)
     }
     return (
         <>

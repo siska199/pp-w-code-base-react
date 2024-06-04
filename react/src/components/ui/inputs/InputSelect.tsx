@@ -48,7 +48,6 @@ const InputSelect = (props: TProps) => {
 
         if (isMultiple && Array.isArray(attrs?.value)) {
             const isSelected = attrs?.value?.some(singleValue => singleValue === data?.value)
-            console.log("is selected: ", isSelected)
             valueUpdates = (isSelected ? attrs?.value?.filter((data) => data !== valueUpdates) : spreadArrayAttemp({ newValue: valueUpdates, array: attrs?.value }) as string[])
         }
         attrs?.onChange({
