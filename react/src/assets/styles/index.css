@@ -53,6 +53,9 @@
     .icon-white path { @apply stroke-white }
     .icon-white-fill path { @apply fill-white  }
 
+    .icon-black path { @apply stroke-black }
+    .icon-black-fill path { @apply fill-black  }
+
     .icon-grey path { @apply stroke-gray }
     .icon-grey-fill path { @apply fill-gray }
 

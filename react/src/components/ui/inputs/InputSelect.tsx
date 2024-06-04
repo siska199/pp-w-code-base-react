@@ -2,11 +2,11 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable react/jsx-handler-names */
 import { TBasePropsInput } from '@/types/ui/index';
-import { IconChevronDown, } from '@assets/icons';
+import { IconChevronDown, IconClose, } from '@assets/icons';
 import Badge from '@components/ui/Badge';
 import ContainerInput from '@components/ui/inputs/ContainerInput';
 import useOnClickOutside from '@hooks/useOnClickOutside';
-import { getFieldLabelFromOptions, isEmptyValue, isolateEvent, spreadArrayAttemp } from '@lib/utils/helper';
+import { getFieldLabelFromOptions, isolateEvent, spreadArrayAttemp } from '@lib/utils/helper';
 import { TCustomeEventOnChange, TOption } from '@types';
 import clsx from 'clsx';
 import { useRef, useState } from 'react';
@@ -48,9 +48,9 @@ const InputSelect = (props: TProps) => {
 
         if (isMultiple && Array.isArray(attrs?.value)) {
             const isSelected = attrs?.value?.some(singleValue => singleValue === data?.value)
-            valueUpdates = (isSelected ? attrs?.value : spreadArrayAttemp({ newValue: valueUpdates, array: attrs?.value }) as string[])
+            console.log("is selected: ", isSelected)
+            valueUpdates = (isSelected ? attrs?.value?.filter((data) => data !== valueUpdates) : spreadArrayAttemp({ newValue: valueUpdates, array: attrs?.value }) as string[])
         }
-
         attrs?.onChange({
             target: {
                 name: attrs?.name,
@@ -105,7 +105,9 @@ const InputSelect = (props: TProps) => {
             customeClass={{
                 ...attrs?.customeClass,
                 ciV1: "",
-                ciV2: " flex-no-wrap max-w-full"
+                ciV2: " flex-no-wrap max-w-full",
+                input: "w-fit min-w-0 border"
+
             }}
             childrenOverlay={<div ref={ref} className={clsx({
                 "absolute  z-10 mt-2 origin-top-right rounded-md bg-white  ring-1 ring-black ring-opacity-5 focus:outline-none": true,
@@ -118,7 +120,12 @@ const InputSelect = (props: TProps) => {
                     isOpen && <>
                         {
                             // @ts-ignore
-                            isMultiple ? <InputCheckbox options={filteredOptions} {...attrs} classNameContainerOption={"!px-4 !py-4 !max-h-[10rem] !overflow-y-scroll"} label={""} /> : <div className="py-0 overflow-y-auto max-h-[10rem]">
+                            isMultiple ? <InputCheckbox
+                                options={filteredOptions}
+                                {...attrs}
+                                classNameContainerOption={"!px-4 !py-4 !max-h-[10rem] !overflow-y-scroll"}
+                                label={""}
+                            /> : <div className="py-0 overflow-y-auto max-h-[10rem]">
                                 {
                                     filteredOptions?.map((option, i) => {
                                         const isSelected = option?.value === attrs?.value
@@ -150,17 +157,22 @@ const InputSelect = (props: TProps) => {
                     })}>
 
                     {
-                        isMultiple && !isEmptyValue(attrs?.value) && <div onClick={() => { setIsOpen(true) }} className='cursor-pointer  flex flex-wrap gap-1 h-full '>
+                        isMultiple && <div className='cursor-pointer flex flex-wrap gap-1 h-full '>
                             {
                                 (attrs?.value as string[])?.map((data, i: number) => {
                                     const labelValue = getFieldLabelFromOptions({ array: options, value: data })
-                                    return <Badge key={i} label={labelValue} />
+                                    return <Badge key={i} label={labelValue}
+                                        customeElement={
+                                            <div onClick={(e) => handleOnClickOption(e, { label: labelValue, value: data })}>
+                                                <IconClose />
+                                            </div>}
+                                    />
                                 })
                             }
 
                         </div>
                     }
-                    <div className='flex flex-grow justify-between '>
+                    <div className='flex justify-between flex-grow shrink '>
 
                         <input
                             {...attrsInput}

@@ -74,16 +74,16 @@ const ExampleInput = () => {
     }
   }
   const listOption = [
-    { label: "jiji", value: "jiji label" },
-    { label: "jimbun", value: "jimbun label" },
-    { label: "SISKA AP", value: "siska1 label" },
-    { label: "SISKA AP2", value: "siska2 label" },
-    { label: "SISKA AP3", value: "siska3 label" },
-    { label: "makan", value: "makan label" },
-    { label: "lala", value: "lala label" },
-    { label: "koko melon", value: "koko label" },
-    { label: "lulu", value: "lulu label" },
-    { label: "lili", value: "lili label" },
+    { label: "jiji label", value: "jiji value" },
+    { label: "jimbun label", value: "jimbun value" },
+    { label: "SISKA AP label", value: "siska1 value" },
+    { label: "SISKA AP2 label", value: "siska2 value" },
+    { label: "SISKA AP3 label", value: "siska3 value" },
+    { label: "makan label", value: "makan value" },
+    { label: "lala label", value: "lala value" },
+    { label: "koko melon label", value: "koko value" },
+    { label: "lulu label", value: "lulu value" },
+    { label: "lili label", value: "lili value" },
 
   ]
   return (
