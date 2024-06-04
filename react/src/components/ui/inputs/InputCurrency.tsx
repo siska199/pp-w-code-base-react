@@ -2,14 +2,14 @@ import { TBasePropsInput } from '@/types/ui/index';
 import ContainerInput from "@components/ui/inputs/ContainerInput";
 import React, { useRef } from 'react';
 
-interface TProps extends TBasePropsInput,React.HTMLProps<HTMLInputElement>{
-    onChange    : (e:React.ChangeEvent<HTMLInputElement>) => void;
-    name        : string;
-    value       : string;
+interface TProps extends TBasePropsInput, React.HTMLProps<HTMLInputElement> {
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    name: string;
+    value: string;
 }
 
 const InputCurrency = (props: TProps) => {
-    const { onChange:handleOnChange,value, ...attrs } = props;
+    const { onChange: handleOnChange, value, ...attrs } = props;
     const inputRef = useRef<HTMLInputElement>(null);
 
     const formatValue = (value: string): string => {
@@ -22,12 +22,17 @@ const InputCurrency = (props: TProps) => {
 
     const handleOnChangeFormatedValue = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { selectionStart } = e.target;
-        let cursorPosition = selectionStart;
-        const formattedValue = formatValue(e.target.value);
+        let cursorPosition = selectionStart as number;
+        const valueDeleted = value[cursorPosition]
+        const valueRaw = e.target.value
+        const formattedValue = formatValue(valueRaw);
 
         if (inputRef.current) {
             const inputLengthDifference = formattedValue.length - e.target.value.length;
             cursorPosition = (selectionStart as number) + inputLengthDifference;
+            if (valueDeleted === ",") {
+                cursorPosition -= 1
+            }
         }
         e.target.value = formattedValue
 
@@ -44,7 +49,7 @@ const InputCurrency = (props: TProps) => {
         let valueFormatted = e.target.value;
         if (valueFormatted !== "") {
             const parts = valueFormatted.split('.');
-    
+
             if (parts.length === 1) {
                 valueFormatted += '.00';
             }
@@ -59,20 +64,20 @@ const InputCurrency = (props: TProps) => {
     return (
         <ContainerInput<React.HTMLProps<HTMLInputElement>>  {...attrs} onChange={handleOnChange} value={value} isClerable>
             {
-                (attrsInput) => <input  
-                    {...attrsInput}     
+                (attrsInput) => <input
+                    {...attrsInput}
                     onBlur={handleOnBlurFormattedValue}
-                    onChange={handleOnChangeFormatedValue} 
-                    value={value} 
-                    id={attrsInput?.name} 
-                    placeholder={attrs?.variant === "v2" ? "" :attrs?.placeholder} 
+                    onChange={handleOnChangeFormatedValue}
+                    value={value}
+                    id={attrsInput?.name}
+                    placeholder={attrs?.variant === "v2" ? "" : attrs?.placeholder}
                     ref={inputRef}
                 />
             }
         </ContainerInput>
 
     );
-    
+
 }
 
 
