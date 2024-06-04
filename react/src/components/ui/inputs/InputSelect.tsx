@@ -2,7 +2,7 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable react/jsx-handler-names */
 import { TBasePropsInput } from '@/types/ui/index';
-import { IconChevronDown } from '@assets/icons';
+import { IconChevronDown, } from '@assets/icons';
 import Badge from '@components/ui/Badge';
 import ContainerInput from '@components/ui/inputs/ContainerInput';
 import useOnClickOutside from '@hooks/useOnClickOutside';
@@ -69,6 +69,11 @@ const InputSelect = (props: TProps) => {
     const filteredOptions = options.filter(option =>
         option.label.toLowerCase().includes(searchQuery.toLowerCase())
     );
+
+    const handleOnClearValue = () => {
+        setSearchQuery('');
+
+    }
 
     return (
         <ContainerInput<React.HTMLProps<HTMLInputElement>>
@@ -143,20 +148,23 @@ const InputSelect = (props: TProps) => {
 
                         </div>
                     }
-                    <input
-                        {...attrsInput}
-                        onFocus={() => {
-                            setIsOpen(true)
-                        }}
-                        id={attrsInput?.name}
-                        onChange={(e) => {
-                            setIsSearch(true)
-                            handleSearchChange(e);
-                        }}
-                        value={isSearch || isMultiple ? searchQuery : attrs?.value}
-                        placeholder={attrs?.variant === "v2" ? "" : attrsInput?.placeholder || ""}
-                        ref={inputRef}
-                    />
+                    <div className='flex flex-grow justify-between '>
+
+                        <input
+                            {...attrsInput}
+                            onFocus={() => {
+                                setIsOpen(true)
+                            }}
+                            id={attrsInput?.name}
+                            onChange={(e) => {
+                                setIsSearch(true)
+                                handleSearchChange(e);
+                            }}
+                            value={isSearch || isMultiple ? searchQuery : attrs?.value}
+                            placeholder={attrs?.variant === "v2" ? "" : attrsInput?.placeholder || ""}
+                            ref={inputRef}
+                        />
+                    </div>
                 </div>
 
 
