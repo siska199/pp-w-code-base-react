@@ -38,7 +38,6 @@ const InputSelect = (props: TProps) => {
     const [searchQuery, setSearchQuery] = useState('');
     const [isSearch, setIsSearch] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
-    const [isFocused, setIsFocused] = useState(false);
 
     useOnClickOutside<HTMLDivElement>({ ref, refExceptions: [refIconChevron, inputRef, refContainerValue], handler: () => setIsOpen(false) });
 
@@ -148,10 +147,8 @@ const InputSelect = (props: TProps) => {
                     }
                     <input
                         {...attrsInput}
-
                         onFocus={() => {
                             setIsOpen(true)
-                            setIsFocused(true)
                         }}
                         id={attrsInput?.name}
                         onChange={(e) => {
