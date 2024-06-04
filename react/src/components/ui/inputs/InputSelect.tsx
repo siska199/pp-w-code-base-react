@@ -38,7 +38,7 @@ const InputSelect = (props: TProps) => {
     const [searchQuery, setSearchQuery] = useState('');
     const [isSearch, setIsSearch] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
-
+    const [isFocused, setIsFocused] = useState(false);
 
     useOnClickOutside<HTMLDivElement>({ ref, refExceptions: [refIconChevron, inputRef, refContainerValue], handler: () => setIsOpen(false) });
 
@@ -70,6 +70,8 @@ const InputSelect = (props: TProps) => {
     const filteredOptions = options.filter(option =>
         option.label.toLowerCase().includes(searchQuery.toLowerCase())
     );
+
+    console.log("isOpen: ", isOpen)
 
     return (
         <ContainerInput<React.HTMLProps<HTMLInputElement>>
@@ -146,12 +148,11 @@ const InputSelect = (props: TProps) => {
                     }
                     <input
                         {...attrsInput}
-                        onBlur={() => {
-                            setTimeout(() => {
-                                setIsOpen(false)
-                            }, 100)
+
+                        onFocus={() => {
+                            setIsOpen(true)
+                            setIsFocused(true)
                         }}
-                        onFocus={() => setIsOpen(true)}
                         id={attrsInput?.name}
                         onChange={(e) => {
                             setIsSearch(true)
