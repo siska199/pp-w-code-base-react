@@ -12,7 +12,7 @@ const Badge = (props: TProps) => {
     <div className={cn(badgeVariants({className,variant,isRounded}))} {...attrs}>
         {label}
         {
-            withIconClose &&<IconClose/>
+            withIconClose &&<IconClose className="w-[0.75rem] pt-1"/>
         }
     </div>
   )
@@ -20,7 +20,7 @@ const Badge = (props: TProps) => {
 
 
 const badgeVariants = cva(
-    'w-fit rounded-lg h-fit border rounded items-center justify-center py-1 px-2 ',
+    'w-fit rounded-lg h-fit min-w-[3rem] flex gap-1 text-center border rounded items-center justify-center py-1 px-2 ',
     {
       variants : {
         variant : {
