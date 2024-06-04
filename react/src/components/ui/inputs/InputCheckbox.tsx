@@ -13,11 +13,11 @@ interface TProps extends TBasePropsInput, Omit<React.HTMLProps<HTMLInputElement>
     value: any;
   }[];
   value: string[];
-  classNameContainerOption? :string;
+  classNameContainerOption?: string;
 }
 
 const InputCheckbox = (props: TProps) => {
-  const { name, onChange, options, value, classNameContainerOption , ...attrsInput } = props
+  const { name, onChange, options, value, classNameContainerOption, ...attrsInput } = props
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const isChecked = e.target.checked
@@ -37,7 +37,8 @@ const InputCheckbox = (props: TProps) => {
           options?.map((option, i) => {
             const isChecked = value?.some((data) => data === option?.value)
             return (
-              <Container onMouseDown={(e) => e.preventDefault()} key={i} variant={"hsc"} gap={"base"}>
+              <Container onMouseDown={(e) => e.preventDefault()}
+                key={i} variant={"hsc"} gap={"base"}>
                 <label className="relative flex items-center py-1 rounded-full cursor-pointer" htmlFor="radio">
                   <input
                     type="checkbox"

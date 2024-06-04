@@ -66,7 +66,6 @@ const ExampleInput = () => {
       setValueSelect(value)
     }
     if (name === "input-select-multiple") {
-      console.log('yang diterima: ', value)
       setValueSelectMultiple(value)
     }
   }

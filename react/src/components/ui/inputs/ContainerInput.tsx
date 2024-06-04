@@ -2,6 +2,7 @@ import { TBasePropsInput } from '@/types/ui/index';
 import { IconClose, IconEye, IconEyeClose } from "@assets/icons";
 import Container from "@components/ui/Container";
 import HelperMessage from "@components/ui/HelperMessage";
+import { isEmptyValue } from '@lib/utils/helper';
 import clsx from "clsx";
 import { useState } from "react";
 
@@ -15,13 +16,13 @@ interface TProps<TInput,> extends TBasePropsInput {
     value?: any;
     onChange?: (e: any) => void;
     childrenOverlay?: React.ReactNode;
-    isNotUsingDefaultStyle?:{
-        input?:boolean
+    isNotUsingDefaultStyle?: {
+        input?: boolean
     }
 }
 
 const ContainerInput = <TInput,>(props: TProps<TInput>) => {
-    const { name, children,isNotUsingDefaultStyle, childrenOverlay, label, variant = "v1", isClerable = false, type, onlyContainer = false, errorMessage, customeElement, disabled, customeClass, value, onChange, ...attrsInput } = props;
+    const { name, children, isNotUsingDefaultStyle, childrenOverlay, label, variant = "v1", isClerable = false, type, onlyContainer = false, errorMessage, customeElement, disabled, customeClass, value, onChange, ...attrsInput } = props;
     const [dynamicType, setDynamicType] = useState(type)
 
     const className = clsx({
@@ -38,17 +39,18 @@ const ContainerInput = <TInput,>(props: TProps<TInput>) => {
         onChange && onChange({
             target: {
                 name: name || "",
-                value: ""
+                value: Array.isArray(value) ? [] : ""
             }
         })
     }
 
+
     return (
         <>
             {/* Container input lv1 : ciV4 */}
-            <Container gap={"tiny"} className={`${customeClass?.ciV4} relative`}>
+            <Container gap={"tiny"} className={`${customeClass?.ciV4} relative inline-block `}>
                 {/* Container input lv1 : ciV3 */}
-                <section className={`${customeClass?.ciV3} relative flex flex-col gap-1 w-full`}>
+                <section className={`${customeClass?.ciV3} flex flex-col gap-1 w-full`}>
                     {label && variant !== "v2" && (
                         <label htmlFor={name} className={clsx({
                             "font-medium": true,
@@ -69,7 +71,7 @@ const ContainerInput = <TInput,>(props: TProps<TInput>) => {
                         )}>
                             <div className={clsx({
                                 "hidden": true,
-                                "shrink-0 !flex border": customeElement?.start
+                                "shrink-0 !flex ": customeElement?.start
                             })} >
                                 {customeElement?.start}
                             </div>
@@ -98,7 +100,7 @@ const ContainerInput = <TInput,>(props: TProps<TInput>) => {
                                 }
 
                             </div>
-                            {isClerable && value && <IconClose className='cursor-pointer' onClick={handleOnClearValue} />}
+                            {isClerable && !isEmptyValue(value) && <IconClose className='cursor-pointer' onClick={handleOnClearValue} />}
                             <div className={clsx({
                                 "hidden": true,
                                 "shrink-0 !flex": customeElement?.end

@@ -19,10 +19,12 @@ interface TProps {
 
 const DropdownBase = (props: TProps) => {
     const ref = useRef<HTMLDivElement | null>(null);
+    const refBtn = useRef<HTMLDivElement | null>(null);
+
     const { options, label, onClick: handleOnClick, customeClass, isDefaultStyle = true } = props;
     const [isOpen, setIsOpen] = useState(false)
 
-    useOnClickOutside<HTMLDivElement>({ ref, handler: () => setIsOpen(false) });
+    useOnClickOutside<HTMLDivElement>({ ref, refExceptions: [refBtn], handler: () => setIsOpen(false) });
 
     const handleOnClickOption = (data: TOption) => {
         handleOnClick(data)
@@ -33,7 +35,13 @@ const DropdownBase = (props: TProps) => {
             "relative inline-block text-left w-fit": true,
             [customeClass?.containerDropdown || '']: customeClass?.containerDropdown
         })}>
-            <div onClick={() => setIsOpen(!isOpen)}>
+            <div
+                ref={refBtn}
+                onClick={(e) => {
+                    e?.stopPropagation();
+                    e?.preventDefault()
+                    setIsOpen(!isOpen)
+                }} >
                 <button type="button" className={clsx({
                     "inline-flex w-full justify-center items-center gap-x-1.5 ": true,
                     "rounded-md bg-white px-3 py-2 text-sm font-semibold shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50": isDefaultStyle,

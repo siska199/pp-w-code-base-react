@@ -4,7 +4,8 @@
 import { TBasePropsInput } from '@/types/ui/index';
 import { IconChevronDown } from '@assets/icons';
 import ContainerInput from '@components/ui/inputs/ContainerInput';
-import { spreadArrayAttemp } from '@lib/utils/helper';
+import useOnClickOutside from '@hooks/useOnClickOutside';
+import { isEmptyValue, isolateEvent, spreadArrayAttemp } from '@lib/utils/helper';
 import { TCustomeEventOnChange, TOption } from '@types';
 import clsx from 'clsx';
 import { useRef, useState } from 'react';
@@ -29,11 +30,18 @@ interface MultipleSelectProps extends TBasePropsInput, Omit<React.HTMLProps<HTML
 const InputSelect = (props: TProps) => {
     const { options, isMultiple, ...attrs } = props;
     const ref = useRef<HTMLDivElement | null>(null);
+    const refContainerValue = useRef<HTMLDivElement | null>(null);
+    const refIconChevron = useRef<HTMLDivElement | null>(null);
+
     const inputRef = useRef<HTMLInputElement | null>(null);
 
     const [searchQuery, setSearchQuery] = useState('');
     const [isSearch, setIsSearch] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
+
+
+    useOnClickOutside<HTMLDivElement>({ ref, refExceptions: [refIconChevron, inputRef, refContainerValue], handler: () => setIsOpen(false) });
+
 
     const handleOnClickOption = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, data: TOption) => {
         e?.stopPropagation()
@@ -55,7 +63,6 @@ const InputSelect = (props: TProps) => {
         setIsSearch(false)
     }
 
-
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchQuery(e.target.value);
     };
@@ -63,50 +70,52 @@ const InputSelect = (props: TProps) => {
     const filteredOptions = options.filter(option =>
         option.label.toLowerCase().includes(searchQuery.toLowerCase())
     );
+
     return (
         <ContainerInput<React.HTMLProps<HTMLInputElement>>
             {...attrs}
             isClerable
             customeElement={{
                 ...attrs?.customeElement,
-                end: <IconChevronDown onClick={() => {
-                    const isOpenUpdate = !isOpen
-                    setIsOpen(isOpenUpdate)
-                    if (isOpenUpdate) {
+                end: <span ref={refIconChevron} onClick={(e) => {
+                    isolateEvent(e)
+                    const updateIsOpen = !isOpen
+                    if (updateIsOpen) {
                         inputRef?.current?.focus()
                     }
-                }}
-                    className='cursor-pointer' />
+                    setIsOpen(updateIsOpen)
+                }}><IconChevronDown className='cursor-pointer' /></span>
             }}
             customeClass={{
                 ...attrs?.customeClass,
                 ciV1: "",
+                ciV2: " flex-no-wrap max-w-full"
             }}
             childrenOverlay={<div ref={ref} className={clsx({
-                "absolute left-0  z-10 mt-[4.5rem]  transition-all overflow-hidden origin-top-right rounded-md bg-white  ring-1 ring-black ring-opacity-5 focus:outline-none": true,
+                "absolute  z-10 mt-2 origin-top-right rounded-md bg-white  ring-1 ring-black ring-opacity-5 focus:outline-none": true,
                 " h-auto shadow-lg w-full": isOpen,
                 " h-0 shadow-none": !isOpen
             })}
 
             >
                 {
-                    isOpen &&<>
+                    isOpen && <>
                         {
                             // @ts-ignore
-                            isMultiple ?  <InputCheckbox options={filteredOptions} {...attrs} classNameContainerOption={"!px-4 !py-4 !max-h-[10rem] !overflow-y-scroll"} label={""}/>: <div className="py-0 overflow-y-auto max-h-[10rem]">
+                            isMultiple ? <InputCheckbox options={filteredOptions} {...attrs} classNameContainerOption={"!px-4 !py-4 !max-h-[10rem] !overflow-y-scroll"} label={""} /> : <div className="py-0 overflow-y-auto max-h-[10rem]">
                                 {
                                     filteredOptions?.map((option, i) => {
                                         const isSelected = option?.value === attrs?.value
-                                        return <div 
-                                        key={i}                         
+                                        return <div
+                                            key={i}
                                             onMouseDown={(e) => e.preventDefault()}
-                                            onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => handleOnClickOption(e, option)} 
+                                            onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => handleOnClickOption(e, option)}
                                             className={clsx({
                                                 "hover:bg-gray-100 block px-4 py-2 cursor-pointer ": true,
                                                 "!bg-primary !text-white": isSelected,
                                                 "!bg-gray-100": isSearch && i === 0 && searchQuery
                                             })} >
-                                                {option?.label}
+                                            {option?.label}
                                         </div>
                                     })
                                 }
@@ -119,33 +128,39 @@ const InputSelect = (props: TProps) => {
         >
 
             {
-                (attrsInput) => <div className={clsx({
-                    'flex gap-2 ':true,
+                (attrsInput) => <div ref={refContainerValue} onClick={(e) => {
+                    isolateEvent(e)
+                    if (isMultiple) {
+                        setIsOpen(!isOpen)
+                    }
+                }} className={clsx({
+                    'flex shrink gap-2  overflow-x-auto  scrollbar-hidden': true,
                 })}>
                     {
-                        isMultiple? <div onClick={()=>{
+                        isMultiple ? <div onClick={() => {
                             setIsOpen(true)
-                        }} className='cursor-pointer h-full w-full border'>
-                            <span className='opacity-0'>Siska</span>
-                               
-                        </div>:<input
-                        {...attrsInput}
-                        onFocus={() => setIsOpen(true)}
-                        onClick={()=>setIsOpen(true)}
-                        onBlur={()=>{
-                            setTimeout(()=>{
-                                setIsOpen(false)
-                            },100)
-                        }}
-                        id={attrsInput?.name}
-                        onChange={(e) => {
-                            setIsSearch(true)
-                            handleSearchChange(e);
-                        }}
-                        value={isSearch || isMultiple ? searchQuery : attrs?.value}
-                        placeholder={attrs?.variant === "v2" ? "" : attrsInput?.placeholder || ""}
-                        ref={inputRef}
-                    />
+                        }} className='cursor-pointer table gap-1 h-full w-full '>
+                            {
+                                isEmptyValue(attrs?.value) ? <span className='opacity-0'>Siska</span> : (attrs?.value as string[])?.map((data, i: number) => <span key={i}>{data}, </span>)
+                            }
+
+                        </div> : <input
+                            {...attrsInput}
+                            onBlur={() => {
+                                setTimeout(() => {
+                                    setIsOpen(false)
+                                }, 100)
+                            }}
+                            onFocus={() => setIsOpen(true)}
+                            id={attrsInput?.name}
+                            onChange={(e) => {
+                                setIsSearch(true)
+                                handleSearchChange(e);
+                            }}
+                            value={isSearch || isMultiple ? searchQuery : attrs?.value}
+                            placeholder={attrs?.variant === "v2" ? "" : attrsInput?.placeholder || ""}
+                            ref={inputRef}
+                        />
                     }
                 </div>
 
