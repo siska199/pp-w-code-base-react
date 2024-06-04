@@ -18,11 +18,13 @@ interface TProps<TInput,> extends TBasePropsInput {
     childrenOverlay?: React.ReactNode;
     isNotUsingDefaultStyle?: {
         input?: boolean
-    }
+    };
+    onCustomeClearHandler?: () => void;
+    customeClearValue? : string
 }
 
 const ContainerInput = <TInput,>(props: TProps<TInput>) => {
-    const { name, children, isNotUsingDefaultStyle, childrenOverlay, label, variant = "v1", isClerable = false, type, onlyContainer = false, errorMessage, customeElement, disabled, customeClass, value, onChange, ...attrsInput } = props;
+    const { name, children, onCustomeClearHandler,customeClearValue, isNotUsingDefaultStyle, childrenOverlay, label, variant = "v1", isClerable = false, type, onlyContainer = false, errorMessage, customeElement, disabled, customeClass, value, onChange, ...attrsInput } = props;
     const [dynamicType, setDynamicType] = useState(type)
 
     const className = clsx({
@@ -36,7 +38,8 @@ const ContainerInput = <TInput,>(props: TProps<TInput>) => {
     }
 
     const handleOnClearValue = () => {
-        onChange && onChange({
+
+        onCustomeClearHandler ? onCustomeClearHandler() : onChange && onChange({
             target: {
                 name: name || "",
                 value: Array.isArray(value) ? [] : ""
@@ -100,7 +103,7 @@ const ContainerInput = <TInput,>(props: TProps<TInput>) => {
                                 }
 
                             </div>
-                            {isClerable && !isEmptyValue(value) && <IconClose className='cursor-pointer' onClick={handleOnClearValue} />}
+                            {isClerable && !isEmptyValue(customeClearValue) && <IconClose className='cursor-pointer' onClick={handleOnClearValue} />}
                             <div className={clsx({
                                 "hidden": true,
                                 "shrink-0 !flex": customeElement?.end

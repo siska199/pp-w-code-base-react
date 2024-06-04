@@ -71,7 +71,17 @@ const InputSelect = (props: TProps) => {
     );
 
     const handleOnClearValue = () => {
-        setSearchQuery('');
+        if (isMultiple) {
+            setSearchQuery('');
+        } else {
+            attrs?.onChange({
+                target: {
+                    name: attrs?.name,
+                    value: ""
+                }
+            })
+            setSearchQuery('');
+        }
 
     }
 
@@ -79,6 +89,8 @@ const InputSelect = (props: TProps) => {
         <ContainerInput<React.HTMLProps<HTMLInputElement>>
             {...attrs}
             isClerable
+            onCustomeClearHandler={handleOnClearValue}
+            customeClearValue={isMultiple ? searchQuery : String(attrs?.value) || searchQuery}
             customeElement={{
                 ...attrs?.customeElement,
                 end: <span ref={refIconChevron} onClick={(e) => {
@@ -159,8 +171,9 @@ const InputSelect = (props: TProps) => {
                             onChange={(e) => {
                                 setIsSearch(true)
                                 handleSearchChange(e);
+                                setIsOpen(true)
                             }}
-                            value={isSearch || isMultiple ? searchQuery : attrs?.value}
+                            value={isSearch || isMultiple ? searchQuery : getFieldLabelFromOptions({ array: options, value: attrs?.value })}
                             placeholder={attrs?.variant === "v2" ? "" : attrsInput?.placeholder || ""}
                             ref={inputRef}
                         />
