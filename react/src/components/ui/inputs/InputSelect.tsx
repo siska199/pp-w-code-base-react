@@ -70,8 +70,6 @@ const InputSelect = (props: TProps) => {
         option.label.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
-    console.log("isOpen: ", isOpen)
-
     return (
         <ContainerInput<React.HTMLProps<HTMLInputElement>>
             {...attrs}
