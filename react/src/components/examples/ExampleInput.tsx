@@ -29,6 +29,7 @@ const ExampleInput = () => {
   const [valueRadio, setValueRadio] = useState<string>("Songkang")
   const [valueSelect, setValueSelect] = useState<string>("")
   const [valueSelectMultiple, setValueSelectMultiple] = useState<string[]>([])
+  const [valueSelectMultipleSelectAll, setValueSelectMultipleSelectAll] = useState<string[]>([])
 
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | TCustomeEventOnChange<Date | boolean | string[] | string>) => {
@@ -68,18 +69,21 @@ const ExampleInput = () => {
     if (name === "input-select-multiple") {
       setValueSelectMultiple(value)
     }
+    if (name === "input-select-multiple-selectall") {
+      setValueSelectMultipleSelectAll(value)
+    }
   }
   const listOption = [
-    { label: "jiji", value: "jiji" },
-    { label: "jimbun", value: "jimbun" },
-    { label: "SISKA AP", value: "siska1" },
-    { label: "SISKA AP2", value: "siska2" },
-    { label: "SISKA AP3", value: "siska3" },
-    { label: "makan", value: "makan" },
-    { label: "lala", value: "lala" },
-    { label: "koko melon", value: "koko" },
-    { label: "lulu", value: "lulu" },
-    { label: "lili", value: "lili" },
+    { label: "jiji", value: "jiji label" },
+    { label: "jimbun", value: "jimbun label" },
+    { label: "SISKA AP", value: "siska1 label" },
+    { label: "SISKA AP2", value: "siska2 label" },
+    { label: "SISKA AP3", value: "siska3 label" },
+    { label: "makan", value: "makan label" },
+    { label: "lala", value: "lala label" },
+    { label: "koko melon", value: "koko label" },
+    { label: "lulu", value: "lulu label" },
+    { label: "lili", value: "lili label" },
 
   ]
   return (
@@ -576,6 +580,16 @@ const ExampleInput = () => {
           value={valueSelectMultiple}
           options={listOption}
           isMultiple
+        />
+        <InputSelect
+          name="input-select-multiple-selectall"
+          label={"Input Select Multiple Select All"}
+          onChange={handleOnChange}
+          value={valueSelectMultipleSelectAll}
+          options={listOption}
+          isMultiple
+          withSelectAll
+
         />
       </div>
     </div>

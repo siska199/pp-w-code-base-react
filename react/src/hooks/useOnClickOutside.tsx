@@ -12,10 +12,10 @@ const useOnClickOutside = <T extends HTMLElement>(props: TProps<T>) => {
     const { ref, handler, refExceptions } = props
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent | TouchEvent) => {
-
             if (ref.current && !ref.current.contains(event.target as Node) && (isEmptyValue(refExceptions) ? true : !refExceptions?.some(exceptionRef => {
                 return exceptionRef.current?.contains(event.target as Node)
             }))) {
+                console.log('handle ke click',event.target)
                 handler();
             }
         };

@@ -4,6 +4,7 @@ import { IconChecked } from "@assets/icons";
 import Container from "@components/ui/Container";
 import ContainerInput from "@components/ui/inputs/ContainerInput";
 import { TCustomeEventOnChange } from "@types";
+import { useEffect } from 'react';
 
 interface TProps extends TBasePropsInput, Omit<React.HTMLProps<HTMLInputElement>, "value" | "onChange"> {
   name: string;
@@ -17,8 +18,7 @@ interface TProps extends TBasePropsInput, Omit<React.HTMLProps<HTMLInputElement>
 }
 
 const InputCheckbox = (props: TProps) => {
-  const { name, onChange, options, value, classNameContainerOption, ...attrsInput } = props
-
+  const { name, onChange, options, value,classNameContainerOption, ...attrsInput } = props
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const isChecked = e.target.checked
     const updateValue = isChecked ? [...value, e.target?.value] : value?.filter(data => data !== e.target?.value)
@@ -29,6 +29,11 @@ const InputCheckbox = (props: TProps) => {
       }
     })
   }
+
+  useEffect(() => {
+
+  }, [value])
+
 
   return (
     <ContainerInput {...attrsInput} onlyContainer={true}>

@@ -20,7 +20,6 @@ interface TParamsSpreadArrayTemp {
     newValue: any;
     array: any[]
 }
-
 export const spreadArrayAttemp = (params: TParamsSpreadArrayTemp) => {
     const { newValue, array } = params
 
@@ -30,4 +29,15 @@ export const spreadArrayAttemp = (params: TParamsSpreadArrayTemp) => {
 export const isolateEvent = (e: React.MouseEvent<HTMLDivElement | HTMLSpanElement, MouseEvent>) => {
     e?.preventDefault();
     e?.stopPropagation()
+}
+
+interface TParamsFieldFromObjectList {
+    array: any[];
+    fieldNameTarget: string;
+    fieldNameValue: string;
+    value: any;
+}
+export const getFielValueFromObjectList = (params: TParamsFieldFromObjectList) => {
+    const { array, fieldNameTarget, fieldNameValue, value, } = params
+    return array?.filter(data => data?.[fieldNameValue] === value)?.[0]?.[fieldNameTarget]
 }
