@@ -3,14 +3,14 @@
 /* eslint-disable react/jsx-handler-names */
 import { TBasePropsInput } from '@/types/ui/index';
 import { IconChevronDown } from '@assets/icons';
+import Badge from '@components/ui/Badge';
 import ContainerInput from '@components/ui/inputs/ContainerInput';
 import useOnClickOutside from '@hooks/useOnClickOutside';
-import { getFielValueFromOptions, getFieldLabelFromOptions, isEmptyValue, isolateEvent, spreadArrayAttemp } from '@lib/utils/helper';
+import { getFieldLabelFromOptions, isEmptyValue, isolateEvent, spreadArrayAttemp } from '@lib/utils/helper';
 import { TCustomeEventOnChange, TOption } from '@types';
 import clsx from 'clsx';
 import { useRef, useState } from 'react';
 import InputCheckbox from './InputCheckbox';
-import Badge from '@components/ui/Badge';
 
 type TProps = {
     name: string;
@@ -33,7 +33,6 @@ const InputSelect = (props: TProps) => {
     const ref = useRef<HTMLDivElement | null>(null);
     const refContainerValue = useRef<HTMLDivElement | null>(null);
     const refIconChevron = useRef<HTMLDivElement | null>(null);
-
     const inputRef = useRef<HTMLInputElement | null>(null);
 
     const [searchQuery, setSearchQuery] = useState('');
@@ -130,13 +129,6 @@ const InputSelect = (props: TProps) => {
 
             {
                 (attrsInput) => <div ref={refContainerValue}
-                    // onClick={(e) => {
-                    //     const updateIsOpen = !isOpen
-                    //     isolateEvent(e)
-                    //     if (isMultiple) {
-                    //         setIsOpen(updateIsOpen)
-                    //     }
-                    // }}
                     className={clsx({
                         'flex shrink gap-2 flex-wrap  overflow-x-auto  scrollbar-hidden': true,
                     })}>
@@ -146,7 +138,6 @@ const InputSelect = (props: TProps) => {
                             {
                                 (attrs?.value as string[])?.map((data, i: number) => {
                                     const labelValue = getFieldLabelFromOptions({ array: options, value: data })
-                                    console.log(labelValue)
                                     return <Badge key={i} label={labelValue} />
                                 })
                             }
