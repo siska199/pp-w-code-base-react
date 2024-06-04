@@ -9,7 +9,7 @@ import useOnClickOutside from '@hooks/useOnClickOutside';
 import { getFieldLabelFromOptions, isolateEvent, spreadArrayAttemp } from '@lib/utils/helper';
 import { TCustomeEventOnChange, TOption } from '@types';
 import clsx from 'clsx';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import InputCheckbox from './InputCheckbox';
 
 type TProps = {
@@ -30,17 +30,22 @@ interface MultipleSelectProps extends TBasePropsInput, Omit<React.HTMLProps<HTML
 
 const InputSelect = (props: TProps) => {
     const { options, isMultiple, ...attrs } = props;
-    const ref = useRef<HTMLDivElement | null>(null);
+    const refContainerDropdown = useRef<HTMLDivElement | null>(null);
     const refContainerValue = useRef<HTMLDivElement | null>(null);
     const refIconChevron = useRef<HTMLDivElement | null>(null);
-    const inputRef = useRef<HTMLInputElement | null>(null);
+    const refInput = useRef<HTMLInputElement | null>(null);
 
     const [searchQuery, setSearchQuery] = useState('');
     const [isSearch, setIsSearch] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
 
-    useOnClickOutside<HTMLDivElement>({ ref, refExceptions: [refIconChevron, inputRef, refContainerValue], handler: () => setIsOpen(false) });
+    useOnClickOutside<HTMLDivElement>({ ref: refContainerDropdown, refExceptions: [refIconChevron, refInput, refContainerValue], handler: () => setIsOpen(false) });
 
+    useEffect(() => {
+        if (refInput?.current && isMultiple) {
+            refInput.current.style.width = `${searchQuery?.length * 10 || 10}px`;
+        }
+    }, [searchQuery])
 
     const handleOnClickOption = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, data: TOption) => {
         e?.stopPropagation()
@@ -65,10 +70,6 @@ const InputSelect = (props: TProps) => {
         setSearchQuery(e.target.value);
     };
 
-    const filteredOptions = options.filter(option =>
-        option.label.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-
     const handleOnClearValue = () => {
         if (isMultiple) {
             setSearchQuery('');
@@ -84,6 +85,9 @@ const InputSelect = (props: TProps) => {
 
     }
 
+    const filteredOptions = options.filter(option =>
+        option.label.toLowerCase().includes(searchQuery.toLowerCase())
+    );
     return (
         <ContainerInput<React.HTMLProps<HTMLInputElement>>
             {...attrs}
@@ -96,7 +100,7 @@ const InputSelect = (props: TProps) => {
                     isolateEvent(e)
                     const updateIsOpen = !isOpen
                     if (updateIsOpen) {
-                        inputRef?.current?.focus()
+                        refInput?.current?.focus()
                     }
                     setIsOpen(updateIsOpen)
                 }}><IconChevronDown className='cursor-pointer' /></span>
@@ -105,10 +109,10 @@ const InputSelect = (props: TProps) => {
                 ...attrs?.customeClass,
                 ciV1: "",
                 ciV2: " flex-no-wrap max-w-full",
-                input: "w-fit min-w-0 border"
+                input: "min-w-0"
 
             }}
-            childrenOverlay={<div ref={ref} className={clsx({
+            childrenOverlay={<div ref={refContainerDropdown} className={clsx({
                 "absolute  z-10 mt-2 origin-top-right rounded-md bg-white  ring-1 ring-black ring-opacity-5 focus:outline-none": true,
                 " h-auto shadow-lg w-full": isOpen,
                 " h-0 shadow-none": !isOpen
@@ -124,6 +128,10 @@ const InputSelect = (props: TProps) => {
                                 {...attrs}
                                 classNameContainerOption={"!px-4 !py-4 !max-h-[10rem] !overflow-y-scroll"}
                                 label={""}
+                                onChange={(e) => {
+                                    attrs?.onChange(e)
+                                    setSearchQuery('')
+                                }}
                             /> : <div className="py-0 overflow-y-auto max-h-[10rem]">
                                 {
                                     filteredOptions?.map((option, i) => {
@@ -150,29 +158,34 @@ const InputSelect = (props: TProps) => {
         >
 
             {
-                (attrsInput) => <div ref={refContainerValue}
+                (attrsInput) => <div
+                    ref={refContainerValue}
                     className={clsx({
                         'flex shrink gap-2 flex-wrap  overflow-x-auto  scrollbar-hidden': true,
-                    })}>
-
-                    {
-                        isMultiple && <div className='cursor-pointer flex flex-wrap gap-1 h-full '>
-                            {
-                                (attrs?.value as string[])?.map((data, i: number) => {
-                                    const labelValue = getFieldLabelFromOptions({ array: options, value: data })
-                                    return <Badge key={i} label={labelValue}
-                                        customeElement={
-                                            <div onClick={(e) => handleOnClickOption(e, { label: labelValue, value: data })}>
-                                                <IconClose className='w-[0.75rem]'/>
-                                            </div>}
-                                    />
-                                })
+                    })}
+                    onClick={() => {
+                        if (isMultiple) {
+                            const updateIsOpen = !isOpen
+                            if (updateIsOpen) {
+                                refInput?.current?.focus()
                             }
+                            setIsOpen(updateIsOpen)
+                        }
+                    }}
+                >
 
-                        </div>
-                    }
-                    <div className='flex justify-between flex-grow shrink '>
-
+                    <div className=' w-full cursor-pointer flex flex-wrap gap-1 h-full '>
+                        {
+                            isMultiple && (attrs?.value as string[])?.map((data, i: number) => {
+                                const labelValue = getFieldLabelFromOptions({ array: options, value: data })
+                                return <Badge key={i} label={labelValue}
+                                    customeElement={
+                                        <div onClick={(e) => handleOnClickOption(e, { label: labelValue, value: data })}>
+                                            <IconClose className='w-[0.75rem]' />
+                                        </div>}
+                                />
+                            })
+                        }
                         <input
                             {...attrsInput}
                             onFocus={() => {
@@ -186,7 +199,7 @@ const InputSelect = (props: TProps) => {
                             }}
                             value={isSearch || isMultiple ? searchQuery : getFieldLabelFromOptions({ array: options, value: attrs?.value })}
                             placeholder={attrs?.variant === "v2" ? "" : attrsInput?.placeholder || ""}
-                            ref={inputRef}
+                            ref={refInput}
                         />
                     </div>
                 </div>
