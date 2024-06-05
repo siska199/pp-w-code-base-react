@@ -4,7 +4,7 @@ type TProps = {
     activeStep: number;
     listStep: {
         title: string;
-        caption?: string;
+        caption?: string | React.ReactNode;
     }[];
     variant?: "horizontal" | "vertical"
 
