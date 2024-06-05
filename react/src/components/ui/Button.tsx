@@ -21,7 +21,7 @@ const Button = (props: TProps) => {
     >
       {
         isLoading ? <span>
-          <IconLoading />Loading...
+          <IconLoading/>Loading...
         </span> : children
       }
     </CompButton>
