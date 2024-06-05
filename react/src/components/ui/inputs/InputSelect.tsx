@@ -185,7 +185,7 @@ const InputSelect = (props: TProps) => {
                                 return <Badge key={i} label={labelValue}
                                     customeElement={
                                         <div onClick={(e) => handleOnClickOption(e, { label: labelValue, value: data })}>
-                                            <IconClose className='w-[0.75rem] ' />
+                                            <IconClose className='w-[0.75rem] icon-primary icon-primary-fill' />
                                         </div>}
                                 />
                             })
