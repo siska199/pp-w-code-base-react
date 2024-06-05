@@ -36,11 +36,17 @@
     margin-top: 1.5em
 } 
 
-.stepper-item .step-counter.vertical:after {
-    @apply content-[''] absolute block top-[1px] right-1/2 bottom-[1px] left-1/2 h-full w-[1px]  bg-gray-200 z-[-1];
-    transform: scale(1, 2);
-    transform-origin: 50% -100%;
+.stepper-item.vertical::after {
+    @apply content-[''] absolute left-[13%] block top-[1px]  bottom-[5px]  h-full  border-gray-200 border-[1px] z-[-1];
+    transform-origin: 50% 100%;
 }  
+
+.stepper-item.vertical.completed::after{
+    @apply border-primary;
+} 
+.stepper-item.vertical.active::after{
+    @apply border-primary;
+}
 
 .stepper-item.vertical.completed .step-counter.vertical:after {
     @apply bg-primary
@@ -84,10 +90,10 @@
     @apply absolute content-[""] border-b-[1px] border-primary w-full left-[50%] top-[20px] z-[3];
 }
 
-.stepper-item:first-child::before {
+.stepper-item.horizontal:first-child::before {
     @apply content-none
 }
-.stepper-item:last-child::after {
+.stepper-item.horizontal:last-child::after {
     @apply content-none
 }
 
