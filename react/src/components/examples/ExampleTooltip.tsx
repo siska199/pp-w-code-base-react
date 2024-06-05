@@ -15,9 +15,13 @@ const ExampleTooltip = () => {
 
             <Tooltip text={"Tooltip text kokok melon"} variant="left">
                 Hover me wkwkkwkwkk awokwoysuisfyuetfuy
+                <br/>
+                aioeuiefiuhdfvjl jsfkusegfuksek sfhksehfkuh
             </Tooltip>
             <Tooltip text={"Tooltip text kokok melon"} variant="right">
                 Hover me wkwkkwkwkk awokwoysuisfyuetfuy
+                <br/>
+                ;jsidyiwuagef sdgfuyeguf eufgewayg
             </Tooltip>
             </div>
         </div>
