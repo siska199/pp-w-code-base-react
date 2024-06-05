@@ -21,7 +21,7 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
-        'primary': "!border-primary-100 bg-primary-100 text-primary-700 "
+        'primary': "!border-primary-500 bg-primary-100 text-primary-700 "
       },
       isRounded: {
         "false": "",
