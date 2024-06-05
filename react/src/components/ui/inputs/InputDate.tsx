@@ -10,23 +10,23 @@ import { useState } from 'react';
 import DatePicker, { ReactDatePickerProps } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-interface TProps extends TBasePropsInput, Omit<Partial<ReactDatePickerProps>, "onChange"|"value" >{
-    name            : string;
-    value           : Date
-    onChange        : (e: TCustomeEventOnChange<Date>) => void;
-    placeholder?    : string;
-    iconPosition?   : "start" |"end"
+interface TProps extends TBasePropsInput, Omit<Partial<ReactDatePickerProps>, "onChange" | "value"> {
+    name: string;
+    value: Date
+    onChange: (e: TCustomeEventOnChange<Date>) => void;
+    placeholder?: string;
+    iconPosition?: "start" | "end"
 }
 
 
 const InputDate = (props: TProps) => {
-    const { name, value,iconPosition="start", placeholder, onChange, ...attrs } = props
+    const { name, value, iconPosition = "start", placeholder, onChange, ...attrs } = props
     const [showTypeDate, setShowTypeDate] = useState<"date" | "month" | "year" | "">("date")
 
     const [isShouldCloseOnSelect, setIsShouldCloseOnSelect] = useState(true)
 
     const handleOnChange = (valueDate: Date) => {
-        setShowTypeDate(showTypeDate === "date"?"":"date")
+        setShowTypeDate(showTypeDate === "date" ? "" : "date")
         setIsShouldCloseOnSelect(true)
         onChange({
             target: {
@@ -90,11 +90,11 @@ const InputDate = (props: TProps) => {
                             </Button>
                             <div className="text-body-medium font-semibold flex gap-2 text-gray-700">
                                 {
-                                    [ "date",""]?.includes(showTypeDate) && <span onClick={handleShowMonth} className='cursor-pointer'>{format(date||"", 'MMMM')}</span>
+                                    ["date", ""]?.includes(showTypeDate) && <span onClick={handleShowMonth} className='cursor-pointer'>{format(date || "", 'MMMM')}</span>
 
                                 }
-                                
-                                <span onClick={showTypeDate==="year"?()=>null: handleShowYear} className={showTypeDate==="year"?"":"cursor-pointer"}>{showTypeDate === "year" ? format(value||date||"", 'yyyy') : format(date||"", 'yyyy')}</span>
+
+                                <span onClick={showTypeDate === "year" ? () => null : handleShowYear} className={showTypeDate === "year" ? "" : "cursor-pointer"}>{format(date || "", 'yyyy')}</span>
                             </div>
                             <Button
                                 isRounded
@@ -123,28 +123,28 @@ const InputDate = (props: TProps) => {
                 enableTabLoop={true}
                 yearItemNumber={8}
                 showIcon={true}
-                icon={<IconCalender/>}
+                icon={<IconCalender />}
                 disabled={attrs?.disabled}
                 isClearable={true}
                 toggleCalendarOnIconClick={true}
                 popperClassName="flex flex-col gap-2 z-[9999] justify-enter react-datepicker-left !shadow-none overflow-hidden"
                 wrapperClassName='w-full'
                 className={clsx({
-                    "":true,
-                    "ml-6 ":iconPosition==="start",
-                    "mr-6 ":iconPosition==="end",
+                    "": true,
+                    "ml-6 ": iconPosition === "start",
+                    "mr-6 ": iconPosition === "end",
                 })}
                 calendarClassName={"border relative"}
                 calendarIconClassname={clsx({
-                    " absolute  mt-[-0.25rem] z-[2]" : true,
-                    "left-[-0.5rem] ":iconPosition==="start",
-                    "right-[-0.5rem] ":iconPosition==="end",
+                    " absolute  mt-[-0.25rem] z-[2]": true,
+                    "left-[-0.5rem] ": iconPosition === "start",
+                    "right-[-0.5rem] ": iconPosition === "end",
                 })}
                 clearButtonClassName={clsx({
-                    "right-[-0.25rem] z-[99]":true,
-                    "right-[0.65rem]":iconPosition==="end"
+                    "right-[-0.25rem] z-[99]": true,
+                    "right-[0.65rem]": iconPosition === "end"
                 })}
-                
+
             >
             </DatePicker>
         </ContainerInput>

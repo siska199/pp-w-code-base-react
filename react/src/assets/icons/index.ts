@@ -13,6 +13,7 @@ export { default as IconPaymentMethodVisa } from '@assets/icons/payment-method-v
 export { default as IconPercentage } from '@assets/icons/percentage.svg?react';
 export { default as IconPlus } from '@assets/icons/plus.svg?react';
 export { default as IconRight } from '@assets/icons/right.svg?react';
+export { default as IconLoading } from '@assets/icons/loading.svg?react';
 
 
 
