@@ -14,10 +14,15 @@ interface TProps extends TBaseModal {
             onClick: () => void;
         }
     }
+    customeClass?: {
+        header?: string;
+        body?: string;
+        footer?: string;
+    }
 }
 
 const ModalConfirmation = (props: TProps) => {
-    const { title, isShow, children, onClose: handleOnClose, button } = props;
+    const { title, isShow, children, onClose: handleOnClose, button, customeClass } = props;
 
     const handleConfirmationBtn = () => {
         button?.confirm.onClick && button?.confirm?.onClick()
@@ -26,13 +31,13 @@ const ModalConfirmation = (props: TProps) => {
         <ContainerModal isShow={isShow} onClose={handleOnClose}>
 
             {
-                title && <div className="md-header">
-                    <p className="md-title font-bold text-body-large">{title}</p>
+                title && <div className={`md-header ${customeClass?.header}`}>
+                    <p className="md-title font-bold text-gray-900 text-body-large">{title}</p>
                 </div>
             }
 
-            <div className="md-body">{children}</div>
-            <div className="md-footer mb-auto justify-end flex gap-2 ">
+            <div className={`md-body w-[25.6rem] text-gray ${customeClass?.body}`}>{children}</div>
+            <div className={`md-footer mb-auto justify-end flex gap-2 ${customeClass?.footer}`}>
                 <Button className='min-w-[5rem]' variant={"white"} onClick={handleOnClose}>{button?.cancel?.name || "Cancel"}</Button>
                 <Button className='min-w-[5rem]' onClick={handleConfirmationBtn}>{button?.confirm?.name || "Confirm"}</Button>
             </div>

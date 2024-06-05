@@ -9,8 +9,8 @@ const ExampleModal = () => {
     return (
         <div>
             <Button onClick={() => setShow1(true)}>Show modal 1</Button>
-            <ModalConfirmation title={"SISKA"} isShow={show1} onClose={()=>setShow1(false)}>
-                SISKA
+            <ModalConfirmation title={"A short modal heading"} isShow={show1} onClose={() => setShow1(false)}>
+                The message displayed in the modal dialog should be simple and easy to understand.
             </ModalConfirmation>
         </div>
     )
