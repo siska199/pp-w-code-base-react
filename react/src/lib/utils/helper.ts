@@ -37,7 +37,7 @@ interface TParamsFieldFromObjectList {
     fieldNameValue: string;
     value: any;
 }
-export const getFielValueFromObjectList = (params: TParamsFieldFromObjectList) => {
+export const getFieldFromObjectList = (params: TParamsFieldFromObjectList) => {
     const { array, fieldNameTarget, fieldNameValue, value, } = params
     return array?.filter(data => data?.[fieldNameValue] === value)?.[0]?.[fieldNameTarget]
 }
@@ -45,5 +45,14 @@ export const getFielValueFromObjectList = (params: TParamsFieldFromObjectList) =
 export const getFieldLabelFromOptions = (params: Pick<TParamsFieldFromObjectList, "array" | "value">) => {
     const { array, value, } = params
     return array?.filter(data => data?.value === value)?.[0]?.label
+}
+
+interface TParamsGetAssetURl {
+    name: string;
+    folder?: 'images' | 'icons'
+}
+export const getAssetURL = (params: TParamsGetAssetURl) => {
+    const { name, folder = 'images' } = params
+    return new URL(`../../assets/${folder}/${name}`, import.meta.url)?.href
 }
 

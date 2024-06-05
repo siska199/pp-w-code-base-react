@@ -6,9 +6,13 @@ import ExampleModal from "@components/examples/ExampleModal"
 import ExampleProgressbar from "@components/examples/ExampleProgressbar"
 import ExampleSkeleton from "@components/examples/ExampleSkeleton"
 import ExampleTooltip from "@components/examples/ExampleTooltip"
+import Image from "@components/ui/Image"
 const App = () => {
+
   return (
     <>
+      <Image src={"boyfriend.jpg"} />
+
       <ExampleButton />
       <ExampleInput />
       <ExampleModal />
