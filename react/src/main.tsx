@@ -6,6 +6,8 @@ import App from './App.tsx'
 import "@assets/styles/index.css"
 import "@assets/styles/ui/input.css"
 import "@assets/styles/ui/modal.css"
+import "@assets/styles/ui/tooltip.css"
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <App />

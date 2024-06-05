@@ -5,6 +5,7 @@ import ExampleInput from "@components/examples/ExampleInput"
 import ExampleModal from "@components/examples/ExampleModal"
 import ExampleProgressbar from "@components/examples/ExampleProgressbar"
 import ExampleSkeleton from "@components/examples/ExampleSkeleton"
+import ExampleTooltip from "@components/examples/ExampleTooltip"
 const App = () => {
   return (
     <>
@@ -13,7 +14,8 @@ const App = () => {
       <ExampleModal />
       <ExampleDropdown />
       <ExampleProgressbar />
-      <ExampleSkeleton/>
+      <ExampleSkeleton />
+      <ExampleTooltip />
     </>
   )
 }
