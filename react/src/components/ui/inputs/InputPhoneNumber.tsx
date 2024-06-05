@@ -12,7 +12,7 @@ interface TProps extends TBasePropsInput, React.HTMLProps<HTMLInputElement> {
 const InputPhoneNumber = (props: TProps) => {
     const { onChange: handleOnChange, ...attrs } = props;
     const formatPattern = "XX-XXX-XXX-XXX"
-    const { inputRef, handleOnChangeFormattedValue } = useFormattedInput({ onChange: handleOnChange, formatPattern })
+    const { inputRef, handleOnChangeFormattedValue } = useFormattedInput({ value: attrs?.value, onChange: handleOnChange, formatPattern })
 
     return (
         <ContainerInput<React.HTMLProps<HTMLInputElement>> {...attrs} onChange={handleOnChange} customeElement={{
