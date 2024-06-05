@@ -16,6 +16,7 @@ type TProps = {
     name: string;
     onChange: (e: TCustomeEventOnChange<string | string[]>) => void;
     options: TOption[];
+    
 } & (SingleSelectProps | MultipleSelectProps);
 
 interface SingleSelectProps extends TBasePropsInput, Omit<React.HTMLProps<HTMLInputElement>, "onChange"> {
@@ -181,7 +182,7 @@ const InputSelect = (props: TProps) => {
                                 return <Badge key={i} label={labelValue}
                                     customeElement={
                                         <div onClick={(e) => handleOnClickOption(e, { label: labelValue, value: data })}>
-                                            <IconClose className='w-[0.75rem]' />
+                                            <IconClose className='w-[0.75rem] ' />
                                         </div>}
                                 />
                             })

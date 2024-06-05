@@ -565,7 +565,7 @@ const ExampleInput = () => {
       </div>
 
       <h4>Input Select</h4>
-      <div className=" p-4 gap-4 flex w-[20rem] flex-col ">
+      <div className=" p-4 gap-4 flex w-full flex-col ">
         <InputSelect
           name="input-select"
           label={"Input Slect"}
