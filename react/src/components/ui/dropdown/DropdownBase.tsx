@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-handler-names */
-import { IconChevronDown } from "@assets/icons";
+import IconChevronToggle from "@assets/icons/IconChevronToggle";
 import useOnClickOutside from "@hooks/useOnClickOutside";
 import { TOption } from "@types";
 import clsx from "clsx";
@@ -46,7 +46,7 @@ const DropdownBase = (props: TProps) => {
                     [customeClass?.btnDropdown || ""]: customeClass?.btnDropdown
                 })}>
                     {label}
-                    <IconChevronDown />
+                    <IconChevronToggle isOpen={isOpen} />
                 </button>
             </div>
 

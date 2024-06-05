@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-handler-names */
-import { IconMinus, IconPlus } from "@assets/icons"
+import IconChevronToggle from "@assets/icons/IconChevronToggle"
 import { TOption } from "@types"
 import clsx from "clsx"
 import { useState } from "react"
@@ -31,7 +31,7 @@ const Floating = (props: TOption) => {
       <div className="flex items-center w-full font-medium text-body-large justify-between">
         {label}
         <div className="cursor-pointer-custome" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <IconMinus /> : <IconPlus />}
+          <IconChevronToggle isOpen={isOpen}/>
         </div>
       </div>
       <div className={clsx({
@@ -46,3 +46,4 @@ const Floating = (props: TOption) => {
 }
 
 export default DropdownFloating
+

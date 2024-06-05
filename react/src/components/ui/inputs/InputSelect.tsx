@@ -2,7 +2,8 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable react/jsx-handler-names */
 import { TBasePropsInput } from '@/types/ui/index';
-import { IconChevronDown, IconClose, } from '@assets/icons';
+import { IconClose } from '@assets/icons';
+import IconChevronToggle from '@assets/icons/IconChevronToggle';
 import Badge from '@components/ui/Badge';
 import ContainerInput from '@components/ui/inputs/ContainerInput';
 import useOnClickOutside from '@hooks/useOnClickOutside';
@@ -16,7 +17,7 @@ type TProps = {
     name: string;
     onChange: (e: TCustomeEventOnChange<string | string[]>) => void;
     options: TOption[];
-    
+
 } & (SingleSelectProps | MultipleSelectProps);
 
 interface SingleSelectProps extends TBasePropsInput, Omit<React.HTMLProps<HTMLInputElement>, "onChange"> {
@@ -104,7 +105,9 @@ const InputSelect = (props: TProps) => {
                         refInput?.current?.focus()
                     }
                     setIsOpen(updateIsOpen)
-                }}><IconChevronDown className='cursor-pointer' /></span>
+                }}>
+                    <IconChevronToggle isOpen={isOpen} />
+                </span>
             }}
             customeClass={{
                 ...attrs?.customeClass,
