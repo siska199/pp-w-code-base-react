@@ -11,7 +11,6 @@ const Tooltip = (props: TProps) => {
             {children}
             <div className={`tooltip-text flex items-center justify-center  w-full ${variant}`}>
                 <div className="px-1 text w-fit">{text}</div>
-                
             </div>
         </div>
     )

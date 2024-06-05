@@ -13,9 +13,15 @@
   text-align: center;
   position: absolute;
   z-index: 1;
+  
+}
+.tooltip .tooltip-text.left,.tooltip .tooltip-text.right{
+    background-color:black;
+    border-radius: 6px;
+    padding: 5px ;
 }
 
-.tooltip .tooltip-text .text{
+.tooltip .tooltip-text.top .text, .tooltip .tooltip-text.bottom .text{
     border-radius: 6px;
     background-color: black;
     padding: 5px ;
@@ -46,8 +52,6 @@
 
 }
 
-
-
 /* Botom */
 .tooltip .tooltip-text.bottom {
     top: 110%;
@@ -57,5 +61,43 @@
     bottom: 100%;
     left: 50%;
     border-color: transparent transparent black transparent;
+}
+
+/* TOP */
+.tooltip .tooltip-text.top {
+    bottom: 100%;
+    left: 0%;
+} 
+.tooltip .tooltip-text.top::after{
+    top: 100%;
+    left: 50%;
+    border-color: black transparent transparent transparent;
 
 }
+
+/* Left */
+.tooltip .tooltip-text.left {
+    top: -5px;
+    left: 105%;
+} 
+.tooltip .tooltip-text.left::after{
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-color: transparent black transparent transparent;
+
+}
+
+/* Right */
+.tooltip .tooltip-text.right {
+    top: -5px;
+    right: 103%;
+} 
+.tooltip .tooltip-text.right::after{
+    top: 50%;
+    left: 101.5%;
+    margin-top: -5px;
+    border-color: transparent transparent transparent black;
+
+}
+

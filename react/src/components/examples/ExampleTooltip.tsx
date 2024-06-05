@@ -11,6 +11,15 @@ const ExampleTooltip = () => {
             <Tooltip text={"Tooltip text kokok melon"} variant="bottom">
                 Hover me
             </Tooltip>
+            <div className="w-full gap-4 flex">
+
+            <Tooltip text={"Tooltip text kokok melon"} variant="left">
+                Hover me wkwkkwkwkk awokwoysuisfyuetfuy
+            </Tooltip>
+            <Tooltip text={"Tooltip text kokok melon"} variant="right">
+                Hover me wkwkkwkwkk awokwoysuisfyuetfuy
+            </Tooltip>
+            </div>
         </div>
     )
 }
