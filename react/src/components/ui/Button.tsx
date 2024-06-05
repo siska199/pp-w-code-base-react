@@ -1,4 +1,4 @@
-import { IconLoading } from '@assets/icons';
+import IconLoading from '@assets/icons/IconLoading';
 import { cn } from '@lib/utils/helper';
 import { VariantProps, cva } from 'class-variance-authority';
 import { HTMLProps } from 'react';
@@ -21,7 +21,7 @@ const Button = (props: TProps) => {
     >
       {
         isLoading ? <span>
-          <IconLoading/>Loading...
+          <IconLoading />Loading...
         </span> : children
       }
     </CompButton>
