@@ -1,5 +1,5 @@
 import DropdownBase from "@components/ui/dropdown/DropdownBase"
-import DropdownFloating from "@components/ui/dropdown/DropdownFloating"
+import DropdownFloating from "@components/ui/Accordion"
 import { TOption } from "@types"
 
 const ExampleDropdown = () => {

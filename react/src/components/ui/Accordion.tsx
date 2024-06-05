@@ -8,7 +8,7 @@ interface TProps {
   options: TOption[]
 }
 
-const DropdownFloating = (props: TProps) => {
+const Accordion = (props: TProps) => {
   const { options } = props
   return (
     <div className="flex flex-col gap-2">
@@ -31,7 +31,7 @@ const Floating = (props: TOption) => {
       <div className="flex items-center w-full font-medium text-body-large justify-between">
         {label}
         <div className="cursor-pointer-custome" onClick={() => setIsOpen(!isOpen)}>
-          <IconChevronToggle isOpen={isOpen}/>
+          <IconChevronToggle isOpen={isOpen} />
         </div>
       </div>
       <div className={clsx({
@@ -45,5 +45,5 @@ const Floating = (props: TOption) => {
   )
 }
 
-export default DropdownFloating
+export default Accordion
 
