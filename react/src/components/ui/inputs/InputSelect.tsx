@@ -47,7 +47,7 @@ const InputSelect = (props: TProps) => {
         if (refInput?.current && isMultiple) {
             refInput.current.style.width = `${searchQuery?.length * 10 || 10}px`;
         }
-    }, [searchQuery])
+    }, [searchQuery, isMultiple])
 
     const handleOnClickOption = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, data: TOption) => {
         e?.stopPropagation()

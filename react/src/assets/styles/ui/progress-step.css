@@ -1,0 +1,94 @@
+@import url('../index.css');
+
+/* Progress step horizontal */
+
+.stepper-wrapper {
+    @apply mt-auto flex justify-between ;
+}
+.stepper-item.horizontal {
+    @apply relative flex flex-col items-center flex-1 ;
+}
+
+.stepper-item.vertical {
+    @apply relative min-h-[1rem];
+}
+
+.stepper-item.vertical > div:first-child {
+    position: static;
+    height: 0;
+}
+
+.stepper-item.vertical > div:not(:first-child) {
+    margin-left: 2em;
+    padding-left: 1em;
+  }
+  
+
+.stepper-item.vertical .step-title {
+    line-height: 1.5em;
+    font-weight: bold;
+  }
+.stepper-item.vertical .step-caption {
+    font-size: 0.8em;
+}
+
+.step-item.vertical + .step-item.vertical {
+    margin-top: 1.5em
+} 
+
+.stepper-item .step-counter.vertical:after {
+    @apply content-[''] absolute block top-[1px] right-1/2 bottom-[1px] left-1/2 h-full w-[1px]  bg-gray-200 z-[-1];
+    transform: scale(1, 2);
+    transform-origin: 50% -100%;
+}  
+
+.stepper-item.vertical.completed .step-counter.vertical:after {
+    @apply bg-primary
+}
+
+.stepper-item.vertical:last-child .step-counter.vertical:after {
+    display: none
+  }
+  
+
+.stepper-item.horizontal::before {
+    @apply absolute content-[""]  z-[2] left-[50%] top-[20px] w-full;
+}
+
+.stepper-item.horizontal::after {
+    @apply absolute content-[""] border-b-[1.5px] border-gray-200  w-full left-[50%] top-[20px] z-[2];
+
+}
+
+.stepper-item .step-counter {
+    @apply relative z-[5] flex justify-center items-center w-[2rem] h-[2rem] rounded-full border-gray-200 border-[1.5px] bg-white mb-[6px];
+}
+
+.stepper-item.active {
+  @apply font-bold 
+}
+
+.stepper-item.active .step-counter{
+    @apply border-primary  bg-white border-[2px] ring-4 ring-primary-200;
+}
+
+.stepper-item.active .step-counter span{
+    @apply w-3 h-3 rounded-full bg-primary;
+}
+
+.stepper-item.completed .step-counter {
+  @apply bg-primary text-white border-primary;
+}
+
+.stepper-item.completed.horizontal::after {
+    @apply absolute content-[""] border-b-[1px] border-primary w-full left-[50%] top-[20px] z-[3];
+}
+
+.stepper-item:first-child::before {
+    @apply content-none
+}
+.stepper-item:last-child::after {
+    @apply content-none
+}
+
+
