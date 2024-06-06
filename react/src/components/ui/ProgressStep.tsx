@@ -15,13 +15,13 @@ type TProps = {
 const ProgressStep = (props: TProps) => {
     const { listStep, activeStep, variant = "horizontal" } = props
     return (
-        <ul className={`stepper-wrapper ${variant === "vertical" && "vertical flex justify-start items-start flex-col"}`}>
+        <ul className={`stepper-wrapper w-full border ${variant === "vertical" && "vertical flex justify-start items-start flex-col"}`}>
             {
                 listStep?.map((data, i) => {
                     const isCompleted = variant === "vertical" ? activeStep < i : activeStep > i
                     const isActive = activeStep === i
                     return (
-                        <li key={i} className={`stepper-item ${variant} ${isActive && "active"} ${isCompleted && "completed"}`}>
+                        <li key={i} className={`stepper-item w-full ${variant} ${isActive && "active"} ${isCompleted && "completed"}`}>
                             <div className="">
                                 <div className={`step-counter ${variant}`}>
                                     {

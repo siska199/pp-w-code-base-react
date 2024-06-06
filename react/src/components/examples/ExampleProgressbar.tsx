@@ -33,44 +33,44 @@ const ExampleProgressbar = () => {
     const listStepVertical = [
         {
             title: "Get Started",
-            caption:<div className="h-[10rem] border">
+            caption:<div className="h-[10rem] w-full  border">
 
             </div>
         },
         {
             title: "Get Started",
-            caption:<div className="h-[10rem] border">
+            caption:<div className="h-[10rem]  w-full border">
 
             </div>
         },
         {
             title: "Get Started",
-            caption: <div className="h-[10rem] border">
+            caption: <div className="h-[10rem] w-full border">
 
             </div>
         },
         {
             title: "Get Started",
-            caption: <div className="h-[10rem] border">
+            caption: <div className="h-[10rem] w-full border">
 
             </div>
         },
         {
             title: "Get Started",
-            caption: <div className="h-[10rem] border">
+            caption: <div className="h-[10rem] w-full border">
 
             </div>
         },
         {
             title: "Get Started",
-            caption: <div className="h-[10rem] border">
+            caption: <div className="h-[10rem] w-full border">
 
             </div>
         }
     ]
 
     return (
-        <div className="w-full border p-[5rem] flex flex-col gap-4">
+        <div className="w-full  p-[5rem] flex flex-col gap-4 border">
             <Progressbar value={50} valueTotal={100} size="small" />
             <Progressbar value={50} valueTotal={100} />
             <ProgressStep activeStep={activeIndexStep} listStep={listStepHorizontal} />
