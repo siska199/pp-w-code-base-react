@@ -6,13 +6,15 @@ import ExampleModal from "@components/examples/ExampleModal"
 import ExampleProgressbar from "@components/examples/ExampleProgressbar"
 import ExampleSkeleton from "@components/examples/ExampleSkeleton"
 import ExampleTooltip from "@components/examples/ExampleTooltip"
+import CopyText from "@components/ui/CopyText"
 import Image from "@components/ui/Image"
 const App = () => {
 
   return (
     <>
-      <Image src={"boyfriend.jpg"} />
-
+      <Image src={"boyfriend.jpg"} className="w-[4rem] h-[4rem] object-cover" />
+      {/* <Image src={"backgroundLogin1.svg"} /> //*/}
+      <CopyText text={"Siska Apriana Rifianti"} />
       <ExampleButton />
       <ExampleInput />
       <ExampleModal />

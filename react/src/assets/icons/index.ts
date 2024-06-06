@@ -14,6 +14,8 @@ export { default as IconPercentage } from '@assets/icons/percentage.svg?react';
 export { default as IconPlus } from '@assets/icons/plus.svg?react';
 export { default as IconRight } from '@assets/icons/right.svg?react';
 export { default as IconExclude } from '@assets/icons/exclude.svg?react';
-
+export { default as IconCopy } from '@assets/icons/copy.svg?react';
+export { default as IconCheck } from '@assets/icons/check.svg?react';
+export { default as IconClipboard } from '@assets/icons/clipboard.svg?react';
 
 
