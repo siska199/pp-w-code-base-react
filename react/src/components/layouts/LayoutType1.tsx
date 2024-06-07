@@ -8,36 +8,40 @@ interface TProps {
 
 const LayoutType1 = (props: TProps) => {
     const { children } = props
+    const [widthSidebar, setWidthSidebar] = useState(0)
     const [leftPosition, setLeftPosition] = useState(0)
 
     useEffect(() => {
-
-        const navbarComp = document.getElementById("sidebar")
-        if (navbarComp) {
-            setLeftPosition(navbarComp?.offsetWidth)
+        const sidebarComp = document.getElementById("sidebar")
+        if (sidebarComp) {
+            setWidthSidebar(sidebarComp?.offsetWidth)
+            setLeftPosition(sidebarComp?.offsetWidth)
         }
-        
+    }, [])
+
+    useEffect(() => {
         // Set left position of page every media query change from > md to <md
         const mediaQueryMinMd = window.matchMedia('(min-width: 768px)');
         const handleMediaQueryChange = () => {
-            const navbarComp = document.getElementById("sidebar")
-            if (navbarComp) {
-                setLeftPosition(navbarComp?.offsetWidth)
-            }
+            const isMinMd = mediaQueryMinMd?.matches
+            console.log('width sidebar; ', document.getElementById("sidebar")?.offsetWidth)
+            console.log('isMinMd: ', isMinMd)
+            setLeftPosition(isMinMd ? widthSidebar : 0)
+
         }
         mediaQueryMinMd.addEventListener('change', handleMediaQueryChange);
         return () => {
             mediaQueryMinMd.removeEventListener('change', handleMediaQueryChange);
         };
-    }, [])
+    }, [widthSidebar])
 
     return (
-        <main id="layout" className="border-[2px] relative border-success h-screen min-h-screen w-full overflow-y-auto">
+        <main id="layout" className=" overflow-x-hidden relative h-screen min-h-screen w-full overflow-y-auto">
             <Navbar />
-            <div className="flex border relative">
+            <div className="flex relative overflow-x-hidden">
                 <Sidebar />
                 <div
-                    className="w-full "
+                    className="w-full transistion-all duration-300 p-8"
                     style={{
                         marginLeft: leftPosition
                     }}>

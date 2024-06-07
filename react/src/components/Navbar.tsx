@@ -1,32 +1,30 @@
+import { IconHamburger } from "@assets/icons"
+import Button from "@components/ui/Button"
 import Logo from "@components/ui/Logo"
+import useSidebar from "@hooks/ui/useSidebar"
 
 
 const Navbar = () => {
+    const { handleToggleSidebar } = useSidebar()
 
-    const handleToggleSidebar = () => {
-        const sidebarContainer = document.getElementById('container-sidebar')
-        const sidebar = document.getElementById('sidebar')
-        const sidebarOverlay = document.getElementById('overlay-sidebar')
 
-        sidebarContainer?.classList.add(...['md-show', 'md-modal', 'min-w-full'])
-        sidebar?.classList.add(...['!w-[15rem]', '!static',]);
-        sidebarOverlay?.classList.add(...['md-show'])
-
-        console.log('clicked')
-    }
 
     return (
-        <nav id="navbar" className="w-full sticky  z-[99] flex items-center justify-between white top-0 left-0 border border-error px-8 py-4">
-            <ul className="flex gap-4 text-gray-500">
-                <Logo onClick={handleToggleSidebar} className="block md:hidden cursor-pointer" />
-                {
-                    listMenu?.map((menu, i) => <ul key={i} className="">{menu?.label}</ul>)
-                }
-            </ul>
-            <div>
-
+        <nav id="navbar" className="bg-blur w-full sticky  z-[99] flex items-center justify-between white top-0 left-0 border-b px-8 py-4">
+            <div className="flex items-center gap-4">
+                <Button variant={"icon"} className="!p-0  md:hidden" onClick={handleToggleSidebar}>
+                    <IconHamburger className="w-[1.75rem]" />
+                </Button>
+                <ul className="hidden md:flex gap-4 text-gray-500">
+                    <Logo onClick={handleToggleSidebar} className="block md:hidden cursor-pointer" />
+                    {
+                        listMenu?.map((menu, i) => <ul key={i} className="">{menu?.label}</ul>)
+                    }
+                </ul>
             </div>
-        </nav>
+            <div>
+            </div>
+        </nav >
     )
 }
 

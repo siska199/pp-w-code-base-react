@@ -17,5 +17,6 @@ export { default as IconExclude } from '@assets/icons/exclude.svg?react';
 export { default as IconCopy } from '@assets/icons/copy.svg?react';
 export { default as IconCheck } from '@assets/icons/check.svg?react';
 export { default as IconClipboard } from '@assets/icons/clipboard.svg?react';
+export { default as IconHamburger } from '@assets/icons/hamburger.svg?react';
 
 

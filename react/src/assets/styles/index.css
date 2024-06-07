@@ -39,9 +39,7 @@
 }
 
 @layer components{
-    .sidebar {
 
-      }
 }
 
 @layer utilities {
@@ -54,6 +52,11 @@
        @apply bounce-effect cursor-pointer
     }
 
+    /* Blur background effect */
+	.bg-blur{
+        background: transparent !important;
+        backdrop-filter: blur(10px) !important;
+    }
     /* FOR SVG ICON set color dinamically */
     .icon-white path { @apply stroke-white }
     .icon-white-fill path { @apply fill-white  }
