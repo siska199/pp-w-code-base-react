@@ -1,4 +1,4 @@
-import { IconCheck, IconClipboard, IconCopy } from '@assets/icons';
+import { IconCheck, IconClipboard, } from '@assets/icons';
 import Container from './Container';
 import { useEffect, useState } from 'react';
 import Button from '@components/ui/Button';
@@ -49,12 +49,11 @@ const CopyText = (props: Props) => {
         }
     };
 
-    console.log("iscopied: ", isCopied)
 
     return (
         <Container variant={variant || "hsc"} gap={"small"} className={`${classContainer}`}>
             <p className={classText}>{text}</p>
-            <Button variant='white' className={`!border-none focus:!ring-0 !p-1 ${classIcon}  cursor-pointer-custome `}>
+            <Button variant='icon' className={`${classIcon}`}>
                 {
                     isCopied ? <IconCheck className='icon-primary' /> : <IconClipboard onClick={handleCopyToClipboard} className='icon-primary w-[1rem]' />
                 }
