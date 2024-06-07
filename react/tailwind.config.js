@@ -4,6 +4,7 @@ export default {
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/assets/**/*.{js,ts,jsx,tsx,mdx, svg}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/hooks/**/*.{js,ts,jsx,tsx,mdx}',
     './src/styles/**/*.{js,ts,jsx,tsx,mdx,css,}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
     './src/*.{js,ts,jsx,tsx,mdx}',
@@ -93,7 +94,7 @@ export default {
         white: '#FFFFFF',
         "broken-white": '#F8F8FC',
         disabled: "#F8FAFC",
-        transparent:"transparent",
+        transparent: "transparent",
         gray: {
           '50': '#F8FAFC',
           '100': '#F1F5F9',
