@@ -14,7 +14,7 @@
         @apply scroll-smooth;
     }
     body{
-        @apply overflow-x-hidden max-w-[100vw] text-body-base bg-white text-gray-800;
+        @apply overflow-x-hidden relative text-body-base bg-white text-gray-800;
     }
     h1{
         @apply text-heading-01;
@@ -38,6 +38,11 @@
 
 }
 
+@layer components{
+    .sidebar {
+
+      }
+}
 
 @layer utilities {
     /* Create bounce effect while click component */
