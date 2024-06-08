@@ -24,6 +24,9 @@ const Navbar = () => {
                 </ul>
             </div>
             <div>
+                <Button className="!py-1 !ring-0" variant={"white"}>
+                    Search Documentation...
+                </Button>
             </div>
         </nav >
     )

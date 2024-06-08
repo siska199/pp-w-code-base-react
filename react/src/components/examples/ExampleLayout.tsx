@@ -5,7 +5,7 @@ const ExampleLayout = () => {
     return (
         <LayoutType1>
             <article className="h-[150vh]">
-                    PAGE 1
+                Page 
             </article>
         </LayoutType1>
     )
