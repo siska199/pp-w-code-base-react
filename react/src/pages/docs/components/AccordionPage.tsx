@@ -2,6 +2,7 @@ import HeaderIntro from "@components/headers/HeaderIntro";
 import HeaderSubMenu from "@components/headers/HeaderSubMenu";
 import Accordion from "@components/ui/Accordion";
 import CodeBlock from "@components/ui/CodeBlock";
+import ProgressStep from "@components/ui/ProgressStep";
 import Tabs from "@components/ui/Tabs";
 
 
@@ -16,6 +17,18 @@ const AccordionPage = () => {
       id: "2",
       label: 'Code Base'
     },
+  ]
+
+  const listAdditionalInfo = [
+    {
+      title: "Code Icon Chevron Toggle",
+      caption: <CodeBlock codeString={displayIconChevronToggle} />
+    },
+    {
+      title: "Code Icon Chevron SVG",
+      caption: <CodeBlock codeString={displayIconChevronSVG} />
+    },
+
   ]
   return (
     <>
@@ -33,15 +46,16 @@ const AccordionPage = () => {
           }
         </Tabs>
       </div>
+
       <div className="flex flex-col gap-4">
         <HeaderSubMenu title={'Usage'} />
         <p className="text-gray block">Example of usage component accordion:</p>
         <CodeBlock codeString={displayUsage} />
       </div>
 
-      <div>
+      <div className="flex flex-col gap-4">
         <HeaderSubMenu title={'Additional Info'} />
-
+        <ProgressStep type="number" listStep={listAdditionalInfo} variant="vertical" />
       </div>
     </>
   )
@@ -150,4 +164,29 @@ const displayUsage = `const DisplayAccordion = () => {
   ]
   return <Accordion options={listOption} />
 }`;
+
+const displayIconChevronToggle = `import { IconChevronDown } from '@assets/icons';
+import clsx from 'clsx';
+
+interface TProps {
+    isOpen: boolean;
+}
+
+const IconChevronToggle = (props: TProps) => {
+    const { isOpen } = props
+    return (
+        <IconChevronDown className={clsx({
+            "transition-transform duration-300 cursor-pointer": true,
+            "rotate-180": isOpen
+        })} />
+    )
+}
+
+export default IconChevronToggle`
+
+
+const displayIconChevronSVG = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 9L11.2929 14.2929C11.6834 14.6834 12.3166 14.6834 12.7071 14.2929L18 9" stroke="#64748B" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
+`
 export default AccordionPage
