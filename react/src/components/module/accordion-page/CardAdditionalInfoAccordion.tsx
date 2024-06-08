@@ -13,13 +13,6 @@ const CardAdditionalInfoAccordion = () => {
             </>
         },
         {
-            title: "Code Icon Chevron SVG",
-            caption: <>
-                <p >This is the SVG code for the chevron icon used by IconChevronToggle above.</p>
-                <CodeBlock codeString={displayIconChevronSVG} />
-            </>
-        },
-        {
             title: "TOptions",
             caption: <>
                 <p>This is the type definition for the option used by the Accordion component.</p>
@@ -54,11 +47,6 @@ const IconChevronToggle = (props: TProps) => {
 
 export default IconChevronToggle`
 
-
-const displayIconChevronSVG = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M6 9L11.2929 14.2929C11.6834 14.6834 12.3166 14.6834 12.7071 14.2929L18 9" stroke="#64748B" stroke-width="1.5" stroke-linecap="round"/>
-</svg>
-`
 const displayTOption = `export interface TOption {
   label : string;
   value:string;
