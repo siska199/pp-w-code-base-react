@@ -32,9 +32,11 @@
         @apply text-heading-05;
     }
     p{
-        @apply text-body-base;
+        @apply text-body-base text-gray;
     }
-
+    li{
+        @apply text-gray
+    }
 
 }
 

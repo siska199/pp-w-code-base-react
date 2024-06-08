@@ -19,7 +19,7 @@ const Tabs = (props: TProps) => {
         <div className="w-full flex flex-col gap-4">
             <ul className="flex border-b">
                 {
-                    listTab?.map((tab, i) => <li onClick={() => handleChangeActiveTab(i)} key={i} className={`px-8  py-2 font-medium cursor-pointer border-0  text-gray ${activeTab === i && "border-b-2 !text-black border-black"}`}>{tab?.label}</li>)
+                    listTab?.map((tab, i) => <li onClick={() => handleChangeActiveTab(i)} key={i} className={`px-8  py-2 font-medium cursor-pointer border-0   ${activeTab === i && "border-b-2 !text-black border-black"}`}>{tab?.label}</li>)
                 }
             </ul>
             {children?.({ activeTab })}

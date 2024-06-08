@@ -35,11 +35,13 @@ const Floating = (props: TOption) => {
         </div>
       </div>
       <div className={clsx({
-        "transition-all  duration-100 ease  text-body-medium text-gray": true,
+        "transition-all  duration-100 ease   ": true,
         " opacity-100 max-h-[10rem]": isOpen,
         " opacity-0 max-h-0": !isOpen
       })}>
-        {value}
+        <p className="">
+          {value}
+        </p>
       </div>
     </div>
   )

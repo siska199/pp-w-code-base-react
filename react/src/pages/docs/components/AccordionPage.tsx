@@ -22,11 +22,24 @@ const AccordionPage = () => {
   const listAdditionalInfo = [
     {
       title: "Code Icon Chevron Toggle",
-      caption: <CodeBlock codeString={displayIconChevronToggle} />
+      caption: <>
+        <p >This code creates an animation for a chevron icon that toggles up and down when expanding or collapsing an accordion panel.</p>
+        <CodeBlock codeString={displayIconChevronToggle} />
+      </>
     },
     {
       title: "Code Icon Chevron SVG",
-      caption: <CodeBlock codeString={displayIconChevronSVG} />
+      caption: <>
+        <p >This is the SVG code for the chevron icon used by IconChevronToggle above.</p>
+        <CodeBlock codeString={displayIconChevronSVG} />
+      </>
+    },
+    {
+      title: "TOptions",
+      caption: <>
+        <p>This is the type definition for the option used by the Accordion component.</p>
+        <CodeBlock codeString={displayTOption} />
+      </>
     },
 
   ]
@@ -189,4 +202,8 @@ const displayIconChevronSVG = `<svg width="24" height="24" viewBox="0 0 24 24" f
 <path d="M6 9L11.2929 14.2929C11.6834 14.6834 12.3166 14.6834 12.7071 14.2929L18 9" stroke="#64748B" stroke-width="1.5" stroke-linecap="round"/>
 </svg>
 `
+const displayTOption = `export interface TOption {
+  label : string;
+  value:string;
+}`
 export default AccordionPage

@@ -24,16 +24,16 @@ const ProgressStep = (props: TProps) => {
                     return (
                         <li key={i} className={`stepper-item w-full ${variant} ${isActive && "active"} ${isCompleted && "completed"}`}>
                             <div className="">
-                                <div className={`step-counter ${variant} ${type==="number"&&"!bg-primary-100 !border-[1px] !border-primary-500 font-bold"}`}>
+                                <div className={`step-counter ${variant} ${type === "number" && "!bg-primary-100 !border-[1px] !border-primary-500 font-bold"}`}>
                                     {
-                                        isCompleted ? <IconExclude /> : <span>{type === "number" && i+1}</span>
+                                        isCompleted ? <IconExclude /> : <span>{type === "number" && i + 1}</span>
                                     }
                                 </div>
                             </div>
                             {
                                 variant === "horizontal" ? <div className={`step-name ${variant}`}>{data?.title}</div> : <div className="min-h-[5rem]">
                                     <div className="step-title text-gray">{data?.title}</div>
-                                    <div className="step-caption font-normal text-gray-500 mt-4 mb-8">{data?.caption}</div>
+                                    <div className="step-caption font-normal text-gray-500 mt-2 mb-8 flex flex-col gap-4">{data?.caption}</div>
                                 </div>
                             }
                         </li>
