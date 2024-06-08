@@ -1,10 +1,8 @@
+import { TTab } from "@types";
 import { useState } from "react";
 
 interface TProps {
-    listTab: {
-        id: string;
-        label: string;
-    }[];
+    listTab: TTab[];
     children?: (params: any) => React.ReactNode;
 }
 

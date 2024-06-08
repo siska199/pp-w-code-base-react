@@ -9,10 +9,16 @@ export interface TCustomeEventOnChange<V> {
   }
 }
 
-export type TEmptyValue = "" | null | undefined 
+export type TEmptyValue = "" | null | undefined
 
 export interface TOption {
-  label : string;
-  value:string;
+  label: string;
+  value: string;
+}
+
+
+export interface TTab {
+  id: string;
+  label: string;
 }
 /*----------------FORM--------------------*/
