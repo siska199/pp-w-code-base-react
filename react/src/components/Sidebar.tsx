@@ -54,30 +54,64 @@ const Sidebar = () => {
 
 const listGroupMenu = [
     {
-        id: 0,
-        name: 'Getting Started',
-        childs: [
-            {
-                id: 0,
-                name: 'introduction',
-                url: '/'
-            },
-            {
-                id: 0,
-                name: 'Installation',
-                url: '/'
-            }
-        ]
-    },
-    {
-        id: 1,
         name: 'Components',
         childs: [
             {
-                id: 0,
                 name: 'Accordion',
                 url: '/'
-            }
+            },
+            {
+                name: 'Badge',
+                url: '/'
+            },
+            {
+                name: 'Button',
+                url: '/'
+            },
+            {
+                name: 'Container',
+                url: '/'
+            },
+            {
+                name: 'Copy Text',
+                url: '/'
+            },
+            {
+                name: 'Helper Message',
+                url: '/'
+            },
+            {
+                name: 'Image',
+                url: '/'
+            },
+            {
+                name: 'Link',
+                url: '/'
+            },
+            {
+                name: 'Logo',
+                url: '/'
+            },
+            {
+                name: 'Progressbar',
+                url: '/'
+            },
+            {
+                name: 'Progress Step',
+                url: '/'
+            },
+            {
+                name: 'Modal',
+                url: '/'
+            },
+            {
+                name: 'Input',
+                url: '/'
+            },
+            {
+                name: 'Dropdown',
+                url: '/'
+            },
         ]
     }
 ]

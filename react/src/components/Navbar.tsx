@@ -30,21 +30,14 @@ const Navbar = () => {
 }
 
 const listMenu = [
-    {
-        label: 'Docs',
-        url: '/docs'
-    },
+
     {
         label: 'Components',
         url: '/docs/components/acccordion'
     },
     {
-        label: 'Examples',
-        url: '/docs/examples/form'
-    },
-    {
         label: 'Github',
-        url: 'https://github.com/shadcn-ui/ui'
+        url: 'https://github.com/siska199/my-code-base-199'
     }
 ]
 

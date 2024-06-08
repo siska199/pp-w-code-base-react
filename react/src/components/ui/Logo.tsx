@@ -9,7 +9,7 @@ const Logo = (props: TProps) => {
     const { className, sizeLogo, ...attrs } = props
     return (
         <div className={cn(logoVariants({ className, sizeLogo, }))} {...attrs}>
-            🌼Code199
+            🌼CodeBase199
         </div>
     )
 }

@@ -67,5 +67,5 @@ export function checkElmnOnTopOfPage(elm: any) {
     return rect.top === 0;
 }
 
-
 export const handleStopPropagation = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => e?.stopPropagation()
+
