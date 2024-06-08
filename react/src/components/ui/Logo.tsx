@@ -8,7 +8,7 @@ interface TProps extends React.HTMLProps<HTMLDivElement>, VariantProps<typeof lo
 const Logo = (props: TProps) => {
     const { className, sizeLogo, ...attrs } = props
     return (
-        <div className={cn(logoVariants({ className, sizeLogo, }))} {...attrs}>
+        <div style={{color:'#EC4699'}} className={cn(logoVariants({ className, sizeLogo, }))} {...attrs}>
             🌼CodeBase199
         </div>
     )
@@ -16,7 +16,7 @@ const Logo = (props: TProps) => {
 
 
 const logoVariants = cva(
-    'w-fiit inline flex gap-2 items-center font-bold text-primary-600',
+    'w-fiit inline flex gap-2 items-center font-bold  ',
     {
         variants: {
             variant: {

@@ -1,4 +1,4 @@
-import { IconHamburger } from "@assets/icons"
+import { IconHamburger, IconSearch } from "@assets/icons"
 import Button from "@components/ui/Button"
 import Link from "@components/ui/Link"
 import Logo from "@components/ui/Logo"
@@ -16,7 +16,7 @@ const Navbar = () => {
                 <Button variant={"icon"} className="!p-0  md:hidden" onClick={handleToggleSidebar}>
                     <IconHamburger className="w-[1.75rem]" />
                 </Button>
-                <Logo className="hidden md:block" />
+                <Logo className="hidden md:block text-body-large" />
                 <ul className="hidden md:flex gap-8 ">
                     {
                         listMenu?.map((menu, i) => <Link key={i} label={menu?.label} url={menu?.url} className="hover:!no-underline" />)
@@ -25,7 +25,7 @@ const Navbar = () => {
             </div>
             <div>
                 <Button className="!py-1 !ring-0" variant={"white"}>
-                    Search Documentation...
+                    <IconSearch className="icon-gray" /> Search Documentation
                 </Button>
             </div>
         </nav >

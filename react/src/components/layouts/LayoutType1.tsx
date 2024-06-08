@@ -1,4 +1,5 @@
 import Navbar from "@components/Navbar"
+import RightSidebar from "@components/RightSidebar"
 import Sidebar from "@components/Sidebar"
 import { useEffect, useState } from "react"
 
@@ -9,13 +10,19 @@ interface TProps {
 const LayoutType1 = (props: TProps) => {
     const { children } = props
     const [widthSidebar, setWidthSidebar] = useState(0)
+    const [widthRightSidebar, setWidthRightSidebar] = useState(0)
     const [leftPosition, setLeftPosition] = useState(0)
+    const [rightPosition, setRightPosition] = useState(0)
 
     useEffect(() => {
-        const sidebarComp = document.getElementById("sidebar")
+        const sidebarComp = document.getElementById("sidebar") as HTMLDivElement
+        const rightsSidebarComp = document.getElementById("right-sidebar") as HTMLDivElement
+
         if (sidebarComp) {
             setWidthSidebar(sidebarComp?.offsetWidth)
             setLeftPosition(sidebarComp?.offsetWidth)
+            setWidthRightSidebar(rightsSidebarComp?.offsetWidth)
+            setRightPosition(rightsSidebarComp?.offsetWidth)
         }
     }, [])
 
@@ -24,16 +31,15 @@ const LayoutType1 = (props: TProps) => {
         const mediaQueryMinMd = window.matchMedia('(min-width: 768px)');
         const handleMediaQueryChange = () => {
             const isMinMd = mediaQueryMinMd?.matches
-            console.log('width sidebar; ', document.getElementById("sidebar")?.offsetWidth)
-            console.log('isMinMd: ', isMinMd)
             setLeftPosition(isMinMd ? widthSidebar : 0)
+            setRightPosition(isMinMd ? widthRightSidebar : 0)
 
         }
         mediaQueryMinMd.addEventListener('change', handleMediaQueryChange);
         return () => {
             mediaQueryMinMd.removeEventListener('change', handleMediaQueryChange);
         };
-    }, [widthSidebar])
+    }, [widthSidebar, widthRightSidebar])
 
     return (
         <main id="layout" className=" overflow-x-hidden relative h-screen min-h-screen w-full overflow-y-auto">
@@ -41,12 +47,14 @@ const LayoutType1 = (props: TProps) => {
             <div className="flex relative overflow-x-hidden">
                 <Sidebar />
                 <div
-                    className=" p-8"
+                    className=" p-8 flex min-h-screen "
                     style={{
                         marginLeft: leftPosition,
-                        width: `calc(100% - ${leftPosition}px)`,
+                        marginRight: rightPosition,
+                        width: `calc(100% - ${leftPosition + rightPosition}px)`,
                     }}>
                     {children}
+                    <RightSidebar />
                 </div>
             </div>
         </main>
