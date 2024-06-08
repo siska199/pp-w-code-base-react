@@ -1,5 +1,5 @@
 import { IconClose } from "@assets/icons"
-import Logo from "@components/ui/Logo"
+import Link from "@components/ui/Link"
 import useSidebar from "@hooks/ui/useSidebar"
 import { handleStopPropagation } from "@lib/utils/helper"
 import { useEffect, useState } from "react"
@@ -23,14 +23,24 @@ const Sidebar = () => {
     return (
         <>
             <div id="container-sidebar" className="h-full" onClick={handleToggleSidebar}>
-                <div id="sidebar" onClick={handleStopPropagation} style={{ top: topPosition, }} className={`fixed h-full left-0 transition-all  duration-500   bg-white  overflow-y-auto w-0 md:w-[20rem]`}>
+                <div id="sidebar" onClick={handleStopPropagation} style={{ top: topPosition, }} className={`fixed h-full left-0 transition-all  duration-500   bg-white  overflow-y-auto w-0 md:w-[17rem]`}>
 
-                    {/* Header */}
-                    <div className="p-8 w-full flex flex-col gap-4">
-                        <div className="w-full flex justify-between  ">
-                            <Logo />
-                            <IconClose id="icon-close" onClick={handleToggleSidebar} className="hidden  cursor-pointer" />
+                    <div className="p-8 w-full flex flex-col gap-4 relative">
+                        <IconClose id="icon-close" onClick={handleToggleSidebar} className="hidden  absolute top-6 right-6 cursor-pointer ml-auto" />
+                        <div className="flex flex-col gap-4">
+                            {
+                                listGroupMenu?.map((groupMenu, i) => <div key={i} className="font-medium">
+                                    <div className="mb-4">{groupMenu?.name}</div>
+                                    <ul className="flex flex-col gap-2">
+                                        {
+                                            groupMenu?.childs?.map((menu, j) => <Link key={j} url={menu.url} label={menu?.name} />)
+                                        }
+                                    </ul>
+                                </div>
+                                )
+                            }
                         </div>
+
                     </div>
                 </div>
             </div >
@@ -42,33 +52,35 @@ const Sidebar = () => {
 
 }
 
+const listGroupMenu = [
+    {
+        id: 0,
+        name: 'Getting Started',
+        childs: [
+            {
+                id: 0,
+                name: 'introduction',
+                url: '/'
+            },
+            {
+                id: 0,
+                name: 'Installation',
+                url: '/'
+            }
+        ]
+    },
+    {
+        id: 1,
+        name: 'Components',
+        childs: [
+            {
+                id: 0,
+                name: 'Accordion',
+                url: '/'
+            }
+        ]
+    }
+]
 
 
-// const listGroupMenu = [
-//     {
-//         id: 0,
-//         name: 'Getting Started',
-//         childs: [
-//             {
-//                 id: 0,
-//                 name: 'introduction',
-//                 url: '/'
-//             },
-//             {
-//                 id: 0,
-//                 name: 'Instala',
-//                 url: '/'
-//             }
-//         ]
-//     },
-//     {
-//         id: 1,
-//         name: 'Components',
-//         childs: [
-//             {
-
-//             }
-//         ]
-//     }
-// ]
 export default Sidebar

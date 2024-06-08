@@ -41,9 +41,10 @@ const LayoutType1 = (props: TProps) => {
             <div className="flex relative overflow-x-hidden">
                 <Sidebar />
                 <div
-                    className="w-full transistion-all duration-300 p-8"
+                    className="transistion-all duration-300 p-8"
                     style={{
-                        marginLeft: leftPosition
+                        marginLeft: leftPosition,
+                        width: `calc(100% - ${leftPosition}px)`,
                     }}>
                     {children}
                 </div>
