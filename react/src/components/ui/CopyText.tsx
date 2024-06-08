@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-handler-names */
 import { IconCheck, IconClipboard, } from '@assets/icons';
 import Container from './Container';
 import { useEffect, useState } from 'react';
@@ -53,9 +54,9 @@ const CopyText = (props: Props) => {
     return (
         <Container variant={variant || "hsc"} gap={"small"} className={`${classContainer}`}>
             <p className={`${classText}`}>{text}</p>
-            <Button variant='icon' className={`${classIcon}`}>
+            <Button variant='icon' className={`${classIcon}`} onClick={() => isCopied ? null : handleCopyToClipboard()} >
                 {
-                    isCopied ? <IconCheck className='icon-primary' /> : <IconClipboard onClick={handleCopyToClipboard} className='icon-primary w-[1rem]' />
+                    isCopied ? <IconCheck className='icon-primary' /> : <IconClipboard className='icon-primary w-[1rem]' />
                 }
             </Button>
         </Container>

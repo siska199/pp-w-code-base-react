@@ -1,4 +1,4 @@
-import CardAdditionalInfoAccordio from "@components/module/accordion-page/CardAdditionalInfoAccordio";
+import CardAdditionalInfoAccordion from "@components/module/accordion-page/CardAdditionalInfoAccordion";
 import CardIntroAccordion from "@components/module/accordion-page/CardIntroAccordion";
 import CardUsageAccordion from "@components/module/accordion-page/CardUsageAccordion";
 
@@ -11,7 +11,7 @@ const AccordionPage = () => {
     <>
       <CardIntroAccordion />
       <CardUsageAccordion />
-      <CardAdditionalInfoAccordio />
+      <CardAdditionalInfoAccordion />
     </>
   )
 }

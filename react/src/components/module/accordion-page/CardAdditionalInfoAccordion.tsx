@@ -3,7 +3,7 @@ import CodeBlock from "@components/ui/CodeBlock"
 import ProgressStep from "@components/ui/ProgressStep"
 
 
-const CardAdditionalInfoAccordio = () => {
+const CardAdditionalInfoAccordion = () => {
     const listAdditionalInfo = [
         {
             title: "Code Icon Chevron Toggle",
@@ -63,4 +63,4 @@ const displayTOption = `export interface TOption {
   label : string;
   value:string;
 }`
-export default CardAdditionalInfoAccordio
+export default CardAdditionalInfoAccordion
