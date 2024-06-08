@@ -28,7 +28,7 @@ const Floating = (props: TOption) => {
 
   return (
     <div className="flex flex-col gap-2 gap w-full border-b py-3">
-      <div className="flex items-center w-full font-medium text-body-large justify-between">
+      <div className="flex items-center w-full font-medium text-body-medium justify-between">
         {label}
         <div className="cursor-pointer-custome" onClick={() => setIsOpen(!isOpen)}>
           <IconChevronToggle isOpen={isOpen} />
