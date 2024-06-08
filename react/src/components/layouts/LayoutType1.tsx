@@ -54,7 +54,9 @@ const LayoutType1 = (props: TProps) => {
                         marginRight: rightPosition,
                         width: `calc(100% - ${leftPosition + rightPosition}px)`,
                     }}>
-                    {children}
+                    <div className="min-h-screen max-w-full flex flex-col gap-8">
+                        {children}
+                    </div>
                     <RightSidebar />
                 </div>
             </div>
