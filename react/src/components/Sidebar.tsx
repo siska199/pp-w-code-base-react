@@ -1,5 +1,6 @@
 import { IconClose } from "@assets/icons"
 import Link from "@components/ui/Link"
+import Logo from "@components/ui/Logo"
 import useSidebar from "@hooks/ui/useSidebar"
 import { handleStopPropagation } from "@lib/utils/helper"
 import { useEffect, useState } from "react"
@@ -26,7 +27,10 @@ const Sidebar = () => {
                 <div id="sidebar" onClick={handleStopPropagation} style={{ top: topPosition, }} className={`fixed overflow-y-hidden  h-[calc(100%-3rem)] left-0   bg-white   w-0 md:w-[17rem]`}>
 
                     <div className="p-8 w-full flex flex-col gap-4 relative  h-full">
-                        <IconClose id="icon-close" onClick={handleToggleSidebar} className="hidden  absolute top-6 right-6 cursor-pointer ml-auto" />
+                        <div id="icon-close" className="hidden justify-between absolute top-6 right-6 cursor-pointer ml-auto">
+                            <Logo className="text-body-medium"/>
+                            <IconClose onClick={handleToggleSidebar} className="ml-auto" />
+                        </div>
                         <div className="flex flex-col gap-4  overflow-y-auto max-h-full ">
                             {
                                 listGroupMenu?.map((groupMenu, i) => <div key={i} className="font-medium">

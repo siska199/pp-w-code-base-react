@@ -31,6 +31,7 @@ const LayoutType1 = (props: TProps) => {
         const mediaQueryMinMd = window.matchMedia('(min-width: 768px)');
         const handleMediaQueryChange = () => {
             const isMinMd = mediaQueryMinMd?.matches
+            console.log("is detected: ", isMinMd)
             setLeftPosition(isMinMd ? widthSidebar : 0)
             setRightPosition(isMinMd ? widthRightSidebar : 0)
 

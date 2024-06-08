@@ -10,10 +10,10 @@ const useSidebar = () => {
 
         const isToggle = sidebarContainer?.classList.contains('md-show')
 
-        const listClassSidebarContainer = ['md-show', 'md-modal', 'min-w-full']
-        const listClassSidebar = ['!w-[20rem]', '!static', '!top-0', 'transition-all', 'duration-500']
+        const listClassSidebarContainer = ['md-show', 'md-modal', 'min-w-full',]
+        const listClassSidebar = ['!w-[20rem]', '!h-full', '!static', '!top-0', 'transition-all', 'duration-500']
         const listClassOverlay = ['md-show']
-        const listClassIconClose = ['!flex']
+        const listClassIconClose = ['!flex', '!static', '!w-full', '!right-0']
 
         if (isToggle) {
             sidebarContainer?.classList.remove(...listClassSidebarContainer)
