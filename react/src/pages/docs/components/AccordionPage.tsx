@@ -1,4 +1,5 @@
 import HeaderIntro from "@components/headers/HeaderIntro";
+import HeaderSubMenu from "@components/headers/HeaderSubMenu";
 import Accordion from "@components/ui/Accordion";
 import CodeBlock from "@components/ui/CodeBlock";
 import Tabs from "@components/ui/Tabs";
@@ -13,7 +14,7 @@ const AccordionPage = () => {
     },
     {
       id: "2",
-      label: 'Usage'
+      label: 'Code Base'
     },
   ]
   return (
@@ -23,20 +24,25 @@ const AccordionPage = () => {
         subTitle=" An accordion consists of multiple sections or panels, each containing a header and associated content. The headers are usually displayed in a vertical stack, and clicking on a header expands the associated content while collapsing the others."
       />
       <div>
-        <h5 className="font-medium text-body-base text-gray">Code Base</h5>
-        <CodeBlock codeString={displayCodeBase} />
-      </div>
-      <div>
         <Tabs listTab={listTab} >
           {
             ({ activeTab }) => <>
               {activeTab === 0 && <DisplayAccordion />}
-              {activeTab == 1 && < CodeBlock codeString={displayUsage} />}
+              {activeTab == 1 && < CodeBlock codeString={displayCodeBase} />}
             </>
           }
         </Tabs>
       </div>
+      <div className="flex flex-col gap-2">
+        <HeaderSubMenu title={'Usage'} />
+        <p className="text-gray">Example of usage component accordion:</p>
+        <CodeBlock codeString={displayUsage} />
+      </div>
 
+      <div>
+        <HeaderSubMenu title={'Additional Info'} />
+
+      </div>
     </>
   )
 }

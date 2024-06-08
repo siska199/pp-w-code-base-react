@@ -17,7 +17,7 @@ const RightSidebar = () => {
 
 
     return (
-        <div id="right-sidebar" onClick={handleStopPropagation} style={{ top: topPosition, }} className={` h-[calc(100%-3rem)  fixed right-2 bg-white  flex-shrink-0 h-full hidden md:block w-0 md:w-[15rem]`}>
+        <div id="right-sidebar" onClick={handleStopPropagation} style={{ top: topPosition, }} className={` h-[calc(100%-3rem)  fixed right-2 bg-white  flex-shrink-0 h-full hidden md:block w-0 md:w-[20rem]`}>
             <div className="w-full flex flex-col gap-4 relative  h-full p-8">
                 Right Sidebar
             </div>

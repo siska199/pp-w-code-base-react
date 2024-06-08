@@ -1,16 +1,18 @@
 import CopyText from '@components/ui/CopyText';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { solarizedlight } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const customStyle = {
-  ...solarizedlight,
+  ...dark,
   'pre[class*="language-"]': {
-    ...solarizedlight['pre[class*="language-"]'],
+    ...dark['pre[class*="language-"]'],
     background: 'black',
     maxHeight: "30rem",
+    border:"none",
+    fontSize:"16px"
   },
   'code[class*="language-"]': {
-    ...solarizedlight['code[class*="language-"]'],
+    ...dark['code[class*="language-"]'],
     background: 'black',
   },
 
@@ -28,6 +30,7 @@ const CodeBlock = (props: TProps) => {
       <SyntaxHighlighter language="javascript" style={customStyle}>
         {codeString}
       </SyntaxHighlighter>
+      
     </div>
   );
 };
