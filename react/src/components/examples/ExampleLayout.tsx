@@ -1,11 +1,11 @@
 import LayoutType1 from "@components/layouts/LayoutType1"
-import AccordioPage from "@pages/docs/components/Accordio"
+import AccordionPage from "@pages/docs/components/Accordion"
 
 
 const ExampleLayout = () => {
     return (
         <LayoutType1>
-            <AccordioPage />
+            <AccordionPage />
         </LayoutType1>
     )
 }

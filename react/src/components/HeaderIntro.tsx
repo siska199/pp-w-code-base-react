@@ -9,7 +9,7 @@ const HeaderIntro = (props: TProps) => {
     return (
         <div>
             <h4 className="font-bold">{title}</h4>
-            <p className="text-justify text-body-medium text-gray">{subTitle}</p>
+            <p className="text-justify text-body-medium text-gray max-w-full">{subTitle}</p>
         </div>
     )
 }
