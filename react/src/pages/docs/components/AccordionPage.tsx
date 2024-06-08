@@ -33,9 +33,9 @@ const AccordionPage = () => {
           }
         </Tabs>
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-4">
         <HeaderSubMenu title={'Usage'} />
-        <p className="text-gray">Example of usage component accordion:</p>
+        <p className="text-gray block">Example of usage component accordion:</p>
         <CodeBlock codeString={displayUsage} />
       </div>
 

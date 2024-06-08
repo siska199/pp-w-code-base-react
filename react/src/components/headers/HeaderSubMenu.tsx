@@ -6,7 +6,7 @@ interface TProps {
 const HeaderSubMenu = (props: TProps) => {
     const { title } = props
     return (
-        <h5 className='text-body-3xl border-b mb-4 w-full font-bold pb-2'>
+        <h5 className='text-body-3xl border-b w-full font-bold pb-2'>
             {title}
         </h5>
     )
