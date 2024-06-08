@@ -23,11 +23,11 @@ const Sidebar = () => {
     return (
         <>
             <div id="container-sidebar" className="h-full" onClick={handleToggleSidebar}>
-                <div id="sidebar" onClick={handleStopPropagation} style={{ top: topPosition, }} className={`fixed h-full left-0   bg-white  overflow-y-auto w-0 md:w-[17rem]`}>
+                <div id="sidebar" onClick={handleStopPropagation} style={{ top: topPosition, }} className={`fixed overflow-y-hidden  h-[calc(100%-3rem)] left-0   bg-white   w-0 md:w-[17rem]`}>
 
-                    <div className="p-8 w-full flex flex-col gap-4 relative">
+                    <div className="p-8 w-full flex flex-col gap-4 relative  h-full">
                         <IconClose id="icon-close" onClick={handleToggleSidebar} className="hidden  absolute top-6 right-6 cursor-pointer ml-auto" />
-                        <div className="flex flex-col gap-4">
+                        <div className="flex flex-col gap-4  overflow-y-auto max-h-full ">
                             {
                                 listGroupMenu?.map((groupMenu, i) => <div key={i} className="font-medium">
                                     <div className="mb-4">{groupMenu?.name}</div>
@@ -40,7 +40,6 @@ const Sidebar = () => {
                                 )
                             }
                         </div>
-
                     </div>
                 </div>
             </div >
@@ -77,11 +76,59 @@ const listGroupMenu = [
                 url: '/'
             },
             {
+                name: 'Dropdown',
+                url: '/'
+            },
+            {
                 name: 'Helper Message',
                 url: '/'
             },
             {
                 name: 'Image',
+                url: '/'
+            },
+            {
+                name: 'Input Base',
+                url: '/'
+            },
+            {
+                name: 'Input Checkbox',
+                url: '/'
+            },
+            {
+                name: 'Input Currency',
+                url: '/'
+            },
+            {
+                name: 'Input Date',
+                url: '/'
+            },
+            {
+                name: 'Input NPWP',
+                url: '/'
+            },
+            {
+                name: 'Input OTP',
+                url: '/'
+            },
+            {
+                name: 'Input Percentage',
+                url: '/'
+            },
+            {
+                name: 'Input Phone Number',
+                url: '/'
+            },
+            {
+                name: 'Input Radio Button',
+                url: '/'
+            },
+            {
+                name: 'Input Select',
+                url: '/'
+            },
+            {
+                name: 'Input Text Area',
                 url: '/'
             },
             {
@@ -102,14 +149,6 @@ const listGroupMenu = [
             },
             {
                 name: 'Modal',
-                url: '/'
-            },
-            {
-                name: 'Input',
-                url: '/'
-            },
-            {
-                name: 'Dropdown',
                 url: '/'
             },
         ]
