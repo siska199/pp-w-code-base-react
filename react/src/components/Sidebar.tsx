@@ -23,7 +23,7 @@ const Sidebar = () => {
     return (
         <>
             <div id="container-sidebar" className="h-full" onClick={handleToggleSidebar}>
-                <div id="sidebar" onClick={handleStopPropagation} style={{ top: topPosition, }} className={`fixed h-full left-0 transition-all  duration-500   bg-white  overflow-y-auto w-0 md:w-[17rem]`}>
+                <div id="sidebar" onClick={handleStopPropagation} style={{ top: topPosition, }} className={`fixed h-full left-0   bg-white  overflow-y-auto w-0 md:w-[17rem]`}>
 
                     <div className="p-8 w-full flex flex-col gap-4 relative">
                         <IconClose id="icon-close" onClick={handleToggleSidebar} className="hidden  absolute top-6 right-6 cursor-pointer ml-auto" />

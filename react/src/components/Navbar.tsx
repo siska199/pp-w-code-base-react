@@ -1,5 +1,6 @@
 import { IconHamburger } from "@assets/icons"
 import Button from "@components/ui/Button"
+import Link from "@components/ui/Link"
 import Logo from "@components/ui/Logo"
 import useSidebar from "@hooks/ui/useSidebar"
 
@@ -15,10 +16,10 @@ const Navbar = () => {
                 <Button variant={"icon"} className="!p-0  md:hidden" onClick={handleToggleSidebar}>
                     <IconHamburger className="w-[1.75rem]" />
                 </Button>
-                <Logo  className="hidden md:block"/>
+                <Logo className="hidden md:block" />
                 <ul className="hidden md:flex gap-8 ">
                     {
-                        listMenu?.map((menu, i) => <ul key={i} className="text-gray-500">{menu?.label}</ul>)
+                        listMenu?.map((menu, i) => <Link key={i} label={menu?.label} url={menu?.url} className="hover:!no-underline" />)
                     }
                 </ul>
             </div>
