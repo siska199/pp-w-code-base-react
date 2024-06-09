@@ -17,11 +17,14 @@ const Badge = (props: TProps) => {
 
 
 const badgeVariants = cva(
-  'w-fit rounded-lg h-fit min-w-[3rem] flex gap-1 text-center border rounded items-center justify-center py-1  px-2 ',
+  'w-fit rounded-lg h-fit min-w-[3rem] flex gap-1 text-center font-medium rounded items-center justify-center py-1  px-2 ',
   {
     variants: {
       variant: {
-        'primary': "!border-primary-500 bg-primary-100 text-primary-700 "
+        'primary': "bg-primary-50 text-primary-700",
+        'success': "bg-success-50 text-success-700",
+        'error': "bg-error-50 text-error-700 ",
+
       },
       isRounded: {
         "false": "",

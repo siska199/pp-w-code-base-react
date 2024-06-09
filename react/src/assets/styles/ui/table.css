@@ -1,0 +1,10 @@
+@import url('../index.css');
+
+
+.column-checked{
+    @apply flex items-center justify-center py-3 px-4;
+}
+
+.column-data{
+    @apply py-3 px-6;
+}

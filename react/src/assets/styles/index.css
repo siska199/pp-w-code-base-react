@@ -37,6 +37,9 @@
     li{
         @apply text-gray
     }
+    th{
+        @apply text-left font-medium;
+    }
 
 }
 

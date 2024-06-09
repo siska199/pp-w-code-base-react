@@ -6,6 +6,7 @@ import ExampleLayout from "@components/examples/ExampleLayout"
 import ExampleModal from "@components/examples/ExampleModal"
 import ExampleProgressbar from "@components/examples/ExampleProgressbar"
 import ExampleSkeleton from "@components/examples/ExampleSkeleton"
+import ExampleTable from "@components/examples/ExampleTable"
 import ExampleTooltip from "@components/examples/ExampleTooltip"
 import LayoutType1 from "@components/layouts/LayoutType1"
 import CopyText from "@components/ui/CopyText"
@@ -24,7 +25,8 @@ const App = () => {
       <ExampleProgressbar />
       <ExampleSkeleton />
       <ExampleTooltip /> */}
-      <ExampleLayout />
+      {/* <ExampleLayout /> */}
+      <ExampleTable />
     </>
   )
 }

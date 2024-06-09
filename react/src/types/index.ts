@@ -16,9 +16,15 @@ export interface TOption {
   value: string;
 }
 
-
 export interface TTab {
   id: string;
   label: string;
+}
+
+export interface TColumn<TData, TKey extends keyof TData> {
+  name: string;
+  key: TKey ;
+  className?: string;
+  customeComponent?: (data: TData) => React.ReactNode;
 }
 /*----------------FORM--------------------*/

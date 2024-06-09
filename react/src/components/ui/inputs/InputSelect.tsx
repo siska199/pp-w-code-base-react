@@ -11,7 +11,7 @@ import { getFieldLabelFromOptions, isolateEvent, spreadArrayAttemp } from '@lib/
 import { TCustomeEventOnChange, TOption } from '@types';
 import clsx from 'clsx';
 import { useEffect, useRef, useState } from 'react';
-import InputCheckbox from './InputCheckbox';
+import InputCheckbox from './InputMultipleCheckbox';
 
 type TProps = {
     name: string;

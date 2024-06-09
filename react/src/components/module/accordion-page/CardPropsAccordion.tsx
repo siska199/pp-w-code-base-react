@@ -1,11 +1,12 @@
-import React from 'react'
+import CardSubMenu from "@components/cards/CardSubMenu"
 
-type Props = {}
 
-const CardPropsAccordion = (props: Props) => {
-  return (
-    <div>CardPropsAccordion</div>
-  )
+const CardPropsAccordion = () => {
+    return (
+        <CardSubMenu title={'Props'}>
+            1. options : 
+        </CardSubMenu>
+    )
 }
 
 export default CardPropsAccordion
