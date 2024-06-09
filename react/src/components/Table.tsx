@@ -62,36 +62,6 @@ const Table = <TData, TIncludeChecked extends boolean = false>(props: TProps<TDa
     }
 
 
-    const pageNumbers = React.useMemo(() => Array.from({ length: setting.totalPage }, (_, index) => index + 1), [setting.totalPage]);
-
-    const currentPage = setting.currentPage;
-    const totalPage = setting.totalPage;
-    const adjacentPageCount = 1;
-
-    let startIndex = currentPage - adjacentPageCount - 1;
-    let endIndex = currentPage + adjacentPageCount;
-
-    if (startIndex < 0) {
-        startIndex = 0;
-        endIndex = Math.min(3, totalPage);
-    } else if (endIndex == pageNumbers.length - 2) {
-        startIndex -= 1
-        endIndex -= 1
-    } else if (endIndex >= pageNumbers?.length - 1) {
-        console.log("masuk kesini")
-        startIndex = 0
-        endIndex = 3
-    }
-
-
-    const listPageNumberStart = pageNumbers.slice(startIndex, endIndex);
-    const listPageNumberEnd = pageNumbers.slice(totalPage - 3, totalPage);
-
-    const ButtonPageNumber = (pageNumber: number) => <Button onClick={() => handleOnChangePage(pageNumber)} variant={"icon"} className={clsx({
-        "w-[2.5rem] h-[2.5rem]": true,
-        "!bg-gray-100 font-bold": pageNumber === setting?.currentPage
-    })}>{pageNumber}</Button>
-
     return (
         <div className="border rounded-lg">
             <div className="relative  overflow-y-auto  max-h-[30rem] ">
@@ -146,27 +116,69 @@ const Table = <TData, TIncludeChecked extends boolean = false>(props: TProps<TDa
                 </table>
 
             </div>
-
-            <div className="flex items-center justify-between px-4 py-2 border-t">
-                <Button variant={"white"} disabled={setting?.currentPage <= 1} onClick={() => handleOnChangePage(setting?.currentPage - 1)} className="font-medium text-gray"><IconChevronLeft />Previous</Button>
-
-                <div className="flex items-center">
-                    {
-                        listPageNumberStart.map((pageNumber, i) => <span key={i}>{ButtonPageNumber(pageNumber)}</span>)
-                    }
-
-                    {<div>...</div>}
-
-                    {
-                        listPageNumberEnd?.map((pageNumber, i) => <span key={i}>{ButtonPageNumber(pageNumber)}</span>)
-                    }
-                </div>
-
-                <Button disabled={setting?.currentPage >= setting?.totalPage} onClick={() => handleOnChangePage(setting?.currentPage + 1)} variant={"white"} className="font-medium text-gray">Next<IconChevronRight /></Button>
-            </div>
+            <PaginationTable<TData, TIncludeChecked> setting={setting} onChangePage={handleOnChangePage} />
         </div>
 
     )
+}
+
+
+type TPropsPagination<TData, TIncludeChecked extends boolean> = Pick<TProps<TData, TIncludeChecked>, "setting"> & {
+    onChangePage: (params: any) => void;
+}
+
+const PaginationTable = <TData, TIncludeChecked extends boolean>(props: TPropsPagination<TData, TIncludeChecked>) => {
+    const { setting, onChangePage: handleOnChangePage } = props
+
+    const pageNumbers = React.useMemo(() => Array.from({ length: setting.totalPage }, (_, index) => index + 1), [setting.totalPage]);
+
+
+    let listPageNumberStart: number[] = []
+    let listPageNumberEnd: number[] = []
+    let startIndex = 0
+    let endIndex = 0
+
+    if (setting?.totalPage > 6) {
+        const adjacentPageCount = 1;
+        startIndex = setting?.currentPage - adjacentPageCount - 1;
+        endIndex = setting?.currentPage + adjacentPageCount;
+        if (startIndex < 0) {
+            startIndex = 0;
+            endIndex = Math.min(3, setting?.totalPage);
+        } else if (endIndex == pageNumbers.length - 2) {
+            startIndex -= 1
+            endIndex -= 1
+        } else if (endIndex >= pageNumbers?.length - 1) {
+            startIndex = 0
+            endIndex = 3
+        }
+        listPageNumberStart = pageNumbers.slice(startIndex, endIndex);
+        listPageNumberEnd = pageNumbers.slice(setting?.totalPage - 3, setting?.totalPage);
+    }
+
+
+    const ButtonPageNumber = (pageNumber: number) => <Button onClick={() => handleOnChangePage(pageNumber)} variant={"icon"} className={clsx({
+        "w-[2.5rem] h-[2.5rem]": true,
+        // eslint-disable-next-line react/prop-types
+        "!bg-gray-100 font-bold": pageNumber === setting?.currentPage
+    })}>{pageNumber}</Button>
+
+
+    return <div className="flex items-center justify-between px-4 py-2 border-t">
+        <Button variant={"white"} disabled={setting?.currentPage <= 1} onClick={() => handleOnChangePage(setting?.currentPage - 1)} className="font-medium text-gray"><IconChevronLeft />Previous</Button>
+
+        <div className="flex items-center">
+            {
+                setting?.totalPage > 6 ? <div className="flex items-center">
+                    {listPageNumberStart.map((pageNumber, i) => <span key={i}>{ButtonPageNumber(pageNumber)}</span>)}
+                    {listPageNumberEnd[0] - listPageNumberStart[listPageNumberStart?.length - 1] !== 1 && <div>...</div>}
+                    {listPageNumberEnd?.map((pageNumber, i) => <span key={i}>{ButtonPageNumber(pageNumber)}</span>)}
+                </div> : pageNumbers.map((pageNumber, i) => <span key={i}>{ButtonPageNumber(pageNumber)}</span>)
+            }
+        </div>
+
+        <Button disabled={setting?.currentPage >= setting?.totalPage} onClick={() => handleOnChangePage(setting?.currentPage + 1)} variant={"white"} className="font-medium text-gray">Next<IconChevronRight /></Button>
+    </div>
 }
 
 export default Table

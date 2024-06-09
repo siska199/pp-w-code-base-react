@@ -7,7 +7,7 @@ const ExampleTable = () => {
     type TData = (typeof getData)[0]
     const [setting, setSetting] = useState<TSettingTable<TData>>({
         currentPage: 1,
-        totalPage: 7,
+        totalPage: 10,
     })
     const columns: TColumn<TData, keyof TData>[] = React.useMemo(
         () => [
