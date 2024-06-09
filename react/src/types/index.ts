@@ -2,6 +2,9 @@
 export interface TObject {
   [key: string]: any
 }
+
+export type TResponseAPI = TObject
+
 export interface TCustomeEventOnChange<V> {
   target: {
     name: string
@@ -32,6 +35,8 @@ export interface TColumn<TData, TKey extends keyof TData> {
 export interface TSettingTable<TData,> {
   sortBy?: keyof TData;
   sortDir?: "asc" | "desc";
+  checked?: boolean;
+  pagination?: boolean;
   currentPage: number;
   totalPage: number;
 };

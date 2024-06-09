@@ -11,18 +11,14 @@ type WithOptionalChecked<T, TInclude extends boolean> = TInclude extends true ? 
 interface TProps<TData, TIncludeChecked extends boolean = false> {
     columns: TColumn<TData, keyof TData>[];
     data: WithId<WithOptionalChecked<TData, TIncludeChecked>>[];
-    additionalFeature?: {
-        checked?: boolean;
-    };
     setData: React.Dispatch<React.SetStateAction<WithOptionalChecked<TData, TIncludeChecked>[]>>
     setting: TSettingTable<TData>
     onChange: (params: any) => void;
-    withPagination?: boolean
 }
 
 
 const Table = <TData, TIncludeChecked extends boolean = false>(props: TProps<TData, TIncludeChecked>) => {
-    const { columns, data, setData, setting, onChange, additionalFeature, withPagination = false } = props
+    const { columns, data, setData, setting, onChange, } = props
 
     const isCheckedAll = !data?.some((dataRow: WithOptionalChecked<TData, TIncludeChecked>) => !dataRow.isChecked)
 
@@ -70,17 +66,26 @@ const Table = <TData, TIncludeChecked extends boolean = false>(props: TProps<TDa
                     <thead className="sticky z-[2] top-0 text-gray-500 bg-gray-50 overflow-hidden">
                         <tr className="border-b">
                             {
-                                additionalFeature?.checked && handleOnChangeChecked && <th className="column-checked"><InputCheckbox checked={isCheckedAll} value={'cheked-all'} onChange={handleOnChangeChecked} name={"cheked-all"} /></th>
+                                setting?.checked && handleOnChangeChecked && <th className="column-checked">
+                                    <InputCheckbox
+                                        checked={isCheckedAll}
+                                        value={'cheked-all'}
+                                        onChange={handleOnChangeChecked}
+                                        name={"cheked-all"} />
+                                </th>
                             }
                             {
                                 columns?.map((column, i) => <th className={`column-data  ${column?.className}`} key={i}>
                                     <div className="flex items-center">
                                         {column?.name}{column?.isSorted && <span onClick={() => handleSortColumn({ key: column.key })} className="cursor-pointer">
                                             {
-                                                setting?.sortBy === column?.key ? <IconArrowUp className={clsx({
-                                                    'icon-gray h-[1.25rem] transition-transform duration-300': true,
-                                                    "rotate-180": setting?.sortDir === "desc" && setting?.sortBy === column?.key
-                                                })} /> : <IconSort className="ml-1 w-[1.1rem] h-[1.1rem]" />
+                                                setting?.sortBy === column?.key ? <IconArrowUp
+                                                    className={clsx({
+                                                        'icon-gray h-[1.25rem] transition-transform duration-300': true,
+                                                        "rotate-180": setting?.sortDir === "desc" && setting?.sortBy === column?.key
+                                                    })} /> : <IconSort
+                                                    className="ml-1 w-[1.1rem] h-[1.1rem]"
+                                                />
                                             }
 
                                         </span>}
@@ -95,7 +100,7 @@ const Table = <TData, TIncludeChecked extends boolean = false>(props: TProps<TDa
 
                                 return <tr key={i} className="border-b ">
                                     {
-                                        additionalFeature?.checked && handleOnChangeChecked && <td className="column-checked"><InputCheckbox onChange={handleOnChangeChecked} checked={dataRow?.isChecked} value={JSON.stringify(dataRow)} name={`checked-${i}`} /></td>
+                                        setting?.checked && handleOnChangeChecked && <td className="column-checked"><InputCheckbox onChange={handleOnChangeChecked} checked={dataRow?.isChecked} value={JSON.stringify(dataRow)} name={`checked-${i}`} /></td>
                                     }
                                     {
                                         columns?.map((column, j) =>
@@ -118,7 +123,10 @@ const Table = <TData, TIncludeChecked extends boolean = false>(props: TProps<TDa
 
             </div>
             {
-                withPagination && <PaginationTable<TData, TIncludeChecked> setting={setting} onChangePage={handleOnChangePage} />
+                setting?.pagination && <PaginationTable<TData, TIncludeChecked>
+                    setting={setting}
+                    onChangePage={handleOnChangePage}
+                />
 
             }
         </div>
