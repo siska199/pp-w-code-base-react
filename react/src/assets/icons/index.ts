@@ -19,5 +19,7 @@ export { default as IconCheck } from '@assets/icons/check.svg?react';
 export { default as IconClipboard } from '@assets/icons/clipboard.svg?react';
 export { default as IconHamburger } from '@assets/icons/hamburger.svg?react';
 export { default as IconSearch } from '@assets/icons/search.svg?react';
-
+export { default as IconArrowUp } from '@assets/icons/arrow-up.svg?react';
+export { default as IconArrowDown } from '@assets/icons/arrow-down.svg?react';
+export { default as IconSort } from '@assets/icons/sort.svg?react';
 

@@ -69,8 +69,8 @@
     .icon-black path { @apply stroke-black }
     .icon-black-fill path { @apply fill-black  }
 
-    .icon-grey path { @apply stroke-gray }
-    .icon-grey-fill path { @apply fill-gray }
+    .icon-gray path { @apply stroke-gray }
+    .icon-gray-fill path { @apply fill-gray }
 
     .icon-primary path { @apply stroke-primary }
     .icon-primary-fill path { @apply fill-primary  }

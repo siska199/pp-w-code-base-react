@@ -16,7 +16,7 @@ const Button = (props: TProps) => {
   return (
     <CompButton
       {...attrs}
-      disabled={isLoading ?? attrs?.disabled}
+      disabled={isLoading || attrs?.disabled}
       className={cn(buttonVariants({ className, variant, sizeCustome, isRounded, isContained, }))}
     >
       {
@@ -30,15 +30,15 @@ const Button = (props: TProps) => {
 }
 
 const buttonVariants = cva(
-  'w-fit rounded-lg gap-1 h-fit items-center border  justify-center flex gap-sm  cursor-pointer-custome focus:outline-none focus:ring-4 ',
+  'w-fit rounded-lg gap-1 h-fit items-center border  justify-center flex gap-sm disabled:cursor-not-allowed  cursor-pointer-custome focus:outline-none focus:ring-4 ',
   {
     variants: {
       variant: {
         'primary': 'bg-primary hover:!bg-primary-400 border-primary focus:ring-primary-200 !text-white disabled:bg-primary-300 disabled:border-primary-300',
         'gray': 'bg-gray hover:!bg-gray-400 border-gray-200 focus:ring-gray-200 !text-white disabled:bg-gray-300 disabled:border-gray-300',
         'black': 'bg-black hover:!bg-black/75 border-black focus:ring-black/70 !text-white disabled:opacity-50 ',
-        'white': 'bg-white  hover:!bg-gray-100 text-gray-900 focus:ring-gray-200',
-        'icon': 'bg-white  hover:!bg-gray-100 text-gray-900 focus:ring-0 !p-2 border-none'
+        'white': 'bg-white  hover:!bg-gray-100 text-gray-900 focus:ring-gray-200 disabled:opacity-50 ',
+        'icon': 'bg-white  hover:!bg-gray-100 text-gray-900 focus:ring-0 !p-2 border-none disabled:opacity-50'
       },
       isContained: {
         "false": "bg-white",

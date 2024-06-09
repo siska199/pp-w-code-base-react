@@ -1,11 +1,14 @@
 import Table from "@components/Table";
 import Badge from "@components/ui/Badge";
-import { TColumn } from "@types";
+import { TColumn, TSettingTable } from "@types";
 import React, { useState } from "react";
 
 const ExampleTable = () => {
     type TData = (typeof getData)[0]
-
+    const [setting, setSetting] = useState<TSettingTable<TData>>({
+        currentPage: 1,
+        totalPage: 7,
+    })
     const columns: TColumn<TData, keyof TData>[] = React.useMemo(
         () => [
             {
@@ -16,12 +19,14 @@ const ExampleTable = () => {
             {
                 name: "Title",
                 key: "title",
-                className: ""
+                className: "",
+                isSorted: true
             },
             {
                 name: "Locate",
                 key: "locate",
-                className: " text-center"
+                className: " text-center",
+                isSorted: true
             },
             {
                 name: "Status",
@@ -39,9 +44,13 @@ const ExampleTable = () => {
     );
     const [data, setData] = useState(getData)
 
+    const handleOnChange = (params: TSettingTable<TData>) => {
+        setSetting(params)
+    }
+
     return (
         <div className="p-[5rem]">
-            <Table<TData, true> columns={columns} data={data} setData={setData} additionalFeature={{
+            <Table<TData, true>  setting={setting} onChange={handleOnChange} columns={columns} data={data} setData={setData} additionalFeature={{
                 checked: true
             }} />
         </div>

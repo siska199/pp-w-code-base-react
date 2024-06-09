@@ -8,7 +8,7 @@ interface TProps extends React.HTMLProps<HTMLDivElement>, VariantProps<typeof ba
 const Badge = (props: TProps) => {
   const { label, className, variant, isRounded, customeElement, ...attrs } = props
   return (
-    <span className={cn(badgeVariants({ className, variant, isRounded }))} {...attrs}>
+    <span className={`${cn(badgeVariants({ className, variant, isRounded }))} text-body-small`} {...attrs}>
       {label}
       {customeElement}
     </span>
@@ -17,14 +17,14 @@ const Badge = (props: TProps) => {
 
 
 const badgeVariants = cva(
-  'w-fit rounded-lg h-fit min-w-[3rem] flex gap-1 text-center font-medium rounded items-center justify-center py-1  px-2 ',
+  'w-fit rounded-lg h-fit min-w-[3rem] border flex gap-1 text-center font-medium rounded items-center justify-center py-1  px-2 ',
   {
     variants: {
       variant: {
         'primary': "bg-primary-50 text-primary-700",
         'success': "bg-success-50 text-success-700",
+        'warning': "bg-warning-50 text-warning-700 ",
         'error': "bg-error-50 text-error-700 ",
-
       },
       isRounded: {
         "false": "",

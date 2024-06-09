@@ -23,8 +23,17 @@ export interface TTab {
 
 export interface TColumn<TData, TKey extends keyof TData> {
   name: string;
-  key: TKey ;
+  key: TKey;
   className?: string;
   customeComponent?: (data: TData) => React.ReactNode;
+  isSorted?: boolean;
 }
+
+export interface TSettingTable<TData,> {
+  sortBy?: keyof TData;
+  sortDir?: "asc" | "desc";
+  currentPage: number;
+  totalPage: number;
+};
+
 /*----------------FORM--------------------*/
