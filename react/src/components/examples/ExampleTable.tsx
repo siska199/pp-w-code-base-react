@@ -50,7 +50,7 @@ const ExampleTable = () => {
 
     return (
         <div className="p-[5rem]">
-            <Table<TData, true>  setting={setting} onChange={handleOnChange} columns={columns} data={data} setData={setData} additionalFeature={{
+            <Table<TData, true> withPagination setting={setting} onChange={handleOnChange} columns={columns} data={data} setData={setData} additionalFeature={{
                 checked: true
             }} />
         </div>
