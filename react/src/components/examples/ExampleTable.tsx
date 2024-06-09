@@ -11,7 +11,7 @@ const ExampleTable = () => {
             {
                 name: "Name",
                 key: "name",
-                className: "w-[10rem]"
+                className: "w-[10rem] text-center"
             },
             {
                 name: "Title",
@@ -21,7 +21,7 @@ const ExampleTable = () => {
             {
                 name: "Locate",
                 key: "locate",
-                className: ""
+                className: " text-center"
             },
             {
                 name: "Status",
@@ -32,7 +32,7 @@ const ExampleTable = () => {
             {
                 name: "Role",
                 key: "role",
-                className: "",
+                className: " text-center",
             },
         ],
         []
