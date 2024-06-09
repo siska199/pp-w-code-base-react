@@ -34,7 +34,6 @@ const Table = <TData, TIncludeChecked extends boolean = false>(props: TProps<TDa
                 const isCheckedCurrData = valueParse?.id === data?.id ? isChecked : data?.isChecked
                 return { ...data, isChecked: isCheckedCurrData }
             })
-            console.log(dataChecked)
             setData(dataChecked)
         }
     }
