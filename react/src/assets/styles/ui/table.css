@@ -2,7 +2,7 @@
 
 
 .column-checked{
-    @apply flex items-center justify-center py-3 px-4;
+    @apply flex items-center justify-center py-3 px-2;
 }
 
 .column-data{

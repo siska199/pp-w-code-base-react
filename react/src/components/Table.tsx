@@ -38,15 +38,15 @@ const Table = <TData, TIncludeChecked extends boolean = false>(props: TProps<TDa
         }
     }
     return (
-        <div className="border relative  overflow-y-auto">
-            <table className="table-auto rounded w-full ">
+        <div className="relative  overflow-y-auto border max-h-[30rem] rounded-lg">
+            <table className="table-auto  w-full ">
                 <thead className="sticky z-[2] top-0 text-gray-500 bg-gray-50 overflow-hidden">
                     <tr className="border-b">
                         {
                             additionalFeature?.checked && handleOnChangeChecked && <th className="column-checked"><InputCheckbox checked={isCheckedAll} value={'cheked-all'} onChange={handleOnChangeChecked} name={"cheked-all"} /></th>
                         }
                         {
-                            columns?.map((column, i) => <th className={` column-data ${column?.className}`} key={i}>{column?.name}</th>)
+                            columns?.map((column, i) => <th className={`column-data ${column?.className}`} key={i}>{column?.name}</th>)
                         }
                     </tr>
                 </thead>
