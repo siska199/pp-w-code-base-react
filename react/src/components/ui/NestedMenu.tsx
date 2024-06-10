@@ -1,61 +1,107 @@
 import IconChevronToggle from "@assets/icons/IconChevronToggle";
 import { cn, isEmptyValue } from "@lib/utils/helper";
-import { TItemMenu, TObject } from "@types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-interface TProps{
-    menu :TItemMenu[];
-    activeMenu : TItemMenu;
-    onChangeMenu : (params:TItemMenu)=>any;
-    setting? :TObject;
-    level  :number;
+export interface TItemMenu {
+    name: string;
+    url?: string;
+    childs?: TItemMenu[];
+}
+
+interface TLevelSetting {
+    expandInFirstRender?: boolean;
+    customeClass?: {
+        label?: string;
+    };
+    defaultOpen?: boolean;
+}
+
+interface TMenuSettings {
+    [level: number]: TLevelSetting;
+}
+
+interface TProps {
+    menu: TItemMenu[];
+    activeMenu: TItemMenu;
+    onChangeMenu: (params: TItemMenu) => any;
+    setting?: TMenuSettings;
+    level?: number;
+    isOpen?: boolean;
 }
 
 const NestedMenu = (props: TProps) => {
+    return <RenderMenu {...props} isOpen={true} />;
+};
 
-  return <RenderMenu {...props} level={0}/>
-}
+const RenderMenu = (props: TProps) => {
+    const { activeMenu, menu, setting, level = 0, isOpen, onChangeMenu: handleOnChangeMenu } = props;
+    const [openMenus, setOpenMenus] = useState<{ [key: string]: boolean }>({});
 
+    useEffect(() => {
+        const defaultOpenMenus: any = {};
+        const initializeOpenMenus = (menus: TItemMenu[], level: number) => {
+            menus.forEach((menu) => {
+                if (menu.childs && (setting?.[level]?.defaultOpen || false)) {
+                    defaultOpenMenus[menu.name] = true;
+                    initializeOpenMenus(menu.childs as TItemMenu[], level + 1);
+                }
+            });
+        };
 
-const RenderMenu = (props:TProps) => {
-    const {activeMenu,menu,setting, level=0, onChangeMenu:handleOnChangeMenu}=props
-    const [isOpen,setIsOpen] =useState(false);
+        initializeOpenMenus(menu, level);
 
-    const handleOnClickMenu = (groupMenu:TItemMenu)=>{
-        isEmptyValue(groupMenu?.childs) ? handleOnChangeMenu(groupMenu): setIsOpen(!isOpen)
-    }
+        setOpenMenus(defaultOpenMenus);
+    }, [level, menu, setting]);
+
+    const handleOnClickMenu = (groupMenu: TItemMenu) => {
+        if (isEmptyValue(groupMenu?.childs)) {
+            handleOnChangeMenu(groupMenu);
+        } else {
+            setOpenMenus((prevOpenMenus) => ({
+                ...prevOpenMenus,
+                [groupMenu.name]: !prevOpenMenus[groupMenu.name],
+            }));
+        }
+    };
+
     return (
         <ul className={cn({
-            "flex flex-col   overflow-y-auto max-h-full ":true,
-            "ml-2":level>1
+            "flex flex-col overflow-y-auto transition-all duration-100 ease": true,
+            "ml-2": level > 1,
+            "opacity-100 max-h-full": isOpen,
+            "opacity-0 max-h-0": !isOpen,
         })}>
-            {menu?.map((groupMenu:TItemMenu, i) => (
+            {menu?.map((groupMenu: TItemMenu, i) => (
                 <li key={i} className="">
-                    <div  
-                        onClick={ ()=>handleOnClickMenu(groupMenu)}
+                    <div
+                        onClick={() => handleOnClickMenu(groupMenu)}
                         className={cn({
-                            "mb-2 flex items-center cursor-pointer ":true,
+                            "mb-2 flex items-center cursor-pointer": true,
                         })}
                     >
-                            <span className={cn({
-                                "":true,
-                                [setting?.[level]?.customeClass?.label || ""] :setting?.[level]?.customeClass?.label
-                            })}>{groupMenu?.name} </span>
-                            {!isEmptyValue(groupMenu?.childs) && <IconChevronToggle className="icon-primary  h-[1.1rem]" isOpen={groupMenu?.name===activeMenu?.name}/>} 
+                        <span className={cn({
+                            "": true,
+                            [setting?.[level]?.customeClass?.label || ""]: setting?.[level]?.customeClass?.label
+                        })}>{groupMenu?.name}</span>
+                        {!isEmptyValue(groupMenu?.childs) && (
+                            <IconChevronToggle className={` icon-primary h-[1.1rem]`} variant="2" isOpen={openMenus[groupMenu.name]} />
+                        )}
                     </div>
-                    
-                    {!isEmptyValue(groupMenu?.childs) && RenderMenu({
-                        menu : groupMenu?.childs as TItemMenu[],
-                        level:level+1,
-                        activeMenu,
-                        setting,
-                        onChangeMenu:handleOnChangeMenu
-                    })}
+
+                    {!isEmptyValue(groupMenu?.childs) && (
+                        <RenderMenu
+                            menu={groupMenu?.childs as TItemMenu[]}
+                            level={level + 1}
+                            activeMenu={activeMenu}
+                            setting={setting}
+                            onChangeMenu={handleOnChangeMenu}
+                            isOpen={openMenus[groupMenu.name]}
+                        />
+                    )}
                 </li>
             ))}
         </ul>
     );
 };
 
-
-export default NestedMenu
+export default NestedMenu;

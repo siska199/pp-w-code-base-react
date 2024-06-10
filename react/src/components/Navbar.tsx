@@ -8,8 +8,6 @@ import useSidebar from "@hooks/ui/useSidebar"
 const Navbar = () => {
     const { handleToggleSidebar } = useSidebar()
 
-
-
     return (
         <nav id="navbar" className="bg-blur w-full sticky  z-[99] flex items-center justify-between white top-0 left-0 border-b px-8 py-4">
             <div className="flex items-center gap-8">
@@ -37,6 +35,10 @@ const listMenu = [
     {
         label: 'Components',
         url: '/docs/components/acccordion'
+    },
+    {
+        label: 'Examples',
+        url: '/docs/components/examples'
     },
     {
         label: 'Github',

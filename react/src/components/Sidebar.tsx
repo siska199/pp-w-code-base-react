@@ -2,20 +2,19 @@ import { IconClose } from "@assets/icons"
 import Logo from "@components/ui/Logo"
 import useSidebar from "@hooks/ui/useSidebar"
 import { handleStopPropagation } from "@lib/utils/helper"
-import { TItemMenu } from "@types"
 import { useEffect, useState } from "react"
-import NestedMenu from "./ui/NestedMenu"
+import NestedMenu, { TItemMenu } from "./ui/NestedMenu"
 
 
 const Sidebar = () => {
     const [topPosition, setTopPosition] = useState(0);
     const { handleToggleSidebar } = useSidebar();
 
-    
-    const [activeMenu, setActiveMenu] =useState<TItemMenu>({
+
+    const [activeMenu, setActiveMenu] = useState<TItemMenu>({
         name: "",
         url: "",
-        childs:[]
+        childs: []
     })
 
     useEffect(() => {
@@ -27,7 +26,7 @@ const Sidebar = () => {
 
     }, [])
 
-    const handleChangeActiveMenu = (data:TItemMenu)=>{
+    const handleChangeActiveMenu = (data: TItemMenu) => {
         setActiveMenu(data)
     }
 
@@ -42,16 +41,20 @@ const Sidebar = () => {
                             <Logo className="text-body-medium" />
                             <IconClose onClick={handleToggleSidebar} className="ml-auto" />
                         </div>
-                        <NestedMenu 
-                        setting={{
-                            "0":{
-                                expandInFirstRender:true,
-                                customeClass :{
-                                    label:"text-black font-medium"
+                        <NestedMenu
+                            setting={{
+                                "0": {
+                                    expandInFirstRender: true,
+                                    customeClass: {
+                                        label: "text-black font-medium"
+                                    },
+                                    defaultOpen: false
+                                },
+                                "1": {
+                                    defaultOpen: false
                                 }
-                            }
-                        }}
-                        menu={listGroupMenu} activeMenu={activeMenu} onChangeMenu={handleChangeActiveMenu}/>
+                            }}
+                            menu={listGroupMenu} activeMenu={activeMenu} onChangeMenu={handleChangeActiveMenu} />
                     </div>
                 </div>
             </div >
@@ -135,17 +138,17 @@ const listGroupMenu = [
             {
                 name: 'Input',
                 url: '/docs/components/input',
-                childs : [
+                childs: [
                     {
-                        name :'Base',
+                        name: 'Base',
                         url: '/docs/components/input/base',
                     },
                     {
-                        name:'Checkbox',
+                        name: 'Checkbox',
                         url: '/docs/components/input/checkbox',
                     },
                     {
-                        name:'Multiple Checkbox',
+                        name: 'Multiple Checkbox',
                         url: '/docs/components/input/multiple-checkbox',
                     },
                     {
@@ -161,28 +164,28 @@ const listGroupMenu = [
                         url: '/docs/components/input/npwp',
                     },
                     {
-                        name: 'Input OTP',
+                        name: 'OTP',
                         url: '/docs/components/input/otp',
                     },
                     {
-                        name: 'Input Percentage',
+                        name: 'Percentage',
                         url: '/docs/components/input/percentage',
-                    },                    
+                    },
                     {
-                        name: 'Input Phone Number',
+                        name: 'Phone Number',
                         url: '/docs/components/input/phone-number'
                     },
                     {
-                        name: 'Input Radio Button',
+                        name: 'Radio Button',
                         url: '/docs/components/input/phone-number'
                     },
                     {
-                        name: 'Input Select',
+                        name: 'Select',
                         url: '/docs/components/input/select'
                     },
                     {
-                        name: 'Input Text Area',
-                        url: '/docs/components/input/text-area'
+                        name: 'Text Area',
+                        url: '/docs/components/input/text-area',
                     },
                 ]
             },
@@ -205,7 +208,7 @@ const listGroupMenu = [
             {
                 name: 'Modal',
                 url: '/docs/components/modal',
-                childs:[
+                childs: [
                     {
                         name: 'Modal Confirmation',
                         url: '/docs/components/modal/confirmation',

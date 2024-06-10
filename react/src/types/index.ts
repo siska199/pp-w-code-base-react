@@ -36,12 +36,6 @@ export interface TItemList {
 }
 
 
-export interface TItemMenu {
-  name: string;
-  url?: string;
-  childs?: TItemMenu[];
-}
-
 
 export interface TColumn<TData, TKey extends keyof TData> {
   name: string;

@@ -3,22 +3,25 @@ import { cn } from '@lib/utils/helper';
 
 interface TProps {
     isOpen: boolean;
-    onClick?:()=>void;
+    onClick?: () => void;
+    variant?: "1" | "2"
     className?: string;
+
 }
 
 const IconChevronToggle = (props: TProps) => {
-    const { isOpen, onClick,className,...attrs } = props
-    
-    const handleOnClick =()=>{
+    const { isOpen, onClick, className, variant = "1", ...attrs } = props
+
+    const handleOnClick = () => {
         onClick && onClick()
     }
     return (
         <IconChevronDown className={cn({
             "transition-transform flex-inline duration-300 cursor-pointer": true,
-            "rotate-180": isOpen,
-            [className||'']:className
-        })} {...attrs} onClick={handleOnClick}/>
+            [`${variant === "1" && "rotate-0"} ${variant === "2" && "-rotate-90"}`]: !isOpen,
+            [`${variant === "1" && "rotate-180"} ${variant === "2" && "rotate-0"}`]: isOpen,
+            [className || '']: className
+        })} {...attrs} onClick={handleOnClick} />
     )
 }
 
