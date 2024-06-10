@@ -28,7 +28,7 @@ const Sidebar = () => {
 
                     <div className="p-8 w-full flex flex-col gap-4 relative  h-full">
                         <div id="icon-close" className="hidden justify-between absolute top-6 right-6 cursor-pointer ml-auto">
-                            <Logo className="text-body-medium"/>
+                            <Logo className="text-body-medium" />
                             <IconClose onClick={handleToggleSidebar} className="ml-auto" />
                         </div>
                         <div className="flex flex-col gap-4  overflow-y-auto max-h-full ">
@@ -57,27 +57,60 @@ const Sidebar = () => {
 
 const listGroupMenu = [
     {
+        name: 'Getting Started',
+        childs: [
+            {
+                name: 'Introduction',
+                url: '/docs',
+            },
+            {
+                name: 'Installation',
+                url: '/docs/installation',
+            },
+            {
+                name: 'Typography',
+                url: '/docs/components/typography',
+            }
+        ]
+    },
+    {
+        name: 'Icons',
+        url: '/docs/icons'
+    },
+    {
         name: 'Components',
         childs: [
             {
                 name: 'Accordion',
-                url: '/'
+                url: '/docs/components/accordion'
+            },
+            {
+                name: 'Alert',
+                url: '/docs/components/alert'
+            },
+            {
+                name: 'Avatar',
+                url: '/docs/components/avatar'
             },
             {
                 name: 'Badge',
-                url: '/'
+                url: '/docs/components/badge'
+            },
+            {
+                name: 'Breadcrumb',
+                url: '/docs/components/breadcrumb'
             },
             {
                 name: 'Button',
-                url: '/'
+                url: '/docs/components/button'
             },
             {
                 name: 'Container',
-                url: '/'
+                url: '/docs/components/container'
             },
             {
                 name: 'Copy Text',
-                url: '/'
+                url: '/docs/components/copy-text'
             },
             {
                 name: 'Dropdown',

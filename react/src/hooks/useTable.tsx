@@ -14,9 +14,9 @@ const useTable = (props: TProps) => {
     type TData = (typeof data)[0]
 
     const [setting, setSetting] = useState<TSettingTable<TData>>({
-        ...initialSetting,
         currentPage: 1,
         totalPage: 10,
+        ...initialSetting,
     })
 
     const columns: TColumn<TData, keyof TData>[] = React.useMemo(

@@ -2,13 +2,11 @@ import Navbar from "@components/Navbar"
 import RightSidebar from "@components/RightSidebar"
 import Sidebar from "@components/Sidebar"
 import { useEffect, useState } from "react"
+import { Outlet } from "react-router-dom"
 
-interface TProps {
-    children: React.ReactNode
-}
 
-const LayoutType1 = (props: TProps) => {
-    const { children } = props
+
+const LayoutType1 = () => {
     const [widthSidebar, setWidthSidebar] = useState(0)
     const [widthRightSidebar, setWidthRightSidebar] = useState(0)
     const [leftPosition, setLeftPosition] = useState(0)
@@ -55,7 +53,7 @@ const LayoutType1 = (props: TProps) => {
                         width: `calc(100% - ${leftPosition + rightPosition}px)`,
                     }}>
                     <div className="min-h-screen max-w-full flex flex-col gap-10">
-                        {children}
+                        <Outlet />
                     </div>
                     <RightSidebar />
                 </div>

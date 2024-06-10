@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-handler-names */
 import { TBasePropsInput } from '@/types/ui/index';
 import ContainerInput from "@components/ui/inputs/ContainerInput";
 import React from 'react';
@@ -13,7 +12,11 @@ const InputBase = (props: TProps) => {
     return (
         <ContainerInput<React.HTMLProps<HTMLInputElement>>  {...attrs} isClerable>
             {
-                (attrsInput) => <input {...attrsInput} id={attrsInput?.name} placeholder={attrs?.variant === "v2" ? "" : attrsInput?.placeholder || ""} />
+                (attrsInput) => <input
+                    {...attrsInput}
+                    id={attrsInput?.name}
+                    placeholder={attrs?.variant === "v2" ? "" : attrsInput?.placeholder || ""}
+                />
             }
         </ContainerInput>
     );

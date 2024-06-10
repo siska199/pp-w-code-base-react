@@ -38,7 +38,8 @@ const ExampleTable = () => {
         initialSetting: {
             sortBy: "",
             sortDir: "",
-            checked: true
+            checked: true,
+            pagination: true
         }
     })
 
