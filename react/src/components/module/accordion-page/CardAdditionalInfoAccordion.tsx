@@ -13,7 +13,7 @@ const CardAdditionalInfoAccordion = () => {
             </>
         },
         {
-            title: "TOptions",
+            title: "TItemAccordion",
             caption: <>
                 <p>This is the type definition for the option used by the Accordion component.</p>
                 <CodeBlock codeString={displayTOption} />
@@ -29,7 +29,7 @@ const CardAdditionalInfoAccordion = () => {
 }
 
 const displayIconChevronToggle = `import { IconChevronDown } from '@assets/icons';
-import clsx from 'clsx';
+import { cn } from '@lib/utils/helper';
 
 interface TProps {
     isOpen: boolean;
@@ -38,7 +38,7 @@ interface TProps {
 const IconChevronToggle = (props: TProps) => {
     const { isOpen } = props
     return (
-        <IconChevronDown className={clsx({
+        <IconChevronDown className={cn({
             "transition-transform duration-300 cursor-pointer": true,
             "rotate-180": isOpen
         })} />
@@ -47,8 +47,8 @@ const IconChevronToggle = (props: TProps) => {
 
 export default IconChevronToggle`
 
-const displayTOption = `export interface TOption {
-  label : string;
-  value:string;
+const displayTOption = `export interface TItemAccordion {
+  label:string;
+  content: string;
 }`
 export default CardAdditionalInfoAccordion

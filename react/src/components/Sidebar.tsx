@@ -1,14 +1,22 @@
 import { IconClose } from "@assets/icons"
-import Link from "@components/ui/Link"
 import Logo from "@components/ui/Logo"
 import useSidebar from "@hooks/ui/useSidebar"
 import { handleStopPropagation } from "@lib/utils/helper"
+import { TItemMenu } from "@types"
 import { useEffect, useState } from "react"
+import NestedMenu from "./ui/NestedMenu"
 
 
 const Sidebar = () => {
-    const [topPosition, setTopPosition] = useState(0)
-    const { handleToggleSidebar } = useSidebar()
+    const [topPosition, setTopPosition] = useState(0);
+    const { handleToggleSidebar } = useSidebar();
+
+    
+    const [activeMenu, setActiveMenu] =useState<TItemMenu>({
+        name: "",
+        url: "",
+        childs:[]
+    })
 
     useEffect(() => {
         // Get Navbar Height for set position of the sidebar from top
@@ -19,6 +27,9 @@ const Sidebar = () => {
 
     }, [])
 
+    const handleChangeActiveMenu = (data:TItemMenu)=>{
+        setActiveMenu(data)
+    }
 
 
     return (
@@ -31,19 +42,16 @@ const Sidebar = () => {
                             <Logo className="text-body-medium" />
                             <IconClose onClick={handleToggleSidebar} className="ml-auto" />
                         </div>
-                        <div className="flex flex-col gap-4  overflow-y-auto max-h-full ">
-                            {
-                                listGroupMenu?.map((groupMenu, i) => <div key={i} className="font-medium">
-                                    <div className="mb-4">{groupMenu?.name}</div>
-                                    <ul className="flex flex-col gap-2">
-                                        {
-                                            groupMenu?.childs?.map((menu, j) => <Link key={j} url={menu.url} label={menu?.name} />)
-                                        }
-                                    </ul>
-                                </div>
-                                )
+                        <NestedMenu 
+                        setting={{
+                            "0":{
+                                expandInFirstRender:true,
+                                customeClass :{
+                                    label:"text-black font-medium"
+                                }
                             }
-                        </div>
+                        }}
+                        menu={listGroupMenu} activeMenu={activeMenu} onChangeMenu={handleChangeActiveMenu}/>
                     </div>
                 </div>
             </div >
@@ -114,79 +122,95 @@ const listGroupMenu = [
             },
             {
                 name: 'Dropdown',
-                url: '/'
+                url: '/docs/components/dropdown'
             },
             {
                 name: 'Helper Message',
-                url: '/'
+                url: '/docs/components/helper-message'
             },
             {
                 name: 'Image',
-                url: '/'
+                url: '/docs/components/image'
             },
             {
-                name: 'Input Base',
-                url: '/'
-            },
-            {
-                name: 'Input Checkbox',
-                url: '/'
-            },
-            {
-                name: 'Input Currency',
-                url: '/'
-            },
-            {
-                name: 'Input Date',
-                url: '/'
-            },
-            {
-                name: 'Input NPWP',
-                url: '/'
-            },
-            {
-                name: 'Input OTP',
-                url: '/'
-            },
-            {
-                name: 'Input Percentage',
-                url: '/'
-            },
-            {
-                name: 'Input Phone Number',
-                url: '/'
-            },
-            {
-                name: 'Input Radio Button',
-                url: '/'
-            },
-            {
-                name: 'Input Select',
-                url: '/'
-            },
-            {
-                name: 'Input Text Area',
-                url: '/'
+                name: 'Input',
+                url: '/docs/components/input',
+                childs : [
+                    {
+                        name :'Base',
+                        url: '/docs/components/input/base',
+                    },
+                    {
+                        name:'Checkbox',
+                        url: '/docs/components/input/checkbox',
+                    },
+                    {
+                        name:'Multiple Checkbox',
+                        url: '/docs/components/input/multiple-checkbox',
+                    },
+                    {
+                        name: 'Currency',
+                        url: '/docs/components/input/currency',
+                    },
+                    {
+                        name: 'Date',
+                        url: '/docs/components/input/date',
+                    },
+                    {
+                        name: 'NPWP',
+                        url: '/docs/components/input/npwp',
+                    },
+                    {
+                        name: 'Input OTP',
+                        url: '/docs/components/input/otp',
+                    },
+                    {
+                        name: 'Input Percentage',
+                        url: '/docs/components/input/percentage',
+                    },                    
+                    {
+                        name: 'Input Phone Number',
+                        url: '/docs/components/input/phone-number'
+                    },
+                    {
+                        name: 'Input Radio Button',
+                        url: '/docs/components/input/phone-number'
+                    },
+                    {
+                        name: 'Input Select',
+                        url: '/docs/components/input/select'
+                    },
+                    {
+                        name: 'Input Text Area',
+                        url: '/docs/components/input/text-area'
+                    },
+                ]
             },
             {
                 name: 'Link',
-                url: '/'
+                url: '/docs/components/link'
             },
             {
-                name: 'Logo',
-                url: '/'
+                name: 'List',
+                url: '/docs/components/list'
             },
             {
                 name: 'Progressbar',
-                url: '/'
+                url: '/docs/components/progressbar'
             },
             {
                 name: 'Progress Step',
-                url: '/'
+                url: '/docs/components/progres-step'
             },
             {
                 name: 'Modal',
-                url: '/'
+                url: '/docs/components/modal',
+                childs:[
+                    {
+                        name: 'Modal Confirmation',
+                        url: '/docs/components/modal/confirmation',
+                    }
+                ]
             },
         ]
     }

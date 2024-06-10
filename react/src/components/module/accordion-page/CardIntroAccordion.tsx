@@ -1,7 +1,6 @@
 import CardIntro from "@components/cards/CardIntro"
 import Accordion from "@components/ui/Accordion"
 
-
 const CardIntroAccordion = () => {
     return (
         <CardIntro
@@ -14,79 +13,108 @@ const CardIntroAccordion = () => {
 }
 
 const DisplayAccordion = () => {
-    const listOption = [
+    const listItems = [
         {
             label: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-            value: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+            content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
         molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
         numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
         optio,`
         },
         {
             label: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-            value: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+            content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
         molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
         numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
         optio,`
         },
         {
             label: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-            value: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+            content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
         molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
         numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
         optio,`
         }
     ]
-    return <Accordion options={listOption} />
+    return <Accordion  items={listItems} />
 }
 
-const displayCodeBase = `/* eslint-disable react/jsx-handler-names */
-import IconChevronToggle from "@assets/icons/IconChevronToggle"
-import { TOption } from "@types"
-import clsx from "clsx"
-import { useState } from "react"
+const displayCodeBase = `import IconChevronToggle from "@assets/icons/IconChevronToggle";
+import { cn } from "@lib/utils/helper";
+import { TItemAccordion } from "@types";
+import { useState } from "react";
 
 interface TProps {
-  options: TOption[]
+  items : TItemAccordion[];
+  customeClass? :{
+    containerItems?   :string;
+    container?        :string;
+    containerLabel?   : string;
+    containerContent? :string;
+  }
 }
 
 const Accordion = (props: TProps) => {
-  const { options } = props
+  const {items,customeClass } = props
   return (
-    <div className="flex flex-col gap-2">
+    // Container items
+    <div className={cn({
+      "flex flex-col gap-2":true,
+      [customeClass?.containerItems||""]:customeClass?.containerItems,
+    })}>
       {
-        options?.map((option, i) => (
-          <Floating key={i} {...option} />
+        items?.map((item, i) => (
+          <Floating key={i} {...item} customeClass={customeClass} />
         ))
       }
     </div>
   )
 }
 
+type TFloatingProps = TItemAccordion&Pick<TProps,"customeClass">
 
-const Floating = (props: TOption) => {
-  const { label, value } = props
+export const Floating = (props: TFloatingProps ) => {
+  const { label, content,customeClass } = props
+  
   const [isOpen, setIsOpen] = useState(false)
 
+  const handleToggleAccordion=()=>{
+    setIsOpen(!isOpen)
+  }
+
   return (
-    <div className="flex flex-col gap-2 gap w-full border-b py-3">
-      <div className="flex items-center w-full font-medium text-body-large justify-between">
+    // Container
+    <div className={cn({
+      'flex flex-col gap-2 gap w-full border-b py-3':true,
+      [customeClass?.container || '']:customeClass?.container
+    })}>
+      
+      {/* Container Label */}
+      <div className={cn({
+        'flex items-center w-full font-medium text-body-medium justify-between':true,
+        [customeClass?.containerLabel ||'']: customeClass?.containerLabel
+      })}>
         {label}
-        <div className="cursor-pointer-custome" onClick={() => setIsOpen(!isOpen)}>
+        <div className="cursor-pointer-custome" onClick={() => handleToggleAccordion()}>
           <IconChevronToggle isOpen={isOpen} />
         </div>
       </div>
-      <div className={clsx({
-        "transition-all  duration-100 ease  text-body-medium text-gray": true,
-        " opacity-100 max-h-[10rem]": isOpen,
-        " opacity-0 max-h-0": !isOpen
+
+      {/* Container Content */}
+      <div className={cn({
+        "transition-all duration-100 ease": true,
+        "opacity-100 max-h-[10rem]": isOpen,
+        "opacity-0 max-h-0": !isOpen,
+        [customeClass?.containerContent||""] : customeClass?.containerContent
       })}>
-        {value}
+        <p className="">
+          {content}
+        </p>
       </div>
+
     </div>
   )
 }
 
-export default Accordion
-`;
+export default Accordion`
 export default CardIntroAccordion

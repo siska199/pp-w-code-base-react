@@ -24,6 +24,25 @@ export interface TTab {
   label: string;
 }
 
+export interface TItemAccordion {
+  label:string;
+  content: string;
+}
+
+export interface TItemList {
+  label?: string;
+  content: React.ReactNode;
+  childs?: TItemList[]; // Make it recursive
+}
+
+
+export interface TItemMenu {
+  name: string;
+  url?: string;
+  childs?: TItemMenu[];
+}
+
+
 export interface TColumn<TData, TKey extends keyof TData> {
   name: string;
   key: TKey;

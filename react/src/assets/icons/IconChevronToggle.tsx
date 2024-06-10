@@ -1,17 +1,24 @@
 import { IconChevronDown } from '@assets/icons';
-import clsx from 'clsx';
+import { cn } from '@lib/utils/helper';
 
 interface TProps {
     isOpen: boolean;
+    onClick?:()=>void;
+    className?: string;
 }
 
 const IconChevronToggle = (props: TProps) => {
-    const { isOpen } = props
+    const { isOpen, onClick,className,...attrs } = props
+    
+    const handleOnClick =()=>{
+        onClick && onClick()
+    }
     return (
-        <IconChevronDown className={clsx({
-            "transition-transform duration-300 cursor-pointer": true,
-            "rotate-180": isOpen
-        })} />
+        <IconChevronDown className={cn({
+            "transition-transform flex-inline duration-300 cursor-pointer": true,
+            "rotate-180": isOpen,
+            [className||'']:className
+        })} {...attrs} onClick={handleOnClick}/>
     )
 }
 
