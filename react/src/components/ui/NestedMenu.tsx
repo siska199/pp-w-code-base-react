@@ -90,7 +90,8 @@ const RenderMenu = (props: TProps) => {
                             "mb-2 flex items-center cursor-pointer": true,
                         })}
                     >
-                        <LinkCustome to={"/"}
+                        <LinkCustome
+                            to={"/"}
                             className={cn({
                                 "": true,
                                 "pl-2": level > 0,

@@ -54,7 +54,7 @@ const CopyText = (props: Props) => {
     return (
         <Container variant={variant || "hsc"} gap={"small"} className={`${classContainer}`}>
             <p className={`${classText}`}>{text}</p>
-            <Button variant='icon' className={`${classIcon}`} onClick={() => isCopied ? null : handleCopyToClipboard()} >
+            <Button variant='plain' className={`${classIcon}`} onClick={() => isCopied ? null : handleCopyToClipboard()} >
                 {
                     isCopied ? <IconCheck className='icon-primary' /> : <IconClipboard className='icon-primary w-[1rem]' />
                 }
