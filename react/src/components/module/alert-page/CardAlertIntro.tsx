@@ -25,27 +25,35 @@ const DisplayAlert = () => {
 
   return (
     <div className="flex flex-col items-center gap-4">
-      <Button variant={"white"} onClick={() => handleToggleAlert()} >Show Alert</Button>
-      <Alert variant="success" withCloseBtn show={showAlert} onDismiss={handleToggleAlert}>
-        Sukses makan
-      </Alert>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 w-full">
+        <p className="text-left text-black font-medium text-body-medium">Show alert after click Button:</p>
+        <div className="flex flex-col items-center gap-4">
+          <Button variant={"white"} onClick={() => handleToggleAlert()} >Show Alert</Button>
+          <Alert variant="success" withCloseBtn show={showAlert} onDismiss={handleToggleAlert}>
+            Sukses makan
+          </Alert>
+        </div>
+      </div>
+      <div className="flex flex-col gap-4 w-full">
         <p className="text-black font-medium text-body-medium">Example variant:</p>
-        <Alert variant="notification" withCloseBtn={true} isFixed={false} show={true}>
-          s mollitia non itaque, natus, accusantium tenetur deserunt maxime? Praesentium, veritatis!
-        </Alert>
-        <Alert variant="info"  isFixed={false} show={true}>
-          s mollitia non itaque, natus, accusantium tenetur deserunt maxime? Praesentium, veritatis!
-        </Alert>
-        <Alert variant="warning" isFixed={false} autoClose={false} show={true}>
-          s mollitia non itaque, natus, accusantium tenetur deserunt maxime? Praesentium, veritatis!
-        </Alert>
-        <Alert variant="error" isFixed={false} autoClose={false} show={true}>
-          s mollitia non itaque, natus, accusantium tenetur deserunt maxime? Praesentium, veritatis!
-        </Alert>
-        <Alert variant="success" isFixed={false} autoClose={false} show={true}>
-          s mollitia non itaque, natus, accusantium tenetur deserunt maxime? Praesentium, veritatis!
-        </Alert>
+        <div className="flex flex-col items-center gap-4">
+          <Alert variant="notification" withCloseBtn={true} isFixed={false} show={true}>
+            s mollitia non itaque, natus, accusantium tenetur deserunt maxime? Praesentium, veritatis!
+          </Alert>
+          <Alert variant="info" isFixed={false} show={true}>
+            s mollitia non itaque, natus, accusantium tenetur deserunt maxime? Praesentium, veritatis!
+          </Alert>
+          <Alert variant="warning" isFixed={false} autoClose={false} show={true}>
+            s mollitia non itaque, natus, accusantium tenetur deserunt maxime? Praesentium, veritatis!
+          </Alert>
+          <Alert variant="error" isFixed={false} autoClose={false} show={true}>
+            s mollitia non itaque, natus, accusantium tenetur deserunt maxime? Praesentium, veritatis!
+          </Alert>
+          <Alert variant="success" isFixed={false} autoClose={false} show={true}>
+            s mollitia non itaque, natus, accusantium tenetur deserunt maxime? Praesentium, veritatis!
+          </Alert>
+        </div>
+
       </div>
     </div>
   )
