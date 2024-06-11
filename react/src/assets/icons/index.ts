@@ -22,4 +22,8 @@ export { default as IconSearch } from '@assets/icons/search.svg?react';
 export { default as IconArrowUp } from '@assets/icons/arrow-up.svg?react';
 export { default as IconArrowDown } from '@assets/icons/arrow-down.svg?react';
 export { default as IconSort } from '@assets/icons/sort.svg?react';
+export { default as IconInfo } from '@assets/icons/info.svg?react';
+export { default as IconSuccess } from '@assets/icons/success.svg?react';
+export { default as IconDanger } from '@assets/icons/danger.svg?react';
+export { default as IconNotification } from '@assets/icons/notification.svg?react';
 
