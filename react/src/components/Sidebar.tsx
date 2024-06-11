@@ -40,7 +40,8 @@ const Sidebar = () => {
         if (navbarComp) {
             setTopPosition(navbarComp?.clientHeight)
         }
-
+        const initialSetting = JSON.parse(sessionStorage?.getItem('setting') || "")
+        setSetting(initialSetting)
     }, [])
 
     const handleChangeActiveMenu = (data: TParamsOnChangeMenu) => {

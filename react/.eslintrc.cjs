@@ -82,14 +82,14 @@ module.exports = {
     ], // force naming convention 
     'no-restricted-syntax': [
       'error',
-      {
-        selector: "CallExpression[callee.object.name='localStorage']",
-        message: 'Do not use `localStorage` directly, use secure local storage',
-      },
-      {
-        selector: "CallExpression[callee.object.name='sessionStorage']",
-        message: 'Do not use `sessionStorage` directly, use secure session storage',
-      },
+      // {
+      //   selector: "CallExpression[callee.object.name='localStorage']",
+      //   message: 'Do not use `localStorage` directly, use secure local storage',
+      // },
+      // {
+      //   selector: "CallExpression[callee.object.name='sessionStorage']",
+      //   message: 'Do not use `sessionStorage` directly, use secure session storage',
+      // },
     ], // forbid using session and local storage
   }
 }

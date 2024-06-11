@@ -6,12 +6,13 @@ import { HTMLProps } from 'react';
 
 interface TProps extends HTMLProps<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
   isLoading?: boolean;
+  customeElement?: "button" | "a" | null
 }
 
 const Button = (props: TProps) => {
-  const { variant, sizeCustome, isContained, isRounded, children, className, isLoading = false, ...attrs } = props
+  const { variant, sizeCustome, customeElement = "button", isContained, isRounded, children, className, isLoading = false, ...attrs } = props
 
-  const CompButton = 'button' as React.ElementType
+  const CompButton = customeElement as React.ElementType
 
   return (
     <CompButton
@@ -38,7 +39,7 @@ const buttonVariants = cva(
         'gray': 'bg-gray hover:!bg-gray-400 border-gray-200 focus:ring-gray-200 !text-white disabled:bg-gray-300 disabled:border-gray-300',
         'black': 'bg-black hover:!bg-black/75 border-black focus:ring-black/70 !text-white disabled:opacity-50 ',
         'white': 'bg-white  hover:!bg-gray-100 text-gray-900 focus:ring-gray-200 disabled:opacity-50 ',
-        'icon': 'bg-white  hover:!bg-gray-100 text-gray-900 focus:ring-0 !p-2 border-none disabled:opacity-50'
+        'plain': 'bg-white  hover:!bg-gray-100 text-gray-900 focus:ring-0 p-2 border-none disabled:opacity-50',
       },
       isContained: {
         "false": "bg-white",

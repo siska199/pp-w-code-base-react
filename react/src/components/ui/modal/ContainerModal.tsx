@@ -30,7 +30,7 @@ const ContainerModal = (props: TProps) => {
                 }))}
             >
                 <div className="md-content relative min-h-[10rem flex flex-col gap-2" onClick={handleStopPropagation}>
-                    <Button className="absolute top-2 right-3 rounded-full w-[2rem] h-[2rem]" variant={"icon"} onClick={handleOnClose}>
+                    <Button className="absolute top-2 right-3 rounded-full w-[2rem] h-[2rem]" variant={"plain"} onClick={handleOnClose}>
                         <IconClose />
                     </Button>
                     {children}

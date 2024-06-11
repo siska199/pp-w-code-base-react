@@ -1,22 +1,27 @@
+import { cn } from "@lib/utils/helper";
 import { HTMLProps } from "react";
+import { Link } from "react-router-dom";
 
 interface TProps extends HTMLProps<HTMLLinkElement> {
-    label: string;
-    url: string;
+    children: React.ReactNode;
+    to: string;
     newTab?: boolean;
 }
 
-const Link = (props: TProps) => {
-    const { label, url, newTab, className } = props
+const LinkCustome = (props: TProps) => {
+    const { children, to, newTab, className } = props
     return (
-        <a
+        <Link
             target={newTab ? '_blank' : ''}
-            className={`font-normal text-gray hover:text-gray-600 hover:underline cursor-pointer ${className}`}
-            href={url} rel="noreferrer"
+            className={cn({
+                'font-normal text-gray hover:text-gray-600cursor-pointer': true,
+                [className || '']: className
+            })}
+            to={to} rel="noreferrer"
         >
-            {label}
-        </a>
+            {children}
+        </Link>
     )
 }
 
-export default Link
+export default LinkCustome

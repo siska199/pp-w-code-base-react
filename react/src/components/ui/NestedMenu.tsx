@@ -1,4 +1,5 @@
 import IconChevronToggle from "@assets/icons/IconChevronToggle";
+import LinkCustome from "@components/ui/Link";
 import { cn, isEmptyValue } from "@lib/utils/helper";
 
 export interface TItemMenu {
@@ -49,22 +50,29 @@ const RenderMenu = (props: TProps) => {
     const { setting, menu, setSetting, level = 0, parent, isOpen, onChangeMenu: handleOnChangeMenu } = props;
 
     const handleOnClickMenu = (groupMenu: TItemMenu) => {
+        let updateSetting = setting
         if (isEmptyValue(groupMenu?.childs)) {
-            handleOnChangeMenu({
-                groupMenu,
-                level,
-                parent: parent || "",
-            });
+            updateSetting = {
+                ...setting,
+                activeMenu: {
+                    ...setting?.activeMenu,
+                    level: level,
+                    name: groupMenu?.name,
+                    parent: parent || ""
+                }
+            }
         } else {
-            setSetting({
+            updateSetting = {
                 ...setting,
                 openMenus: {
                     ...setting.openMenus,
                     [groupMenu.name]: !setting.openMenus[groupMenu.name]
                 }
-            })
-
+            }
         }
+
+        sessionStorage.setItem('setting', JSON.stringify(updateSetting))
+        setSetting(updateSetting)
     };
 
     return (
@@ -82,12 +90,15 @@ const RenderMenu = (props: TProps) => {
                             "mb-2 flex items-center cursor-pointer": true,
                         })}
                     >
-                        <span className={cn({
-                            "": true,
-                            "pl-2": level > 0,
-                            "border-l border-primary-700 text-primary-700": setting?.activeMenu.name === groupMenu?.name,
-                            [setting?.[level]?.customeClass?.label || ""]: setting?.[level]?.customeClass?.label
-                        })}>{groupMenu?.name}</span>
+                        <LinkCustome to={"/"}
+                            className={cn({
+                                "": true,
+                                "pl-2": level > 0,
+                                "border-l border-primary-700 text-primary-700": setting?.activeMenu.name === groupMenu?.name,
+                                [setting?.[level]?.customeClass?.label || ""]: setting?.[level]?.customeClass?.label
+                            })}>
+                            {groupMenu?.name}
+                        </LinkCustome>
                         {!isEmptyValue(groupMenu?.childs) && (
                             <IconChevronToggle className={` icon-primary h-[1.1rem]`} variant="2" isOpen={setting?.openMenus[groupMenu.name]} />
                         )}

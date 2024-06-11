@@ -11,7 +11,7 @@ const Navbar = () => {
     return (
         <nav id="navbar" className="bg-blur w-full sticky  z-[99] flex items-center justify-between white top-0 left-0 border-b px-8 py-4">
             <div className="flex items-center gap-8">
-                <Button variant={"icon"} className="!p-0  md:hidden" onClick={handleToggleSidebar}>
+                <Button variant={"plain"} className="!p-0  md:hidden" onClick={handleToggleSidebar}>
                     <IconHamburger className="w-[1.75rem]" />
                 </Button>
                 <Logo className="hidden md:block text-body-large" />
