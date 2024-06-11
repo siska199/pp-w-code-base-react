@@ -93,7 +93,7 @@ const listGroupMenu = [
                 url: '/docs',
             },
             {
-                name: 'Prerequisite',
+                name: 'Pre-requisite',
                 url: '/docs/prerequisite',
             },
         ]
