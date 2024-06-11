@@ -47,7 +47,7 @@ const NestedMenu = (props: TProps) => {
 const RenderMenu = (props: TProps) => {
     const { setting, menu, level = 0, parent, isOpen, onChangeMenu: handleOnChangeMenu } = props;
     const [openMenus, setOpenMenus] = useState<{ [key: string]: boolean }>({});
-
+   
     useEffect(() => {
         const defaultOpenMenus: any = {};
         const initializeOpenMenus = (menus: TItemMenu[], level: number) => {
@@ -70,7 +70,7 @@ const RenderMenu = (props: TProps) => {
                 groupMenu,
                 openMenus,
                 level,
-                parent: parent || ""
+                parent: parent || "",
             });
         } else {
             setOpenMenus((prevOpenMenus) => ({
@@ -82,10 +82,10 @@ const RenderMenu = (props: TProps) => {
 
     return (
         <ul className={cn({
-            "flex flex-col overflow-y-auto transition-all duration-100 ease": true,
-            "ml-2": level > 1,
-            "opacity-100 max-h-full": isOpen || (level < setting?.activeMenu?.level && setting?.activeMenu.parent === parent),
-            "opacity-0 max-h-0": !isOpen,
+            "flex flex-col  opacity-0 max-h-0 overflow-y-auto transition-all duration-300 ease": true,
+            "border-l": level > 0,
+            " ml-2": level > 1,
+            "opacity-100 max-h-full": isOpen,
         })}>
             {menu?.map((groupMenu: TItemMenu, i) => (
                 <li key={i} className="">
@@ -97,6 +97,8 @@ const RenderMenu = (props: TProps) => {
                     >
                         <span className={cn({
                             "": true,
+                            "pl-2": level > 0,
+                            "border-l border-primary-700 text-primary-700": setting?.activeMenu.name === groupMenu?.name,
                             [setting?.[level]?.customeClass?.label || ""]: setting?.[level]?.customeClass?.label
                         })}>{groupMenu?.name}</span>
                         {!isEmptyValue(groupMenu?.childs) && (

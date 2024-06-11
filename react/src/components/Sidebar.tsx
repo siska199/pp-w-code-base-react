@@ -8,9 +8,11 @@ import NestedMenu, { TMenuSettings, TParamsOnChangeMenu } from "./ui/NestedMenu"
 
 
 const Sidebar = () => {
-    const [topPosition, setTopPosition] = useState(0);
     const { handleToggleSidebar } = useSidebar();
-    const [setting] = useState<TMenuSettings>({
+    const navigate = useNavigate()
+
+    const [topPosition, setTopPosition] = useState(0);
+    const [setting, setSetting] = useState<TMenuSettings>({
         "0": {
             customeClass: {
                 label: "text-black font-medium"
@@ -27,7 +29,6 @@ const Sidebar = () => {
         }
     })
 
-    const navigate = useNavigate()
 
     useEffect(() => {
         // Get Navbar Height for set position of the sidebar from top
@@ -39,10 +40,20 @@ const Sidebar = () => {
     }, [])
 
     const handleChangeActiveMenu = (data: TParamsOnChangeMenu) => {
-        setting.activeMenu.level = data?.level
-        setting.activeMenu.name = data?.groupMenu?.name
-        setting.activeMenu.parent = data?.parent
-        navigate(data?.groupMenu?.url as string)
+        setSetting({
+            ...setting,
+            [data?.level - 1]: {
+                ...setting[data?.level - 1],
+                defaultOpen: true
+            },
+            activeMenu: {
+                ...setting?.activeMenu,
+                level: data?.level,
+                name: data?.groupMenu?.name,
+                parent: data?.parent
+            }
+        })
+        // navigate(data?.groupMenu?.url as string)
     }
 
 
@@ -214,6 +225,7 @@ const listGroupMenu = [
                     {
                         name: 'Modal Confirmation',
                         url: '/docs/components/modal/confirmation',
+
                     }
                 ]
             },
