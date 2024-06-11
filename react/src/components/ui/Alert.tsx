@@ -45,7 +45,7 @@ const Alert = (props: TProps) => {
                 <span className="mt-1">
                     {variant === "info" && <IconInfo className="icon-gray" />}
                     {variant === "warning" && <IconDanger className="icon-wrning" />}
-                    {variant === "error" && <IconInfo className="icon-error" />}
+                    {variant === "error" && <IconDanger className="icon-error" />}
                     {variant === "success" && <IconSuccess className="icon-success" />}
                     {variant === "notification" && <IconNotification />}
 

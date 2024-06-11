@@ -34,7 +34,7 @@ const DisplayAlert = () => {
         <Alert variant="notification" withCloseBtn={true} isFixed={false} show={true}>
           s mollitia non itaque, natus, accusantium tenetur deserunt maxime? Praesentium, veritatis!
         </Alert>
-        <Alert variant="info" withCloseBtn={true} isFixed={false} show={true}>
+        <Alert variant="info"  isFixed={false} show={true}>
           s mollitia non itaque, natus, accusantium tenetur deserunt maxime? Praesentium, veritatis!
         </Alert>
         <Alert variant="warning" isFixed={false} autoClose={false} show={true}>
