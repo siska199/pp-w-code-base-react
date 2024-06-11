@@ -6,11 +6,13 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 // https://vitejs.dev/config/
 
 export default defineConfig({
-  plugins: [react(),svgr(),tsconfigPaths()],
-  build : {
+  plugins: [react(), svgr(), tsconfigPaths()],
+  build: {
     sourcemap: true,
   },
   optimizeDeps: {
-    exclude: ['js-big-decimal']
+    exclude: ['js-big-decimal'],
+    // include: ['fs-extra'],
+
   }
 })

@@ -7,7 +7,6 @@ import CardUsageAccordion from "@components/module/accordion-page/CardUsageAccor
 
 const AccordionPage = () => {
 
-
   return (
     <>
       <CardIntroAccordion />

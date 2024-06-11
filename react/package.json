@@ -13,6 +13,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "fs": "^0.0.1-security",
+    "fs-extra": "^11.2.0",
     "prismjs": "^1.29.0",
     "react": "^18.2.0",
     "react-datepicker": "^6.9.0",
@@ -23,6 +24,7 @@
     "vite-tsconfig-paths": "^4.3.2"
   },
   "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
     "@types/node": "^20.14.2",
     "@types/react": "^18.2.66",
     "@types/react-datepicker": "^6.2.0",
@@ -30,7 +32,7 @@
     "@types/react-syntax-highlighter": "^15.5.13",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
-    "@vitejs/plugin-react": "^4.2.1",
+    "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.19",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",

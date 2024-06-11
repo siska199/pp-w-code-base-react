@@ -1,39 +1,37 @@
+/* eslint-disable no-undef */
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(filename);
 
 const componentName = process.argv[2]; // Get component name from command line arguments
 
 if (!componentName) {
-    console.error('Please provide a component name');
-    process.exit(1);
+  console.error('Please provide a component name');
+  process.exit(1);
 }
 
-const componentsPath = path.join(__dirname, 'src', 'components');
-const pagesPath = path.join(__dirname, 'src', 'pages');
+const componentsPath = path.join(dirname, 'src', 'components');
+const pagesDocsComponentsPath = path.join(dirname, 'src', 'pages', 'docs', 'components'); // Adjusted path
 const modulePath = path.join(componentsPath, 'module', `${componentName.toLowerCase()}-page`);
-const uiPath = path.join(componentsPath, 'ui');
 
-const toPascalCase = (string) => string.replace(/(^\w|-\w)/g, clearAndUpper);
-const clearAndUpper = (text) => text.replace(/-/, '').toUpperCase();
 
 // Define the file templates
 const pageTemplate = `
-import ${componentName}Intro from "@components/module/${componentName.toLowerCase()}-page/${componentName}Intro";
-import ${componentName}Props from "@components/module/${componentName.toLowerCase()}-page/${componentName}Props";
-import ${componentName}Usage from "@components/module/${componentName.toLowerCase()}-page/${componentName}Usage";
-import ${componentName}AdditionalInfo from "@components/module/${componentName.toLowerCase()}-page/${componentName}AdditionalInfo";
+import Card${componentName}Intro from "@components/module/${componentName.toLowerCase()}-page/Card${componentName}Intro";
+import Card${componentName}Props from "@components/module/${componentName.toLowerCase()}-page/Card${componentName}Props";
+import Card${componentName}Usage from "@components/module/${componentName.toLowerCase()}-page/Card${componentName}Usage";
+import Card${componentName}AdditionalInfo from "@components/module/${componentName.toLowerCase()}-page/Card${componentName}AdditionalInfo";
 
 const ${componentName}Page = () => {
   return (
     <>
-      <${componentName}Intro />
-      <${componentName}Props />
-      <${componentName}Usage />
-      <${componentName}AdditionalInfo />
+      <Card${componentName}Intro />
+      <Card${componentName}Props />
+      <Card${componentName}Usage />
+      <Card${componentName}AdditionalInfo />
     </>
   );
 }
@@ -45,7 +43,7 @@ const introTemplate = `
 import CardIntro from "@components/cards/CardIntro";
 import ${componentName} from "@components/ui/${componentName}";
 
-const ${componentName}Intro = () => {
+const Card${componentName}Intro = () => {
   return (
     <CardIntro
       title={'${componentName}'}
@@ -58,14 +56,14 @@ const ${componentName}Intro = () => {
 
 const displayCodeBase = \`// Code for ${componentName}\`;
 
-export default ${componentName}Intro;
+export default Card${componentName}Intro;
 `;
 
 const propsTemplate = `
 import CardSubMenu from "@components/cards/CardSubMenu";
 import List from "@components/ui/List";
 
-const ${componentName}Props = () => {
+const Card${componentName}Props = () => {
   const listItem = [
     {
       label: "prop1",
@@ -84,14 +82,14 @@ const ${componentName}Props = () => {
   );
 }
 
-export default ${componentName}Props;
+export default Card${componentName}Props;
 `;
 
 const usageTemplate = `
 import CardSubMenu from '@components/cards/CardSubMenu';
 import CodeBlock from '@components/ui/CodeBlock';
 
-const ${componentName}Usage = () => {
+const Card${componentName}Usage = () => {
   return (
     <CardSubMenu title="Usage">
       <p>Example usage of ${componentName}:</p>
@@ -102,7 +100,7 @@ const ${componentName}Usage = () => {
 
 const displayUsage = \`// Usage example for ${componentName}\`;
 
-export default ${componentName}Usage;
+export default Card${componentName}Usage;
 `;
 
 const additionalInfoTemplate = `
@@ -110,7 +108,7 @@ import CardSubMenu from "@components/cards/CardSubMenu";
 import CodeBlock from "@components/ui/CodeBlock";
 import ProgressStep from "@components/ui/ProgressStep";
 
-const ${componentName}AdditionalInfo = () => {
+const Card${componentName}AdditionalInfo = () => {
   const listAdditionalInfo = [
     {
       title: "Additional Info 1",
@@ -132,18 +130,18 @@ const ${componentName}AdditionalInfo = () => {
 const info1 = \`// Additional info 1\`;
 const info2 = \`// Additional info 2\`;
 
-export default ${componentName}AdditionalInfo;
+export default Card${componentName}AdditionalInfo;
 `;
 
 // Ensure the directories exist
-fs.mkdirSync(pagesPath, { recursive: true });
+fs.mkdirSync(pagesDocsComponentsPath, { recursive: true });
 fs.mkdirSync(modulePath, { recursive: true });
 
 // Write the files
-fs.writeFileSync(path.join(pagesPath, `${componentName}Page.tsx`), pageTemplate);
-fs.writeFileSync(path.join(modulePath, `${componentName}Intro.tsx`), introTemplate);
-fs.writeFileSync(path.join(modulePath, `${componentName}Props.tsx`), propsTemplate);
-fs.writeFileSync(path.join(modulePath, `${componentName}Usage.tsx`), usageTemplate);
-fs.writeFileSync(path.join(modulePath, `${componentName}AdditionalInfo.tsx`), additionalInfoTemplate);
+fs.writeFileSync(path.join(pagesDocsComponentsPath, `${componentName}Page.tsx`), pageTemplate);
+fs.writeFileSync(path.join(modulePath, `Card${componentName}Intro.tsx`), introTemplate);
+fs.writeFileSync(path.join(modulePath, `Card${componentName}Props.tsx`), propsTemplate);
+fs.writeFileSync(path.join(modulePath, `Card${componentName}Usage.tsx`), usageTemplate);
+fs.writeFileSync(path.join(modulePath, `Card${componentName}AdditionalInfo.tsx`), additionalInfoTemplate);
 
 console.log(`${componentName} component files generated successfully.`);
