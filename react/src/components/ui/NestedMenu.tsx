@@ -91,7 +91,7 @@ const RenderMenu = (props: TProps) => {
                         })}
                     >
                         <LinkCustome
-                            to={"/"}
+                            to={groupMenu?.url || "/"}
                             className={cn({
                                 "": true,
                                 "pl-2": level > 0,
