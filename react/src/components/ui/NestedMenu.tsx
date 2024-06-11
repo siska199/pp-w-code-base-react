@@ -1,6 +1,7 @@
 import IconChevronToggle from "@assets/icons/IconChevronToggle";
 import LinkCustome from "@components/ui/Link";
 import { cn, isEmptyValue } from "@lib/utils/helper";
+import { useLocation } from "react-router-dom";
 
 export interface TItemMenu {
     name: string;
@@ -47,6 +48,8 @@ const NestedMenu = (props: TProps) => {
 };
 
 const RenderMenu = (props: TProps) => {
+    const location = useLocation();
+
     const { setting, menu, setSetting, level = 0, parent, isOpen, onChangeMenu: handleOnChangeMenu } = props;
 
     const handleOnClickMenu = (groupMenu: TItemMenu) => {
@@ -78,7 +81,7 @@ const RenderMenu = (props: TProps) => {
     return (
         <ul className={cn({
             "flex flex-col  opacity-0 max-h-0 overflow-y-auto transition-all duration-300 ease": true,
-            "border-l": level > 0,
+            "border-l scrollbar-hidden ": level > 0,
             " ml-2": level > 1,
             "opacity-100 max-h-full": isOpen,
         })}>
@@ -91,7 +94,7 @@ const RenderMenu = (props: TProps) => {
                         })}
                     >
                         <LinkCustome
-                            to={groupMenu?.url || "/"}
+                            to={groupMenu?.url || location.pathname}
                             className={cn({
                                 "": true,
                                 "pl-2": level > 0,
