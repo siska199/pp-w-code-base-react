@@ -10,7 +10,7 @@ const Logo = (props: TProps) => {
     const { className, sizeLogo, ...attrs } = props
     return (
         <LinkCustome to="/" className={cn(logoVariants({ className, sizeLogo, }))} {...attrs}>
-            Code-base199
+            Cb199
         </LinkCustome>
     )
 }
@@ -27,7 +27,7 @@ const logoVariants = cva(
             sizeLogo: {
                 'small': 'text-[14px]',
                 'base': 'text-[18px]',
-                'large': 'text-[24px]'
+                'large': 'text-[28px]'
             }
         },
 
