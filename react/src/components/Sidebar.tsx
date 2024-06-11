@@ -64,7 +64,7 @@ const Sidebar = () => {
 
                     <div className="p-8 w-full  flex flex-col gap-4 relative  h-full">
                         <div id="icon-close" className="hidden justify-between absolute top-6 right-6 cursor-pointer ml-auto">
-                            <Logo className="text-body-medium" />
+                            <Logo sizeLogo={"base"} />
                             <IconClose onClick={handleToggleSidebar} className="ml-auto" />
                         </div>
                         <NestedMenu

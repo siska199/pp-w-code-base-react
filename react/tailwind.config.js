@@ -22,9 +22,7 @@ export default {
       bold: 700,
       extrabold: 800,
     },
-    // fontFamily: {
-    //   'poppins': ['Poppins'],
-    // },
+
     fontSize: {
       'heading-05': '30px',
       'heading-04': '36px',
@@ -80,6 +78,9 @@ export default {
 
     // Extend style form tailwind
     extend: {
+      fontFamily: {
+        'staryssa': ['Staryssa'],
+      },
       boxShadow: {
         '4-y-1': '0px 1px 4px 0px rgba(226, 232, 240, 1)',
       },

@@ -1,5 +1,8 @@
 
-
+@font-face {
+    font-family: 'Staryssa';
+    src: url('../fonts/staryssa.ttf');
+}
 
 @tailwind base;
 @tailwind components;
