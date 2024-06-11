@@ -1,6 +1,5 @@
 import IconChevronToggle from "@assets/icons/IconChevronToggle";
 import { cn, isEmptyValue } from "@lib/utils/helper";
-import { useEffect, useState } from "react";
 
 export interface TItemMenu {
     name: string;
@@ -22,22 +21,24 @@ export interface TMenuSettings {
         name: string;
         parent: string;
     }
+    openMenus: { [key: string]: boolean }
 }
 
 export interface TParamsOnChangeMenu {
     groupMenu: TItemMenu;
     level: number;
-    openMenus: { [key: string]: boolean }
     parent: string;
 }
 
 interface TProps {
     menu: TItemMenu[];
     onChangeMenu: (params: TParamsOnChangeMenu) => any;
-    setting?: TMenuSettings;
     level?: number;
     isOpen?: boolean;
     parent?: string;
+    setting: TMenuSettings;
+    setSetting: React.Dispatch<React.SetStateAction<TMenuSettings>>
+
 }
 
 const NestedMenu = (props: TProps) => {
@@ -45,38 +46,24 @@ const NestedMenu = (props: TProps) => {
 };
 
 const RenderMenu = (props: TProps) => {
-    const { setting, menu, level = 0, parent, isOpen, onChangeMenu: handleOnChangeMenu } = props;
-    const [openMenus, setOpenMenus] = useState<{ [key: string]: boolean }>({});
-   
-    useEffect(() => {
-        const defaultOpenMenus: any = {};
-        const initializeOpenMenus = (menus: TItemMenu[], level: number) => {
-            menus.forEach((menu) => {
-                if (menu.childs && (setting?.[level]?.defaultOpen || false)) {
-                    defaultOpenMenus[menu.name] = true;
-                    initializeOpenMenus(menu.childs as TItemMenu[], level + 1);
-                }
-            });
-        };
-
-        initializeOpenMenus(menu, level);
-
-        setOpenMenus(defaultOpenMenus);
-    }, [level, menu, setting]);
+    const { setting, menu, setSetting, level = 0, parent, isOpen, onChangeMenu: handleOnChangeMenu } = props;
 
     const handleOnClickMenu = (groupMenu: TItemMenu) => {
         if (isEmptyValue(groupMenu?.childs)) {
             handleOnChangeMenu({
                 groupMenu,
-                openMenus,
                 level,
                 parent: parent || "",
             });
         } else {
-            setOpenMenus((prevOpenMenus) => ({
-                ...prevOpenMenus,
-                [groupMenu.name]: !prevOpenMenus[groupMenu.name],
-            }));
+            setSetting({
+                ...setting,
+                openMenus: {
+                    ...setting.openMenus,
+                    [groupMenu.name]: !setting.openMenus[groupMenu.name]
+                }
+            })
+
         }
     };
 
@@ -88,7 +75,7 @@ const RenderMenu = (props: TProps) => {
             "opacity-100 max-h-full": isOpen,
         })}>
             {menu?.map((groupMenu: TItemMenu, i) => (
-                <li key={i} className="">
+                <li key={i} className="scrollbar-hidden">
                     <div
                         onClick={() => handleOnClickMenu(groupMenu)}
                         className={cn({
@@ -102,7 +89,7 @@ const RenderMenu = (props: TProps) => {
                             [setting?.[level]?.customeClass?.label || ""]: setting?.[level]?.customeClass?.label
                         })}>{groupMenu?.name}</span>
                         {!isEmptyValue(groupMenu?.childs) && (
-                            <IconChevronToggle className={` icon-primary h-[1.1rem]`} variant="2" isOpen={openMenus[groupMenu.name]} />
+                            <IconChevronToggle className={` icon-primary h-[1.1rem]`} variant="2" isOpen={setting?.openMenus[groupMenu.name]} />
                         )}
                     </div>
 
@@ -112,8 +99,9 @@ const RenderMenu = (props: TProps) => {
                             parent={groupMenu?.name}
                             level={level + 1}
                             setting={setting}
+                            setSetting={setSetting}
                             onChangeMenu={handleOnChangeMenu}
-                            isOpen={openMenus[groupMenu.name]}
+                            isOpen={setting?.openMenus[groupMenu.name]}
                         />
                     )}
                 </li>

@@ -26,6 +26,10 @@ const Sidebar = () => {
             level: -1,
             name: "",
             parent: ""
+        },
+        openMenus: {
+            "Getting Started": true,
+            "Components": true,
         }
     })
 
@@ -42,10 +46,6 @@ const Sidebar = () => {
     const handleChangeActiveMenu = (data: TParamsOnChangeMenu) => {
         setSetting({
             ...setting,
-            [data?.level - 1]: {
-                ...setting[data?.level - 1],
-                defaultOpen: true
-            },
             activeMenu: {
                 ...setting?.activeMenu,
                 level: data?.level,
@@ -53,8 +53,9 @@ const Sidebar = () => {
                 parent: data?.parent
             }
         })
-        // navigate(data?.groupMenu?.url as string)
     }
+
+
 
 
     return (
@@ -69,6 +70,7 @@ const Sidebar = () => {
                         </div>
                         <NestedMenu
                             setting={setting}
+                            setSetting={setSetting}
                             menu={listGroupMenu}
                             onChangeMenu={handleChangeActiveMenu}
                         />
