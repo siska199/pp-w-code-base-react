@@ -87,7 +87,7 @@ const RenderMenu = (props: TProps) => {
                     <div
                         onClick={() => handleOnClickMenu(groupMenu)}
                         className={cn({
-                            "mb-2 flex items-center cursor-pointer": true,
+                            "flex items-center cursor-pointer py-1": true,
                         })}
                     >
                         <LinkCustome
