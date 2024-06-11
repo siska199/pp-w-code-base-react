@@ -10,7 +10,7 @@ const List = (props: TProps) => {
 
     const renderItems = (items: TItemList[]) => {
         return (
-            <ul className="list-disc px-4 flex flex-col gap-2 mt-2">
+            <ul className="list-disc px-4 flex flex-col gap-3 mt-2">
                 {items.map((item, i) => (
                     <li key={i}>
                         {item.label && <Badge label={item.label} />}

@@ -18,13 +18,13 @@ const Alert = (props: TProps) => {
     const { variant, show, children, isFixed = true, withCloseBtn = false, autoClose = true, className, position = "top-right", timeout = 3000, onDismiss: handleOnDismiss } = props
 
     useEffect(() => {
-        if (timeout > 0 && handleOnDismiss && autoClose) {
+        if (timeout > 0 && handleOnDismiss && autoClose && show) {
             const timer = setTimeout(() => {
                 handleOnDismiss();
             }, timeout);
             return () => clearTimeout(timer);
         }
-    }, [handleOnDismiss, timeout, autoClose]);
+    }, [handleOnDismiss, timeout, autoClose, show]);
 
     return show ? (
 

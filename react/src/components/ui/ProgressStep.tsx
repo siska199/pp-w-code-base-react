@@ -31,7 +31,7 @@ const ProgressStep = (props: TProps) => {
                                 </div>
                             </div>
                             {
-                                variant === "horizontal" ? <div className={`step-name ${variant}`}>{data?.title}</div> : <div className="min-h-[5rem]">
+                                variant === "horizontal" ? <div className={`step-name ${variant}`}>{data?.title}</div> : <div className="min-h-[1rem]">
                                     <div className="step-title text-gray">{data?.title}</div>
                                     <div className="step-caption font-normal text-gray-500 mt-2 mb-8 flex flex-col gap-4">{data?.caption}</div>
                                 </div>

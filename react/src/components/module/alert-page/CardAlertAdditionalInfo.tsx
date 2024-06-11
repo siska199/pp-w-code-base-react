@@ -1,18 +1,16 @@
 
 import CardSubMenu from "@components/cards/CardSubMenu";
-import CodeBlock from "@components/ui/CodeBlock";
+import LinkCustome from "@components/ui/Link";
 import ProgressStep from "@components/ui/ProgressStep";
 
 const CardAlertAdditionalInfo = () => {
   const listAdditionalInfo = [
     {
-      title: "Additional Info 1",
-      caption: <CodeBlock codeString={info1} />
+      title: "Icons",
+      caption: <div>
+        For the icons used by the Alert component, you can find them in the <LinkCustome to="/docs/icons" className="hover:underline font-medium">Icons menu</LinkCustome>
+      </div>
     },
-    {
-      title: "Additional Info 2",
-      caption: <CodeBlock codeString={info2} />
-    }
   ];
 
   return (
@@ -22,7 +20,5 @@ const CardAlertAdditionalInfo = () => {
   );
 }
 
-const info1 = `// Additional info 1`;
-const info2 = `// Additional info 2`;
 
 export default CardAlertAdditionalInfo;
