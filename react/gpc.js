@@ -144,4 +144,7 @@ fs.writeFileSync(path.join(modulePath, `Card${componentName}Props.tsx`), propsTe
 fs.writeFileSync(path.join(modulePath, `Card${componentName}Usage.tsx`), usageTemplate);
 fs.writeFileSync(path.join(modulePath, `Card${componentName}AdditionalInfo.tsx`), additionalInfoTemplate);
 
-console.log(`${componentName} component files generated successfully.`);
+// Read the existing content of index.tsx
+
+
+
