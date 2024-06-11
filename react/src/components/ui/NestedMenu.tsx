@@ -9,24 +9,35 @@ export interface TItemMenu {
 }
 
 interface TLevelSetting {
-    expandInFirstRender?: boolean;
     customeClass?: {
         label?: string;
     };
     defaultOpen?: boolean;
 }
 
-interface TMenuSettings {
+export interface TMenuSettings {
     [level: number]: TLevelSetting;
+    activeMenu: {
+        level: number;
+        name: string;
+        parent: string;
+    }
+}
+
+export interface TParamsOnChangeMenu {
+    groupMenu: TItemMenu;
+    level: number;
+    openMenus: { [key: string]: boolean }
+    parent: string;
 }
 
 interface TProps {
     menu: TItemMenu[];
-    activeMenu: TItemMenu;
-    onChangeMenu: (params: TItemMenu) => any;
+    onChangeMenu: (params: TParamsOnChangeMenu) => any;
     setting?: TMenuSettings;
     level?: number;
     isOpen?: boolean;
+    parent?: string;
 }
 
 const NestedMenu = (props: TProps) => {
@@ -34,7 +45,7 @@ const NestedMenu = (props: TProps) => {
 };
 
 const RenderMenu = (props: TProps) => {
-    const { activeMenu, menu, setting, level = 0, isOpen, onChangeMenu: handleOnChangeMenu } = props;
+    const { setting, menu, level = 0, parent, isOpen, onChangeMenu: handleOnChangeMenu } = props;
     const [openMenus, setOpenMenus] = useState<{ [key: string]: boolean }>({});
 
     useEffect(() => {
@@ -55,7 +66,12 @@ const RenderMenu = (props: TProps) => {
 
     const handleOnClickMenu = (groupMenu: TItemMenu) => {
         if (isEmptyValue(groupMenu?.childs)) {
-            handleOnChangeMenu(groupMenu);
+            handleOnChangeMenu({
+                groupMenu,
+                openMenus,
+                level,
+                parent: parent || ""
+            });
         } else {
             setOpenMenus((prevOpenMenus) => ({
                 ...prevOpenMenus,
@@ -68,7 +84,7 @@ const RenderMenu = (props: TProps) => {
         <ul className={cn({
             "flex flex-col overflow-y-auto transition-all duration-100 ease": true,
             "ml-2": level > 1,
-            "opacity-100 max-h-full": isOpen,
+            "opacity-100 max-h-full": isOpen || (level < setting?.activeMenu?.level && setting?.activeMenu.parent === parent),
             "opacity-0 max-h-0": !isOpen,
         })}>
             {menu?.map((groupMenu: TItemMenu, i) => (
@@ -91,8 +107,8 @@ const RenderMenu = (props: TProps) => {
                     {!isEmptyValue(groupMenu?.childs) && (
                         <RenderMenu
                             menu={groupMenu?.childs as TItemMenu[]}
+                            parent={groupMenu?.name}
                             level={level + 1}
-                            activeMenu={activeMenu}
                             setting={setting}
                             onChangeMenu={handleOnChangeMenu}
                             isOpen={openMenus[groupMenu.name]}
@@ -103,5 +119,6 @@ const RenderMenu = (props: TProps) => {
         </ul>
     );
 };
+
 
 export default NestedMenu;

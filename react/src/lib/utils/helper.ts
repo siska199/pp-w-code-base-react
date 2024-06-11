@@ -1,5 +1,6 @@
-import clsx, { ClassValue } from 'clsx'
-import { twMerge } from 'tailwind-merge'
+import clsx, { ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
 
 export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs))
 
@@ -69,3 +70,10 @@ export function checkElmnOnTopOfPage(elm: any) {
 
 export const handleStopPropagation = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => e?.stopPropagation()
 
+
+
+/**
+ * Reads a file from the given URL and converts its contents to a string.
+ * @param fileUrl - The URL of the file to read.
+ * @returns A Promise that resolves with the contents of the file as a string wrapped in a template literal.
+ */

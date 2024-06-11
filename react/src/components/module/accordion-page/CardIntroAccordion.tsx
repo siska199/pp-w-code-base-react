@@ -2,41 +2,42 @@ import CardIntro from "@components/cards/CardIntro"
 import Accordion from "@components/ui/Accordion"
 
 const CardIntroAccordion = () => {
-    return (
-        <CardIntro
-            title={'Accordion'}
-            subTitle=" An accordion consists of multiple sections or panels, each containing a header and associated content. The headers are usually displayed in a vertical stack, and clicking on a header expands the associated content while collapsing the others."
-            DisplayComponent={<DisplayAccordion />}
-            displayCodeBase={displayCodeBase}
-        />
-    )
+
+  return (
+    <CardIntro
+      title={'Accordion'}
+      subTitle=" An accordion consists of multiple sections or panels, each containing a header and associated content. The headers are usually displayed in a vertical stack, and clicking on a header expands the associated content while collapsing the others."
+      DisplayComponent={<DisplayAccordion />}
+      displayCodeBase={displayCodeBase}
+    />
+  )
 }
 
 const DisplayAccordion = () => {
-    const listItems = [
-        {
-            label: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-            content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+  const listItems = [
+    {
+      label: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+      content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
         molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
         numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
         optio,`
-        },
-        {
-            label: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-            content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+    },
+    {
+      label: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+      content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
         molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
         numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
         optio,`
-        },
-        {
-            label: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-            content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+    },
+    {
+      label: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+      content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
         molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
         numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
         optio,`
-        }
-    ]
-    return <Accordion  items={listItems} />
+    }
+  ]
+  return <Accordion items={listItems} />
 }
 
 const displayCodeBase = `import IconChevronToggle from "@assets/icons/IconChevronToggle";
@@ -117,4 +118,5 @@ export const Floating = (props: TFloatingProps ) => {
 }
 
 export default Accordion`
+
 export default CardIntroAccordion

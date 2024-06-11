@@ -3,19 +3,31 @@ import Logo from "@components/ui/Logo"
 import useSidebar from "@hooks/ui/useSidebar"
 import { handleStopPropagation } from "@lib/utils/helper"
 import { useEffect, useState } from "react"
-import NestedMenu, { TItemMenu } from "./ui/NestedMenu"
+import { useNavigate } from "react-router-dom"
+import NestedMenu, { TMenuSettings, TParamsOnChangeMenu } from "./ui/NestedMenu"
 
 
 const Sidebar = () => {
     const [topPosition, setTopPosition] = useState(0);
     const { handleToggleSidebar } = useSidebar();
-
-
-    const [activeMenu, setActiveMenu] = useState<TItemMenu>({
-        name: "",
-        url: "",
-        childs: []
+    const [setting] = useState<TMenuSettings>({
+        "0": {
+            customeClass: {
+                label: "text-black font-medium"
+            },
+            defaultOpen: true
+        },
+        "1": {
+            defaultOpen: false
+        },
+        activeMenu: {
+            level: -1,
+            name: "",
+            parent: ""
+        }
     })
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         // Get Navbar Height for set position of the sidebar from top
@@ -26,8 +38,11 @@ const Sidebar = () => {
 
     }, [])
 
-    const handleChangeActiveMenu = (data: TItemMenu) => {
-        setActiveMenu(data)
+    const handleChangeActiveMenu = (data: TParamsOnChangeMenu) => {
+        setting.activeMenu.level = data?.level
+        setting.activeMenu.name = data?.groupMenu?.name
+        setting.activeMenu.parent = data?.parent
+        navigate(data?.groupMenu?.url as string)
     }
 
 
@@ -42,19 +57,10 @@ const Sidebar = () => {
                             <IconClose onClick={handleToggleSidebar} className="ml-auto" />
                         </div>
                         <NestedMenu
-                            setting={{
-                                "0": {
-                                    expandInFirstRender: true,
-                                    customeClass: {
-                                        label: "text-black font-medium"
-                                    },
-                                    defaultOpen: false
-                                },
-                                "1": {
-                                    defaultOpen: false
-                                }
-                            }}
-                            menu={listGroupMenu} activeMenu={activeMenu} onChangeMenu={handleChangeActiveMenu} />
+                            setting={setting}
+                            menu={listGroupMenu}
+                            onChangeMenu={handleChangeActiveMenu}
+                        />
                     </div>
                 </div>
             </div >
@@ -75,13 +81,9 @@ const listGroupMenu = [
                 url: '/docs',
             },
             {
-                name: 'Installation',
-                url: '/docs/installation',
+                name: 'Prerequisite',
+                url: '/docs/prerequisite',
             },
-            {
-                name: 'Typography',
-                url: '/docs/components/typography',
-            }
         ]
     },
     {
