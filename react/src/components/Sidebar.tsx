@@ -3,13 +3,11 @@ import Logo from "@components/ui/Logo"
 import useSidebar from "@hooks/ui/useSidebar"
 import { handleStopPropagation } from "@lib/utils/helper"
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
 import NestedMenu, { TMenuSettings, TParamsOnChangeMenu } from "./ui/NestedMenu"
 
 
 const Sidebar = () => {
     const { handleToggleSidebar } = useSidebar();
-    const navigate = useNavigate()
 
     const [topPosition, setTopPosition] = useState(0);
     const [setting, setSetting] = useState<TMenuSettings>({
@@ -61,10 +59,10 @@ const Sidebar = () => {
 
     return (
         <>
-            <div id="container-sidebar" className="h-full" onClick={handleToggleSidebar}>
+            <div id="container-sidebar" className=" h-full" onClick={handleToggleSidebar}>
                 <div id="sidebar" onClick={handleStopPropagation} style={{ top: topPosition, }} className={`fixed overflow-y-hidden  h-[calc(100%-3rem)] left-0   bg-white   w-0 md:w-[17rem]`}>
 
-                    <div className="p-8 w-full flex flex-col gap-4 relative  h-full">
+                    <div className="p-8 w-full  flex flex-col gap-4 relative  h-full">
                         <div id="icon-close" className="hidden justify-between absolute top-6 right-6 cursor-pointer ml-auto">
                             <Logo className="text-body-medium" />
                             <IconClose onClick={handleToggleSidebar} className="ml-auto" />
