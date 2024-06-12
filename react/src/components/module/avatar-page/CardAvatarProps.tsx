@@ -2,7 +2,7 @@
 import CardSubMenu from "@components/cards/CardSubMenu";
 import List from "@components/ui/List";
 
-const CardAlertProps = () => {
+const CardAvatarProps = () => {
   const listItem = [
     {
       label: "prop1",
@@ -21,4 +21,4 @@ const CardAlertProps = () => {
   );
 }
 
-export default CardAlertProps;
+export default CardAvatarProps;

@@ -2,15 +2,15 @@
 import CardSubMenu from '@components/cards/CardSubMenu';
 import CodeBlock from '@components/ui/CodeBlock';
 
-const CardAlertUsage = () => {
+const CardAvatarUsage = () => {
   return (
     <CardSubMenu title="Usage">
-      <p>Example usage of Alert:</p>
+      <p>Example usage of Avatar:</p>
       <CodeBlock codeString={displayUsage} />
     </CardSubMenu>
   );
 }
 
-const displayUsage = `// Usage example for Alert`;
+const displayUsage = `// Usage example for Avatar`;
 
-export default CardAlertUsage;
+export default CardAvatarUsage;

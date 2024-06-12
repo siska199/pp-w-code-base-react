@@ -4,6 +4,7 @@ import IntroductionPage from '@pages/docs/IntroductionPage';
 import PrerequisitePage from '@pages/docs/PrerequisitePage';
 import AccordionPage from '@pages/docs/components/AccordionPage';
 import AlertPage from '@pages/docs/components/AlertPage';
+import AvatarPage from '@pages/docs/components/AvatarPage';
 import BadgePage from '@pages/docs/components/BadgePage';
 import { createBrowserRouter } from "react-router-dom";
 
@@ -48,7 +49,14 @@ const docRouter = {
                     path: 'badge',
                     element: <BadgePage />,
                     handle: {
-                        id: '0-C0'
+                        id: '1-BA3'
+                    }
+                },
+                {
+                    path: 'avatar',
+                    element: <AvatarPage />,
+                    handle: {
+                        id: '1-AV2'
                     }
                 }
             ]
