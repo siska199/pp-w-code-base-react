@@ -146,5 +146,6 @@ fs.writeFileSync(path.join(modulePath, `Card${componentName}AdditionalInfo.tsx`)
 
 // Read the existing content of index.tsx
 
-// How to run this script: 
+// How to run this script:
+// node gpc.js <ComponentName>
 
