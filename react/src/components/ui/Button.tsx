@@ -9,10 +9,11 @@ interface TProps extends HTMLProps<HTMLButtonElement | HTMLLinkElement>, Variant
   isLoading?: boolean;
   customeElement?: "button" | "link" | null;
   to?: string;
+  newTab?: boolean;
 }
 
 const Button = (props: TProps) => {
-  const { variant, sizeCustome, customeElement = "button", isContained, isRounded, children, className, isLoading = false, ...attrs } = props
+  const { variant, sizeCustome, newTab, customeElement = "button", isContained, isRounded, children, className, isLoading = false, ...attrs } = props
 
   const CompButton = customeElement === "link" ? Link : "button" as React.ElementType
 
@@ -21,6 +22,8 @@ const Button = (props: TProps) => {
       {...attrs}
       disabled={isLoading || attrs?.disabled}
       className={cn(buttonVariants({ className, variant, sizeCustome, isRounded, isContained, }))}
+      target={newTab ? '_blank' : ''}
+
     >
       {
         isLoading ? <span>
