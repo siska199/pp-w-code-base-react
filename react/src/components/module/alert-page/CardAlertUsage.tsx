@@ -1,12 +1,13 @@
 
 import CardSubMenu from '@components/cards/CardSubMenu';
 import CodeBlock from '@components/ui/CodeBlock';
+import { generateDisplayComponent } from '@lib/utils/helper';
 
 const CardAlertUsage = () => {
   return (
     <CardSubMenu title="Usage">
       <p>Example usage of Alert:</p>
-      <CodeBlock codeString={displayUsage} />
+      <CodeBlock codeString={generateDisplayComponent("Alert", displayUsage)} />
     </CardSubMenu>
   );
 }

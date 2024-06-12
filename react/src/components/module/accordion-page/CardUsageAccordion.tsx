@@ -1,12 +1,13 @@
 import CardSubMenu from '@components/cards/CardSubMenu';
 import CodeBlock from '@components/ui/CodeBlock';
+import { generateDisplayComponent } from '@lib/utils/helper';
 
 
 const CardUsageAccordion = () => {
     return (
         <CardSubMenu title="Usage">
             <p>Example of usage component accordion:</p>
-            <CodeBlock codeString={displayUsage} />
+            <CodeBlock codeString={generateDisplayComponent('Accordion', displayUsage)} />
         </CardSubMenu>
     )
 }

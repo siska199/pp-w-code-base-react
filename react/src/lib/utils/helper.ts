@@ -71,7 +71,13 @@ export function checkElmnOnTopOfPage(elm: any) {
 export const handleStopPropagation = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => e?.stopPropagation()
 
 
-
+export function generateDisplayComponent(ComponentName: string, dynamic: string) {
+    return `import ${ComponentName} from "@components/ui/${ComponentName}";
+    
+const DisplayComponent = () => {
+    ${dynamic}
+};`;
+}
 
 
 

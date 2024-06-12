@@ -1,16 +1,17 @@
 
 import CardSubMenu from '@components/cards/CardSubMenu';
 import CodeBlock from '@components/ui/CodeBlock';
+import { generateDisplayComponent } from '@lib/utils/helper';
 
 const CardAvatarUsage = () => {
   return (
     <CardSubMenu title="Usage">
       <p>Example usage of Avatar:</p>
-      <CodeBlock codeString={displayUsage} />
+      <CodeBlock codeString={generateDisplayComponent('Avatar',displayUsage)} />
     </CardSubMenu>
   );
 }
 
-const displayUsage = `// Usage example for Avatar`;
+const displayUsage = `<Avatar type="alphabet" sizeAvatar={"tiny"} name="Siska" />`;
 
 export default CardAvatarUsage;
