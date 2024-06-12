@@ -2,11 +2,16 @@ import Navbar from "@components/Navbar"
 import RightSidebar from "@components/RightSidebar"
 import Sidebar from "@components/Sidebar"
 import { useEffect, useState } from "react"
-import { Outlet, useMatches } from "react-router-dom"
+import { Outlet, useMatches, useNavigation } from "react-router-dom"
 
 
 
 const LayoutType1 = () => {
+
+    const navigation = useNavigation();
+
+    console.log("navigate: ", navigation?.state)
+
     const matches = useMatches()
     const pagesMatch = matches?.filter(page => page.pathname === location.pathname)
     const currentPageData: any = pagesMatch?.[pagesMatch?.length - 1]?.handle
@@ -45,17 +50,20 @@ const LayoutType1 = () => {
 
     return (
         <main id="layout" className=" overflow-x-hidden relative h-screen min-h-screen w-full overflow-y-auto">
+            {
+                navigation?.state === "loading" && <div>Loading</div>
+            }
             <Navbar />
             <div className="flex relative overflow-x-hidden">
                 <Sidebar isLandingPage={currentPageData?.isLandingPage} />
                 <div
-                    className=" p-8 flex min-h-screen transtion-all duration-500"
+                    className=" p-8 flex  transtion-all duration-500"
                     style={{
                         marginLeft: currentPageData?.isLandingPage ? 0 : leftPosition,
                         marginRight: currentPageData?.isLandingPage ? 0 : rightPosition,
                         width: currentPageData?.isLandingPage ? '100%' : `calc(100% - ${leftPosition + rightPosition}px)`,
                     }}>
-                    <div className="min-h-screen w-full max-w-full flex flex-col gap-10">
+                    <div className="w-full max-w-full flex flex-col gap-10">
                         <Outlet />
                     </div>
                     {!currentPageData?.isLandingPage && <RightSidebar />}

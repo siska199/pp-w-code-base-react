@@ -1,10 +1,10 @@
-import CardIntro from "@components/cards/CardIntro"
+import CardIntroComponent from "@components/cards/CardIntroComponent"
 import Accordion from "@components/ui/Accordion"
 
 const CardIntroAccordion = () => {
 
   return (
-    <CardIntro
+    <CardIntroComponent
       title={'Accordion'}
       subTitle=" An accordion consists of multiple sections or panels, each containing a header and associated content. The headers are usually displayed in a vertical stack, and clicking on a header expands the associated content while collapsing the others."
       DisplayComponent={<DisplayAccordion />}

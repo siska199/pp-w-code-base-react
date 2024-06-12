@@ -2,17 +2,19 @@ import IconLoading from '@assets/icons/IconLoading';
 import { cn } from '@lib/utils/helper';
 import { VariantProps, cva } from 'class-variance-authority';
 import { HTMLProps } from 'react';
+import { Link } from 'react-router-dom';
 
 
-interface TProps extends HTMLProps<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
+interface TProps extends HTMLProps<HTMLButtonElement | HTMLLinkElement>, VariantProps<typeof buttonVariants> {
   isLoading?: boolean;
-  customeElement?: "button" | "a" | null
+  customeElement?: "button" | "link" | null;
+  to?: string;
 }
 
 const Button = (props: TProps) => {
   const { variant, sizeCustome, customeElement = "button", isContained, isRounded, children, className, isLoading = false, ...attrs } = props
 
-  const CompButton = customeElement as React.ElementType
+  const CompButton = customeElement === "link" ? Link : "button" as React.ElementType
 
   return (
     <CompButton

@@ -1,13 +1,12 @@
 
-import CardIntro from "@components/cards/CardIntro";
+import CardIntroComponent from "@components/cards/CardIntroComponent";
 import Alert from "@components/ui/Alert";
 import Button from "@components/ui/Button";
 import { useState } from "react";
 
 const CardAlertIntro = () => {
-
   return (
-    <CardIntro
+    <CardIntroComponent
       title={'Alert'}
       subTitle="The Alert component is a UI element commonly used in web applications to display important information, warnings, or notifications to users. It typically appears as a message box or dialog that pops up on the screen, drawing the user's attention to a specific event or situation that requires their attention."
       DisplayComponent={<DisplayAlert />}

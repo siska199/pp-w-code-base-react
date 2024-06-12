@@ -3,19 +3,23 @@ import Badge from "./Badge";
 
 interface TProps {
     items: TItemList[];
+    customeClass?: {
+        ul?: string;
+        li?: string;
+    }
 }
 
 const List = (props: TProps) => {
-    const { items } = props;
+    const { items, customeClass } = props;
 
     const renderItems = (items: TItemList[]) => {
         return (
-            <ul className="list-disc px-4 flex flex-col gap-3 mt-2">
+            <ul className={`${customeClass?.ul} list-disc px-4 flex flex-col gap-3 mt-2`}>
                 {items.map((item, i) => (
-                    <li key={i}>
+                    <li key={i} className={`${customeClass?.li}`}>
                         {item.label && <Badge label={item.label} />}
                         {item.content}
-                        {item.childs && renderItems(item.childs)} 
+                        {item.childs && renderItems(item.childs)}
                     </li>
                 ))}
             </ul>

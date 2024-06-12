@@ -1,10 +1,10 @@
 
-import CardIntro from "@components/cards/CardIntro";
+import CardIntroComponent from "@components/cards/CardIntroComponent";
 import Badge from "@components/ui/Badge";
 
 const CardBadgeIntro = () => {
   return (
-    <CardIntro
+    <CardIntroComponent
       title={'Badge'}
       subTitle="Description of Badge."
       DisplayComponent={<Badge />}
