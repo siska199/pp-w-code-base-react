@@ -3,6 +3,7 @@ import Button from "@components/ui/Button"
 import LinkCustome from "@components/ui/Link"
 import Logo from "@components/ui/Logo"
 import useSidebar from "@hooks/ui/useSidebar"
+import listMenuNavbar from "@lib/utils/data/menu-navbar"
 
 
 const Navbar = () => {
@@ -17,7 +18,7 @@ const Navbar = () => {
                 <Logo sizeLogo={"large"} className="hidden md:block" />
                 <ul className="hidden md:flex gap-8 ">
                     {
-                        listMenu?.map((menu, i) => <LinkCustome key={i} to={menu?.url} className="hover:!no-underline">
+                        listMenuNavbar?.map((menu, i) => <LinkCustome key={i} to={menu?.url} className="hover:!no-underline">
                             {menu?.label}
                         </LinkCustome>)
                     }
@@ -32,20 +33,5 @@ const Navbar = () => {
     )
 }
 
-const listMenu = [
-
-    {
-        label: 'Components',
-        url: '/docs/components/accordion'
-    },
-    {
-        label: 'Examples',
-        url: '/docs/components/examples'
-    },
-    {
-        label: 'Github',
-        url: 'https://github.com/siska199/my-code-base-199'
-    }
-]
 
 export default Navbar

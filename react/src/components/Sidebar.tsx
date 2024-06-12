@@ -54,13 +54,15 @@ const Sidebar = (props: TProps) => {
     }, [])
 
     useEffect(() => {
-        console.log("location change")
         if (idActiveMenu) {
             const activeMenu = listFlattenMenuSidebar?.filter((data) => data?.id === idActiveMenu)[0]
             console.log("active menu: ", activeMenu)
-            setting.activeMenu = activeMenu
+            setSetting({
+                ...setting,
+                activeMenu
+            })
         }
-    }, [idActiveMenu])
+    }, [idActiveMenu, location.pathname])
 
     const handleChangeActiveMenu = (data: TParamsOnChangeMenu) => {
         setSetting({

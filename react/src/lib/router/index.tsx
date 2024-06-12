@@ -9,13 +9,13 @@ import { createBrowserRouter } from "react-router-dom";
 
 const docRouter = {
     path: "docs",
+    handle: {
+        id: '1-I0',
+    },
     children: [
         {
             index: true,
             element: <IntroductionPage />,
-            handle: {
-                id: '0-GS0',
-            }
         },
         {
             path: 'prerequisite',

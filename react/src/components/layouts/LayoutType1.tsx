@@ -13,6 +13,7 @@ const LayoutType1 = () => {
     const currentPageData: any = pagesMatch?.[pagesMatch?.length - 1]?.handle
     const isLandingPage = currentPageData?.isLandingPage
     const idActiveMenu = currentPageData?.id
+
     const [widthSidebar, setWidthSidebar] = useState(0)
     const [widthRightSidebar, setWidthRightSidebar] = useState(0)
     const [leftPosition, setLeftPosition] = useState(0)
