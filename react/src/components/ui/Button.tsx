@@ -51,7 +51,6 @@ const buttonVariants = cva(
         "false": "",
         "true": "rounded-full"
       },
-
       sizeCustome: {
         "small": "py-1 px-4 ",
         "base": "py-2 px-4 ",
