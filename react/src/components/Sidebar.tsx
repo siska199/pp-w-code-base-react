@@ -56,7 +56,6 @@ const Sidebar = (props: TProps) => {
     useEffect(() => {
         if (idActiveMenu) {
             const activeMenu = listFlattenMenuSidebar?.filter((data) => data?.id === idActiveMenu)[0]
-            console.log("active menu: ", activeMenu)
             setSetting({
                 ...setting,
                 activeMenu

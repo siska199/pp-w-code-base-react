@@ -88,15 +88,15 @@ const RenderMenu = (props: TProps) => {
             {menu?.map((groupMenu: TMenuItem, i) => (
                 <li key={i} className="scrollbar-hidden">
                     <div
-                        onClick={() => handleOnClickMenu(groupMenu)}
                         className={cn({
-                            "flex items-center cursor-pointer py-1": true,
+                            "flex items-center py-1": true,
                         })}
                     >
                         <LinkCustome
+                            onClick={() => handleOnClickMenu(groupMenu)}
                             to={groupMenu?.url || location.pathname}
                             className={cn({
-                                "": true,
+                                "w-full": true,
                                 "pl-2": level > 0,
                                 "border-l border-primary-700 text-primary-700": setting?.activeMenu.id === groupMenu?.id,
                                 [setting?.[level]?.customeClass?.label || ""]: setting?.[level]?.customeClass?.label
