@@ -86,7 +86,7 @@ const RenderMenu = (props: TProps) => {
             "opacity-100 max-h-full": isOpen,
         })}>
             {menu?.map((groupMenu: TMenuItem, i) => (
-                <li key={i} className="scrollbar-hidden">
+                <li key={i} className="scrollbar-hidden pr-4">
                     <div
                         className={cn({
                             "flex items-center py-1": true,
@@ -96,9 +96,9 @@ const RenderMenu = (props: TProps) => {
                             onClick={() => handleOnClickMenu(groupMenu)}
                             to={groupMenu?.url || location.pathname}
                             className={cn({
-                                "w-full": true,
+                                "w-full py-1": true,
                                 "pl-2": level > 0,
-                                "border-l border-primary-700 text-primary-700": setting?.activeMenu.id === groupMenu?.id,
+                                "border-l bg-primary-50 w-full rounded-tr-md rounded-br-md border-primary-700 text-primary-700": setting?.activeMenu.id === groupMenu?.id,
                                 [setting?.[level]?.customeClass?.label || ""]: setting?.[level]?.customeClass?.label
                             })}>
                             {groupMenu?.name}

@@ -52,9 +52,9 @@ const LayoutType1 = () => {
     }, [widthSidebar, widthRightSidebar, isLandingPage])
 
     return (
-        <main id="layout" className=" overflow-x-hidden relative h-screen min-h-screen w-full overflow-y-auto">
+        <main id="layout" className=" overflow-x-hidden relative bg-white h-screen min-h-screen w-full overflow-y-auto">
             <Navbar />
-            <div className="flex relative overflow-x-hidden">
+            <div className="flex relative overflow-x-hidden ">
                 <Sidebar isLandingPage={isLandingPage} idActiveMenu={idActiveMenu} />
                 <div
                     className=" p-8 flex  transtion-all duration-500"

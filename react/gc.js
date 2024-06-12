@@ -67,3 +67,7 @@ fs.mkdirSync(componentsPath, { recursive: true });
 fs.writeFileSync(path.join(componentsPath, `${componentName}.tsx`), componentTemplate);
 
 console.log(`Component ${componentName} has been created at ${componentsPath}`);
+
+
+// How to run this script:
+// node gc.js <path example src/components/ui> <ComponentName>

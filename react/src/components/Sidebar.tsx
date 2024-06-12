@@ -77,7 +77,7 @@ const Sidebar = (props: TProps) => {
 
     return (
         <>
-            <div id="container-sidebar" className=" h-full" onClick={handleToggleSidebar}>
+            <div id="container-sidebar" className=" h-full " onClick={handleToggleSidebar}>
                 <div id="sidebar" onClick={handleStopPropagation} style={{ top: topPosition, }} className={`fixed overflow-y-hidden  h-[calc(100%-3rem)] left-0   bg-white   w-0 ${!isLandingPage && "md:w-[17rem]"} `}>
 
                     <div className="p-8 w-full  flex flex-col gap-4 relative  h-full">
