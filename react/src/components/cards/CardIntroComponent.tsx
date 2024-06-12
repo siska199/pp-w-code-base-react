@@ -31,7 +31,7 @@ const CardIntroComponent = (props: TProps) => {
             <Tabs listTab={listTab} >
                 {
                     ({ activeTab }) => <>
-                        {activeTab === 0 && <div className="flex flex-col items-center gap-4 border rounded-md p-4">
+                        {activeTab === 0 && <div className="flex flex-col items-center gap-4 border rounded-md py-4 px-8">
 
                             {
                                 listExample?.map((example, i) => (
