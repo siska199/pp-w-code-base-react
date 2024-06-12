@@ -3,10 +3,13 @@ import LinkCustome from "@components/ui/Link";
 import { cn, isEmptyValue } from "@lib/utils/helper";
 import { useLocation } from "react-router-dom";
 
-export interface TItemMenu {
+export interface TMenuItem {
+    id: string;
     name: string;
     url?: string;
-    childs?: TItemMenu[];
+    parentId: string | null;
+    childs?: TMenuItem[];
+    level?: number;
 }
 
 interface TLevelSetting {
@@ -18,26 +21,22 @@ interface TLevelSetting {
 
 export interface TMenuSettings {
     [level: number]: TLevelSetting;
-    activeMenu: {
-        level: number;
-        name: string;
-        parent: string;
-    }
+    activeMenu: TMenuItem
     openMenus: { [key: string]: boolean }
 }
 
 export interface TParamsOnChangeMenu {
-    groupMenu: TItemMenu;
+    groupMenu: TMenuItem
     level: number;
-    parent: string;
+    parentId: string;
 }
 
 interface TProps {
-    menu: TItemMenu[];
+    menu: TMenuItem[];
     onChangeMenu: (params: TParamsOnChangeMenu) => any;
     level?: number;
     isOpen?: boolean;
-    parent?: string;
+    parentId?: string;
     setting: TMenuSettings;
     setSetting: React.Dispatch<React.SetStateAction<TMenuSettings>>
 
@@ -50,9 +49,9 @@ const NestedMenu = (props: TProps) => {
 const RenderMenu = (props: TProps) => {
     const location = useLocation();
 
-    const { setting, menu, setSetting, level = 0, parent, isOpen, onChangeMenu: handleOnChangeMenu } = props;
+    const { setting, menu, setSetting, level = 0, parentId, isOpen, onChangeMenu: handleOnChangeMenu } = props;
 
-    const handleOnClickMenu = (groupMenu: TItemMenu) => {
+    const handleOnClickMenu = (groupMenu: TMenuItem) => {
         let updateSetting = setting
         if (isEmptyValue(groupMenu?.childs)) {
             updateSetting = {
@@ -60,8 +59,9 @@ const RenderMenu = (props: TProps) => {
                 activeMenu: {
                     ...setting?.activeMenu,
                     level: level,
+                    id: groupMenu?.id,
                     name: groupMenu?.name,
-                    parent: parent || ""
+                    parentId: parentId || "",
                 }
             }
         } else {
@@ -69,7 +69,7 @@ const RenderMenu = (props: TProps) => {
                 ...setting,
                 openMenus: {
                     ...setting.openMenus,
-                    [groupMenu.name]: !setting.openMenus[groupMenu.name]
+                    [groupMenu.id]: !setting.openMenus[groupMenu.id]
                 }
             }
         }
@@ -85,7 +85,7 @@ const RenderMenu = (props: TProps) => {
             " ml-2": level > 1,
             "opacity-100 max-h-full": isOpen,
         })}>
-            {menu?.map((groupMenu: TItemMenu, i) => (
+            {menu?.map((groupMenu: TMenuItem, i) => (
                 <li key={i} className="scrollbar-hidden">
                     <div
                         onClick={() => handleOnClickMenu(groupMenu)}
@@ -98,25 +98,25 @@ const RenderMenu = (props: TProps) => {
                             className={cn({
                                 "": true,
                                 "pl-2": level > 0,
-                                "border-l border-primary-700 text-primary-700": setting?.activeMenu.name === groupMenu?.name,
+                                "border-l border-primary-700 text-primary-700": setting?.activeMenu.id === groupMenu?.id,
                                 [setting?.[level]?.customeClass?.label || ""]: setting?.[level]?.customeClass?.label
                             })}>
                             {groupMenu?.name}
                         </LinkCustome>
                         {!isEmptyValue(groupMenu?.childs) && (
-                            <IconChevronToggle className={` icon-primary h-[1.1rem]`} variant="2" isOpen={setting?.openMenus[groupMenu.name]} />
+                            <IconChevronToggle className={` icon-primary h-[1.1rem]`} variant="2" isOpen={setting?.openMenus[groupMenu.id]} />
                         )}
                     </div>
 
                     {!isEmptyValue(groupMenu?.childs) && (
                         <RenderMenu
-                            menu={groupMenu?.childs as TItemMenu[]}
-                            parent={groupMenu?.name}
+                            menu={groupMenu?.childs as TMenuItem[]}
+                            parentId={groupMenu?.id}
                             level={level + 1}
                             setting={setting}
                             setSetting={setSetting}
                             onChangeMenu={handleOnChangeMenu}
-                            isOpen={setting?.openMenus[groupMenu.name]}
+                            isOpen={setting?.openMenus[groupMenu.id]}
                         />
                     )}
                 </li>

@@ -19,7 +19,7 @@ const displayUsage = `  const [showAlert, setShowAlert] = useState(false);
   return  <div className="flex flex-col items-center gap-4">
     <Button variant={"white"} onClick={handleToggleAlert} >Show Alert</Button>
     <Alert variant="success" withCloseBtn show={showAlert} onDismiss={handleToggleAlert}>
-      Sukses makan
+       mollitia non itaque, natus, accusantium tenetur deserunt maxime? Praesentium, veritatis!
     </Alert>
   </div>
 `;

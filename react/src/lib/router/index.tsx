@@ -12,26 +12,44 @@ const docRouter = {
     children: [
         {
             index: true,
-            element: <IntroductionPage />
+            element: <IntroductionPage />,
+            handle: {
+                id: '0-GS0',
+            }
         },
         {
             path: 'prerequisite',
-            element: <PrerequisitePage />
+            element: <PrerequisitePage />,
+            handle: {
+                id: '1-PR1'
+            }
         },
         {
             path: 'components',
+            handle: {
+                id: '0-C0'
+            },
             children: [
                 {
                     path: 'accordion',
-                    element: <AccordionPage />
+                    element: <AccordionPage />,
+                    handle: {
+                        id: '1-AC0'
+                    }
                 },
                 {
                     path: 'alert',
-                    element: <AlertPage />
+                    element: <AlertPage />,
+                    handle: {
+                        id: '1-AL1'
+                    }
                 },
                 {
                     path: 'badge',
-                    element: <BadgePage />
+                    element: <BadgePage />,
+                    handle: {
+                        id: '0-C0'
+                    }
                 }
             ]
         },

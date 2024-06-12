@@ -2,20 +2,17 @@ import Navbar from "@components/Navbar"
 import RightSidebar from "@components/RightSidebar"
 import Sidebar from "@components/Sidebar"
 import { useEffect, useState } from "react"
-import { Outlet, useMatches, useNavigation } from "react-router-dom"
+import { Outlet, useMatches } from "react-router-dom"
 
 
 
 const LayoutType1 = () => {
 
-    const navigation = useNavigation();
-
-    console.log("navigate: ", navigation?.state)
-
     const matches = useMatches()
     const pagesMatch = matches?.filter(page => page.pathname === location.pathname)
     const currentPageData: any = pagesMatch?.[pagesMatch?.length - 1]?.handle
-
+    const isLandingPage = currentPageData?.isLandingPage
+    const idActiveMenu = currentPageData?.id
     const [widthSidebar, setWidthSidebar] = useState(0)
     const [widthRightSidebar, setWidthRightSidebar] = useState(0)
     const [leftPosition, setLeftPosition] = useState(0)
@@ -31,7 +28,12 @@ const LayoutType1 = () => {
             setWidthRightSidebar(rightsSidebarComp?.offsetWidth)
             setRightPosition(rightsSidebarComp?.offsetWidth)
         }
-    }, [currentPageData])
+
+        if (isLandingPage) {
+            sessionStorage?.removeItem('setting')
+        }
+
+    }, [isLandingPage])
 
     useEffect(() => {
         // Set left position of page every media query change from > md to <md
@@ -46,27 +48,24 @@ const LayoutType1 = () => {
         return () => {
             mediaQueryMinMd.removeEventListener('change', handleMediaQueryChange);
         };
-    }, [widthSidebar, widthRightSidebar, currentPageData])
+    }, [widthSidebar, widthRightSidebar, isLandingPage])
 
     return (
         <main id="layout" className=" overflow-x-hidden relative h-screen min-h-screen w-full overflow-y-auto">
-            {
-                navigation?.state === "loading" && <div>Loading</div>
-            }
             <Navbar />
             <div className="flex relative overflow-x-hidden">
-                <Sidebar isLandingPage={currentPageData?.isLandingPage} />
+                <Sidebar isLandingPage={isLandingPage} idActiveMenu={idActiveMenu} />
                 <div
                     className=" p-8 flex  transtion-all duration-500"
                     style={{
-                        marginLeft: currentPageData?.isLandingPage ? 0 : leftPosition,
-                        marginRight: currentPageData?.isLandingPage ? 0 : rightPosition,
-                        width: currentPageData?.isLandingPage ? '100%' : `calc(100% - ${leftPosition + rightPosition}px)`,
+                        marginLeft: isLandingPage ? 0 : leftPosition,
+                        marginRight: isLandingPage ? 0 : rightPosition,
+                        width: isLandingPage ? '100%' : `calc(100% - ${leftPosition + rightPosition}px)`,
                     }}>
                     <div className="w-full max-w-full flex flex-col gap-10">
                         <Outlet />
                     </div>
-                    {!currentPageData?.isLandingPage && <RightSidebar />}
+                    {!isLandingPage && <RightSidebar />}
                 </div>
             </div>
         </main>

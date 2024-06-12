@@ -1,16 +1,18 @@
 import { IconClose } from "@assets/icons"
 import Logo from "@components/ui/Logo"
 import useSidebar from "@hooks/ui/useSidebar"
+import { listFlattenMenuSidebar, listGroupingMenuSidebar } from "@lib/utils/data/menu-sidebar"
 import { handleStopPropagation } from "@lib/utils/helper"
 import { useEffect, useState } from "react"
 import NestedMenu, { TMenuSettings, TParamsOnChangeMenu } from "./ui/NestedMenu"
 
 interface TProps {
     isLandingPage: boolean;
+    idActiveMenu?: string;
 }
 
 const Sidebar = (props: TProps) => {
-    const { isLandingPage } = props
+    const { isLandingPage, idActiveMenu } = props
     const { handleToggleSidebar } = useSidebar();
 
     const [topPosition, setTopPosition] = useState(0);
@@ -25,13 +27,14 @@ const Sidebar = (props: TProps) => {
             defaultOpen: false
         },
         activeMenu: {
+            id: "",
             level: -1,
             name: "",
-            parent: ""
+            parentId: ""
         },
         openMenus: {
-            "Getting Started": true,
-            "Components": true,
+            "0-GS0": true,
+            "0-C0": true,
         }
     })
 
@@ -50,6 +53,15 @@ const Sidebar = (props: TProps) => {
         }
     }, [])
 
+    useEffect(() => {
+        console.log("location change")
+        if (idActiveMenu) {
+            const activeMenu = listFlattenMenuSidebar?.filter((data) => data?.id === idActiveMenu)[0]
+            console.log("active menu: ", activeMenu)
+            setting.activeMenu = activeMenu
+        }
+    }, [idActiveMenu])
+
     const handleChangeActiveMenu = (data: TParamsOnChangeMenu) => {
         setSetting({
             ...setting,
@@ -57,13 +69,10 @@ const Sidebar = (props: TProps) => {
                 ...setting?.activeMenu,
                 level: data?.level,
                 name: data?.groupMenu?.name,
-                parent: data?.parent
+                parentId: data?.parentId
             }
         })
     }
-
-
-
 
     return (
         <>
@@ -78,7 +87,7 @@ const Sidebar = (props: TProps) => {
                         <NestedMenu
                             setting={setting}
                             setSetting={setSetting}
-                            menu={listGroupMenu}
+                            menu={listGroupingMenuSidebar}
                             onChangeMenu={handleChangeActiveMenu}
                         />
                     </div>
@@ -92,155 +101,6 @@ const Sidebar = (props: TProps) => {
 
 }
 
-const listGroupMenu = [
-    {
-        name: 'Getting Started',
-        childs: [
-            {
-                name: 'Introduction',
-                url: '/docs',
-            },
-            {
-                name: 'Pre-requisite',
-                url: '/docs/prerequisite',
-            },
-        ]
-    },
-    {
-        name: 'Icons',
-        url: '/docs/icons'
-    },
-    {
-        name: 'Components',
-        childs: [
-            {
-                name: 'Accordion',
-                url: '/docs/components/accordion'
-            },
-            {
-                name: 'Alert',
-                url: '/docs/components/alert'
-            },
-            {
-                name: 'Avatar',
-                url: '/docs/components/avatar'
-            },
-            {
-                name: 'Badge',
-                url: '/docs/components/badge'
-            },
-            {
-                name: 'Breadcrumb',
-                url: '/docs/components/breadcrumb'
-            },
-            {
-                name: 'Button',
-                url: '/docs/components/button'
-            },
-            {
-                name: 'Container',
-                url: '/docs/components/container'
-            },
-            {
-                name: 'Copy Text',
-                url: '/docs/components/copy-text'
-            },
-            {
-                name: 'Dropdown',
-                url: '/docs/components/dropdown'
-            },
-            {
-                name: 'Helper Message',
-                url: '/docs/components/helper-message'
-            },
-            {
-                name: 'Image',
-                url: '/docs/components/image'
-            },
-            {
-                name: 'Input',
-                url: '/docs/components/input',
-                childs: [
-                    {
-                        name: 'Base',
-                        url: '/docs/components/input/base',
-                    },
-                    {
-                        name: 'Checkbox',
-                        url: '/docs/components/input/checkbox',
-                    },
-                    {
-                        name: 'Multiple Checkbox',
-                        url: '/docs/components/input/multiple-checkbox',
-                    },
-                    {
-                        name: 'Currency',
-                        url: '/docs/components/input/currency',
-                    },
-                    {
-                        name: 'Date',
-                        url: '/docs/components/input/date',
-                    },
-                    {
-                        name: 'NPWP',
-                        url: '/docs/components/input/npwp',
-                    },
-                    {
-                        name: 'OTP',
-                        url: '/docs/components/input/otp',
-                    },
-                    {
-                        name: 'Percentage',
-                        url: '/docs/components/input/percentage',
-                    },
-                    {
-                        name: 'Phone Number',
-                        url: '/docs/components/input/phone-number'
-                    },
-                    {
-                        name: 'Radio Button',
-                        url: '/docs/components/input/phone-number'
-                    },
-                    {
-                        name: 'Select',
-                        url: '/docs/components/input/select'
-                    },
-                    {
-                        name: 'Text Area',
-                        url: '/docs/components/input/text-area',
-                    },
-                ]
-            },
-            {
-                name: 'Link',
-                url: '/docs/components/link'
-            },
-            {
-                name: 'List',
-                url: '/docs/components/list'
-            },
-            {
-                name: 'Progressbar',
-                url: '/docs/components/progressbar'
-            },
-            {
-                name: 'Progress Step',
-                url: '/docs/components/progres-step'
-            },
-            {
-                name: 'Modal',
-                url: '/docs/components/modal',
-                childs: [
-                    {
-                        name: 'Modal Confirmation',
-                        url: '/docs/components/modal/confirmation',
-
-                    }
-                ]
-            },
-        ]
-    }
-]
 
 
 export default Sidebar
