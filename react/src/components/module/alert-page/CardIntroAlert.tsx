@@ -4,7 +4,7 @@ import Alert from "@components/ui/Alert";
 import Button from "@components/ui/Button";
 import { useState } from "react";
 
-const CardAlertIntro = () => {
+const CardIntroAlert = () => {
   const [showAlert, setShowAlert] = useState(false);
 
   const handleToggleAlert = () => {
@@ -144,4 +144,4 @@ const alertVariants = cva(
 
 export default Alert`;
 
-export default CardAlertIntro;
+export default CardIntroAlert;

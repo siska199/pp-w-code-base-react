@@ -3,7 +3,7 @@ import CardSubMenu from '@components/cards/CardSubMenu';
 import CodeBlock from '@components/ui/CodeBlock';
 import { generateDisplayComponent } from '@lib/utils/helper';
 
-const CardAlertUsage = () => {
+const CardUsageAlert = () => {
   return (
     <CardSubMenu title="Usage">
       <p>Example usage of Alert:</p>
@@ -25,4 +25,4 @@ const displayUsage = `  const [showAlert, setShowAlert] = useState(false);
   </div>
 `;
 
-export default CardAlertUsage;
+export default CardUsageAlert;

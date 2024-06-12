@@ -2,7 +2,7 @@
 import CardSubMenu from "@components/cards/CardSubMenu";
 import List from "@components/ui/List";
 
-const CardAlertProps = () => {
+const CardPropsAlert = () => {
   const listItem = [
     {
       label: "variant",
@@ -54,4 +54,4 @@ const CardAlertProps = () => {
   );
 }
 
-export default CardAlertProps;
+export default CardPropsAlert;

@@ -2,7 +2,7 @@
 import CardIntroComponent from "@components/cards/CardIntroComponent";
 import Avatar from "@components/ui/Avatar";
 
-const CardAvatarIntro = () => {
+const CardIntroAvatar = () => {
   const listExample = [
     {
       title: '',
@@ -122,4 +122,4 @@ const avatarVariants = cva(
 
 export default Avatar`;
 
-export default CardAvatarIntro;
+export default CardIntroAvatar;

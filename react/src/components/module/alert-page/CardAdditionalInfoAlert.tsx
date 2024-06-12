@@ -3,7 +3,7 @@ import CardSubMenu from "@components/cards/CardSubMenu";
 import LinkCustome from "@components/ui/Link";
 import ProgressStep from "@components/ui/ProgressStep";
 
-const CardAlertAdditionalInfo = () => {
+const CardAdditionalInfoAlert = () => {
   const listAdditionalInfo = [
     {
       title: "Icons",
@@ -21,4 +21,4 @@ const CardAlertAdditionalInfo = () => {
 }
 
 
-export default CardAlertAdditionalInfo;
+export default CardAdditionalInfoAlert;

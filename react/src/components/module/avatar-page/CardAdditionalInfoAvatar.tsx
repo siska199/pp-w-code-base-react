@@ -3,7 +3,7 @@ import CardSubMenu from "@components/cards/CardSubMenu";
 import CodeBlock from "@components/ui/CodeBlock";
 import ProgressStep from "@components/ui/ProgressStep";
 
-const CardAvatarAdditionalInfo = () => {
+const CardAdditionalInfoAvatar = () => {
   const listAdditionalInfo = [
     {
       title: "Additional Info 1",
@@ -25,4 +25,4 @@ const CardAvatarAdditionalInfo = () => {
 const info1 = `// Additional info 1`;
 const info2 = `// Additional info 2`;
 
-export default CardAvatarAdditionalInfo;
+export default CardAdditionalInfoAvatar;

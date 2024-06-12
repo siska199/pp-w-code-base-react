@@ -2,7 +2,7 @@
 import CardSubMenu from "@components/cards/CardSubMenu";
 import List from "@components/ui/List";
 
-const CardAvatarProps = () => {
+const CardPropsAvatar = () => {
   const listItem = [
     {
       label: "type",
@@ -37,7 +37,7 @@ const CardAvatarProps = () => {
       content: "Sets the status indicator on the avatar. Accepts 'none', 'offline', 'online', 'away', 'dont-distrub', 'icon'."
     }
   ];
-  
+
 
   return (
     <CardSubMenu title={'Props'}>
@@ -46,4 +46,4 @@ const CardAvatarProps = () => {
   );
 }
 
-export default CardAvatarProps;
+export default CardPropsAvatar;
