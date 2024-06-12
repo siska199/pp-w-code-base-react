@@ -11,6 +11,17 @@ const CardAlertUsage = () => {
   );
 }
 
-const displayUsage = `// Usage example for Alert`;
+const displayUsage = `  const [showAlert, setShowAlert] = useState(false);
+
+  const handleToggleAlert = () => {
+    setShowAlert(!showAlert)
+  }
+  return  <div className="flex flex-col items-center gap-4">
+    <Button variant={"white"} onClick={handleToggleAlert} >Show Alert</Button>
+    <Alert variant="success" withCloseBtn show={showAlert} onDismiss={handleToggleAlert}>
+       mollitia non itaque, natus, accusantium tenetur deserunt maxime? Praesentium, veritatis!
+    </Alert>
+  </div>
+`;
 
 export default CardAlertUsage;
