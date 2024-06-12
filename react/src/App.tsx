@@ -1,5 +1,5 @@
 
-import router from "@lib/routes"
+import router from "@lib/router"
 import { RouterProvider } from "react-router-dom"
 
 const App = () => {

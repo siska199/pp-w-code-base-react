@@ -36,7 +36,7 @@ const listMenu = [
 
     {
         label: 'Components',
-        url: '/docs/components/acccordion'
+        url: '/docs/components/accordion'
     },
     {
         label: 'Examples',

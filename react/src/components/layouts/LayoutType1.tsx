@@ -2,11 +2,15 @@ import Navbar from "@components/Navbar"
 import RightSidebar from "@components/RightSidebar"
 import Sidebar from "@components/Sidebar"
 import { useEffect, useState } from "react"
-import { Outlet } from "react-router-dom"
+import { Outlet, useMatches } from "react-router-dom"
 
 
 
 const LayoutType1 = () => {
+    const matches = useMatches()
+    const pagesMatch = matches?.filter(page => page.pathname === location.pathname)
+    const currentPageData: any = pagesMatch?.[pagesMatch?.length - 1]?.handle
+
     const [widthSidebar, setWidthSidebar] = useState(0)
     const [widthRightSidebar, setWidthRightSidebar] = useState(0)
     const [leftPosition, setLeftPosition] = useState(0)
@@ -22,14 +26,13 @@ const LayoutType1 = () => {
             setWidthRightSidebar(rightsSidebarComp?.offsetWidth)
             setRightPosition(rightsSidebarComp?.offsetWidth)
         }
-    }, [])
+    }, [currentPageData])
 
     useEffect(() => {
         // Set left position of page every media query change from > md to <md
         const mediaQueryMinMd = window.matchMedia('(min-width: 768px)');
         const handleMediaQueryChange = () => {
             const isMinMd = mediaQueryMinMd?.matches
-            console.log("is detected: ", isMinMd)
             setLeftPosition(isMinMd ? widthSidebar : 0)
             setRightPosition(isMinMd ? widthRightSidebar : 0)
 
@@ -38,24 +41,24 @@ const LayoutType1 = () => {
         return () => {
             mediaQueryMinMd.removeEventListener('change', handleMediaQueryChange);
         };
-    }, [widthSidebar, widthRightSidebar])
+    }, [widthSidebar, widthRightSidebar, currentPageData])
 
     return (
         <main id="layout" className=" overflow-x-hidden relative h-screen min-h-screen w-full overflow-y-auto">
             <Navbar />
             <div className="flex relative overflow-x-hidden">
-                <Sidebar />
+                <Sidebar isLandingPage={currentPageData?.isLandingPage} />
                 <div
-                    className=" p-8 flex min-h-screen "
+                    className=" p-8 flex min-h-screen transtion-all duration-500"
                     style={{
-                        marginLeft: leftPosition,
-                        marginRight: rightPosition,
-                        width: `calc(100% - ${leftPosition + rightPosition}px)`,
+                        marginLeft: currentPageData?.isLandingPage ? 0 : leftPosition,
+                        marginRight: currentPageData?.isLandingPage ? 0 : rightPosition,
+                        width: currentPageData?.isLandingPage ? '100%' : `calc(100% - ${leftPosition + rightPosition}px)`,
                     }}>
-                    <div className="min-h-screen max-w-full flex flex-col gap-10">
+                    <div className="min-h-screen w-full max-w-full flex flex-col gap-10">
                         <Outlet />
                     </div>
-                    <RightSidebar />
+                    {!currentPageData?.isLandingPage && <RightSidebar />}
                 </div>
             </div>
         </main>

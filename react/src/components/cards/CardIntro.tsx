@@ -1,6 +1,5 @@
 import CodeBlock from '@components/ui/CodeBlock';
 import Tabs from '@components/ui/Tabs';
-import React from 'react'
 
 interface TProps {
     title: string;

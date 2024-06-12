@@ -9,7 +9,7 @@ interface TProps extends React.HTMLProps<HTMLLinkElement>, VariantProps<typeof l
 const Logo = (props: TProps) => {
     const { className, sizeLogo, ...attrs } = props
     return (
-        <LinkCustome to="/" className={cn(logoVariants({ className, sizeLogo, }))} {...attrs}>
+        <LinkCustome to="/" className={cn(logoVariants({ className: `${className} text-primary`, sizeLogo, }))} {...attrs}>
             Cb199
         </LinkCustome>
     )

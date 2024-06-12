@@ -5,8 +5,12 @@ import { handleStopPropagation } from "@lib/utils/helper"
 import { useEffect, useState } from "react"
 import NestedMenu, { TMenuSettings, TParamsOnChangeMenu } from "./ui/NestedMenu"
 
+interface TProps {
+    isLandingPage: boolean;
+}
 
-const Sidebar = () => {
+const Sidebar = (props: TProps) => {
+    const { isLandingPage } = props
     const { handleToggleSidebar } = useSidebar();
 
     const [topPosition, setTopPosition] = useState(0);
@@ -38,8 +42,12 @@ const Sidebar = () => {
         if (navbarComp) {
             setTopPosition(navbarComp?.clientHeight)
         }
-        const initialSetting = JSON.parse(sessionStorage?.getItem('setting') || "")
-        setSetting(initialSetting)
+
+        const settingSession = sessionStorage?.getItem('setting')
+        if (settingSession) {
+            const initialSetting = JSON.parse(sessionStorage?.getItem('setting') || "")
+            setSetting(initialSetting)
+        }
     }, [])
 
     const handleChangeActiveMenu = (data: TParamsOnChangeMenu) => {
@@ -60,7 +68,7 @@ const Sidebar = () => {
     return (
         <>
             <div id="container-sidebar" className=" h-full" onClick={handleToggleSidebar}>
-                <div id="sidebar" onClick={handleStopPropagation} style={{ top: topPosition, }} className={`fixed overflow-y-hidden  h-[calc(100%-3rem)] left-0   bg-white   w-0 md:w-[17rem]`}>
+                <div id="sidebar" onClick={handleStopPropagation} style={{ top: topPosition, }} className={`fixed overflow-y-hidden  h-[calc(100%-3rem)] left-0   bg-white   w-0 ${!isLandingPage && "md:w-[17rem]"} `}>
 
                     <div className="p-8 w-full  flex flex-col gap-4 relative  h-full">
                         <div id="icon-close" className="hidden justify-between absolute top-6 right-6 cursor-pointer ml-auto">
