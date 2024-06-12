@@ -9,8 +9,9 @@ interface TProps extends React.HTMLProps<HTMLImageElement> {
 const Image = (props: TProps) => {
     const { src, alt, ...attrs } = props
 
+
     return (
-        <img src={getAssetURL({ name: src })} alt={alt || src.replace('-', ' ')} {...attrs} />
+        <img src={src?.includes('http') ? src : getAssetURL({ name: src })} alt={alt || src.replace('-', ' ')} {...attrs} />
     )
 }
 

@@ -5,12 +5,15 @@ import Tabs from '@components/ui/Tabs';
 interface TProps {
     title: string;
     subTitle: string;
-    DisplayComponent: JSX.Element;
     displayCodeBase: string;
+    listExample: {
+        title?: string;
+        component: React.ReactNode;
+    }[]
 }
 
 const CardIntroComponent = (props: TProps) => {
-    const { title, subTitle, DisplayComponent, displayCodeBase, } = props
+    const { title, listExample, subTitle, displayCodeBase, } = props
     const listTab = [
         {
             id: "0",
@@ -28,7 +31,22 @@ const CardIntroComponent = (props: TProps) => {
             <Tabs listTab={listTab} >
                 {
                     ({ activeTab }) => <>
-                        {activeTab === 0 && DisplayComponent}
+                        {activeTab === 0 && <div className="flex flex-col items-center gap-4 border rounded-md p-4">
+
+                            {
+                                listExample?.map((example, i) => (
+                                    <div key={i} className="flex flex-col gap-4 w-full">
+                                        {
+                                            example?.title && <p className="text-left text-black font-medium text-body-medium">{example.title}</p>
+                                        }
+                                        <div className="flex flex-col items-center gap-4">
+                                            {example?.component}
+                                        </div>
+                                    </div>
+                                ))
+                            }
+
+                        </div>}
                         {activeTab == 1 && <CodeBlock codeString={displayCodeBase} />}
                     </>
                 }

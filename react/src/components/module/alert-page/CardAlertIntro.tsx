@@ -5,58 +5,54 @@ import Button from "@components/ui/Button";
 import { useState } from "react";
 
 const CardAlertIntro = () => {
-  return (
-    <CardIntroComponent
-      title={'Alert'}
-      subTitle="The Alert component is a UI element commonly used in web applications to display important information, warnings, or notifications to users. It typically appears as a message box or dialog that pops up on the screen, drawing the user's attention to a specific event or situation that requires their attention."
-      DisplayComponent={<DisplayAlert />}
-      displayCodeBase={displayCodeBase}
-    />
-  );
-}
-
-const DisplayAlert = () => {
   const [showAlert, setShowAlert] = useState(false);
 
   const handleToggleAlert = () => {
     setShowAlert(!showAlert)
   }
 
+  const listExample = [
+    {
+      title: 'Show alert after click Button:',
+      component: <>
+        <Button variant={"white"} onClick={() => handleToggleAlert()} >Show Alert</Button>
+        <Alert variant="success" withCloseBtn show={showAlert} onDismiss={handleToggleAlert}>
+          mollitia non itaque, natus, accusantium tenetur deserunt maxime? Praesentium, veritatis!
+        </Alert>
+      </>
+    },
+    {
+      title: 'Example variant:',
+      component: <>
+        <Alert variant="notification" withCloseBtn={true} isFixed={false} show={true}>
+          s mollitia non itaque, natus, accusantium tenetur deserunt maxime? Praesentium, veritatis!
+        </Alert>
+        <Alert variant="info" isFixed={false} show={true}>
+          s mollitia non itaque, natus, accusantium tenetur deserunt maxime? Praesentium, veritatis!
+        </Alert>
+        <Alert variant="warning" isFixed={false} autoClose={false} show={true}>
+          s mollitia non itaque, natus, accusantium tenetur deserunt maxime? Praesentium, veritatis!
+        </Alert>
+        <Alert variant="error" isFixed={false} autoClose={false} show={true}>
+          s mollitia non itaque, natus, accusantium tenetur deserunt maxime? Praesentium, veritatis!
+        </Alert>
+        <Alert variant="success" isFixed={false} autoClose={false} show={true}>
+          s mollitia non itaque, natus, accusantium tenetur deserunt maxime? Praesentium, veritatis!
+        </Alert>
+      </>
+    }
+  ]
   return (
-    <div className="flex flex-col items-center gap-4">
-      <div className="flex flex-col gap-4 w-full">
-        <p className="text-left text-black font-medium text-body-medium">Show alert after click Button:</p>
-        <div className="flex flex-col items-center gap-4">
-          <Button variant={"white"} onClick={() => handleToggleAlert()} >Show Alert</Button>
-          <Alert variant="success" withCloseBtn show={showAlert} onDismiss={handleToggleAlert}>
-            mollitia non itaque, natus, accusantium tenetur deserunt maxime? Praesentium, veritatis!
-          </Alert>
-        </div>
-      </div>
-      <div className="flex flex-col gap-4 w-full">
-        <p className="text-black font-medium text-body-medium">Example variant:</p>
-        <div className="flex flex-col items-center gap-4">
-          <Alert variant="notification" withCloseBtn={true} isFixed={false} show={true}>
-            s mollitia non itaque, natus, accusantium tenetur deserunt maxime? Praesentium, veritatis!
-          </Alert>
-          <Alert variant="info" isFixed={false} show={true}>
-            s mollitia non itaque, natus, accusantium tenetur deserunt maxime? Praesentium, veritatis!
-          </Alert>
-          <Alert variant="warning" isFixed={false} autoClose={false} show={true}>
-            s mollitia non itaque, natus, accusantium tenetur deserunt maxime? Praesentium, veritatis!
-          </Alert>
-          <Alert variant="error" isFixed={false} autoClose={false} show={true}>
-            s mollitia non itaque, natus, accusantium tenetur deserunt maxime? Praesentium, veritatis!
-          </Alert>
-          <Alert variant="success" isFixed={false} autoClose={false} show={true}>
-            s mollitia non itaque, natus, accusantium tenetur deserunt maxime? Praesentium, veritatis!
-          </Alert>
-        </div>
-
-      </div>
-    </div>
-  )
+    <CardIntroComponent
+      title={'Alert'}
+      subTitle="The Alert component is a UI element commonly used in web applications to display important information, warnings, or notifications to users. It typically appears as a message box or dialog that pops up on the screen, drawing the user's attention to a specific event or situation that requires their attention."
+      listExample={listExample}
+      displayCodeBase={displayCodeBase}
+    />
+  );
 }
+
+
 
 const displayCodeBase = `import { IconClose, IconDanger, IconInfo, IconNotification, IconSuccess } from "@assets/icons"
 import { cn } from "@lib/utils/helper"

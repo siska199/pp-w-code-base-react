@@ -2,19 +2,7 @@ import CardIntroComponent from "@components/cards/CardIntroComponent"
 import Accordion from "@components/ui/Accordion"
 
 const CardIntroAccordion = () => {
-
-  return (
-    <CardIntroComponent
-      title={'Accordion'}
-      subTitle=" An accordion consists of multiple sections or panels, each containing a header and associated content. The headers are usually displayed in a vertical stack, and clicking on a header expands the associated content while collapsing the others."
-      DisplayComponent={<DisplayAccordion />}
-      displayCodeBase={displayCodeBase}
-    />
-  )
-}
-
-const DisplayAccordion = () => {
-  const listItems = [
+  const listItemAccordion = [
     {
       label: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
       content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
@@ -37,7 +25,19 @@ const DisplayAccordion = () => {
         optio,`
     }
   ]
-  return <Accordion items={listItems} />
+  const listExample = [
+    {
+      component: <Accordion items={listItemAccordion} />
+    }
+  ]
+  return (
+    <CardIntroComponent
+      title={'Accordion'}
+      subTitle=" An accordion consists of multiple sections or panels, each containing a header and associated content. The headers are usually displayed in a vertical stack, and clicking on a header expands the associated content while collapsing the others."
+      listExample={listExample}
+      displayCodeBase={displayCodeBase}
+    />
+  )
 }
 
 const displayCodeBase = `import IconChevronToggle from "@assets/icons/IconChevronToggle";
