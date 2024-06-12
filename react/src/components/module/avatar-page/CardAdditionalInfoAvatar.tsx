@@ -1,17 +1,17 @@
 
 import CardSubMenu from "@components/cards/CardSubMenu";
-import CodeBlock from "@components/ui/CodeBlock";
+import LinkCustome from "@components/ui/Link";
 import ProgressStep from "@components/ui/ProgressStep";
 
 const CardAdditionalInfoAvatar = () => {
   const listAdditionalInfo = [
     {
-      title: "Additional Info 1",
-      caption: <CodeBlock codeString={info1} />
+      title: "Image",
+      caption: <p>You can see the detail about component image in <LinkCustome to="/docs/components/image" className="hover:underline font-medium">Here</LinkCustome> </p>
     },
     {
-      title: "Additional Info 2",
-      caption: <CodeBlock codeString={info2} />
+      title: "Icon Placeholder",
+      caption: <p>You can get the icon placeholder the display when user not provide src in <LinkCustome to="/docs/icons" className="hover:underline font-medium">Here</LinkCustome> </p>
     }
   ];
 
@@ -22,7 +22,5 @@ const CardAdditionalInfoAvatar = () => {
   );
 }
 
-const info1 = `// Additional info 1`;
-const info2 = `// Additional info 2`;
 
 export default CardAdditionalInfoAvatar;
