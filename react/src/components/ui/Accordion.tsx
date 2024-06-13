@@ -55,7 +55,9 @@ export const Floating = (props: TFloatingProps ) => {
       })}>
         {label}
         <div className="cursor-pointer-custome" onClick={() => handleToggleAccordion()}>
-          <IconChevronToggle isOpen={isOpen} />
+          <div className="box-shadow-1 rounded-full">
+            <IconChevronToggle isOpen={isOpen} />
+          </div>
         </div>
       </div>
 
