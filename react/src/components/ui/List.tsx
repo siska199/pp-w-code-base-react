@@ -16,8 +16,8 @@ const List = (props: TProps) => {
         return (
             <ul className={`${customeClass?.ul} list-disc px-4 flex flex-col gap-3 mt-2`}>
                 {items.map((item, i) => (
-                    <li key={i} className={`${customeClass?.li}`}>
-                        {item.label && <Badge label={item.label} />}
+                    <li key={i} className={`${customeClass?.li} `}>
+                        {item.label && <Badge label={item.label} className="mr-2" />}
                         {item.content}
                         {item.childs && renderItems(item.childs)}
                     </li>

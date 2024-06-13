@@ -53,6 +53,7 @@ const RenderMenu = (props: TProps) => {
 
     const handleOnClickMenu = (groupMenu: TMenuItem) => {
         let updateSetting = setting
+        console.log("testd")
         if (isEmptyValue(groupMenu?.childs)) {
             updateSetting = {
                 ...setting,
@@ -62,6 +63,7 @@ const RenderMenu = (props: TProps) => {
                     id: groupMenu?.id,
                     name: groupMenu?.name,
                     parentId: parentId || "",
+                    url:""
                 }
             }
         } else {
@@ -88,17 +90,18 @@ const RenderMenu = (props: TProps) => {
             {menu?.map((groupMenu: TMenuItem, i) => (
                 <li key={i} className="scrollbar-hidden pr-4">
                     <div
+                        onClick={() => handleOnClickMenu(groupMenu)}
                         className={cn({
                             "flex items-center py-1": true,
                         })}
                     >
                         <LinkCustome
-                            onClick={() => handleOnClickMenu(groupMenu)}
+
                             to={groupMenu?.url || location.pathname}
                             className={cn({
                                 "w-full py-1": true,
                                 "pl-2": level > 0,
-                                "border-l bg-primary-50 w-full rounded-tr-md rounded-br-md border-primary-700 text-primary-700": setting?.activeMenu.id === groupMenu?.id,
+                                "border-l bg-primary-50 w-full rounded-tr-md rounded-br-md border-primary-700 text-primary-700": setting?.activeMenu.id === groupMenu?.id && groupMenu.url,
                                 [setting?.[level]?.customeClass?.label || ""]: setting?.[level]?.customeClass?.label
                             })}>
                             {groupMenu?.name}

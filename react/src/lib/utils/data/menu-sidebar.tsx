@@ -15,7 +15,6 @@ const listMenuSidebar: TMenuItem[] = [
     {
         id: '0-C0',
         name: 'Components',
-        url: '/docs/components',
         parentId: null,
     },
     {

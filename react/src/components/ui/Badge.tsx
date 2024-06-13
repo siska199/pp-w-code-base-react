@@ -10,7 +10,7 @@ interface TProps extends React.HTMLProps<HTMLDivElement>, VariantProps<typeof ba
 const Badge = (props: TProps) => {
   const { label, className, variant, customeElement, shapeBadge, sizeBadge, ...attrs } = props
   return (
-    <span className={`${cn(badgeVariants({ className, variant, shapeBadge, sizeBadge }))} text-body-small`} {...attrs}>
+    <span className={`${cn(badgeVariants({ className, variant, shapeBadge, sizeBadge }))}`} {...attrs}>
       {label}
       {customeElement}
     </span>
@@ -25,7 +25,7 @@ const badgeVariants = cva(
       variant: variant,
       sizeBadge: {
         small: "!text-[10px] px-2 py-1",
-        base: "!text-[12px] px-1 py-1",
+        base: "!text-[12px] px-2 py-1",
         large: "!text-[14px] px-3 py-2"
       },
 
