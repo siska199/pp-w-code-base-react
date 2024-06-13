@@ -1,7 +1,15 @@
 import CardIntroComponent from "@components/cards/CardIntroComponent"
 import Accordion from "@components/ui/Accordion"
+import Toggle from "@components/ui/toogle/Toggle"
+import { useState } from "react"
 
 const CardIntroAccordion = () => {
+  const [value, setValue] = useState(false)
+
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>)=>{
+    setValue(e.target.checked)
+  }
+
   const listItemAccordion = [
     {
       label: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
@@ -25,11 +33,20 @@ const CardIntroAccordion = () => {
         optio,`
     }
   ]
+
   const listExample = [
     {
       component: <Accordion items={listItemAccordion} />
+    },
+    {
+      component : <div className="flex gap-4">
+        <Toggle value={value} onChange={handleOnChange}/>
+        <Toggle variant="dark-light-mood" value={value} onChange={handleOnChange}/>
+        <Toggle variant="on-off" value={value} onChange={handleOnChange}/>
+      </div>
     }
   ]
+
   return (
     <CardIntroComponent
       title={'Accordion'}
