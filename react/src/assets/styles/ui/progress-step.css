@@ -37,7 +37,7 @@
 } 
 
 .stepper-item.vertical::after {
-    @apply content-[''] absolute left-[15px] block top-[1px]  bottom-[5px]  h-full  border-gray-200 border-[1px] z-[-1];
+    @apply content-[''] absolute left-[15px] block top-[1px]  bottom-[5px]  h-full  border-gray-200 border-[1px] !z-[1];
     transform-origin: 50% 100%;
 }  
 

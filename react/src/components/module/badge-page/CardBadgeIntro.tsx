@@ -5,7 +5,7 @@ import Badge from "@components/ui/Badge";
 const CardBadgeIntro = () => {
   const listExample = [
     {
-      component: <div className="flex gap-2 items-center">
+      component: <div className="flex gap-2 items-center flex-wrap">
         <Badge label="SISKA" variant={"soft-warning"} sizeBadge={"small"} />
         <Badge label="SISKA" variant={"soft-border-success"} />
         <Badge label="SISKA" variant={"solid-black"} />
@@ -13,7 +13,7 @@ const CardBadgeIntro = () => {
       </div>
     },
     {
-      component: <div className="flex gap-2 items-center">
+      component: <div className="flex gap-2 items-center flex-wrap">
         <Badge label="1" shapeBadge={"circle"} variant={"soft-border-primary"} />
         <Badge label="100" shapeBadge={"circle"} variant={"soft-border-primary"} />
         <Badge label="10000" shapeBadge={"circle"} variant={"soft-border-primary"} />
@@ -24,7 +24,7 @@ const CardBadgeIntro = () => {
   return (
     <CardIntroComponent
       title={'Badge'}
-      subTitle="Description of Badge."
+      subTitle="The Badge component in a UI (User Interface) context is used to display small pieces of information or indicators that are often visually highlighted to catch the user's attention."
       listExample={listExample}
       displayCodeBase={displayCodeBase}
     />
