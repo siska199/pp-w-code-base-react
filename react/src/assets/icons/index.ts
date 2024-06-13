@@ -26,4 +26,6 @@ export { default as IconInfo } from '@assets/icons/info.svg?react';
 export { default as IconSuccess } from '@assets/icons/success.svg?react';
 export { default as IconDanger } from '@assets/icons/danger.svg?react';
 export { default as IconNotification } from '@assets/icons/notification.svg?react';
+export { default as IconSun} from '@assets/icons/sun.svg?react';
+export { default as IconMoon} from '@assets/icons/moon.svg?react';
 

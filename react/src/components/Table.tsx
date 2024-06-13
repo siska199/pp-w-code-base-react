@@ -169,7 +169,7 @@ const PaginationTable = <TData, TIncludeChecked extends boolean>(props: TPropsPa
     }
 
 
-    const ButtonPageNumber = (pageNumber: number) => <Button onClick={() => handleOnChangePage(pageNumber)} variant={"icon"} className={clsx({
+    const ButtonPageNumber = (pageNumber: number) => <Button onClick={() => handleOnChangePage(pageNumber)} variant={"plain"} className={clsx({
         "w-[2.5rem] h-[2.5rem]": true,
         // eslint-disable-next-line react/prop-types
         "!bg-gray-100 font-bold": pageNumber === setting?.currentPage
