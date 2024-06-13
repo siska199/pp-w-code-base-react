@@ -6,6 +6,7 @@ import AccordionPage from '@pages/docs/components/AccordionPage';
 import AlertPage from '@pages/docs/components/AlertPage';
 import AvatarPage from '@pages/docs/components/AvatarPage';
 import BadgePage from '@pages/docs/components/BadgePage';
+import ButtonPage from '@pages/docs/components/ButtonPage';
 import { createBrowserRouter } from "react-router-dom";
 
 const docRouter = {
@@ -46,6 +47,13 @@ const docRouter = {
                     }
                 },
                 {
+                    path: 'avatar',
+                    element: <AvatarPage />,
+                    handle: {
+                        id: '1-AV2'
+                    }
+                },
+                {
                     path: 'badge',
                     element: <BadgePage />,
                     handle: {
@@ -53,12 +61,12 @@ const docRouter = {
                     }
                 },
                 {
-                    path: 'avatar',
-                    element: <AvatarPage />,
+                    path: 'button',
+                    element: <ButtonPage />,
                     handle: {
-                        id: '1-AV2'
+                        id: '1-BU5'
                     }
-                }
+                },
             ]
         },
     ]

@@ -1,4 +1,4 @@
-import variant from "@lib/utils/data/variant-color";
+import { variantBadge } from "@lib/utils/data/variant-color";
 import { cn } from "@lib/utils/helper";
 import { VariantProps, cva } from "class-variance-authority";
 
@@ -22,7 +22,7 @@ const badgeVariants = cva(
   'w-fit font-medium bg-white h-fit text-white flex-inline gap-1 text-center font-medium rounded items-center justify-center',
   {
     variants: {
-      variant: variant,
+      variant: variantBadge,
       sizeBadge: {
         small: "!text-[10px] px-2 py-1",
         base: "!text-[12px] px-2 py-1",

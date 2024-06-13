@@ -15,14 +15,6 @@ const variant = {
     "soft-error": "bg-error-50 text-error-700",
     "soft-white": "bg-white-50 text-white-700",
 
-    "soft-border-black": "bg-black-50 text-black-700 border-black border",
-    "soft-border-gray": "bg-gray-50 text-gray-700 border-gray border",
-    "soft-border-primary": "bg-primary-50 text-primary-700 border-primary border",
-    "soft-border-success": "bg-success-50 text-success-700 border-success border",
-    "soft-border-warning": "bg-warning-50 text-warning-700 border-warning border",
-    "soft-border-error": "bg-error-50 text-error-700 border-error border",
-    "soft-border-white": "bg-white-50 text-white-700 border-white border",
-
     "outline-black": "text-black border-black border",
     "outline-gray": "text-gray border-gray border",
     "outline-primary": "text-primary border-primary border",
@@ -30,6 +22,30 @@ const variant = {
     "outline-warning": "text-warning border-warning border",
     "outline-error": "text-error border-error border",
     "outline-white": "text-white border-white border"
+}
+
+
+export const variantBadge = {
+    ...variant,
+    "soft-border-black": "bg-black-50 text-black-700 border-black border",
+    "soft-border-gray": "bg-gray-50 text-gray-700 border-gray border",
+    "soft-border-primary": "bg-primary-50 text-primary-700 border-primary border",
+    "soft-border-success": "bg-success-50 text-success-700 border-success border",
+    "soft-border-warning": "bg-warning-50 text-warning-700 border-warning border",
+    "soft-border-error": "bg-error-50 text-error-700 border-error border",
+    "soft-border-white": "bg-white-50 text-white-700 border-white border",
+}
+
+export const variantButton = {
+    ...variant,
+    'link-black': 'bg-white text-black',
+    'link-gray': 'bg-white text-gray',
+    'link-primary': 'bg-white text-primary',
+    'link-success': 'bg-white text-success',
+    'link-warning': 'bg-white text-warning',
+    'link-error': 'bg-white text-error',
+
+
 }
 
 export default variant
