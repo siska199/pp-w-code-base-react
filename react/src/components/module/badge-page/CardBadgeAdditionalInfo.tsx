@@ -1,18 +1,17 @@
 
 import CardSubMenu from "@components/cards/CardSubMenu";
-import CodeBlock from "@components/ui/CodeBlock";
+import LinkCustome from "@components/ui/Link";
 import ProgressStep from "@components/ui/ProgressStep";
 
 const CardBadgeAdditionalInfo = () => {
   const listAdditionalInfo = [
     {
-      title: "Additional Info 1",
-      caption: <CodeBlock codeString={info1} />
+      title: "Variant",
+      caption: <p>
+       The list of variants available for the Badge component can be seen <LinkCustome to="/docs/pre-requisite" className="hover:underline font-medium">here</LinkCustome>
+      </p>
     },
-    {
-      title: "Additional Info 2",
-      caption: <CodeBlock codeString={info2} />
-    }
+
   ];
 
   return (
@@ -22,7 +21,5 @@ const CardBadgeAdditionalInfo = () => {
   );
 }
 
-const info1 = `// Additional info 1`;
-const info2 = `// Additional info 2`;
 
 export default CardBadgeAdditionalInfo;

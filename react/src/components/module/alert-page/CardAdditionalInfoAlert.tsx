@@ -8,7 +8,7 @@ const CardAdditionalInfoAlert = () => {
     {
       title: "Icons",
       caption: <p>
-        For the icons used by the Alert component, you can find them in the <LinkCustome to="/docs/icons" className="hover:underline font-medium">Icons menu</LinkCustome>
+        For the icons used by the Alert component, you can find them in the <LinkCustome to="/docs/icons" className="hover:underline font-medium">here</LinkCustome>
       </p>
     },
   ];
