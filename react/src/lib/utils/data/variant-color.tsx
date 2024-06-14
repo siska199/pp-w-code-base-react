@@ -7,8 +7,7 @@ const variant = {
     "solid-error": "bg-error border-error",
     "solid-white": "bg-white border",
 
-    "soft-black": "bg-black/30 text-black",
-    "soft-gray": "bg-gray-50 text-gray-700",
+    "soft-gray": "bg-gray-100 text-gray-900",
     "soft-primary": "bg-primary-50 text-primary-700",
     "soft-success": "bg-success-50 text-success-700",
     "soft-warning": "bg-warning-50 text-warning-700",
@@ -38,7 +37,7 @@ export const variantBadge = {
 export const variantButton = {
     ...variant,
     'link-black': 'bg-white text-black',
-    'link-gray': 'bg-white text-gray',
+    'link-gray': 'bg-white text-gray !font-medium hover:underline ',
     'link-primary': 'bg-white text-primary',
     'link-success': 'bg-white text-success',
     'link-warning': 'bg-white text-warning',
@@ -48,34 +47,31 @@ export const variantButton = {
 
 }
 
-Object.entries(variantButton)?.map(([key, value]) => {
-    if (key?.includes('primary') && !key?.includes('link')) {
-        variantButton[key as keyof typeof variantButton] = `${value} focus:ring-4 focus:r!ing-primary-200 disabled:bg-primary-300 disabled:border-primary-300`
-    }
 
-    if (key?.includes('warning') && !key?.includes('link')) {
-        variantButton[key as keyof typeof variantButton] = `${value} focus:ring-4 focus:!ring-warning-200 disabled:bg-warning-300 disabled:border-warning-300`
-    }
+Object.entries(variantButton)?.forEach(([key, value]) => {
+    const conditions = [
+        { check: key?.includes('primary') && !key?.includes('link'), suffix: `${/solid|outline/.test(key) && 'hover:bg-primary-600'} ${/outline/.test(key) && 'hover:text-white'}  focus:ring-4 focus:ring-primary-200 disabled:bg-primary-300 disabled:border-primary-300` },
+        { check: key?.includes('warning') && !key?.includes('link'), suffix: `${/solid|outline/.test(key) && 'hover:bg-warning-600'}  ${/outline/.test(key) && 'hover:text-white'}   focus:ring-4 focus:ring-warning-200 disabled:bg-warning-300 disabled:border-warning-300` },
+        { check: key?.includes('success') && !key?.includes('link'), suffix: `${/solid|outline/.test(key) && 'hover:bg-success-600'}  ${/outline/.test(key) && 'hover:text-white'}   focus:ring-4 focus:ring-success-200 disabled:bg-success-300 disabled:border-success-300` },
+        { check: key?.includes('error') && !key?.includes('link'), suffix: `${/solid|outline/.test(key) && 'hover:bg-error-600'}  ${/outline/.test(key) && 'hover:text-white'}   focus:ring-4 focus:ring-error-200 disabled:bg-error-300 disabled:border-error-300` },
+        { check: key?.includes('black') && !key?.includes('link'), suffix: `${/solid|outline/.test(key) && 'hover:bg-black/90'}  ${/outline/.test(key) && 'hover:text-white'}   focus:ring-4 focus:ring-black/70` },
+        { check: key?.includes('white') && !key?.includes('link'), suffix: 'hover:!bg-gray-100 !text-gray-900 focus:ring-gray-200 ' },
+        { check: key?.includes('link'), suffix: 'p-0 font-normal !rounded-none justify-start' },
+    ];
 
-    if (key?.includes('success') && !key?.includes('link')) {
-        variantButton[key as keyof typeof variantButton] = `${value} focus:ring-4 focus:!ring-success-200 disabled:bg-success-300 disabled:border-success-300`
-    }
+    conditions.forEach(({ check, suffix }) => {
+        if (check) {
+            variantButton[key as keyof typeof variantButton] = `${value} ${suffix}`;
+        }
+    });
 
-    if (key?.includes('error') && !key?.includes('link')) {
-        variantButton[key as keyof typeof variantButton] = `${value} focus:ring-4 focus:!ring-error-200 disabled:bg-error-300 disabled:border-error-300`
+    if (!key?.includes('link')) {
+        variantButton[key as keyof typeof variantButton] = `${variantButton[key as keyof typeof variantButton]} cursor-pointer-custome`;
     }
+});
 
-    if (key?.includes('black') && !key?.includes('link')) {
-        variantButton[key as keyof typeof variantButton] = `${value} focus:ring-4 focus:ring-black/70 disabled:opacity-50`
-    }
 
-    if (key?.includes('white') && !key?.includes('link')) {
-        variantButton[key as keyof typeof variantButton] = `${value} hover:!bg-gray-100 text-gray-900 focus:ring-gray-200 disabled:opacity-50`
-    }
 
-    if (key?.includes('link')) {
-        variantButton[key as keyof typeof variantButton] = `${value} !p-0`
-    }
-})
+
 
 export default variant

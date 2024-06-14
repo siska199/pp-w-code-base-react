@@ -1,5 +1,5 @@
 import IconChevronToggle from "@assets/icons/IconChevronToggle";
-import LinkCustome from "@components/ui/Link";
+import Button from "@components/ui/Button";
 import { cn, isEmptyValue } from "@lib/utils/helper";
 import { useLocation } from "react-router-dom";
 
@@ -63,7 +63,7 @@ const RenderMenu = (props: TProps) => {
                     id: groupMenu?.id,
                     name: groupMenu?.name,
                     parentId: parentId || "",
-                    url:""
+                    url: ""
                 }
             }
         } else {
@@ -84,7 +84,7 @@ const RenderMenu = (props: TProps) => {
         <ul className={cn({
             "flex flex-col  opacity-0 max-h-0 overflow-y-auto transition-all duration-300 ease": true,
             "border-l scrollbar-hidden ": level > 0,
-            " ml-2": level > 1,
+            " ml-2": level > 0,
             "opacity-100 max-h-full": isOpen,
         })}>
             {menu?.map((groupMenu: TMenuItem, i) => (
@@ -93,19 +93,19 @@ const RenderMenu = (props: TProps) => {
                         onClick={() => handleOnClickMenu(groupMenu)}
                         className={cn({
                             "flex items-center py-1": true,
+                            "":level>0
                         })}
                     >
-                        <LinkCustome
-
+                        <Button
+                            customeElement={"link"}
                             to={groupMenu?.url || location.pathname}
                             className={cn({
-                                "w-full py-1": true,
-                                "pl-2": level > 0,
+                                "w-full py-1 pl-2": true,
                                 "border-l bg-primary-50 w-full rounded-tr-md rounded-br-md border-primary-700 text-primary-700": setting?.activeMenu.id === groupMenu?.id && groupMenu.url,
                                 [setting?.[level]?.customeClass?.label || ""]: setting?.[level]?.customeClass?.label
                             })}>
                             {groupMenu?.name}
-                        </LinkCustome>
+                        </Button>
                         {!isEmptyValue(groupMenu?.childs) && (
                             <IconChevronToggle className={` icon-primary h-[1.1rem]`} variant="2" isOpen={setting?.openMenus[groupMenu.id]} />
                         )}

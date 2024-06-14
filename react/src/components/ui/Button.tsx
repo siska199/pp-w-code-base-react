@@ -18,11 +18,16 @@ const Button = (props: TProps) => {
 
   const CompButton = customeElement === "link" ? Link : "button" as React.ElementType
 
+  let updateVariant : TProps["variant"]= variant || "solid-primary"
+  if (customeElement === "link") {
+    updateVariant = "link-primary"
+  }
+
   return (
     <CompButton
       {...attrs}
       disabled={isLoading || attrs?.disabled}
-      className={cn(buttonVariants({ className, variant, sizeCustome, shapeCustome, isContained, }))}
+      className={cn(buttonVariants({ className, variant: updateVariant, sizeCustome, shapeCustome, isContained, }))}
       target={newTab ? '_blank' : ''}
 
     >
@@ -36,8 +41,10 @@ const Button = (props: TProps) => {
   )
 }
 
+
+
 const buttonVariants = cva(
-  'w-fit  gap-1 h-fit items-center  text-white justify-center flex gap-sm disabled:cursor-not-allowed  cursor-pointer-custome ',
+  'w-fit  gap-1 h-fit items-center  text-white justify-center font-medium flex gap-sm disabled:cursor-not-allowed  disabled:opacity-50 ',
   {
     variants: {
       variant: {
@@ -63,8 +70,8 @@ const buttonVariants = cva(
       variant: "solid-primary",
       sizeCustome: "base",
       shapeCustome: "rounded"
-    }
-  }
+    },
+  },
 )
 
 export default Button

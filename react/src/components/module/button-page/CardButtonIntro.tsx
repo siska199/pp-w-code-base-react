@@ -29,7 +29,11 @@ const CardButtonIntro = () => {
           <div className="flex gap-4 ">
             <Button variant={"solid-success"}>SISKA</Button>
             <Button variant={"soft-success"}>SISKA</Button>
+            <Button variant={"soft-success"} disabled>SISKA</Button>
+
             <Button variant={"outline-success"}>SISKA</Button>
+            <Button variant={"outline-success"} disabled>SISKA</Button>
+
             <Button variant={"link-success"}>SISKA</Button>
             <Button variant={"solid-success"} disabled>SISKA</Button>
           </div>
@@ -44,13 +48,14 @@ const CardButtonIntro = () => {
 
           <div className="flex gap-4 ">
             <Button variant={"solid-black"}>SISKA</Button>
-            <Button variant={"soft-black"}>SISKA</Button>
+            <Button variant={"soft-gray"}>SISKA</Button>
             <Button variant={"outline-black"}>SISKA</Button>
             <Button variant={"link-black"}>SISKA</Button>
             <Button variant={"solid-black"} disabled>SISKA</Button>
           </div>
 
           <div className="flex gap-4 ">
+          <Button variant={"link-gray"}>SISKA</Button>
             <Button variant={"solid-white"}>SISKA</Button>
           </div>
 

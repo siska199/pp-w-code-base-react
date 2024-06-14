@@ -58,6 +58,10 @@
         @apply transition-all duration-[50] hover:scale-[1.03] active:scale-[0.98] disabled:!scale-[1] disabled:cursor-not-allowed
     }
 
+    .bounce-effect-disabled {
+        @apply transition-none hover:scale-100 active:scale-100;
+    }
+
     .cursor-pointer-custome{
        @apply bounce-effect cursor-pointer
     }
