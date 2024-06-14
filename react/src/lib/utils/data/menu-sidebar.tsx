@@ -19,9 +19,21 @@ const listMenuSidebar: TMenuItem[] = [
     },
     {
         id: '1-PR1',
-        name: 'Pre-requisite',
+        name: 'Pre-requisite ',
         url: '/docs/prerequisite',
-        parentId: '0-GS0'
+        parentId: '0-GS0',
+    },
+    {
+        id: '2-L0',
+        name: 'Library',
+        url: '/docs/prerequisite/library',
+        parentId: '1-PR1'
+    },
+    {
+        id: '2-TC1',
+        name: 'Tailwind Config',
+        url: '/docs/prerequisite/tailwind-config',
+        parentId: '1-PR1'
     },
     {
         id: '1-AC0',

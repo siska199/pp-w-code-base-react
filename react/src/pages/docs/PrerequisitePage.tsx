@@ -10,13 +10,13 @@ const PrerequisitePage = () => {
 
       3. css file
 
-      5. icons
+      5. icon
 
       4. helper function
 
       5. variant that use by the component
 
-      6. hooks
+      6. hook
     </div>
   )
 }

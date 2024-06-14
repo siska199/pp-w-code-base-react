@@ -88,7 +88,10 @@ const RenderMenu = (props: TProps) => {
             "opacity-100 max-h-full": isOpen,
         })}>
             {menu?.map((groupMenu: TMenuItem, i) => (
-                <li key={i} className="scrollbar-hidden pr-4">
+                <li key={i} className={cn({
+                    "scrollbar-hidden ":true,
+                    ' pr-4 ':level==0
+                })}>
                     <div
                         onClick={() => handleOnClickMenu(groupMenu)}
                         className={cn({
@@ -100,7 +103,7 @@ const RenderMenu = (props: TProps) => {
                             customeElement={"link"}
                             to={groupMenu?.url || location.pathname}
                             className={cn({
-                                "w-full !py-1 !pl-2": true,
+                                "w-full !py-1 !pl-2 b": true,
                                 "border-l bg-primary-50 w-full rounded-tr-md rounded-br-md border-primary-700 font-semibold ": setting?.activeMenu.id === groupMenu?.id && groupMenu.url,
                                 [setting?.[level]?.customeClass?.label || ""]: setting?.[level]?.customeClass?.label
                             })}
