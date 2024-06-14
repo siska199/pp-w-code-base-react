@@ -24,7 +24,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div>
-                <Button className="!py-1 !ring-0" variant={"solid-white"} label={<><IconSearch className="icon-gray" /> Search Documentation</>} />
+                <Button className="!py-2 !ring-0 font-normal" variant={"solid-white"} label={<><IconSearch className="icon-gray" /> Search Documentation</>} />
 
             </div>
         </nav >
