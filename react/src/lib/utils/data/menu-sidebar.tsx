@@ -7,12 +7,6 @@ const listMenuSidebar: TMenuItem[] = [
         parentId: null,
     },
     {
-        id: '0-I0',
-        name: 'Icons',
-        url: '/docs/icons',
-        parentId: null,
-    },
-    {
         id: '0-C0',
         name: 'Components',
         parentId: null,
