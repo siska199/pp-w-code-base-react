@@ -20,7 +20,6 @@ const listMenuSidebar: TMenuItem[] = [
     {
         id: '1-PR1',
         name: 'Pre-requisite ',
-        url: '/docs/prerequisite',
         parentId: '0-GS0',
     },
     {
@@ -33,6 +32,36 @@ const listMenuSidebar: TMenuItem[] = [
         id: '2-TC1',
         name: 'Tailwind Config',
         url: '/docs/prerequisite/tailwind-config',
+        parentId: '1-PR1'
+    },
+    {
+        id: '2-CF2',
+        name: 'CSS File',
+        url: '/docs/prerequisite/css-file',
+        parentId: '1-PR1'
+    },
+    {
+        id: '2-I3',
+        name: 'Icon',
+        url: '/docs/prerequisite/icon',
+        parentId: '1-PR1'
+    },
+    {
+        id: '2-HF4',
+        name: 'Helper Function',
+        url: '/docs/prerequisite/helper-function',
+        parentId: '1-PR1'
+    },
+    {
+        id: '2-V5',
+        name: 'Variant',
+        url: '/docs/prerequisite/variant',
+        parentId: '1-PR1'
+    },
+    {
+        id: '2-H5',
+        name: 'Hook',
+        url: '/docs/prerequisite/hook',
         parentId: '1-PR1'
     },
     {

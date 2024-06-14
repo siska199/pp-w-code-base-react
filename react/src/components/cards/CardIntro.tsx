@@ -1,7 +1,7 @@
 
 interface TProps {
     title: string;
-    subTitle: string;
+    subTitle: string | React.ReactNode;
 }
 
 const CardIntro = (props: TProps) => {
