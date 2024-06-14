@@ -79,15 +79,15 @@ const InputDate = (props: TProps) => {
                             <Button
                                 onClick={["year", "month"]?.includes(showTypeDate) ? decreaseYear : decreaseMonth}
                                 disabled={prevMonthButtonDisabled}
-                                isRounded isContained={false}
-                                variant={"gray"}
+                                shape={"circle"}
+                                variant={"outline-gray"}
+                                label={<IconChevronLeft />}
                                 className={clsx({
                                     'p-2': true,
                                     'cursor-not-allowed opacity-50 ': prevMonthButtonDisabled
                                 })}
-                            >
-                                <IconChevronLeft />
-                            </Button>
+                            />
+
                             <div className="text-body-medium font-semibold flex gap-2 text-gray-700">
                                 {
                                     ["date", ""]?.includes(showTypeDate) && <span onClick={handleShowMonth} className='cursor-pointer'>{format(date || "", 'MMMM')}</span>
@@ -97,27 +97,24 @@ const InputDate = (props: TProps) => {
                                 <span onClick={showTypeDate === "year" ? () => null : handleShowYear} className={showTypeDate === "year" ? "" : "cursor-pointer"}>{format(date || "", 'yyyy')}</span>
                             </div>
                             <Button
-                                isRounded
-                                isContained={false}
-                                variant={"gray"}
+                                shape={"circle"}
+                                variant={"outline-gray"}
                                 onClick={["year", "month"]?.includes(showTypeDate) ? increaseYear : increaseMonth}
                                 disabled={nextMonthButtonDisabled}
                                 className={clsx({
                                     'p-2': true,
                                     'cursor-not-allowed opacity-50': nextMonthButtonDisabled
-
                                 })}
-                            >
-                                <IconChevronRight />
-                            </Button>
+                                label={<IconChevronRight />}
+                            />
                         </div>
                     )
                 }}
                 renderMonthContent={(...attrs) => {
-                    return <Button variant='white' className="w-full border-none !rounded-none focus:ring-0"  >{attrs[1]}</Button>
+                    return <Button variant='solid-white' className="w-full border-none !rounded-none focus:ring-0" label={attrs[1]} />
                 }}
                 renderYearContent={(...attrs) => {
-                    return <Button variant='white' className="w-full border-none !rounded-none focus:ring-0"  >{attrs[0]}</Button>
+                    return <Button variant='solid-white' className="w-full border-none !rounded-none focus:ring-0" label={attrs[0]} />
                 }}
                 shouldCloseOnSelect={isShouldCloseOnSelect}
                 enableTabLoop={true}

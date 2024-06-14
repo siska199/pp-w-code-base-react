@@ -93,19 +93,20 @@ const RenderMenu = (props: TProps) => {
                         onClick={() => handleOnClickMenu(groupMenu)}
                         className={cn({
                             "flex items-center py-1": true,
-                            "":level>0
+                            "": level > 0
                         })}
                     >
                         <Button
                             customeElement={"link"}
                             to={groupMenu?.url || location.pathname}
                             className={cn({
-                                "w-full py-1 pl-2": true,
+                                "w-full !py-1 !pl-2": true,
                                 "border-l bg-primary-50 w-full rounded-tr-md rounded-br-md border-primary-700 font-semibold ": setting?.activeMenu.id === groupMenu?.id && groupMenu.url,
                                 [setting?.[level]?.customeClass?.label || ""]: setting?.[level]?.customeClass?.label
-                            })}>
-                            {groupMenu?.name}
-                        </Button>
+                            })}
+                            label={groupMenu?.name}
+                        />
+
                         {!isEmptyValue(groupMenu?.childs) && (
                             <IconChevronToggle className={` icon-primary h-[1.1rem]`} variant="2" isOpen={setting?.openMenus[groupMenu.id]} />
                         )}

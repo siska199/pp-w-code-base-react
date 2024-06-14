@@ -1,40 +1,53 @@
 import IconLoading from '@assets/icons/IconLoading';
+import { variantButton } from '@lib/utils/data/variant-color';
 import { cn } from '@lib/utils/helper';
 import { VariantProps, cva } from 'class-variance-authority';
 import { HTMLProps } from 'react';
 import { Link } from 'react-router-dom';
-import { variantButton } from '@lib/utils/data/variant-color';
 
 
-interface TProps extends HTMLProps<HTMLButtonElement | HTMLLinkElement>, VariantProps<typeof buttonVariants> {
-  isLoading?: boolean;
-  customeElement?: "button" | "link" | null;
-  to?: string;
-  newTab?: boolean;
+interface TPropsLink {
+  customeElement: "link"
+  to: string;
+  target?: '_blank' | ''
 }
 
+interface TPropsButton {
+  customeElement?: "button"
+}
+
+type TProps = Omit<Partial<HTMLProps<HTMLButtonElement | HTMLLinkElement>>, "label" | "size" | "shape">
+  & VariantProps<typeof buttonVariants>
+  & {
+    isLoading?: boolean;
+    label: React.ReactNode | string;
+  }
+  & (TPropsLink | TPropsButton);
+
+
 const Button = (props: TProps) => {
-  const { variant, sizeCustome, newTab, customeElement = "button", isContained, shapeCustome, children, className, isLoading = false, ...attrs } = props
+  const { variant, size, customeElement = "button", shape, className, isLoading = false, label, ...attrs } = props
 
   const CompButton = customeElement === "link" ? Link : "button" as React.ElementType
 
-  let updateVariant : TProps["variant"]= variant || "solid-primary"
+  let updateVariant: TProps["variant"] = variant || "solid-primary"
   if (customeElement === "link" && !variant) {
     updateVariant = "link-primary"
   }
+
+
 
   return (
     <CompButton
       {...attrs}
       disabled={isLoading || attrs?.disabled}
-      className={cn(buttonVariants({ className, variant: updateVariant, sizeCustome, shapeCustome, isContained, }))}
-      target={newTab ? '_blank' : ''}
-
+      className={cn(buttonVariants({ className, variant: updateVariant, size, shape, }))}
+      // target={target}
     >
       {
         isLoading ? <span>
           <IconLoading />Loading...
-        </span> : children
+        </span> : label
       }
     </CompButton>
 
@@ -50,15 +63,11 @@ const buttonVariants = cva(
       variant: {
         ...variantButton,
       },
-      isContained: {
-        "false": "bg-white",
-        "true": ""
-      },
-      shapeCustome: {
+      shape: {
         "rounded": "rounded-lg",
         "circle": "rounded-full"
       },
-      sizeCustome: {
+      size: {
         "small": "py-1 px-4 ",
         "base": "py-2 px-4 ",
         "medium": "py-3 px-4 text-body-medium",
@@ -68,8 +77,8 @@ const buttonVariants = cva(
     },
     defaultVariants: {
       variant: "solid-primary",
-      sizeCustome: "base",
-      shapeCustome: "rounded"
+      size: "base",
+      shape: "rounded"
     },
   },
 )

@@ -38,8 +38,8 @@ const ModalConfirmation = (props: TProps) => {
 
             <div className={`md-body w-[25.6rem] text-gray ${customeClass?.body}`}>{children}</div>
             <div className={`md-footer mb-auto justify-end flex gap-2 ${customeClass?.footer}`}>
-                <Button className='min-w-[5rem]' variant={"white"} onClick={handleOnClose}>{button?.cancel?.name || "Cancel"}</Button>
-                <Button className='min-w-[5rem]' onClick={handleConfirmationBtn}>{button?.confirm?.name || "Confirm"}</Button>
+                <Button className='min-w-[5rem]' variant={"solid-white"} onClick={handleOnClose} label={button?.cancel?.name || "Cancel"} />
+                <Button className='min-w-[5rem]' onClick={handleConfirmationBtn} label={button?.confirm?.name || "Confirm"} />
             </div>
         </ContainerModal>
     )

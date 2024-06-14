@@ -173,11 +173,11 @@ const PaginationTable = <TData, TIncludeChecked extends boolean>(props: TPropsPa
         "w-[2.5rem] h-[2.5rem]": true,
         // eslint-disable-next-line react/prop-types
         "!bg-gray-100 font-bold": pageNumber === setting?.currentPage
-    })}>{pageNumber}</Button>
+    })} label={pageNumber} />
 
 
     return <div className="flex items-center justify-between px-4 py-2 border-t">
-        <Button variant={"white"} disabled={setting?.currentPage <= 1} onClick={() => handleOnChangePage(setting?.currentPage - 1)} className="font-medium text-gray"><IconChevronLeft />Previous</Button>
+        <Button variant={"solid-white"} disabled={setting?.currentPage <= 1} onClick={() => handleOnChangePage(setting?.currentPage - 1)} className="font-medium text-gray" label={<><IconChevronLeft />Previous</>} />
 
         <div className="items-center hidden md:flex">
             {
@@ -192,7 +192,7 @@ const PaginationTable = <TData, TIncludeChecked extends boolean>(props: TPropsPa
             <p><span className="font-medium">{setting?.currentPage} </span>of <span className="font-medium">{setting.totalPage}</span></p>
         </div>
 
-        <Button disabled={setting?.currentPage >= setting?.totalPage} onClick={() => handleOnChangePage(setting?.currentPage + 1)} variant={"white"} className="font-medium text-gray">Next<IconChevronRight /></Button>
+        <Button disabled={setting?.currentPage >= setting?.totalPage} onClick={() => handleOnChangePage(setting?.currentPage + 1)} variant={"solid-white"} className="font-medium text-gray" label={<>Next<IconChevronRight /></>} />
     </div>
 }
 

@@ -56,7 +56,7 @@ Object.entries(variantButton)?.forEach(([key, value]) => {
         { check: key?.includes('error') && !key?.includes('link'), suffix: `${/solid|outline/.test(key) && 'hover:bg-error-600'}  ${/outline/.test(key) && 'hover:text-white'}   focus:ring-4 focus:ring-error-200 disabled:bg-error-300 disabled:border-error-300` },
         { check: key?.includes('black') && !key?.includes('link'), suffix: `${/solid|outline/.test(key) && 'hover:bg-black/90'}  ${/outline/.test(key) && 'hover:text-white'}   focus:ring-4 focus:ring-black/70` },
         { check: key?.includes('white') && !key?.includes('link'), suffix: 'hover:!bg-gray-100 !text-gray-900 focus:ring-gray-200 ' },
-        { check: key?.includes('link'), suffix: 'p-0 font-normal !rounded-none justify-start' },
+        { check: key?.includes('link'), suffix: '!p-0 !inline font-normal !rounded-none justify-start' },
     ];
 
     conditions.forEach(({ check, suffix }) => {

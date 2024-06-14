@@ -15,7 +15,7 @@ const CardIntroAlert = () => {
     {
       title: 'Show alert after click Button:',
       component: <>
-        <Button variant={"white"} onClick={() => handleToggleAlert()} >Show Alert</Button>
+        <Button label={'Show Alert'} variant={"solid-white"} onClick={() => handleToggleAlert()} />
         <Alert variant="success" withCloseBtn show={showAlert} onDismiss={handleToggleAlert}>
           mollitia non itaque, natus, accusantium tenetur deserunt maxime? Praesentium, veritatis!
         </Alert>

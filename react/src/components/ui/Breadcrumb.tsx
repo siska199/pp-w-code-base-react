@@ -6,14 +6,14 @@ import { HTMLProps } from "react";
 import Button from "./Button";
 
 interface TProps extends HTMLProps<HTMLDivElement>, VariantProps<typeof breadcrumbVariants> {
-    items :{
-        url:string;
-        label:string | React.ReactNode;
+    items: {
+        url: string;
+        label: string | React.ReactNode;
     }[];
 }
 
 const Breadcrumb = (props: TProps) => {
-    const { className,items, ...otherProps } = props;
+    const { className, items, ...otherProps } = props;
 
     return (
         <div
@@ -22,8 +22,8 @@ const Breadcrumb = (props: TProps) => {
         >
 
             {
-                items?.map((item,i)=><div key={i} className="flex items-center">
-                    <Button key={i} customeElement={"link"} className="!pr-0 !pl-2 !py-1" variant={"plain"} to={item?.url} >{item?.label}<IconChevronRight className=""/></Button>
+                items?.map((item, i) => <div key={i} className="flex items-center">
+                    <Button key={i} label={<>{item?.label}<IconChevronRight className="" /></>} customeElement={"link"} className="!pr-0 !pl-2 !py-1" variant={"plain"} to={item?.url} />
                 </div>)
             }
 
