@@ -133,7 +133,6 @@ const listMenuSidebar: TMenuItem[] = [
     {
         id: '1-IN11',
         name: 'Input',
-        url: '/docs/components/input',
         parentId: '0-C0'
     },
     {
@@ -235,7 +234,6 @@ const listMenuSidebar: TMenuItem[] = [
     {
         id: '1-M16',
         name: 'Modal',
-        url: '/docs/components/modal',
         parentId: '0-C0'
     },
     {

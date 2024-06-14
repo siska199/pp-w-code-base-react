@@ -80,6 +80,8 @@ const RenderMenu = (props: TProps) => {
         setSetting(updateSetting)
     };
 
+    
+
     return (
         <ul className={cn({
             "flex flex-col  opacity-0 max-h-0 overflow-y-auto transition-all duration-300 ease": true,
