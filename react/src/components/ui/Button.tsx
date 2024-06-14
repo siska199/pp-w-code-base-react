@@ -19,7 +19,7 @@ const Button = (props: TProps) => {
   const CompButton = customeElement === "link" ? Link : "button" as React.ElementType
 
   let updateVariant : TProps["variant"]= variant || "solid-primary"
-  if (customeElement === "link") {
+  if (customeElement === "link" && !variant) {
     updateVariant = "link-primary"
   }
 

@@ -101,7 +101,7 @@ const RenderMenu = (props: TProps) => {
                             to={groupMenu?.url || location.pathname}
                             className={cn({
                                 "w-full py-1 pl-2": true,
-                                "border-l bg-primary-50 w-full rounded-tr-md rounded-br-md border-primary-700 text-primary-700": setting?.activeMenu.id === groupMenu?.id && groupMenu.url,
+                                "border-l bg-primary-50 w-full rounded-tr-md rounded-br-md border-primary-700 font-semibold ": setting?.activeMenu.id === groupMenu?.id && groupMenu.url,
                                 [setting?.[level]?.customeClass?.label || ""]: setting?.[level]?.customeClass?.label
                             })}>
                             {groupMenu?.name}

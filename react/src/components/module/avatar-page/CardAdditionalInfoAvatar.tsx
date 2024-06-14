@@ -11,7 +11,7 @@ const CardAdditionalInfoAvatar = () => {
     },
     {
       title: "Icon Placeholder",
-      caption: <p>You can get the icon placeholder the display when user not provide src in <LinkCustome to="/docs/icons" className="hover:underline font-medium">here</LinkCustome> </p>
+      caption: <p>You can get the icon placeholder that display when user not provide src in <LinkCustome to="/docs/icons" className="hover:underline font-medium">here</LinkCustome> </p>
     }
   ];
 

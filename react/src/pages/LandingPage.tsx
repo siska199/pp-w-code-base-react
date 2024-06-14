@@ -11,7 +11,7 @@ const LandingPage = () => {
                     Beautifully structured code and components designed to simplify your development process. Accessible. Customizable. Open Source.
                 </p>
                 <div className="flex w-full md:w-auto gap-4 mt-4">
-                    <Button customeElement={"link"} className="min-w-[7rem]" to={"/docs"}>Get Sarted</Button>
+                    <Button customeElement={"link"} variant={"solid-primary"}  className="min-w-[7rem]" to={"/docs"}>Get Sarted</Button>
                     <Button customeElement={"link"} variant={"solid-white"} className="font-medium min-w-[7rem]" to={"https://github.com/siska199/my-code-base-199"} newTab>Github</Button>
                 </div>
             </div>
