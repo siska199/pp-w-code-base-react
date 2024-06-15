@@ -8,7 +8,7 @@ const CardIntroAvatar = () => {
     {
       title: 'Color',
       component: <div className="flex flex-col gap-2">
-        <div className="flex justify-center   gap-2">
+        <div className="flex justify-center gap-2">
           <Avatar type="initial-name" variant={"solid-primary"} name="Siska" />
           <Avatar type="initial-name" variant={"solid-error"} name="Siska" />
           <Avatar type="initial-name" variant={"solid-warning"} name="Siska" />
@@ -16,7 +16,6 @@ const CardIntroAvatar = () => {
           <Avatar type="initial-name" variant={"solid-black"} name="Siska" />
           <Avatar type="initial-name" variant={"solid-gray"} name="Siska" />
           <Avatar type="initial-name" variant={"solid-white"} name="Siska" />
-
         </div>
         <div className="flex justify-center  gap-2">
           <Avatar type="initial-name" variant={"soft-primary"} name="Siska" />

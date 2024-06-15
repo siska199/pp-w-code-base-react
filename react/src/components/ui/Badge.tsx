@@ -1,16 +1,17 @@
 import { variantBadge } from "@lib/utils/data/variant-color";
 import { cn } from "@lib/utils/helper";
 import { VariantProps, cva } from "class-variance-authority";
+import { HTMLProps } from "react";
 
-interface TProps extends React.HTMLProps<HTMLDivElement>, VariantProps<typeof badgeVariants> {
+interface TProps extends Omit<Partial<HTMLProps<HTMLDivElement>>, "size" | "shape">, VariantProps<typeof badgeVariants> {
   customeElement?: React.ReactNode;
 
 }
 
 const Badge = (props: TProps) => {
-  const { label, className, variant, customeElement, shapeBadge, sizeBadge, ...attrs } = props
+  const { label, className, variant, customeElement, shape, size, ...attrs } = props
   return (
-    <span className={`${cn(badgeVariants({ className, variant, shapeBadge, sizeBadge }))}`} {...attrs}>
+    <span className={`${cn(badgeVariants({ className, variant, shape, size }))}`} {...attrs}>
       {label}
       {customeElement}
     </span>
@@ -23,13 +24,13 @@ const badgeVariants = cva(
   {
     variants: {
       variant: variantBadge,
-      sizeBadge: {
+      size: {
         small: "!text-[10px] px-2 py-1",
         base: "!text-[12px] px-2 py-1",
         large: "!text-[14px] px-3 py-2"
       },
 
-      shapeBadge: {
+      shape: {
         pilled: "rounded-full",
         rounded: "rounded-md",
         circle: "rounded-full !aspect-square min-w-[1.5rem] min-h-[1.5rem] flex items-center justify-center"
@@ -39,8 +40,8 @@ const badgeVariants = cva(
 
     defaultVariants: {
       variant: "soft-primary",
-      sizeBadge: "base",
-      shapeBadge: "pilled"
+      size: "base",
+      shape: "pilled"
     }
   }
 )

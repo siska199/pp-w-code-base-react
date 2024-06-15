@@ -16,7 +16,7 @@ const Navbar = () => {
                 <Logo sizeLogo={"large"} className="hidden md:block" />
                 <ul className="hidden md:flex gap-8 ">
                     {
-                        listMenuNavbar?.map((menu, i) => <Button label={menu?.label} customeElement="link" key={i} to={menu?.url} className="hover:!no-underline" />
+                        listMenuNavbar?.map((menu, i) => <Button label={menu?.label} customeElement="link" key={i} to={menu?.url} className="hover:!no-underline " />
 
                         )
                     }

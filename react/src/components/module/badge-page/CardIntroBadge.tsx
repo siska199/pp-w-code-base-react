@@ -1,25 +1,36 @@
 
+import ShowVariousCompVariant from "@components/ShowVariousCompVariant";
 import CardIntroComponent from "@components/cards/CardIntroComponent";
 import Badge from "@components/ui/Badge";
+import { variantBadge } from "@lib/utils/data/variant-color";
 
 const CardIntroBadge = () => {
   const listExample = [
     {
+      title: "Color",
+      component: <ShowVariousCompVariant<typeof variantBadge>
+        variant={variantBadge}
+        groups={["solid", "outline", "soft", "softborder"]}
+        Component={(variant) => <Badge label={"Siska"} variant={variant} />}
+      />
+    },
+    {
+      title: "size",
       component: <div className="flex gap-2 items-center flex-wrap">
-        <Badge label="SISKA" variant={"soft-warning"} sizeBadge={"small"} />
-        <Badge label="SISKA" variant={"soft-border-success"} />
-        <Badge label="SISKA" variant={"solid-black"} />
-        <Badge label="SISKA" variant={"outline-error"} sizeBadge={"large"} shapeBadge={"rounded"} />
+        <Badge label="Small" variant={"solid-primary"} size="small" />
+        <Badge label="Base" variant={"solid-primary"} size="base" />
+        <Badge label="Large" variant={"solid-primary"} size="large" />
       </div>
     },
     {
+      title: "Shape",
       component: <div className="flex gap-2 items-center flex-wrap">
-        <Badge label="1" shapeBadge={"circle"} variant={"soft-border-primary"} />
-        <Badge label="100" shapeBadge={"circle"} variant={"soft-border-primary"} />
-        <Badge label="10000" shapeBadge={"circle"} variant={"soft-border-primary"} />
-        <Badge label="100000" shapeBadge={"circle"} variant={"soft-border-primary"} />
+        <Badge label="Pilled" variant={"solid-primary"} shape={"pilled"} />
+        <Badge label="Rounded" variant={"solid-primary"} shape={"rounded"} />
+        <Badge label="Circle" variant={"solid-primary"} shape={"circle"} />
       </div>
-    }
+    },
+
   ]
   return (
     <CardIntroComponent
@@ -80,5 +91,7 @@ const badgeVariants = cva(
 
 
 export default Badge`;
+
+
 
 export default CardIntroBadge;
