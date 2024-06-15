@@ -1,12 +1,12 @@
 import LayoutType1 from '@components/layouts/LayoutType1';
 import LandingPage from '@pages/LandingPage';
 import IntroductionPage from '@pages/docs/IntroductionPage';
-import PrerequisitePage from '@pages/docs/PrerequisitePage';
 import AccordionPage from '@pages/docs/components/AccordionPage';
 import AlertPage from '@pages/docs/components/AlertPage';
 import AvatarPage from '@pages/docs/components/AvatarPage';
 import BadgePage from '@pages/docs/components/BadgePage';
 import ButtonPage from '@pages/docs/components/ButtonPage';
+import LibraryPage from '@pages/docs/prerequisite/LibraryPage';
 import { createBrowserRouter } from "react-router-dom";
 
 const docRouter = {
@@ -21,11 +21,18 @@ const docRouter = {
         },
         {
             path: 'prerequisite',
-            element: <PrerequisitePage />,
             handle: {
                 id: '1-PR1'
             },
-            children: []
+            children: [
+                {
+                    path: 'library',
+                    element: <LibraryPage />,
+                    handle: {
+                        id: '2-L0'
+                    }
+                },
+  ]
         },
         {
             path: 'components',
