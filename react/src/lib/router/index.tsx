@@ -24,7 +24,8 @@ const docRouter = {
             element: <PrerequisitePage />,
             handle: {
                 id: '1-PR1'
-            }
+            },
+            children: []
         },
         {
             path: 'components',
