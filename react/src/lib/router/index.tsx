@@ -9,6 +9,11 @@ import ButtonPage from '@pages/docs/components/ButtonPage';
 import LibraryPage from '@pages/docs/prerequisite/LibraryPage';
 import TailwindConfigPage from '@pages/docs/prerequisite/TailwindConfigPage';
 import BreadcrumbPage from '@pages/docs/components/BreadcrumbPage';
+import CSSFilePage from '@pages/docs/prerequisite/CSSFilePage';
+import IconPage from '@pages/docs/prerequisite/IconPage';
+import HelperFunctionPage from '@pages/docs/prerequisite/HelperFunctionPage';
+import VariantPage from '@pages/docs/prerequisite/VariantPage';
+import HookPage from '@pages/docs/prerequisite/HookPage';
 import { createBrowserRouter } from "react-router-dom";
 
 const docRouter = {
@@ -36,10 +41,50 @@ const docRouter = {
                 },
 
                 {
-                    path: 'tailwindconfig',
+                    path: 'tailwind-config',
                     element: <TailwindConfigPage />,
                     handle: {
-                        id: '1-TAILWINDCONFIG'
+                        id: '2-TC1'
+                    }
+                },
+
+                {
+                    path: 'css-file',
+                    element: <CSSFilePage />,
+                    handle: {
+                        id: '2-CF2'
+                    }
+                },
+
+                {
+                    path: 'icon',
+                    element: <IconPage />,
+                    handle: {
+                        id: '2-I3'
+                    }
+                },
+
+                {
+                    path: 'helper-function',
+                    element: <HelperFunctionPage />,
+                    handle: {
+                        id: '2-HF4'
+                    }
+                },
+
+                {
+                    path: 'variant',
+                    element: <VariantPage />,
+                    handle: {
+                        id: '2-V5'
+                    }
+                },
+
+                {
+                    path: 'hook',
+                    element: <HookPage />,
+                    handle: {
+                        id: '2-H5'
                     }
                 },
             ]
