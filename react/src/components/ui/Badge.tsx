@@ -1,4 +1,4 @@
-import { variantBadge } from "@lib/utils/data/variant-color";
+import { variantBadge } from "@lib/utils/variants/variant-color";
 import { cn } from "@lib/utils/helper";
 import { VariantProps, cva } from "class-variance-authority";
 import { HTMLProps } from "react";

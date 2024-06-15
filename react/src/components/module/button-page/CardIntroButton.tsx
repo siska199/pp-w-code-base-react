@@ -2,7 +2,7 @@
 import ShowVariousCompVariant from "@components/ShowVariousCompVariant";
 import CardIntroComponent from "@components/cards/CardIntroComponent";
 import Button from "@components/ui/Button";
-import { variantButton } from "@lib/utils/data/variant-color";
+import { variantButton } from "@lib/utils/variants/variant-color";
 
 const CardIntroButton = () => {
   const listExample = [

@@ -1,5 +1,5 @@
 import IconLoading from '@assets/icons/IconLoading';
-import { variantButton } from '@lib/utils/data/variant-color';
+import { variantButton } from '@lib/utils/variants/variant-color';
 import { cn } from '@lib/utils/helper';
 import { VariantProps, cva } from 'class-variance-authority';
 import { HTMLProps } from 'react';
@@ -42,7 +42,7 @@ const Button = (props: TProps) => {
       {...attrs}
       disabled={isLoading || attrs?.disabled}
       className={cn(buttonVariants({ className, variant: updateVariant, size, shape, }))}
-      // target={target}
+    // target={target}
     >
       {
         isLoading ? <span>

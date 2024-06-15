@@ -1,6 +1,6 @@
 import Image from "@components/ui/Image";
-import variant from "@lib/utils/data/variant-color";
 import { cn } from "@lib/utils/helper";
+import variantsAvatar from "@lib/utils/variants/ui/variant-avatar";
 import { VariantProps, cva } from "class-variance-authority";
 import { HTMLProps } from "react";
 
@@ -48,33 +48,12 @@ const Avatar = (props: TProps) => {
     )
 }
 
+
+
 const avatarVariants = cva(
     'text-white flex  items-center justify-center w-fit font-semibold overflow-hidden [&>span]:top-0 [&>span]:right-0  [&>span]:w-[0.75rem]  [&>span]:h-[0.75rem]',
     {
-        variants: {
-            variant: {
-                ...variant
-            },
-
-            size: {
-                'tiny': 'w-[1.625rem] h-[1.625rem] text-[12px] [&>span]:w-[0.65rem] [&>span]:h-[0.65rem]',
-                'small': 'w-[2.375rem] h-[2.375rem] ',
-                base: 'w-[2.875rem] h-[2.875rem] text-[16px]',
-                large: 'w-[3.875rem] h-[3.875rem] text-[20px] [&>span]:top-1 [&>span]:right-1'
-            },
-            shape: {
-                'rounded': 'rounded-md [&>span]:-top-1 [&>span]:-right-1',
-                'circular': 'rounded-full'
-            },
-            status: {
-                'offline': '[&>span]:bg-gray',
-                'online': '[&>span]:bg-success ',
-                'away': '[&>span]:bg-warning',
-                'dont-distrub': '[&>span]:bg-error',
-                icon: '[&>span]:bg-transparent'
-            }
-
-        },
+        variants: variantsAvatar,
         compoundVariants: [
 
         ],

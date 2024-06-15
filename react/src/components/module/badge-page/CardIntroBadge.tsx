@@ -2,7 +2,7 @@
 import ShowVariousCompVariant from "@components/ShowVariousCompVariant";
 import CardIntroComponent from "@components/cards/CardIntroComponent";
 import Badge from "@components/ui/Badge";
-import { variantBadge } from "@lib/utils/data/variant-color";
+import { variantBadge } from "@lib/utils/variants/variant-color";
 
 const CardIntroBadge = () => {
   const listExample = [

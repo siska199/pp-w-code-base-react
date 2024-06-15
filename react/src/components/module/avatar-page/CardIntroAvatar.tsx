@@ -1,73 +1,43 @@
 
-import { IconVerified } from "@assets/icons";
+import ShowVariousCompVariant from "@components/ShowVariousCompVariant";
 import CardIntroComponent from "@components/cards/CardIntroComponent";
 import Avatar from "@components/ui/Avatar";
+import variantsAvatar from "@lib/utils/variants/ui/variant-avatar";
 
 const CardIntroAvatar = () => {
+
+  console.log(Object.keys(variantsAvatar.shape))
   const listExample = [
     {
-      title: 'Color',
-      component: <div className="flex flex-col gap-2">
-        <div className="flex justify-center gap-2">
-          <Avatar type="initial-name" variant={"solid-primary"} name="Siska" />
-          <Avatar type="initial-name" variant={"solid-error"} name="Siska" />
-          <Avatar type="initial-name" variant={"solid-warning"} name="Siska" />
-          <Avatar type="initial-name" variant={"solid-success"} name="Siska" />
-          <Avatar type="initial-name" variant={"solid-black"} name="Siska" />
-          <Avatar type="initial-name" variant={"solid-gray"} name="Siska" />
-          <Avatar type="initial-name" variant={"solid-white"} name="Siska" />
-        </div>
-        <div className="flex justify-center  gap-2">
-          <Avatar type="initial-name" variant={"soft-primary"} name="Siska" />
-          <Avatar type="initial-name" variant={"soft-error"} name="Siska" />
-          <Avatar type="initial-name" variant={"soft-warning"} name="Siska" />
-          <Avatar type="initial-name" variant={"soft-success"} name="Siska" />
-          <Avatar type="initial-name" variant={"soft-black"} name="Siska" />
-          <Avatar type="initial-name" variant={"soft-gray"} name="Siska" />
-        </div>
-        <div className="flex justify-center gap-2">
-          <Avatar type="initial-name" variant={"outline-primary"} name="Siska" />
-          <Avatar type="initial-name" variant={"outline-error"} name="Siska" />
-          <Avatar type="initial-name" variant={"outline-warning"} name="Siska" />
-          <Avatar type="initial-name" variant={"outline-success"} name="Siska" />
-          <Avatar type="initial-name" variant={"outline-black"} name="Siska" />
-          <Avatar type="initial-name" variant={"outline-gray"} name="Siska" />
-
-        </div>
-        <div className="flex justify-center  gap-2">
-          <Avatar type="image" src={"https://i.pinimg.com/564x/bb/32/50/bb325038c19d2f020d498487964cfc2e.jpg"} variant={"solid-black"} name="Siska" />
-          <Avatar type="image" src="" />
-        </div>
-      </div>
+      component: <ShowVariousCompVariant<typeof variantsAvatar.variant>
+        variant={variantsAvatar.variant}
+        groups={["solid", "outline", "soft",]}
+        Component={(variant) => <Avatar type="initial-name" variant={variant} name="Siska" />}
+      />
     },
     {
       title: 'Size',
-      component: <div className="flex gap-4 items-center">
-        <Avatar type="initial-name" variant={"solid-primary"} size={"tiny"} name="Siska" />
-        <Avatar type="initial-name" variant={"solid-primary"} size={"small"} name="Siska" />
-        <Avatar type="initial-name" variant={"solid-primary"} size={"base"} name="Siska" />
-        <Avatar type="initial-name" variant={"solid-primary"} size={"large"} name="Siska" />
-      </div>
+      component: <ShowVariousCompVariant<typeof variantsAvatar.size>
+        variant={variantsAvatar.size}
+        groups={Object.keys(variantsAvatar.size)}
+        Component={(size) => <Avatar type="initial-name" variant={"solid-primary"} size={size} name="Siska" />}
+      />
     },
     {
       title: 'Shape',
-      component: <div className="flex gap-4 items-center">
-        <Avatar type="initial-name" variant={"solid-primary"} shape={"circular"} name="Siska" />
-        <Avatar type="initial-name" variant={"solid-primary"} shape={"rounded"} name="Siska" />
-      </div>
+      component: <ShowVariousCompVariant<typeof variantsAvatar.shape>
+        variant={variantsAvatar.shape}
+        groups={Object.keys(variantsAvatar.shape)}
+        Component={(shape) => <Avatar type="initial-name" variant={"solid-primary"} shape={shape} name="Siska" />}
+      />
     },
     {
       title: 'Status',
-      component: <div className="flex gap-4 items-center">
-        <Avatar type="initial-name" variant={"solid-primary"} status={"offline"} name="Siska" />
-        <Avatar type="initial-name" variant={"solid-primary"} status={"online"} name="Siska" />
-
-        <Avatar type="initial-name" variant={"solid-primary"} status={"away"} name="Siska" />
-        <Avatar type="initial-name" variant={"solid-primary"} status={"dont-distrub"} name="Siska" />
-        <Avatar type="image" src={"https://i.pinimg.com/564x/bb/32/50/bb325038c19d2f020d498487964cfc2e.jpg"} status={"icon"} customeIcon={<IconVerified />} name="Siska" />
-        <Avatar type="image" src={"https://i.pinimg.com/564x/bb/32/50/bb325038c19d2f020d498487964cfc2e.jpg"} status={"icon"} shape={"rounded"} customeIcon={<IconVerified />} name="Siska" />
-
-      </div>
+      component: <ShowVariousCompVariant<typeof variantsAvatar.status>
+        variant={variantsAvatar.status}
+        groups={Object.keys(variantsAvatar.status)}
+        Component={(status) => <Avatar type="initial-name" variant={"solid-primary"} status={status} name="Siska" />}
+      />
     }
 
   ]
@@ -86,6 +56,7 @@ import variant from "@lib/utils/data/variant-color";
 import { cn } from "@lib/utils/helper";
 import { VariantProps, cva } from "class-variance-authority";
 import { HTMLProps } from "react";
+import { avatarVariants } from '../../ui/Avatar';
 
 interface TPropsImage {
     type: "image";

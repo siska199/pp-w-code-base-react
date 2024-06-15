@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { IconClose, IconDanger, IconInfo, IconNotification, IconSuccess } from "@assets/icons"
-import variant, { variantAlertError, variantAlertSuccess, variantAlertWarning } from "@lib/utils/data/variant-color"
+import variant, { variantAlertError, variantAlertSuccess, variantAlertWarning } from "@lib/utils/variants/variant-color"
 import { cn } from "@lib/utils/helper"
 import { VariantProps, cva } from "class-variance-authority"
 import { HTMLProps, useEffect } from "react"
