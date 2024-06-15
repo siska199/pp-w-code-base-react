@@ -1,6 +1,5 @@
 import { IconHamburger, IconSearch } from "@assets/icons"
 import Button from "@components/ui/Button"
-import LinkCustome from "@components/ui/Link"
 import Logo from "@components/ui/Logo"
 import useSidebar from "@hooks/ui/useSidebar"
 import listMenuNavbar from "@lib/utils/data/menu-navbar"
@@ -17,9 +16,9 @@ const Navbar = () => {
                 <Logo sizeLogo={"large"} className="hidden md:block" />
                 <ul className="hidden md:flex gap-8 ">
                     {
-                        listMenuNavbar?.map((menu, i) => <LinkCustome key={i} to={menu?.url} className="hover:!no-underline">
-                            {menu?.label}
-                        </LinkCustome>)
+                        listMenuNavbar?.map((menu, i) => <Button label={menu?.label} customeElement="link" key={i} to={menu?.url} className="hover:!no-underline" />
+
+                        )
                     }
                 </ul>
             </div>
