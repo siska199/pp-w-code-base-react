@@ -1,14 +1,14 @@
 
-import CardButtonProps from "@components/module/button-page/CardButtonProps";
 import CardButtonUsage from "@components/module/button-page/CardUsageButton";
 import CardButtonAdditionalInfo from "@components/module/button-page/CardAdditionalInfoButton";
-import CardButtonIntro from "@components/module/button-page/CardButtonIntro";
+import CardIntroButton from "@components/module/button-page/CardIntroButton";
+import CardPropsButton from "@components/module/button-page/CardPropsButton";
 
 const ButtonPage = () => {
   return (
     <>
-      <CardButtonIntro />
-      <CardButtonProps />
+      <CardIntroButton />
+      <CardPropsButton />
       <CardButtonUsage />
       <CardButtonAdditionalInfo />
     </>

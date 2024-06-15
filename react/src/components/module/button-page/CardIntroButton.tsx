@@ -5,7 +5,7 @@ import Button from "@components/ui/Button";
 const CardIntroButton = () => {
   const listExample = [
     {
-      title: "Color Variants",
+      title: "Color",
       component: <div className="grid grid-cols-4 gap-4">
         <div className="flex flex-col gap-2">
           <Button variant={"solid-primary"} label={'Siska'} />

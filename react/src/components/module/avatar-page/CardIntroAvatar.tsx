@@ -1,35 +1,75 @@
 
+import { IconVerified } from "@assets/icons";
 import CardIntroComponent from "@components/cards/CardIntroComponent";
 import Avatar from "@components/ui/Avatar";
 
 const CardIntroAvatar = () => {
   const listExample = [
     {
-      title: 'Color Variants',
-      component: <div className="grid grid-cols-4 gap-4">
-        <div className="flex flex-col gap-2">
-          <Avatar type="alphabet" sizeAvatar={"tiny"} name="Siska" />
-          <Avatar type="alphabet" variant={"soft-warning"} name="Siska" />
-          <Avatar type="alphabet" variant={"solid-primary"} name="Siska" />
-          <Avatar type="alphabet" variant={"soft-success"} sizeAvatar={"large"} name="Siska" />
+      title: 'Color',
+      component: <div className="flex flex-col gap-2">
+        <div className="flex justify-center   gap-2">
+          <Avatar type="initial-name" variant={"solid-primary"} name="Siska" />
+          <Avatar type="initial-name" variant={"solid-error"} name="Siska" />
+          <Avatar type="initial-name" variant={"solid-warning"} name="Siska" />
+          <Avatar type="initial-name" variant={"solid-success"} name="Siska" />
+          <Avatar type="initial-name" variant={"solid-black"} name="Siska" />
+          <Avatar type="initial-name" variant={"solid-gray"} name="Siska" />
+          <Avatar type="initial-name" variant={"solid-white"} name="Siska" />
+
         </div>
-        <div className="flex flex-col gap-2">
-          <Avatar type="alphabet" sizeAvatar={"tiny"} name="Siska" />
-          <Avatar type="alphabet" variant={"soft-warning"} name="Siska" />
-          <Avatar type="alphabet" variant={"solid-primary"} name="Siska" />
-          <Avatar type="alphabet" variant={"soft-success"} sizeAvatar={"large"} name="Siska" />
+        <div className="flex justify-center  gap-2">
+          <Avatar type="initial-name" variant={"soft-primary"} name="Siska" />
+          <Avatar type="initial-name" variant={"soft-error"} name="Siska" />
+          <Avatar type="initial-name" variant={"soft-warning"} name="Siska" />
+          <Avatar type="initial-name" variant={"soft-success"} name="Siska" />
+          <Avatar type="initial-name" variant={"soft-black"} name="Siska" />
+          <Avatar type="initial-name" variant={"soft-gray"} name="Siska" />
+        </div>
+        <div className="flex justify-center gap-2">
+          <Avatar type="initial-name" variant={"outline-primary"} name="Siska" />
+          <Avatar type="initial-name" variant={"outline-error"} name="Siska" />
+          <Avatar type="initial-name" variant={"outline-warning"} name="Siska" />
+          <Avatar type="initial-name" variant={"outline-success"} name="Siska" />
+          <Avatar type="initial-name" variant={"outline-black"} name="Siska" />
+          <Avatar type="initial-name" variant={"outline-gray"} name="Siska" />
+
+        </div>
+        <div className="flex justify-center  gap-2">
+          <Avatar type="image" src={"https://i.pinimg.com/564x/bb/32/50/bb325038c19d2f020d498487964cfc2e.jpg"} variant={"solid-black"} name="Siska" />
+          <Avatar type="image" src="" />
         </div>
       </div>
     },
     {
-      title: '',
+      title: 'Size',
       component: <div className="flex gap-4 items-center">
-        <Avatar type="image" sizeAvatar={"tiny"} name="Siska" status={"online"} />
-        <Avatar type="image" name="Siska" status={"dont-distrub"} />
-        <Avatar type="alphabet" variant={"solid-white"} shapeAvatar={"rounded"} name="Siska" status={"offline"} />
-        <Avatar type="image" src={"https://i.pinimg.com/564x/bb/32/50/bb325038c19d2f020d498487964cfc2e.jpg"} variant={"solid-black"} sizeAvatar={"large"} name="Siska" status={"away"} />
+        <Avatar type="initial-name" variant={"solid-primary"} size={"tiny"} name="Siska" />
+        <Avatar type="initial-name" variant={"solid-primary"} size={"small"} name="Siska" />
+        <Avatar type="initial-name" variant={"solid-primary"} size={"base"} name="Siska" />
+        <Avatar type="initial-name" variant={"solid-primary"} size={"large"} name="Siska" />
       </div>
     },
+    {
+      title: 'Shape',
+      component: <div className="flex gap-4 items-center">
+        <Avatar type="initial-name" variant={"solid-primary"} shape={"circular"} name="Siska" />
+        <Avatar type="initial-name" variant={"solid-primary"} shape={"rounded"} name="Siska" />
+      </div>
+    },
+    {
+      title: 'Status',
+      component: <div className="flex gap-4 items-center">
+        <Avatar type="initial-name" variant={"solid-primary"} status={"offline"} name="Siska" />
+        <Avatar type="initial-name" variant={"solid-primary"} status={"online"} name="Siska" />
+
+        <Avatar type="initial-name" variant={"solid-primary"} status={"away"} name="Siska" />
+        <Avatar type="initial-name" variant={"solid-primary"} status={"dont-distrub"} name="Siska" />
+        <Avatar type="image" src={"https://i.pinimg.com/564x/bb/32/50/bb325038c19d2f020d498487964cfc2e.jpg"} status={"icon"} customeIcon={<IconVerified />} name="Siska" />
+        <Avatar type="image" src={"https://i.pinimg.com/564x/bb/32/50/bb325038c19d2f020d498487964cfc2e.jpg"} status={"icon"} shape={"rounded"} customeIcon={<IconVerified />} name="Siska" />
+
+      </div>
+    }
 
   ]
   return (
@@ -48,7 +88,7 @@ import { VariantProps, cva } from "class-variance-authority";
 import { HTMLProps } from "react";
 
 interface TProps extends HTMLProps<HTMLDivElement>, VariantProps<typeof avatarVariants> {
-    type: "image" | "alphabet";
+    type: "image" | "initial-name";
     src?: string;
     name: string;
 }
@@ -61,7 +101,7 @@ const Avatar = (props: TProps) => {
                 className={cn(avatarVariants({ className, variant, sizeAvatar, shapeAvatar, status }))}
             >
                 {type === "image" && <Image src={src || "avatar.svg"} alt={name} className="w-full h-full object-scale-down" />}
-                {type === "alphabet" && <div>{name?.substring(0, 1)}</div>}
+                {type === "initial-name" && <div>{name?.substring(0, 1)}</div>}
                 {
                     status && <span className={cn({
                         " absolute border-white border-2   rounded-full": true,

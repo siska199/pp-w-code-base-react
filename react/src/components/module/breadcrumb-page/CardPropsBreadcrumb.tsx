@@ -2,7 +2,7 @@
 import CardSubMenu from "@components/cards/CardSubMenu";
 import List from "@components/ui/List";
 
-const CardBreadcrumbProps = () => {
+const CardPropsBreadcrumb = () => {
   const listItem = [
     {
       label: "prop1",
@@ -21,4 +21,4 @@ const CardBreadcrumbProps = () => {
   );
 }
 
-export default CardBreadcrumbProps;
+export default CardPropsBreadcrumb;

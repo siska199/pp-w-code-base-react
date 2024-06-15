@@ -1,16 +1,16 @@
 
+import CardAdditionalInfoBreadcrumb from "@components/module/breadcrumb-page/CardAdditionalInfoBreadcrumb";
+import CardIntroBreadcrumb from "@components/module/breadcrumb-page/CardIntroBreadcrumb";
 import CardBreadcrumbProps from "@components/module/breadcrumb-page/CardPropsBreadcrumb";
-import CardBreadcrumbUsage from "@components/module/breadcrumb-page/CardBreadcrumbUsage";
-import CardBreadcrumbAdditionalInfo from "@components/module/breadcrumb-page/CardAdditionalInfoBreadcrumb";
-import CardBreadcrumbIntro from "@components/module/breadcrumb-page/CardBreadcrumbIntroComponent";
+import CardUsageBreadcrumb from "@components/module/breadcrumb-page/CardUsageBreadcrumb";
 
 const BreadcrumbPage = () => {
   return (
     <>
-      <CardBreadcrumbIntro />
+      <CardIntroBreadcrumb />
       <CardBreadcrumbProps />
-      <CardBreadcrumbUsage />
-      <CardBreadcrumbAdditionalInfo />
+      <CardUsageBreadcrumb />
+      <CardAdditionalInfoBreadcrumb />
     </>
   );
 }
