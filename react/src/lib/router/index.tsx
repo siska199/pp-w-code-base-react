@@ -90,7 +90,7 @@ const docRouter = {
                     path: 'breadcrumb',
                     element: <BreadcrumbPage />,
                     handle: {
-                        id: '0-C0'
+                        id: '1-BR4'
                     }
                 },
             ]
