@@ -36,6 +36,12 @@ const IntroductionPage = () => {
                     Therefore, it is essential <Button variant={"link-gray"} customeElement="link" to={"/docs/prerequisite/library"} label={'to read the prerequisites'} /> before using Code Base 199.
                 </>}
             />
+            <CardSubMenu title="Background" customeClass={{ title: "border-b-0", container: "gap-0" }}>
+                <p>
+                    The creator of Code Base 199, a seasoned developer, has often faced the challenges of starting projects from scratch, especially in frontend development. Developers are frequently left without the support of a UI/UX design system, making it difficult to anticipate the variations and future requirements of components. As projects evolve and new component variants are needed, maintaining and enhancing the codebase can become a daunting task, sometimes causing issues with existing code.
+                    Code Base 199 provides developers with a clear picture of all possible component variations when creating a new component. This foresight helps in designing flexible and scalable components from the start.
+                </p>
+            </CardSubMenu>
             <CardSubMenu title="What Makes Code Base 199 Unique?" customeClass={{ title: "border-b-0", container: "gap-0" }}>
                 <p>Code Base 199 sets itself apart with a unique blend of features designed to enhance your development experience:</p>
                 <List items={listItemSubMenu1} />
