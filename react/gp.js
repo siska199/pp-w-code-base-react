@@ -20,8 +20,7 @@ const ${pageName}Page = () => {
   );
 };
 
-export default ${pageName}Page;
-`;
+export default ${pageName}Page;`;
 
     // Ensure the directory exists
     fs.mkdirSync(path.dirname(fullPath), { recursive: true });
@@ -32,7 +31,8 @@ export default ${pageName}Page;
 };
 
 // Function to update the router file
-const updateRouterFile = (parentRoute, filePath) => {
+export const updateRouterFile = (parentRoute, filePath) => {
+    
     const routerPath = path.resolve(dirname, 'src/lib/router/index.tsx');
     const relativePath = filePath.replace('src/', '');
     const pageName = path.basename(filePath).replace(/^\w/, (c) => c.toUpperCase());

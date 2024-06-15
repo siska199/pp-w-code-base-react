@@ -133,6 +133,55 @@ const info2 = \`// Additional info 2\`;
 export default Card${componentName}AdditionalInfo;
 `;
 
+export const updateRouterFile = (parentRoute, filePath) => {
+  const routerPath = path.resolve(dirname, 'src/lib/router/index.tsx');
+  const relativePath = filePath.replace('src/', '');
+  const pageName = path.basename(filePath).replace(/^\w/, (c) => c.toUpperCase());
+  const importPath = relativePath.replace(/\//g, '/').replace('pages/', '@pages/');
+
+  // Read the router file
+  let routerFileContent = fs.readFileSync(routerPath, 'utf8');
+
+  // Create import statement
+  const importStatement = `import ${pageName}Page from '${importPath}Page';\n`;
+
+  // Check if the import already exists
+  if (!routerFileContent.includes(importStatement)) {
+    routerFileContent = routerFileContent.replace(
+      'import { createBrowserRouter } from "react-router-dom";',
+      `${importStatement}import { createBrowserRouter } from "react-router-dom";`
+    );
+  }
+
+  // Generate the new route
+  const newRoute = `
+              {
+                  path: '${pageName.toLowerCase()}',
+                  element: <${pageName}Page />,
+                  handle: {
+                      id: '1-${pageName.toUpperCase()}'
+                  }
+              },
+`;
+
+  // Check if the parent route exists and add the new route as a child
+  const parentRouteRegex = new RegExp(`(path: '${parentRoute}',[\\s\\S]*?children: \\[)([\\s\\S]*?)(\\])`, 'm');
+  if (parentRouteRegex.test(routerFileContent)) {
+    routerFileContent = routerFileContent.replace(
+      parentRouteRegex,
+      (match, p1, p2, p3) => `${p1}${p2}${newRoute}${p3}`
+    );
+  } else {
+    console.error(`Parent path '${parentRoute}' not found in router configuration.`);
+    return;
+  }
+
+  // Write the updated router file
+  fs.writeFileSync(routerPath, routerFileContent, 'utf8');
+  console.log(`Updated router file at ${routerPath}`);
+};
+updateRouterFile('components', `pages/docs/components/${componentName}`)
+
 // Ensure the directories exist
 fs.mkdirSync(pagesDocsComponentsPath, { recursive: true });
 fs.mkdirSync(modulePath, { recursive: true });

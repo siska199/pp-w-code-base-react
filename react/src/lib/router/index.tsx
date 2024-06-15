@@ -8,6 +8,7 @@ import BadgePage from '@pages/docs/components/BadgePage';
 import ButtonPage from '@pages/docs/components/ButtonPage';
 import LibraryPage from '@pages/docs/prerequisite/LibraryPage';
 import TailwindConfigPage from '@pages/docs/prerequisite/TailwindConfigPage';
+import BreadcrumbPage from '@pages/docs/components/BreadcrumbPage';
 import { createBrowserRouter } from "react-router-dom";
 
 const docRouter = {
@@ -33,7 +34,7 @@ const docRouter = {
                         id: '2-L0'
                     }
                 },
-  
+
                 {
                     path: 'tailwindconfig',
                     element: <TailwindConfigPage />,
@@ -41,7 +42,7 @@ const docRouter = {
                         id: '1-TAILWINDCONFIG'
                     }
                 },
-  ]
+            ]
         },
         {
             path: 'components',
@@ -82,6 +83,14 @@ const docRouter = {
                     element: <ButtonPage />,
                     handle: {
                         id: '1-BU5'
+                    }
+                },
+
+                {
+                    path: 'breadcrumb',
+                    element: <BreadcrumbPage />,
+                    handle: {
+                        id: '0-C0'
                     }
                 },
             ]
