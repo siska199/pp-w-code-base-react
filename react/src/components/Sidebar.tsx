@@ -21,10 +21,6 @@ const Sidebar = (props: TProps) => {
             customeClass: {
                 label: "text-black font-medium"
             },
-            defaultOpen: true
-        },
-        "1": {
-            defaultOpen: false
         },
         activeMenu: {
             id: "",
@@ -49,17 +45,15 @@ const Sidebar = (props: TProps) => {
         const settingSession = sessionStorage?.getItem('setting')
         if (settingSession) {
             const initialSetting = JSON.parse(sessionStorage?.getItem('setting') || "")
-            setSetting(initialSetting)
+            setting.openMenus = initialSetting.openMenus
+            setting.activeMenu = initialSetting.activeMenu
         }
     }, [])
 
     useEffect(() => {
         if (idActiveMenu) {
             const activeMenu = listFlattenMenuSidebar?.filter((data) => data?.id === idActiveMenu)[0]
-            setSetting({
-                ...setting,
-                activeMenu
-            })
+            setting.activeMenu = activeMenu
         }
     }, [idActiveMenu, location.pathname])
 

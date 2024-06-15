@@ -16,7 +16,6 @@ interface TLevelSetting {
     customeClass?: {
         label?: string;
     };
-    defaultOpen?: boolean;
 }
 
 export interface TMenuSettings {
@@ -53,7 +52,6 @@ const RenderMenu = (props: TProps) => {
 
     const handleOnClickMenu = (groupMenu: TMenuItem) => {
         let updateSetting = setting
-        console.log("testd")
         if (isEmptyValue(groupMenu?.childs)) {
             updateSetting = {
                 ...setting,
@@ -80,8 +78,6 @@ const RenderMenu = (props: TProps) => {
         setSetting(updateSetting)
     };
 
-    
-
     return (
         <ul className={cn({
             "flex flex-col  opacity-0 max-h-0 overflow-y-auto transition-all duration-300 ease": true,
@@ -91,8 +87,8 @@ const RenderMenu = (props: TProps) => {
         })}>
             {menu?.map((groupMenu: TMenuItem, i) => (
                 <li key={i} className={cn({
-                    "scrollbar-hidden ":true,
-                    ' pr-4 ':level==0
+                    "scrollbar-hidden ": true,
+                    ' pr-4 ': level == 0
                 })}>
                     <div
                         onClick={() => handleOnClickMenu(groupMenu)}
