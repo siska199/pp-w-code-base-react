@@ -6,15 +6,19 @@ const CardPropsAvatar = () => {
   const listItem = [
     {
       label: "type",
-      content: "Specifies the type of avatar to display. Accepts 'image' or 'alphabet'."
+      content: "Specifies the type of avatar to display. Accepts 'image' or 'initial-name'."
     },
     {
-      label: "src (optional)",
+      label: "src (required if type is 'image')",
       content: "The source URL for the image when the 'type' is set to 'image'. Defaults to 'avatar.svg' if not provided."
     },
     {
       label: "name",
-      content: "Used for the alt text of the image and to display the first letter when the 'type' is 'alphabet'."
+      content: "Used for the alt text of the image and to display the first letter when the 'type' is 'initial-name'."
+    },
+    {
+      label: "customeIcon (optional)",
+      content: "Allows you to pass a custom icon that will be displayed when the 'status' is set to 'icon'."
     },
     {
       label: "className (optional)",
@@ -22,21 +26,22 @@ const CardPropsAvatar = () => {
     },
     {
       label: "variant (optional)",
-      content: "Determines the color variant of the avatar. Accepts 'solid-primary', 'solid-warning', 'solid-success', 'solid-error', 'solid-black', 'solid-white', 'soft-primary', 'soft-warning', 'soft-success', 'soft-error', 'soft-gray'."
+      content: "Determines the color variant of the avatar. Accepts 'solid-primary', 'solid-warning', 'solid-success', 'solid-error', 'solid-black', 'solid-white', 'soft-primary', 'soft-warning', 'soft-success', 'soft-error', 'soft-gray'. Default is 'soft-gray'."
     },
     {
-      label: "sizeAvatar (optional)",
-      content: "Sets the size of the avatar. Accepts 'tiny', 'small', 'base', 'large'."
+      label: "size (optional)",
+      content: "Sets the size of the avatar. Accepts 'tiny', 'small', 'base', 'large'. Default is 'base'."
     },
     {
-      label: "shapeAvatar (optional)",
-      content: "Determines the shape of the avatar. Accepts 'rounded' or 'circular'."
+      label: "shape (optional)",
+      content: "Determines the shape of the avatar. Accepts 'rounded' or 'circular'. Default is 'circular'."
     },
     {
       label: "status (optional)",
-      content: "Sets the status indicator on the avatar. Accepts 'none', 'offline', 'online', 'away', 'dont-distrub', 'icon'."
+      content: "Sets the status indicator on the avatar. Accepts 'offline', 'online', 'away', 'dont-distrub', 'icon'."
     }
   ];
+
 
 
   return (
