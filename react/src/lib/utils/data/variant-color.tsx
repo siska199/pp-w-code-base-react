@@ -1,12 +1,13 @@
 const variant = {
-    "solid-black": "bg-black border-black",
-    "solid-gray": "bg-gray border-gray",
-    "solid-primary": "bg-primary border-primary",
-    "solid-success": "bg-success border-success",
-    "solid-warning": "bg-warning border-warning",
-    "solid-error": "bg-error border-error",
+    "solid-black": "bg-black border-black text-white",
+    "solid-gray": "bg-gray border-gray text-white",
+    "solid-primary": "bg-primary border-primary text-white",
+    "solid-success": "bg-success border-success text-white",
+    "solid-warning": "bg-warning border-warning text-white",
+    "solid-error": "bg-error border-error text-white",
     "solid-white": "bg-white border",
 
+    "soft-gray": "bg-gray-50 text-gray-900",
     "soft-black": "bg-gray-100 text-gray-900",
     "soft-primary": "bg-primary-50 text-primary-700",
     "soft-success": "bg-success-50 text-success-700",
@@ -22,6 +23,26 @@ const variant = {
 }
 
 
+// Vaiant ALERT:
+export const variantAlertError = {
+    "solid-error": variant["solid-error"],
+    "soft-error": variant["soft-error"],
+    "outline-error": variant["outline-error"],
+}
+export const variantAlertSuccess = {
+    "solid-success": variant["solid-success"],
+    "soft-success": variant["soft-success"],
+    "outline-success": variant["outline-success"],
+}
+export const variantAlertWarning = {
+    "solid-warning": variant["solid-warning"],
+    "soft-warning": variant["soft-warning"],
+    "outline-warning": variant["outline-warning"],
+}
+
+
+
+//
 export const variantBadge = {
     ...variant,
     "soft-border-black": "bg-black-50 text-black-700 border-black border",

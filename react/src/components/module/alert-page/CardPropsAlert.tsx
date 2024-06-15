@@ -5,46 +5,55 @@ import List from "@components/ui/List";
 const CardPropsAlert = () => {
   const listItem = [
     {
-      label: "variant",
-      content: "Specifies the type of alert, which determines its appearance and icon. Accepts 'info', 'warning', 'error', 'success', or 'notification'."
+      title: "variant",
+      content: "Specifies the appearance variant of the alert based on its type (`error`, `success`, `warning`, `notification`, `info`)."
     },
     {
-      label: "withCloseBtn (optional)",
-      content: "If true, a close button is displayed in the alert."
+      title: "customeIcon (optional)",
+      content: "Custom icon element to display instead of the default icon based on the alert type."
     },
     {
-      label: "position (optional)",
-      content: "Specifies the position of the alert on the screen. Accepts 'top-left' or 'top-right'."
+      title: "type",
+      content: "Determines the type of alert. Accepts `'error'`, `'success'`, `'warning'`, `'notification'`, or `'info'`."
     },
     {
-      label: "timeout (optional)",
-      content: "The duration (in milliseconds) after which the alert automatically dismisses. Default is 3000."
+      title: "withIcon (optional)",
+      content: "If true, displays an icon associated with the alert type (`IconInfo`, `IconDanger`, `IconSuccess`, `IconNotification`, `IconClose`)."
     },
     {
-      label: "onDismiss (optional)",
-      content: "A callback function that is called when the alert is dismissed."
+      title: "show",
+      content: "Indicates whether the alert is currently visible."
     },
     {
-      label: "show",
-      content: "Indicates whether the alert is visible or not."
+      title: "message",
+      content: "Content to be displayed inside the alert, either as a string or a React node."
     },
     {
-      label: "autoClose (optional)",
-      content: "If true, the alert will automatically dismiss after the specified timeout. Default is true."
+      title: "position (optional)",
+      content: "Specifies the position of the alert on the screen. Accepts `'top-left'` or `'top-right'`."
     },
     {
-      label: "isFixed (optional)",
-      content: "Determines whether the alert is positioned fixed or static. Default is true."
+      title: "timeout (optional)",
+      content: "Duration in milliseconds after which the alert automatically dismisses. Default is 3000."
     },
     {
-      label: "className (optional)",
-      content: "Additional CSS classes to be applied to the alert."
+      title: "onDismiss (optional)",
+      content: "Callback function called when the alert is dismissed."
     },
     {
-      label: "children",
-      content: "The content to be displayed inside the alert."
+      title: "autoClose (optional)",
+      content: "If true, the alert automatically dismisses after the specified timeout. Default is true."
+    },
+    {
+      title: "isFixed (optional)",
+      content: "Determines whether the alert is fixed in position or scrolls with the page. Default is true."
+    },
+    {
+      title: "className (optional)",
+      content: "Additional CSS classes to be applied to the alert container."
     }
-  ];
+  ]
+
 
 
   return (

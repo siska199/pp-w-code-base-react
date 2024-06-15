@@ -12,16 +12,16 @@ const CardUsageAlert = () => {
   );
 }
 
-const displayUsage = `  const [showAlert, setShowAlert] = useState(false);
+const displayUsage = `  
+  const [showAlert, setShowAlert] = useState(false);
 
   const handleToggleAlert = () => {
     setShowAlert(!showAlert)
   }
+
   return  <div className="flex flex-col items-center gap-4">
-    <Button variant={"white"} onClick={handleToggleAlert} >Show Alert</Button>
-    <Alert variant="success" withCloseBtn show={showAlert} onDismiss={handleToggleAlert}>
-       mollitia non itaque, natus, accusantium tenetur deserunt maxime? Praesentium, veritatis!
-    </Alert>
+        <Button label={'Show Alert'} variant={"solid-white"} onClick={() => handleToggleAlert()} />
+        <Alert type="success" withCloseBtn show={showAlert} onDismiss={handleToggleAlert} message={'mollitia non itaque, natus, accusantium tenetur deserunt maxime? Praesentium, veritatis!'} />
   </div>
 `;
 
