@@ -95,12 +95,13 @@ export default Card${componentName}Props;
 const usageTemplate = `
 import CardSubMenu from '@components/cards/CardSubMenu';
 import CodeBlock from '@components/ui/CodeBlock';
+import { generateDisplayComponent } from '@lib/utils/helper';
 
 const Card${componentName}Usage = () => {
   return (
     <CardSubMenu title="Usage">
       <p>Example usage of ${componentName}:</p>
-      <CodeBlock codeString={displayUsage} />
+      <CodeBlock codeString={generateDisplayComponent('${componentName}', displayUsage)} />
     </CardSubMenu>
   );
 }
