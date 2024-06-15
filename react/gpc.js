@@ -20,18 +20,18 @@ const modulePath = path.join(componentsPath, 'module', `${componentName.toLowerC
 
 // Define the file templates
 const pageTemplate = `
-import Card${componentName}Intro from "@components/module/${componentName.toLowerCase()}-page/Card${componentName}Intro";
-import Card${componentName}Props from "@components/module/${componentName.toLowerCase()}-page/Card${componentName}Props";
-import Card${componentName}Usage from "@components/module/${componentName.toLowerCase()}-page/Card${componentName}Usage";
-import Card${componentName}AdditionalInfo from "@components/module/${componentName.toLowerCase()}-page/Card${componentName}AdditionalInfo";
+import CardIntro${componentName} from "@components/module/${componentName.toLowerCase()}-page/CardIntro${componentName}";
+import CardProps${componentName} from "@components/module/${componentName.toLowerCase()}-page/CardProps${componentName}";
+import CardUsage${componentName} from "@components/module/${componentName.toLowerCase()}-page/CardUsage${componentName}";
+import CardAdditionalInfo${componentName} from "@components/module/${componentName.toLowerCase()}-page/CardAdditionalInfo${componentName}";
 
 const ${componentName}Page = () => {
   return (
     <>
-      <Card${componentName}Intro />
-      <Card${componentName}Props />
-      <Card${componentName}Usage />
-      <Card${componentName}AdditionalInfo />
+      <CardIntro${componentName} />
+      <CardProps${componentName} />
+      <CardUsage${componentName} />
+      <CardAdditionalInfo${componentName} />
     </>
   );
 }
@@ -43,7 +43,7 @@ const introTemplate = `
 import CardIntroComponent from "@components/cards/CardIntroComponent";
 import ${componentName} from "@components/ui/${componentName}";
 
-const Card${componentName}Intro = () => {
+const CardIntro${componentName} = () => {
 
     const listExample = [
     {
@@ -63,14 +63,14 @@ const Card${componentName}Intro = () => {
 
 const displayCodeBase = \`// Code for ${componentName}\`;
 
-export default Card${componentName}Intro;
+export default CardIntro${componentName};
 `;
 
 const propsTemplate = `
 import CardSubMenu from "@components/cards/CardSubMenu";
 import List from "@components/ui/List";
 
-const Card${componentName}Props = () => {
+const CardProps${componentName} = () => {
   const listItem = [
     {
       label: "prop1",
@@ -89,7 +89,7 @@ const Card${componentName}Props = () => {
   );
 }
 
-export default Card${componentName}Props;
+export default CardProps${componentName};
 `;
 
 const usageTemplate = `
@@ -97,7 +97,7 @@ import CardSubMenu from '@components/cards/CardSubMenu';
 import CodeBlock from '@components/ui/CodeBlock';
 import { generateDisplayComponent } from '@lib/utils/helper';
 
-const Card${componentName}Usage = () => {
+const CardUsage${componentName} = () => {
   return (
     <CardSubMenu title="Usage">
       <p>Example usage of ${componentName}:</p>
@@ -108,7 +108,7 @@ const Card${componentName}Usage = () => {
 
 const displayUsage = \`// Usage example for ${componentName}\`;
 
-export default Card${componentName}Usage;
+export default CardUsage${componentName};
 `;
 
 const additionalInfoTemplate = `
@@ -116,7 +116,7 @@ import CardSubMenu from "@components/cards/CardSubMenu";
 import CodeBlock from "@components/ui/CodeBlock";
 import ProgressStep from "@components/ui/ProgressStep";
 
-const Card${componentName}AdditionalInfo = () => {
+const CardAdditionalInfo${componentName} = () => {
   const listAdditionalInfo = [
     {
       title: "Additional Info 1",
@@ -138,7 +138,7 @@ const Card${componentName}AdditionalInfo = () => {
 const info1 = \`// Additional info 1\`;
 const info2 = \`// Additional info 2\`;
 
-export default Card${componentName}AdditionalInfo;
+export default CardAdditionalInfo${componentName};
 `;
 
 export const updateRouterFile = (parentRoute, filePath) => {
