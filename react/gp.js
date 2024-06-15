@@ -90,3 +90,7 @@ if (!filePath || !parentRoute) {
 
 createPageFile(filePath);
 updateRouterFile(parentRoute, filePath);
+
+
+//How to use it:
+//node gp.js 'pages/docs/prerequisite/TailwindConfig' 'prerequisite'
