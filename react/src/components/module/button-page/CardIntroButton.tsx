@@ -1,42 +1,18 @@
 
+import ShowVariousCompVariant from "@components/ShowVariousCompVariant";
 import CardIntroComponent from "@components/cards/CardIntroComponent";
 import Button from "@components/ui/Button";
+import { variantButton } from "@lib/utils/data/variant-color";
 
 const CardIntroButton = () => {
   const listExample = [
     {
       title: "Color",
-      component: <div className="grid grid-cols-4 gap-4">
-        <div className="flex flex-col gap-2">
-          <Button variant={"solid-primary"} label={'Siska'} />
-          <Button variant={"solid-warning"} label={'Siska'} />
-          <Button variant={"solid-error"} label={'Siska'} />
-          <Button variant={"solid-success"} label={'Siska'} />
-          <Button variant={"solid-black"} label={'Siska'} />
-          <Button variant={"solid-white"} label={'Siska'} />
-        </div>
-        <div className="flex flex-col gap-2">
-          <Button variant={"soft-primary"} label={'Siska'} />
-          <Button variant={"soft-warning"} label={'Siska'} />
-          <Button variant={"soft-error"} label={'Siska'} />
-          <Button variant={"soft-success"} label={'Siska'} />
-          <Button variant={"soft-black"} label={'Siska'} />
-        </div>
-        <div className="flex flex-col gap-2">
-          <Button variant={"outline-primary"} label={'Siska'} />
-          <Button variant={"outline-warning"} label={'Siska'} />
-          <Button variant={"outline-error"} label={'Siska'} />
-          <Button variant={"outline-success"} label={'Siska'} />
-          <Button variant={"outline-black"} label={'Siska'} />
-        </div>
-        <div className="flex flex-col gap-2">
-          <Button variant={"link-primary"} label={'Siska'} />
-          <Button variant={"link-warning"} label={'Siska'} />
-          <Button variant={"link-error"} label={'Siska'} />
-          <Button variant={"link-success"} label={'Siska'} />
-          <Button variant={"link-black"} label={'Siska'} />
-        </div>
-      </div>
+      component: <ShowVariousCompVariant<typeof variantButton>
+        variant={variantButton}
+        groups={["solid", "outline", "soft", "softborder"]}
+        Component={(variant) => <Button variant={variant} label={'Siska'} />}
+      />
     },
     {
       title: "Size",
