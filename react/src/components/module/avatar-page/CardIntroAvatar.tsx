@@ -5,12 +5,20 @@ import Avatar from "@components/ui/Avatar";
 const CardIntroAvatar = () => {
   const listExample = [
     {
-      title: '',
-      component: <div className="flex gap-4 items-center">
-        <Avatar type="alphabet" sizeAvatar={"tiny"} name="Siska" />
-        <Avatar type="alphabet" variant={"soft-warning"} name="Siska" />
-        <Avatar type="alphabet" variant={"solid-primary"} name="Siska" />
-        <Avatar type="alphabet" variant={"soft-success"} sizeAvatar={"large"} name="Siska" />
+      title: 'Color Variants',
+      component: <div className="grid grid-cols-4 gap-4">
+        <div className="flex flex-col gap-2">
+          <Avatar type="alphabet" sizeAvatar={"tiny"} name="Siska" />
+          <Avatar type="alphabet" variant={"soft-warning"} name="Siska" />
+          <Avatar type="alphabet" variant={"solid-primary"} name="Siska" />
+          <Avatar type="alphabet" variant={"soft-success"} sizeAvatar={"large"} name="Siska" />
+        </div>
+        <div className="flex flex-col gap-2">
+          <Avatar type="alphabet" sizeAvatar={"tiny"} name="Siska" />
+          <Avatar type="alphabet" variant={"soft-warning"} name="Siska" />
+          <Avatar type="alphabet" variant={"solid-primary"} name="Siska" />
+          <Avatar type="alphabet" variant={"soft-success"} sizeAvatar={"large"} name="Siska" />
+        </div>
       </div>
     },
     {

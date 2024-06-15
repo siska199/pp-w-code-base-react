@@ -2,7 +2,7 @@
 import CardIntroComponent from "@components/cards/CardIntroComponent";
 import Button from "@components/ui/Button";
 
-const CardButtonIntro = () => {
+const CardIntroButton = () => {
   const listExample = [
     {
       title: "Color Variants",
@@ -158,4 +158,4 @@ const buttonVariants = cva(
 
 export default Button`;
 
-export default CardButtonIntro;
+export default CardIntroButton;

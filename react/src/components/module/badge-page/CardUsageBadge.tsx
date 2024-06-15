@@ -3,7 +3,7 @@ import CardSubMenu from '@components/cards/CardSubMenu';
 import CodeBlock from '@components/ui/CodeBlock';
 import { generateDisplayComponent } from '@lib/utils/helper';
 
-const CardBadgeUsage = () => {
+const CardUsageBadge = () => {
   return (
     <CardSubMenu title="Usage">
       <p>Example usage of Badge:</p>
@@ -14,4 +14,4 @@ const CardBadgeUsage = () => {
 
 const displayUsage = `<Badge label="SISKA" variant={"soft-warning"} sizeBadge={"small"} />`;
 
-export default CardBadgeUsage;
+export default CardUsageBadge;

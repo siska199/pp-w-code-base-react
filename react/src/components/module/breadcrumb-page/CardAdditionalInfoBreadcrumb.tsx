@@ -3,7 +3,7 @@ import CardSubMenu from "@components/cards/CardSubMenu";
 import CodeBlock from "@components/ui/CodeBlock";
 import ProgressStep from "@components/ui/ProgressStep";
 
-const CardBreadcrumbAdditionalInfo = () => {
+const CardAdditionalInfoBreadcrumb = () => {
   const listAdditionalInfo = [
     {
       title: "Additional Info 1",
@@ -25,4 +25,4 @@ const CardBreadcrumbAdditionalInfo = () => {
 const info1 = `// Additional info 1`;
 const info2 = `// Additional info 2`;
 
-export default CardBreadcrumbAdditionalInfo;
+export default CardAdditionalInfoBreadcrumb;

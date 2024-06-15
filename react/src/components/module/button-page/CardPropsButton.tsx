@@ -2,7 +2,7 @@
 import CardSubMenu from "@components/cards/CardSubMenu";
 import List from "@components/ui/List";
 
-const CardButtonProps = () => {
+const CardPropsButton = () => {
   const listItem = [
     {
       label: "variant",
@@ -58,4 +58,4 @@ const CardButtonProps = () => {
   );
 }
 
-export default CardButtonProps;
+export default CardPropsButton;

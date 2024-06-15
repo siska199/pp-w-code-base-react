@@ -2,7 +2,7 @@
 import CardSubMenu from "@components/cards/CardSubMenu";
 import List from "@components/ui/List";
 
-const CardBadgeProps = () => {
+const CardPropsBadge = () => {
   const listItem = [
     {
       label: "label",
@@ -33,7 +33,7 @@ const CardBadgeProps = () => {
       content: "Allows you to pass additional HTML attributes to the underlying <span> element of the badge component."
     }
   ];
-  
+
 
   return (
     <CardSubMenu title={'Props'}>
@@ -42,4 +42,4 @@ const CardBadgeProps = () => {
   );
 }
 
-export default CardBadgeProps;
+export default CardPropsBadge;

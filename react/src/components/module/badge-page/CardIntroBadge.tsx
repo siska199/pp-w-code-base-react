@@ -2,7 +2,7 @@
 import CardIntroComponent from "@components/cards/CardIntroComponent";
 import Badge from "@components/ui/Badge";
 
-const CardBadgeIntro = () => {
+const CardIntroBadge = () => {
   const listExample = [
     {
       component: <div className="flex gap-2 items-center flex-wrap">
@@ -81,4 +81,4 @@ const badgeVariants = cva(
 
 export default Badge`;
 
-export default CardBadgeIntro;
+export default CardIntroBadge;

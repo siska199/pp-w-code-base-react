@@ -3,7 +3,7 @@ import CardSubMenu from "@components/cards/CardSubMenu";
 import Button from "@components/ui/Button";
 import ProgressStep from "@components/ui/ProgressStep";
 
-const CardButtonAdditionalInfo = () => {
+const CardAdditionalInfoButton = () => {
   const listAdditionalInfo = [
     {
       title: "Variant",
@@ -34,4 +34,4 @@ const CardButtonAdditionalInfo = () => {
 }
 
 
-export default CardButtonAdditionalInfo;
+export default CardAdditionalInfoButton;

@@ -1,7 +1,7 @@
 
 import CardIntroComponent from "@components/cards/CardIntroComponent";
 
-const CardBreadcrumbIntro = () => {
+const CardIntroBreadcrumb = () => {
   return (
     <CardIntroComponent
       title={'Breadcrumb'}
@@ -14,4 +14,4 @@ const CardBreadcrumbIntro = () => {
 
 const displayCodeBase = `// Code for Breadcrumb`;
 
-export default CardBreadcrumbIntro;
+export default CardIntroBreadcrumb;

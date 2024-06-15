@@ -3,7 +3,7 @@ import CardSubMenu from '@components/cards/CardSubMenu';
 import CodeBlock from '@components/ui/CodeBlock';
 import { generateDisplayComponent } from '@lib/utils/helper';
 
-const CardButtonUsage = () => {
+const CardUsageButton = () => {
   return (
     <CardSubMenu title="Usage">
       <p>Example usage of Button:</p>
@@ -17,4 +17,4 @@ const displayUsage = `<>
     <Button customeElement={'link'} label={'Button'} to={"https://github.com/siska199/my-code-base-199"}  target="_blank"/>
 </>`;
 
-export default CardButtonUsage;
+export default CardUsageButton;
