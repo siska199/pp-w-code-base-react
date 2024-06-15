@@ -44,11 +44,18 @@ import CardIntroComponent from "@components/cards/CardIntroComponent";
 import ${componentName} from "@components/ui/${componentName}";
 
 const Card${componentName}Intro = () => {
+
+    const listExample = [
+    {
+      component: ""
+    },
+
+  ]
   return (
     <CardIntroComponent
       title={'${componentName}'}
       subTitle="Description of ${componentName}."
-      DisplayComponent={<${componentName} />}
+      listExample={listExample }
       displayCodeBase={displayCodeBase}
     />
   );
@@ -188,7 +195,7 @@ fs.mkdirSync(modulePath, { recursive: true });
 
 // Write the files
 fs.writeFileSync(path.join(pagesDocsComponentsPath, `${componentName}Page.tsx`), pageTemplate);
-fs.writeFileSync(path.join(modulePath, `Card${componentName}IntroComponent.tsx`), introTemplate);
+fs.writeFileSync(path.join(modulePath, `Card${componentName}Intro.tsx`), introTemplate);
 fs.writeFileSync(path.join(modulePath, `Card${componentName}Props.tsx`), propsTemplate);
 fs.writeFileSync(path.join(modulePath, `Card${componentName}Usage.tsx`), usageTemplate);
 fs.writeFileSync(path.join(modulePath, `Card${componentName}AdditionalInfo.tsx`), additionalInfoTemplate);
