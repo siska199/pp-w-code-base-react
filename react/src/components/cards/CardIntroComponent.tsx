@@ -37,7 +37,7 @@ const CardIntroComponent = (props: TProps) => {
                                 listExample?.map((example, i) => (
                                     <div key={i} className="flex flex-col gap-4 w-full">
                                         {
-                                            example?.title && <p className="text-left text-black font-medium text-body-medium">{example.title}</p>
+                                            example?.title && <p className="text-left border-b pb-2 text-black font-medium text-body-medium">{example.title}</p>
                                         }
                                         <div className="flex flex-col items-center gap-4">
                                             {example?.component}
