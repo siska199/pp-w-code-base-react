@@ -41,7 +41,7 @@ const CardIntroButton = () => {
   return (
     <CardIntroComponent
       title={'Button'}
-      subTitle={`"The Button component is a foundational UI element essential for facilitating user interactions in web applications. It serves a dual purpose, capable of functioning either as a traditional button (<button> element) or as a styled link within the application's interface. The primary role of the Button component is to enable users to trigger actions, submit forms, or navigate through different parts of the application.`}
+      subTitle={`The Button component is a foundational UI element essential for facilitating user interactions in web applications. It serves a dual purpose, capable of functioning either as a traditional button (<button> element) or as a styled link within the application's interface. The primary role of the Button component is to enable users to trigger actions, submit forms, or navigate through different parts of the application.`}
       listExample={listExample}
       displayCodeBase={displayCodeBase}
     />
