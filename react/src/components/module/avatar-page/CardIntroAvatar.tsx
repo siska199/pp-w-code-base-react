@@ -1,4 +1,5 @@
 
+import { IconVerified } from "@assets/icons";
 import ShowVariousCompVariant from "@components/ShowVariousCompVariant";
 import CardIntroComponent from "@components/cards/CardIntroComponent";
 import Avatar from "@components/ui/Avatar";
@@ -36,7 +37,10 @@ const CardIntroAvatar = () => {
       component: <ShowVariousCompVariant<typeof variantsAvatar.status>
         variant={variantsAvatar.status}
         groups={Object.keys(variantsAvatar.status)}
-        Component={(status) => <Avatar type="initial-name" variant={"solid-primary"} status={status} name="Siska" />}
+        Component={(status) => {
+
+          return <Avatar type="image" src={"https://i.pinimg.com/564x/d6/b0/b6/d6b0b67ba61773c5f163111ede88740a.jpg"} customeIcon={status==="icon"?<IconVerified/>:undefined} status={status} name="Siska" />
+        }}
       />
     }
 

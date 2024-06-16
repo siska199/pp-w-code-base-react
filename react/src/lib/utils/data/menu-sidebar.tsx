@@ -100,12 +100,7 @@ const listMenuSidebar: TMenuItem[] = [
         url: '/docs/components/button',
         parentId: '0-C0'
     },
-    {
-        id: '1-CO6',
-        name: 'Container',
-        url: '/docs/components/container',
-        parentId: '0-C0'
-    },
+
     {
         id: '1-CT7',
         name: 'Copy Text',
@@ -242,7 +237,25 @@ const listMenuSidebar: TMenuItem[] = [
         url: '/docs/components/modal/confirmation',
         parentId: '1-M16'
     },
-];
+    {
+        id: '1-T16',
+        name: 'Table',
+        url: '/docs/components/table',
+        parentId: '0-C0'
+    },
+    {
+        id: '1-T17',
+        name: 'Tab',
+        url: '/docs/components/tab',
+        parentId: '0-C0'
+    },
+    {
+        id: '1-T18',
+        name: 'Tooltip',
+        url: '/docs/components/tooltip',
+        parentId: '0-C0'
+    },
+]
 
 const groupMenuItems = (items: TMenuItem[]): TMenuItem[] => {
     const groupedItems: { [key: string]: TMenuItem } = {};

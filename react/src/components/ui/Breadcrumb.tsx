@@ -34,24 +34,31 @@ const Breadcrumb = (props: TProps) => {
         >
 
             {
-                items?.map((item, i) => <div key={i} className="flex items-center">
-                    <Button key={i}
-                        label={
-                            <div className="flex">
-                                {item?.label}
-                                {
-                                    withIconDivider && <span className="px-2 ">{(customeIconDivider ?? <IconChevronRight className="" />)}</span>
-                                }
-                            </div>
-                        }
-                        customeElement={"link"}
-                        className={cn({
-                            "!p-0 !py-1 !flex": true,
-                            [`!font-medium ${customeClass?.active || ""} `]: location.pathname === item?.url || activeItem === i
-                        })}
-                        variant={"link-black"}
-                        to={item?.url} />
-                </div>)
+                items?.map((item, i) => {
+
+                    const isActiveItem = location.pathname === item?.url || activeItem === i
+                    return <div key={i} className="flex items-center">
+                        <Button key={i}
+                            label={
+                                <div className={cn({
+                                    "flex ": true,
+                                    "pl-2": isActiveItem
+                                })}>
+                                    {item?.label}
+                                    {
+                                        withIconDivider && <span className="px-2 ">{(customeIconDivider ?? <IconChevronRight className="" />)}</span>
+                                    }
+                                </div>
+                            }
+                            customeElement={"link"}
+                            className={cn({
+                                "!p-0 !py-1 !flex": true,
+                                [`!font-medium ${customeClass?.active || ""} `]: isActiveItem
+                            })}
+                            variant={"link-black"}
+                            to={item?.url} />
+                    </div>
+                })
             }
 
         </div >
