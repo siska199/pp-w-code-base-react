@@ -14,6 +14,10 @@ import IconPage from '@pages/docs/prerequisite/IconPage';
 import HelperFunctionPage from '@pages/docs/prerequisite/HelperFunctionPage';
 import VariantPage from '@pages/docs/prerequisite/VariantPage';
 import HookPage from '@pages/docs/prerequisite/HookPage';
+import CopyTextPage from '@pages/docs/components/CopyTextPage';
+import DropdownPage from '@pages/docs/components/DropdownPage';
+import HelperMessagePage from '@pages/docs/components/HelperMessagePage';
+import ImagePage from '@pages/docs/components/ImagePage';
 import { createBrowserRouter } from "react-router-dom";
 
 const docRouter = {
@@ -136,6 +140,38 @@ const docRouter = {
                     element: <BreadcrumbPage />,
                     handle: {
                         id: '1-BR4'
+                    }
+                },
+
+                {
+                    path: 'copy-text',
+                    element: <CopyTextPage />,
+                    handle: {
+                        id: '1-CT7'
+                    }
+                },
+
+                {
+                    path: 'dropdown',
+                    element: <DropdownPage />,
+                    handle: {
+                        id: '1-DR8'
+                    }
+                },
+
+                {
+                    path: 'helper-message',
+                    element: <HelperMessagePage />,
+                    handle: {
+                        id: '1-HM9'
+                    }
+                },
+
+                {
+                    path: 'image',
+                    element: <ImagePage />,
+                    handle: {
+                        id: '1-IM10'
                     }
                 },
             ]
