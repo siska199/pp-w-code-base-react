@@ -14,8 +14,8 @@ const Navbar = () => {
             <div className="flex items-center gap-8">
                 <Button variant={"plain"} className="!p-0  md:hidden" onClick={handleToggleSidebar} label={<IconHamburger className="w-[1.75rem]" />} />
 
-                <Logo sizeLogo={"large"} className="hidden md:block" />
-                <Breadcrumb items={listMenuNavbar} withIconDivider={false} className={"gap-8"} customeClass={{ active: "bg-primary-50 text-primary-700 !pr-2 !rounded-md" }} />
+                <Logo sizeLogo={"large"} className="!hidden md:!flex" />
+                <Breadcrumb items={listMenuNavbar} withIconDivider={false} className={"gap-8 hidden md:flex"} customeClass={{active: "bg-primary-50 text-primary-700 !pr-2 !rounded-md" }} />
             </div>
             <div>
                 <Button className="!py-2 !ring-0 font-normal" variant={"solid-white"} label={<><IconSearch className="icon-gray" /> Search Documentation</>} />
