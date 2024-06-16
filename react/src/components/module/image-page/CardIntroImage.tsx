@@ -1,12 +1,13 @@
 
 import CardIntroComponent from "@components/cards/CardIntroComponent";
-import Image from "@components/ui/Image";
 
 const CardIntroImage = () => {
-
-    const listExample = [
+  const listExample = [
     {
-      component: ""
+      component: <div className="flex gap-2">
+
+
+      </div>
     },
 
   ]
@@ -14,7 +15,7 @@ const CardIntroImage = () => {
     <CardIntroComponent
       title={'Image'}
       subTitle="Description of Image."
-      listExample={listExample }
+      listExample={listExample}
       displayCodeBase={displayCodeBase}
     />
   );

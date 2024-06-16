@@ -53,6 +53,17 @@
 
 @layer utilities {
 
+    /* Blur effect for iamge */
+    .blur-effect {
+        filter: blur(10px);
+        transition: filter 0.3s ease-out;
+    }
+    
+    .clear-effect {
+        filter: blur(0);
+        transition: filter 0.3s ease-out;
+    }
+
     /* Create bounce effect while click component */
     .bounce-effect {
         @apply transition-all duration-[50] hover:scale-[1.03] active:scale-[0.98] disabled:!scale-[1] disabled:cursor-not-allowed
