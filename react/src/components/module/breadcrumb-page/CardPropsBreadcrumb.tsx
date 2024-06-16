@@ -5,12 +5,24 @@ import List from "@components/ui/List";
 const CardPropsBreadcrumb = () => {
   const listItem = [
     {
-      label: "prop1",
-      content: "Description of prop1"
+      label: "items",
+      content: "Array of objects containing url and label"
     },
     {
-      label: "prop2",
-      content: "Description of prop2"
+      label: "customeIconDivider",
+      content: "Custom divider icon between breadcrumb items"
+    },
+    {
+      label: "withIconDivider",
+      content: "Boolean to display divider icon"
+    },
+    {
+      label: "customeClass",
+      content: "Custom CSS classes, especially for active item"
+    },
+    {
+      label: "activeItem",
+      content: "Index of the currently active breadcrumb item"
     }
   ];
 

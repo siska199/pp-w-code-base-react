@@ -22,8 +22,6 @@ interface TPropsVariantGeneral extends VariantProps<typeof alertVariantGeneral> 
     type: 'notification' | 'info'
 }
 
-
-
 type TProps = HTMLProps<HTMLButtonElement> & {
     position?: "top-left" | "top-right";
     timeout?: number;
