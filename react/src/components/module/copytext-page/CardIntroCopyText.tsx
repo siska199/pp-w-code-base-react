@@ -15,15 +15,6 @@ const CardIntroCopyText = () => {
             container: "border-none [&>p]:min-w-[7rem] [&>p]:max-w-[7rem] !flex-row-reverse !p-0 !justif-start"
           }}
         />
-        <CardVariantComp
-          title={"Copy text without show the text"}
-          Component={<div className="flex flex-col flex-grow">
-            <CopyText classText='hidden' text="Copy this text without show it" />
-          </div>}
-          customeClass={{
-            container: "border-none [&>p]:min-w-[7rem] [&>p]:max-w-[7rem] !flex-row-reverse !p-0 !justif-start"
-          }}
-        />
       </div>
     },
 
