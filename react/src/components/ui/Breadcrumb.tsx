@@ -42,7 +42,7 @@ const Breadcrumb = (props: TProps) => {
                             label={
                                 <div className={cn({
                                     "flex ": true,
-                                    "pl-2": isActiveItem
+                                    "": isActiveItem
                                 })}>
                                     {item?.label}
                                     {
