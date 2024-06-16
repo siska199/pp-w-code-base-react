@@ -54,7 +54,7 @@ const CardIntroAlert = () => {
             withIcon={true}
           />}
           customeClass={{
-            container:"!gap-2",
+            container: "!gap-2",
             containerGroupVariant: "[&>p]:hidden",
             containerCardVariant: "border-none !flex-row-reverse [&>p]:min-w-[6rem] !p-0"
           }}
@@ -95,10 +95,11 @@ const CardIntroAlert = () => {
 
 const displayCodeBase = `/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { IconClose, IconDanger, IconInfo, IconNotification, IconSuccess } from "@assets/icons"
-import variant, { variantAlertError, variantAlertSuccess, variantAlertWarning } from "@lib/utils/data/variant-color"
+import variant, { variantAlertError, variantAlertSuccess, variantAlertWarning } from "@lib/utils/variants/variant-color"
 import { cn } from "@lib/utils/helper"
 import { VariantProps, cva } from "class-variance-authority"
 import { HTMLProps, useEffect } from "react"
+import variantsAlert from "@lib/utils/variants/ui/variant-alert"
 
 
 interface TPropsVariantError extends VariantProps<typeof alertVariantError> {
@@ -184,7 +185,7 @@ const Alert = (props: TProps) => {
                         {
                             customeIcon ?? <>
                                 {type === "info" && <IconInfo className="icon-gray" />}
-                                {type === "warning" && <IconDanger className="icon-wrning" />}
+                                {type === "warning" && <IconInfo className="icon-warning" />}
                                 {type === "error" && <IconDanger className="icon-error" />}
                                 {type === "success" && <IconSuccess className="icon-success" />}
                                 {type === "notification" && <IconNotification />}
@@ -202,60 +203,51 @@ const Alert = (props: TProps) => {
 
 
 const generalStyle = 'flex gap-3 px-3 py-2 border w-fit rounded-md'
-const generalVarianSettingAlert = {
-    position: {
-        'top-left': 'top-6 left-6',
-        "top-right": "top-6 right-6"
-    },
-    isFixed: {
-        "true": "fixed z-[9] !max-w-[17rem] !w-[17rem]",
-        "false": "static  w-[23rem] max-w-[23rem] "
-    }
-}
+
 
 
 const alertVariantError = cva(generalStyle, {
     variants: {
+        ...variantsAlert,
         variant: {
             ...variantAlertError
         },
-        ...generalVarianSettingAlert
     },
     defaultVariants: {
-        variant: "soft-error"
+        variant: "error-soft"
     }
 })
 
 const alertVariantSuccess = cva(generalStyle, {
     variants: {
+        ...variantsAlert,
         variant: {
             ...variantAlertSuccess
         },
-        ...generalVarianSettingAlert,
     },
     defaultVariants: {
-        variant: "soft-success"
+        variant: "success-soft"
     }
 })
 
 const alertVariantWarning = cva(generalStyle, {
     variants: {
+        ...variantsAlert,
         variant: {
             ...variantAlertWarning
         },
-        ...generalVarianSettingAlert,
     },
     defaultVariants: {
-        variant: "soft-warning"
+        variant: "warning-soft"
     }
 })
 
 const alertVariantGeneral = cva(generalStyle, {
     variants: {
+        ...variantsAlert,
         variant: {
             ...variant
         },
-        ...generalVarianSettingAlert,
     },
     defaultVariants: {
         variant: "solid-white"
