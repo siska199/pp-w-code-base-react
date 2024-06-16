@@ -38,7 +38,7 @@ const CardPropsAvatar = () => {
     },
     {
       label: "status (optional)",
-      content: "Sets the status indicator on the avatar. Accepts 'offline', 'online', 'away', 'dont-distrub', 'icon'."
+      content: "Sets the status indicator on the avatar. Accepts 'offline', 'online', 'away', 'dontdistrub', 'icon'."
     }
   ];
 

@@ -18,7 +18,7 @@ const CardAdditionalInfoAvatar = () => {
     },
     {
       title: "Status Indicator",
-      caption: <p>The component supports various status indicators (offline, online, away, dont-distrub, icon) which are displayed as a small circle on the avatar. These indicators are styled with predefined colors.</p>
+      caption: <p>The component supports various status indicators (offline, online, away, dontdistrub, icon) which are displayed as a small circle on the avatar. These indicators are styled with predefined colors.</p>
     },
     {
       title: "Responsive Design",
@@ -29,13 +29,13 @@ const CardAdditionalInfoAvatar = () => {
       caption: <p>When the &apos;type&apos; is &apos;initial-name&apos;, the &apos;name&apos; prop is used to display the first letter of the provided name. It is also used for the alt text when the &apos;type&apos; is &apos;image&apos;.</p>
     }
   ];
-  
 
-return (
-  <CardSubMenu title={'Additional Info'}>
-    <ProgressStep type="number" listStep={listAdditionalInfo} variant="vertical" />
-  </CardSubMenu>
-);
+
+  return (
+    <CardSubMenu title={'Additional Info'}>
+      <ProgressStep type="number" listStep={listAdditionalInfo} variant="vertical" />
+    </CardSubMenu>
+  );
 }
 
 

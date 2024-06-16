@@ -18,7 +18,7 @@ const variantsAvatar = {
         'offline': '[&>span]:bg-gray',
         'online': '[&>span]:bg-success ',
         'away': '[&>span]:bg-warning',
-        'dont-distrub': '[&>span]:bg-error',
+        'dontdistrub': '[&>span]:bg-error',
         icon: '[&>span]:bg-transparent'
     }
 }

@@ -34,7 +34,7 @@ const Avatar = (props: TProps) => {
                 {type === "image" && <Image src={src || "avatar.svg"} alt={name} className=" w-full h-full object-scale-down" />}
                 {type === "initial-name" && <div>{name?.substring(0, 1)}</div>}
                 {
-                    ["online", "offline", "dont-distrub", "away"]?.includes(status || "") && <span className={cn({
+                    ["online", "offline", "dontdistrub", "away"]?.includes(status || "") && <span className={cn({
                         " absolute border-white border-2   rounded-full": true,
                     })}>
                     </span>
