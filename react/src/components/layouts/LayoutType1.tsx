@@ -18,6 +18,7 @@ const LayoutType1 = () => {
     const [widthRightSidebar, setWidthRightSidebar] = useState(0)
     const [leftPosition, setLeftPosition] = useState(0)
     const [rightPosition, setRightPosition] = useState(0)
+    const [isRender, setIsrender] = useState(false)
 
     useEffect(() => {
         const sidebarComp = document.getElementById("sidebar") as HTMLDivElement
@@ -33,22 +34,35 @@ const LayoutType1 = () => {
         if (isLandingPage) {
             sessionStorage?.removeItem('setting')
         }
-
+        setIsrender(!isRender)
     }, [isLandingPage])
 
     useEffect(() => {
         // Set left position of page every media query change from > md to <md
+        const mediaQueryMinLg = window.matchMedia('(min-width: 1024px)');
         const mediaQueryMinMd = window.matchMedia('(min-width: 768px)');
-        const handleMediaQueryChange = () => {
-            const isMinMd = mediaQueryMinMd?.matches
-            setLeftPosition(isMinMd ? widthSidebar : 0)
-            setRightPosition(isMinMd ? widthRightSidebar : 0)
 
+        const handleMediaQueryChange = () => {
+            const isMinLg = mediaQueryMinLg?.matches
+            const isMinMd = mediaQueryMinMd?.matches
+
+            setRightPosition(isMinLg ? widthRightSidebar : 0)
+            setLeftPosition(isMinMd ? widthSidebar : 0)
+            setIsrender(!isRender)
         }
+
+
+        mediaQueryMinLg.addEventListener('change', handleMediaQueryChange);
         mediaQueryMinMd.addEventListener('change', handleMediaQueryChange);
+        window.addEventListener('resize', handleMediaQueryChange);
+
         return () => {
+            mediaQueryMinLg.removeEventListener('change', handleMediaQueryChange);
             mediaQueryMinMd.removeEventListener('change', handleMediaQueryChange);
+            window.removeEventListener('resize', handleMediaQueryChange);
+
         };
+
     }, [widthSidebar, widthRightSidebar, isLandingPage])
 
     return (
@@ -57,13 +71,13 @@ const LayoutType1 = () => {
             <div className="flex relative overflow-x-hidden ">
                 <Sidebar isLandingPage={isLandingPage} idActiveMenu={idActiveMenu} />
                 <div
-                    className=" p-8 flex  transtion-all duration-500"
+                    className=" p-8 flex  transtion-all duration-500 overflow-x-auto"
                     style={{
                         marginLeft: isLandingPage ? 0 : leftPosition,
                         marginRight: isLandingPage ? 0 : rightPosition,
                         width: isLandingPage ? '100%' : `calc(100% - ${leftPosition + rightPosition}px)`,
                     }}>
-                    <div className="w-full max-w-full flex flex-col gap-10">
+                    <div className="w-full max-w-full flex flex-col gap-10 ">
                         <Outlet />
                     </div>
                     {!isLandingPage && <RightSidebar />}
