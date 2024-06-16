@@ -1,15 +1,16 @@
 
-interface TProps<TV> {
+interface TProps<TV, TG=string> {
     variant: TV;
-    groups: string[];
-    Component: (variant: keyof TV) => React.ReactNode;
+    groups: TG[];
+    Component: (variant: keyof TV, group:TG) => React.ReactNode;
     customeClass?: {
         container?: string;
         containerGroupVariant?: string;
+        containerCardVariant? : string;
     }
 }
 
-const ShowVariousCompVariant = <TV extends object,>(props: TProps<TV>) => {
+const ShowVariousCompVariant = <TV extends object,TG extends string=string>(props: TProps<TV,TG>) => {
     const { variant, groups, Component, customeClass } = props
 
 
@@ -22,11 +23,10 @@ const ShowVariousCompVariant = <TV extends object,>(props: TProps<TV>) => {
                         {
                             Object.entries(variant)?.filter(([key]) => {
                                 const groupKey = key?.split('-')[0]
-
                                 return groupKey === group
                             })?.map(([key,]) => {
-                                return <div key={key} className="flex flex-col gap-1 items-center border p-2 rounded-md min-w-[6rem] md:min-w-[8rem]">
-                                    {Component(key as keyof TV)}
+                                return <div key={key} className={`${customeClass?.containerCardVariant} flex flex-col gap-1 items-center border p-2 rounded-md min-w-[6rem] md:min-w-[8rem]`}>
+                                    {Component(key as keyof TV, group)}
                                     <p className="text-body-tiny">{key}</p>
                                 </div>
                             })

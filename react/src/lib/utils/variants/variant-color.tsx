@@ -24,21 +24,23 @@ const variant = {
 
 
 // Vaiant ALERT:
+
 export const variantAlertError = {
-    "solid-error": variant["solid-error"],
-    "soft-error": variant["soft-error"],
-    "outline-error": variant["outline-error"],
+    "error-solid": variant["solid-error"],
+    "error-soft": variant["soft-error"],
+    "error-outline": variant["outline-error"],
 }
 export const variantAlertSuccess = {
-    "solid-success": variant["solid-success"],
-    "soft-success": variant["soft-success"],
-    "outline-success": variant["outline-success"],
+    "success-solid": variant["solid-success"],
+    "success-soft": variant["soft-success"],
+    "success-outline": variant["outline-success"],
 }
 export const variantAlertWarning = {
-    "solid-warning": variant["solid-warning"],
-    "soft-warning": variant["soft-warning"],
-    "outline-warning": variant["outline-warning"],
+    "warning-solid": variant["solid-warning"],
+    "warning-soft": variant["soft-warning"],
+    "warning-ouline": variant["outline-warning"],
 }
+
 
 
 

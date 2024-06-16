@@ -1,7 +1,10 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 
+import ShowVariousCompVariant from "@components/ShowVariousCompVariant";
 import CardIntroComponent from "@components/cards/CardIntroComponent";
 import Alert from "@components/ui/Alert";
 import Button from "@components/ui/Button";
+import variantsAlert from "@lib/utils/variants/ui/variant-alert";
 import { useState } from "react";
 
 const CardIntroAlert = () => {
@@ -10,95 +13,52 @@ const CardIntroAlert = () => {
   const handleToggleAlert = () => {
     setShowAlert(!showAlert)
   }
-
+  const typeAlert = {
+    error: "",
+    success: "",
+    warning: "",
+    info: "",
+    notification: ""
+  }
   const listExample = [
     {
-      title: 'Color Variant',
-      component: <div className="gap-4 flex-wrap flex flex-col">
-        <div className="flex flex-col gap-1">
-          <Alert
-            message={'s mollitia non itaque, natus, accusantiu'}
-            type="error"
-            variant={"solid-error"}
-            isFixed={false}
-            show={true}
-          />
-          <Alert
-            message={'s mollitia non itaque, natus, accusantium tenet'}
-            type="warning"
-            variant={"solid-warning"}
-            isFixed={false}
-            show={true}
-          />
-          <Alert
-            message={' s mollitia non itaque, natus, accusantium'}
-            type="success"
-            variant={"solid-success"}
-            isFixed={false}
-            show={true}
-          />
-        </div>
-        <div className="flex flex-col gap-1">
-          <Alert
-            message={' s mollitia non itaque, natus, accusantium tenetur !'}
-            type="error"
-            isFixed={false}
-            show={true}
-          />
-          <Alert
-            message={' s mollitia non itaque, natus, accusantium tenet'}
-            type="warning"
-            isFixed={false}
-            show={true}
-          />
-          <Alert
-            message={' s mollitia non itaque, natus, accusantium '}
-            type="success"
-            isFixed={false}
-            show={true}
-          />
-        </div>
-      </div>
+      title: "Test",
+      component: <ShowVariousCompVariant<typeof variantsAlert.variant, "success" | "warning" | "error">
+        variant={variantsAlert.variant}
+        groups={["success", "warning", "error"]}
+        Component={(variant, group) => <Alert
+          message={'s mollitia non itaque, natus, accusantiu'}
+          type={group}
+          // @ts-expect-error
+          variant={variant}
+          isFixed={false}
+          show={true}
+        />}
+        customeClass={{
+          containerGroupVariant: "",
+          containerCardVariant: "border-none !flex-row-reverse [&>p]:min-w-[6rem] !p-0"
+        }}
+      />
     },
     {
       title: 'With Icon',
-      component: <div className="flex flex-col gap-1">
-        <Alert
-          message={'s mollitia non itaque, natus, accusantium tenetur !'}
-          type="info"
-          isFixed={false}
-          withIcon={true}
-          show={true}
+      component:
+        <ShowVariousCompVariant< typeof typeAlert, "success" | "warning" | "error" | "notification" | "info">
+          variant={typeAlert}
+          groups={["success", "warning", "error", "notification", "info"]}
+          Component={(type) => <Alert
+            message={'s mollitia non itaque, natus, accusantiu'}
+            type={type}
+            isFixed={false}
+            show={true}
+            withIcon={true}
+          />}
+          customeClass={{
+            container:"!gap-2",
+            containerGroupVariant: "[&>p]:hidden",
+            containerCardVariant: "border-none !flex-row-reverse [&>p]:min-w-[6rem] !p-0"
+          }}
         />
-        <Alert
-          message={'s mollitia non itaque, natus, accusantium tenetur !'}
-          type="notification"
-          isFixed={false}
-          withIcon={true}
-          show={true}
-        />
-        <Alert
-          message={' s mollitia non itaque, natus, accusantium tenetur !'}
-          type="error"
-          isFixed={false}
-          withIcon={true}
-          show={true}
-        />
-        <Alert
-          message={' s mollitia non itaque, natus, accusantium tenet'}
-          type="warning"
-          isFixed={false}
-          withIcon={true}
-          show={true}
-        />
-        <Alert
-          message={' s mollitia non itaque, natus, accusantium '}
-          type="success"
-          isFixed={false}
-          show={true}
-          withIcon={true}
-        />
-      </div>
     },
     {
       title: 'With Icon Close',
