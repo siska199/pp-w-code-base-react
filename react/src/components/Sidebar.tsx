@@ -33,7 +33,7 @@ const Sidebar = (props: TProps) => {
             "0-C0": true,
         }
     })
-
+    const [isRender, setIsrender] = useState(false)
 
     useEffect(() => {
         // Get Navbar Height for set position of the sidebar from top
@@ -48,6 +48,7 @@ const Sidebar = (props: TProps) => {
             setting.openMenus = initialSetting.openMenus
             setting.activeMenu = initialSetting.activeMenu
         }
+        setIsrender(!isRender)
     }, [])
 
     useEffect(() => {
@@ -55,7 +56,8 @@ const Sidebar = (props: TProps) => {
             const activeMenu = listFlattenMenuSidebar?.filter((data) => data?.id === idActiveMenu)[0]
             setting.activeMenu = activeMenu
         }
-    }, [idActiveMenu, location.pathname])
+        setIsrender(!isRender)
+    }, [idActiveMenu, location])
 
     const handleChangeActiveMenu = (data: TParamsOnChangeMenu) => {
         setSetting({
