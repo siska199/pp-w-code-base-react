@@ -196,10 +196,10 @@ fs.mkdirSync(modulePath, { recursive: true });
 
 // Write the files
 fs.writeFileSync(path.join(pagesDocsComponentsPath, `${componentName}Page.tsx`), pageTemplate);
-fs.writeFileSync(path.join(modulePath, `Card${componentName}Intro.tsx`), introTemplate);
-fs.writeFileSync(path.join(modulePath, `Card${componentName}Props.tsx`), propsTemplate);
-fs.writeFileSync(path.join(modulePath, `Card${componentName}Usage.tsx`), usageTemplate);
-fs.writeFileSync(path.join(modulePath, `Card${componentName}AdditionalInfo.tsx`), additionalInfoTemplate);
+fs.writeFileSync(path.join(modulePath, `CardIntro.tsx${componentName}`), introTemplate);
+fs.writeFileSync(path.join(modulePath, `CardProps${componentName}.tsx`), propsTemplate);
+fs.writeFileSync(path.join(modulePath, `CardUsage${componentName}.tsx`), usageTemplate);
+fs.writeFileSync(path.join(modulePath, `CardAdditionalInfo${componentName}.tsx`), additionalInfoTemplate);
 
 // Read the existing content of index.tsx
 
