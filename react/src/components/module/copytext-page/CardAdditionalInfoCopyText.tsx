@@ -51,6 +51,17 @@ const CardAdditionalInfoCopyText = () => {
           Ensure that the button label includes an accessible name for screen readers by providing appropriate aria-labels or additional descriptive text.
         </p>
       )
+    },
+    {
+      title: "Copy Text Without Showing the Text",
+      caption: (
+        <p>
+          To copy text without displaying it, you can hide the text element using the <code>classText</code> prop. For example:
+          <pre>
+            {`<CopyText classText='hidden' text="Copy this text without show it" />`}
+          </pre>
+        </p>
+      )
     }
   ];
 
