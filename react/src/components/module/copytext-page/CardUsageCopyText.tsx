@@ -12,6 +12,6 @@ const CardUsageCopyText = () => {
   );
 }
 
-const displayUsage = `// Usage example for CopyText`;
+const displayUsage = `return <CopyText text="Siska Apriana Rifianti the author of codebase199" />`;
 
 export default CardUsageCopyText;
