@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import Button from '@components/ui/Button';
 
 type Props = {
-    variant?: "hbc" | "hsc";
+    layout?: "hbc" | "hsc";
     text: string;
     classContainer?: string;
     classText?: string;
@@ -13,7 +13,7 @@ type Props = {
 }
 
 const CopyText = (props: Props) => {
-    const { variant, text, classContainer, classText, classIcon } = props
+    const { layout, text, classContainer, classText, classIcon } = props
     const [isCopied, setIsCopied] = useState(false)
 
     useEffect(() => {
@@ -52,7 +52,7 @@ const CopyText = (props: Props) => {
 
 
     return (
-        <Container variant={variant || "hsc"} gap={"small"} className={`${classContainer}`}>
+        <Container variant={layout || "hsc"} gap={"small"} className={`${classContainer}`}>
             <p className={`${classText}`}>{text}</p>
             <Button variant='plain' label={isCopied ? <IconCheck className='icon-primary' /> : <IconClipboard className='icon-primary w-[1rem]' />} className={`${classIcon}`} onClick={() => isCopied ? null : handleCopyToClipboard()} />
 
