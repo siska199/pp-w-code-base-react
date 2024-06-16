@@ -1,4 +1,5 @@
 import { IconHamburger, IconSearch } from "@assets/icons"
+import Breadcrumb from "@components/ui/Breadcrumb"
 import Button from "@components/ui/Button"
 import Logo from "@components/ui/Logo"
 import useSidebar from "@hooks/ui/useSidebar"
@@ -14,13 +15,7 @@ const Navbar = () => {
                 <Button variant={"plain"} className="!p-0  md:hidden" onClick={handleToggleSidebar} label={<IconHamburger className="w-[1.75rem]" />} />
 
                 <Logo sizeLogo={"large"} className="hidden md:block" />
-                <ul className="hidden md:flex gap-8 ">
-                    {
-                        listMenuNavbar?.map((menu, i) => <Button label={menu?.label} customeElement="link" key={i} to={menu?.url} className="hover:!no-underline " />
-
-                        )
-                    }
-                </ul>
+                <Breadcrumb items={listMenuNavbar} className={"gap-8"} customeClass={{ active: "bg-primary-50 !pr-2 !rounded-md" }} />
             </div>
             <div>
                 <Button className="!py-2 !ring-0 font-normal" variant={"solid-white"} label={<><IconSearch className="icon-gray" /> Search Documentation</>} />

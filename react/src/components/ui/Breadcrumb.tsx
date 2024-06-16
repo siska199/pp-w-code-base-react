@@ -10,10 +10,18 @@ interface TProps extends HTMLProps<HTMLDivElement>, VariantProps<typeof breadcru
         url: string;
         label: string | React.ReactNode;
     }[];
+
+    customeIconDivider?: React.ReactNode;
+    withIconDivider?: boolean;
+    customeClass?: {
+        active?: string;
+    }
 }
 
 const Breadcrumb = (props: TProps) => {
-    const { className, items, ...otherProps } = props;
+    const { className, items, customeIconDivider, customeClass, withIconDivider, ...otherProps } = props;
+
+
 
     return (
         <div
@@ -23,11 +31,29 @@ const Breadcrumb = (props: TProps) => {
 
             {
                 items?.map((item, i) => <div key={i} className="flex items-center">
-                    <Button key={i} label={<>{item?.label}<IconChevronRight className="" /></>} customeElement={"link"} className="!pr-0 !pl-2 !py-1" variant={"plain"} to={item?.url} />
+                    <Button key={i}
+                        label={
+                            <>
+                                {item?.label}
+                                {
+                                    withIconDivider && <>
+                                        {customeIconDivider && customeIconDivider}
+                                        <IconChevronRight className="" />
+                                    </>
+                                }
+                            </>
+                        }
+                        customeElement={"link"}
+                        className={cn({
+                            "!pr-0 !pl-2 !py-1 !flex ": true,
+                            [`!font-bold ${customeClass?.active || ""} `]: location.pathname === item?.url
+                        })}
+                        variant={"link-primary"}
+                        to={item?.url} />
                 </div>)
             }
 
-        </div>
+        </div >
     )
 }
 
