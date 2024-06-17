@@ -8,11 +8,12 @@ interface TProps<TV, TG = string> {
         container?: string;
         containerGroupVariant?: string;
         containerCardVariant?: string;
-    }
+    };
+    withBorder?: boolean;
 }
 
 const ShowVariousCompVariant = <TV extends object, TG extends string = string>(props: TProps<TV, TG>) => {
-    const { variant, groups, Component, customeClass } = props
+    const { variant, withBorder = true, groups, Component, customeClass } = props
 
 
     return (
@@ -30,6 +31,7 @@ const ShowVariousCompVariant = <TV extends object, TG extends string = string>(p
                                     key={key}
                                     Component={Component(key as keyof TV, group)}
                                     title={key}
+                                    withBorder={withBorder}
                                     customeClass={{
                                         container: customeClass?.containerCardVariant
                                     }}

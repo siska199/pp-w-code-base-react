@@ -12,6 +12,6 @@ const CardUsageHelperMessage = () => {
   );
 }
 
-const displayUsage = `// Usage example for HelperMessage`;
+const displayUsage = `return <HelperMessage variant={"error"} message={"Siska Apriana Rifianti"} />`;
 
 export default CardUsageHelperMessage;
