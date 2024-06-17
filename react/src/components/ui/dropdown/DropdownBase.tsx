@@ -85,7 +85,7 @@ const DropdownBase = (props: TProps) => {
                 {
                     isOpen && <div className="py-0">
                         {header && <div className={cn({
-                            "py-2 flex items-center gap-2 px-4 bg-gray-100": true,
+                            "mb-2 py-2 flex items-center gap-2 px-4 bg-gray-100": true,
 
                         })}>{header}</div>}
                         {
