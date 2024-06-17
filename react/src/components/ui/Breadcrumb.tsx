@@ -15,6 +15,7 @@ interface TProps extends HTMLProps<HTMLDivElement>, VariantProps<typeof breadcru
     withIconDivider?: boolean;
     customeClass?: {
         active?: string;
+        label?: string;
     }
 
     activeItem?: number;
@@ -53,7 +54,8 @@ const Breadcrumb = (props: TProps) => {
                             customeElement={"link"}
                             className={cn({
                                 "!p-0 !py-1 !flex": true,
-                                [`!font-medium ${customeClass?.active || ""} `]: isActiveItem
+                                [`!font-medium ${customeClass?.active || ""} `]: isActiveItem,
+                                [customeClass?.label || ""]: customeClass?.label
                             })}
                             variant={"link-black"}
                             to={item?.url} />

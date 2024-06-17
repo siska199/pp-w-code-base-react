@@ -32,7 +32,7 @@ const CardIntroHelperMessage = () => {
   return (
     <CardIntroComponent
       title={'Helper Message'}
-      subTitle="The HelperMessage component is a reusable component designed to display informative messages in various styles based on different scenarios. It provides flexibility in displaying messages with different colors and styles, making it suitable for conveying feedback or guidance within a user interface."
+      subTitle="The Helper Message component is a reusable component designed to display informative messages in various styles based on different scenarios. It provides flexibility in displaying messages with different colors and styles, making it suitable for conveying feedback or guidance within a user interface."
       listExample={listExample}
       displayCodeBase={displayCodeBase}
     />

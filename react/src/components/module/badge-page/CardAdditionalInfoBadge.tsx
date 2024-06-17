@@ -7,12 +7,15 @@ const CardAdditionalInfoBadge = () => {
   const listAdditionalInfo = [
     {
       title: "Variant",
-      caption: <p>
-        The list of variants available for the Badge component can be seen <Button label="Here" to="/docs/pre-requisite" className="hover:underline font-medium" />
-      </p>
+      caption: (
+        <p>
+          The list of variants available for the Badge component can be seen{" "}
+          <Button label="Here" customeElement={"link"} to="/docs/pre-requisite" className="hover:underline font-medium" />.
+        </p>
+      ),
     },
-
   ];
+
 
   return (
     <CardSubMenu title={'Additional Info'}>

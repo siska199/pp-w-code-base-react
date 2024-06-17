@@ -22,7 +22,7 @@ const CardIntroCopyText = () => {
   return (
     <CardIntroComponent
       title={'Copy Text'}
-      subTitle="The CopyText component is a component that allows users to copy a specified text string to their clipboard. It includes visual feedback to indicate when the text has been successfully copied. This component is particularly useful in applications where users need to quickly copy text, such as sharing links or snippets of information."
+      subTitle="The Copy Text component is a component that allows users to copy a specified text string to their clipboard. It includes visual feedback to indicate when the text has been successfully copied. This component is particularly useful in applications where users need to quickly copy text, such as sharing links or snippets of information."
       listExample={listExample}
       displayCodeBase={displayCodeBase}
     />
