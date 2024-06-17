@@ -6,12 +6,13 @@ import { generateDisplayComponent } from '@lib/utils/helper';
 const CardUsageImage = () => {
   return (
     <CardSubMenu title="Usage">
-      <p>Example usage of Image:</p>
+      <p>Example usage of Image (Access image from folder assets/images):</p>
       <CodeBlock codeString={generateDisplayComponent('Image', displayUsage)} />
     </CardSubMenu>
   );
 }
 
-const displayUsage = `// Usage example for Image`;
+const displayUsage = `
+return <Image src={"c1.webp"} className="h-[10rem] w-[10rem] object-cover  " customeClassName={{ container: "" }} />`;
 
 export default CardUsageImage;
