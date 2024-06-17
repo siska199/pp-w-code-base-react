@@ -92,7 +92,7 @@ const DropdownBase = (props: TProps) => {
                             options?.map((option, i) =>
                                 <>
                                     {
-                                        option?.title && <div className=" pt-2 text-gray-400">{option?.title?.toLocaleUpperCase()}</div>
+                                        option?.title && <div className=" px-4 pt-2 text-gray-400">{option?.title?.toLocaleUpperCase()}</div>
                                     }
                                     <div key={i} onClick={() => handleOnClickOption(option, i)} className={cn({
                                         "hover:bg-gray-100 !text-black px-4  block  cursor-pointer": true,
