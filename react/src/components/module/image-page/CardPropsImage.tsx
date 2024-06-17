@@ -6,17 +6,45 @@ const CardPropsImage = () => {
   const listItem = [
     {
       label: "src",
-      content: "The URL of the image to be displayed. This prop is required. If the URL contains 'http', it is used directly. If the URL does not contain 'http', the `getAssetURL` function is used to generate the full URL based on the provided name. The `getAssetURL` function constructs the full path based on the given name."
+      content: "The source URL of the image. If the URL does not include 'http', the getAssetURL helper function will be used to get the asset URL."
     },
     {
       label: "alt",
-      content: "Alternative text for the image. This is optional. If not provided, it defaults to the `src` with hyphens replaced by spaces. This is useful for accessibility and in case the image fails to load."
+      content: "The alt text for the image. If not provided, the src will be used with hyphens replaced by spaces."
+    },
+    {
+      label: "className",
+      content: "Additional class names to apply to the image element."
+    },
+    {
+      label: "withOverlay",
+      content: "Boolean indicating whether an overlay should be displayed on hover."
+    },
+    {
+      label: "overlayContent",
+      content: "React node to be displayed as the overlay content."
+    },
+    {
+      label: "customeClassName",
+      content: `An object containing custom class names:
+        - container: Class name for the image container.
+        - image: Class name for the image element.
+        - containerOverlay: Class name for the overlay container.`
+    },
+    {
+      label: "withSkeleton",
+      content: "Boolean indicating whether to show a skeleton loader while the image is loading."
+    },
+    {
+      label: "timeoutLoadImage",
+      content: "Number of milliseconds to wait before removing the loading state after the image has loaded."
     },
     {
       label: "...attrs",
-      content: "Any additional HTML image attributes that can be passed to the <img> element. These include standard attributes such as `width`, `height`, `className`, etc. These attributes will be applied directly to the <img> element."
+      content: "Any other HTML props to be passed to the image element."
     }
   ];
+
 
   return (
     <CardSubMenu title={'Props'} >

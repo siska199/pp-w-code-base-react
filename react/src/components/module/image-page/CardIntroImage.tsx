@@ -1,11 +1,16 @@
+/* eslint-disable react/jsx-handler-names */
 
 import { IconCart, IconLove } from "@assets/icons";
 import CardIntroComponent from "@components/cards/CardIntroComponent";
 import CardVariantComp from "@components/cards/CardVariantComp";
 import Button from "@components/ui/Button";
 import Image from "@components/ui/Image";
+import { useState } from "react";
 
 const CardIntroImage = () => {
+  const [showImageWithSkeleton, setShowImageWithSkeleton] = useState(false)
+  const [showImageWithBlur, setShowImageWithBlur] = useState(false)
+
   const listExample = [
     {
       title: "How Image Access",
@@ -13,7 +18,9 @@ const CardIntroImage = () => {
         <CardVariantComp
           title={"Access image from folder assets/images by providing only the image name example : image.png"}
           withBorder={false}
-          Component={<Image src={"c1.webp"} className="h-[10rem] w-[10rem] object-cover  " customeClassName={{ container: "" }} />}
+          Component={<div>
+            <Image src={"c1.webp"} className="h-[10rem] w-[10rem] object-cover  " customeClassName={{ container: "" }} />
+          </div>}
           customeClass={{ container: "!gap-8 [&>p]:!text-left" }}
         />
         <CardVariantComp
@@ -40,6 +47,46 @@ const CardIntroImage = () => {
             </div>}
           />}
           customeClass={{ container: "!gap-8 [&>p]:!text-left" }}
+        />
+      </div>
+    },
+    {
+      title: "When load Image",
+      component: <div className="flex flex-col gap-2  ">
+        <CardVariantComp
+          title={"Use Skeleton"}
+          withBorder={false}
+          Component={
+            <div className="flex flex-col gap-4 items-center    mx-auto">
+              <Button label={showImageWithSkeleton ? "Hide Image" : "Show Image"} onClick={() => setShowImageWithSkeleton(!showImageWithSkeleton)} />
+              {
+                showImageWithSkeleton && <Image
+                  src={"https://i.pinimg.com/564x/c1/31/c8/c131c80be697650f1311229b81405aa2.jpg"}
+                  className="h-[10rem] w-[10rem] object-cover"
+                  timeoutLoadImage={3600 * 5}
+                  withSkeleton={true}
+                />
+              }
+            </div>
+          }
+          customeClass={{ container: "!gap-8  [&>p]:!text-left " }}
+        />
+        <CardVariantComp
+          title={"Use Blur"}
+          withBorder={false}
+          Component={
+            <div className="flex flex-col gap-4 items-center    mx-auto">
+              <Button label={showImageWithBlur ? "Hide Image" : "Show Image"} onClick={() => setShowImageWithBlur(!showImageWithBlur)} />
+              {
+                showImageWithBlur && <Image
+                  src={"https://i.pinimg.com/564x/c1/31/c8/c131c80be697650f1311229b81405aa2.jpg"}
+                  className="h-[10rem] w-[10rem] object-cover"
+                  timeoutLoadImage={3600 * 5}
+                />
+              }
+            </div>
+          }
+          customeClass={{ container: "!gap-8  [&>p]:!text-left " }}
         />
       </div>
     }
