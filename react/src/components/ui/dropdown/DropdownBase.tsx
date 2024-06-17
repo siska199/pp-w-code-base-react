@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-handler-names */
+import { IconMoreVertical } from "@assets/icons";
 import IconChevronToggle from "@assets/icons/IconChevronToggle";
 import useOnClickOutside from "@hooks/useOnClickOutside";
 import { cn } from "@lib/utils/helper";
@@ -11,7 +12,8 @@ type TOptionDropdown = TOption & {
     title?: string;
 }
 interface TProps {
-    label: React.ReactNode | string;
+    label?: React.ReactNode | string;
+    withButtonTriger?: boolean;
     options: TOptionDropdown[];
     onClick: (data: TOptionDropdown) => void;
     customeClass?: {
@@ -24,16 +26,16 @@ interface TProps {
 }
 
 const DropdownBase = (props: TProps) => {
-    const { options, label, onClick: handleOnClick, customeClass, isDefaultStyle = true, header } = props;
+    const { options, label, withButtonTriger, onClick: handleOnClick, customeClass, isDefaultStyle = true, header } = props;
     const ref = useRef<HTMLDivElement | null>(null);
     const refBtn = useRef<HTMLDivElement | null>(null);
     const [isOpen, setIsOpen] = useState(false)
     const [activeIndex, setActiveIndex] = useState(0) // start form 0 so first data have activeIndex 1 :)
     useOnClickOutside<HTMLDivElement>({ ref, refExceptions: [refBtn], handler: () => setIsOpen(false) });
 
-    const handleOnClickOption = (data: TOption, i: number) => {
+    const handleOnClickOption = (data: TOption) => {
         handleOnClick(data)
-        setActiveIndex(i + 1)
+        setActiveIndex(0)
         setIsOpen(false)
     }
 
@@ -43,7 +45,7 @@ const DropdownBase = (props: TProps) => {
 
         if (e.key === "Enter") {
             const activeData = options[activeIndex - 1]
-            handleOnClickOption(activeData, activeIndex - 1)
+            handleOnClickOption(activeData)
         }
         if (e.key === "ArrowDown") {
             setActiveIndex(activeIndex === options?.length ? activeIndex : activeIndex + 1)
@@ -71,8 +73,13 @@ const DropdownBase = (props: TProps) => {
                     "rounded-md bg-white px-3 py-2 text-sm font-semibold shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50": isDefaultStyle,
                     [customeClass?.btnDropdown || ""]: customeClass?.btnDropdown
                 })}>
-                    {label}
-                    <IconChevronToggle isOpen={isOpen} className="w-[1rem]" />
+                    {
+                        label && <>{label}
+                            <IconChevronToggle isOpen={isOpen} className="w-[1rem]" /></>
+                    }
+                    {
+                        withButtonTriger && <IconMoreVertical />
+                    }
                 </button>
             </div>
 
@@ -94,7 +101,7 @@ const DropdownBase = (props: TProps) => {
                                     {
                                         option?.title && <div className=" px-4 pt-2 text-gray-400">{option?.title?.toLocaleUpperCase()}</div>
                                     }
-                                    <div key={i} onClick={() => handleOnClickOption(option, i)} className={cn({
+                                    <div key={i} onClick={() => handleOnClickOption(option)} className={cn({
                                         "hover:bg-gray-100 !text-black px-4  block  cursor-pointer": true,
                                         "bg-gray-100 ": activeIndex - 1 == i
                                     })}>

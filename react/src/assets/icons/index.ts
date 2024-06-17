@@ -34,3 +34,4 @@ export { default as IconLogout} from '@assets/icons/logout.svg?react';
 export { default as IconReceipt} from '@assets/icons/receipt.svg?react';
 export { default as IconDownload} from '@assets/icons/download.svg?react';
 export { default as IconUsers} from '@assets/icons/users.svg?react';
+export { default as IconMoreVertical} from '@assets/icons/more-vertical.svg?react';
