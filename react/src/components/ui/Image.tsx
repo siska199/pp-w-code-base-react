@@ -1,4 +1,3 @@
-import Button from '@components/ui/Button';
 import { cn, getAssetURL } from '@lib/utils/helper';
 import React, { HTMLProps, useState } from 'react';
 
@@ -10,6 +9,7 @@ interface TProps extends Omit<Partial<HTMLProps<HTMLImageElement>>, ""> {
     customeClassName?: {
         container?: string;
         image?: string;
+        containerOverlay?: string;
     };
     useSkeleton?: boolean;
     onLoadCustome?: () => void;
@@ -58,9 +58,12 @@ const Image = (props: TProps) => {
                     </div>
                 </div>
             }
-            {withOverlay && (
-                <div className="absolute top-0 left-0 bg-black/30 flex justify-center items-center transition-all duration-300 transform translate-y-[50%] group-hover:translate-y-0 opacity-0 group-hover:opacity-100 w-full h-full">
-                    {overlayContent ? overlayContent : <Button label="Click Me" />}
+            {(withOverlay && overlayContent) && (
+                <div className={cn({
+                    "absolute top-0 left-0 bg-black/30 flex justify-center items-center transition-all duration-300 transform translate-y-[50%] group-hover:translate-y-0 opacity-0 group-hover:opacity-100 w-full h-full": true,
+                    [customeClassName?.containerOverlay || ""]: customeClassName?.containerOverlay
+                })}>
+                    {overlayContent && overlayContent}
                 </div>
             )}
 
