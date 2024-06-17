@@ -15,7 +15,7 @@ export interface TCustomeEventOnChange<V> {
 export type TEmptyValue = "" | null | undefined
 
 export interface TOption {
-  label: string;
+  label: string | React.ReactNode;
   value: string;
 }
 

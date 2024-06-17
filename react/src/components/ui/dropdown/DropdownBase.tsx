@@ -6,20 +6,25 @@ import { TOption } from "@types";
 import clsx from "clsx";
 import { useRef, useState } from "react";
 
+type TOptionDropdown = TOption & {
+    className?: string;
+    title?: string;
+}
 interface TProps {
-    label: React.ReactNode;
-    options: TOption[];
-    onClick: (data: TOption) => void;
+    label: React.ReactNode | string;
+    options: TOptionDropdown[];
+    onClick: (data: TOptionDropdown) => void;
     customeClass?: {
         containerDropdown?: string;
         btnDropdown?: string;
 
     };
     isDefaultStyle?: boolean;
+    header?: React.ReactNode;
 }
 
 const DropdownBase = (props: TProps) => {
-    const { options, label, onClick: handleOnClick, customeClass, isDefaultStyle = true } = props;
+    const { options, label, onClick: handleOnClick, customeClass, isDefaultStyle = true, header } = props;
     const ref = useRef<HTMLDivElement | null>(null);
     const refBtn = useRef<HTMLDivElement | null>(null);
     const [isOpen, setIsOpen] = useState(false)
@@ -62,7 +67,7 @@ const DropdownBase = (props: TProps) => {
                     setIsOpen(!isOpen)
                 }} >
                 <button type="button" onKeyDown={handleKeyDown} className={clsx({
-                    "inline-flex w-full justify-center items-center gap-x-2": true,
+                    "inline-flex w-full justify-center items-center gap-x-2 outline-none": true,
                     "rounded-md bg-white px-3 py-2 text-sm font-semibold shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50": isDefaultStyle,
                     [customeClass?.btnDropdown || ""]: customeClass?.btnDropdown
                 })}>
@@ -72,19 +77,36 @@ const DropdownBase = (props: TProps) => {
             </div>
 
             <div ref={ref} className={clsx({
-                "absolute  z-10 mt-2 transition-all overflow-hidden origin-top-right rounded-md bg-white  ring-1 ring-black ring-opacity-5 focus:outline-none": true,
-                " h-auto shadow-lg w-56": isOpen,
-                " h-0 shadow-none": !isOpen,
-
+                "absolute py-2 z-10 mt-2 transition-all overflow-hidden origin-top-right rounded-md bg-white  ring-1 ring-black ring-opacity-5 focus:outline-none": true,
+                " h-auto shadow-lg w-56  opacity-100": isOpen,
+                " h-0 shadow-none opacity-0": !isOpen,
+                "!py-0": header
             })}>
                 {
                     isOpen && <div className="py-0">
+                        {header && <div className={cn({
+                            "py-2 flex items-center gap-2 px-4 bg-gray-100": true,
+
+                        })}>{header}</div>}
                         {
                             options?.map((option, i) =>
-                                <div key={i} onClick={() => handleOnClickOption(option, i)} className={cn({
-                                    "hover:bg-gray-100 block px-4 py-2 cursor-pointer": true,
-                                    "bg-gray-100": activeIndex - 1 == i
-                                })} >{option?.label}</div>
+                                <>
+                                    {
+                                        option?.title && <div className=" pt-2 text-gray-400">{option?.title?.toLocaleUpperCase()}</div>
+                                    }
+                                    <div key={i} onClick={() => handleOnClickOption(option, i)} className={cn({
+                                        "hover:bg-gray-100 !text-black px-4  block  cursor-pointer": true,
+                                        "bg-gray-100 ": activeIndex - 1 == i
+                                    })}>
+                                        <div className={cn({
+                                            "py-2 flex items-center gap-2": true,
+                                            [option?.className || ""]: option?.className
+                                        })}>
+
+                                            {option?.label}
+                                        </div>
+                                    </div>
+                                </>
                             )
                         }
                     </div>
