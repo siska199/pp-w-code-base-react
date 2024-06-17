@@ -6,14 +6,42 @@ import ProgressStep from "@components/ui/ProgressStep";
 const CardAdditionalInfoImage = () => {
   const listAdditionalInfo = [
     {
-      title: "Additional Info 1",
-      caption: <CodeBlock codeString={info1} />
+      title: "Loading State",
+      caption: "The component uses an internal loading state to apply a blur effect to the image while it is loading. This is managed by the `isLoading` state variable, which is set to `false` once the image has fully loaded. While the image is loading, a CSS class `blur-effect` is applied to give a visual indication that the image is not yet fully loaded. Once the image has loaded, the `clear-effect` class is applied to remove the blur."
     },
     {
-      title: "Additional Info 2",
-      caption: <CodeBlock codeString={info2} />
+      title: "Asset URL",
+      caption: "The `getAssetURL` function is used to generate the full URL of the image if the provided `src` does not include 'http'. This function constructs the full path based on the given name."
+    },
+    {
+      title: "getAssetURL Function",
+      caption: (
+        <div>
+          <p>
+            The `getAssetURL` function helps in constructing the URL for assets stored in the project. It takes an object with the following properties:
+          </p>
+          <ul>
+            <li>
+              <strong>name:</strong> The name of the asset file (required).
+            </li>
+            <li>
+              <strong>folder:</strong> The folder where the asset is stored (optional, defaults to &#39;images&#39;).
+            </li>
+          </ul>
+          <p>
+            This function returns the full URL of the asset by combining the base URL of the project with the specified folder and file name.
+          </p>
+          <CodeBlock
+            codeString={`export const getAssetURL = (params: TParamsGetAssetURl) => {
+  const { name, folder = 'images' } = params;
+  return new URL(\`../../assets/\${folder}/\${name}\`, import.meta.url)?.href;
+}`}
+          />
+        </div>
+      ),
     }
   ];
+
 
   return (
     <CardSubMenu title={'Additional Info'}>
@@ -21,8 +49,4 @@ const CardAdditionalInfoImage = () => {
     </CardSubMenu>
   );
 }
-
-const info1 = `// Additional info 1`;
-const info2 = `// Additional info 2`;
-
 export default CardAdditionalInfoImage;
