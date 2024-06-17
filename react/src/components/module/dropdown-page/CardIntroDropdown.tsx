@@ -130,8 +130,8 @@ const CardIntroDropdown = () => {
             label={"Action"}
             options={listOption}
             onClick={handleOnClick}
-            header={<div className="flex gap-2">
-              <Image className="rounded-full  border border-gray-300" src={"avatar.svg"} />
+            header={<div className="flex gap-2 items-center ">
+              <Image className="rounded-full w-[2rem] h-[2rem] border border-gray-300" src={"avatar.svg"} />
               <div className="flex flex-col">
                 <p className="">Sign in as</p>
                 <p className="text-black">James site</p>
