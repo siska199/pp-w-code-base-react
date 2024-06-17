@@ -144,7 +144,7 @@ const CardIntroDropdown = () => {
         />
 
         <CardVariantComp
-          title={"Default"}
+          title={"Button Trigger"}
           withBorder={false}
           Component={<DropdownBase
             withButtonTriger={true}
@@ -163,7 +163,7 @@ const CardIntroDropdown = () => {
   return (
     <CardIntroComponent
       title={'Dropdown'}
-      subTitle="Description of Dropdown."
+      subTitle="A Dropdown is a user interface component that allows users to select one option from a list that appears when they click or hover over the element. Dropdowns are widely used in web and mobile applications to provide a compact and efficient way for users to choose from a set of options without cluttering the user interface."
       listExample={listExample}
       displayCodeBase={displayCodeBase}
     />
