@@ -1,12 +1,12 @@
 
 import CardIntroComponent from "@components/cards/CardIntroComponent";
-import Card from "@components/ui/Card";
+import EmptyData from "@components/ui/EmptyData";
 
 const CardIntroCard = () => {
 
-    const listExample = [
+  const listExample = [
     {
-      component: ""
+      component:  <EmptyData/>
     },
 
   ]
@@ -14,7 +14,7 @@ const CardIntroCard = () => {
     <CardIntroComponent
       title={'Card'}
       subTitle="Description of Card."
-      listExample={listExample }
+      listExample={listExample}
       displayCodeBase={displayCodeBase}
     />
   );
