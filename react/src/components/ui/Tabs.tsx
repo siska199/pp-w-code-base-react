@@ -1,30 +1,69 @@
+import { cn } from "@lib/utils/helper";
 import { TTab } from "@types";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface TProps {
+    type?: "bordered" | "pilled";
     listTab: TTab[];
-    children?: (params: any) => React.ReactNode;
+    customeClass?: {
+        container?: string;
+        tabList?: string;
+        tabItem?: string;
+        activeTabItem?: string;
+        indicator?: string;
+    };
 }
 
 const Tabs = (props: TProps) => {
-    const { listTab, children } = props
-    const [activeTab, setActiveTab] = useState(0)
+    const { listTab, type = "bordered", customeClass } = props;
+    const [activeTab, setActiveTab] = useState(0);
+    const [bgStyle, setBgStyle] = useState({});
+    const tabRefs = useRef<(HTMLLIElement | null)[]>([]);
+
+    useEffect(() => {
+        if (tabRefs.current[activeTab]) {
+            const elmnActiveTab = tabRefs.current[activeTab];
+            setBgStyle({ left: elmnActiveTab?.offsetLeft, width: elmnActiveTab?.offsetWidth });
+        }
+    }, [activeTab]);
 
     const handleChangeActiveTab = (key: number) => {
-        setActiveTab(key)
-    }
+        setActiveTab(key);
+    };
+
     return (
-        <div className="w-full flex flex-col gap-4">
-            <ul className="flex border-b">
-                {
-                    listTab?.map((tab, i) => <li onClick={() => handleChangeActiveTab(i)} key={i} className={`px-8  py-2 font-medium cursor-pointer border-0   ${activeTab === i && "border-b-2 !text-black border-black"}`}>{tab?.label}</li>)
-                }
+        <div className={cn("w-full flex flex-col gap-4", customeClass?.container)}>
+            <ul className={cn("flex relative border-b", customeClass?.tabList)}>
+                <div
+                    className={cn("absolute bg-primary transition-all duration-500", {
+                        "bottom-0 h-[1px]": type === "bordered",
+                        [customeClass?.indicator || ""]: true,
+                    })}
+                    style={bgStyle}
+                />
+                {listTab?.map((tab, i) => (
+                    <li
+                        ref={(el) => (tabRefs.current[i] = el)}
+                        onClick={() => handleChangeActiveTab(i)}
+                        key={i}
+                        className={cn(
+                            "px-8 py-2 relative font-medium cursor-pointer border-0 transition-colors duration-500 z-10",
+                            {
+                                [`${activeTab === i ? "text-primary" : "text-black"}`]: type === "bordered",
+                                [customeClass?.tabItem || ""]: true,
+                                [customeClass?.activeTabItem || ""]: activeTab === i,
+                            }
+                        )}
+                    >
+                        {tab?.label}
+                    </li>
+                ))}
             </ul>
-            {children?.({ activeTab })}
+            <div className="transition-opacity duration-500 ease-in-out">
+                {listTab[activeTab]?.content}
+            </div>
         </div>
-    )
-}
+    );
+};
 
-
-
-export default Tabs
+export default Tabs;

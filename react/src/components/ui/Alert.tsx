@@ -23,7 +23,7 @@ interface TPropsVariantGeneral extends VariantProps<typeof alertVariantGeneral> 
 }
 
 type TProps = HTMLProps<HTMLButtonElement> & {
-    position?: "top-left" | "top-right";
+    position?: "top-left" | "top-right" | 'bottom-left' | "bottom-right";
     timeout?: number;
     onDismiss?: () => void;
     show: boolean;

@@ -6,58 +6,20 @@ import ProgressStep from "@components/ui/ProgressStep";
 const CardAdditionalInfoAccordion = () => {
     const listAdditionalInfo = [
         {
-            title: "Custom Classes:",
-            caption:
-                <>
-                    <p>
-                        The <code>Accordion</code> component allows customization through the{" "}
-                        <code>customeClass</code> prop, which accepts an object with optional
-                        CSS class names for different parts of the accordion:
-                    </p>
-                    <ul>
-                        <li>
-                            <strong>containerItems:</strong> CSS class applied to the container
-                            of all accordion items.
-                        </li>
-                        <li>
-                            <strong>container:</strong> CSS class applied to each individual
-                            accordion item container.
-                        </li>
-                        <li>
-                            <strong>containerLabel:</strong> CSS class applied to the label
-                            section of each accordion item.
-                        </li>
-                        <li>
-                            <strong>containerContent:</strong> CSS class applied to thecaption
-                            section of each accordion item, which expands or collapses.
-                        </li>
-                    </ul>
-                    <p>
-                        These classes allow users to style the accordion according to their
-                        specific design requirements.
-                    </p>
-                </>
+            title: "State Management",
+            caption: `Each accordion item in the Accordion component maintains
+                    its state using React's useState hook. This ensures that
+                    each item can independently expand or collapse its caption section.`
             ,
         },
         {
-            title: "State Management:",
-            caption:
-                <p>
-                    Each accordion item in the <code>Accordion</code> component maintains
-                    its state using React&apos;s <code>useState</code> hook. This ensures that
-                    each item can independently expand or collapse itscaption section.
-                </p>
-            ,
-        },
-        {
-            title: "Toggle Functionality:",
-            caption:
-                <p>
-                    The <code>Floating</code> component within the <code>Accordion</code>{" "}
-                    utilizes a toggle function <code>handleToggleAccordion</code> triggered
-                    by clicking on the toggle icon. This function updates the state to
-                    expand or collapse thecaption based on its current state.
-                </p>
+            title: "Toggle Functionality",
+            caption: <p>
+                The Floating component within the Accordion
+                utilizes a toggle function <span className="italic">handleToggleAccordion</span>  triggered
+                by clicking on the toggle icon. This function updates the state to
+                expand or collapse the caption based on its current state.
+            </p>
             ,
         },
         {
@@ -65,12 +27,12 @@ const CardAdditionalInfoAccordion = () => {
             caption:
                 <>
                     <p>
-                        The <code>Accordion</code> component relies on several dependencies
-                        imported from external sources: <code>IconChevronToggle</code> for the
-                        toggle icon, <code>cn</code> from <code>@lib/utils/helper</code> for
-                        managing CSS classes, <code>useState</code> from <code>react</code> for
-                        managing component state, and <code>TItemAccordion</code> from{" "}
-                        <code>@types</code> for defining the structure of accordion items. Make
+                        The Accordion component relies on several dependencies
+                        imported from external sources: <span className="italic">IconChevronToggle</span> for the
+                        toggle icon, <span className="italic">cn</span> from <span className="italic">@lib/utils/helper</span> for
+                        managing CSS classes, <span className="italic">useState</span> from <span className="italic">react</span> for
+                        managing component state, and <span className="italic">TItemAccordion</span> from{" "}
+                        <span className="italic">@types</span> for defining the structure of accordion items. Make
                         sure these dependencies are correctly installed and imported for the
                         component to function properly.
                     </p>

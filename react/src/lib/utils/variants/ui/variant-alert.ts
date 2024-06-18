@@ -5,19 +5,22 @@ const variantsAlert = {
         ...variantAlertSuccess,
         ...variantAlertWarning,
         ...variantAlertError,
-        notification : {
+        notification: {
             ...variant
         },
-        info : {
+        info: {
             ...variant
         }
     },
     position: {
         'top-left': 'top-6 left-6',
-        "top-right": "top-6 right-6"
+        "top-right": "top-6 right-6",
+        'bottom-left': 'bottom-6 left-6',
+        "bottom-right": "bottom-6 right-6"
+
     },
     isFixed: {
-        "true": "fixed z-[9] !max-w-[17rem] !w-[17rem]",
+        "true": "fixed z-[99] !max-w-[17rem] !w-[17rem]",
         "false": "static  w-[23rem] max-w-[23rem] "
     }
 }

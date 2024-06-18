@@ -3,37 +3,37 @@ import List from "@components/ui/List"
 
 
 const CardPropsAccordion = () => {
-    const listItem =  [
+    const listItem = [
         {
             label: "items",
-            content:"An array of TItemAccordion items that will be displayed in the accordion."
+            content: "An array of TItemAccordion items that will be displayed in the accordion."
         },
         {
-            label :"customeClass (optional)",
-            content : " An object for custom CSS classes.",
-            childs :[
+            label: "customeClass (optional)",
+            content: " An object for custom CSS classes.",
+            childs: [
                 {
-                    label:"containerItems",
-                    content :"Class for the container of all items."
+                    label: 'containerItems',
+                    content: 'CSS class applied to the container of all accordion items.'
                 },
                 {
-                    label:"container",
-                    content:"Class for each individual item`s container."
+                    label: 'container',
+                    content: 'CSS class applied to each individual accordion item container.'
                 },
                 {
-                    label:"containerLabel",
-                    content:"Class for the label section of each item."
+                    label: 'containerLabel',
+                    content: 'CSS class applied to the label section of each accordion item.'
                 },
                 {
-                    label:"containerContent",
-                    content:"Class for the content section of each item.",
+                    label: 'containerContent',
+                    content: 'CSS class applied to the caption section of each accordion item, which expands or collapses.'
                 },
             ]
         }
     ]
     return (
         <CardSubMenu title={'Props'}>
-            <List items={listItem}/>
+            <List items={listItem} />
         </CardSubMenu>
     )
 }

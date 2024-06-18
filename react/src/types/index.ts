@@ -22,6 +22,7 @@ export interface TOption {
 export interface TTab {
   id: string;
   label: string;
+  content : React.ReactNode | string;
 }
 
 export interface TItemAccordion {

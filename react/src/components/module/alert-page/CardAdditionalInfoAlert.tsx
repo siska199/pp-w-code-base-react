@@ -9,32 +9,22 @@ const CardAdditionalInfoAlert = () => {
       caption: (
         <p>
           The appearance of the alert can be customized using variants (
-          <code>alertVariantError</code>, <code>alertVariantSuccess</code>,{" "}
-          <code>alertVariantWarning</code>, <code>alertVariantGeneral</code>
+          <span className="italic">alertVariantError</span>, <span className="italic">alertVariantSuccess</span>,{" "}
+          <span className="italic">alertVariantWarning</span>, <span className="italic">alertVariantGeneral</span>
           ). These variants determine the visual style and behavior based on the
-          alert type (<code>error</code>, <code>success</code>, <code>warning</code>
-          , <code>notification</code>, <code>info</code>).
+          alert type (<span className="italic">error</span>, <span className="italic">success</span>, <span className="italic">warning</span>
+          , <span className="italic">notification</span>, <span className="italic">info</span>).
         </p>
       ),
     },
-    {
-      title: "Custom Icons:",
-      caption: (
-        <p>
-          The <code>customeIcon</code> prop allows users to replace the default
-          icon associated with the alert type (
-          <code>IconInfo</code>, <code>IconDanger</code>, <code>IconSuccess</code>
-          , <code>IconNotification</code>) with a custom React node or component.
-        </p>
-      ),
-    },
+
     {
       title: "Automatic Dismissal:",
       caption: (
         <p>
-          Alerts can automatically dismiss after a specified <code>timeout</code>{" "}
-          period (default is 3000 milliseconds) if <code>autoClose</code> is
-          enabled and a <code>handleOnDismiss</code> function is provided.
+          Alerts can automatically dismiss after a specified <span className="italic">timeout</span>{" "}
+          period (default is 3000 milliseconds) if <span className="italic">autoClose</span> is
+          enabled and a <span className="italic">handleOnDismiss</span> function is provided.
         </p>
       ),
     },
@@ -42,37 +32,8 @@ const CardAdditionalInfoAlert = () => {
       title: "Close Button:",
       caption: (
         <p>
-          Users can optionally include a close button (<code>withCloseBtn</code>)
+          Users can optionally include a close button (<span className="italic">withCloseBtn</span>)
           in the alert, allowing users to manually dismiss it.
-        </p>
-      ),
-    },
-    {
-      title: "Positioning:",
-      caption: (
-        <p>
-          Alerts can be positioned either at the &lsquo;<code>top-left</code>&lsquo; or &lsquo;
-          <code>top-right</code>&lsquo; of the screen using the <code>position</code>{" "}
-          prop.
-        </p>
-      ),
-    },
-    {
-      title: "Fixed vs. Static Positioning:",
-      caption: (
-        <p>
-          The <code>isFixed</code> prop determines whether the alert remains fixed
-          in its position (<code>true</code>) or scrolls with the page (
-          <code>false</code>). The default is <code>true</code> (fixed).
-        </p>
-      ),
-    },
-    {
-      title: "Additional CSS Classes:",
-      caption: (
-        <p>
-          Users can apply additional CSS classes (<code>className</code>) to further
-          customize the alert&lsquo;s appearance or behavior.
         </p>
       ),
     },
@@ -80,19 +41,9 @@ const CardAdditionalInfoAlert = () => {
       title: "Event Handling:",
       caption: (
         <p>
-          The <code>onDismiss</code> prop allows users to specify a callback
+          The <span className="italic">onDismiss</span> prop allows users to specify a callback
           function that triggers when the alert is dismissed, either automatically
           or manually.
-        </p>
-      ),
-    },
-    {
-      title: "Conditional Rendering:",
-      caption: (
-        <p>
-          Alerts are rendered conditionally based on the <code>show</code> prop. If{" "}
-          <code>show</code> is <code>true</code>, the alert is displayed; otherwise,
-          it remains hidden.
         </p>
       ),
     },
@@ -100,10 +51,10 @@ const CardAdditionalInfoAlert = () => {
       title: "Dependencies:",
       caption: (
         <p>
-          The <code>Alert</code> component relies on several dependencies and utility
-          functions imported from external sources (<code>@assets/icons</code>,{" "}
-          <code>@lib/utils/data/variant-color</code>, <code>@lib/utils/helper</code>
-          , <code>class-variance-authority</code>, <code>react</code>). Ensure these
+          The Alert component relies on several dependencies and utility
+          functions imported from external sources (<span className="italic">@assets/icons</span>,{" "}
+          <span className="italic">@lib/utils/data/variant-color</span>, <span className="italic">@lib/utils/helper</span>
+          , <span className="italic">class-variance-authority</span>, <span className="italic">react</span>). Ensure these
           dependencies are properly installed and imported for the component to
           function correctly.
         </p>

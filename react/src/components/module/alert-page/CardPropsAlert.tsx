@@ -7,19 +7,23 @@ const CardPropsAlert = () => {
   const listItem: TItemList[] = [
     {
       label: "variant",
-      content: "Specifies the appearance variant of the alert based on its type (`error`, `success`, `warning`, `notification`, `info`)."
+      content: <>
+        specifies the appearance variant of the alert based on its type (<span className="italic">error</span>, <span className="italic">success</span>, <span className="italic">warning</span>, <span className="italic">notification</span>, <span className="italic">info</span>).
+      </>
     },
     {
       label: "customeIcon (optional)",
-      content: "Custom icon element to display instead of the default icon based on the alert type."
+      content: <>Custom icon element to display instead of the default icon based on the alert type.</>
     },
     {
       label: "type",
-      content: "Determines the type of alert. Accepts `'error'`, `'success'`, `'warning'`, `'notification'`, or `'info'`."
+      content: <>Determines the type of alert. Accepts <span className="italic">error</span>, <span className="italic">success</span>, <span className="italic">warning</span>, <span className="italic">notification</span>, <span className="italic">info</span>.</>
     },
     {
       label: "withIcon (optional)",
-      content: "If true, displays an icon associated with the alert type (`IconInfo`, `IconDanger`, `IconSuccess`, `IconNotification`, `IconClose`)."
+      content: <>
+        If <span className="italic">true</span>, displays an icon associated with the alert type (<span className="italic">IconInfo</span>, <span className="italic">IconDanger</span>, <span className="italic">IconSuccess</span>, <span className="italic">IconNotification</span>, <span className="italic">IconClose</span>).
+      </>
     },
     {
       label: "show",
@@ -31,7 +35,9 @@ const CardPropsAlert = () => {
     },
     {
       label: "position (optional)",
-      content: "Specifies the position of the alert on the screen. Accepts `'top-left'` or `'top-right'`."
+      content: <>
+        Specifies the position of the alert on the screen. Accepts <span className="italic">top-left</span>, <span className="italic">top-right</span>, <span className="italic">bottom-left</span> or <span className="italic">bottom-right</span>.
+      </>
     },
     {
       label: "timeout (optional)",

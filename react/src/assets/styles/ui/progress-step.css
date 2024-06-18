@@ -28,9 +28,6 @@
     line-height: 1.5em;
     font-weight: 500;
   }
-.stepper-item.vertical .step-caption {
-    font-size: 0.8em;
-}
 
 .step-item.vertical + .step-item.vertical {
     margin-top: 1.5em
