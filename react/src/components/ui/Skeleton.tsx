@@ -59,12 +59,13 @@ const Skeleton = (props: TProps) => {
         >
             <div ref={contentRefs} className={cn({
                 className: '',
-                'opacity-0': isLoading
+                // 'opacity-0': isLoading
             })}>
                 {children}
             </div>
+
             {
-                (isLoading && totalSkeleton) && <span className=" absolute top-1 left-0 flex flex-col gap-2  ">
+                (isLoading && totalSkeleton > 0) && <span className=" absolute top-1 left-0 flex flex-col gap-2  ">
                     {
                         [...new Array(totalSkeleton)]?.map((_, i) => <div key={i}
                             style={skeletonStyle}
