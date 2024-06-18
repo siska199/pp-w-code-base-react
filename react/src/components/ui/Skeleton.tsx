@@ -59,7 +59,7 @@ const Skeleton = (props: TProps) => {
         >
             <div ref={contentRefs} className={cn({
                 className: '',
-                // 'opacity-0': isLoading
+                'opacity-0': isLoading
             })}>
                 {children}
             </div>
