@@ -18,6 +18,8 @@ import CopyTextPage from '@pages/docs/components/CopyTextPage';
 import DropdownPage from '@pages/docs/components/DropdownPage';
 import HelperMessagePage from '@pages/docs/components/HelperMessagePage';
 import ImagePage from '@pages/docs/components/ImagePage';
+import CardPage from '@pages/docs/components/CardPage';
+import SkeletonPage from '@pages/docs/components/SkeletonPage';
 import { createBrowserRouter } from "react-router-dom";
 
 const docRouter = {
@@ -174,7 +176,23 @@ const docRouter = {
                         id: '1-IM10'
                     }
                 },
-            ]
+
+                {
+                    path: 'card',
+                    element: <CardPage />,
+                    handle: {
+                        id: '1-C19'
+                    }
+                },
+            
+              {
+                  path: 'skeleton',
+                  element: <SkeletonPage />,
+                  handle: {
+                      id: '1-S20'
+                  }
+              },
+]
         },
     ]
 }

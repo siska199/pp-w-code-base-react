@@ -28,7 +28,7 @@ const CardIntroComponent = (props: TProps) => {
                             {
                                 example?.title && <p className="text-left border-b pb-2 text-black font-medium text-body-medium">{example.title}</p>
                             }
-                            <div className="flex flex-col items-center gap-4">
+                            <div className="flex flex-col items-center gap-4 flex-wrap ">
                                 {example?.component}
                             </div>
                         </div>
