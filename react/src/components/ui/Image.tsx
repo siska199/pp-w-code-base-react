@@ -28,7 +28,7 @@ const Image = (props: TProps) => {
 
     return (
         <div className={cn({
-            "relative group overflow-hidden": true,
+            "relative group w-full h-full overflow-hidden": true,
             [customeClassName?.container || ""]: customeClassName?.container
         })}>
             <img
@@ -36,7 +36,7 @@ const Image = (props: TProps) => {
                 alt={alt || src.replace('-', ' ')}
                 onLoad={handleLoad}
                 className={cn({
-                    '': true,
+                    'w-full h-full': true,
                     'clear-effect': !isLoading,
                     'blur-effect': isLoading,
                     [className || '']: className,

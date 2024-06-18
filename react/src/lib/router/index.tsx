@@ -20,6 +20,7 @@ import HelperMessagePage from '@pages/docs/components/HelperMessagePage';
 import ImagePage from '@pages/docs/components/ImagePage';
 import CardPage from '@pages/docs/components/CardPage';
 import SkeletonPage from '@pages/docs/components/SkeletonPage';
+import CarouselPage from '@pages/docs/components/CarouselPage';
 import { createBrowserRouter } from "react-router-dom";
 
 const docRouter = {
@@ -190,6 +191,14 @@ const docRouter = {
                   element: <SkeletonPage />,
                   handle: {
                       id: '1-S20'
+                  }
+              },
+
+              {
+                  path: 'carousel',
+                  element: <CarouselPage />,
+                  handle: {
+                      id: '1-C21'
                   }
               },
 ]

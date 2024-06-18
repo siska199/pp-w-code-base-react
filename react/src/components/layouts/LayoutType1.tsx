@@ -71,7 +71,7 @@ const LayoutType1 = () => {
             <div className="flex relative overflow-x-hidden ">
                 <Sidebar isLandingPage={isLandingPage} idActiveMenu={idActiveMenu} />
                 <div
-                    className=" p-8 flex  transtion-all duration-500 overflow-x-auto"
+                    className=" p-8 flex  transtion-all duration-10 overflow-x-auto"
                     style={{
                         marginLeft: isLandingPage ? 0 : leftPosition,
                         marginRight: isLandingPage ? 0 : rightPosition,

@@ -148,6 +148,12 @@ const listMenuSidebar: TMenuItem[] = [
         parentId: '1-IN11'
     },
     {
+        id: '1-C21',
+        name: 'Carousel',
+        url: '/docs/components/carousel',
+        parentId: '0-C0'
+    },
+    {
         id: '2-MC2',
         name: 'Multiple Checkbox',
         url: '/docs/components/input/multiple-checkbox',
