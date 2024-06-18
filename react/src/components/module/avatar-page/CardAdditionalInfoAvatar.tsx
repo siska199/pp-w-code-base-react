@@ -1,5 +1,6 @@
 
 import CardSubMenu from "@components/cards/CardSubMenu";
+import Button from "@components/ui/Button";
 import ProgressStep from "@components/ui/ProgressStep";
 
 const CardAdditionalInfoAvatar = () => {
@@ -9,25 +10,28 @@ const CardAdditionalInfoAvatar = () => {
       caption: <p>The default variant of the avatar is &apos;soft-gray&apos;, the default size is &apos;base&apos;, and the default shape is &apos;circular&apos;.</p>
     },
     {
-      title: "Dynamic Variant",
-      caption: <p>If the &apos;type&apos; is &apos;image&apos; and no variant is specified, the variant defaults to &apos;solid-black&apos;.</p>
+      title: "Variant",
+      caption: (
+        <p>
+          The list of variants available for the Badge component can be seen{" "}
+          <Button label="Here" customeElement={"link"} to="/docs/pre-requisite" />.
+        </p>
+      ),
     },
     {
-      title: "Custom Icon",
-      caption: <p>You can provide a custom icon using the &apos;customeIcon&apos; prop. This icon will be displayed when the &apos;status&apos; is set to &apos;icon&apos;.</p>
+      title: "Dependencies",
+      caption: (
+        <p>
+          The Avatar component relies on several dependencies and utility functions imported from external sources (
+          <span className="italic">@components/ui/Image</span>,{" "}
+          <span className="italic">@lib/utils/helper</span>,{" "}
+          <span className="italic">@lib/utils/variants/ui/variant-avatar</span>,{" "}
+          <span className="italic">class-variance-authority</span>,{" "}
+          <span className="italic">react</span>
+          ). Ensure these dependencies are properly installed and imported for the component to function correctly.
+        </p>
+      ),
     },
-    {
-      title: "Status Indicator",
-      caption: <p>The component supports various status indicators (offline, online, away, dontdistrub, icon) which are displayed as a small circle on the avatar. These indicators are styled with predefined colors.</p>
-    },
-    {
-      title: "Responsive Design",
-      caption: <p>The avatar component is designed to be responsive with appropriate classes for different sizes (&apos;tiny&apos;, &apos;small&apos;, &apos;base&apos;, &apos;large&apos;). Ensure to provide the correct size according to your design requirements.</p>
-    },
-    {
-      title: "Usage of 'name' Prop",
-      caption: <p>When the &apos;type&apos; is &apos;initial-name&apos;, the &apos;name&apos; prop is used to display the first letter of the provided name. It is also used for the alt text when the &apos;type&apos; is &apos;image&apos;.</p>
-    }
   ];
 
 

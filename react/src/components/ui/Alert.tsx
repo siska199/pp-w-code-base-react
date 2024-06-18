@@ -38,7 +38,7 @@ type TProps = HTMLProps<HTMLButtonElement> & {
 
 
 const Alert = (props: TProps) => {
-    const { variant, customeIcon, type, withIcon, show, message, isFixed = true, withCloseBtn = false, autoClose = true, className = '', position = "top-right", timeout = 3000, onDismiss: handleOnDismiss } = props
+    const { variant, customeIcon, type='info', withIcon, show, message, isFixed = true, withCloseBtn = false, autoClose = true, className = '', position = "top-right", timeout = 3000, onDismiss: handleOnDismiss } = props
 
     useEffect(() => {
         if (timeout > 0 && handleOnDismiss && autoClose && show) {

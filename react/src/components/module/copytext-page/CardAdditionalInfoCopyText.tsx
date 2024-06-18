@@ -13,6 +13,22 @@ const CardAdditionalInfoCopyText = () => {
       )
     },
     {
+      title: "Dependencies:",
+      caption: (
+        <p>
+          The CopyText component relies on several dependencies and utility functions imported from external sources (
+          <span className="italic">@assets/icons/IconCheck</span>,{" "}
+          <span className="italic">@assets/icons/IconClipboard</span>,{" "}
+          <span className="italic">react</span>,{" "}
+          <span className="italic">useState</span>,{" "}
+          <span className="italic">useEffect</span>,{" "}
+          <span className="italic">./Container</span>,{" "}
+          <span className="italic">@components/ui/Button</span>
+          ). Ensure these dependencies are properly installed and imported for the component to function correctly.
+        </p>
+      ),
+    },
+    {
       title: "Clipboard API",
       caption: (
         <p>

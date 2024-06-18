@@ -1,11 +1,16 @@
 
 import CardSubMenu from "@components/cards/CardSubMenu";
+import Button from "@components/ui/Button";
 import ProgressStep from "@components/ui/ProgressStep";
 
 const CardAdditionalInfoAlert = () => {
   const listAdditionalInfo = [
     {
-      title: "Variant Customization:",
+      title: "Default Behavior",
+      caption: <p>The default type of the alert is &apos;info&apos;, the default variant is &apos;solid-white&apos;, the alert is fixed by default, auto-closes by default, and the default position is &apos;top-right&apos;.</p>
+    },
+    {
+      title: "Variant",
       caption: (
         <p>
           The appearance of the alert can be customized using variants (
@@ -13,7 +18,21 @@ const CardAdditionalInfoAlert = () => {
           <span className="italic">alertVariantWarning</span>, <span className="italic">alertVariantGeneral</span>
           ). These variants determine the visual style and behavior based on the
           alert type (<span className="italic">error</span>, <span className="italic">success</span>, <span className="italic">warning</span>
-          , <span className="italic">notification</span>, <span className="italic">info</span>).
+          , <span className="italic">notification</span>, <span className="italic">info</span>). The list of variants available for the alert component can be seen{" "}
+          <Button label="Here" customeElement={"link"} to="/docs/pre-requisite" />.
+        </p>
+      ),
+    },
+    {
+      title: "Dependencies:",
+      caption: (
+        <p>
+          The Alert component relies on several dependencies and utility
+          functions imported from external sources (<span className="italic">@assets/icons</span>,{" "}
+          <span className="italic">@lib/utils/data/variant-color</span>, <span className="italic">@lib/utils/helper</span>
+          , <span className="italic">class-variance-authority</span>, <span className="italic">react</span>). Ensure these
+          dependencies are properly installed and imported for the component to
+          function correctly.
         </p>
       ),
     },
@@ -47,19 +66,7 @@ const CardAdditionalInfoAlert = () => {
         </p>
       ),
     },
-    {
-      title: "Dependencies:",
-      caption: (
-        <p>
-          The Alert component relies on several dependencies and utility
-          functions imported from external sources (<span className="italic">@assets/icons</span>,{" "}
-          <span className="italic">@lib/utils/data/variant-color</span>, <span className="italic">@lib/utils/helper</span>
-          , <span className="italic">class-variance-authority</span>, <span className="italic">react</span>). Ensure these
-          dependencies are properly installed and imported for the component to
-          function correctly.
-        </p>
-      ),
-    },
+
   ];
 
   return (

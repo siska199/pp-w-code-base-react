@@ -1,35 +1,40 @@
 
 import CardSubMenu from "@components/cards/CardSubMenu";
-import List from "@components/ui/List";
+import Button from "@components/ui/Button";
 import ProgressStep from "@components/ui/ProgressStep";
 
 const CardAdditionalInfoBreadcrumb = () => {
   const listAdditionalInfo = [
     {
       title: "Default Behavior",
-      caption: <div >
-        <p>The default behavior of the Breadcrumb component includes:</p>
-        <List
-          items={[
-            {
-              label: "The items prop ",
-              content: "is required and expects an array of objects with &#39;url&#39; and &#39;label&#39; properties."
-            },
-            {
-              label: "If withIconDivider is not specified or set to true",
-              content: "a default divider icon (IconChevronRight) is used between breadcrumb items"
-            },
-            {
-              label: " Customization options ",
-              content: "include customeIconDivider for replacing the default divider icon and customeClass for applying custom CSS classes, especially for the active breadcrumb item."
-            },
-            {
-              label: "ActiveItem prop",
-              content: "can be used to specify the index of the currently active breadcrumb item, which is highlighted based on the current URL or activeItem value."
-            }
-          ]}
-        />
-      </div>
+      caption: (
+        <p>
+          The Breadcrumb component defaults to using icon dividers (Chevron Right), with an active item determined by the current URL path or the specified activeItem prop. It renders the items as links using the Button component.
+        </p>
+      ),
+    },
+    {
+      title: "Variant",
+      caption: (
+        <p>
+          The list of variants available for the breadcrumb component can be seen{" "}
+          <Button label="Here" customeElement={"link"} to="/docs/pre-requisite" />.
+        </p>
+      ),
+    },
+    {
+      title: "Dependencies:",
+      caption: (
+        <p>
+          The Breadcrumb component relies on several dependencies and utility functions imported from external sources (
+          <span className="italic">@assets/icons</span>,{" "}
+          <span className="italic">@lib/utils/helper</span>,{" "}
+          <span className="italic">class-variance-authority</span>,{" "}
+          <span className="italic">react</span>,{" "}
+          <span className="italic">Button</span>
+          ). Ensure these dependencies are properly installed and imported for the component to function correctly.
+        </p>
+      ),
     },
   ];
 
