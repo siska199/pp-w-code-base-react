@@ -1,12 +1,11 @@
 
 import CardIntroComponent from "@components/cards/CardIntroComponent";
-import EmptyData from "@components/ui/EmptyData";
 
 const CardIntroCard = () => {
 
   const listExample = [
     {
-      component:  <EmptyData/>
+      component:  <>Siska</>
     },
 
   ]
