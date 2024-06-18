@@ -203,12 +203,6 @@ const listMenuSidebar: TMenuItem[] = [
         parentId: '1-IN11'
     },
     {
-        id: '1-L12',
-        name: 'Link',
-        url: '/docs/components/link',
-        parentId: '0-C0'
-    },
-    {
         id: '1-L13',
         name: 'List',
         url: '/docs/components/list',
