@@ -28,7 +28,7 @@ const Image = (props: TProps) => {
 
     return (
         <div className={cn({
-            "relative group w-full h-full overflow-hidden": true,
+            "relative group w-full h-full bg-gray-100 overflow-hidden": true,
             [className || '']: className,
             [customeClassName?.container || ""]: customeClassName?.container
         })}>
