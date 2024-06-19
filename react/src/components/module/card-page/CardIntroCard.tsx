@@ -151,6 +151,7 @@ const CardIntroCard = () => {
       title: "",
       component: listPropsForEachVariant?.map((data, i) => <CardVariantComp
         key={i}
+        className="w-full"
         title={data?.title}
         withBorder={false}
         Component={<Card {...data?.props}
