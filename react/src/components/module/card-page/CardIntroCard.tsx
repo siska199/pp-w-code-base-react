@@ -164,7 +164,7 @@ const CardIntroCard = () => {
   return (
     <CardIntroComponent
       title={'Card'}
-      subTitle="Description of Card."
+      subTitle="A card component in web development typically refers to a modular UI element used to display specific content in a structured and visually appealing manner. Cards are versatile and commonly used in various contexts across websites and applications. "
       listExample={listExample}
       displayCodeBase={displayCodeBase}
     />
