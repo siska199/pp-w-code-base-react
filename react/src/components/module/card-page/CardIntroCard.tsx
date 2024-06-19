@@ -42,6 +42,17 @@ const CardIntroCard = () => {
       }
     },
     {
+      title: "Centered body content",
+      props: {
+        variant: "centered-body",
+        body: {
+          title: "Card Title",
+          subtitle: "CARD SUBTITLE",
+          content: <p>Lorem ipsum dolor sit djfoshifhuehfiudiv cdusiuic nihil ipsum dolore? Error!</p>
+        }
+      }
+    },
+    {
       title: "Image",
       props: {
         header: {
@@ -107,8 +118,8 @@ const CardIntroCard = () => {
     {
       title: "Horizontal",
       props: {
-        layout:"horizontal",
-        header : {
+        layout: "horizontal",
+        header: {
           image: dummyImage[8],
         },
         body: {

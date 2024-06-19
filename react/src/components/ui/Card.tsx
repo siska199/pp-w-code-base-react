@@ -66,20 +66,20 @@ const CardFill = (props: TPropsCard) => {
         )}
 
         {/* BODY */}
-        {body && <div className="p-4 flex flex-col gap-3">
+        {body && <div className="p-4 flex flex-col gap-3 body">
             {body.image && <Image src={body.image} className={`${customeClass.body?.image} h-[15rem]`} />}
             {(body.title || body.subtitle) && (
                 <div className="flex flex-col gap-2">
                     {body.title && (
-                        <div className={cn("font-bold p-0 text-black text-body-large leading-none", customeClass.body?.title)}>
+                        <div className={cn("body-title font-bold p-0 text-black text-body-large leading-none", customeClass.body?.title)}>
                             {body.title}
                         </div>
                     )}
-                    {body.subtitle && <p className={cn("font-medium leading-none", customeClass.body?.subtitle)}>{body.subtitle}</p>}
+                    {body.subtitle && <p className={cn(" body-subtitle font-medium leading-none", customeClass.body?.subtitle)}>{body.subtitle}</p>}
                 </div>
             )}
             {body.content && (
-                <div className={cn("body", customeClass.body?.content)}>
+                <div className={cn("body-content", customeClass.body?.content)}>
                     {body.content}
                 </div>
             )}
@@ -106,7 +106,7 @@ const cardVariants = cva(
             variant: {
                 "overlay": "!bg-transparent !border-none ",
                 "top-bordered": "border-t-[4px] border-t-primary",
-                "centered-body": '[&>div]:my-auto [&_.body]:flex [&_.body]:flex-col [&_.body]:items-center [&_.body]:justify-center'
+                "centered-body": '[&>div]:my-auto [&_.body-title]:text-center  [&_.body-subtitle]:text-center [&_.body-content_p]:text-center [&_.body-content]:text-center [&_.body-content_div]:text-center  [&_.body]:flex [&_.body]:flex-col [&_.body]:items-center [&_.body]:justify-center'
             },
             fit: {
                 true: "w-fit",
