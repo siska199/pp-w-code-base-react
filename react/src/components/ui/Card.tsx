@@ -1,8 +1,9 @@
-import React from "react";
+import { IconChevronRight } from "@assets/icons";
+import Button from "@components/ui/Button";
 import Image from "@components/ui/Image";
 import { cn } from "@lib/utils/helper";
 import { VariantProps, cva } from "class-variance-authority";
-import { HTMLProps } from "react";
+import React, { HTMLProps } from "react";
 
 export interface TPropsCard extends Omit<Partial<HTMLProps<HTMLDivElement>>, "title" | "children" | "content">, VariantProps<typeof cardVariants> {
     layout?: "vertical" | "horizontal";
@@ -19,7 +20,10 @@ export interface TPropsCard extends Omit<Partial<HTMLProps<HTMLDivElement>>, "ti
         content?: React.ReactNode | string;
     };
     footer?: React.ReactNode | string;
-
+    link?: {
+        label?: string;
+        to?: string;
+    };
     customeClass?: {
         imageOverlay?: string;
         container?: string;
@@ -36,6 +40,7 @@ export interface TPropsCard extends Omit<Partial<HTMLProps<HTMLDivElement>>, "ti
         footer?: string;
     };
     fit?: boolean;
+
 }
 
 const Card: React.FC<TPropsCard> = (props) => {
@@ -54,6 +59,7 @@ const CardFill = (props: TPropsCard) => {
         variant,
         fit = true,
         className,
+        link,
         ...otherProps
     } = props
     return <div className={cn(cardVariants({ layout, variant, fit }), customeClass.container, className)} {...otherProps}>
@@ -83,6 +89,12 @@ const CardFill = (props: TPropsCard) => {
                     {body.content}
                 </div>
             )}
+            <div>
+                {
+                    link && <Button label={<div className="flex items-center">Card Link <IconChevronRight className="icon-primary w-[1rem] mt-[0.1rem]" /></div>}  customeElement="link" to={link?.to || ""} className="font-medium flex w-fit" />
+
+                }
+            </div>
         </div>}
 
         {/* FOOTER */}
@@ -104,8 +116,8 @@ const cardVariants = cva(
                 horizontal: "flex-row [&_.header]:min-h-full [&_.header]:min-w-[40%]"
             },
             variant: {
-                "overlay": "!bg-transparent !border-none ",
-                "top-bordered": "border-t-[4px] border-t-primary",
+                "overlay": "!bg-transparent !border-none [&_.body-subtitle]:text-white  [&_p]:text-white [&_div]:text-white",
+                "top-bordered": "border-t-[4px] border-t-primary  ",
                 "centered-body": '[&>div]:my-auto [&_.body-title]:text-center  [&_.body-subtitle]:text-center [&_.body-content_p]:text-center [&_.body-content]:text-center [&_.body-content_div]:text-center  [&_.body]:flex [&_.body]:flex-col [&_.body]:items-center [&_.body]:justify-center'
             },
             fit: {

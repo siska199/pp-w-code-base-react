@@ -16,7 +16,17 @@ const CardIntroCard = () => {
         }
       }
     },
-
+    {
+      title: "Top bordered",
+      props: {
+        variant: "top-bordered",
+        body: {
+          title: "Card Title",
+          subtitle: "CARD SUBTITLE",
+          content: <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam nostrum recusandae, veritatis corporis doloremque accusamus sunt totam sed officia possimus? Tempora excepturi error dolores autem incidunt nihil ipsum dolore? Error!</p>
+        }
+      }
+    },
     {
       title: "Heading",
       props: {
@@ -47,8 +57,10 @@ const CardIntroCard = () => {
         variant: "centered-body",
         body: {
           title: "Card Title",
-          subtitle: "CARD SUBTITLE",
           content: <p>Lorem ipsum dolor sit djfoshifhuehfiudiv cdusiuic nihil ipsum dolore? Error!</p>
+        },
+        customeClass: {
+          container: "min-h-[15rem]"
         }
       }
     },
@@ -83,7 +95,7 @@ const CardIntroCard = () => {
       }
     },
     {
-      title: "Button and Link",
+      title: "Link",
       props: {
         body: {
           title: "Card Title",
@@ -93,6 +105,9 @@ const CardIntroCard = () => {
         },
         customeClass: {
           container: "w-[20rem]"
+        },
+        link: {
+          label: 'Card link'
         }
       }
     },
@@ -104,13 +119,12 @@ const CardIntroCard = () => {
         body: {
           title: "Card Title",
           subtitle: "CARD SUBTITLE",
-          content: <p className="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam nostrum recusandae, veritatis corporis doloremque accusamus sunt totam sed officia possimus? Tempora excepturi error dolores autem incidunt nihil ipsum dolore? Error!</p>
+          content: <>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam nostrum recusandae, veritatis corporis doloremque accusamus sunt totam sed officia possimus? Tempora excepturi error dolores autem incidunt nihil ipsum dolore? Error!</>
         },
         customeClass: {
           container: "w-[20rem]",
           body: {
             title: "text-white",
-            subtitle: "text-white",
           }
         }
       },
