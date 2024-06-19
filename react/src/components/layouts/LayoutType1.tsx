@@ -66,24 +66,26 @@ const LayoutType1 = () => {
     }, [widthSidebar, widthRightSidebar, isLandingPage])
 
     return (
-        <main id="layout" className=" overflow-x-hidden relative bg-white h-screen min-h-screen w-full overflow-y-auto">
-            <Navbar />
-            <div className="flex relative overflow-x-hidden ">
-                <Sidebar isLandingPage={isLandingPage} idActiveMenu={idActiveMenu} />
-                <div
-                    className=" p-8 flex  transtion-all duration-10 overflow-x-auto"
-                    style={{
-                        marginLeft: isLandingPage ? 0 : leftPosition,
-                        marginRight: isLandingPage ? 0 : rightPosition,
-                        width: isLandingPage ? '100%' : `calc(100% - ${leftPosition + rightPosition}px)`,
-                    }}>
-                    <div className="w-full max-w-full flex flex-col gap-10 ">
-                        <Outlet />
+        <>        
+            <main id="layout" className=" overflow-x-hidden relative bg-white h-screen min-h-screen w-full overflow-y-auto">
+                <Navbar />
+                <div className="flex relative overflow-x-hidden ">
+                    <Sidebar isLandingPage={isLandingPage} idActiveMenu={idActiveMenu} />
+                    <div
+                        className=" p-8 flex  transtion-all duration-10 overflow-x-auto"
+                        style={{
+                            marginLeft: isLandingPage ? 0 : leftPosition,
+                            marginRight: isLandingPage ? 0 : rightPosition,
+                            width: isLandingPage ? '100%' : `calc(100% - ${leftPosition + rightPosition}px)`,
+                        }}>
+                        <div className="w-full max-w-full flex flex-col gap-10 ">
+                            <Outlet />
+                        </div>
+                        {!isLandingPage && <RightSidebar />}
                     </div>
-                    {!isLandingPage && <RightSidebar />}
                 </div>
-            </div>
-        </main>
+            </main>
+        </>
     )
 }
 

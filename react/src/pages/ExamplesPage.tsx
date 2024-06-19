@@ -1,6 +1,9 @@
+import ExampleModal from '@/components/examples/ExampleModal';
 const ExamplesPage = () => {
   return (
-    <div>ExamplesPage</div>
+    <div>
+      <ExampleModal />
+    </div>
   );
 };
 
