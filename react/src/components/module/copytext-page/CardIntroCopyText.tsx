@@ -11,9 +11,7 @@ const CardIntroCopyText = () => {
         <CardVariantComp
           title={"Default"}
           Component={<CopyText text="Siska Apriana Rifianti the author of codebase199" />}
-          customeClass={{
-            container: "border-none [&>p]:min-w-[7rem] [&>p]:max-w-[7rem] !flex-row-reverse !p-0 !justif-start"
-          }}
+          withBorder={false}
         />
       </div>
     },

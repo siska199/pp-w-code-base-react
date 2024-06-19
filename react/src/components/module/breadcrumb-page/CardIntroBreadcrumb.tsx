@@ -13,26 +13,21 @@ const CardIntroBreadcrumb = () => {
         <CardVariantComp
           title={"Default"}
           Component={<Breadcrumb items={listMenuNavbar} activeItem={0} />}
-          customeClass={{
-            container: "border-none [&>p]:min-w-[7rem] !flex-row-reverse !p-0 !justif-start"
-          }}
+          withBorder={false}
 
         />
 
         <CardVariantComp
           title={"No Divider"}
           Component={<Breadcrumb items={listMenuNavbar} withIconDivider={false} activeItem={1} />}
-          customeClass={{
-            container: "border-none [&>p]:min-w-[7rem] !flex-row-reverse  !p-0 !justify-end"
-          }}
+          withBorder={false}
         />
 
         <CardVariantComp
           title={"Custome Icon Divider"}
           Component={<Breadcrumb items={listMenuNavbar} customeIconDivider={"/"} activeItem={2} />}
-          customeClass={{
-            container: "border-none [&>p]:min-w-[7rem] !flex-row-reverse  !p-0 !justify-end"
-          }}
+          withBorder={false}
+
         />
       </div>
     }

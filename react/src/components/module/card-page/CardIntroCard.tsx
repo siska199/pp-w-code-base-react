@@ -1,11 +1,19 @@
 
 import CardIntroComponent from "@components/cards/CardIntroComponent";
+import CardVariantComp from "@components/cards/CardVariantComp";
+import Card from "@components/ui/Card";
 
 const CardIntroCard = () => {
 
   const listExample = [
     {
-      component:  <>Siska</>
+      component: <CardVariantComp
+        title={"Access image from url "}
+        withBorder={false}
+        Component={<Card
+        
+        />}
+      />
     },
 
   ]
