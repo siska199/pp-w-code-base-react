@@ -22,7 +22,7 @@ const CardIntroAlert = () => {
     }
     const listExample = [
         {
-            title: "Test",
+            title: "Type",
             component: <CardVariousCompVariant<typeof variantsAlert.variant, "success" | "warning" | "error">
                 variant={variantsAlert.variant}
                 groups={["success", "warning", "error"]}
