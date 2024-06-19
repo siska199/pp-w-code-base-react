@@ -1,4 +1,4 @@
-export default [
+const dummyImage = [
     "https://i.pinimg.com/736x/22/54/03/22540381a0bb28c0823dcc0c34a0ad72.jpg",
     "https://i.pinimg.com/564x/06/b6/ef/06b6ef2a183ee70bfedba85bb24931ea.jpg",
     "https://i.pinimg.com/736x/39/f0/6c/39f06cf316484b2f585c0ba1bfee8039.jpg",
@@ -12,3 +12,4 @@ export default [
     "https://i.pinimg.com/736x/57/bd/0c/57bd0ca1e3f1ae9002fdbd360fd66e0e.jpg",
     "https://i.pinimg.com/736x/7f/55/23/7f55239c73e486e08f8779ed408d4abd.jpg"
 ]
+export default dummyImage
