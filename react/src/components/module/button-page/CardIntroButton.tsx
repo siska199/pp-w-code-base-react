@@ -1,5 +1,5 @@
 
-import ShowVariousCompVariant from "@components/ShowVariousCompVariant";
+import CardVariousCompVariant from "@components/CardVariousCompVariant";
 import CardIntroComponent from "@components/cards/CardIntroComponent";
 import Button from "@components/ui/Button";
 import { variantButton } from "@lib/utils/variants/variant-color";
@@ -8,7 +8,7 @@ const CardIntroButton = () => {
   const listExample = [
     {
       title: "Color",
-      component: <ShowVariousCompVariant<typeof variantButton>
+      component: <CardVariousCompVariant<typeof variantButton>
         variant={variantButton}
         groups={["solid", "outline", "soft", "softborder"]}
         Component={(variant) => <Button variant={variant} label={'Siska'} />}

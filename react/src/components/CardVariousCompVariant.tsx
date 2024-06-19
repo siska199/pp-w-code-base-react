@@ -13,7 +13,7 @@ interface TProps<TV, TG = string> {
     useLogicSplitGroupKey?: boolean;
 }
 
-const ShowVariousCompVariant = <TV extends object, TG extends string = string>(props: TProps<TV, TG>) => {
+const CardVariousCompVariant = <TV extends object, TG extends string = string>(props: TProps<TV, TG>) => {
     const { variant, withBorder = true, useLogicSplitGroupKey = true, groups, Component, customeClass } = props
 
 
@@ -46,4 +46,4 @@ const ShowVariousCompVariant = <TV extends object, TG extends string = string>(p
     );
 };
 
-export default ShowVariousCompVariant;
+export default CardVariousCompVariant;

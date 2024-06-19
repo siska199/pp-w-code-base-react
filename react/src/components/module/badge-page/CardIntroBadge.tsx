@@ -1,5 +1,5 @@
 
-import ShowVariousCompVariant from "@components/ShowVariousCompVariant";
+import CardVariousCompVariant from "@components/CardVariousCompVariant";
 import CardIntroComponent from "@components/cards/CardIntroComponent";
 import Badge from "@components/ui/Badge";
 import { variantBadge } from "@lib/utils/variants/variant-color";
@@ -8,7 +8,7 @@ const CardIntroBadge = () => {
   const listExample = [
     {
       title: "Color",
-      component: <ShowVariousCompVariant<typeof variantBadge>
+      component: <CardVariousCompVariant<typeof variantBadge>
         variant={variantBadge}
         groups={["solid", "outline", "soft", "softborder"]}
         Component={(variant) => <Badge label={"Siska"} variant={variant} />}

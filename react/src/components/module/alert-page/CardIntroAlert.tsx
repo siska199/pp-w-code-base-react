@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 
-import ShowVariousCompVariant from "@components/ShowVariousCompVariant";
+import CardVariousCompVariant from "@components/CardVariousCompVariant";
 import CardIntroComponent from "@components/cards/CardIntroComponent";
 import Alert from "@components/ui/Alert";
 import Button from "@components/ui/Button";
@@ -23,7 +23,7 @@ const CardIntroAlert = () => {
     const listExample = [
         {
             title: "Test",
-            component: <ShowVariousCompVariant<typeof variantsAlert.variant, "success" | "warning" | "error">
+            component: <CardVariousCompVariant<typeof variantsAlert.variant, "success" | "warning" | "error">
                 variant={variantsAlert.variant}
                 groups={["success", "warning", "error"]}
                 Component={(variant, group) => <Alert
@@ -40,7 +40,7 @@ const CardIntroAlert = () => {
         {
             title: 'With Icon',
             component:
-                <ShowVariousCompVariant< typeof typeAlert, "success" | "warning" | "error" | "notification" | "info">
+                <CardVariousCompVariant< typeof typeAlert, "success" | "warning" | "error" | "notification" | "info">
                     variant={typeAlert}
                     groups={["success", "warning", "error", "notification", "info"]}
                     Component={(type) => <Alert

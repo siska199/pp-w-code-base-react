@@ -1,5 +1,5 @@
 
-import ShowVariousCompVariant from "@components/ShowVariousCompVariant";
+import CardVariousCompVariant from "@components/CardVariousCompVariant";
 import CardIntroComponent from "@components/cards/CardIntroComponent";
 import HelperMessage from "@components/ui/HelperMessage";
 
@@ -14,7 +14,7 @@ const CardIntroHelperMessage = () => {
   const listExample = [
     {
       title: "Color",
-      component: <ShowVariousCompVariant<typeof variant>
+      component: <CardVariousCompVariant<typeof variant>
         variant={variant}
         groups={["error", "warning", "success",]}
         Component={(variant) => <HelperMessage variant={variant} message={"Siska Apriana Rifianti"} />}
