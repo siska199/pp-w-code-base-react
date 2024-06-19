@@ -105,7 +105,7 @@ const Alert = (props: TProps) => {
 }
 
 
-const generalStyle = 'flex gap-3 px-3 py-2 border w-fit rounded-md'
+const generalStyle = 'flex flex-shrink gap-3 px-3 py-2 border w-fit rounded-md'
 
 
 

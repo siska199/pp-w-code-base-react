@@ -50,11 +50,7 @@ const CardIntroAlert = () => {
                         show={true}
                         withIcon={true}
                     />}
-                    customeClass={{
-                        container: "!gap-2",
-                        containerGroupVariant: "[&>p]:hidden",
-                        containerCardVariant: "border-none !flex-row-reverse [&>p]:min-w-[6rem] !p-0"
-                    }}
+                    withBorder={false}
                 />
         },
         {

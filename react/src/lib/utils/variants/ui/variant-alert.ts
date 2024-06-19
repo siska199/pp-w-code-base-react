@@ -20,8 +20,8 @@ const variantsAlert = {
 
     },
     isFixed: {
-        "true": "fixed z-[99] !max-w-[17rem] !w-[17rem]",
-        "false": "static  w-[23rem] max-w-[23rem] "
+        "true": "fixed z-[99] ",
+        "false": "static  "
     }
 }
 
