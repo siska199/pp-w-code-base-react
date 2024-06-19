@@ -36,6 +36,18 @@ const CardIntroCarousel = () => {
               key={5}
               src={"https://i.pinimg.com/564x/7d/97/6d/7d976db9ea897e6b695ac09077abf797.jpg"}
             />,
+            <Image
+              key={6}
+              src={"https://i.pinimg.com/564x/e1/97/01/e19701631bb1010fceefd0e3267184a7.jpg"}
+            />,
+            <Image
+              key={7}
+              src={"https://i.pinimg.com/564x/b8/e6/94/b8e6945ce1bc58497acb3a1df6ae0945.jpg"}
+            />,
+            <Image
+              key={7}
+              src={"https://i.pinimg.com/564x/6a/4f/a7/6a4fa7117730020db81687221accc2f1.jpg"}
+            />,
           ]}
         />
       </div>
