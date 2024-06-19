@@ -5,22 +5,34 @@ import AccordionPage from '@pages/docs/components/AccordionPage';
 import AlertPage from '@pages/docs/components/AlertPage';
 import AvatarPage from '@pages/docs/components/AvatarPage';
 import BadgePage from '@pages/docs/components/BadgePage';
-import ButtonPage from '@pages/docs/components/ButtonPage';
-import LibraryPage from '@pages/docs/prerequisite/LibraryPage';
-import TailwindConfigPage from '@pages/docs/prerequisite/TailwindConfigPage';
 import BreadcrumbPage from '@pages/docs/components/BreadcrumbPage';
-import CSSFilePage from '@pages/docs/prerequisite/CSSFilePage';
-import IconPage from '@pages/docs/prerequisite/IconPage';
-import HelperFunctionPage from '@pages/docs/prerequisite/HelperFunctionPage';
-import VariantPage from '@pages/docs/prerequisite/VariantPage';
-import HookPage from '@pages/docs/prerequisite/HookPage';
+import ButtonPage from '@pages/docs/components/ButtonPage';
+import CardPage from '@pages/docs/components/CardPage';
+import CarouselPage from '@pages/docs/components/CarouselPage';
 import CopyTextPage from '@pages/docs/components/CopyTextPage';
 import DropdownPage from '@pages/docs/components/DropdownPage';
 import HelperMessagePage from '@pages/docs/components/HelperMessagePage';
 import ImagePage from '@pages/docs/components/ImagePage';
-import CardPage from '@pages/docs/components/CardPage';
+import InputBasePage from '@pages/docs/components/InputBasePage';
+import InputCurrencyPage from '@pages/docs/components/InputCurrencyPage';
+import InputNPWPPage from '@pages/docs/components/InputNPWPPage';
+import OTPPage from '@pages/docs/components/OTPPage';
 import SkeletonPage from '@pages/docs/components/SkeletonPage';
-import CarouselPage from '@pages/docs/components/CarouselPage';
+import CSSFilePage from '@pages/docs/prerequisite/CSSFilePage';
+import HelperFunctionPage from '@pages/docs/prerequisite/HelperFunctionPage';
+import HookPage from '@pages/docs/prerequisite/HookPage';
+import IconPage from '@pages/docs/prerequisite/IconPage';
+import LibraryPage from '@pages/docs/prerequisite/LibraryPage';
+import TailwindConfigPage from '@pages/docs/prerequisite/TailwindConfigPage';
+import VariantPage from '@pages/docs/prerequisite/VariantPage';
+import InputPercentagePage from '@pages/docs/components/InputPercentagePage';
+import InputPhoneNumberPage from '@pages/docs/components/InputPhoneNumberPage';
+import InputDatePage from '@pages/docs/components/InputDatePage';
+import InputCheckboxPage from '@pages/docs/components/InputCheckboxPage';
+import InputMultipleCheckboxPage from '@pages/docs/components/InputMultipleCheckboxPage';
+import InputRadioButtonPage from '@pages/docs/components/InputRadioButtonPage';
+import InputSelectPage from '@pages/docs/components/InputSelectPage';
+import InputTextAreaPage from '@pages/docs/components/InputTextAreaPage';
 import { createBrowserRouter } from "react-router-dom";
 
 const docRouter = {
@@ -185,23 +197,124 @@ const docRouter = {
                         id: '1-C19'
                     }
                 },
-            
+
+                {
+                    path: 'skeleton',
+                    element: <SkeletonPage />,
+                    handle: {
+                        id: '1-S20'
+                    }
+                },
+
+                {
+                    path: 'carousel',
+                    element: <CarouselPage />,
+                    handle: {
+                        id: '1-C21'
+                    }
+                },
+                {
+                    path: 'input',
+                    handle: {
+                        id: '1-IN11'
+                    },
+                    children: [
+                        {
+                            path: 'base',
+                            element: <InputBasePage />,
+                            handle: {
+                                id: '2-B0'
+                            }
+                        },
+                        {
+                            path: 'currency',
+                            element: <InputCurrencyPage />,
+                            handle: {
+                                id: '2-CU3'
+                            }
+                        },
+                        {
+                            path: 'npwp',
+                            element: <InputNPWPPage />,
+                            handle: {
+                                id: '2-N5'
+                            }
+                        },
+
+                        {
+                            path: 'otp',
+                            element: <OTPPage />,
+                            handle: {
+                                id: '2-O6'
+                            }
+                        },
+                        {
+                            path: 'percentage',
+                            element: <InputPercentagePage />,
+                            handle: {
+                                id: '2-P7'
+                            }
+                        },
+
+                        {
+                            path: 'phone-number',
+                            element: <InputPhoneNumberPage />,
+                            handle: {
+                                id: '2-PN8'
+                            }
+                        },
+
+                        {
+                            path: 'date',
+                            element: <InputDatePage />,
+                            handle: {
+                                id: '2-D4'
+                            }
+                        },
+                    
               {
-                  path: 'skeleton',
-                  element: <SkeletonPage />,
+                  path: 'inputcheckbox',
+                  element: <InputCheckboxPage />,
                   handle: {
-                      id: '1-S20'
+                      id: '1-INPUTCHECKBOX'
                   }
               },
 
               {
-                  path: 'carousel',
-                  element: <CarouselPage />,
+                  path: 'inputmultiplecheckbox',
+                  element: <InputMultipleCheckboxPage />,
                   handle: {
-                      id: '1-C21'
+                      id: '1-INPUTMULTIPLECHECKBOX'
+                  }
+              },
+
+              {
+                  path: 'inputradiobutton',
+                  element: <InputRadioButtonPage />,
+                  handle: {
+                      id: '1-INPUTRADIOBUTTON'
+                  }
+              },
+
+              {
+                  path: 'inputselect',
+                  element: <InputSelectPage />,
+                  handle: {
+                      id: '1-INPUTSELECT'
+                  }
+              },
+
+              {
+                  path: 'inputtextarea',
+                  element: <InputTextAreaPage />,
+                  handle: {
+                      id: '1-INPUTTEXTAREA'
                   }
               },
 ]
+                },
+
+            ]
         },
     ]
 }

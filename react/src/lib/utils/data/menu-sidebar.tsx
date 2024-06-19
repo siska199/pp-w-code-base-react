@@ -141,36 +141,21 @@ const listMenuSidebar: TMenuItem[] = [
         url: '/docs/components/input/base',
         parentId: '1-IN11'
     },
-    {
-        id: '2-C1',
-        name: 'Checkbox',
-        url: '/docs/components/input/checkbox',
-        parentId: '1-IN11'
-    },
+
     {
         id: '1-C21',
         name: 'Carousel',
         url: '/docs/components/carousel',
         parentId: '0-C0'
     },
-    {
-        id: '2-MC2',
-        name: 'Multiple Checkbox',
-        url: '/docs/components/input/multiple-checkbox',
-        parentId: '1-IN11'
-    },
+
     {
         id: '2-CU3',
         name: 'Currency',
         url: '/docs/components/input/currency',
         parentId: '1-IN11'
     },
-    {
-        id: '2-D4',
-        name: 'Date',
-        url: '/docs/components/input/date',
-        parentId: '1-IN11'
-    },
+
     {
         id: '2-N5',
         name: 'NPWP',
@@ -196,11 +181,31 @@ const listMenuSidebar: TMenuItem[] = [
         parentId: '1-IN11'
     },
     {
+        id: '2-D4',
+        name: 'Date',
+        url: '/docs/components/input/date',
+        parentId: '1-IN11'
+    },
+    {
+        id: '2-C1',
+        name: 'Checkbox',
+        url: '/docs/components/input/checkbox',
+        parentId: '1-IN11'
+    },
+    {
+        id: '2-MC2',
+        name: 'Multiple Checkbox',
+        url: '/docs/components/input/multiple-checkbox',
+        parentId: '1-IN11'
+    },
+
+    {
         id: '2-RB9',
         name: 'Radio Button',
         url: '/docs/components/input/radio-button',
         parentId: '1-IN11'
     },
+
     {
         id: '2-S10',
         name: 'Select',
