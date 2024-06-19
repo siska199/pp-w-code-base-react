@@ -1,6 +1,7 @@
 import Navbar from "@components/Navbar"
 import RightSidebar from "@components/RightSidebar"
 import Sidebar from "@components/Sidebar"
+import ExampleModal from "@components/examples/ExampleModal"
 import { useEffect, useState } from "react"
 import { Outlet, useMatches } from "react-router-dom"
 
@@ -66,8 +67,8 @@ const LayoutType1 = () => {
     }, [widthSidebar, widthRightSidebar, isLandingPage])
 
     return (
-        <>        
-            <main id="layout" className=" overflow-x-hidden relative bg-white h-screen min-h-screen w-full overflow-y-auto">
+        <>
+            {/* <main id="layout" className=" overflow-x-hidden relative bg-white h-screen min-h-screen w-full overflow-y-auto">
                 <Navbar />
                 <div className="flex relative overflow-x-hidden ">
                     <Sidebar isLandingPage={isLandingPage} idActiveMenu={idActiveMenu} />
@@ -84,7 +85,9 @@ const LayoutType1 = () => {
                         {!isLandingPage && <RightSidebar />}
                     </div>
                 </div>
-            </main>
+            </main> */}
+            <ExampleModal />
+
         </>
     )
 }
