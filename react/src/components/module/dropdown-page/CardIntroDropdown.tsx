@@ -133,9 +133,9 @@ const CardIntroDropdown = () => {
             label={"Action"}
             options={listOption}
             onClick={handleOnClick}
-            header={<div className="flex gap-2 items-center ">
-              <Image className="rounded-full w-[2rem] h-[2rem] border border-gray-300" src={"https://i.pinimg.com/564x/d6/b0/b6/d6b0b67ba61773c5f163111ede88740a.jpg"} />
-              <div className="flex flex-col">
+            header={<div className="flex gap-2 items-center w-full ">
+              <Image className=" rounded-full w-[2rem] h-[2rem]  border-gray-300" src={"https://i.pinimg.com/564x/d6/b0/b6/d6b0b67ba61773c5f163111ede88740a.jpg"} />
+              <div className="flex flex-col flex-grow ">
                 <p className="">Sign in as</p>
                 <p className="text-black">James site</p>
               </div>
