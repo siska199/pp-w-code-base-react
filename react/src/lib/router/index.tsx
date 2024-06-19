@@ -317,10 +317,6 @@ const docRouter = {
 
             ]
         },
-        {
-            path: 'examples',
-            element: <ExamplesPage />
-        }
     ]
 }
 
@@ -337,7 +333,14 @@ const router = createBrowserRouter([
                     isLandingPage: true
                 },
             },
-            docRouter
+            docRouter,
+            {
+                path: 'examples',
+                element: <ExamplesPage />,
+                handle: {
+                    isLandingPage: true
+                },
+            }
         ]
     },
 
