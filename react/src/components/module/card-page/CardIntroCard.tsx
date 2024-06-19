@@ -85,6 +85,41 @@ const CardIntroCard = () => {
         }
       }
     },
+    {
+      title: "Overlay",
+      props: {
+        imageOverlay: dummyImage[0],
+        variant: "overlay",
+        body: {
+          title: "Card Title",
+          subtitle: "CARD SUBTITLE",
+          content: <p className="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam nostrum recusandae, veritatis corporis doloremque accusamus sunt totam sed officia possimus? Tempora excepturi error dolores autem incidunt nihil ipsum dolore? Error!</p>
+        },
+        customeClass: {
+          container: "w-[20rem]",
+          body: {
+            title: "text-white",
+            subtitle: "text-white",
+          }
+        }
+      },
+    },
+    {
+      title: "Horizontal",
+      props: {
+        layout:"horizontal",
+        header : {
+          image: dummyImage[8],
+        },
+        body: {
+          title: "Card Title",
+          subtitle: "CARD SUBTITLE",
+          content: <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam nostrum recusandae, veritatis corporis doloremque accusamus sunt totam sed officia possimus? Tempora excepturi error dolores autem incidunt nihil ipsum dolore? Error!</p>
+        },
+        customeClass: {
+        }
+      }
+    },
   ]
   const listExample = [
     {
