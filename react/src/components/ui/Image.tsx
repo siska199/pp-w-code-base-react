@@ -37,7 +37,7 @@ const Image = (props: TProps) => {
                 alt={alt || src.replace('-', ' ')}
                 onLoad={handleLoad}
                 className={cn({
-                    'w-full h-full object cover': true,
+                    'w-full h-full object-cover': true,
                     'clear-effect': !isLoading,
                     'blur-effect': isLoading,
 
