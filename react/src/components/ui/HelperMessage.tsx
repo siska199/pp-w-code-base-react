@@ -12,7 +12,7 @@ const HelperMessage = (props:TProps) => {
   return (
     message ? <p className={clsx({
       [className||""]:className,
-      "text-body-small":true,
+      "text-body-small font-normal":true,
       "text-error" : variant==="error",
       "text-warning" : variant==="warning",
       "text-success" : variant==="success",

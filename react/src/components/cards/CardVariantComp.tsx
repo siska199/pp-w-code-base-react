@@ -20,10 +20,10 @@ const CardVariantComp = (props: TProps) => {
             [`${customeClass?.container}`]: customeClass?.container,
             ' border flex-col  p-2 justify-center items-center ': withBorder,
             [className || '']: className,
-            '[&>p]:min-w-[7rem] [&>p]:max-w-[7rem] justify-end [&>p]:!text-left [&>p]:font-semibold gap-2 md:gap-8   flex-col-reverse md:flex-row-reverse  md:flex-nowrap md:items-center ': !withBorder
+            '[&>p]:min-w-[7rem] [&>p]:max-w-[7rem] justify-end [&>p]:!text-left [&_.title]:font-semibold gap-2 md:gap-8   flex-col-reverse md:flex-row-reverse  md:flex-nowrap md:items-center ': !withBorder
         })}>
             {Component}
-            <p className="text-body-tiny ">{title}</p>
+            <p className="text-body-tiny title">{title}</p>
         </div>
     )
 }
