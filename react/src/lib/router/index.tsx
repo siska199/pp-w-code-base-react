@@ -1,4 +1,5 @@
 import LayoutType1 from '@components/layouts/LayoutType1';
+import ExamplesPage from '@pages/ExamplesPage';
 import LandingPage from '@pages/LandingPage';
 import IntroductionPage from '@pages/docs/IntroductionPage';
 import AccordionPage from '@pages/docs/components/AccordionPage';
@@ -14,8 +15,16 @@ import DropdownPage from '@pages/docs/components/DropdownPage';
 import HelperMessagePage from '@pages/docs/components/HelperMessagePage';
 import ImagePage from '@pages/docs/components/ImagePage';
 import InputBasePage from '@pages/docs/components/InputBasePage';
+import InputCheckboxPage from '@pages/docs/components/InputCheckboxPage';
 import InputCurrencyPage from '@pages/docs/components/InputCurrencyPage';
+import InputDatePage from '@pages/docs/components/InputDatePage';
+import InputMultipleCheckboxPage from '@pages/docs/components/InputMultipleCheckboxPage';
 import InputNPWPPage from '@pages/docs/components/InputNPWPPage';
+import InputPercentagePage from '@pages/docs/components/InputPercentagePage';
+import InputPhoneNumberPage from '@pages/docs/components/InputPhoneNumberPage';
+import InputRadioButtonPage from '@pages/docs/components/InputRadioButtonPage';
+import InputSelectPage from '@pages/docs/components/InputSelectPage';
+import InputTextAreaPage from '@pages/docs/components/InputTextAreaPage';
 import OTPPage from '@pages/docs/components/OTPPage';
 import SkeletonPage from '@pages/docs/components/SkeletonPage';
 import CSSFilePage from '@pages/docs/prerequisite/CSSFilePage';
@@ -25,14 +34,6 @@ import IconPage from '@pages/docs/prerequisite/IconPage';
 import LibraryPage from '@pages/docs/prerequisite/LibraryPage';
 import TailwindConfigPage from '@pages/docs/prerequisite/TailwindConfigPage';
 import VariantPage from '@pages/docs/prerequisite/VariantPage';
-import InputPercentagePage from '@pages/docs/components/InputPercentagePage';
-import InputPhoneNumberPage from '@pages/docs/components/InputPhoneNumberPage';
-import InputDatePage from '@pages/docs/components/InputDatePage';
-import InputCheckboxPage from '@pages/docs/components/InputCheckboxPage';
-import InputMultipleCheckboxPage from '@pages/docs/components/InputMultipleCheckboxPage';
-import InputRadioButtonPage from '@pages/docs/components/InputRadioButtonPage';
-import InputSelectPage from '@pages/docs/components/InputSelectPage';
-import InputTextAreaPage from '@pages/docs/components/InputTextAreaPage';
 import { createBrowserRouter } from "react-router-dom";
 
 const docRouter = {
@@ -271,51 +272,55 @@ const docRouter = {
                                 id: '2-D4'
                             }
                         },
-                    
-              {
-                  path: 'inputcheckbox',
-                  element: <InputCheckboxPage />,
-                  handle: {
-                      id: '1-INPUTCHECKBOX'
-                  }
-              },
 
-              {
-                  path: 'inputmultiplecheckbox',
-                  element: <InputMultipleCheckboxPage />,
-                  handle: {
-                      id: '1-INPUTMULTIPLECHECKBOX'
-                  }
-              },
+                        {
+                            path: 'checkbox',
+                            element: <InputCheckboxPage />,
+                            handle: {
+                                id: '2-C1'
+                            }
+                        },
 
-              {
-                  path: 'inputradiobutton',
-                  element: <InputRadioButtonPage />,
-                  handle: {
-                      id: '1-INPUTRADIOBUTTON'
-                  }
-              },
+                        {
+                            path: 'multiple-checkbox',
+                            element: <InputMultipleCheckboxPage />,
+                            handle: {
+                                id: '2-MC2'
+                            }
+                        },
 
-              {
-                  path: 'inputselect',
-                  element: <InputSelectPage />,
-                  handle: {
-                      id: '1-INPUTSELECT'
-                  }
-              },
+                        {
+                            path: 'radio-button',
+                            element: <InputRadioButtonPage />,
+                            handle: {
+                                id: '2-RB9'
+                            }
+                        },
 
-              {
-                  path: 'inputtextarea',
-                  element: <InputTextAreaPage />,
-                  handle: {
-                      id: '1-INPUTTEXTAREA'
-                  }
-              },
-]
+                        {
+                            path: 'select',
+                            element: <InputSelectPage />,
+                            handle: {
+                                id: '2-S10'
+                            }
+                        },
+
+                        {
+                            path: 'text-area',
+                            element: <InputTextAreaPage />,
+                            handle: {
+                                id: '2-TA11'
+                            }
+                        },
+                    ]
                 },
 
             ]
         },
+        {
+            path: 'examples',
+            element: <ExamplesPage />
+        }
     ]
 }
 
