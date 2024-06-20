@@ -1,7 +1,6 @@
 import Navbar from "@components/Navbar"
 import RightSidebar from "@components/RightSidebar"
 import Sidebar from "@components/Sidebar"
-import ExampleModal from "@components/examples/ExampleModal"
 import { useEffect, useState } from "react"
 import { Outlet, useMatches } from "react-router-dom"
 
@@ -67,28 +66,24 @@ const LayoutType1 = () => {
     }, [widthSidebar, widthRightSidebar, isLandingPage])
 
     return (
-        <>
-            {/* <main id="layout" className=" overflow-x-hidden relative bg-white h-screen min-h-screen w-full overflow-y-auto">
-                <Navbar />
-                <div className="flex relative overflow-x-hidden ">
-                    <Sidebar isLandingPage={isLandingPage} idActiveMenu={idActiveMenu} />
-                    <div
-                        className=" p-8 flex  transtion-all duration-10 overflow-x-auto"
-                        style={{
-                            marginLeft: isLandingPage ? 0 : leftPosition,
-                            marginRight: isLandingPage ? 0 : rightPosition,
-                            width: isLandingPage ? '100%' : `calc(100% - ${leftPosition + rightPosition}px)`,
-                        }}>
-                        <div className="w-full max-w-full flex flex-col gap-10 ">
-                            <Outlet />
-                        </div>
-                        {!isLandingPage && <RightSidebar />}
+        <main id="layout" className=" overflow-x-hidden relative bg-white h-screen min-h-screen w-full overflow-y-auto">
+            <Navbar />
+            <div className="flex relative overflow-x-hidden ">
+                <Sidebar isLandingPage={isLandingPage} idActiveMenu={idActiveMenu} />
+                <div
+                    className=" p-8 flex  transtion-all duration-10 overflow-x-auto"
+                    style={{
+                        marginLeft: isLandingPage ? 0 : leftPosition,
+                        marginRight: isLandingPage ? 0 : rightPosition,
+                        width: isLandingPage ? '100%' : `calc(100% - ${leftPosition + rightPosition}px)`,
+                    }}>
+                    <div className="w-full max-w-full flex flex-col gap-10 ">
+                        <Outlet />
                     </div>
+                    {!isLandingPage && <RightSidebar />}
                 </div>
-            </main> */}
-            <ExampleModal />
-
-        </>
+            </div>
+        </main>
     )
 }
 
