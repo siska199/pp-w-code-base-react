@@ -56,3 +56,8 @@ export interface TSettingTable<TData,> {
 };
 
 /*----------------FORM--------------------*/
+
+
+export type TEventOnChange = React.ChangeEvent<HTMLInputElement >  | TCustomeEventOnChange<any>
+
+
