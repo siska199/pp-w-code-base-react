@@ -1,91 +1,85 @@
 import IconLoading from '@assets/icons/IconLoading';
+import { variantButton } from '@lib/utils/variants/variant-color';
 import { cn } from '@lib/utils/helper';
 import { VariantProps, cva } from 'class-variance-authority';
 import { HTMLProps } from 'react';
 import { Link } from 'react-router-dom';
 
 
-interface TProps extends HTMLProps<HTMLButtonElement | HTMLLinkElement>, VariantProps<typeof buttonVariants> {
-  isLoading?: boolean;
-  customeElement?: "button" | "link" | null;
-  to?: string;
-  newTab?: boolean;
+interface TPropsLink {
+  customeElement: "link"
+  to: string;
+  target?: '_blank' | ''
 }
 
+interface TPropsButton {
+  customeElement?: "button"
+}
+
+type TProps = Omit<Partial<HTMLProps<HTMLButtonElement | HTMLLinkElement>>, "label" | "size" | "shape">
+  & VariantProps<typeof buttonVariants>
+  & {
+    isLoading?: boolean;
+    label: React.ReactNode | string;
+  }
+  & (TPropsLink | TPropsButton);
+
+
 const Button = (props: TProps) => {
-  const { variant, sizeCustome, newTab, customeElement = "button", isContained, isRounded, children, className, isLoading = false, ...attrs } = props
+  const { variant, size, customeElement = "button", shape, className, isLoading = false, label, ...attrs } = props
 
   const CompButton = customeElement === "link" ? Link : "button" as React.ElementType
+
+  let updateVariant: TProps["variant"] = variant || "solid-primary"
+  if (customeElement === "link" && !variant) {
+    updateVariant = "link-primary"
+  }
+
+
 
   return (
     <CompButton
       {...attrs}
       disabled={isLoading || attrs?.disabled}
-      className={cn(buttonVariants({ className, variant, sizeCustome, isRounded, isContained, }))}
-      target={newTab ? '_blank' : ''}
-
+      className={cn(buttonVariants({ className, variant: updateVariant, size, shape, }))}
+    // target={target}
     >
       {
         isLoading ? <span>
           <IconLoading />Loading...
-        </span> : children
+        </span> : label
       }
     </CompButton>
 
   )
 }
 
+
+
 const buttonVariants = cva(
-  'w-fit rounded-lg gap-1 h-fit items-center border  justify-center flex gap-sm disabled:cursor-not-allowed  cursor-pointer-custome focus:outline-none focus:ring-4 ',
+  'w-fit  gap-1 h-fit items-center  text-white justify-center font-medium flex gap-sm disabled:cursor-not-allowed  disabled:opacity-50 ',
   {
     variants: {
       variant: {
-        'primary': 'bg-primary hover:!bg-primary-400 border-primary focus:ring-primary-200 !text-white disabled:bg-primary-300 disabled:border-primary-300',
-        'gray': 'bg-gray hover:!bg-gray-400 border-gray-200 focus:ring-gray-200 !text-white disabled:bg-gray-300 disabled:border-gray-300',
-        'black': 'bg-black hover:!bg-black/75 border-black focus:ring-black/70 !text-white disabled:opacity-50 ',
-        'white': 'bg-white  hover:!bg-gray-100 text-gray-900 focus:ring-gray-200 disabled:opacity-50 ',
-        'plain': 'bg-white  hover:!bg-gray-100 text-gray-900 focus:ring-0 !p-2 border-none disabled:opacity-50',
+        ...variantButton,
       },
-      isContained: {
-        "false": "bg-white",
-        "true": ""
+      shape: {
+        "rounded": "rounded-lg",
+        "circle": "rounded-full"
       },
-      isRounded: {
-        "false": "",
-        "true": "rounded-full"
-      },
-      sizeCustome: {
+      size: {
         "small": "py-1 px-4 ",
         "base": "py-2 px-4 ",
-        "medium": "py-3 px-4 text-body-medium",
-        "large": "py-3 px-5 text-body-medium",
-        "xl": "py-3 px-6 text-body-3xl",
+        "medium": "py-3 px-4 text-[16px]",
+        "large": "py-4 px-5 text-[18px]",
       },
     },
-    compoundVariants: [
-      {
-        variant: "primary",
-        isContained: false,
-        class: "!text-primary hover:!bg-primary-100",
-      },
-      {
-        variant: "gray",
-        isContained: false,
-        class: "!text-gray hover:!bg-gray-100",
-      },
-      {
-        variant: "black",
-        isContained: false,
-        class: "!text-black hover:!bg-black/10",
-      },
-    ],
     defaultVariants: {
-      variant: "primary",
-      sizeCustome: "base",
-      isContained: true,
-      isRounded: false
-    }
-  }
+      variant: "solid-primary",
+      size: "base",
+      shape: "rounded"
+    },
+  },
 )
 
 export default Button

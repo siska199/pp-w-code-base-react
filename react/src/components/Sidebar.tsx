@@ -21,10 +21,6 @@ const Sidebar = (props: TProps) => {
             customeClass: {
                 label: "text-black font-medium"
             },
-            defaultOpen: true
-        },
-        "1": {
-            defaultOpen: false
         },
         activeMenu: {
             id: "",
@@ -37,7 +33,7 @@ const Sidebar = (props: TProps) => {
             "0-C0": true,
         }
     })
-
+    const [isRender, setIsrender] = useState(false)
 
     useEffect(() => {
         // Get Navbar Height for set position of the sidebar from top
@@ -49,19 +45,19 @@ const Sidebar = (props: TProps) => {
         const settingSession = sessionStorage?.getItem('setting')
         if (settingSession) {
             const initialSetting = JSON.parse(sessionStorage?.getItem('setting') || "")
-            setSetting(initialSetting)
+            setting.openMenus = initialSetting.openMenus
+            setting.activeMenu = initialSetting.activeMenu
         }
+        setIsrender(!isRender)
     }, [])
 
     useEffect(() => {
         if (idActiveMenu) {
             const activeMenu = listFlattenMenuSidebar?.filter((data) => data?.id === idActiveMenu)[0]
-            setSetting({
-                ...setting,
-                activeMenu
-            })
+            setting.activeMenu = activeMenu
         }
-    }, [idActiveMenu, location.pathname])
+        setIsrender(!isRender)
+    }, [idActiveMenu, location])
 
     const handleChangeActiveMenu = (data: TParamsOnChangeMenu) => {
         setSetting({
@@ -77,7 +73,7 @@ const Sidebar = (props: TProps) => {
 
     return (
         <>
-            <div id="container-sidebar" className=" h-full" onClick={handleToggleSidebar}>
+            <div id="container-sidebar" className=" h-full " onClick={handleToggleSidebar}>
                 <div id="sidebar" onClick={handleStopPropagation} style={{ top: topPosition, }} className={`fixed overflow-y-hidden  h-[calc(100%-3rem)] left-0   bg-white   w-0 ${!isLandingPage && "md:w-[17rem]"} `}>
 
                     <div className="p-8 w-full  flex flex-col gap-4 relative  h-full">

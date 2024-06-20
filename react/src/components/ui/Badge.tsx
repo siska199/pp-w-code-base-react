@@ -1,14 +1,18 @@
+import { variantBadge } from "@lib/utils/variants/variant-color";
 import { cn } from "@lib/utils/helper";
 import { VariantProps, cva } from "class-variance-authority";
+import React, { HTMLProps } from "react";
 
-interface TProps extends React.HTMLProps<HTMLDivElement>, VariantProps<typeof badgeVariants> {
+interface TProps extends Omit<Partial<HTMLProps<HTMLDivElement>>, "size" | "shape" | "label">, VariantProps<typeof badgeVariants> {
   customeElement?: React.ReactNode;
+  label: string | React.ReactNode;
+
 }
 
 const Badge = (props: TProps) => {
-  const { label, className, variant, isRounded,typeBadge, customeElement, ...attrs } = props
+  const { label, className, variant, customeElement, shape, size, ...attrs } = props
   return (
-    <span className={`${cn(badgeVariants({ className, variant,typeBadge, isRounded }))} text-body-small`} {...attrs}>
+    <span className={`${cn(badgeVariants({ className, variant, shape, size }))}`} {...attrs}>
       {label}
       {customeElement}
     </span>
@@ -17,28 +21,39 @@ const Badge = (props: TProps) => {
 
 
 const badgeVariants = cva(
-  'w-fit rounded-lg h-fit min-w-[3rem] flex-inline gap-1 text-center font-medium rounded items-center justify-center py-1  px-2 ',
+  'w-fit font-medium bg-white h-fit text-white flex-inline gap-1 text-center font-medium rounded items-center justify-center',
   {
     variants: {
-      variant: {
-        'primary': "bg-primary-50 text-primary-700",
-        'success': "bg-success-50 text-success-700",
-        'warning': "bg-warning-50 text-warning-700 ",
-        'error': "bg-error-50 text-error-700 ",
+      variant: variantBadge,
+      size: {
+        small: "!text-[10px] px-2 py-1",
+        base: "!text-[12px] px-2 py-1",
+        large: "!text-[14px] px-3 py-2"
       },
-      typeBadge :{
-        "1" : "",
-        "2" : "border"
+
+      shape: {
+        pilled: "rounded-full",
+        rounded: "rounded-md",
+        circle: "rounded-full !aspect-square  flex items-center justify-center"
       },
-      isRounded: {
-        "false": "",
-        "true": "rounded-full"
-      },
+
     },
+    compoundVariants: [
+      {
+        "shape": "circle",
+        size: "base",
+        className: "min-w-[1.5rem] min-h-[1.5rem]"
+      },
+      {
+        "shape": "circle",
+        size: "small",
+        className: "min-w-[1.25rem] min-h-[1.25rem]"
+      }
+    ],
     defaultVariants: {
-      variant: "primary",
-      isRounded: true,
-      typeBadge :"1"
+      variant: "soft-primary",
+      size: "base",
+      shape: "pilled"
     }
   }
 )

@@ -15,13 +15,14 @@ export interface TCustomeEventOnChange<V> {
 export type TEmptyValue = "" | null | undefined
 
 export interface TOption {
-  label: string;
+  label: string | React.ReactNode;
   value: string;
 }
 
 export interface TTab {
   id: string;
   label: string;
+  content : React.ReactNode | string;
 }
 
 export interface TItemAccordion {

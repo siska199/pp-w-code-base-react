@@ -44,13 +44,13 @@ export const Floating = (props: TFloatingProps ) => {
   return (
     // Container
     <div className={cn({
-      'flex flex-col gap-2 gap w-full border-b py-3':true,
+      'flex flex-col gap-2 gap w-full border-b py-2':true,
       [customeClass?.container || '']:customeClass?.container
     })}>
       
       {/* Container Label */}
       <div className={cn({
-        'flex items-center w-full font-medium text-body-medium justify-between':true,
+        'flex items-center w-full font-medium  justify-between':true,
         [customeClass?.containerLabel ||'']: customeClass?.containerLabel
       })}>
         {label}

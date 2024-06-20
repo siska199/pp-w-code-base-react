@@ -3,6 +3,7 @@ import Accordion from "@components/ui/Accordion"
 
 const CardIntroAccordion = () => {
 
+
   const listItemAccordion = [
     {
       label: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
@@ -29,8 +30,12 @@ const CardIntroAccordion = () => {
 
   const listExample = [
     {
-      component: <Accordion items={listItemAccordion} />
+      title: "Basic Usage",
+      component: <div className="px-10">
+        <Accordion items={listItemAccordion} />
+      </div>
     },
+
   ]
 
   return (
@@ -89,13 +94,13 @@ export const Floating = (props: TFloatingProps ) => {
   return (
     // Container
     <div className={cn({
-      'flex flex-col gap-2 gap w-full border-b py-3':true,
+      'flex flex-col gap-2 gap w-full border-b py-2':true,
       [customeClass?.container || '']:customeClass?.container
     })}>
       
       {/* Container Label */}
       <div className={cn({
-        'flex items-center w-full font-medium text-body-medium justify-between':true,
+        'flex items-center w-full font-medium  justify-between':true,
         [customeClass?.containerLabel ||'']: customeClass?.containerLabel
       })}>
         {label}
@@ -120,6 +125,8 @@ export const Floating = (props: TFloatingProps ) => {
   )
 }
 
-export default Accordion`
+export default Accordion
+
+`
 
 export default CardIntroAccordion

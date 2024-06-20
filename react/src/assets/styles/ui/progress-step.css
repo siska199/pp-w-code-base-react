@@ -28,16 +28,13 @@
     line-height: 1.5em;
     font-weight: 500;
   }
-.stepper-item.vertical .step-caption {
-    font-size: 0.8em;
-}
 
 .step-item.vertical + .step-item.vertical {
     margin-top: 1.5em
 } 
 
 .stepper-item.vertical::after {
-    @apply content-[''] absolute left-[15px] block top-[1px]  bottom-[5px]  h-full  border-gray-200 border-[1px] z-[-1];
+    @apply content-[''] absolute left-[15px] block top-[1px]  bottom-[5px]  h-full  border-gray-200 border-[1px] !z-[1];
     transform-origin: 50% 100%;
 }  
 

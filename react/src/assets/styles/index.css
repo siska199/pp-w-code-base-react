@@ -47,15 +47,41 @@
 
 }
 
-@layer components{
 
-}
 
 @layer utilities {
+
+    .custom-transform {
+        --tw-scale-x: var(--_width, 0.125);
+        --tw-scale-y: 1;
+        --tw-translate-x: var(--_left, 0);
+        --tw-translate-y: 0;
+        
+        transform-origin: left;
+        transition-property: scale, translate;
+        transition-duration: 200ms;
+      
+        @apply scale-[var(--tw-scale-x) var(--tw-scale-y)] translate-x-[var(--tw-translate-x)] translate-y-[var(--tw-translate-y)];
+      }
+
+    /* Blur effect for iamge */
+    .blur-effect {
+        filter: blur(10px);
+        transition: filter 0.3s ease-out;
+    }
+    
+    .clear-effect {
+        filter: blur(0);
+        transition: filter 0.3s ease-out;
+    }
 
     /* Create bounce effect while click component */
     .bounce-effect {
         @apply transition-all duration-[50] hover:scale-[1.03] active:scale-[0.98] disabled:!scale-[1] disabled:cursor-not-allowed
+    }
+
+    .bounce-effect-disabled {
+        @apply transition-none hover:scale-100 active:scale-100;
     }
 
     .cursor-pointer-custome{

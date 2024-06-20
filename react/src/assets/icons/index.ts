@@ -28,4 +28,12 @@ export { default as IconDanger } from '@assets/icons/danger.svg?react';
 export { default as IconNotification } from '@assets/icons/notification.svg?react';
 export { default as IconSun} from '@assets/icons/sun.svg?react';
 export { default as IconMoon} from '@assets/icons/moon.svg?react';
-
+export { default as IconVerified} from '@assets/icons/verified.svg?react';
+export { default as IconSetting} from '@assets/icons/setting.svg?react';
+export { default as IconLogout} from '@assets/icons/logout.svg?react';
+export { default as IconReceipt} from '@assets/icons/receipt.svg?react';
+export { default as IconDownload} from '@assets/icons/download.svg?react';
+export { default as IconUsers} from '@assets/icons/users.svg?react';
+export { default as IconMoreVertical} from '@assets/icons/more-vertical.svg?react';
+export { default as IconLove} from '@assets/icons/love.svg?react';
+export { default as IconCart} from '@assets/icons/cart.svg?react';

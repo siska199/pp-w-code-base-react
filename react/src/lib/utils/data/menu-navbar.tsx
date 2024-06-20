@@ -9,7 +9,7 @@ const listMenuNavbar = [
     },
     {
         label: 'Examples',
-        url: '/docs/components/examples'
+        url: '/examples'
     },
     {
         label: 'Github',

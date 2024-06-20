@@ -1,4 +1,4 @@
-import LinkCustome from "@components/ui/Link"
+import Button from "@components/ui/Button"
 import { cn } from "@lib/utils/helper"
 import { VariantProps, cva } from "class-variance-authority"
 
@@ -7,11 +7,10 @@ interface TProps extends React.HTMLProps<HTMLLinkElement>, VariantProps<typeof l
 }
 
 const Logo = (props: TProps) => {
-    const { className, sizeLogo, ...attrs } = props
+    const { className, sizeLogo, } = props
     return (
-        <LinkCustome to="/" className={cn(logoVariants({ className: `${className} text-primary`, sizeLogo, }))} {...attrs}>
-            Cb199
-        </LinkCustome>
+        <Button customeElement="link" label="Cb199" to="/" className={cn(logoVariants({ className: `${className} text-primary`, sizeLogo, }))} />
+
     )
 }
 

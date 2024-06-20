@@ -1,19 +1,39 @@
 
 import CardSubMenu from "@components/cards/CardSubMenu";
-import LinkCustome from "@components/ui/Link";
+import Button from "@components/ui/Button";
 import ProgressStep from "@components/ui/ProgressStep";
 
 const CardAdditionalInfoAvatar = () => {
   const listAdditionalInfo = [
     {
-      title: "Image",
-      caption: <p>You can see the detail about component image in <LinkCustome to="/docs/components/image" className="hover:underline font-medium">here</LinkCustome> </p>
+      title: "Default Behavior",
+      caption: <p>The default variant of the avatar is &apos;soft-gray&apos;, the default size is &apos;base&apos;, and the default shape is &apos;circular&apos;.</p>
     },
     {
-      title: "Icon Placeholder",
-      caption: <p>You can get the icon placeholder the display when user not provide src in <LinkCustome to="/docs/icons" className="hover:underline font-medium">here</LinkCustome> </p>
-    }
+      title: "Variant",
+      caption: (
+        <p>
+          The list of variants available for the Badge component can be seen{" "}
+          <Button label="Here" customeElement={"link"} to="/docs/pre-requisite" />.
+        </p>
+      ),
+    },
+    {
+      title: "Dependencies",
+      caption: (
+        <p>
+          The Avatar component relies on several dependencies and utility functions imported from external sources (
+          <span className="italic">@components/ui/Image</span>,{" "}
+          <span className="italic">@lib/utils/helper</span>,{" "}
+          <span className="italic">@lib/utils/variants/ui/variant-avatar</span>,{" "}
+          <span className="italic">class-variance-authority</span>,{" "}
+          <span className="italic">react</span>
+          ). Ensure these dependencies are properly installed and imported for the component to function correctly.
+        </p>
+      ),
+    },
   ];
+
 
   return (
     <CardSubMenu title={'Additional Info'}>

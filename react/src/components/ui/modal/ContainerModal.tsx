@@ -7,7 +7,7 @@ import { VariantProps, cva } from "class-variance-authority";
 import clsx from "clsx";
 
 interface TProps extends TBaseModal, VariantProps<typeof modalVariants> {
-    
+
 }
 
 
@@ -24,31 +24,32 @@ const ContainerModal = (props: TProps) => {
                 className={cn(modalVariants({
                     variant,
                     className: clsx({
-                        "md-modal": true,
+                        "md-modal border border-success-400": true,
                         "md-show": isShow,
                     })
                 }))}
             >
-                <div className="md-content relative min-h-[10rem flex flex-col gap-2" onClick={handleStopPropagation}>
-                    <Button className="absolute top-2 right-3 rounded-full w-[2rem] h-[2rem]" variant={"plain"} onClick={handleOnClose}>
-                        <IconClose />
-                    </Button>
+                <div className="md-content bottom-0 relative min-h-[10rem] flex flex-col gap-2" onClick={handleStopPropagation}>
+                    <Button label={<IconClose />} className="absolute top-2 right-3 rounded-full w-[2rem] h-[2rem]" variant={"plain"} onClick={handleOnClose} />
                     {children}
                 </div>
             </div >
 
-            <div className={`${isShow ? "md-show" : ""} md-overlay min-h-screeen`}></div>
+            <div className={`${isShow ? "md-show" : ""} border md-overlay h-screen max-h-screeen`}></div>
         </>
     )
 }
 
 
 const modalVariants = cva(
-    ' min-w-full p-4 md:min-w-[20rem] ',
+    ' min-w-full p-4 md:min-w-[20rem] w-full border border-error',
     {
         variants: {
             variant: {
-                "effect-1": "md-effect-1"
+                "effect-1": "md-effect-1",
+                "effect-2": "md-effect-2",
+                "effect-3": "md-effect-3 p-0"
+
             },
 
         },

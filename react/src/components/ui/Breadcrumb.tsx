@@ -6,28 +6,64 @@ import { HTMLProps } from "react";
 import Button from "./Button";
 
 interface TProps extends HTMLProps<HTMLDivElement>, VariantProps<typeof breadcrumbVariants> {
-    items :{
-        url:string;
-        label:string | React.ReactNode;
+    items: {
+        url: string;
+        label: string | React.ReactNode;
     }[];
+
+    customeIconDivider?: React.ReactNode;
+    withIconDivider?: boolean;
+    customeClass?: {
+        active?: string;
+        label?: string;
+    }
+
+    activeItem?: number;
 }
 
 const Breadcrumb = (props: TProps) => {
-    const { className,items, ...otherProps } = props;
+    const { className, items, customeIconDivider, activeItem, customeClass, withIconDivider = true, ...otherProps } = props;
+
+
 
     return (
         <div
-            className={cn(breadcrumbVariants({ className }))}
+            className={cn(breadcrumbVariants({
+                className: `${className} ${!withIconDivider && "gap-4"}`
+            }))}
             {...otherProps}
         >
 
             {
-                items?.map((item,i)=><div key={i} className="flex items-center">
-                    <Button key={i} customeElement={"link"} className="!pr-0 !pl-2 !py-1" variant={"plain"} to={item?.url} >{item?.label}<IconChevronRight className=""/></Button>
-                </div>)
+                items?.map((item, i) => {
+
+                    const isActiveItem = location.pathname === item?.url || activeItem === i
+                    return <div key={i} className="flex items-center">
+                        <Button key={i}
+                            label={
+                                <div className={cn({
+                                    "flex ": true,
+                                    "": isActiveItem
+                                })}>
+                                    {item?.label}
+                                    {
+                                        withIconDivider && <span className="px-2 ">{(customeIconDivider ?? <IconChevronRight className="" />)}</span>
+                                    }
+                                </div>
+                            }
+                            customeElement={"link"}
+                            className={cn({
+                                "!p-0 !py-1 !flex": true,
+                                [`!font-medium ${customeClass?.active || ""} `]: isActiveItem,
+                                [customeClass?.label || ""]: customeClass?.label
+                            })}
+                            variant={"link-black"}
+                            to={item?.url} />
+                    </div>
+                })
             }
 
-        </div>
+        </div >
     )
 }
 

@@ -7,15 +7,8 @@ const listMenuSidebar: TMenuItem[] = [
         parentId: null,
     },
     {
-        id: '0-I0',
-        name: 'Icons',
-        url: '/docs/icons',
-        parentId: null,
-    },
-    {
         id: '0-C0',
         name: 'Components',
-        url: '/docs/components',
         parentId: null,
     },
     {
@@ -26,9 +19,50 @@ const listMenuSidebar: TMenuItem[] = [
     },
     {
         id: '1-PR1',
-        name: 'Pre-requisite',
-        url: '/docs/prerequisite',
-        parentId: '0-GS0'
+        name: 'Pre-requisite ',
+        parentId: '0-GS0',
+    },
+    {
+        id: '2-L0',
+        name: 'Library',
+        url: '/docs/prerequisite/library',
+        parentId: '1-PR1'
+    },
+    {
+        id: '2-TC1',
+        name: 'Tailwind Config',
+        url: '/docs/prerequisite/tailwind-config',
+        parentId: '1-PR1'
+    },
+    {
+        id: '2-CF2',
+        name: 'CSS File',
+        url: '/docs/prerequisite/css-file',
+        parentId: '1-PR1'
+    },
+    {
+        id: '2-I3',
+        name: 'Icon',
+        url: '/docs/prerequisite/icon',
+        parentId: '1-PR1'
+    },
+    {
+        id: '2-HF4',
+        name: 'Helper Function',
+        url: '/docs/prerequisite/helper-function',
+        parentId: '1-PR1'
+    },
+    {
+        id: '2-V5',
+        name: 'Variant',
+        url: '/docs/prerequisite/variant',
+        parentId: '1-PR1'
+    },
+    {
+        id: '2-H5',
+        name: 'Hook',
+        url: '/docs/prerequisite/hook',
+        parentId: '1-PR1'
     },
     {
         id: '1-AC0',
@@ -67,9 +101,9 @@ const listMenuSidebar: TMenuItem[] = [
         parentId: '0-C0'
     },
     {
-        id: '1-CO6',
-        name: 'Container',
-        url: '/docs/components/container',
+        id: '1-C19',
+        name: 'Card',
+        url: '/docs/components/card',
         parentId: '0-C0'
     },
     {
@@ -99,7 +133,6 @@ const listMenuSidebar: TMenuItem[] = [
     {
         id: '1-IN11',
         name: 'Input',
-        url: '/docs/components/input',
         parentId: '0-C0'
     },
     {
@@ -108,30 +141,21 @@ const listMenuSidebar: TMenuItem[] = [
         url: '/docs/components/input/base',
         parentId: '1-IN11'
     },
+
     {
-        id: '2-C1',
-        name: 'Checkbox',
-        url: '/docs/components/input/checkbox',
-        parentId: '1-IN11'
+        id: '1-C21',
+        name: 'Carousel',
+        url: '/docs/components/carousel',
+        parentId: '0-C0'
     },
-    {
-        id: '2-MC2',
-        name: 'Multiple Checkbox',
-        url: '/docs/components/input/multiple-checkbox',
-        parentId: '1-IN11'
-    },
+
     {
         id: '2-CU3',
         name: 'Currency',
         url: '/docs/components/input/currency',
         parentId: '1-IN11'
     },
-    {
-        id: '2-D4',
-        name: 'Date',
-        url: '/docs/components/input/date',
-        parentId: '1-IN11'
-    },
+
     {
         id: '2-N5',
         name: 'NPWP',
@@ -157,11 +181,31 @@ const listMenuSidebar: TMenuItem[] = [
         parentId: '1-IN11'
     },
     {
+        id: '2-D4',
+        name: 'Date',
+        url: '/docs/components/input/date',
+        parentId: '1-IN11'
+    },
+    {
+        id: '2-C1',
+        name: 'Checkbox',
+        url: '/docs/components/input/checkbox',
+        parentId: '1-IN11'
+    },
+    {
+        id: '2-MC2',
+        name: 'Multiple Checkbox',
+        url: '/docs/components/input/multiple-checkbox',
+        parentId: '1-IN11'
+    },
+
+    {
         id: '2-RB9',
         name: 'Radio Button',
         url: '/docs/components/input/radio-button',
         parentId: '1-IN11'
     },
+
     {
         id: '2-S10',
         name: 'Select',
@@ -173,12 +217,6 @@ const listMenuSidebar: TMenuItem[] = [
         name: 'Text Area',
         url: '/docs/components/input/text-area',
         parentId: '1-IN11'
-    },
-    {
-        id: '1-L12',
-        name: 'Link',
-        url: '/docs/components/link',
-        parentId: '0-C0'
     },
     {
         id: '1-L13',
@@ -199,9 +237,14 @@ const listMenuSidebar: TMenuItem[] = [
         parentId: '0-C0'
     },
     {
+        id: '1-S20',
+        name: 'Skeleton',
+        url: '/docs/components/skeleton',
+        parentId: '0-C0'
+    },
+    {
         id: '1-M16',
         name: 'Modal',
-        url: '/docs/components/modal',
         parentId: '0-C0'
     },
     {
@@ -210,7 +253,26 @@ const listMenuSidebar: TMenuItem[] = [
         url: '/docs/components/modal/confirmation',
         parentId: '1-M16'
     },
-];
+    {
+        id: '1-T16',
+        name: 'Table',
+        url: '/docs/components/table',
+        parentId: '0-C0'
+    },
+    {
+        id: '1-T17',
+        name: 'Tab',
+        url: '/docs/components/tab',
+        parentId: '0-C0'
+    },
+    {
+        id: '1-T18',
+        name: 'Tooltip',
+        url: '/docs/components/tooltip',
+        parentId: '0-C0'
+    },
+
+]
 
 const groupMenuItems = (items: TMenuItem[]): TMenuItem[] => {
     const groupedItems: { [key: string]: TMenuItem } = {};
