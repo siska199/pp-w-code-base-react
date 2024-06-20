@@ -38,7 +38,7 @@ const ContainerInput = <TInput,>(props: TProps<TInput>) => {
         "!bg-disabled": disabled,
         [customeClass?.input || '']: customeClass?.input,
         "px-4": customeElement?.preEnd,
-        "pr-4 pl-2":customeElement?.preStart
+        "pr-4 pl-1":customeElement?.preStart
     })
 
     const handleToggleTypePassword = () => {

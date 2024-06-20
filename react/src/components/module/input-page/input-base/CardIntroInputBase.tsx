@@ -185,7 +185,7 @@ const CardIntroInputBase = () => {
         variant:"v1",
         ...form["icon-pre-end"],
         customElements:{
-          preEnd : "Http"
+          preEnd : "Text Preend"
         }
       }
     },
