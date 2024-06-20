@@ -1,8 +1,10 @@
+import useMenu from "@hooks/useMenu"
 import { handleStopPropagation } from "@lib/utils/helper"
 import { useEffect, useState } from "react"
 
 
 const RightSidebar = () => {
+    const { showRightSidebar } = useMenu()
     const [topPosition, setTopPosition] = useState(0)
 
     useEffect(() => {
@@ -17,7 +19,7 @@ const RightSidebar = () => {
 
 
     return (
-        <div id="right-sidebar" onClick={handleStopPropagation} style={{ top: topPosition, }} className={` h-[calc(100%-3rem)  fixed right-2 bg-white  flex-shrink-0 h-full hidden md:block w-0 lg:w-[20rem]`}>
+        <div id="right-sidebar" onClick={handleStopPropagation} style={{ top: topPosition, }} className={` h-[calc(100%-3rem)  fixed right-2 bg-white  flex-shrink-0 h-full hidden md:block w-0  ${showRightSidebar !== false && "lg:w-[20rem] "}`}>
             <div className="w-full flex flex-col gap-4 relative  h-full p-8">
                 🌼🌼🌼
             </div>

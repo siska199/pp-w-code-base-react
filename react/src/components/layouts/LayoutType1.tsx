@@ -1,18 +1,14 @@
 import Navbar from "@components/Navbar"
 import RightSidebar from "@components/RightSidebar"
 import Sidebar from "@components/Sidebar"
+import useMenu from "@hooks/useMenu"
 import { useEffect, useState } from "react"
-import { Outlet, useMatches } from "react-router-dom"
+import { Outlet } from "react-router-dom"
 
 
 
 const LayoutType1 = () => {
-
-    const matches = useMatches()
-    const pagesMatch = matches?.filter(page => page.pathname === location.pathname)
-    const currentPageData: any = pagesMatch?.[pagesMatch?.length - 1]?.handle
-    const isLandingPage = currentPageData?.isLandingPage
-    const idActiveMenu = currentPageData?.id
+    const { showSidebar, showRightSidebar } = useMenu()
 
     const [widthSidebar, setWidthSidebar] = useState(0)
     const [widthRightSidebar, setWidthRightSidebar] = useState(0)
@@ -31,11 +27,11 @@ const LayoutType1 = () => {
             setRightPosition(rightsSidebarComp?.offsetWidth)
         }
 
-        if (isLandingPage) {
+        if (showSidebar === false) {
             sessionStorage?.removeItem('setting')
         }
         setIsrender(!isRender)
-    }, [isLandingPage])
+    }, [showSidebar])
 
     useEffect(() => {
         // Set left position of page every media query change from > md to <md
@@ -63,24 +59,24 @@ const LayoutType1 = () => {
 
         };
 
-    }, [widthSidebar, widthRightSidebar, isLandingPage])
+    }, [widthSidebar, widthRightSidebar, showSidebar])
 
     return (
         <main id="layout" className=" overflow-x-hidden relative bg-white h-screen min-h-screen w-full overflow-y-auto">
             <Navbar />
             <div className="flex relative overflow-x-hidden ">
-                <Sidebar isLandingPage={isLandingPage} idActiveMenu={idActiveMenu} />
+                <Sidebar />
                 <div
                     className=" p-8 flex  transtion-all duration-10 overflow-x-auto"
                     style={{
-                        marginLeft: isLandingPage ? 0 : leftPosition,
-                        marginRight: isLandingPage ? 0 : rightPosition,
-                        width: isLandingPage ? '100%' : `calc(100% - ${leftPosition + rightPosition}px)`,
+                        marginLeft: showSidebar === false ? 0 : leftPosition,
+                        marginRight: showRightSidebar === false ? 0 : rightPosition,
+                        width: showSidebar === false && showRightSidebar === false ? '100%' : `calc(100% - ${(showSidebar === false ? 0 : leftPosition) + (showRightSidebar === false ? 0 : rightPosition)}px)`,
                     }}>
                     <div className="w-full max-w-full flex flex-col gap-10 ">
                         <Outlet />
                     </div>
-                    {!isLandingPage && <RightSidebar />}
+                    {showSidebar !== false && <RightSidebar />}
                 </div>
             </div>
         </main>

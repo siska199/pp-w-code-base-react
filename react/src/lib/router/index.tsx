@@ -82,7 +82,8 @@ const docRouter = {
                     path: 'icon',
                     element: <IconPage />,
                     handle: {
-                        id: '2-I3'
+                        id: '2-I3',
+                        showRightSidebar: false
                     }
                 },
 
@@ -109,7 +110,7 @@ const docRouter = {
                         id: '2-H5'
                     }
                 },
-            
+
                 {
                     path: 'helper-component',
                     element: <HelperComponentPage />,
@@ -117,7 +118,7 @@ const docRouter = {
                         id: '2-HC6'
                     }
                 },
-  ]
+            ]
         },
         {
             path: 'components',
@@ -346,7 +347,8 @@ const router = createBrowserRouter([
                 index: true,
                 element: <LandingPage />,
                 handle: {
-                    isLandingPage: true
+                    showSidebar: false,
+                    showRightSidebar: false,
                 },
             },
             docRouter,
@@ -354,7 +356,8 @@ const router = createBrowserRouter([
                 path: 'examples',
                 element: <ExamplesPage />,
                 handle: {
-                    isLandingPage: true
+                    showSidebar: false,
+                    showRightSidebar: false,
                 },
             }
         ]
