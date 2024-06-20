@@ -13,27 +13,37 @@
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
     opacity : 74%;
-    border : 5px solid red;
 
 }
 
 .md-modal {
 	position: fixed;
-	/* top: 50%;
-*/
 	left:50%;
-	bottom:0%;
 	height: auto;
 	z-index: 2000;
-	visibility: hidden;
-	/* -webkit-backface-visibility: hidden;
-	-moz-backface-visibility: hidden; */
-	backface-visibility: hidden;
-	/* -webkit-transform: translateX(-50%) translateY(-50%);
-	-moz-transform: translateX(-50%) translateY(-50%);
-	-ms-transform: translateX(-50%) translateY(-50%); */
-	transform: translateX(-50%) translateY(0%);
 	
+	visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
+
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	-moz-transform: translateX(-50%) translateY(-50%);
+	-ms-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
+	
+}
+
+.md-effect-1.md-modal,.md-effect-2.md-modal{
+	top: 50%;
+}
+
+.md-effect-3.md-modal{
+	bottom:0%;
+	-webkit-transform: translateX(-50%) translateY(0%);
+	-moz-transform: translateX(-50%) translateY(0%);
+	-ms-transform: translateX(-50%) translateY(0%);
+	transform: translateX(-50%) translateY(0%);
 }
 
 .md-show {
@@ -45,13 +55,11 @@
 .md-content {
 	background: white;
 	position: relative;
-	border-radius: 3px;
 	margin: 0;
     padding : 1rem;
     border-radius:0.5rem;
 	box-shadow: 0px 20px 25px -5px #0F172A1A;
 	box-shadow: 0px 10px 10px 0px #0F172A0D;
-	border : 1px solid black;
 	width : 100%;
 }
 
@@ -81,7 +89,6 @@
 }
 
 /* Effect 2: Slide from the right */
-
 .md-effect-2 .md-content {
 	-webkit-transform: translateX(20%);
 	-moz-transform: translateX(20%);
@@ -101,24 +108,22 @@
 }
 
 
-/* Effect 3: Slide from the right */
-
+/* Effect 3: Drawer */
 .md-effect-3 .md-content {
-	/* -webkit-transform: translateY(-100%); */
-	/* -moz-transform: translateX(20%);
-	-ms-transform: translateX(20%); */
+	-webkit-transform: translateY(50%);
+	-moz-transform: translateY(50%);
+	-ms-transform: translateY(50%);
 	transform: translateY(50%);
 	opacity: 0;
-	/* -webkit-transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
-	-moz-transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9); */
+	-webkit-transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+	-moz-transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
 	transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
 }
 
 .md-show.md-effect-3 .md-content {
-	/* -webkit-transform: translateX(0);
+	-webkit-transform: translateX(0);
 	-moz-transform: translateX(0);
-	-ms-transform: translateX(0); */
-	transform: translateY(0);
+	-ms-transform: translateX(0);
 	transform: translateX(0);
 	opacity: 1;
 }

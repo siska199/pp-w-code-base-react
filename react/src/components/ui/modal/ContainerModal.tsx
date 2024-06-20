@@ -24,7 +24,7 @@ const ContainerModal = (props: TProps) => {
                 className={cn(modalVariants({
                     variant,
                     className: clsx({
-                        "md-modal border border-success-400": true,
+                        "md-modal ": true,
                         "md-show": isShow,
                     })
                 }))}
@@ -35,21 +35,20 @@ const ContainerModal = (props: TProps) => {
                 </div>
             </div >
 
-            <div className={`${isShow ? "md-show" : ""} border md-overlay h-screen max-h-screeen`}></div>
+            <div className={`${isShow ? "md-show" : ""} md-overlay h-screen max-h-screeen`}></div>
         </>
     )
 }
 
 
 const modalVariants = cva(
-    ' min-w-full p-4 md:min-w-[20rem] w-full border border-error',
+    ' min-w-full p-4 md:min-w-[20rem] w-full ',
     {
         variants: {
             variant: {
-                "effect-1": "md-effect-1",
-                "effect-2": "md-effect-2",
-                "effect-3": "md-effect-3 p-0"
-
+                "effect-1": "md-effect-1", // Fade in and scale up
+                "effect-2": "md-effect-2", // Slide from the right 
+                "effect-3": "md-effect-3 p-0" // Drawer 
             },
 
         },
