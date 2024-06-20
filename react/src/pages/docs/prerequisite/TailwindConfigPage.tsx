@@ -4,7 +4,7 @@ import CodeBlock from "@components/ui/CodeBlock";
 
 const TailwindConfigPage = () => {
   return (
-    <>
+    <div className="flex flex-col gap-2">
       <CardIntro  
         title={'Tailwind config file'}
         subTitle={<p>
@@ -198,7 +198,7 @@ export default {
     },
   },
 };`}/>
-    </>
+    </div>
   );
 };
 
