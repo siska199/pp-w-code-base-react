@@ -113,6 +113,12 @@ const listMenuSidebar: TMenuItem[] = [
         parentId: '0-C0'
     },
     {
+        id: '1-D22',
+        name: 'Divider',
+        url: '/docs/components/divider',
+        parentId: '0-C0'
+    },
+    {
         id: '1-DR8',
         name: 'Dropdown',
         url: '/docs/components/dropdown',

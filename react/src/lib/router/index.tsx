@@ -34,6 +34,7 @@ import IconPage from '@pages/docs/prerequisite/IconPage';
 import LibraryPage from '@pages/docs/prerequisite/LibraryPage';
 import TailwindConfigPage from '@pages/docs/prerequisite/TailwindConfigPage';
 import VariantPage from '@pages/docs/prerequisite/VariantPage';
+import DividerPage from '@pages/docs/components/DividerPage';
 import { createBrowserRouter } from "react-router-dom";
 
 const docRouter = {
@@ -314,7 +315,13 @@ const docRouter = {
                         },
                     ]
                 },
-
+                {
+                    path: 'divider',
+                    element: <DividerPage />,
+                    handle: {
+                        id: '1-D22'
+                    }
+                },
             ]
         },
     ]
