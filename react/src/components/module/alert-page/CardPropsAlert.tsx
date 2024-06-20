@@ -61,8 +61,6 @@ const CardPropsAlert = () => {
     }
   ]
 
-
-
   return (
     <CardSubMenu title={'Props'}>
       <List items={listItem} />

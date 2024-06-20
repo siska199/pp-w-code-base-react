@@ -35,6 +35,7 @@ import LibraryPage from '@pages/docs/prerequisite/LibraryPage';
 import TailwindConfigPage from '@pages/docs/prerequisite/TailwindConfigPage';
 import VariantPage from '@pages/docs/prerequisite/VariantPage';
 import DividerPage from '@pages/docs/components/DividerPage';
+import HelperComponentPage from '@pages/docs/prerequisite/HelperComponentPage';
 import { createBrowserRouter } from "react-router-dom";
 
 const docRouter = {
@@ -108,7 +109,15 @@ const docRouter = {
                         id: '2-H5'
                     }
                 },
-            ]
+            
+                {
+                    path: 'helper-component',
+                    element: <HelperComponentPage />,
+                    handle: {
+                        id: '2-HC6'
+                    }
+                },
+  ]
         },
         {
             path: 'components',

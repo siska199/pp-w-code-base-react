@@ -53,6 +53,12 @@ const listMenuSidebar: TMenuItem[] = [
         parentId: '1-PR1'
     },
     {
+        id: '2-HC6',
+        name: 'Helper Component',
+        url: '/docs/prerequisite/helper-component',
+        parentId: '1-PR1'
+    },
+    {
         id: '2-V5',
         name: 'Variant',
         url: '/docs/prerequisite/variant',
