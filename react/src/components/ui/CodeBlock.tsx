@@ -4,12 +4,12 @@ import { TObject } from '@types';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-type TPropsCustomeStyle ={
+type TPropsCustomeStyle = {
   pre?: TObject;
-  code? : TObject
+  code?: TObject
 }
 
-const customStyle =(customeStyle?:TPropsCustomeStyle)=> ({
+const customStyle = (customeStyle?: TPropsCustomeStyle) => ({
   ...dark,
   'pre[class*="language-"]': {
     ...dark['pre[class*="language-"]'],
@@ -28,7 +28,7 @@ const customStyle =(customeStyle?:TPropsCustomeStyle)=> ({
 
 interface TProps {
   codeString: string;
-  customeStyle? : TPropsCustomeStyle;
+  customeStyle?: TPropsCustomeStyle;
   fileName?: string;
 }
 
@@ -37,18 +37,20 @@ const CodeBlock = (props: TProps) => {
   return (
     <div className='relative  w-full '>
       <ThreeDotMacBook />
-      <CopyText text={codeString} classText='hidden' classContainer={'absolute w-fit right-4 top-10 z-[5]'} />
-      <SyntaxHighlighter language="javascript" style={customStyle( customeStyle)}>
-        {`
-${codeString}
-        `}
+      <CopyText text={codeString} classText='hidden' classContainer={'absolute w-fit right-4 top-9 z-[5]'} />
+      <SyntaxHighlighter language="javascript" style={customStyle(customeStyle)}>
+        {
+          fileName ? `
+${codeString}`:codeString
+      }
+
       </SyntaxHighlighter>
       {
-         fileName&& <div className='absolute top-6 bg-primary-100 text-primary-700 font-medium border rounded-br-lg p-1'>
-        {fileName}
-       </div>
+        fileName && <div className='absolute top-6 bg-primary-100 text-primary-700 font-medium border rounded-br-lg p-1'>
+          {fileName}
+        </div>
       }
-        
+
     </div>
   );
 };

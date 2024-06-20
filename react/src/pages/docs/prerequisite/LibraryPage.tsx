@@ -11,7 +11,7 @@ const LibraryPage = () => {
       caption : <CodeBlock codeString={'npm create vite@latest'}/>
     },
     {
-      title:<>Install tailwind library you can see the step in this <Button label="link" customeElement="link" to={"https://tailwindcss.com/docs/guides/create-react-app"} target="_blank"/></>,
+      title:<>Install tailwind library, you can see the step in <Button label="here" customeElement="link" to={"https://tailwindcss.com/docs/guides/create-react-app"} target="_blank"/></>,
       caption :<List
       items={[
         {
@@ -26,13 +26,13 @@ const LibraryPage = () => {
       />
     },
     {
-      title :'Install this below library because mostly component that created uing cva',
+      title :<>Install this below library because mostly component that created using <Button label="cva" customeElement="link" to={"https://cva.style/docs/getting-started/installation"} target="_blank"/></>,
       caption : <>
       <CodeBlock codeString={`npm i class-variance-authority
 npm i clsx
 npm i tailwind-merge`}/>
         <div>
-          <p>Make sure also you have <Badge label={'cn'} variant={"soft-gray"}/> function that you can see in <Button label="here" customeElement="link" to={"http://localhost:5173/docs/prerequisite/helper-function"} target="_blank"/></p>
+          <p>Make sure also you have <Badge label={'cn'} variant={"soft-gray"}/> function, you can see  the function <Button label="here" customeElement="link" to={"http://localhost:5173/docs/prerequisite/helper-function"} target="_blank"/></p>
         </div>
       </>
     },
@@ -42,29 +42,35 @@ npm i tailwind-merge`}/>
         <CodeBlock codeString={'npm i vite-tsconfig-paths'}/>
         <div className="flex flex-col gap-2">
           <p>Add <span className="italic">tsconfigPaths()</span> object plugins in file <Badge label={'vite.config.js'} variant={"soft-gray"}/> </p>
-          <CodeBlock codeString={'plugins: [..., tsconfigPaths()],'}/>
+          <CodeBlock fileName="vite.config.ts" codeString={`...
+plugins: [..., tsconfigPaths()],
+...`}/>
         </div>
         <div className="flex flex-col gap-2">
           <p>Add This in object compilerOptions in file <Badge label={'tsconfig.json'} variant={"soft-gray"}/> </p>
-          <CodeBlock codeString={`"baseUrl": "./src",
+          <CodeBlock fileName="tsconfig.json"  codeString={`...
+"baseUrl": "./src",
 "paths" : {
   "@*": ["./*"],
-},`}/>
+},
+...`}/>
         </div>
       </div>
     },
     {
       title :'Install vite-plugin-svgr plugin for easily using svg icon so you can dynamically change the color of svg icon without downloading the different color of the same icon',
-      caption : <div>
+      caption : <div className="flex flex-col gap-2">
           <CodeBlock codeString={'npm i vite-plugin-svgr'}/>
           <div>
             <p>Add <span className="italic">svgr()</span> object plugins in file <Badge label={'vite.config.js'} variant={"soft-gray"}/> </p>
-            <CodeBlock codeString={`plugins: [..., svgr(),]`}/>
+            <CodeBlock fileName="vite.config.ts"  codeString={`...
+plugins: [..., svgr(),]
+...`}/>
           
           </div>
           <div>
             <p>Add this css in file <Badge label={'index.css'} variant={"soft-gray"}/></p>
-            <CodeBlock codeString={`/* FOR SVG ICON set color dinamically */
+            <CodeBlock fileName="styles/index.css" codeString={`/* FOR SVG ICON set color dinamically */
 .icon-white path { @apply stroke-white }
 .icon-white-fill path { @apply fill-white  }
 
