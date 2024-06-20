@@ -28,19 +28,27 @@ const customStyle =(customeStyle?:TPropsCustomeStyle)=> ({
 
 interface TProps {
   codeString: string;
-  customeStyle? : TPropsCustomeStyle 
+  customeStyle? : TPropsCustomeStyle;
+  fileName?: string;
 }
 
 const CodeBlock = (props: TProps) => {
-  const { codeString, customeStyle } = props
+  const { codeString, fileName, customeStyle } = props
   return (
     <div className='relative  w-full '>
       <ThreeDotMacBook />
       <CopyText text={codeString} classText='hidden' classContainer={'absolute w-fit right-4 top-10 z-[5]'} />
       <SyntaxHighlighter language="javascript" style={customStyle( customeStyle)}>
-        {codeString}
+        {`
+${codeString}
+        `}
       </SyntaxHighlighter>
-
+      {
+         fileName&& <div className='absolute top-6 bg-primary-100 text-primary-700 font-medium border rounded-br-lg p-1'>
+        {fileName}
+       </div>
+      }
+        
     </div>
   );
 };

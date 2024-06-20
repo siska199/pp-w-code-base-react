@@ -14,9 +14,9 @@ const List = (props: TProps) => {
 
     const renderItems = (items: TItemList[]) => {
         return (
-            <ul className={`${customeClass?.ul} list-disc px-4 flex flex-col gap-3 mt-2`}>
+            <ul className={`${customeClass?.ul} list-disc px-4 flex flex-col mt-2`}>
                 {items.map((item, i) => (
-                    <li key={i} className={`${customeClass?.li} `}>
+                    <li key={i} className={`${customeClass?.li} ${item?.label?'mb-2':'mb-0'}`}>
                         {item.label && <Badge label={item.label} className="mr-2" />  }
                         {item.content}
                         {item.childs && renderItems(item.childs)}
