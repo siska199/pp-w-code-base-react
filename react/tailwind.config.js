@@ -83,7 +83,7 @@ export default {
         'staryssa': ['Staryssa'],
       },
       boxShadow: {
-        '4-y-1': '0px 1px 4px 0px rgba(226, 232, 240, 1)',
+        // '4-y-1': '0px 1px 4px 0px rgba(226, 232, 240, 1)',
       },
       borderColor: {
         DEFAULT: '#e5e7eb',
