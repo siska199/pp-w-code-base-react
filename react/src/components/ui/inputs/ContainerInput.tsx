@@ -23,6 +23,12 @@ interface TProps<TInput,> extends TBasePropsInput {
     customeClearValue? : string
 }
 
+
+//Description Variant:
+// v1 : 
+// v2 :
+// v3 :
+
 const ContainerInput = <TInput,>(props: TProps<TInput>) => {
     const { name, children, onCustomeClearHandler,customeClearValue, isNotUsingDefaultStyle, childrenOverlay, label, variant = "v1", isClerable = false, type, onlyContainer = false, errorMessage, customeElement, disabled, customeClass, value, onChange, ...attrsInput } = props;
     const [dynamicType, setDynamicType] = useState(type)
@@ -31,6 +37,8 @@ const ContainerInput = <TInput,>(props: TProps<TInput>) => {
         "peer w-full shrink !outline-none border-none focus:border-none focus:ring-0 p-0 text-body-base placeholder:text-gray-400": !isNotUsingDefaultStyle?.input,
         "!bg-disabled": disabled,
         [customeClass?.input || '']: customeClass?.input,
+        "px-4": customeElement?.preEnd,
+        "pr-4 pl-1":customeElement?.preStart
     })
 
     const handleToggleTypePassword = () => {
@@ -51,9 +59,9 @@ const ContainerInput = <TInput,>(props: TProps<TInput>) => {
     return (
         <>
             {/* Container input lv1 : ciV4 */}
-            <Container gap={"tiny"} className={`${customeClass?.ciV4} relative inline-block `}>
+            <Container className={`${customeClass?.ciV4} relative flex flex-col gap-2`}>
                 {/* Container input lv1 : ciV3 */}
-                <section className={`${customeClass?.ciV3} flex flex-col gap-1 w-full`}>
+                <section className={`${customeClass?.ciV3} flex flex-col gap-2 w-full`}>
                     {label && variant !== "v2" && (
                         <label htmlFor={name} className={clsx({
                             "font-medium": true,
@@ -63,21 +71,34 @@ const ContainerInput = <TInput,>(props: TProps<TInput>) => {
                     {/* Container input lv1 : ciV2 */}
                     {
                         onlyContainer && typeof (children) !== "function" ? children : <div className={clsx(
-                            "bg-white flex flex-nowrap items-center gap-2 text-body-base border border-input rounded-lg focus-within:ring-4 focus-within:ring-primary-200 focus-within:!border-primary w-full px-3 py-2",
+                            "bg-white flex flex-nowrap items-center gap-2 text-body-base border border-input rounded-lg focus-within:ring-4  w-full ",
                             {
                                 "!bg-disabled !border": disabled,
+                                "focus-within:ring-primary-200 focus-within:!border-primary":!errorMessage,
                                 "border-error focus-within:!ring-error-200 focus-within:!border-error": errorMessage,
                                 "!rounded-[5rem]": variant === "v3",
                                 "!border-t-0 !border-l-0 !border-r-0 !rounded-none focus-within:!ring-0": variant === "v5",
-                                [customeClass?.ciV2 || ""]: customeClass?.ciV2
+                                [customeClass?.ciV2 || ""]: customeClass?.ciV2,
+                                "px-3 py-2 " : !customeElement?.preStart && !customeElement?.preEnd,
+                                "overflow-hidden" : customeElement?.preStart || customeElement?.preEnd,
                             }
                         )}>
+                            {
+                                customeElement?.preStart&& <div className={clsx({
+                                    "hidden": true,
+                                    "shrink-0 !flex bg-gray-100 p-2 ": customeElement?.preStart,
+                                })} >
+                                    {customeElement?.preStart}
+                                </div>
+                            }
+                           
                             <div className={clsx({
                                 "hidden": true,
-                                "shrink-0 !flex ": customeElement?.start
+                                "shrink-0 !flex ": customeElement?.start,
                             })} >
                                 {customeElement?.start}
                             </div>
+
                             {/* Container input lv1 : ciV1 */}
                             <div className={`flex flex-col w-full relative ${customeClass?.ciV1}`}>
                                 {
@@ -104,12 +125,21 @@ const ContainerInput = <TInput,>(props: TProps<TInput>) => {
 
                             </div>
                             {isClerable && !isEmptyValue(customeClearValue) && <IconClose className='cursor-pointer' onClick={handleOnClearValue} />}
+                            
                             <div className={clsx({
                                 "hidden": true,
                                 "shrink-0 !flex": customeElement?.end
                             })} >
                                 {customeElement?.end}
                             </div>
+                            {
+                                customeElement?.preEnd&& <div className={clsx({
+                                    "hidden": true,
+                                    "shrink-0 !flex bg-gray-100 p-2 ": customeElement?.preEnd,
+                                })} >
+                                    {customeElement?.preEnd}
+                                </div>
+                            }
                             {type === "password" && <div onClick={handleToggleTypePassword} className="cursor-pointer-custome ">
                                 {
                                     dynamicType === "password" ? <IconEye /> : <IconEyeClose />
