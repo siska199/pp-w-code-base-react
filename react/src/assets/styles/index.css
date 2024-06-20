@@ -51,19 +51,6 @@
 
 @layer utilities {
 
-    .custom-transform {
-        --tw-scale-x: var(--_width, 0.125);
-        --tw-scale-y: 1;
-        --tw-translate-x: var(--_left, 0);
-        --tw-translate-y: 0;
-        
-        transform-origin: left;
-        transition-property: scale, translate;
-        transition-duration: 200ms;
-      
-        @apply scale-[var(--tw-scale-x) var(--tw-scale-y)] translate-x-[var(--tw-translate-x)] translate-y-[var(--tw-translate-y)];
-      }
-
     /* Blur effect for iamge */
     .blur-effect {
         filter: blur(10px);
