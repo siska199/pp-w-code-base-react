@@ -50,7 +50,7 @@ plugins: [..., tsconfigPaths()],
 ...`} />
         </div>
         <div className="flex flex-col gap-2">
-          <p>then, add this below code in object compilerOptions in file <Badge label={'tsconfig.json'} variant={"soft-gray"} /> </p>
+          <p>last, add this below code in object compilerOptions in file <Badge label={'tsconfig.json'} variant={"soft-gray"} /> </p>
           <CodeBlock fileName="tsconfig.json" codeString={`...
 "baseUrl": "./src",
 "paths" : {
@@ -72,7 +72,8 @@ plugins: [..., svgr(),]
 
         </div>
         <div>
-          <p>then, add this css in file <Badge label={'index.css'} variant={"soft-gray"} /></p>
+          <p>last, add this css in file <Badge label={'index.css'} variant={"soft-gray"} />. For icon with type outline you can dynamically change the color using class that have format <span className="italic">icon-[type]</span>, meanwhile
+            while you want to dynamically change icon contained you can use class that have format <span className="italic">icon-[type]-fill</span></p>
           <CodeBlock fileName="styles/index.css" codeString={`/* FOR SVG ICON set color dinamically */
 .icon-white path { @apply stroke-white }
 .icon-white-fill path { @apply fill-white  }
@@ -94,6 +95,15 @@ plugins: [..., svgr(),]
 
 .icon-success path { @apply  stroke-success}
 .icon-success-fill path { @apply  fill-success}`} />
+        </div>
+        <div className="flex flex-col gap-2">
+          <p>Example usage:</p>
+          <CodeBlock fileName="example.tsx" codeString={`
+import as IconCalender from '@assets/icons/calender.svg?react';
+...
+<IconCalender className='icon-primary'/>
+...`} />
+
         </div>
       </div>
     },
