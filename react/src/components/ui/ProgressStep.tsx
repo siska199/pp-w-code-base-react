@@ -3,7 +3,7 @@ import { IconExclude } from "@assets/icons";
 type TProps = {
     activeStep?: number;
     listStep: {
-        title: string;
+        title: string | React.ReactNode;
         caption?: string | React.ReactNode;
     }[];
     variant?: "horizontal" | "vertical";

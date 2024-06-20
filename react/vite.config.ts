@@ -12,7 +12,5 @@ export default defineConfig({
   },
   optimizeDeps: {
     exclude: ['js-big-decimal'],
-    // include: ['fs-extra'],
-
   }
 })
