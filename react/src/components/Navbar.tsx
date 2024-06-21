@@ -12,7 +12,7 @@ const Navbar = () => {
     return (
         <nav id="navbar" className="bg-blur  w-full sticky  z-[11] flex items-center justify-between white top-0 left-0 border-b px-8 py-4">
             <div className="flex items-center gap-8">
-                <Button variant={"plain"} className="!p-0  md:hidden" onClick={handleToggleSidebar} label={<IconHamburger className="w-[1.75rem]" />} />
+                <Button variant={"plain"} className="!p-0  md:hidden" onClick={handleToggleSidebar} label={<IconHamburger className="" />} />
 
                 <Logo sizeLogo={"large"} className="!hidden md:!flex" />
                 <Breadcrumb items={listMenuNavbar} withIconDivider={false} className={"gap-8 hidden md:flex "} customeClass={{ active: "bg-primary-50 text-primary-700 !px-2 !rounded-md", label: "!text-primary-700" }} />
