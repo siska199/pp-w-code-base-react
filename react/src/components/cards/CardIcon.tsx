@@ -39,7 +39,7 @@ const CardIcon = (props: TProps) => {
             <Icon className='w-[10rem] h-[10rem] border bg-gray-100 rounded-lg' />
           </div>
           <div className="flex flex-col gap-4 overflow-x-auto">
-            <h5 className="text-primary-700 rounded-full w-fit px-4 bg-primary-50 font-medium">{name}</h5>
+            <p className="text-body-2xl text-primary-700 rounded-full w-fit px-4 bg-primary-50 font-medium">{name}</p>
             <CodeBlock codeString={svgCode[name as keyof typeof svgCode]?.replace('`','')} />
           </div>
         </div>
