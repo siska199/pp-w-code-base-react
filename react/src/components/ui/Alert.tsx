@@ -88,7 +88,7 @@ const Alert = (props: TProps) => {
                         {
                             customeIcon ?? <>
                                 {type === "info" && <IconInfo className="icon-gray" />}
-                                {type === "warning" && <IconInfo className="icon-warning" />}
+                                {type === "warning" && <IconInfo className="icon-warning " />}
                                 {type === "error" && <IconDanger className="icon-error" />}
                                 {type === "success" && <IconSuccess className="icon-success" />}
                                 {type === "notification" && <IconNotification />}

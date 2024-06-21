@@ -15,6 +15,7 @@ const customStyle = (customeStyle?: TPropsCustomeStyle) => ({
     ...dark['pre[class*="language-"]'],
     background: 'black',
     maxHeight: "30rem",
+    minHeight: "3.5rem",
     border: "none",
     fontSize: "16px",
     ...customeStyle?.pre

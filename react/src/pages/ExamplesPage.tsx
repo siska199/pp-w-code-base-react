@@ -4,7 +4,7 @@ import Divider from '@components/ui/Divider';
 const ExamplesPage = () => {
   return (
     <div className='border p-4'>
-      <Divider
+      {/* <Divider
         text={'Siska'}
         width={"100%"}
       />
@@ -17,7 +17,7 @@ const ExamplesPage = () => {
         text={'Right Aligned'}
         width={"100%"}
         variant={"right-aligned"}
-      />
+      /> */}
 
       <ExampleModal/>
     </div>

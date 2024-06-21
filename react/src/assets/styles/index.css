@@ -96,7 +96,7 @@
     .icon-error path { @apply stroke-error }
     .icon-error-fill path {  @apply fill-error }
 
-    .icon-warning path { @apply stroke-warning}
+    .icon-warning path, .icon-warning rect { @apply !stroke-warning}
     .icon-warning-fill path { @apply fill-warning }
 
     .icon-success path { @apply  stroke-success}
