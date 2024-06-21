@@ -3,13 +3,11 @@ import CardIcon from "@components/cards/CardIcon";
 
 const IconPage = () => {
 
-
   return (
     <div className="flex flex-wrap gap-2">
       {
         Object?.entries(icons)?.map(([key, value]) => <div key={key}>
-          <CardIcon  Icon={value} />
-          {JSON.stringify(value)}
+          <CardIcon Icon={value} name={key}/>
         </div>)
       }
     </div>
