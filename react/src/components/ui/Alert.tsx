@@ -76,7 +76,7 @@ const Alert = (props: TProps) => {
             })}>
                 {
                     withCloseBtn && <IconClose onClick={handleOnDismiss} className={cn({
-                        "top-1 right-0 absolute w-[0.75rem] h-[0.75rem] cursor-pointer-custome": true,
+                        "top-1 right-0 absolute  cursor-pointer-custome": true,
                         "icon-warning": type === "warning",
                         "icon-error": type === "error",
                         "icon-success": type === "success"
@@ -105,7 +105,7 @@ const Alert = (props: TProps) => {
 }
 
 
-const generalStyle = 'flex flex-shrink gap-3 px-3 py-2 border w-fit rounded-md'
+const generalStyle = 'flex flex-shrink gap-3 px-3 py-2 border w-fit rounded-md max-w-[20rem]'
 
 
 
