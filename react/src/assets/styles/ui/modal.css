@@ -1,39 +1,19 @@
 @import url('../index.css');
 
-.md-overlay {
-	position: fixed;
-	width: 100%;
-	visibility: hidden;
-	top: 0;
-	left: 0;
-	z-index: 1000;
-	opacity: 0;
-	background: rgba(0,0,0,0.5);
-	-webkit-transition: all 0.3s;
-	-moz-transition: all 0.3s;
-	transition: all 0.3s;
-    opacity : 74%;
-
-}
-
 .md-modal {
 	position: fixed;
-	left:50%;
+	left: 50%;
 	height: auto;
 	z-index: 2000;
-	
 	visibility: hidden;
 	-webkit-backface-visibility: hidden;
 	-moz-backface-visibility: hidden;
 	backface-visibility: hidden;
-
 	-webkit-transform: translateX(-50%) translateY(-50%);
 	-moz-transform: translateX(-50%) translateY(-50%);
 	-ms-transform: translateX(-50%) translateY(-50%);
 	transform: translateX(-50%) translateY(-50%);
-	
 }
-
 .md-effect-1.md-modal,.md-effect-2.md-modal{
 	top: 50%;
 }
@@ -46,28 +26,46 @@
 	transform: translateX(-50%) translateY(0%);
 }
 
+
 .md-show {
 	visibility: visible;
 }
 
+.md-overlay {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	opacity: 0;
+	background: rgba(0,0,0,0.5);
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+    opacity : 74%;
+    
+
+}
 
 /* Content styles */
 .md-content {
 	background: white;
 	position: relative;
-	margin: 0;
+	border-radius: 3px;
+	margin: 0 auto;
     padding : 1rem;
     border-radius:0.5rem;
 	box-shadow: 0px 20px 25px -5px #0F172A1A;
 	box-shadow: 0px 10px 10px 0px #0F172A0D;
-	width : 100%;
+	
 }
 
 .md-show ~ .md-overlay {
 	opacity: 1;
 	visibility: visible;
 }
-
 /* Effect 1: Fade in and scale up */
 .md-effect-1 .md-content {
 	-webkit-transform: scale(0.7);
@@ -89,6 +87,7 @@
 }
 
 /* Effect 2: Slide from the right */
+
 .md-effect-2 .md-content {
 	-webkit-transform: translateX(20%);
 	-moz-transform: translateX(20%);
@@ -99,6 +98,7 @@
 	-moz-transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
 	transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
 }
+
 .md-show.md-effect-2 .md-content {
 	-webkit-transform: translateX(0);
 	-moz-transform: translateX(0);
@@ -106,7 +106,6 @@
 	transform: translateX(0);
 	opacity: 1;
 }
-
 
 /* Effect 3: Drawer */
 .md-effect-3 .md-content {

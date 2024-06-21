@@ -1,3 +1,4 @@
+import ExampleModal from '@components/examples/ExampleModal';
 import Divider from '@components/ui/Divider';
 
 const ExamplesPage = () => {
@@ -17,6 +18,8 @@ const ExamplesPage = () => {
         width={"100%"}
         variant={"right-aligned"}
       />
+
+      <ExampleModal/>
     </div>
   );
 };
