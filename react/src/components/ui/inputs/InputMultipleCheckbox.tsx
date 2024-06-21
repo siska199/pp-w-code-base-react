@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-handler-names */
 import { TBasePropsInput } from '@/types/ui/index';
-import { IconChecked } from "@assets/icons";
+import { IconCheck } from "@assets/icons";
 import Container from "@components/ui/Container";
 import ContainerInput from "@components/ui/inputs/ContainerInput";
 import { TCustomeEventOnChange } from "@types";
@@ -55,7 +55,7 @@ const InputMultipleCheckbox = (props: TProps) => {
                     {...attrsInput}
                   />
                   <span className="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
-                    <IconChecked className="icon-white" />
+                    <IconCheck className="icon-white" />
                   </span>
                 </label>
                 <label className="mt-px cursor-pointer select-none" htmlFor="radio">

@@ -103,7 +103,6 @@ import as IconCalender from '@assets/icons/calender.svg?react';
 ...
 <IconCalender className='icon-primary'/>
 ...`} />
-
         </div>
       </div>
     },

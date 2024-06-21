@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-handler-names */
 import { TBasePropsInput } from '@/types/ui/index';
-import { IconChecked } from "@assets/icons";
+import { IconCheck } from "@assets/icons";
 import Container from "@components/ui/Container";
 
 interface TProps extends TBasePropsInput, Omit<React.HTMLProps<HTMLInputElement>, "value" | "onChange"> {
@@ -34,7 +34,7 @@ const InputCheckbox = (props: TProps) => {
                     {...attrsInput}
                 />
                 <span className="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
-                    <IconChecked className="icon-white" />
+                    <IconCheck className="icon-white" />
                 </span>
             </label>
             {

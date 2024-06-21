@@ -39,7 +39,7 @@ const CardIntroAvatar = () => {
                 groups={Object.keys(variantsAvatar.status)}
                 Component={(status) => {
 
-                    return <Avatar type="image" src={"https://i.pinimg.com/564x/d6/b0/b6/d6b0b67ba61773c5f163111ede88740a.jpg"} customeIcon={status === "icon" ? <IconVerified /> : undefined} status={status} name="Siska" />
+                    return <Avatar type="image" src={"https://i.pinimg.com/564x/d6/b0/b6/d6b0b67ba61773c5f163111ede88740a.jpg"} customeIcon={status === "icon" ? <IconVerified className="w-[1rem] h-[1rem]"/> : undefined} status={status} name="Siska" />
                 }}
             />
         }

@@ -89,12 +89,15 @@ const CardFill = (props: TPropsCard) => {
                     {body.content}
                 </div>
             )}
-            <div>
-                {
-                    link && <Button label={<div className="flex items-center">Card Link <IconChevronRight className="icon-primary w-[1rem] mt-[0.1rem]" /></div>}  customeElement="link" to={link?.to || ""} className="font-medium flex w-fit" />
+            {
+                link && <div>
+                    {
+                        link && <Button label={<div className="flex items-center">Card Link <IconChevronRight className="icon-primary w-[1rem] mt-[0.1rem]" /></div>} customeElement="link" to={link?.to || ""} className="font-medium flex w-fit" />
 
-                }
-            </div>
+                    }
+                </div>
+            }
+
         </div>}
 
         {/* FOOTER */}
