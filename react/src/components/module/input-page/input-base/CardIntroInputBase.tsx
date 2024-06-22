@@ -252,7 +252,7 @@ const CardIntroInputBase = () => {
   return (
     <CardIntroComponent
     title={'Input Base'}
-    subTitle="Description of InputBase."
+    subTitle="InputBase is a reusable React component for handling HTML input fields. It takes in various properties to customize the input and wraps it with a ContainerInput component that adds extra features like a clearable input option. It adjusts the placeholder based on the provided variant. This makes it easy to manage and extend input fields consistently across your application."
     listExample={listExample }
     displayCodeBase={displayCodeBase}
   />
