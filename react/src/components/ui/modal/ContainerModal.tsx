@@ -7,12 +7,14 @@ import { VariantProps, cva } from "class-variance-authority";
 import clsx from "clsx";
 
 interface TProps extends TBaseModal, VariantProps<typeof modalVariants> {
-
+    customeClass?: {
+        mdContent?: string;
+    }
 }
 
 
 const ContainerModal = (props: TProps) => {
-    const { isShow, onClose: handleOnClose, children, variant = "effect-1" } = props
+    const { isShow, customeClass, onClose: handleOnClose, children, variant = "effect-1" } = props
 
     const handleStopPropagation = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         e.stopPropagation()
@@ -29,7 +31,10 @@ const ContainerModal = (props: TProps) => {
                     })
                 }))}
             >
-                <div className="md-content bottom-0 relative min-h-[10rem] flex flex-col gap-2" onClick={handleStopPropagation}>
+                <div className={cn({
+                    'md-content bottom-0 relative min-h-[10rem] flex flex-col gap-2': true,
+                    [customeClass?.mdContent || '']: customeClass?.mdContent
+                })} onClick={handleStopPropagation}>
                     <Button label={<IconClose />} className="absolute top-2 right-3 rounded-full w-[2rem] h-[2rem]" variant={"plain"} onClick={handleOnClose} />
                     {children}
                 </div>

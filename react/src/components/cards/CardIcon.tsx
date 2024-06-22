@@ -32,15 +32,15 @@ const CardIcon = (props: TProps) => {
         />
       </Tooltip>
 
-      <ContainerModal isShow={showModal} onClose={() => handleToggleModal()} variant={"effect-3"}>
-        <div className="flex gap-8 items-center">
-          <div>
+      <ContainerModal isShow={showModal} onClose={() => handleToggleModal()} variant={"effect-3"} customeClass={{ mdContent: 'p-6' }}>
+        <div className="flex flex-wrap md:flex-nowrap h-full gap-8 items-center">
+          <div className="flex flex-col h-full gap-4 mb-auto">
+            <p className="text-body-2xl text-primary-700 rounded-full w-fit px-4 bg-primary-50 font-medium">{name}</p>
             {/* @ts-ignore */}
             <Icon className='w-[10rem] h-[10rem] border bg-gray-100 rounded-lg' />
           </div>
-          <div className="flex flex-col gap-4 overflow-x-auto">
-            <p className="text-body-2xl text-primary-700 rounded-full w-fit px-4 bg-primary-50 font-medium">{name}</p>
-            <CodeBlock codeString={svgCode[name as keyof typeof svgCode]?.replace('`','')} />
+          <div className="flex flex-col gap-4 overflow-x-auto ">
+            <CodeBlock codeString={svgCode[name as keyof typeof svgCode]?.replace('`', '')} />
           </div>
         </div>
       </ContainerModal>
