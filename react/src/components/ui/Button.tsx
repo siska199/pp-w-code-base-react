@@ -1,6 +1,6 @@
 import IconLoading from '@assets/icons/IconLoading';
-import { variantButton } from '@lib/utils/variants/variant-color';
 import { cn } from '@lib/utils/helper';
+import { variantButton } from '@lib/utils/variants/ui/variant-button';
 import { VariantProps, cva } from 'class-variance-authority';
 import { HTMLProps } from 'react';
 import { Link } from 'react-router-dom';

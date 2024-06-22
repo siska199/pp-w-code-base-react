@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { IconClose, IconDanger, IconInfo, IconNotification, IconSuccess } from "@assets/icons"
-import variant, { variantAlertError, variantAlertSuccess, variantAlertWarning } from "@lib/utils/variants/variant-color"
 import { cn } from "@lib/utils/helper"
+import variantsAlert, { variantAlertError, variantAlertSuccess, variantAlertWarning } from "@lib/utils/variants/ui/variant-alert"
+import variant from "@lib/utils/variants/variant-color"
 import { VariantProps, cva } from "class-variance-authority"
 import { HTMLProps, useEffect } from "react"
-import variantsAlert from "@lib/utils/variants/ui/variant-alert"
 
 
 interface TPropsVariantError extends VariantProps<typeof alertVariantError> {
