@@ -16,7 +16,6 @@ export const variantAlertWarning = {
     "warning-ouline": variant["outline-warning"],
 }
 
-
 const variantsAlert = {
     variant: {
         ...variantAlertSuccess,
