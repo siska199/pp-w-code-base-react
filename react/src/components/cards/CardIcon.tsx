@@ -4,7 +4,8 @@ import Card from "@components/ui/Card";
 import CodeBlock from "@components/ui/CodeBlock";
 import Tooltip from "@components/ui/Tooltip";
 import ContainerModal from "@components/ui/modal/ContainerModal";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 interface TProps {
   Icon: React.FC;
@@ -14,9 +15,21 @@ interface TProps {
 const CardIcon = (props: TProps) => {
   const { Icon, name } = props
   const [showModal, setShowModal] = useState(false)
+  const navigate = useNavigate()
+  
+  const [searchParams,] = useSearchParams();
+
+  useEffect(() => {
+    const iconName = searchParams?.get('name')
+    if (name === iconName) {
+      setShowModal(true)
+    }
+  }, [searchParams, name])
 
   const handleToggleModal = () => {
-    setShowModal(!showModal)
+    const updateShowModal = !showModal
+    navigate(`${location?.pathname}${updateShowModal ? `?name=${name}` : ''}`)
+    setShowModal(updateShowModal)
   }
 
 
