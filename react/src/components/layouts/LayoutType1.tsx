@@ -3,12 +3,13 @@ import RightSidebar from "@components/RightSidebar"
 import Sidebar from "@components/Sidebar"
 import useMenu from "@hooks/useMenu"
 import { useEffect, useState } from "react"
-import { Outlet } from "react-router-dom"
+import { Outlet, useSearchParams } from "react-router-dom"
 
 
 
 const LayoutType1 = () => {
     const { showSidebar, showRightSidebar } = useMenu()
+    const [searchParams,] = useSearchParams();
 
     const [widthSidebar, setWidthSidebar] = useState(0)
     const [widthRightSidebar, setWidthRightSidebar] = useState(0)
@@ -60,6 +61,15 @@ const LayoutType1 = () => {
         };
 
     }, [widthSidebar, widthRightSidebar, showSidebar])
+
+
+
+    useEffect(() => {
+        const id = searchParams?.get('id')
+        const elm = document?.getElementById(id || '')
+        elm?.scrollIntoView()
+    }, [])
+
 
     return (
         <main id="layout" className=" overflow-x-hidden relative bg-white h-screen min-h-screen w-full overflow-y-auto">

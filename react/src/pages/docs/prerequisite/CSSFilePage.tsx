@@ -5,9 +5,11 @@ import List from "@components/ui/List";
 import ProgressStep from "@components/ui/ProgressStep";
 
 const CSSFilePage = () => {
+
+
     const listCSSFile = [
         {
-            title: <>File <Badge label="index.css" variant={"soft-gray"} /> terletak pada folder <span className="italic">styles</span></>,
+            title: <div id="index.css">File <Badge label="index.css" variant={"soft-gray"} /> terletak pada folder <span className="italic">styles</span></div>,
             caption: <CodeBlock
                 fileName="styles/index.css"
                 codeString={`@font-face {
