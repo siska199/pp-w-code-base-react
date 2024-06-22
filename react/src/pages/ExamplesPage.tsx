@@ -1,5 +1,4 @@
-import ExampleModal from '@components/examples/ExampleModal';
-import Divider from '@components/ui/Divider';
+import ExampleTable from '@components/examples/ExampleTable';
 
 const ExamplesPage = () => {
   return (
@@ -18,8 +17,7 @@ const ExamplesPage = () => {
         width={"100%"}
         variant={"right-aligned"}
       /> */}
-
-      <ExampleModal/>
+      <ExampleTable />
     </div>
   );
 };
