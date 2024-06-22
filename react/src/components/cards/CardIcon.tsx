@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import svgCode from "@assets/icons/svg-code";
+import svgCode from "@assets/icons/code-string-svg-icon";
 import Card from "@components/ui/Card";
 import CodeBlock from "@components/ui/CodeBlock";
 import Container from "@components/ui/Container";

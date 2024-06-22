@@ -41,16 +41,19 @@ fs.readdir(iconsDir, (err, files) => {
     const svgCodeStr = `const svgCode = ${JSON.stringify(svgCode, null, 2)};\n\nexport default svgCode;`;
 
     // Directory path to save the output file
-    const outputDir = path.join(dirname, 'src/assets/icons');
+    const outputDir = path.join(dirname, 'src/lib/utils/code-string');
 
     // Ensure the directory exists
     fs.mkdirSync(outputDir, { recursive: true });
 
     // Write the object to a file in the specified directory
-    fs.writeFile(path.join(outputDir, 'svg-code.ts'), svgCodeStr, (err) => {
+    fs.writeFile(path.join(outputDir, 'component-ui.ts'), svgCodeStr, (err) => {
         if (err) {
             return console.error('Error writing file:', err);
         }
         console.log('SVG code file has been created successfully!');
     });
 });
+
+// How to run this script:
+// node g-svg-icon.js

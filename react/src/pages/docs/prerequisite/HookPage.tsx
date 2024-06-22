@@ -6,8 +6,6 @@ import List from "@components/ui/List";
 import ProgressStep from "@components/ui/ProgressStep";
 import { TItemList } from "@types";
 
-
-
 const HookPage = () => {
 
   const listHook = [
