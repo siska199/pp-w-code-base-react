@@ -45,7 +45,7 @@ export interface TPropsCard extends Omit<Partial<HTMLProps<HTMLDivElement>>, "ti
 
 const Card: React.FC<TPropsCard> = (props) => {
     return (
-        props.variant === "overlay" ? <Image className={props?.customeClass?.imageOverlay} customeClassName={{ container: "rounded-xl border", containerOverlay: "opacity-100 translate-y-0 !items-start !justify-start" }} src={props?.imageOverlay || ""} withOverlay={true} overlayContent={<CardFill {...props} />} /> : <CardFill {...props} />
+        props.variant === "overlay" ? <Image className={props?.customeClass?.imageOverlay} customeClassName={{ container: "rounded-xl border" }} src={props?.imageOverlay || ""} overlay={{ content: <CardFill {...props} /> }} /> : <CardFill {...props} />
 
     );
 };

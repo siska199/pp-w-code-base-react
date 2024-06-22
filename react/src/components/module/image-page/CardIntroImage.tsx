@@ -40,11 +40,13 @@ const CardIntroImage = () => {
           Component={<Image
             src={"https://i.pinimg.com/564x/c1/31/c8/c131c80be697650f1311229b81405aa2.jpg"}
             className="h-[10rem] w-[10rem] object-cover"
-            withOverlay={true}
-            overlayContent={<div className="text-white items-end flex w-full h-full p-3 gap-3">
-              <Button label={<IconLove className="icon-error-fill w-[1.1rem]" />} variant={"plain"} />
-              <Button label={<IconCart className="icon-gray-fill w-[1.1rem]" />} variant={"plain"} />
-            </div>}
+            overlay={{
+              isShowOnHover: true,
+              content: <div className="text-white items-end flex w-full h-full p-3 gap-3">
+                <Button label={<IconLove className="icon-error-fill w-[1.1rem]" />} variant={"plain"} />
+                <Button label={<IconCart className="icon-gray-fill w-[1.1rem]" />} variant={"plain"} />
+              </div>
+            }}
           />}
           customeClass={{ container: "!gap-8 [&>p]:!text-left" }}
         />

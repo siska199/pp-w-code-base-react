@@ -4,8 +4,7 @@ import React, { HTMLProps, useState } from 'react';
 interface TProps extends Omit<Partial<HTMLProps<HTMLImageElement>>, ""> {
     src: string;
     alt?: string;
-    withOverlay?: boolean;
-    overlayContent?: React.ReactNode;
+
     customeClassName?: {
         container?: string;
         image?: string;
@@ -14,10 +13,15 @@ interface TProps extends Omit<Partial<HTMLProps<HTMLImageElement>>, ""> {
     withSkeleton?: boolean;
     timeoutLoadImage?: number;
 
+    overlay?: {
+        isShowOnHover?: boolean;
+        content?: React.ReactNode;
+    }
+
 }
 
 const Image = (props: TProps) => {
-    const { src, alt, className, timeoutLoadImage = 0, withSkeleton, customeClassName, withOverlay, overlayContent, ...attrs } = props;
+    const { src, alt, className, timeoutLoadImage = 0, withSkeleton, customeClassName, overlay, ...attrs } = props;
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     const handleLoad = () => {
@@ -56,18 +60,20 @@ const Image = (props: TProps) => {
                     </div>
                 </div>
             }
-            {(withOverlay && overlayContent) && (
+            {(overlay?.content) && (
                 <div className={cn({
-                    "absolute top-0 left-0 bg-black/30 flex justify-center items-center transition-all duration-300 transform translate-y-[50%] group-hover:translate-y-0 opacity-0 group-hover:opacity-100 w-full h-full": true,
+                    "absolute top-0 left-0 bg-black/30 opacity-100 translate-y-0  transition-all duration-300 transform  w-full h-full": true,
+                    'translate-y-[50%] group-hover:translate-y-0 opacity-0 group-hover:opacity-100 ': overlay?.isShowOnHover,
                     [customeClassName?.containerOverlay || ""]: customeClassName?.containerOverlay
                 })}>
-                    {overlayContent && overlayContent}
+                    {overlay?.content}
                 </div>
-            )}
+            )
+            }
 
 
 
-        </div>
+        </div >
     );
 };
 
