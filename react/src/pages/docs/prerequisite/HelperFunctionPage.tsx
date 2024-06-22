@@ -6,7 +6,7 @@ const HelperFunctionPage = () => {
     <div className="flex flex-col gap-3">
       <CardIntro
         title={'Helper Function'}
-        subTitle={<p>A helper.js file is typically used in a project to store utility functions that can be reused across different parts of the application.</p>}
+        subTitle={<>A helper.js file is typically used in a project to store utility functions that can be reused across different parts of the application.</>}
       />
       <CodeBlock
         fileName="src/lib/utils/helper.ts"
