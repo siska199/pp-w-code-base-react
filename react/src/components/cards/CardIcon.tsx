@@ -2,6 +2,7 @@
 import svgCode from "@assets/icons/svg-code";
 import Card from "@components/ui/Card";
 import CodeBlock from "@components/ui/CodeBlock";
+import Container from "@components/ui/Container";
 import Tooltip from "@components/ui/Tooltip";
 import ContainerModal from "@components/ui/modal/ContainerModal";
 import React, { useEffect, useState } from "react";
@@ -46,16 +47,16 @@ const CardIcon = (props: TProps) => {
       </Tooltip>
 
       <ContainerModal isShow={showModal} onClose={() => handleToggleModal()} variant={"effect-3"} customeClass={{ mdContent: 'p-6' }}>
-        <div className="flex flex-wrap md:flex-nowrap h-full gap-8 items-center">
-          <div className="flex flex-col h-full gap-4 mb-auto">
+        <Container variant={"hsc"} gap={"medium"}>
+          <Container gap={"base"} variant={"vcc"} fit className="mb-autos">
             <p className="text-body-2xl text-primary-700 rounded-full w-fit px-4 bg-primary-50 font-medium">{name}</p>
             {/* @ts-ignore */}
             <Icon className='w-[10rem] h-[10rem] border bg-gray-100 rounded-lg' />
-          </div>
-          <div className="flex flex-col gap-4 overflow-x-auto ">
+          </Container>
+          <Container variant={"vcc"} className="overflow-x-auto flex-grow">
             <CodeBlock codeString={svgCode[name as keyof typeof svgCode]?.replace('`', '')} />
-          </div>
-        </div>
+          </Container>
+        </Container>
       </ContainerModal>
     </div>
   )

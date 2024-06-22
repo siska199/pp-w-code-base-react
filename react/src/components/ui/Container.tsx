@@ -4,7 +4,7 @@ import React from 'react';
 
 
 const containerFlexVariants = cva(
-  'flex w-full',
+  'flex w-full flex-wrap md:flex-nowrap ',
   {
     variants : {
       variant : {

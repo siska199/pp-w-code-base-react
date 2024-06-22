@@ -4,14 +4,109 @@ import ProgressStep from "@components/ui/ProgressStep";
 
 const HelperComponentPage = () => {
 
-  const listHelperComponent = [
-    {
-      title: 'ContainerInput.tsx',
-      caption: <div className="flex flex-col gap-2">
-        <p>The ContainerInput component is a versatile wrapper designed to handle almost all types of input components. It simplifies the process of creating input fields by providing a common structure and handling various functionalities, such as clearing the input, toggling password visibility, and displaying error messages. This component helps ensure that input fields have a consistent look and feel across the application and reduces the need for repetitive code</p>
-        <CodeBlock
-          fileName="src/components/ui/ContainerInput.tsx"
-          codeString={`import { TBasePropsInput } from '@/types/ui/index';
+    const listHelperComponent = [
+        {
+            title: 'Container.tsx',
+            caption: <div className="flex flex-col gap-2">
+                <p>The Container component is a versatile, highly customizable container for various layout configurations. It leverages the class-variance-authority (CVA) library to manage and apply a variety of CSS classes based on the provided props. This component is designed to offer flexible layout options using CSS flexbox properties, enabling developers to create consistent and reusable layouts.</p>
+                <CodeBlock
+                    fileName="src/components/ui/Container.tsx"
+                    codeString={`import { cn } from '@lib/utils/helper';
+import { VariantProps, cva } from 'class-variance-authority';
+import React from 'react';
+
+
+const containerFlexVariants = cva(
+  'flex w-full flex-wrap md:flex-nowrap ',
+  {
+    variants : {
+      variant : {
+        hcs : 'flex justify-center items-start',
+        hcc : 'flex justify-center items-center',
+        hce : 'flex justify-center items-end',
+        hss : 'flex justify-start items-start',
+        hsc : 'flex justify-start items-center',
+        hse : 'flex justify-start items-end',
+        hes : 'flex justify-start items-start',
+        hec : 'flex justify-start items-center',
+        hee : 'flex justify-start items-end',
+        hbs : 'flex justify-between items-start',
+        hbc : 'flex justify-between items-center',
+        hbe : 'flex justify-between items-end',
+        vcs : 'flex-col items-center justify-start',
+        vcc : 'flex-col items-center justify-center',
+        vce : 'flex-col items-center justify-end',
+        vss : 'flex-col items-start justify-start',
+        vsc : 'flex-col items-start justify-center',
+        vse : 'flex-col items-start justify-end',
+        ves : 'flex-col items-end justify-start',
+        vec : 'flex-col items-end justify-center',
+        vee : 'flex-col items-end justify-end',
+      },
+      fit : {
+        "true" : "w-fit",
+        "false" : "w-full"
+      },
+      gap : {
+        'tiny'   : "gap-1",
+        'small'   : "gap-2",
+        'base'    : "gap-4",
+        'medium'  : "gap-6",
+        'large'   : "gap-8",
+        'xl' : "gap-16"     
+      },
+
+      padding : {
+        'small'   : "p-2 w-[calc(100%-0.50rem)]",
+        'base'    : "p-4 w-[calc(100%-1rem)]",
+        'medium'  : "p-6 w-[calc(100%-1.5rem)]",
+        'large'   : "p-8 w-[calc(100%-2rem)]",
+        'xl' : "p-16 w-[calc(100%-4rem)]"         
+      },
+      typeComp : {
+        'page' : 'min-h-screen h-screen',
+        'card' : 'p-4'
+      }
+    },
+    compoundVariants : [ 
+    ],
+    defaultVariants : {
+      variant : 'vss',
+      fit     : false,
+    }
+  }
+)
+
+
+interface TProps extends React.HTMLProps<HTMLDivElement>, VariantProps<typeof containerFlexVariants> {
+  children      : React.ReactNode;
+  customElement?: "ul" | "nav" | "body"  | "main" | 'form'
+}
+
+
+const Container : React.FC<TProps> = (props) => {
+  const {children, className, variant,gap, fit, padding,  typeComp , customElement, ...attrs} = props
+  const Component  = customElement ?? 'div'  as React.ElementType
+  return (
+    <Component className={cn(containerFlexVariants({ className,variant, gap, fit, padding,typeComp}))} {...attrs}>
+      {children}
+    </Component>
+  )
+}
+
+
+
+export default Container`}
+                />
+            </div>
+        },
+        {
+            title: 'ContainerInput.tsx',
+            caption: <div className="flex flex-col gap-2">
+                <p>The ContainerInput component is a versatile wrapper designed to handle almost all types of input components. It simplifies the process of creating input fields by providing a common structure and handling various functionalities, such as clearing the input, toggling password visibility, and displaying error messages. This component helps ensure that input fields have a consistent look and feel across the application and reduces the need for repetitive code</p>
+                <CodeBlock
+                    fileName="src/components/ui/input/ContainerInput.tsx"
+                    codeString={`import { TBasePropsInput } from '@/types/ui/index';
 import { IconClose, IconEye, IconEyeClose } from "@assets/icons";
 import Container from "@components/ui/Container";
 import HelperMessage from "@components/ui/HelperMessage";
@@ -169,22 +264,22 @@ const ContainerInput = <TInput,>(props: TProps<TInput>) => {
 }
 
 export default ContainerInput;`}
-        />
-      </div>
-    }
-  ]
+                />
+            </div>
+        }
+    ]
 
-  return (
-    <>
-      <CardIntro
-        title={'Helper Component'}
-        subTitle={'Helper components are specialized components created to build other components. They encapsulate reusable logic and structures, allowing for more efficient and organized development. By providing common functionalities, helper components make the codebase more maintainable and consistent.'}
-      />
+    return (
+        <>
+            <CardIntro
+                title={'Helper Component'}
+                subTitle={'Helper components are specialized components created to build other components. They encapsulate reusable logic and structures, allowing for more efficient and organized development. By providing common functionalities, helper components make the codebase more maintainable and consistent.'}
+            />
 
-      <ProgressStep type="number" variant="vertical" listStep={listHelperComponent} />
-    </>
+            <ProgressStep type="number" variant="vertical" listStep={listHelperComponent} />
+        </>
 
-  );
+    );
 };
 
 export default HelperComponentPage;
