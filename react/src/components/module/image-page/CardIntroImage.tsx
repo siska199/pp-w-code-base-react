@@ -5,7 +5,7 @@ import CardIntroComponent from "@components/cards/CardIntroComponent";
 import CardVariantComp from "@components/cards/CardVariantComp";
 import Button from "@components/ui/Button";
 import Image from "@components/ui/Image";
-import componentCode from "@lib/utils/code-string/component-ui";
+import codeStringComponent from '@lib/utils/code-string/component-ui';
 import { useState } from "react";
 
 const CardIntroImage = () => {
@@ -105,6 +105,6 @@ const CardIntroImage = () => {
   );
 }
 
-const displayCodeBase = componentCode.Image
+const displayCodeBase = codeStringComponent.Image
 
 export default CardIntroImage;

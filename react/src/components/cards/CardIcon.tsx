@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import svgCode from "@assets/icons/code-string-svg-icon";
 import Card from "@components/ui/Card";
 import CodeBlock from "@components/ui/CodeBlock";
 import Container from "@components/ui/Container";
 import Tooltip from "@components/ui/Tooltip";
 import ContainerModal from "@components/ui/modal/ContainerModal";
+import codeStringSVG from "@lib/utils/code-string/svg-icon";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
@@ -17,7 +17,7 @@ const CardIcon = (props: TProps) => {
   const { Icon, name } = props
   const [showModal, setShowModal] = useState(false)
   const navigate = useNavigate()
-  
+
   const [searchParams,] = useSearchParams();
 
   useEffect(() => {
@@ -54,7 +54,7 @@ const CardIcon = (props: TProps) => {
             <Icon className='w-[10rem] h-[10rem] border bg-gray-100 rounded-lg' />
           </Container>
           <Container variant={"vcc"} className="overflow-x-auto flex-grow">
-            <CodeBlock codeString={svgCode[name as keyof typeof svgCode]?.replace('`', '')} />
+            <CodeBlock codeString={codeStringSVG[name as keyof typeof codeStringSVG]?.replace('`', '')} />
           </Container>
         </Container>
       </ContainerModal>
