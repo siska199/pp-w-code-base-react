@@ -4,6 +4,7 @@ import CodeBlock from "@components/ui/CodeBlock";
 import Container from "@components/ui/Container";
 import List from "@components/ui/List";
 import ProgressStep from "@components/ui/ProgressStep";
+import codeStringHook from "@lib/utils/code-string/hook";
 import { TItemList } from "@types";
 
 const HookPage = () => {
@@ -45,7 +46,7 @@ const HookPage = () => {
         },
         codeBlock: {
           filename: 'src/hooks/useFormattedInput.tsx',
-          codeString: codeString?.useFormattedInput
+          codeString: codeStringHook.useFormattedInput
         },
         useCase: 'This hook is useful in forms where specific input formatting is required, ensuring user input adheres to a defined pattern and improving user experience.'
       })
@@ -81,7 +82,7 @@ const HookPage = () => {
           ]
         },
         codeBlock: {
-          codeString: codeString?.useOnClickOutside,
+          codeString: codeStringHook.useOnClickOutside,
           filename: 'src/hooks/useOnClickOutside.tsx',
         },
         useCase: 'Ideal for managing UI components that need to be dismissed when a user interacts outside their boundaries, such as dropdown menus or modal dialogs.'
@@ -127,7 +128,7 @@ const HookPage = () => {
         },
         codeBlock: {
           filename: 'src/hooks/useTable.tsx',
-          codeString: codeString?.useTable
+          codeString: codeStringHook.useTable
         },
         useCase: 'Perfect for table components in a web application where managing and updating table data, pagination, and column definitions dynamically is required.'
       })
@@ -172,154 +173,5 @@ const generateCaptionListItemHook = (params: TParamsGenerateItemHook) => <Contai
     <p className="indent-6">{params?.useCase}</p>
   </Container>
 </Container>
-
-const codeString = {
-  useFormattedInput: `import { useRef } from 'react';
-
-interface TProps {
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    formatPattern: string;
-    value: string;
-}
-
-const useFormattedInput = (props: TProps) => {
-    const { onChange, formatPattern, value } = props
-    const inputRef = useRef<HTMLInputElement>(null);
-
-    const formatValue = (value: string, pattern: string): string => {
-        const digitsOnly = value.replace(/\\D/g, "");
-        let formattedValue = "";
-        let patternIndex = 0;
-        let valueIndex = 0;
-
-        while (valueIndex < digitsOnly.length && patternIndex < pattern.length) {
-            if (pattern[patternIndex] === "X") {
-                formattedValue += digitsOnly[valueIndex];
-                valueIndex++;
-            } else {
-                formattedValue += pattern[patternIndex];
-            }
-            patternIndex++;
-        }
-
-        return formattedValue;
-    };
-
-
-    const handleOnChangeFormattedValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { selectionStart } = e.target;
-        let cursorPosition = selectionStart as number;
-        const valueDeleted = value[cursorPosition]
-        const valueRaw = e.target.value
-
-        const formattedValue = formatValue(valueRaw, formatPattern);
-        if (inputRef.current) {
-            const inputLengthDifference = formattedValue.length - e.target.value.length;
-            cursorPosition = (selectionStart as number) + inputLengthDifference;
-            if ([",", "-","."]?.includes(valueDeleted)) {
-                cursorPosition -= 1
-            }
-        }
-        e.target.value = formattedValue;
-        onChange(e);
-        setTimeout(() => {
-            if (inputRef.current) {
-                inputRef.current.selectionStart = cursorPosition;
-                inputRef.current.selectionEnd = cursorPosition;
-            }
-        }, 0);
-    };
-
-    return { inputRef, handleOnChangeFormattedValue };
-};
-
-export default useFormattedInput;`,
-  useOnClickOutside: `import { RefObject, useEffect } from "react";
-import { isEmptyValue } from '@/lib/utils/helper';
-
-interface TProps<T> {
-    handler: () => void;
-    ref: RefObject<T>;
-    refExceptions?: RefObject<T>[];
-
-}
-
-const useOnClickOutside = <T extends HTMLElement>(props: TProps<T>) => {
-    const { ref, handler, refExceptions } = props
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent | TouchEvent) => {
-            if (ref.current && !ref.current.contains(event.target as Node) && (isEmptyValue(refExceptions) ? true : !refExceptions?.some(exceptionRef => {
-                return exceptionRef.current?.contains(event.target as Node)
-            }))) {
-                handler();
-            }
-        };
-        document.addEventListener("mousedown", handleClickOutside);
-        document.addEventListener("touchstart", handleClickOutside);
-
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-            document.removeEventListener("touchstart", handleClickOutside);
-        };
-    }, [ref, handler]);
-};
-
-export default useOnClickOutside;`,
-  useTable: `import { TColumn, TObject, TResponseAPI, TSettingTable } from "@types";
-import React, { useEffect, useState } from "react";
-
-interface TProps {
-    initialColumn: any;
-    initialData: any;
-    initialSetting: any;
-    onFetchData: () => Promise<TObject>
-}
-
-const useTable = (props: TProps) => {
-    const { initialColumn, initialData, initialSetting, onFetchData: handleFetchData } = props
-    const [data, setData] = useState(initialData)
-
-    type TData = (typeof data)[0]
-
-    const [setting, setSetting] = useState<TSettingTable<TData>>({
-        currentPage: 1,
-        totalPage: 10,
-        ...initialSetting,
-    })
-
-    const columns: TColumn<TData, keyof TData>[] = React.useMemo(
-        () => initialColumn,
-        [initialColumn]
-    );
-
-    useEffect(() => {
-        handleOnChange()
-    }, [])
-
-    const handleOnChange = async (params?: TSettingTable<TData>) => {
-        const response: TResponseAPI = await handleFetchData()
-
-        if (response?.status) {
-            setData(response?.data)
-        }
-
-
-        params && setSetting(params)
-
-    }
-
-    return {
-        setting,
-        columns,
-        setData,
-        data,
-        handleOnChange,
-
-    }
-}
-
-
-export default useTable`
-}
 
 export default HookPage;
