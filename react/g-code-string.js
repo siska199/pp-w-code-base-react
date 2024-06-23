@@ -31,7 +31,7 @@ const readFilesRecursively = (directory, fileComponents) => {
     if (stats.isDirectory()) {
       // If the file is a directory, recursively read its contents
       readFilesRecursively(filePath, fileComponents);
-    } else if (['.js', '.jsx', '.ts', '.tsx', '.svg'].includes(path.extname(file))) {
+    } else if (['.js', '.jsx', '.ts', '.tsx', '.svg','.css'].includes(path.extname(file))) {
       // Ensure it's a JavaScript or TypeScript file
       const componentName = ['.svg']?.includes(path.extname(file)) ? formatnameSVG(file) : formatnameComponent(file);
       const componentContent = fs.readFileSync(filePath, 'utf8');
@@ -81,7 +81,7 @@ fs.writeFileSync(path.join(outputDir, outputFile), fileComponentsStr);
 console.log('File components object has been created successfully!');
 
 // How to run this script with arguments:
-// node g-cs-cui.js <componentsDir> <outputDir> <outputFile>
+// node g-code-string.js <componentsDir> <outputDir> <outputFile>
 
 // Example:
-// node g-cs-cui.js ./src/components/ui ./src/lib/utils/code-string component-ui.ts
+// node g-code-string.js ./src/components/ui ./src/lib/utils/code-string component-ui.ts
