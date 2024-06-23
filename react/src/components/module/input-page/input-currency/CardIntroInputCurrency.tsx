@@ -1,25 +1,57 @@
 
 import CardIntroComponent from "@components/cards/CardIntroComponent";
-import InputCurrency from "@components/ui/InputCurrency";
+import CardVariantComp from "@components/cards/CardVariantComp";
+import InputCurrency from "@components/ui/inputs/InputCurrency";
+import codeStringComponentUi from "@lib/utils/code-string/component-ui";
+import { TEventOnChange } from "@types";
+import { useState } from "react";
 
 const CardIntroInputCurrency = () => {
+  const [form, setForm] = useState({
+    'input-currency': {
+      label: 'Input Currency IDR',
+      value: '',
+      name: 'input-currency'
+    },
+  })
 
-    const listExample = [
+  const handleOnChange = (e: TEventOnChange) => {
+    const name = e.target.name as keyof typeof form
+    const value = e.target.value
+
+    setForm({
+      ...form,
+      [name]: {
+        ...form[name],
+        value
+      }
+    })
+  }
+
+  const listExample = [
     {
-      component: ""
+      component: <CardVariantComp
+        title={'default (IDR) '}
+        withBorder={false}
+        Component={<InputCurrency
+          onChange={handleOnChange}
+          {...form['input-currency']}
+        />}
+      />
+
+
     },
 
   ]
   return (
     <CardIntroComponent
       title={'Input Currency'}
-      subTitle="Description of InputCurrency."
-      listExample={listExample }
-      displayCodeBase={displayCodeBase}
+      subTitle="The InputCurrency component is tailored for handling input fields where users are expected to input currency values in Indonesian Rupiah (IDR) format. It extends functionality from TBasePropsInput and React.HTMLProps<HTMLInputElement>, allowing customization through props like className, style, and others."
+      listExample={listExample}
+      displayCodeBase={codeStringComponentUi.InputCurrency}
     />
   );
 }
 
-const displayCodeBase = `// Code for InputCurrency`;
 
 export default CardIntroInputCurrency;

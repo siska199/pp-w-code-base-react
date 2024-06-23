@@ -12,6 +12,30 @@ const CardUsageInputCurrency = () => {
   );
 }
 
-const displayUsage = `// Usage example for InputCurrency`;
+const displayUsage = `
+  const [form, setForm] = useState({
+    'input1': {
+      value: '',
+      name : 'input1'
+    },
+  })
+  
+  const handleOnChange = (e: TEventOnChange) => {
+    const name = e.target.name as keyof typeof form
+    const value = e.target.value
+
+    setForm({
+      ...form,
+      [name]: {
+        ...form[name],
+        value
+      }
+    })
+  }
+
+  return <InputCurrency
+            onChange={handleOnChange}
+            {...form['input1']}
+          />`;
 
 export default CardUsageInputCurrency;

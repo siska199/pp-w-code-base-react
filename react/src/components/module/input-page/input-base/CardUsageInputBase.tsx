@@ -36,7 +36,6 @@ const displayUsage = `
   return <InputBase
             onChange={handleOnChange}
             {...form['input1']}
-            variant={"v1"}
           />`;
 
 export default CardUsageInputBase;
