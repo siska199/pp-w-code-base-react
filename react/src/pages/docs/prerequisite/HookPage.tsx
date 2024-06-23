@@ -136,14 +136,13 @@ const HookPage = () => {
   ];
 
   return (
-    <>
+    <Container gap={"small"}>
       <CardIntro
         title={'Hook'}
         subTitle={`The codebase you provided makes use of three custom hooks in React, each with specific functionality and use cases. Here's an overview of each hook and its general purpose:`}
       />
       <ProgressStep type="number" listStep={listHook} variant="vertical" />
-
-    </>
+    </Container>
   );
 };
 
