@@ -12,6 +12,31 @@ const CardUsageInputBase = () => {
   );
 }
 
-const displayUsage = `// Usage example for InputBase`;
+const displayUsage = `
+  const [form, setForm] = useState({
+    'input1': {
+      value: '',
+      name : 'input1'
+    },
+  })
+  
+  const handleOnChange = (e: TEventOnChange) => {
+    const name = e.target.name as keyof typeof form
+    const value = e.target.value
+
+    setForm({
+      ...form,
+      [name]: {
+        ...form[name],
+        value
+      }
+    })
+  }
+
+  return <InputBase
+            onChange={handleOnChange}
+            {...form['input1']}
+            variant={"v1"}
+          />`;
 
 export default CardUsageInputBase;

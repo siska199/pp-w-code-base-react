@@ -10,7 +10,7 @@ const HelperComponentPage = () => {
     const listHelperComponent = [
         {
             title: 'Container.tsx',
-            caption: <Container gap={"small"}>
+            caption: <Container gap={"small"} id={"container.tsx"}>
                 <p>The Container component is a versatile, highly customizable container for various layout configurations. It leverages the class-variance-authority (CVA) library to manage and apply a variety of CSS classes based on the provided props. This component is designed to offer flexible layout options using CSS flexbox properties, enabling developers to create consistent and reusable layouts.</p>
                 <CodeBlock
                     fileName="src/components/ui/Container.tsx"
@@ -21,14 +21,14 @@ const HelperComponentPage = () => {
         },
         {
             title: 'ContainerInput.tsx',
-            caption: <div className="flex flex-col gap-2">
+            caption: <Container gap={"small"} id={"container-input.tsx"}>
                 <p>The ContainerInput component is a versatile wrapper designed to handle almost all types of input components. It simplifies the process of creating input fields by providing a common structure and handling various functionalities, such as clearing the input, toggling password visibility, and displaying error messages. This component helps ensure that input fields have a consistent look and feel across the application and reduces the need for repetitive code</p>
                 <CodeBlock
                     fileName="src/components/ui/input/ContainerInput.tsx"
                     codeString={codeStringComponentUi?.ContainerInput}
                 />
                 <List title={"Props"} items={listPropsContainerInput} />
-            </div>
+            </Container>
         }
     ]
 
