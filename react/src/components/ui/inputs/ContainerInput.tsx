@@ -20,11 +20,11 @@ interface TProps<TInput,> extends TBasePropsInput {
         input?: boolean
     };
     onCustomeClearHandler?: () => void;
-    customeClearValue? : string
+    customeClearValue?: string
 }
 
 const ContainerInput = <TInput,>(props: TProps<TInput>) => {
-    const { name, children, onCustomeClearHandler,customeClearValue, isNotUsingDefaultStyle, childrenOverlay, label, variant = "v1", isClerable = false, type, onlyContainer = false, errorMessage, customeElement, disabled, customeClass, value, onChange, ...attrsInput } = props;
+    const { name, children, onCustomeClearHandler, customeClearValue, isNotUsingDefaultStyle, childrenOverlay, label, variant = "v1", isClerable = false, type, onlyContainer = false, errorMessage, customeElement, disabled, customeClass, value, onChange, ...attrsInput } = props;
     const [dynamicType, setDynamicType] = useState(type)
 
     const className = clsx({
@@ -32,7 +32,7 @@ const ContainerInput = <TInput,>(props: TProps<TInput>) => {
         "!bg-disabled": disabled,
         [customeClass?.input || '']: customeClass?.input,
         "px-4": customeElement?.preEnd,
-        "pr-4 pl-1":customeElement?.preStart
+        "pr-4 pl-1": customeElement?.preStart
     })
 
     const handleToggleTypePassword = () => {
@@ -68,24 +68,25 @@ const ContainerInput = <TInput,>(props: TProps<TInput>) => {
                             "bg-white flex flex-nowrap items-center gap-2 text-body-base border border-input rounded-lg focus-within:ring-4  w-full ",
                             {
                                 "!bg-disabled !border": disabled,
-                                "focus-within:ring-primary-200 focus-within:!border-primary":!errorMessage,
+                                "focus-within:ring-primary-200 focus-within:!border-primary": !errorMessage,
                                 "border-error focus-within:!ring-error-200 focus-within:!border-error": errorMessage,
                                 "!rounded-[5rem]": variant === "v3",
                                 "!border-t-0 !border-l-0 !border-r-0 !rounded-none focus-within:!ring-0": variant === "v5",
                                 [customeClass?.ciV2 || ""]: customeClass?.ciV2,
-                                "px-3 py-2 " : !customeElement?.preStart && !customeElement?.preEnd,
-                                "overflow-hidden" : customeElement?.preStart || customeElement?.preEnd,
+                                "px-3 py-2 ": !customeElement?.preStart && !customeElement?.preEnd,
+                                "px-0": variant === "v5",
+                                "overflow-hidden": customeElement?.preStart || customeElement?.preEnd,
                             }
                         )}>
                             {
-                                customeElement?.preStart&& <div className={clsx({
+                                customeElement?.preStart && <div className={clsx({
                                     "hidden": true,
                                     "shrink-0 !flex bg-gray-100 p-2 ": customeElement?.preStart,
                                 })} >
                                     {customeElement?.preStart}
                                 </div>
                             }
-                           
+
                             <div className={clsx({
                                 "hidden": true,
                                 "shrink-0 !flex ": customeElement?.start,
@@ -119,7 +120,7 @@ const ContainerInput = <TInput,>(props: TProps<TInput>) => {
 
                             </div>
                             {isClerable && !isEmptyValue(customeClearValue) && <IconClose className='cursor-pointer' onClick={handleOnClearValue} />}
-                            
+
                             <div className={clsx({
                                 "hidden": true,
                                 "shrink-0 !flex": customeElement?.end
@@ -127,7 +128,7 @@ const ContainerInput = <TInput,>(props: TProps<TInput>) => {
                                 {customeElement?.end}
                             </div>
                             {
-                                customeElement?.preEnd&& <div className={clsx({
+                                customeElement?.preEnd && <div className={clsx({
                                     "hidden": true,
                                     "shrink-0 !flex bg-gray-100 p-2 ": customeElement?.preEnd,
                                 })} >
