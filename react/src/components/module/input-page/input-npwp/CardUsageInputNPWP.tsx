@@ -12,6 +12,29 @@ const CardUsageInputNPWP = () => {
   );
 }
 
-const displayUsage = `// Usage example for InputNPWP`;
+const displayUsage = `const [form, setForm] = useState({
+    'input-npwp': {
+      value: '',
+      name : 'input-npwp'
+    },
+  })
+  
+  const handleOnChange = (e: TEventOnChange) => {
+    const name = e.target.name as keyof typeof form
+    const value = e.target.value
+
+    setForm({
+      ...form,
+      [name]: {
+        ...form[name],
+        value
+      }
+    })
+  }
+
+  return <InputNPWP
+            onChange={handleOnChange}
+            {...form['input-npwp']}
+          />`;
 
 export default CardUsageInputNPWP;

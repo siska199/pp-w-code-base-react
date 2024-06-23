@@ -7,31 +7,28 @@ import { Link } from 'react-router-dom';
 
 
 interface TPropsLink {
-  customeElement: "link"
   to: string;
   target?: '_blank' | ''
 }
 
-interface TPropsButton {
-  customeElement?: "button"
-}
 
 type TProps = Omit<Partial<HTMLProps<HTMLButtonElement | HTMLLinkElement>>, "label" | "size" | "shape">
   & VariantProps<typeof buttonVariants>
   & {
     isLoading?: boolean;
     label: React.ReactNode | string;
+    to?: string;
   }
-  & (TPropsLink | TPropsButton);
+  & (TPropsLink);
 
 
 const Button = (props: TProps) => {
-  const { variant, size, customeElement = "button", shape, className, isLoading = false, label, ...attrs } = props
+  const { variant, size, shape, className, isLoading = false, label, ...attrs } = props
 
-  const CompButton = customeElement === "link" ? Link : "button" as React.ElementType
+  const CompButton = attrs?.to ? Link : "button" as React.ElementType
 
   let updateVariant: TProps["variant"] = variant || "solid-primary"
-  if (customeElement === "link" && !variant) {
+  if (attrs?.to && !variant) {
     updateVariant = "link-primary"
   }
 
