@@ -12,8 +12,7 @@ const CardUsageInputCurrency = () => {
   );
 }
 
-const displayUsage = `
-  const [form, setForm] = useState({
+const displayUsage = `const [form, setForm] = useState({
     'input1': {
       value: '',
       name : 'input1'
