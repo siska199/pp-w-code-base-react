@@ -23,12 +23,6 @@ interface TProps<TInput,> extends TBasePropsInput {
     customeClearValue? : string
 }
 
-
-//Description Variant:
-// v1 : 
-// v2 :
-// v3 :
-
 const ContainerInput = <TInput,>(props: TProps<TInput>) => {
     const { name, children, onCustomeClearHandler,customeClearValue, isNotUsingDefaultStyle, childrenOverlay, label, variant = "v1", isClerable = false, type, onlyContainer = false, errorMessage, customeElement, disabled, customeClass, value, onChange, ...attrsInput } = props;
     const [dynamicType, setDynamicType] = useState(type)
