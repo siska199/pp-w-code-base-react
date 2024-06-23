@@ -40,10 +40,7 @@ const CodeBlock = (props: TProps) => {
       <ThreeDotMacBook />
       <CopyText text={codeString} classText='hidden' classContainer={'absolute w-fit right-4 top-9 z-[5]'} />
       <SyntaxHighlighter language="javascript" style={customStyle(customeStyle)}>
-        {
-          fileName ? `
-${codeString}`:codeString
-      }
+        {fileName ? `\r\n${codeString}` : codeString}
 
       </SyntaxHighlighter>
       {

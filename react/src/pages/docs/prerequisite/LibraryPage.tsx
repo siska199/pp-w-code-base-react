@@ -1,6 +1,7 @@
 import Badge from "@components/ui/Badge";
 import Button from "@components/ui/Button";
 import CodeBlock from "@components/ui/CodeBlock";
+import Container from "@components/ui/Container";
 import List from "@components/ui/List";
 import ProgressStep from "@components/ui/ProgressStep";
 
@@ -12,7 +13,7 @@ const LibraryPage = () => {
     },
     {
       title: <>Install tailwind library, you can see the step in <Button label="here" customeElement="link" to={"https://tailwindcss.com/docs/guides/create-react-app"} target="_blank" /></>,
-      caption: <div className="flex flex-col gap-2">
+      caption: <Container gap="small">
         <p>Some file we need to configure while using tailwind: </p>
         <List
           items={[
@@ -26,92 +27,47 @@ const LibraryPage = () => {
             },
           ]}
         />
-      </div>
+      </Container>
     },
     {
       title: <>Install this below library because mostly component that created using <Button label="cva" customeElement="link" to={"https://cva.style/docs/getting-started/installation"} target="_blank" /></>,
       caption: <>
-        <CodeBlock codeString={`npm i class-variance-authority
-npm i clsx
-npm i tailwind-merge`} />
-        <div>
-          <p>Make sure also you have <Badge label={'cn'} variant={"soft-gray"} /> function, you can see  the function <Button label="here" customeElement="link" to={"http://localhost:5173/docs/prerequisite/helper-function"} target="_blank" /></p>
-        </div>
+        <CodeBlock codeString={`npm i class-variance-authority\r\nnpm i clsx\r\nnpm i tailwind-merge`} />
+        <p>Make sure also you have <Badge label={'cn'} variant={"soft-gray"} /> function, you can see  the function <Button label="here" customeElement="link" to={"http://localhost:5173/docs/prerequisite/helper-function"} target="_blank" /></p>
       </>
     },
     {
       title: 'Install vite-tsconfig-paths for create absolute path',
-      caption: <div className="flex flex-col gap-2">
+      caption: <Container gap={"small"}>
         <CodeBlock codeString={'npm i vite-tsconfig-paths'} />
-        <div className="flex flex-col gap-2">
-          <p>then, add <span className="italic">tsconfigPaths()</span> object plugins in file <Badge label={'vite.config.js'} variant={"soft-gray"} /> </p>
-          <CodeBlock fileName="vite.config.ts" codeString={`...
-plugins: [..., tsconfigPaths()],
-...`} />
-        </div>
-        <div className="flex flex-col gap-2">
-          <p>last, add this below code in object compilerOptions in file <Badge label={'tsconfig.json'} variant={"soft-gray"} /> </p>
-          <CodeBlock fileName="tsconfig.json" codeString={`...
-"baseUrl": "./src",
-"paths" : {
-  "@*": ["./*"],
-},
-...`} />
-        </div>
-      </div>
+
+        <p>then, add <span className="italic">tsconfigPaths()</span> object plugins in file <Badge  label={'vite.config.js'} variant={"soft-gray"} /> </p>
+        <CodeBlock fileName="vite.config.ts" codeString={`...\r\nplugins: [..., tsconfigPaths()],\r\n...`} />
+
+        <p>last, add this below code in object compilerOptions in file <Badge label={'tsconfig.json'} variant={"soft-gray"} /> </p>
+        <CodeBlock fileName="tsconfig.json" codeString={`...\r\n"baseUrl": "./src",\r\n"paths" : {\r\n    "@*": ["./*"],\r\n},\r\n...`} />
+
+      </Container>
     },
     {
       title: 'Install vite-plugin-svgr plugin for easily using svg icon so you can dynamically change the color of svg icon without downloading the different color of the same icon',
-      caption: <div className="flex flex-col gap-2">
+      caption: <Container gap={"small"}>
         <CodeBlock codeString={'npm i vite-plugin-svgr'} />
-        <div>
-          <p>then, add <span className="italic">svgr()</span> object plugins in file <Badge label={'vite.config.js'} variant={"soft-gray"} /> </p>
-          <CodeBlock fileName="vite.config.ts" codeString={`...
-plugins: [..., svgr(),]
-...`} />
-
-        </div>
-        <div>
-          <p>last, add this css in file <Badge label={'index.css'} variant={"soft-gray"} />. For icon with type outline you can dynamically change the color using class that have format <span className="italic">icon-[type]</span>, meanwhile
-            while you want to dynamically change icon contained you can use class that have format <span className="italic">icon-[type]-fill</span></p>
-          <CodeBlock fileName="styles/index.css" codeString={`/* FOR SVG ICON set color dinamically */
-.icon-white path { @apply stroke-white }
-.icon-white-fill path { @apply fill-white  }
-
-.icon-black path { @apply stroke-black }
-.icon-black-fill path { @apply fill-black  }
-
-.icon-gray path { @apply stroke-gray }
-.icon-gray-fill path { @apply fill-gray }
-
-.icon-primary path { @apply stroke-primary }
-.icon-primary-fill path { @apply fill-primary  }
-
-.icon-error path { @apply stroke-error }
-.icon-error-fill path {  @apply fill-error }
-
-.icon-warning path { @apply stroke-warning}
-.icon-warning-fill path { @apply fill-warning }
-
-.icon-success path { @apply  stroke-success}
-.icon-success-fill path { @apply  fill-success}`} />
-        </div>
-        <div className="flex flex-col gap-2">
-          <p>Example usage:</p>
-          <CodeBlock fileName="example.tsx" codeString={`
-import as IconCalender from '@assets/icons/calender.svg?react';
-...
-<IconCalender className='icon-primary'/>
-...`} />
-        </div>
-      </div>
+        <p>then, add <span className="italic">svgr()</span> object plugins in file <Badge label={'vite.config.js'} variant={"soft-gray"} /> </p>
+        <CodeBlock fileName="vite.config.ts" codeString={`...\r\nplugins: [..., svgr(),]\r\n...`} />
+        <p>last, add this css in file <Badge label={'index.css'} variant={"soft-gray"} />. For icon with type outline you can dynamically change the color using class that have format <span className="italic">icon-[type]</span>, meanwhile
+          while you want to dynamically change icon contained you can use class that have format <span className="italic">icon-[type]-fill</span></p>
+        <CodeBlock fileName="styles/index.css" codeString={`.icon-white path { @apply stroke-white }\r\n.icon-white-fill path { @apply fill-white  }\r\n\r\n.icon-black path { @apply stroke-black }\r\n.icon-black-fill path { @apply fill-black  }\r\n\r\n.icon-gray path { @apply stroke-gray }\r\n.icon-gray-fill path { @apply fill-gray }\r\n\r\n.icon-primary path { @apply stroke-primary }\r\n.icon-primary-fill path { @apply fill-primary  }\r\n\r\n.icon-error path { @apply stroke-error }\r\n.icon-error-fill path {  @apply fill-error }\r\n\r\n.icon-warning path { @apply stroke-warning}\r\n.icon-warning-fill path { @apply fill-warning }\r\n\r\n.icon-success path { @apply  stroke-success}\r\n.icon-success-fill path { @apply  fill-success }`} />
+        <p>Example usage:</p>
+        <CodeBlock fileName="example.tsx" codeString={`import as IconCalender from '@assets/icons/calender.svg?react';\r\n...\r\n<IconCalender className='icon-primary'/>\r\n...`} />
+      </Container>
     },
     {
       title: 'Install react-date-picker library for creating component InputDate',
       caption: <CodeBlock codeString={'npm i react-datepicker'} />
     },
     {
-      title: 'Install react-syntax-highlighter library for creating CodeBlock',
+      title: 'Install react-syntax-highlighter library for creating CodeBlock component',
       caption: <CodeBlock codeString={'npm i react-syntax-highlighter'} />
     }
   ]
