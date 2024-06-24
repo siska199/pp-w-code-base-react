@@ -1,17 +1,42 @@
 
 import CardIntroComponent from "@components/cards/CardIntroComponent";
+import CardVariantComp from "@components/cards/CardVariantComp";
+import InputDate from "@components/ui/inputs/InputDate";
+import useForm from "@hooks/useForm";
 
 const CardIntroInputDate = () => {
-
+  const initialForm =  {
+    "input-date":{},
+    "input-date-multi-select":{}
+  }
+    const {form, handleOnChange} = useForm<keyof typeof initialForm>({
+      initialForm
+    })
     const listExample = [
     {
-      component: ""
+      component: <CardVariantComp
+        title={'Single Date '}
+        withBorder={false}
+        Component={<InputDate
+          onChange={handleOnChange}
+          {...form['input-date']}
+        />}
+      />
     },
-
+    {
+      component: <CardVariantComp
+        title={'Range Date '}
+        withBorder={false}
+        Component={<InputDate
+          onChange={handleOnChange}
+          {...form['input-date']}
+        />}
+      />
+    },
   ]
   return (
     <CardIntroComponent
-      title={'InputDate'}
+      title={'Input Date'}
       subTitle="Description of InputDate."
       listExample={listExample }
       displayCodeBase={displayCodeBase}

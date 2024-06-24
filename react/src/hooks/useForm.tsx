@@ -1,10 +1,11 @@
+import { TEventOnChange } from '@types';
 import { useMemo, useState } from 'react';
 
 interface TPropsForm {
   initialForm: Record<string, any>; // Adjust TObject as needed
 }
 
-type TForm<T extends string> = Record<T, Record<string, any> & {name:string;}>;
+type TForm<T extends string> = Record<T, Record<string, any> & {name:string;value:any;}>;
 
 const useForm = <T extends string>({ initialForm }: TPropsForm) => {
   const defaultForm = useMemo(() => {
@@ -23,7 +24,7 @@ const useForm = <T extends string>({ initialForm }: TPropsForm) => {
 
   const [form, setForm] = useState<TForm<T>>(defaultForm);
 
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleOnChange = (e: TEventOnChange) => {
     const name = e.target.name as T;
     const value = e.target.value;
 

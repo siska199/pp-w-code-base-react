@@ -55,6 +55,7 @@ const InputDate = (props: TProps) => {
 
         <ContainerInput {...attrs}>
             <DatePicker
+                // selectsRange={attrs?.selectsRange}
                 onCalendarClose={handleOnCalenderClose}
                 selected={value}
                 onChange={handleOnChange}
@@ -80,7 +81,7 @@ const InputDate = (props: TProps) => {
                                 onClick={["year", "month"]?.includes(showTypeDate) ? decreaseYear : decreaseMonth}
                                 disabled={prevMonthButtonDisabled}
                                 shape={"circle"}
-                                variant={"outline-gray"}
+                                variant={"solid-white"}
                                 label={<IconChevronLeft />}
                                 className={clsx({
                                     'p-2': true,
@@ -98,7 +99,7 @@ const InputDate = (props: TProps) => {
                             </div>
                             <Button
                                 shape={"circle"}
-                                variant={"outline-gray"}
+                                variant={"solid-white"}
                                 onClick={["year", "month"]?.includes(showTypeDate) ? increaseYear : increaseMonth}
                                 disabled={nextMonthButtonDisabled}
                                 className={clsx({
@@ -124,7 +125,7 @@ const InputDate = (props: TProps) => {
                 disabled={attrs?.disabled}
                 isClearable={true}
                 toggleCalendarOnIconClick={true}
-                popperClassName="flex flex-col gap-2 z-[9999] justify-enter react-datepicker-left !shadow-none overflow-hidden"
+                popperClassName="flex flex-col gap-2 z-[10] justify-enter react-datepicker-left !shadow-none overflow-hidden"
                 wrapperClassName='w-full'
                 className={clsx({
                     "": true,
@@ -138,7 +139,7 @@ const InputDate = (props: TProps) => {
                     "right-[-0.5rem] ": iconPosition === "end",
                 })}
                 clearButtonClassName={clsx({
-                    "right-[-0.25rem] z-[99]": true,
+                    "right-[-0.25rem] z-[10]": true,
                     "right-[0.65rem]": iconPosition === "end"
                 })}
 

@@ -101,7 +101,6 @@ input[type="radio"]:disabled{
     @apply !bg-primary z-[10] hover:!bg-primary-400 text-white ;
 }
 
-
 .react-datepicker__month {
     @apply flex flex-col !border-none;
 }
