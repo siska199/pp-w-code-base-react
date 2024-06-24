@@ -1,6 +1,5 @@
 
 import CardIntroComponent from "@components/cards/CardIntroComponent";
-import InputCheckbox from "@components/ui/InputCheckbox";
 
 const CardIntroInputCheckbox = () => {
 

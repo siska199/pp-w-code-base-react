@@ -2,32 +2,17 @@
 import CardIntroComponent from "@components/cards/CardIntroComponent";
 import CardVariantComp from "@components/cards/CardVariantComp";
 import InputPercentage from "@components/ui/inputs/InputPercentage";
+import useForm from "@hooks/useForm";
 import codeStringComponentUi from "@lib/utils/code-string/component-ui";
-import { TEventOnChange } from "@types";
-import { useState } from "react";
 
 const CardIntroInputPercentage = () => {
-  const [form, setForm] = useState({
-    'input-percentage': {
-      label: 'Input Percentage',
-      value: '',
-      name: 'input-percentage'
-    },
-  })
+  const {form, handleOnChange} =useForm({
+    initialForm: {
+      'input-percentage':{}
+    }
+  }) 
 
-  const handleOnChange = (e: TEventOnChange) => {
-    const name = e.target.name as keyof typeof form
-    const value = e.target.value
-
-    setForm({
-      ...form,
-      [name]: {
-        ...form[name],
-        value
-      }
-    })
-  }
-    const listExample = [
+  const listExample = [
     {
       component: <CardVariantComp
       title={'default '}

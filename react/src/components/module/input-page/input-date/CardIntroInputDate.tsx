@@ -1,6 +1,5 @@
 
 import CardIntroComponent from "@components/cards/CardIntroComponent";
-import InputDate from "@components/ui/InputDate";
 
 const CardIntroInputDate = () => {
 

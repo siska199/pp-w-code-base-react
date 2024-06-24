@@ -2,36 +2,20 @@
 import CardIntroComponent from "@components/cards/CardIntroComponent";
 import CardVariantComp from "@components/cards/CardVariantComp";
 import InputCurrency from "@components/ui/inputs/InputCurrency";
+import useForm from "@hooks/useForm";
 import codeStringComponentUi from "@lib/utils/code-string/component-ui";
-import { TEventOnChange } from "@types";
-import { useState } from "react";
 
 const CardIntroInputCurrency = () => {
-  const [form, setForm] = useState({
-    'input-currency': {
-      label: 'Input Currency IDR',
-      value: '',
-      name: 'input-currency'
-    },
-  })
-
-  const handleOnChange = (e: TEventOnChange) => {
-    const name = e.target.name as keyof typeof form
-    const value = e.target.value
-
-    setForm({
-      ...form,
-      [name]: {
-        ...form[name],
-        value
-      }
-    })
-  }
+  const {form, handleOnChange} =useForm({
+    initialForm: {
+      'input-currency':{}
+    }
+  }) 
 
   const listExample = [
     {
       component: <CardVariantComp
-        title={'default (IDR) '}
+        title={'default (IDR)'}
         withBorder={false}
         Component={<InputCurrency
           onChange={handleOnChange}
