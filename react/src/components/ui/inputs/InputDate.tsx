@@ -59,6 +59,7 @@ const InputDate = (props: TProps) => {
     const handleOnCalenderClose = () => {
         setShowTypeDate("");
     };
+
     return (
         <ContainerInput {...attrs}>
             <DatePicker
@@ -127,7 +128,7 @@ const InputDate = (props: TProps) => {
                 showIcon={true}
                 icon={<IconCalender />}
                 disabled={attrs.disabled}
-                isClearable={true}
+                isClearable={!!value}
                 toggleCalendarOnIconClick={true}
                 popperClassName="flex flex-col gap-2 z-[10] justify-enter react-datepicker-left !shadow-none overflow-hidden"
                 wrapperClassName='w-full'
