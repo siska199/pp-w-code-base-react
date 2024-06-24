@@ -12,6 +12,29 @@ const CardUsageInputPhoneNumber = () => {
   );
 }
 
-const displayUsage = `// Usage example for InputPhoneNumber`;
+const displayUsage = `const [form, setForm] = useState({
+    'input-phone-number': {
+      value: '',
+      name : 'input-phone-number'
+    },
+  })
+  
+  const handleOnChange = (e: TEventOnChange) => {
+    const name = e.target.name as keyof typeof form
+    const value = e.target.value
+
+    setForm({
+      ...form,
+      [name]: {
+        ...form[name],
+        value
+      }
+    })
+  }
+
+  return <InputPhoneNumber
+            onChange={handleOnChange}
+            {...form['input-phone-number']}
+          />`;
 
 export default CardUsageInputPhoneNumber;
