@@ -14,6 +14,14 @@ const InputPhoneNumber = (props: TProps) => {
     const formatPattern = "XX-XXX-XXX-XXX"
     const { inputRef, handleOnChangeFormattedValue } = useFormattedInput({ value: attrs?.value, onChange: handleOnChange, formatPattern })
 
+    const handleOnChangeUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { value } = e.target;
+        if (value.length === 1 && value === '0') {
+            e.preventDefault();
+            return;
+        }
+        handleOnChangeFormattedValue(e)
+    }
     return (
         <ContainerInput<React.HTMLProps<HTMLInputElement>> {...attrs} onChange={handleOnChange} customeElement={{
             ...attrs?.customeElement,
@@ -23,7 +31,7 @@ const InputPhoneNumber = (props: TProps) => {
                 <input
                     {...attrsInput}
                     ref={inputRef}
-                    onChange={handleOnChangeFormattedValue}
+                    onChange={handleOnChangeUpdate}
                     placeholder={attrs?.variant === "v2" ? "" : formatPattern}
                     maxLength={formatPattern?.length}
                 />

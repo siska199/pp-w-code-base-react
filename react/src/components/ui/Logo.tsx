@@ -9,7 +9,7 @@ interface TProps extends React.HTMLProps<HTMLLinkElement>, VariantProps<typeof l
 const Logo = (props: TProps) => {
     const { className, sizeLogo, } = props
     return (
-        <Button customeElement="link" label="Cb199" to="/" className={cn(logoVariants({ className: `${className} text-primary`, sizeLogo, }))} />
+        <Button label="Cb199" to="/" className={cn(logoVariants({ className: `${className}`, sizeLogo, }))} />
 
     )
 }

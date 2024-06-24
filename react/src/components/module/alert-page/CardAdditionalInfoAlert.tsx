@@ -19,7 +19,7 @@ const CardAdditionalInfoAlert = () => {
           ). These variants determine the visual style and behavior based on the
           alert type (<span className="italic">error</span>, <span className="italic">success</span>, <span className="italic">warning</span>
           , <span className="italic">notification</span>, <span className="italic">info</span>). The list of variants available for the alert component can be seen{" "}
-          <Button label="Here" customeElement={"link"} to="/docs/pre-requisite" />.
+          <Button label="here" to="/docs/pre-requisite" />.
         </p>
       ),
     },

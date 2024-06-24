@@ -18,7 +18,7 @@ const CardAdditionalInfoCard = () => {
       title: "Variant",
       caption: (
         <p>
-          The Card component supports multiple variants such as &lsquo;top-bordered&lsquo;, &lsquo;centered-body&lsquo;, and &lsquo;overlay&lsquo;. Each variant provides a different visual style to the card. For more details on the available variants, refer to the <Button customeElement={"link"} to="/docs/prerequisite/variant#card" label="here" />.
+          The Card component supports multiple variants such as &lsquo;top-bordered&lsquo;, &lsquo;centered-body&lsquo;, and &lsquo;overlay&lsquo;. Each variant provides a different visual style to the card. For more details on the available variants, refer to the <Button to="/docs/prerequisite/variant#card" label="here" />.
         </p>
       ),
     },

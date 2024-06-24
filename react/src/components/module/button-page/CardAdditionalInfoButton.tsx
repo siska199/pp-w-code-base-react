@@ -16,7 +16,7 @@ const CardAdditionalInfoButton = () => {
     {
       title: "Variant",
       caption: <p>
-        The list of variants available for the Button component can be seen <Button customeElement={"link"} to="/docs/prerequisite/variant#button" label="here" />.
+        The list of variants available for the Button component can be seen <Button to="/docs/prerequisite/variant#button" label="here" />.
       </p>
     },
     {
@@ -37,7 +37,7 @@ const CardAdditionalInfoButton = () => {
     {
       title: "Icon Loading",
       caption: <p>
-        For the icons loading used by component Button, you can find it in the <Button customeElement={"link"} to="/docs/prerequisite/icon" variant={"link-gray"} label="here" />
+        For the icons loading used by component Button, you can find it in the <Button to="/docs/prerequisite/icon" label="here" />
       </p>
     },
     {

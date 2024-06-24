@@ -18,7 +18,7 @@ const CardAdditionalInfoBreadcrumb = () => {
       caption: (
         <p>
           The list of variants available for the breadcrumb component can be seen{" "}
-          <Button label="Here" customeElement={"link"} to="/docs/pre-requisite" />.
+          <Button label="here" to="/docs/pre-requisite" />.
         </p>
       ),
     },

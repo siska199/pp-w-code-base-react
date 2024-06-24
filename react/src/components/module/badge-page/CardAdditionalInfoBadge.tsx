@@ -14,7 +14,7 @@ const CardAdditionalInfoBadge = () => {
       caption: (
         <p>
           The list of variants available for the Badge component can be seen{" "}
-          <Button label="Here" customeElement={"link"} to="/docs/pre-requisite" />.
+          <Button label="here"  to="/docs/pre-requisite" />.
         </p>
       ),
     },
