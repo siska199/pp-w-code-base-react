@@ -5,10 +5,11 @@ import InputDate from "@components/ui/inputs/InputDate";
 import useForm from "@hooks/useForm";
 
 const CardIntroInputDate = () => {
-  const initialForm =  {
-    "input-date":{},
-    "input-date-multi-select":{}
-  }
+    const initialForm =  {
+      "input-date":{},
+      "input-date-multi-select":{}
+    }
+    
     const {form, handleOnChange} = useForm<keyof typeof initialForm>({
       initialForm
     })

@@ -98,7 +98,7 @@ input[type="radio"]:disabled{
 }
 
 .react-datepicker__year-text--selected button ,.react-datepicker__month-text--selected button{
-    @apply !bg-primary z-[10] hover:!bg-primary-400 text-white ;
+    @apply !bg-primary z-[10] hover:!bg-primary-400 !text-white ;
 }
 
 .react-datepicker__month {
@@ -172,7 +172,7 @@ input[type="radio"]:disabled{
 }
 
 .react-datepicker__day--selected {
-    @apply bg-primary-500 text-white hover:bg-primary-600
+    @apply bg-primary-500 !text-white hover:bg-primary-600
 }
 
 .react-datepicker__day--today{
@@ -180,7 +180,7 @@ input[type="radio"]:disabled{
 }
 
 .react-datepicker__day--range-start {
-    @apply bg-primary-500 text-white hover:text-gray-700 hover:bg-white
+    @apply bg-primary-500 !text-white hover:text-gray-700 hover:bg-white
 }
 
 .react-datepicker__day--range-end {
