@@ -2,32 +2,15 @@
 import CardIntroComponent from "@components/cards/CardIntroComponent";
 import CardVariantComp from "@components/cards/CardVariantComp";
 import InputNPWP from "@components/ui/inputs/InputNPWP";
+import useForm from "@hooks/useForm";
 import codeStringComponentUi from "@lib/utils/code-string/component-ui";
-import { TEventOnChange } from "@types";
-import { useState } from "react";
 
 const CardIntroInputNPWP = () => {
-
-  const [form, setForm] = useState({
-    'input-npwp': {
-      label: 'Input NPWP',
-      value: '',
-      name: 'input-npwp'
-    },
-  })
-
-  const handleOnChange = (e: TEventOnChange) => {
-    const name = e.target.name as keyof typeof form
-    const value = e.target.value
-
-    setForm({
-      ...form,
-      [name]: {
-        ...form[name],
-        value
-      }
-    })
-  }
+  const {form, handleOnChange} =useForm({
+    initialForm: {
+      'input-npwp':{}
+    }
+  }) 
 
   const listExample = [
     {

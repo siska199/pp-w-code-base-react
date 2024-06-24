@@ -4,137 +4,113 @@ import { IconMessage } from "@assets/icons";
 import CardIntroComponent from "@components/cards/CardIntroComponent";
 import CardVariantComp from "@components/cards/CardVariantComp";
 import InputBase from "@components/ui/inputs/InputBase";
+import useForm from '@hooks/useForm';
 import codeStringComponentUi from '@lib/utils/code-string/component-ui';
-import { TEventOnChange } from "@types";
-import { useState } from "react";
 
 const CardIntroInputBase = () => {
-
-  const [form, setForm] = useState({
-    'variant-1': {
-      value: ''
+  const {form, handleOnChange} =useForm({
+   initialForm : {
+    'variant-1':{
+      label: 'Variant 1',
+      placeholder: "Variant 1",
+      variant: "v1"
     },
-    'variant-2': {
-      value: ''
+    'variant-2':{
+      label: 'Variant 2',
+      placeholder: "Variant 2",
+      variant: "v2",
     },
-    'variant-3': {
-      value: ''
+    'variant-3':{
+      label: 'Variant 3',
+      placeholder: "Variant 3",
+      variant: "v3",
     },
-    'variant-4': {
-      value: ''
+    'variant-4':{
+      label: 'Variant 4',
+      placeholder: "Variant 4",
+      variant: "v4",
     },
-    'variant-5': {
-      value: ''
+    'variant-5':{
+      label: 'Variant 5',
+      placeholder: "Variant 5",
+      variant: "v5",
     },
-
-    'disabled': {
-      value: ''
+    'disabled':{
+      label: 'Disabled',
+      placeholder: "Disabled",
+      variant: "v1",
+      disabled: true,
     },
-    'error': {
-      value: ''
+    'error':{
+      label: 'Error',
+      placeholder: "Error",
+      variant: "v1",
+      errorMessage: "Invalid Input",
     },
-    'icon-left': {
-      value: ''
-    },
-    'icon-right': {
-      value: ''
-    },
-    'icon-pre-start': {
-      value: ''
-    },
-    'icon-pre-end': {
-      value: ''
-    },
-  })
-
-  const handleOnChange = (e: TEventOnChange) => {
-    const name = e.target.name as keyof typeof form
-    const value = e.target.value
-
-    setForm({
-      ...form,
-      [name]: {
-        ...form[name],
-        value
+    "icon-left":{
+      label: 'Icon Left',
+      variant: "v1",
+      customElements: {
+        start: <IconMessage />
       }
-    })
-  }
+    },
+    'icon-right':{
+      label: 'Icon right',
+      variant: "v1",
+      customElements: {
+        end: <IconMessage />
+      }
+    },
+    'icon-pre-start':{
+      label: 'Pre End',
+      variant: "v1",
+      customElements: {
+        preStart: "Http"
+      }
+    },
+    'icon-pre-end':{
+      name: 'icon-pre-end',
+      label: 'Pre End',
+      customElements: {
+        preEnd: "Text Preend"
+      }
+    }
+   }
+  }) 
+
+
 
   const listExample1 = [
     {
       title: 'Variant 1',
-      props: {
-        name: 'variant-1',
-        label: 'Variant 1',
-        placeholder: "Variant 1",
-        variant: "v1",
-        ...form["variant-1"]
-      }
+      props: form["variant-1"]
     },
     {
       title: 'Variant 2',
-      props: {
-        name: 'variant-2',
-        label: 'Variant 2',
-        placeholder: "Variant 2",
-        variant: "v2",
-        ...form["variant-2"]
-      }
+      props: form["variant-2"]
     },
     {
       title: 'Variant 3',
-      props: {
-        name: 'variant-3',
-        label: 'Variant 3',
-        placeholder: "Variant 3",
-        variant: "v3",
-        ...form["variant-3"]
-      }
+      props: form["variant-3"]
     },
     {
       title: 'Variant 4',
-      props: {
-        name: 'variant-4',
-        label: 'Variant 4',
-        placeholder: "Variant 4",
-        variant: "v4",
-        ...form["variant-4"]
-      }
+      props: form["variant-4"]
     },
     {
       title: 'Variant 5',
-      props: {
-        name: 'variant-5',
-        label: 'Variant 5',
-        placeholder: "Variant 5",
-        variant: "v5",
-        ...form["variant-5"]
-      }
+      props: form["variant-5"]
     },
   ]
 
   const listExample2 = [
     {
       title: 'Disabled',
-      props: {
-        name: 'disabled',
-        label: 'Disabled',
-        placeholder: "Disabled",
-        variant: "v1",
-        ...form["disabled"],
-        disabled: true
-      }
+      props:form["disabled"]
     },
     {
       title: 'Error',
-      props: {
-        name: 'error',
-        label: 'Error',
-        placeholder: "Error",
-        variant: "v1",
-        errorMessage: "Invalid Input",
-        ...form["error"]
-      }
+      props: form["error"]
     },
 
   ]
@@ -142,51 +118,19 @@ const CardIntroInputBase = () => {
   const listExample3 = [
     {
       title: 'Icon left',
-      props: {
-        name: 'icon-left',
-        label: 'Icon Left',
-        variant: "v1",
-        ...form["icon-left"],
-        customElements: {
-          start: <IconMessage />
-        }
-      }
+      props: form["icon-left"]
     },
     {
       title: 'Icon Right',
-      props: {
-        name: 'icon-right',
-        label: 'Icon right',
-        variant: "v1",
-        ...form["icon-right"],
-        customElements: {
-          end: <IconMessage />
-        }
-      }
+      props: form["icon-right"]
     },
     {
       title: 'Pre Start',
-      props: {
-        name: 'icon-pre-start',
-        label: 'Pre start',
-        variant: "v1",
-        ...form["icon-pre-start"],
-        customElements: {
-          preStart: "Http"
-        }
-      }
+      props: form["icon-pre-start"]
     },
     {
       title: 'Pre End',
-      props: {
-        name: 'icon-pre-end',
-        label: 'Pre End',
-        variant: "v1",
-        ...form["icon-pre-end"],
-        customElements: {
-          preEnd: "Text Preend"
-        }
-      }
+      props:form["icon-pre-end"]
     },
   ]
 
