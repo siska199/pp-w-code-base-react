@@ -57,7 +57,6 @@ const ExampleTable = () => {
             pagination: true
         },
         onFetchData: handleFetchData
-
     })
 
 

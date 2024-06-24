@@ -12,6 +12,29 @@ const CardUsageInputPercentage = () => {
   );
 }
 
-const displayUsage = `// Usage example for InputPercentage`;
+const displayUsage = `const [form, setForm] = useState({
+    'input-percentage': {
+      value: '',
+      name : 'input-percentage'
+    },
+  })
+  
+  const handleOnChange = (e: TEventOnChange) => {
+    const name = e.target.name as keyof typeof form
+    const value = e.target.value
+
+    setForm({
+      ...form,
+      [name]: {
+        ...form[name],
+        value
+      }
+    })
+  }
+
+  return <InputPercentage
+            onChange={handleOnChange}
+            {...form['input-percentage']}
+          />`;
 
 export default CardUsageInputPercentage;

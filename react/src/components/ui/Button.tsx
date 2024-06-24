@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 
 interface TPropsLink {
-  to: string;
+  to?: string;
   target?: '_blank' | ''
 }
 

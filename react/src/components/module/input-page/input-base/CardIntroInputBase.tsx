@@ -8,8 +8,7 @@ import useForm from '@hooks/useForm';
 import codeStringComponentUi from '@lib/utils/code-string/component-ui';
 
 const CardIntroInputBase = () => {
-  const {form, handleOnChange} =useForm({
-   initialForm : {
+  const intialForm = {
     'variant-1':{
       label: 'Variant 1',
       placeholder: "Variant 1",
@@ -75,11 +74,11 @@ const CardIntroInputBase = () => {
         preEnd: "Text Preend"
       }
     }
-   }
+  }
+  type TKey = keyof typeof intialForm
+  const {form, handleOnChange} =useForm<TKey>({
+   initialForm : intialForm
   }) 
-
-
-
   const listExample1 = [
     {
       title: 'Variant 1',

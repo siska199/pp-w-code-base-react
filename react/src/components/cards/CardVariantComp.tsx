@@ -16,7 +16,8 @@ const CardVariantComp = (props: TProps) => {
     const { title, Component, customeClass, className, withBorder = true } = props
     return (
         <div className={cn({
-            ' flex   gap-1 rounded-md w-full': true,
+            ' flex gap-1 rounded-md ': true,
+            'w-full':!withBorder,
             [`${customeClass?.container}`]: customeClass?.container,
             ' border flex-col  p-2 justify-center items-center min-w-[6rem] md:min-w-[8rem]': withBorder,
             [className || '']: className,
