@@ -19,7 +19,7 @@ interface TPropsVariantSuccess extends VariantProps<typeof alertVariantSuccess> 
 }
 
 interface TPropsVariantGeneral extends VariantProps<typeof alertVariantGeneral> {
-    type: 'notification' | 'info'
+    type?: 'notification' | 'info'
 }
 
 type TProps = HTMLProps<HTMLButtonElement> & {
@@ -105,7 +105,7 @@ const Alert = (props: TProps) => {
 }
 
 
-const generalStyle = 'flex flex-shrink gap-3 px-3 py-2 border w-fit rounded-md max-w-[20rem]'
+const generalStyle = 'flex flex-shrink gap-3 px-3 py-2 border w-fit min-w-[15rem] rounded-md max-w-[20rem]'
 
 
 

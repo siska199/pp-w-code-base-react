@@ -1,14 +1,15 @@
 /* eslint-disable react/jsx-handler-names */
-import { TBasePropsInput } from '@/types/ui/index';
+import Container from '@components/ui/Container';
 import HelperMessage from '@components/ui/HelperMessage';
 import { TCustomeEventOnChange } from '@types';
 import React, { useEffect, useRef, useState } from 'react';
 
-interface TProps extends TBasePropsInput {
+interface TProps{
     name: string;
     onChange: (e: TCustomeEventOnChange<boolean>) => void;
     numberOfDigits: number;
     correctOTP: string;
+    errorMessage: string;
 
 }
 
@@ -48,7 +49,7 @@ const InputOTP = (props: TProps) => {
     }
 
     useEffect(() => {
-        const isValid = otp.join("") !== "" && otp.join("") !== correctOTP
+        const isValid = otp.join("") !== "" && otp.join("") === correctOTP
         setOtpError(isValid ? "" : errorMessage)
         onChange({
             target: {
@@ -57,21 +58,25 @@ const InputOTP = (props: TProps) => {
             }
         })
     }, [otp]);
-
     return (
-        <div className='flex gap-4'>
-            {otp.map((digit, index) => (
-                <input key={index} value={digit} maxLength={1}
-                    onChange={(e) => handleChange(e.target.value, index)}
-                    onKeyUp={(e) => handleBackspaceAndEnter(e, index)}
-                    ref={(reference) => {
-                        return otpBoxReference.current[index] = reference
-                    }}
-                    className={`border-gray-100 bg-gray-100 flex items-center justify-center text-center p-2 w-[2.5rem] h-[2.5rem] !outline-none `}
-                />
-            ))}
-            <HelperMessage message={otpError} variant='error' />
-        </div>
+        <Container gap={"small"}>
+            <div className='flex gap-4'>
+                {otp.map((digit, index) => (
+                    <input key={index} value={digit} maxLength={1}
+                        onChange={(e) => handleChange(e.target.value, index)}
+                        onKeyUp={(e) => handleBackspaceAndEnter(e, index)}
+                        ref={(reference) => {
+                            return otpBoxReference.current[index] = reference
+                        }}
+                        className={`border-gray-100 bg-gray-100 flex items-center justify-center text-center p-2 w-[2.5rem] h-[2.5rem] !outline-none `}
+                    />
+                ))}
+            </div>
+            {
+                otp?.filter(data=>data).length===numberOfDigits && <HelperMessage message={otpError} variant='error' />
+
+            }
+        </Container>
 
     );
 

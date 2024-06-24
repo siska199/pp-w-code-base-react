@@ -22,7 +22,7 @@ const CardAdditionalInfoInputNPWP = () => {
     },
     {
       title: "ContainerInput Usage",
-      caption: <>The component is wrapped in <code>ContainerInput</code> to encapsulate common input functionalities such as styling and clearing.</>
+      caption: <div>The component is wrapped in <code>ContainerInput</code> to encapsulate common input functionalities such as styling and clearing.</div>
     }
   ];
   

@@ -12,6 +12,39 @@ const CardUsageOTP = () => {
   );
 }
 
-const displayUsage = `// Usage example for OTP`;
+const displayUsage = `
+  const [form, setForm] = useState({
+    'input-otp': {
+      label: 'Input OTP',
+      value: false,
+      name: 'input-otp',
+    },
+  })
+
+  const handleOnChange = (e: TEventOnChange) => {
+    const name = e.target.name as keyof typeof form
+    const value = e.target.value
+
+    if(name==='input-otp' && value){
+      // DO SOMETHING WHILE OTP CORRECT
+    }
+    setForm({
+      ...form,
+      [name]: {
+        ...form[name],
+        value
+      }
+    })
+  }
+  return <>
+          <InputOTP
+            onChange={handleOnChange}
+            {...form['input-otp']}
+            numberOfDigits={4}
+            correctOTP="1234"
+            errorMessage="OTP Is Incorrect"
+          />
+  </>
+`;
 
 export default CardUsageOTP;

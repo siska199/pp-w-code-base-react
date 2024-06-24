@@ -5,14 +5,28 @@ import List from "@components/ui/List";
 const CardPropsOTP = () => {
   const listItem = [
     {
-      label: "prop1",
-      content: "Description of prop1"
+      label: "name",
+      content: "Identifies the OTP input field."
     },
     {
-      label: "prop2",
-      content: "Description of prop2"
+      label: "onChange",
+      content: "Callback function triggered on OTP change, receiving an event with validation information."
+    },
+    {
+      label: "numberOfDigits",
+      content: "Specifies the total number of OTP digits expected."
+    },
+    {
+      label: "correctOTP",
+      content: "The correct OTP value against which user input is validated."
+    },
+    {
+      label: "errorMessage",
+      content: "Error message to display when OTP validation fails."
     }
   ];
+  
+  
 
   return (
     <CardSubMenu title={'Props'}>
