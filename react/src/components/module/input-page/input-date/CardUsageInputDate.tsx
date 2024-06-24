@@ -12,6 +12,29 @@ const CardUsageInputDate = () => {
   );
 }
 
-const displayUsage = `// Usage example for InputDate`;
+const displayUsage = `const [form, setForm] = useState({
+    'input-date': {
+      value: '',
+      name : 'input-date'
+    },
+  })
+  
+  const handleOnChange = (e: TEventOnChange) => {
+    const name = e.target.name as keyof typeof form
+    const value = e.target.value
+
+    setForm({
+      ...form,
+      [name]: {
+        ...form[name],
+        value
+      }
+    })
+  }
+
+  return <InputDate
+            onChange={handleOnChange}
+            {...form['input-date']}
+          />`;
 
 export default CardUsageInputDate;
