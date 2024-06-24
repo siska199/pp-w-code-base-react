@@ -59,7 +59,6 @@ const InputDate = (props: TProps) => {
     const handleOnCalenderClose = () => {
         setShowTypeDate("");
     };
-
     return (
         <ContainerInput {...attrs}>
             <DatePicker

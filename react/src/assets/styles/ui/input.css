@@ -156,11 +156,11 @@ input[type="radio"]:disabled{
 }
 
 .react-datepicker__day--in-range {
-    @apply bg-gray-200
+    @apply bg-primary-100 hover:bg-gray-200
 }
 
 .react-datepicker__day--in-selecting-range {
-    @apply bg-primary-200
+    @apply bg-primary-50 text-white
 }
 
 .react-datepicker__day--selecting-range-start {
@@ -172,7 +172,7 @@ input[type="radio"]:disabled{
 }
 
 .react-datepicker__day--selected {
-    @apply bg-primary-500 !text-white hover:bg-primary-600
+    @apply bg-primary-500 text-white hover:!bg-primary-600
 }
 
 .react-datepicker__day--today{
