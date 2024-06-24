@@ -13,7 +13,12 @@ const InputCurrency = (props: TProps) => {
     const inputRef = useRef<HTMLInputElement>(null);
 
     const formatValue = (value: string): string => {
-        let valueFormatted = value.replace(/[^\d.]+/g, "").replace(/(\.\d{2})\d+/g, "$1").replace(/^0+(?=\d)/, '');
+        let valueFormatted = value
+                            .replace(/[^\d.]+/g, "") 
+                            .replace(/(\..*?)\./g, "$1")
+                            .replace(/(\.\d\d)\d+/g, "$1")
+                            .replace(/^0+(?=\d)/, '');
+                            
         const parts = valueFormatted.split('.');
         parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
         valueFormatted = parts.join('.');
