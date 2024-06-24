@@ -21,7 +21,7 @@ const useForm = <T extends string>({ initialForm }: TPropsForm) => {
 
     return form;
   }, [initialForm]);
-
+  
   const [form, setForm] = useState<TForm<T>>(defaultForm);
 
   const handleOnChange = (e: TEventOnChange) => {

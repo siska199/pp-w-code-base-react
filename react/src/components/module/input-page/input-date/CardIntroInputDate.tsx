@@ -7,9 +7,11 @@ import useForm from "@hooks/useForm";
 const CardIntroInputDate = () => {
     const initialForm =  {
       "input-date":{},
-      "input-date-multi-select":{}
+      "input-date-multi-select":{
+        selectsRange:true,
+      }
     }
-    
+
     const {form, handleOnChange} = useForm<keyof typeof initialForm>({
       initialForm
     })
@@ -30,7 +32,7 @@ const CardIntroInputDate = () => {
         withBorder={false}
         Component={<InputDate
           onChange={handleOnChange}
-          {...form['input-date']}
+          {...form['input-date-multi-select']}
         />}
       />
     },
