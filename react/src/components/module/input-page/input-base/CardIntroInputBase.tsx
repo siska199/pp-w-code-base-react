@@ -6,68 +6,72 @@ import CardVariantComp from "@components/cards/CardVariantComp";
 import InputBase from "@components/ui/inputs/InputBase";
 import useForm from '@hooks/useForm';
 import codeStringComponentUi from '@lib/utils/code-string/component-ui';
+import { HTMLProps } from 'react';
 
 const CardIntroInputBase = () => {
-  const intialForm = {
-    'variant-1':{
+  type TKey = 'variant-1' | 'variant-2' | 'variant-3' | 'variant-4' | 'variant-5' | 'disabled' | 'error' | 'icon-left'|'icon-right'|'icon-pre-start'|'icon-pre-end'
+  type TForm = Record<TKey, TBasePropsInput & HTMLProps<HTMLInputElement>>
+
+  const initialForm: TForm = {
+    'variant-1': {
       label: 'Variant 1',
       placeholder: "Variant 1",
-      variant: "v1"
+      variant: "v1",
     },
-    'variant-2':{
+    'variant-2': {
       label: 'Variant 2',
       placeholder: "Variant 2",
       variant: "v2",
     },
-    'variant-3':{
+    'variant-3': {
       label: 'Variant 3',
       placeholder: "Variant 3",
       variant: "v3",
     },
-    'variant-4':{
+    'variant-4': {
       label: 'Variant 4',
       placeholder: "Variant 4",
       variant: "v4",
     },
-    'variant-5':{
+    'variant-5': {
       label: 'Variant 5',
       placeholder: "Variant 5",
       variant: "v5",
     },
-    'disabled':{
+    'disabled': {
       label: 'Disabled',
       placeholder: "Disabled",
       variant: "v1",
       disabled: true,
     },
-    'error':{
+    'error': {
       label: 'Error',
       placeholder: "Error",
       variant: "v1",
       errorMessage: "Invalid Input",
     },
-    "icon-left":{
+    "icon-left": {
       label: 'Icon Left',
       variant: "v1",
       customeElement: {
         start: <IconMessage />
       }
     },
-    'icon-right':{
+    'icon-right': {
       label: 'Icon right',
       variant: "v1",
       customeElement: {
         end: <IconMessage />
       }
     },
-    'icon-pre-start':{
+    'icon-pre-start': {
       label: 'Pre End',
       variant: "v1",
       customeElement: {
         preStart: "Http"
       }
     },
-    'icon-pre-end':{
+    'icon-pre-end': {
       name: 'icon-pre-end',
       label: 'Pre End',
       customeElement: {
@@ -75,10 +79,12 @@ const CardIntroInputBase = () => {
       }
     }
   }
-  type TKey = keyof typeof intialForm
-  const {form, handleOnChange} =useForm<TKey>({
-   initialForm : intialForm
-  }) 
+
+
+  const { form, handleOnChange } = useForm<TKey>({
+    initialForm: initialForm
+  })
+
   const listExample1 = [
     {
       title: 'Variant 1',
@@ -105,7 +111,7 @@ const CardIntroInputBase = () => {
   const listExample2 = [
     {
       title: 'Disabled',
-      props:form["disabled"]
+      props: form["disabled"]
     },
     {
       title: 'Error',
@@ -129,7 +135,7 @@ const CardIntroInputBase = () => {
     },
     {
       title: 'Pre End',
-      props:form["icon-pre-end"]
+      props: form["icon-pre-end"]
     },
   ]
 

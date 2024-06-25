@@ -30,7 +30,7 @@ const CardIntroInputCurrency = () => {
   return (
     <CardIntroComponent
       title={'Input Currency'}
-      subTitle="The InputCurrency component is tailored for handling input fields where users are expected to input currency values in Indonesian Rupiah (IDR) format. It extends functionality from TBasePropsInput and React.HTMLProps<HTMLInputElement>, allowing customization through props like className, style, and others."
+      subTitle="The InputCurrency component is tailored for handling input fields where users are expected to input currency values in Indonesian Rupiah (IDR) format."
       listExample={listExample}
       displayCodeBase={codeStringComponentUi.InputCurrency}
     />

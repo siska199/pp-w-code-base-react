@@ -6,7 +6,7 @@ import { isEmptyValue } from '@lib/utils/helper';
 import clsx from "clsx";
 import { useState } from "react";
 
-interface TProps<TInput,> extends TBasePropsInput {
+export interface TPropsInput<TInput,> extends TBasePropsInput {
     children: React.ReactNode | ((attrsInput: TInput) => React.ReactNode);
     disabled?: boolean;
     name?: string;
@@ -23,7 +23,7 @@ interface TProps<TInput,> extends TBasePropsInput {
     customeClearValue?: string
 }
 
-const ContainerInput = <TInput,>(props: TProps<TInput>) => {
+const ContainerInput = <TInput,>(props: TPropsInput<TInput>) => {
     const { name, children, onCustomeClearHandler, customeClearValue, isNotUsingDefaultStyle, childrenOverlay, label, variant = "v1", isClerable = false, type, onlyContainer = false, errorMessage, customeElement, disabled, customeClass, value, onChange, ...attrsInput } = props;
     const [dynamicType, setDynamicType] = useState(type)
 
@@ -53,7 +53,7 @@ const ContainerInput = <TInput,>(props: TProps<TInput>) => {
     return (
         <>
             {/* Container input lv1 : ciV4 */}
-            <Container  className={`${customeClass?.ciV4} relative flex flex-col gap-2`}>
+            <Container className={`${customeClass?.ciV4} relative flex flex-col gap-2`}>
                 {/* Container input lv1 : ciV3 */}
                 <section className={`${customeClass?.ciV3} flex flex-col gap-2 w-full`}>
                     {label && variant !== "v2" && (
