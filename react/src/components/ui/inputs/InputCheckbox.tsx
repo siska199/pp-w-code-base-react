@@ -9,19 +9,22 @@ interface TProps extends Omit<TBasePropsInput, "errorMessage">, Omit<React.HTMLP
     label?: string;
     value: (any);
     classNameContainer?: string;
+    customeClassnameCheckbox?: {
+        container?: string;
+    }
 }
 
 const InputCheckbox = (props: TProps) => {
-    const { name, onChange, value, classNameContainer, label = "", checked, ...attrsInput } = props
+    const { name, onChange, value, customeClassnameCheckbox, label = "", checked, ...attrsInput } = props
 
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         onChange(e)
     }
 
-
+    console.log("label: ", label)
     return (
         <Container onMouseDown={(e) => e.preventDefault()}
-            variant={"hsc"} gap={"base"} className={`${!label && '!w-fit'} ${classNameContainer} `} >
+            variant={"hsc"} gap={"base"} className={`${!label && '!w-fit'} ${customeClassnameCheckbox?.container} `} >
             <label className="  relative flex items-center py-1 rounded-full cursor-pointer" htmlFor="radio">
                 <input
                     type="checkbox"

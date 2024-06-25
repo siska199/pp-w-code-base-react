@@ -200,16 +200,16 @@ const listMenuSidebar: TMenuItem[] = [
     },
     {
         id: '2-C1',
-        name: 'Checkbox',
+        name: 'Single Checkbox',
         url: '/docs/components/input/checkbox',
         parentId: '1-IN11'
     },
-    // {
-    //     id: '2-MC2',
-    //     name: 'Multiple Checkbox',
-    //     url: '/docs/components/input/multiple-checkbox',
-    //     parentId: '1-IN11'
-    // },
+    {
+        id: '2-MC2',
+        name: 'Multiple Checkbox',
+        url: '/docs/components/input/multiple-checkbox',
+        parentId: '1-IN11'
+    },
 
     {
         id: '2-RB9',
