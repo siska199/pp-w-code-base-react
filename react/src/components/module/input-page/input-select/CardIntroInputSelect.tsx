@@ -47,31 +47,31 @@ const CardIntroInputSelect = () => {
         />}
       />
     },
-    // {
-    //   component: <CardVariantComp
-    //     title={'default '}
-    //     withBorder={false}
-    //     Component={<InputSelect
-    //       onChange={handleOnChange}
-    //       {...form['input-select']}
-    //       options={[
-    //         {
-    //           label: 'SISKA',
-    //           value: 'SISKA 123'
-    //         },
-    //         {
-    //           label: 'SISKA',
-    //           value: 'SISKA 123'
-    //         },
-    //         {
-    //           label: 'SISKA',
-    //           value: 'SISKA 123'
-    //         }
-    //       ]}
-    //       isMultiple
-    //     />}
-    //   />
-    // },
+    {
+      component: <CardVariantComp
+        title={'default '}
+        withBorder={false}
+        Component={<InputSelect
+          onChange={handleOnChange}
+          {...form['input-select']}
+          options={[
+            {
+              label: 'SISKA',
+              value: 'SISKA 123'
+            },
+            {
+              label: 'SISKA',
+              value: 'SISKA 123'
+            },
+            {
+              label: 'SISKA',
+              value: 'SISKA 123'
+            }
+          ]}
+          isMultiple
+        />}
+      />
+    },
   ]
   return (
     <CardIntroComponent

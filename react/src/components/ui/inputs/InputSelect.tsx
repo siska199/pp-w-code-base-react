@@ -51,6 +51,7 @@ const InputSelect = (props: TProps) => {
             setSearchQuery(labelOfValue || '')
         }
     }, [attrs.value])
+    
     useEffect(() => {
         if (refInput?.current && isMultiple) {
             refInput.current.style.width = `${searchQuery?.length * 10 || 10}px`;

@@ -58,7 +58,7 @@ const ContainerInput = <TInput,>(props: TProps<TInput>) => {
                 <section className={`${customeClass?.ciV3} flex flex-col gap-2 w-full`}>
                     {label && variant !== "v2" && (
                         <label htmlFor={name} className={clsx({
-                            "font-medium": true,
+                            "font-medium w-fit": true,
                             "absolute top-[-0.65rem] left-[0.45rem] text-body-small bg-white px-1 z-[10]": variant === "v4"
                         })}>{label}</label>
                     )}
