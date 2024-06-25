@@ -1,6 +1,5 @@
 
 import CardIntroComponent from "@components/cards/CardIntroComponent";
-import InputMultipleCheckbox from "@components/ui/InputMultipleCheckbox";
 
 const CardIntroInputMultipleCheckbox = () => {
 
