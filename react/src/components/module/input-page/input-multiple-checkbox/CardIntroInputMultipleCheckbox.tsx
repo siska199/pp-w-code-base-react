@@ -67,7 +67,7 @@ const CardIntroInputMultipleCheckbox = () => {
   return (
     <CardIntroComponent
       title={'Input Multiple Checkbox'}
-      subTitle="A multiple checkbox is a graphical element that allows users to select or deselect options in user interfaces. It consists of a small box that can be checked or unchecked to indicate the user's choice. Checkboxes are commonly used in forms and settings menus to enable users to make multiple selections efficiently."
+      subTitle="A Checkboxes is a graphical element that allows users to select or deselect options in user interfaces. It consists of a small box that can be checked or unchecked to indicate the user's choice. Checkboxes are commonly used in forms and settings menus to enable users to make multiple selections efficiently."
       listExample={listExample}
       displayCodeBase={codeStringComponentUi?.InputMultipleCheckbox}
     />
