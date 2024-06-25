@@ -1,14 +1,66 @@
 
 import CardIntroComponent from "@components/cards/CardIntroComponent";
+import CardVariantComp from "@components/cards/CardVariantComp";
+import InputMultipleCheckbox from "@components/ui/inputs/InputMultipleCheckbox";
+import useForm from "@hooks/useForm";
 import codeStringComponentUi from "@lib/utils/code-string/component-ui";
+import { TOption } from "@types";
+import { useState } from "react";
 
 const CardIntroInputCheckbox = () => {
+  const initialForm = {
+    'input-multi-checkbox': {
+      value: []
+    },
+  }
+  const { form, handleOnChange } = useForm<keyof typeof initialForm>({
+    initialForm
+  })
+  const [options,] = useState<{ [key: string]: TOption[] }>({
+    listInputSelect: [
+      { label: "Alice Johnson", value: "alice-johnson" },
+      { label: "Bob Smith", value: "bob-smith" },
+      { label: "Charlie Brown", value: "charlie-brown" },
+    ]
+  })
 
   const listExample = [
     {
-      component: ""
+      component: <CardVariantComp
+        title={'default '}
+        withBorder={false}
+        Component={<InputMultipleCheckbox
+          onChange={handleOnChange}
+          {...form['input-multi-checkbox']}
+          options={options?.listInputSelect}
+        />}
+      />
     },
-
+    {
+      component: <CardVariantComp
+        title={'with label '}
+        withBorder={false}
+        Component={<InputMultipleCheckbox
+          onChange={handleOnChange}
+          {...form['input-multi-checkbox']}
+          options={options?.listInputSelect?.map((data) => ({ ...data, value: `${data?.value} label` }))}
+          label={'Input select with label'}
+        />}
+      />
+    },
+    {
+      component: <CardVariantComp
+        title={'with error'}
+        withBorder={false}
+        Component={<InputMultipleCheckbox
+          onChange={handleOnChange}
+          {...form['input-multi-checkbox']}
+          options={options?.listInputSelect?.map((data) => ({ ...data, value: `${data?.value} error` }))}
+          label={'Input select with error'}
+          errorMessage="Error State : )"
+        />}
+      />
+    },
   ]
   return (
     <CardIntroComponent
