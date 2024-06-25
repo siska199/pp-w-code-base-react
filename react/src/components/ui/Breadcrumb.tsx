@@ -51,7 +51,6 @@ const Breadcrumb = (props: TProps) => {
                                     }
                                 </div>
                             }
-                            customeElement={"link"}
                             className={cn({
                                 "!p-0 !py-1 !flex": true,
                                 [`!font-medium ${customeClass?.active || ""} `]: isActiveItem,

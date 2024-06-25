@@ -11,7 +11,7 @@ import { getFieldLabelFromOptions, isolateEvent, spreadArrayAttemp } from '@lib/
 import { TCustomeEventOnChange, TOption } from '@types';
 import clsx from 'clsx';
 import { useEffect, useRef, useState } from 'react';
-import InputCheckbox from './InputMultipleCheckbox';
+import InputMultipleCheckbox from './InputMultipleCheckbox';
 
 type TProps = {
     name: string;
@@ -23,11 +23,13 @@ type TProps = {
 interface SingleSelectProps extends TBasePropsInput, Omit<React.HTMLProps<HTMLInputElement>, "onChange"> {
     isMultiple?: false;
     value: string;
+    withSelectAll?: false
 }
 
 interface MultipleSelectProps extends TBasePropsInput, Omit<React.HTMLProps<HTMLInputElement>, "onChange"> {
     isMultiple: true;
     value: string[];
+    withSelectAll?: boolean;
 }
 
 const InputSelect = (props: TProps) => {
@@ -43,6 +45,12 @@ const InputSelect = (props: TProps) => {
 
     useOnClickOutside<HTMLDivElement>({ ref: refContainerDropdown, refExceptions: [refIconChevron, refInput, refContainerValue], handler: () => setIsOpen(false) });
 
+    useEffect(() => {
+        if (!isMultiple) {
+            const labelOfValue = getFieldLabelFromOptions({ array: options, value: attrs?.value })
+            setSearchQuery(labelOfValue || '')
+        }
+    }, [attrs.value])
     useEffect(() => {
         if (refInput?.current && isMultiple) {
             refInput.current.style.width = `${searchQuery?.length * 10 || 10}px`;
@@ -76,6 +84,7 @@ const InputSelect = (props: TProps) => {
         if (isMultiple) {
             setSearchQuery('');
         } else {
+            console.log("tested")
             attrs?.onChange({
                 target: {
                     name: attrs?.name,
@@ -87,9 +96,9 @@ const InputSelect = (props: TProps) => {
 
     }
 
-    const filteredOptions = options?.filter(option =>
-        String(option?.label)?.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+    console.log("options: ", options)
+    const filteredOptions = options?.filter(option => String(option?.label)?.toLowerCase().includes(searchQuery?.toLowerCase()))
+
     return (
         <ContainerInput<React.HTMLProps<HTMLInputElement>>
             {...attrs}
@@ -115,8 +124,6 @@ const InputSelect = (props: TProps) => {
                 ciV2: " flex-no-wrap max-w-full",
                 input: "min-w-0",
                 ciV4: '!inline-block ',
-
-
             }}
             childrenOverlay={<div ref={refContainerDropdown} className={clsx({
                 "absolute  z-10 mt-2 origin-bottom-right rounded-md bg-white  ring-1 ring-black ring-opacity-5 focus:outline-none": true,
@@ -129,7 +136,7 @@ const InputSelect = (props: TProps) => {
                     isOpen && <>
                         {
                             // @ts-ignore
-                            isMultiple ? <InputCheckbox
+                            isMultiple ? <InputMultipleCheckbox
                                 options={filteredOptions}
                                 {...attrs}
                                 classNameContainerOption={"!px-4 !py-4 !max-h-[10rem] !flex-nowrap !overflow-y-scroll"}
@@ -138,6 +145,7 @@ const InputSelect = (props: TProps) => {
                                     attrs?.onChange(e)
                                     setSearchQuery('')
                                 }}
+                                withSelectAll={attrs?.withSelectAll || false}
                             /> : <div className="py-0 overflow-y-auto max-h-[10rem]">
                                 {
                                     filteredOptions?.map((option, i) => {
@@ -148,7 +156,7 @@ const InputSelect = (props: TProps) => {
                                             onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => handleOnClickOption(e, option)}
                                             className={clsx({
                                                 "hover:bg-gray-100 block px-4 py-2 cursor-pointer ": true,
-                                                "!bg-primary !text-white": isSelected,
+                                                "!bg-primary-50 text-primary-700 ": isSelected,
                                                 "!bg-gray-100": isSearch && i === 0 && searchQuery
                                             })} >
                                             {option?.label}
@@ -204,14 +212,12 @@ const InputSelect = (props: TProps) => {
                                 handleSearchChange(e);
                                 setIsOpen(true)
                             }}
-                            value={isSearch || isMultiple ? searchQuery : getFieldLabelFromOptions({ array: options, value: attrs?.value })}
+                            value={searchQuery}
                             placeholder={attrs?.variant === "v2" ? "" : attrsInput?.placeholder || ""}
                             ref={refInput}
                         />
                     </div>
                 </div>
-
-
             }
 
         </ContainerInput>
