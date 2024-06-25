@@ -49,7 +49,7 @@ const CardIntroInputSelect = () => {
 
   const handleOnLoadMore = async () => {
     try {
-      console.log("tested")
+      console.log("onLoad more")
     } catch (error: unknown) {
       if (error instanceof Error) return error.message
     }

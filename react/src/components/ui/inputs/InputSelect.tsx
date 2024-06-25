@@ -90,7 +90,6 @@ const InputSelect = (props: TProps) => {
         if (isMultiple) {
             setSearchQuery('');
         } else {
-            console.log("tested")
             attrs?.onChange({
                 target: {
                     name: attrs?.name,
