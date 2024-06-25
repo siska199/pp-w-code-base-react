@@ -51,7 +51,7 @@ const InputSelect = (props: TProps) => {
             setSearchQuery(labelOfValue || '')
         }
     }, [attrs.value])
-    
+
     useEffect(() => {
         if (refInput?.current && isMultiple) {
             refInput.current.style.width = `${searchQuery?.length * 10 || 10}px`;
@@ -65,6 +65,8 @@ const InputSelect = (props: TProps) => {
         if (isMultiple && Array.isArray(attrs?.value)) {
             const isSelected = attrs?.value?.some(singleValue => singleValue === data?.value)
             valueUpdates = (isSelected ? attrs?.value?.filter((data) => data !== valueUpdates) : spreadArrayAttemp({ newValue: valueUpdates, array: attrs?.value }) as string[])
+        }else{
+            setIsOpen(false)
         }
         attrs?.onChange({
             target: {
@@ -72,7 +74,6 @@ const InputSelect = (props: TProps) => {
                 value: valueUpdates
             }
         })
-        setIsOpen(false)
         setSearchQuery('');
         setIsSearch(false)
     }
