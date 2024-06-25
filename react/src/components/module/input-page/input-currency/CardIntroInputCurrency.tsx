@@ -22,8 +22,6 @@ const CardIntroInputCurrency = () => {
           {...form['input-currency']}
         />}
       />
-
-
     },
 
   ]

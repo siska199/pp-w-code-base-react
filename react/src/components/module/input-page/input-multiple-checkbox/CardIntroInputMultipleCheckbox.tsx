@@ -12,7 +12,7 @@ const CardIntroInputMultipleCheckbox = () => {
   ]
   return (
     <CardIntroComponent
-      title={'InputMultipleCheckbox'}
+      title={'Input Multiple Checkbox'}
       subTitle="Description of InputMultipleCheckbox."
       listExample={listExample }
       displayCodeBase={displayCodeBase}

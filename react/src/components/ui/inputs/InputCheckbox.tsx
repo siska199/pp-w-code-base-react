@@ -19,7 +19,6 @@ const InputCheckbox = (props: TProps) => {
     }
 
 
-
     return (
         <Container onMouseDown={(e) => e.preventDefault()}
             variant={"hsc"} gap={"base"} className={`${!label && '!w-fit'} ${classNameContainer} `} >
