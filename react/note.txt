@@ -1,0 +1,16 @@
+-> 1 Juni 2024:
+- Buat custome input checkbox 
+- Buat Custome input radio button
+
+-> 2 Juni 2024:
+- Modal
+- Input select 
+- Dropdown
+
+
+Contoh cara membuat function memliki description ketika di hover:
+/**
+ * Reads a file from the given URL and converts its contents to a string.
+ * @param fileUrl - The URL of the file to read.
+ * @returns A Promise that resolves with the contents of the file as a string wrapped in a template literal.
+ */

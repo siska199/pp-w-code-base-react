@@ -20,6 +20,28 @@ interface TProps extends Omit<Partial<HTMLProps<HTMLImageElement>>, ""> {
 
 }
 
+/**
+ * Image Component
+ *
+ * Renders an image with optional skeleton loading state and overlay content.
+ * The image source can be either a URL or an asset name.
+ *
+ * @param {TProps} props - The props for the component.
+ * @param {string} props.src - The source of the image.
+ * @param {string} [props.alt] - The alt text for the image.
+ * @param {Object} [props.customeClassName] - Custom class names for different parts of the component.
+ * @param {string} [props.customeClassName.container] - Custom class name for the container div.
+ * @param {string} [props.customeClassName.image] - Custom class name for the image element.
+ * @param {string} [props.customeClassName.containerOverlay] - Custom class name for the overlay container div.
+ * @param {boolean} [props.withSkeleton] - Whether to show a skeleton loading state.
+ * @param {number} [props.timeoutLoadImage=0] - Timeout duration before removing the loading state.
+ * @param {Object} [props.overlay] - Overlay configuration.
+ * @param {boolean} [props.overlay.isShowOnHover] - Whether to show the overlay content on hover.
+ * @param {React.ReactNode} [props.overlay.content] - The content to display in the overlay.
+ * 
+ * @returns {JSX.Element} The rendered Image component.
+ */
+
 const Image = (props: TProps) => {
     const { src, alt, className, timeoutLoadImage = 0, withSkeleton, customeClassName, overlay, ...attrs } = props;
     const [isLoading, setIsLoading] = useState<boolean>(true);

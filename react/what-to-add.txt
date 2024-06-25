@@ -1,8 +1,0 @@
--> 1 Juni 2024:
-- Buat custome input checkbox 
-- Buat Custome input radio button
-
--> 2 Juni 2024:
-- Modal
-- Input select 
-- Dropdown

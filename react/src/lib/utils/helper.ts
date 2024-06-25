@@ -52,10 +52,15 @@ interface TParamsGetAssetURl {
     name: string;
     folder?: 'images' | 'icons'
 }
+/**
+ * Reads a file from the given URL and converts its contents to a string.
+ */
 export const getAssetURL = (params: TParamsGetAssetURl) => {
     const { name, folder = 'images' } = params
     return new URL(`../../assets/${folder}/${name}`, import.meta.url)?.href
 }
+
+
 
 export function checkVisibleElmnInScreen(elm: any) {
     const rect = elm.getBoundingClientRect();
@@ -71,6 +76,7 @@ export function checkElmnOnTopOfPage(elm: any) {
 export const handleStopPropagation = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => e?.stopPropagation()
 
 
+
 export function generateDisplayComponent(ComponentName: string, dynamic: string) {
     return `import ${ComponentName} from "@components/ui/${ComponentName}";
     
@@ -83,8 +89,3 @@ const DisplayComponent = () => {
 
 
 
-/**
- * Reads a file from the given URL and converts its contents to a string.
- * @param fileUrl - The URL of the file to read.
- * @returns A Promise that resolves with the contents of the file as a string wrapped in a template literal.
- */
