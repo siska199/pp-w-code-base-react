@@ -3,8 +3,8 @@ import clsx from "clsx";
 interface TProps {
     variant?: "left-aligned" | 'center-aligned' | 'right-aligned';
     text: string;
-    width: string;
-    height: string;
+    width?: string;
+    height?: string;
     customeClass?: {
         text?: string;
     }
@@ -12,7 +12,7 @@ interface TProps {
 }
 
 const Divider = (props: TProps) => {
-    const { variant = 'center-aligned', text, width, height, customeClass } = props
+    const { variant = 'center-aligned', text, width = "100%", height = "1px", customeClass } = props
     return (
         <div className="relative flex py-5 items-center w-full">
             {

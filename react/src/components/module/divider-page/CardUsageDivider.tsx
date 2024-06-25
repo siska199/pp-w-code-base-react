@@ -12,6 +12,6 @@ const CardUsageDivider = () => {
   );
 }
 
-const displayUsage = `// Usage example for Divider`;
+const displayUsage = `return <Divider text="Siska" variant={'center-aligned'} />`;
 
 export default CardUsageDivider;
