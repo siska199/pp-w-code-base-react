@@ -3,6 +3,7 @@ import { TBasePropsInput } from '@/types/ui/index';
 import { IconCheck } from "@assets/icons";
 import Container from "@components/ui/Container";
 import ContainerInput from "@components/ui/inputs/ContainerInput";
+import { arraysHaveSameMembers } from '@lib/utils/helper';
 import { TCustomeEventOnChange } from "@types";
 import { useEffect, useState } from 'react';
 
@@ -23,7 +24,7 @@ const InputMultipleCheckbox = (props: TProps) => {
   const [isCheckAll, setIsCheckAll] = useState(false)
 
   useEffect(() => {
-    setIsCheckAll(false)
+    setIsCheckAll(arraysHaveSameMembers(value, options?.map((data) => data.value)))
   }, [value])
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {

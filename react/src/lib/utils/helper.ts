@@ -52,15 +52,11 @@ interface TParamsGetAssetURl {
     name: string;
     folder?: 'images' | 'icons'
 }
-/**
- * Reads a file from the given URL and converts its contents to a string.
- */
+
 export const getAssetURL = (params: TParamsGetAssetURl) => {
     const { name, folder = 'images' } = params
     return new URL(`../../assets/${folder}/${name}`, import.meta.url)?.href
 }
-
-
 
 export function checkVisibleElmnInScreen(elm: any) {
     const rect = elm.getBoundingClientRect();
@@ -75,7 +71,16 @@ export function checkElmnOnTopOfPage(elm: any) {
 
 export const handleStopPropagation = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => e?.stopPropagation()
 
+export function arraysHaveSameMembers(array1: string[], array2: string[]) {
+    if (array1.length !== array2.length) {
+        return false; // Arrays have different lengths, so they can't have the same members
+    }
 
+    const sortedArray1 = array1.slice().sort();
+    const sortedArray2 = array2.slice().sort();
+
+    return sortedArray1.every((value, index) => value === sortedArray2[index]);
+}
 
 export function generateDisplayComponent(ComponentName: string, dynamic: string) {
     return `import ${ComponentName} from "@components/ui/${ComponentName}";
