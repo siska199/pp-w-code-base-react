@@ -20,11 +20,13 @@ interface TProps extends TBasePropsInput, Omit<React.HTMLProps<HTMLInputElement>
 }
 
 const InputMultipleCheckbox = (props: TProps) => {
-  const { name, onChange, options, value, classNameContainerOption, ...attrsInput } = props
+  const { name, onChange, options, value, classNameContainerOption, withSelectAll, ...attrsInput } = props
   const [isCheckAll, setIsCheckAll] = useState(false)
 
   useEffect(() => {
-    setIsCheckAll(arraysHaveSameMembers(value, options?.map((data) => data.value)))
+    if (withSelectAll) {
+      setIsCheckAll(arraysHaveSameMembers(value, options?.map((data) => data.value)))
+    }
   }, [value])
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -68,8 +70,10 @@ const InputMultipleCheckbox = (props: TProps) => {
 
   return (
     <ContainerInput {...attrsInput} onlyContainer={true}>
-      <Container className={`${classNameContainerOption}`}>
-        <Checkbox isChecked={isCheckAll} option={{ label: 'Select All', value: 'all' }} />
+      <Container className={`${classNameContainerOption}`} onScroll={attrsInput?.onScroll}>
+        {
+          withSelectAll && <Checkbox isChecked={isCheckAll} option={{ label: 'Select All', value: 'all' }} />
+        }
         {
           options?.map((option, i) => {
             const isChecked = value?.some((data) => data === option?.value)

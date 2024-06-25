@@ -7,7 +7,7 @@ import IconChevronToggle from '@assets/icons/IconChevronToggle';
 import Badge from '@components/ui/Badge';
 import ContainerInput from '@components/ui/inputs/ContainerInput';
 import useOnClickOutside from '@hooks/useOnClickOutside';
-import { getFieldLabelFromOptions, isolateEvent, spreadArrayAttemp } from '@lib/utils/helper';
+import { debounce, getFieldLabelFromOptions, isolateEvent, spreadArrayAttemp } from '@lib/utils/helper';
 import { TCustomeEventOnChange, TOption } from '@types';
 import clsx from 'clsx';
 import { useEffect, useRef, useState } from 'react';
@@ -17,7 +17,7 @@ type TProps = {
     name: string;
     onChange: (e: TCustomeEventOnChange<string | string[]>) => void;
     options: TOption[];
-
+    onLoadMore?: (args?: any[]) => void
 } & (SingleSelectProps | MultipleSelectProps);
 
 interface SingleSelectProps extends TBasePropsInput, Omit<React.HTMLProps<HTMLInputElement>, "onChange"> {
@@ -33,7 +33,7 @@ interface MultipleSelectProps extends TBasePropsInput, Omit<React.HTMLProps<HTML
 }
 
 const InputSelect = (props: TProps) => {
-    const { options, isMultiple, ...attrs } = props;
+    const { options, isMultiple, withSelectAll, onLoadMore, ...attrs } = props;
     const refContainerDropdown = useRef<HTMLDivElement | null>(null);
     const refContainerValue = useRef<HTMLDivElement | null>(null);
     const refIconChevron = useRef<HTMLDivElement | null>(null);
@@ -65,7 +65,7 @@ const InputSelect = (props: TProps) => {
         if (isMultiple && Array.isArray(attrs?.value)) {
             const isSelected = attrs?.value?.some(singleValue => singleValue === data?.value)
             valueUpdates = (isSelected ? attrs?.value?.filter((data) => data !== valueUpdates) : spreadArrayAttemp({ newValue: valueUpdates, array: attrs?.value }) as string[])
-        }else{
+        } else {
             setIsOpen(false)
         }
         attrs?.onChange({
@@ -98,7 +98,22 @@ const InputSelect = (props: TProps) => {
 
     }
 
-    console.log("options: ", options)
+    const handleOnScroll = (e: React.UIEvent<HTMLDivElement>) => {
+        const bottom = e.currentTarget.scrollHeight - e.currentTarget.scrollTop === e.currentTarget.clientHeight;
+        if (bottom && onLoadMore) {
+            onLoadMore()
+        }
+    }
+
+    // @ts-ignore
+    const debouncedLoadMoreOptions = useRef(debounce(onLoadMore, 1000)).current;
+
+    useEffect(() => {
+        if (searchQuery && onLoadMore) {
+            debouncedLoadMoreOptions();
+        }
+    }, [searchQuery])
+
     const filteredOptions = options?.filter(option => String(option?.label)?.toLowerCase().includes(searchQuery?.toLowerCase()))
 
     return (
@@ -141,14 +156,15 @@ const InputSelect = (props: TProps) => {
                             isMultiple ? <InputMultipleCheckbox
                                 options={filteredOptions}
                                 {...attrs}
+                                onScroll={handleOnScroll}
                                 classNameContainerOption={"!px-4 !py-4 !max-h-[10rem] !flex-nowrap !overflow-y-scroll"}
                                 label={""}
                                 onChange={(e) => {
                                     attrs?.onChange(e)
                                     setSearchQuery('')
                                 }}
-                                withSelectAll={attrs?.withSelectAll || false}
-                            /> : <div className="py-0 overflow-y-auto max-h-[10rem]">
+                                withSelectAll={withSelectAll || false}
+                            /> : <div onScroll={handleOnScroll} className="py-0 overflow-y-auto max-h-[10rem]">
                                 {
                                     filteredOptions?.map((option, i) => {
                                         const isSelected = option?.value === attrs?.value

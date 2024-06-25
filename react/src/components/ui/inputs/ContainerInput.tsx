@@ -53,7 +53,7 @@ const ContainerInput = <TInput,>(props: TProps<TInput>) => {
     return (
         <>
             {/* Container input lv1 : ciV4 */}
-            <Container className={`${customeClass?.ciV4} relative flex flex-col gap-2`}>
+            <Container  className={`${customeClass?.ciV4} relative flex flex-col gap-2`}>
                 {/* Container input lv1 : ciV3 */}
                 <section className={`${customeClass?.ciV3} flex flex-col gap-2 w-full`}>
                     {label && variant !== "v2" && (

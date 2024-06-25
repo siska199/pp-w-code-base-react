@@ -98,7 +98,6 @@ const RenderMenu = (props: TProps) => {
                         })}
                     >
                         <Button
-                            customeElement={"link"}
                             to={groupMenu?.url || location.pathname}
                             className={cn({
                                 "w-full !py-1 !pl-2 b": true,

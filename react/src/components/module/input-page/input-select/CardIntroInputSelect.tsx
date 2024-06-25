@@ -12,16 +12,55 @@ const CardIntroInputSelect = () => {
     },
     'input-select-multiple': {
       value: []
+    },
+    'input-select--select-all': {
+      value: []
     }
   }
   const { form, handleOnChange } = useForm<keyof typeof initialForm>({
     initialForm
   })
 
-  const [options, setOptions] = useState<{ [key: string]: TOption[] }>({
-    listInputSelect: []
+  const [options,] = useState<{ [key: string]: TOption[] }>({
+    listInputSelect: [
+      {
+        label: 'SISKA',
+        value: 'SISKA 123'
+      },
+      {
+        label: 'SISKA',
+        value: 'SISKA 123'
+      },
+      {
+        label: 'SISKA',
+        value: 'SISKA 123'
+      },
+      {
+        label: 'Koko melon',
+        value: 'koko melon 2'
+      },
+      {
+        label: 'Koko melon',
+        value: 'koko melon 2'
+      },
+      {
+        label: 'Koko melon',
+        value: 'koko melon 2'
+      },
+      {
+        label: 'Koko melon',
+        value: 'koko melon 2'
+      }
+    ]
   })
 
+  const handleOnLoadMore = async () => {
+    try {
+      console.log("tested")
+    } catch (error) {
+      console.log("error: ", error?.message)
+    }
+  }
   const listExample = [
     {
       component: <CardVariantComp
@@ -30,49 +69,38 @@ const CardIntroInputSelect = () => {
         Component={<InputSelect
           onChange={handleOnChange}
           {...form['input-select']}
-          options={[
-            {
-              label: 'SISKA',
-              value: 'SISKA 123'
-            },
-            {
-              label: 'SISKA',
-              value: 'SISKA 123'
-            },
-            {
-              label: 'SISKA',
-              value: 'SISKA 123'
-            }
-          ]}
+          options={options?.listInputSelect}
         />}
       />
     },
     {
       component: <CardVariantComp
-        title={'default '}
+        title={'Multiple Select'}
         withBorder={false}
         Component={<InputSelect
           onChange={handleOnChange}
-          {...form['input-select']}
-          options={[
-            {
-              label: 'SISKA',
-              value: 'SISKA 123'
-            },
-            {
-              label: 'SISKA',
-              value: 'SISKA 123'
-            },
-            {
-              label: 'SISKA',
-              value: 'SISKA 123'
-            }
-          ]}
+          {...form['input-select-multiple']}
+          options={options?.listInputSelect}
           isMultiple
         />}
       />
     },
+    {
+      component: <CardVariantComp
+        title={'Multiple Select (With Select All)'}
+        withBorder={false}
+        Component={<InputSelect
+          onChange={handleOnChange}
+          {...form['input-select--select-all']}
+          options={options?.listInputSelect}
+          isMultiple
+          withSelectAll
+          onLoadMore={handleOnLoadMore}
+        />}
+      />
+    },
   ]
+
   return (
     <CardIntroComponent
       title={'Input Select'}
