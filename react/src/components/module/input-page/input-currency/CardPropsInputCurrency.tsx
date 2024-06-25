@@ -19,7 +19,7 @@ const CardPropsInputCurrency = () => {
     },
     {
       label: 'HTMLProps',
-      content: 't defines all properties (props) that an <input> element in HTML can accept. These include attributes like className, style, value, and event handlers like onChange, onFocus, etc.'
+      content: 'It defines all properties (props) that an <input> element in HTML can accept. These include attributes like className, style, value, and event handlers like onChange, onFocus, etc.'
     },
     {
       label: 'Inherit all props that ContainerInput have',

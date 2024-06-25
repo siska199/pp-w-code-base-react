@@ -3,6 +3,7 @@ import CardIntroComponent from "@components/cards/CardIntroComponent";
 import CardVariantComp from "@components/cards/CardVariantComp";
 import InputSelect from "@components/ui/inputs/InputSelect";
 import useForm from "@hooks/useForm";
+import codeStringComponentUi from "@lib/utils/code-string/component-ui";
 import { TOption } from "@types";
 import { useState } from "react";
 
@@ -23,34 +24,26 @@ const CardIntroInputSelect = () => {
 
   const [options,] = useState<{ [key: string]: TOption[] }>({
     listInputSelect: [
-      {
-        label: 'SISKA',
-        value: 'SISKA 123'
-      },
-      {
-        label: 'SISKA',
-        value: 'SISKA 123'
-      },
-      {
-        label: 'SISKA',
-        value: 'SISKA 123'
-      },
-      {
-        label: 'Koko melon',
-        value: 'koko melon 2'
-      },
-      {
-        label: 'Koko melon',
-        value: 'koko melon 2'
-      },
-      {
-        label: 'Koko melon',
-        value: 'koko melon 2'
-      },
-      {
-        label: 'Koko melon',
-        value: 'koko melon 2'
-      }
+      { label: "Alice Johnson", value: "alice-johnson" },
+      { label: "Bob Smith", value: "bob-smith" },
+      { label: "Charlie Brown", value: "charlie-brown" },
+      { label: "David Williams", value: "david-williams" },
+      { label: "Eva Green", value: "eva-green" },
+      { label: "Frank Miller", value: "frank-miller" },
+      { label: "Grace Lee", value: "grace-lee" },
+      { label: "Hannah Wilson", value: "hannah-wilson" },
+      { label: "Ian Thomas", value: "ian-thomas" },
+      { label: "Jack Davis", value: "jack-davis" },
+      { label: "Katie Martinez", value: "katie-martinez" },
+      { label: "Liam White", value: "liam-white" },
+      { label: "Mia Harris", value: "mia-harris" },
+      { label: "Noah Clark", value: "noah-clark" },
+      { label: "Olivia Lewis", value: "olivia-lewis" },
+      { label: "Paul Walker", value: "paul-walker" },
+      { label: "Quinn Scott", value: "quinn-scott" },
+      { label: "Rachel King", value: "rachel-king" },
+      { label: "Sam Taylor", value: "sam-taylor" },
+      { label: "Tina Moore", value: "tina-moore" }
     ]
   })
 
@@ -107,11 +100,10 @@ const CardIntroInputSelect = () => {
       title={'Input Select'}
       subTitle="The InputSelect component is a user interface element commonly used in web development. It presents users with a dropdown list of selectable options, allowing them to choose one option at a time. Developers configure it with props such as options, value, and onChange to control its behavior and appearance within their applications."
       listExample={listExample}
-      displayCodeBase={displayCodeBase}
+      displayCodeBase={codeStringComponentUi.InputSelect}
     />
   );
 }
 
-const displayCodeBase = `// Code for InputSelect`;
 
 export default CardIntroInputSelect;

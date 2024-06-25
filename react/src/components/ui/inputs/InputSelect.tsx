@@ -43,7 +43,11 @@ const InputSelect = (props: TProps) => {
     const [isSearch, setIsSearch] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
 
-    useOnClickOutside<HTMLDivElement>({ ref: refContainerDropdown, refExceptions: [refIconChevron, refInput, refContainerValue], handler: () => setIsOpen(false) });
+    useOnClickOutside<HTMLDivElement>({
+        ref: refContainerDropdown, refExceptions: [refIconChevron, refInput, refContainerValue], handler: () => {
+            setIsOpen(false)
+        }
+    });
 
     useEffect(() => {
         if (!isMultiple) {
@@ -58,7 +62,7 @@ const InputSelect = (props: TProps) => {
         }
     }, [searchQuery, isMultiple])
 
-    const handleOnClickOption = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, data: TOption) => {
+    const handleOnClickOption = (e: React.KeyboardEvent<HTMLInputElement> | React.MouseEvent<HTMLDivElement, MouseEvent>, data: TOption) => {
         e?.stopPropagation()
         let valueUpdates: string[] | string = data?.value
 
@@ -104,6 +108,8 @@ const InputSelect = (props: TProps) => {
             onLoadMore()
         }
     }
+
+
 
     // @ts-ignore
     const debouncedLoadMoreOptions = useRef(debounce(onLoadMore, 1000)).current;
@@ -157,7 +163,10 @@ const InputSelect = (props: TProps) => {
                                 options={filteredOptions}
                                 {...attrs}
                                 onScroll={handleOnScroll}
-                                classNameContainerOption={"!px-4 !py-4 !max-h-[10rem] !flex-nowrap !overflow-y-scroll"}
+                                customeClassMulCheckbox={{
+                                    containerOption: '!px-0 !py-1 !max-h-[10rem] !flex-nowrap !overflow-y-scroll',
+                                    containerCheckbox: '!px-4 !py-1'
+                                }}
                                 label={""}
                                 onChange={(e) => {
                                     attrs?.onChange(e)
@@ -175,7 +184,8 @@ const InputSelect = (props: TProps) => {
                                             className={clsx({
                                                 "hover:bg-gray-100 block px-4 py-2 cursor-pointer ": true,
                                                 "!bg-primary-50 text-primary-700 ": isSelected,
-                                                "!bg-gray-100": isSearch && i === 0 && searchQuery
+                                                "!bg-gray-100": (isSearch && i === 0 && searchQuery) ,
+
                                             })} >
                                             {option?.label}
                                         </div>
@@ -192,6 +202,7 @@ const InputSelect = (props: TProps) => {
             {
                 (attrsInput) => <div
                     ref={refContainerValue}
+
                     className={clsx({
                         'flex shrink gap-2 flex-wrap  overflow-x-auto  scrollbar-hidden': true,
                     })}
@@ -226,6 +237,7 @@ const InputSelect = (props: TProps) => {
                             }}
                             id={attrsInput?.name}
                             onChange={(e) => {
+                                e?.stopPropagation()
                                 setIsSearch(true)
                                 handleSearchChange(e);
                                 setIsOpen(true)
@@ -233,6 +245,8 @@ const InputSelect = (props: TProps) => {
                             value={searchQuery}
                             placeholder={attrs?.variant === "v2" ? "" : attrsInput?.placeholder || ""}
                             ref={refInput}
+                            // onKeyDown={handleKeyDown}
+                            autoComplete={"off"}
                         />
                     </div>
                 </div>
