@@ -22,8 +22,6 @@ const CardIntroInputNPWP = () => {
           {...form['input-npwp']}
         />}
       />
-
-
     },
 
   ]

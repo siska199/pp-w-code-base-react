@@ -12,28 +12,28 @@ const LibraryPage = () => {
       caption: <CodeBlock codeString={'npm create vite@latest'} />
     },
     {
-      title: <>Install tailwind library, you can see the step in <Button label="here" customeElement="link" to={"https://tailwindcss.com/docs/guides/create-react-app"} target="_blank" /></>,
+      title: <>Install tailwind library, you can see the step in <Button label="here"  to={"https://tailwindcss.com/docs/guides/create-react-app"} target="_blank" /></>,
       caption: <Container gap="small">
         <p>Some file we need to configure while using tailwind: </p>
         <List
           items={[
             {
               label: "tailwind.config.js :",
-              content: <>For tailwind configuration that we use for create some component you can see in  <Button label="here" customeElement="link" to={"http://localhost:5173/docs/prerequisite/tailwind-config"} target="_blank" /></>
+              content: <>For tailwind configuration that we use for create some component you can see in  <Button label="here" to={"http://localhost:5173/docs/prerequisite/tailwind-config"} target="_blank" /></>
             },
             {
               label: "css file:",
-              content: <>CSS file that we use  for create some component you can see in  <Button label="here" customeElement="link" to={"http://localhost:5173/docs/prerequisite/css-file"} target="_blank" /></>
+              content: <>CSS file that we use  for create some component you can see in  <Button label="here" to={"http://localhost:5173/docs/prerequisite/css-file"} target="_blank" /></>
             },
           ]}
         />
       </Container>
     },
     {
-      title: <>Install this below library because mostly component that created using <Button label="cva" customeElement="link" to={"https://cva.style/docs/getting-started/installation"} target="_blank" /></>,
+      title: <>Install this below library because mostly component that created using <Button label="cva" to={"https://cva.style/docs/getting-started/installation"} target="_blank" /></>,
       caption: <>
         <CodeBlock codeString={`npm i class-variance-authority\r\nnpm i clsx\r\nnpm i tailwind-merge`} />
-        <p>Make sure also you have <Badge label={'cn'} variant={"soft-gray"} /> function, you can see  the function <Button label="here" customeElement="link" to={"http://localhost:5173/docs/prerequisite/helper-function"} target="_blank" /></p>
+        <p>Make sure also you have <Badge label={'cn'} variant={"soft-gray"} /> function, you can see  the function <Button label="here"  to={"http://localhost:5173/docs/prerequisite/helper-function"} target="_blank" /></p>
       </>
     },
     {

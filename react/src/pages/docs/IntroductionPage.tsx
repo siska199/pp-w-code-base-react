@@ -33,7 +33,7 @@ const IntroductionPage = () => {
                 title={'Introduction'}
                 subTitle={<>
                     Code Base 199 is designed to ease developers into building applications from scratch, providing a comprehensive reference for code structure and component design. Unlike traditional component libraries, Code Base 199 offers ready-to-use code snippets that you can copy, paste, and customize to fit your specific needs. Although these snippets are ready to use, there are a few important prerequisites to keep in mind.
-                    Therefore, it is essential <Button variant={"link-gray"} customeElement="link" to={"/docs/prerequisite/library"} label={'to read the prerequisites'} /> before using Code Base 199.
+                    Therefore, it is essential <Button variant={"link-gray"} to={"/docs/prerequisite/library"} label={'to read the prerequisites'} /> before using Code Base 199.
                 </>}
             />
             <CardSubMenu title="Why we create code base 199" customeClass={{ title: "border-b-0", container: "gap-0" }}>

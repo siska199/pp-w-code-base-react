@@ -14,19 +14,19 @@ export interface TCustomeEventOnChange<V> {
 
 export type TEmptyValue = "" | null | undefined
 
-export interface TOption {
-  label: string | React.ReactNode;
+export interface TOption<TLabel = string> {
+  label: TLabel;
   value: string;
 }
 
 export interface TTab {
   id: string;
   label: string;
-  content : React.ReactNode | string;
+  content: React.ReactNode | string;
 }
 
 export interface TItemAccordion {
-  label:string;
+  label: string;
   content: string;
 }
 
@@ -58,6 +58,6 @@ export interface TSettingTable<TData,> {
 /*----------------FORM--------------------*/
 
 
-export type TEventOnChange = React.ChangeEvent<HTMLInputElement >  | TCustomeEventOnChange<any>
+export type TEventOnChange = React.ChangeEvent<HTMLInputElement> | TCustomeEventOnChange<any>
 
 

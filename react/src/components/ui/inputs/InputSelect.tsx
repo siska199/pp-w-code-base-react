@@ -87,8 +87,8 @@ const InputSelect = (props: TProps) => {
 
     }
 
-    const filteredOptions = options.filter(option =>
-        option.label.toLowerCase().includes(searchQuery.toLowerCase())
+    const filteredOptions = options?.filter(option =>
+        String(option?.label)?.toLowerCase().includes(searchQuery.toLowerCase())
     );
     return (
         <ContainerInput<React.HTMLProps<HTMLInputElement>>
@@ -113,11 +113,13 @@ const InputSelect = (props: TProps) => {
                 ...attrs?.customeClass,
                 ciV1: "",
                 ciV2: " flex-no-wrap max-w-full",
-                input: "min-w-0"
+                input: "min-w-0",
+                ciV4: '!inline-block ',
+
 
             }}
             childrenOverlay={<div ref={refContainerDropdown} className={clsx({
-                "absolute  z-10 mt-2 origin-top-right rounded-md bg-white  ring-1 ring-black ring-opacity-5 focus:outline-none": true,
+                "absolute  z-10 mt-2 origin-bottom-right rounded-md bg-white  ring-1 ring-black ring-opacity-5 focus:outline-none": true,
                 " h-auto shadow-lg w-full": isOpen,
                 " h-0 shadow-none": !isOpen
             })}
@@ -130,7 +132,7 @@ const InputSelect = (props: TProps) => {
                             isMultiple ? <InputCheckbox
                                 options={filteredOptions}
                                 {...attrs}
-                                classNameContainerOption={"!px-4 !py-4 !max-h-[10rem] !overflow-y-scroll"}
+                                classNameContainerOption={"!px-4 !py-4 !max-h-[10rem] !flex-nowrap !overflow-y-scroll"}
                                 label={""}
                                 onChange={(e) => {
                                     attrs?.onChange(e)
@@ -182,11 +184,12 @@ const InputSelect = (props: TProps) => {
                         {
                             isMultiple && (attrs?.value as string[])?.map((data, i: number) => {
                                 const labelValue = getFieldLabelFromOptions({ array: options, value: data })
-                                return <Badge key={i} label={labelValue}
-                                    customeElement={
-                                        <div onClick={(e) => handleOnClickOption(e, { label: labelValue, value: data })}>
-                                            <IconClose className='w-[0.75rem] icon-primary icon-primary-fill' />
-                                        </div>}
+                                return <Badge key={i} label={<div className='flex gap-1 items-center'>
+                                    {labelValue}
+                                    <div onClick={(e) => handleOnClickOption(e, { label: labelValue, value: data })} >
+                                        <IconClose className='icon-primary icon-primary-fill' />
+                                    </div>
+                                </div>}
                                 />
                             })
                         }
