@@ -57,10 +57,11 @@ const CardIntroInputSelect = () => {
   const handleOnLoadMore = async () => {
     try {
       console.log("tested")
-    } catch (error) {
-      console.log("error: ", error?.message)
+    } catch (error: unknown) {
+      if (error instanceof Error) return error.message
     }
   }
+
   const listExample = [
     {
       component: <CardVariantComp

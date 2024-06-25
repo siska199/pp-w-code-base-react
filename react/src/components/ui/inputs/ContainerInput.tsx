@@ -74,7 +74,7 @@ const ContainerInput = <TInput,>(props: TProps<TInput>) => {
                                 "!border-t-0 !border-l-0 !border-r-0 !rounded-none focus-within:!ring-0": variant === "v5",
                                 [customeClass?.ciV2 || ""]: customeClass?.ciV2,
                                 "px-3 py-2 ": !customeElement?.preStart && !customeElement?.preEnd,
-                                "px-0": variant === "v5",
+                                "!px-0": variant === "v5",
                                 "overflow-hidden": customeElement?.preStart || customeElement?.preEnd,
                             }
                         )}>
