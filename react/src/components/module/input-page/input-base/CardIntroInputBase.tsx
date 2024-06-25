@@ -49,28 +49,28 @@ const CardIntroInputBase = () => {
     "icon-left":{
       label: 'Icon Left',
       variant: "v1",
-      customElements: {
+      customeElement: {
         start: <IconMessage />
       }
     },
     'icon-right':{
       label: 'Icon right',
       variant: "v1",
-      customElements: {
+      customeElement: {
         end: <IconMessage />
       }
     },
     'icon-pre-start':{
       label: 'Pre End',
       variant: "v1",
-      customElements: {
+      customeElement: {
         preStart: "Http"
       }
     },
     'icon-pre-end':{
       name: 'icon-pre-end',
       label: 'Pre End',
-      customElements: {
+      customeElement: {
         preEnd: "Text Preend"
       }
     }
@@ -184,7 +184,7 @@ const CardIntroInputBase = () => {
             onChange={handleOnChange}
             {...data?.props}
             variant={data?.props?.variant as TBasePropsInput['variant']}
-            customeElement={data?.props.customElements}
+            customeElement={data?.props.customeElement}
           />}
         />
       ))
