@@ -13,23 +13,22 @@ const CardPropsImage = () => {
       content: "The alt text for the image. If not provided, the src will be used with hyphens replaced by spaces."
     },
     {
-      label: "className",
-      content: "Additional class names to apply to the image element."
-    },
-    {
-      label: "withOverlay",
-      content: "Boolean indicating whether an overlay should be displayed on hover."
-    },
-    {
-      label: "overlayContent",
-      content: "React node to be displayed as the overlay content."
-    },
-    {
       label: "customeClassName",
-      content: `An object containing custom class names:
-        - container: Class name for the image container.
-        - image: Class name for the image element.
-        - containerOverlay: Class name for the overlay container.`
+      content: `An object containing custom class names:`,
+      childs: [
+        {
+          label: "container",
+          content: "Class name for the image container."
+        },
+        {
+          label: "image",
+          content: "Class name for the image element."
+        },
+        {
+          label: "containerOverlay",
+          content: "Class name for the overlay container."
+        }
+      ]
     },
     {
       label: "withSkeleton",
@@ -38,6 +37,24 @@ const CardPropsImage = () => {
     {
       label: "timeoutLoadImage",
       content: "Number of milliseconds to wait before removing the loading state after the image has loaded."
+    },
+    {
+      label: "overlay",
+      content: `An object containing overlay configuration`,
+      childs: [
+        {
+          label: "isShowOnHover",
+          content: "Boolean indicating whether the overlay should be displayed on hover."
+        },
+        {
+          label: "withBackdrop",
+          content: "Boolean indicating whether to show a backdrop behind the overlay."
+        },
+        {
+          label: "content",
+          content: "React node to be displayed as the overlay content."
+        }
+      ]
     },
     {
       label: "...attrs",
