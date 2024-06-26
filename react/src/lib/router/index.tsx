@@ -36,7 +36,14 @@ import TailwindConfigPage from '@pages/docs/prerequisite/TailwindConfigPage';
 import VariantPage from '@pages/docs/prerequisite/VariantPage';
 import DividerPage from '@pages/docs/components/DividerPage';
 import HelperComponentPage from '@pages/docs/prerequisite/HelperComponentPage';
+import ProgressbarPage from '@pages/docs/components/ProgressbarPage';
+import ProgressStepPage from '@pages/docs/components/ProgressStepPage';
+import TablePage from '@pages/docs/components/TablePage';
+import TabPage from '@pages/docs/components/TabPage';
+import TooltipPage from '@pages/docs/components/TooltipPage';
+import ModalPage from '@pages/docs/components/ModalPage';
 import { createBrowserRouter } from "react-router-dom";
+import ListPage from '@pages/docs/components/ListPage';
 
 const docRouter = {
     path: "docs",
@@ -330,6 +337,55 @@ const docRouter = {
                     element: <DividerPage />,
                     handle: {
                         id: '1-D22'
+                    }
+                },
+                {
+                    paht: 'list',
+                    element: <ListPage />,
+                    handle: {
+                        id: '1-L13'
+                    }
+                },
+                {
+                    path: 'progressbar',
+                    element: <ProgressbarPage />,
+                    handle: {
+                        id: '1-PB14'
+                    }
+                },
+                {
+                    path: 'progress-step',
+                    element: <ProgressStepPage />,
+                    handle: {
+                        id: '1-PS15'
+                    }
+                },
+                {
+                    path: 'table',
+                    element: <TablePage />,
+                    handle: {
+                        id: '1-T16'
+                    }
+                },
+                {
+                    path: 'tab',
+                    element: <TabPage />,
+                    handle: {
+                        id: '1-T17'
+                    }
+                },
+                {
+                    path: 'tooltip',
+                    element: <TooltipPage />,
+                    handle: {
+                        id: '1-T18'
+                    }
+                },
+                {
+                    path: 'modal',
+                    element: <ModalPage />,
+                    handle: {
+                        id: '1-M16'
                     }
                 },
             ]

@@ -245,7 +245,7 @@ const listMenuSidebar: TMenuItem[] = [
     {
         id: '1-PS15',
         name: 'Progress Step',
-        url: '/docs/components/progres-step',
+        url: '/docs/components/progress-step',
         parentId: '0-C0'
     },
     {
@@ -257,13 +257,8 @@ const listMenuSidebar: TMenuItem[] = [
     {
         id: '1-M16',
         name: 'Modal',
-        parentId: '0-C0'
-    },
-    {
-        id: '2-MC0',
-        name: 'Modal Confirmation',
-        url: '/docs/components/modal/confirmation',
-        parentId: '1-M16'
+        parentId: '0-C0',
+        url: '/docs/components/modal',
     },
     {
         id: '1-T16',
