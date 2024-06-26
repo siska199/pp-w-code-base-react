@@ -147,6 +147,7 @@ const CardIntroInputBase = () => {
           key={i}
           title={data.title}
           withBorder={false}
+        
           customeClass={{
             container: "w-full"
           }}

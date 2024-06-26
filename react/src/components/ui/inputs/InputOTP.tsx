@@ -1,23 +1,50 @@
 /* eslint-disable react/jsx-handler-names */
+import Alert from '@components/ui/Alert';
 import Container from '@components/ui/Container';
-import HelperMessage from '@components/ui/HelperMessage';
 import { TCustomeEventOnChange } from '@types';
 import React, { useEffect, useRef, useState } from 'react';
 
-interface TProps{
+interface TProps {
     name: string;
     onChange: (e: TCustomeEventOnChange<boolean>) => void;
     numberOfDigits: number;
     correctOTP: string;
-    errorMessage: string;
+    message?: {
+        error?: string;
+        success?: string;
+    }
 
 }
 
 const InputOTP = (props: TProps) => {
-    const { numberOfDigits, errorMessage, onChange, name, correctOTP, } = props;
+    const { numberOfDigits, message, onChange, name, correctOTP, } = props;
 
     const [otp, setOtp] = useState<string[]>(new Array(numberOfDigits).fill(""));
-    const [otpError, setOtpError] = useState<string | undefined>(undefined);
+
+    type TAlertState = {
+        withIcon: boolean;
+        isFixed: boolean;
+        message: string;
+        show: boolean;
+    } & (
+            | {
+                type: 'error';
+                variant: 'error-soft';
+            }
+            | {
+                type: 'success';
+                variant: 'success-soft';
+            }
+        );
+
+    const [alert, setAlert] = useState<TAlertState>({
+        show: false,
+        type: 'error',
+        message: '',
+        isFixed: false,
+        withIcon: true,
+        variant: 'error-soft'
+    })
 
     const otpBoxReference = useRef<Array<HTMLDivElement | null>>([]);
 
@@ -50,7 +77,21 @@ const InputOTP = (props: TProps) => {
 
     useEffect(() => {
         const isValid = otp.join("") !== "" && otp.join("") === correctOTP
-        setOtpError(isValid ? "" : errorMessage)
+
+        const updateAlertState: TAlertState = isValid ? {
+            ...alert,
+            message: message?.success || 'OTP is Correct',
+            type: "success",
+            variant: "success-soft",
+
+        } : {
+            ...alert,
+            message: message?.error || 'OTP is In correct',
+            type: "error",
+            variant: "error-soft",
+        }
+        setAlert(updateAlertState)
+
         onChange({
             target: {
                 name,
@@ -58,6 +99,7 @@ const InputOTP = (props: TProps) => {
             }
         })
     }, [otp]);
+
     return (
         <Container gap={"small"}>
             <div className='flex gap-4'>
@@ -73,7 +115,8 @@ const InputOTP = (props: TProps) => {
                 ))}
             </div>
             {
-                otp?.filter(data=>data).length===numberOfDigits && <HelperMessage message={otpError} variant='error' />
+                otp?.filter(data => data).length === numberOfDigits && <Alert {...alert} />
+
 
             }
         </Container>

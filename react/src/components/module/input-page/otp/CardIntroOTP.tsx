@@ -1,7 +1,6 @@
 
 import CardIntroComponent from "@components/cards/CardIntroComponent";
 import CardVariantComp from "@components/cards/CardVariantComp";
-import Alert from "@components/ui/Alert";
 import InputOTP from "@components/ui/inputs/InputOTP";
 import codeStringComponentUi from "@lib/utils/code-string/component-ui";
 import { TEventOnChange } from "@types";
@@ -39,9 +38,7 @@ const CardIntroOTP = () => {
           {...form['input-otp']}
           numberOfDigits={4}
           correctOTP="1234"
-          errorMessage="OTP Is Incorrect"
         />
-        <Alert isFixed={false} withIcon={true} type="success" variant={"success-soft"} show={form['input-otp']?.value} message={"OTP is correct"}/>
       </div>}
     />
     },
