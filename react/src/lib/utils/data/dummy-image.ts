@@ -1,6 +1,5 @@
 const dummyImage = [
     "https://i.pinimg.com/736x/22/54/03/22540381a0bb28c0823dcc0c34a0ad72.jpg",
-    "https://i.pinimg.com/736x/22/54/03/22540381a0bb28c0823dcc0c34a0ad72.jpg",
     "https://i.pinimg.com/564x/06/b6/ef/06b6ef2a183ee70bfedba85bb24931ea.jpg",
     "https://i.pinimg.com/736x/39/f0/6c/39f06cf316484b2f585c0ba1bfee8039.jpg",
     "https://i.pinimg.com/564x/2e/9d/d7/2e9dd78bed90eccb4eeb99bff613c2e8.jpg",
