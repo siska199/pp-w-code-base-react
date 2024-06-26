@@ -340,7 +340,7 @@ const docRouter = {
                     }
                 },
                 {
-                    paht: 'list',
+                    path: 'list',
                     element: <ListPage />,
                     handle: {
                         id: '1-L13'
