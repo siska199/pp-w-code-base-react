@@ -22,6 +22,8 @@ const CardIntroDivider = () => {
         groups={Object.keys(variantDivider)}
         isLogicSplitGroupKey={false}
         Component={(variant) => <Divider text="Siska" variant={variant} />}
+        withGroupName={false}
+        withBorder={false}
       />
     },
 
