@@ -41,7 +41,7 @@ const CardIntroInputDate = () => {
   return (
     <CardIntroComponent
       title={'Input Date'}
-      subTitle="The InputDate component is a customizable date picker input designed for both single date and date range selections. It leverages the react-datepicker library for rich date selection features and allows customization of its appearance and behavior through various props. The component supports displaying different views such as month and year pickers, and integrates navigation buttons for changing months and years. It includes an icon that can be positioned at either the start or end of the input field. Additionally, the component handles formatting and placeholder text, ensuring a seamless user experience for date input tasks."
+      subTitle="An InputDate component is used in web and mobile applications to facilitate the selection of dates. It provides a user-friendly interface such as a calendar widget or dropdowns for choosing dates, ensuring data entry accuracy and consistency. InputDate components often include features like date validation and formatting options to suit different date formats and regional preferences."
       listExample={listExample}
       displayCodeBase={codeStringComponentUi.InputDate}
     />

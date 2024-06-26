@@ -9,7 +9,7 @@ import codeStringComponentUi from '@lib/utils/code-string/component-ui';
 import { HTMLProps } from 'react';
 
 const CardIntroInputBase = () => {
-  type TKey = 'variant-1' | 'variant-2' | 'variant-3' | 'variant-4' | 'variant-5' | 'disabled' | 'error' | 'icon-left'|'icon-right'|'icon-pre-start'|'icon-pre-end'
+  type TKey = 'variant-1' | 'variant-2' | 'variant-3' | 'variant-4' | 'variant-5' | 'disabled' | 'error' | 'icon-left' | 'icon-right' | 'icon-pre-start' | 'icon-pre-end'
   type TForm = Record<TKey, TBasePropsInput & HTMLProps<HTMLInputElement>>
 
   const initialForm: TForm = {
@@ -147,7 +147,7 @@ const CardIntroInputBase = () => {
           key={i}
           title={data.title}
           withBorder={false}
-        
+
           customeClass={{
             container: "w-full"
           }}
@@ -203,7 +203,7 @@ const CardIntroInputBase = () => {
   return (
     <CardIntroComponent
       title={'Input Base'}
-      subTitle="InputBase is a reusable React component for handling HTML input fields. It takes in various properties to customize the input and wraps it with a ContainerInput component that adds extra features like a clearable input option. It adjusts the placeholder based on the provided variant. This makes it easy to manage and extend input fields consistently across your application."
+      subTitle='An Input component is a UI element that allows users to enter and interact with data in web or mobile applications. It comes in various forms such as text fields, checkboxes, radio buttons, and dropdowns, each designed for specific types of data input. Properly designed Input components enhance user experience by making data entry intuitive and efficient.'
       listExample={listExample}
       displayCodeBase={codeStringComponentUi.InputBase}
     />
