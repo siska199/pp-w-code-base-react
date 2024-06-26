@@ -11,17 +11,18 @@ interface TProps<TV, TG = string> {
     };
     withBorder?: boolean;
     isLogicSplitGroupKey?: boolean;
+    withGroupName?: boolean;
 }
 
 const CardVariousCompVariant = <TV extends object, TG extends string = string>(props: TProps<TV, TG>) => {
-    const { variant, withBorder = true, isLogicSplitGroupKey = true, groups, Component, customeClass } = props
+    const { variant, withGroupName = true, withBorder = true, isLogicSplitGroupKey = true, groups, Component, customeClass } = props
 
 
     return (
-        <div className={`${customeClass?.container} flex flex-wrap gap-8`}>
+        <div className={`${customeClass?.container} flex flex-wrap gap-2`}>
             {
                 groups?.map((group, i) => <div key={i} className={`${customeClass?.containerGroupVariant} flex flex-col gap-2 `}>
-                    <p className="font-medium text-black">{group}</p>
+                    {withGroupName && <p className="font-medium text-black">{group}</p>}
                     <div className="flex flex-wrap gap-2 ">
                         {
                             Object.entries(variant)?.filter(([key]) => {

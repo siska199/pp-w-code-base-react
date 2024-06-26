@@ -50,6 +50,7 @@ const CardIntroAlert = () => {
                         show={true}
                         withIcon={true}
                     />}
+                    withGroupName={false}
                     withBorder={false}
                 />
         },
