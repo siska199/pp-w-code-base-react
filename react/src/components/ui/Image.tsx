@@ -15,6 +15,7 @@ interface TProps extends Omit<Partial<HTMLProps<HTMLImageElement>>, ""> {
 
     overlay?: {
         isShowOnHover?: boolean;
+        withBackdrop?: boolean;
         content?: React.ReactNode;
     }
 
@@ -84,9 +85,10 @@ const Image = (props: TProps) => {
             }
             {(overlay?.content) && (
                 <div className={cn({
-                    "absolute top-0 left-0 bg-black/30 opacity-100 translate-y-0  transition-all duration-300 transform  w-full h-full": true,
+                    "absolute top-0 left-0 opacity-100 translate-y-0  transition-all duration-300 transform  w-full h-full": true,
                     'translate-y-[50%] group-hover:translate-y-0 opacity-0 group-hover:opacity-100 ': overlay?.isShowOnHover,
-                    [customeClassName?.containerOverlay || ""]: customeClassName?.containerOverlay
+                    [customeClassName?.containerOverlay || ""]: customeClassName?.containerOverlay,
+                    'bg-black/30 ': overlay?.withBackdrop
                 })}>
                     {overlay?.content}
                 </div>
