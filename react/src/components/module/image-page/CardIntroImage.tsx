@@ -67,7 +67,7 @@ const CardIntroImage = () => {
                 showImageWithSkeleton && <Image
                   src={"https://i.pinimg.com/564x/c1/31/c8/c131c80be697650f1311229b81405aa2.jpg"}
                   className="h-[10rem] w-[10rem] object-cover"
-                  timeoutLoadImage={3600 * 5}
+                  timeoutLoadImage={3600 }
                   withSkeleton={true}
                 />
               }
