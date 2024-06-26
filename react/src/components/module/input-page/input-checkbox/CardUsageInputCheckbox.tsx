@@ -12,6 +12,33 @@ const CardUsageInputCheckbox = () => {
   );
 }
 
-const displayUsage = `// Usage example for InputCheckbox`;
+const displayUsage = `
+  const [form, setForm] = useState({
+  'input1': {
+      value: '',
+      name : 'input1'
+    },
+  })
+
+  const handleOnChange = (e: TEventOnChange) => {
+    const name = e.target.name as keyof typeof form
+    const value = e.target.value
+
+    setForm({
+      ...form,
+      [name]: {
+        ...form[name],
+        value
+      }
+    })
+  }
+    
+  <InputCheckbox
+    onChange={handleOnChange}
+    {...form['input-checkbox']}
+  />
+`
+
+  ;
 
 export default CardUsageInputCheckbox;

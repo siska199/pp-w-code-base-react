@@ -115,7 +115,7 @@ const InputOTP = (props: TProps) => {
                 ))}
             </div>
             {
-                otp?.filter(data => data).length === numberOfDigits && <Alert {...alert} />
+                otp?.filter(data => data).length === numberOfDigits && <Alert {...alert} withIcon show/>
 
 
             }
