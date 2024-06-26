@@ -23,8 +23,8 @@ const CardIntroInputPhoneNumber = () => {
         />}
       />
     },
-
   ]
+  
   return (
     <CardIntroComponent
       title={'Input Phone Number'}
