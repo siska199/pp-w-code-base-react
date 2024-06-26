@@ -70,4 +70,4 @@ console.log(`Component ${componentName} has been created at ${componentsPath}`);
 
 
 // How to run this script:
-// node gc.js <path example src/components/ui> <ComponentName>
+// node g-component.js <path example src/components/ui> <ComponentName>
