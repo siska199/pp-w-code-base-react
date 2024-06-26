@@ -5,7 +5,7 @@ const variant = {
     "solid-error": "bg-error border-error text-white",
     "solid-black": "bg-black border-black text-white",
     "solid-gray": "bg-gray border-gray text-white",
-    "solid-white": "bg-white border text-black",
+    "solid-white": "bg-white border text-black ",
 
     "soft-primary": "bg-primary-50 text-primary-700",
     "soft-success": "bg-success-50 text-success-700",
