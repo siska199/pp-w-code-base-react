@@ -1,6 +1,5 @@
 
 import CardIntroComponent from "@components/cards/CardIntroComponent";
-import InputTextArea from "@components/ui/InputTextArea";
 
 const CardIntroInputTextArea = () => {
 
