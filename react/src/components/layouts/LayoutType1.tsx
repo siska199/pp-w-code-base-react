@@ -65,15 +65,16 @@ const LayoutType1 = () => {
 
 
     useEffect(() => {
+        const elmContainerLayout = document?.getElementById('layout')
+        elmContainerLayout?.scrollTo(0, 0)
+
         const id = searchParams?.get('id')
         const elm = document?.getElementById(id || '')
         elm?.scrollIntoView()
+
     }, [location?.pathname])
 
-    useEffect(() => {
-        window.scrollTo(0, 0)
 
-    }, [])
 
     return (
         <main id="layout" className=" overflow-x-hidden relative bg-white h-screen min-h-screen w-full overflow-y-auto">
