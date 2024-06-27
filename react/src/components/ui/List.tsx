@@ -1,5 +1,6 @@
 import { TItemList } from "@types";
 import Badge from "./Badge";
+import variantBadge from "@lib/utils/variants/ui/variant-badge";
 
 interface TProps {
     items: TItemList[];
@@ -8,20 +9,23 @@ interface TProps {
         li?: string;
     },
     title?: string;
+    variantBadge?:{
+        [key:number]:keyof typeof variantBadge
+    }
 }
 
 const List = (props: TProps) => {
-    const { title, items, customeClass } = props;
+    const { title, items, customeClass,variantBadge } = props;
 
-    const renderItems = (items: TItemList[]) => {
+    const renderItems = (items: TItemList[],level:number) => {
         return (
 
             <ul className={`${customeClass?.ul} ${title && "ml-4"} list-disc px-4 flex flex-col mt-2`}>
                 {items.map((item, i) => (
                     <li key={i} className={`${customeClass?.li} ${item?.label ? 'mb-2' : 'mb-0'}`}>
-                        {item.label && <Badge label={item.label} className="mr-2" />}
+                        {item.label && <Badge label={item.label} variant={variantBadge?.[level]||'soft-primary'} className="mr-2" />}
                         {item.content}
-                        {item.childs && renderItems(item.childs)}
+                        {item.childs && renderItems(item.childs, level+1)}
                     </li>
                 ))}
             </ul>
@@ -32,7 +36,7 @@ const List = (props: TProps) => {
         {
             title && <Badge label={title} variant={"soft-warning"} />
         }
-        {renderItems(items)}
+        {renderItems(items, 0)}
     </div>;
 };
 

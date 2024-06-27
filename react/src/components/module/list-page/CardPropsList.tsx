@@ -5,12 +5,16 @@ import List from "@components/ui/List";
 const CardPropsList = () => {
   const listItem = [
     {
-      label: "prop1",
-      content: "Description of prop1"
+      label: "title",
+      content: "Optional title for the list. If provided, it will be displayed at the top of the list with a Badge component."
     },
     {
-      label: "prop2",
-      content: "Description of prop2"
+      label: "items",
+      content: "An array of objects (TItemList) where each object represents an item to be rendered in the list"
+    },
+    {
+      label: "customeClass",
+      content: "Optional object allowing customization of CSS classes for <ul> (unordered list) and <li> (list item) elements within the List component."
     }
   ];
 
