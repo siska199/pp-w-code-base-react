@@ -1,7 +1,9 @@
+import { cn } from "@lib/utils/helper";
+import Badge from "./Badge";
 
 interface TProps {
     value: number;
-    valueTotal: number;
+    valueTotal?: number;
     customeClass?: {
         container?: string;
         containerProgressbar?: string;
@@ -9,11 +11,12 @@ interface TProps {
         containerLabel?: string;
         label?: string;
     };
-    size?: "small" | "base"
+    size?: "base";
+    variant?  : "base"|"trailing-label"|"title-label"|"top-floating-label"|"bottom-floating-label"|"within-progress-bar" |'steps'
 }
 
 const Progressbar = (props: TProps) => {
-    const { value, valueTotal, customeClass, size = "base" } = props;
+    const { value,variant="base" , valueTotal=100, customeClass, size = "base" } = props;
     const percentage = (value / valueTotal) * 100
 
     // >>-Animation Progress bar
@@ -30,19 +33,39 @@ const Progressbar = (props: TProps) => {
 
     //     return () => clearInterval(interval);
     // }, [width, valueTotal]); 
-
+    const labelComp =<label style={{marginLeft:["top-floating-label","bottom-floating-label"]?.includes(variant)&& value!==0? `${percentage-5}%`:0}} className={cn({
+            [customeClass?.label||'']:customeClass?.label,
+            ['mb-2 border']:["top-floating-label"]?.includes(variant),
+        })}>
+            {
+                ["top-floating-label","bottom-floating-label"]?.includes(variant) ? <Badge shape={"rounded"} variant={"softborder-primary"} label={`${percentage}%`}/>:`${percentage}%`
+            }
+            
+        </label>
     return (
-        <div className={`${customeClass?.container} `}>
-            <label className={`${customeClass?.label} `}>
-                {percentage}%
-            </label>
-            <div className={`bg-gray-100 w-full rounded-full min-w-[5rem] ${size === "small" ? "h-[8px]" : "h-[16px]"} ${customeClass?.containerProgressbar}`} >
+        <div className={cn({
+            'relative w-full flex flex-col ':true,
+            "flex-col-reverse":variant=="top-floating-label",
+            'flex-row-reverse gap-2 items-center':variant=="base",
+            [customeClass?.container||'']:customeClass?.container
+        })}>
+            {
+                variant!=="within-progress-bar" && labelComp
+            }
+            <div className={cn({
+                'bg-gray-100 w-full rounded-full min-w-[5rem]':true,
+                [customeClass?.containerProgressbar||'']:customeClass?.containerProgressbar,
+                'h-[10px] text-body-base':size=="base",
+                "h-[20px]":variant==="within-progress-bar"
+            })} >
                 <div
                     style={{ width: `${percentage}%` }}
-                    className={`bg-primary text-center text-white h-full transition-all duration-300 rounded-full ${customeClass?.progressbar}`}
+                    className={`bg-primary flex items-center justify-center text-center text-white h-full transition-all duration-300 rounded-full ${customeClass?.progressbar}`}
                 >
+                    {variant==="within-progress-bar" &&labelComp}
                 </div>
             </div>
+
         </div>
     );
 }

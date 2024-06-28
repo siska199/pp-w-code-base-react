@@ -1,25 +1,46 @@
 
+import CardVariousCompVariant from "@components/CardVariousCompVariant";
 import CardIntroComponent from "@components/cards/CardIntroComponent";
+import CardVariantComp from "@components/cards/CardVariantComp";
 import Progressbar from "@components/ui/Progressbar";
+import codeStringComponentUi from "@lib/utils/code-string/component-ui";
 
 const CardIntroProgressbar = () => {
 
+  const variantPorgressbar= {
+    "base": {},
+    "bottom-floating-label": {},
+    "top-floating-label": {},
+    "within-progress-bar": {},
+    "title-label":{},
+    "trailing-label":{}
+  }
+
     const listExample = [
     {
-      component: ""
+      component:  <CardVariousCompVariant<typeof variantPorgressbar>
+      customeClass={{
+        container: "flex-col w-full",
+        containerCardVariant: "w-full"
+      }}
+      variant={variantPorgressbar}
+      groups={Object.keys(variantPorgressbar)}
+      isLogicSplitGroupKey={false}
+      Component={(variant) => <Progressbar variant={variant} value={50} />}
+      withGroupName={false}
+      withBorder={false}
+    />
     },
 
   ]
   return (
     <CardIntroComponent
       title={'Progressbar'}
-      subTitle="Description of Progressbar."
+      subTitle="The Progressbar component is a visual element commonly used in user interfaces to indicate the progress of a task or process. It provides a graphical representation of completion, typically as a horizontal bar that fills up gradually from left to right."
       listExample={listExample }
-      displayCodeBase={displayCodeBase}
+      displayCodeBase={codeStringComponentUi.Progressbar}
     />
   );
 }
-
-const displayCodeBase = `// Code for Progressbar`;
 
 export default CardIntroProgressbar;
