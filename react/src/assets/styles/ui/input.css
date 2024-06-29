@@ -100,12 +100,20 @@ input[type="radio"]:disabled{
     @apply flex flex-col !border-none rounded-[16px] mx-auto min-w-[16rem]
 }
 .react-datepicker__month-text{
-    @apply bg-transparent w-full
+    @apply bg-transparent w-full p-2;
+}
+.react-datepicker__year-text{
+    @apply p-2;
 }
 
-.react-datepicker__year-text--selected button ,.react-datepicker__month-text--selected button{
+.react-datepicker__year-text--selected ,.react-datepicker__month-text--selected {
     @apply !bg-primary z-[10] hover:!bg-primary-400 !text-white ;
 }
+.react-datepicker__year-text--keyboard-selected, .react-datepicker__month-text--keyboard-selected{
+    @apply !bg-transparent hover:!bg-gray-100;
+}
+
+
 
 .react-datepicker__month {
     @apply flex flex-col !border-none;
