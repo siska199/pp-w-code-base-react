@@ -16,7 +16,7 @@ const Logo = (props: TProps) => {
 
 
 const logoVariants = cva(
-    'w-fiit inline font-staryssa text-black flex gap-2 items-center font-bold',
+    'w-fiit inline font-staryssa text-primary flex gap-2 items-center font-bold',
     {
         variants: {
             variant: {

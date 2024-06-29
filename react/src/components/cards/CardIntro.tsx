@@ -7,9 +7,9 @@ interface TProps {
 const CardIntro = (props: TProps) => {
     const { title, subTitle } = props
     return (
-        <div className="">
-            <h4 className="font-bold">{title}</h4>
-            <p className="text-justify text-body-large max-w-full">{subTitle}</p>
+        <div className=" ">
+            <h4 className="font-bold mb-2  ">{title}</h4>
+            <p className="text-justify max-w-full">{subTitle}</p>
         </div>
     )
 }
