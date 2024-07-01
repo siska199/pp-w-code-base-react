@@ -9,7 +9,7 @@ const CardIntroSkeleton = () => {
 
   const listExample = [
     {
-      component: <div className="w-full flex flex-col gap-2">
+      component: <div className="w-full flex flex-col gap-4">
         <CardVariantComp
           title={"Paragraph"}
           Component={
@@ -23,7 +23,18 @@ const CardIntroSkeleton = () => {
           title={"Image"}
           Component={
             <Skeleton isLoading={true} type={"block"}>
-              <Image src={dummyImage[0]} className="w-[5rem] h-[5rem] rounded-full"/>
+              <Image src={dummyImage[0]} className="w-[5rem] h-[5rem] rounded-full" />
+            </Skeleton>
+          }
+          withBorder={false}
+        />
+        <CardVariantComp
+          title={"Block"}
+          Component={
+            <Skeleton isLoading={true} type={"block"} className={"w-full"}>
+              <div className="h-[4rem] w-full">
+                SISKA
+              </div>
             </Skeleton>
           }
           withBorder={false}

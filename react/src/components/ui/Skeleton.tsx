@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 
 import { cn } from "@lib/utils/helper";
-import { VariantProps, cva } from "class-variance-authority";
 import { HTMLProps, useEffect, useRef, useState } from "react";
 
-interface TProps extends HTMLProps<HTMLDivElement>, VariantProps<typeof skeletonVariants> {
+interface TProps extends HTMLProps<HTMLDivElement> {
     children: React.ReactNode;
     isLoading: boolean;
     type?: "text" | "block"
@@ -59,11 +58,14 @@ const Skeleton = (props: TProps) => {
 
     return (
         <div
-            className={cn(skeletonVariants({ className: `${className}  w-fit h-auto relative  text-wrap flex flex-col` }))}
+            className={cn({
+                'w-fit h-auto relative  text-wrap flex flex-col': true,
+                [className || '']: className
+            })}
             {...otherProps}
         >
             <div ref={contentRefs} className={cn({
-                "": true,
+                "w-full": true,
                 'opacity-0': isLoading
             })}>
                 {children}
@@ -85,22 +87,5 @@ const Skeleton = (props: TProps) => {
     )
 }
 
-const skeletonVariants = cva(
-    '',
-    {
-        variants: {
-            variant: {
-                // Define your variants here
-            },
-            // Add more variant options here
-        },
-        compoundVariants: [
-            // Define compound variants here
-        ],
-        defaultVariants: {
-            // Define default variants here
-        }
-    }
-)
 
 export default Skeleton;
