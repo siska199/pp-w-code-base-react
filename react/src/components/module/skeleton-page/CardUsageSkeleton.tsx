@@ -15,7 +15,6 @@ const CardUsageSkeleton = () => {
 const displayUsage = `
   return <Skeleton isLoading={true} type={"text"} >
             <span className="">Lorem ipsum dolor corrupti quaerat distinctio, ex quas quo inventore cum? Molestiae hifssdicu isdjcisdhvo sdicsdoio iosdcoisdoic icusodcsdicjsodi.</span>
-          </Skeleton>
-`;
+          </Skeleton>`;
 
 export default CardUsageSkeleton;
