@@ -19,7 +19,8 @@ const Skeleton = (props: TProps) => {
     const [totalSkeleton, setTotalSkeleton] = useState(0)
     const [skeletonStyle, setSkeletonStyle] = useState({
         width: 0,
-        height: 0
+        height: 0,
+        borderRadius: ""
     })
 
     useEffect(() => {
@@ -35,15 +36,19 @@ const Skeleton = (props: TProps) => {
                     // @ts-ignore
                     width: elmnContent.offsetWidth,
                     height: lineHeight - 8,
+                    borderRadius: "0.5rem"
                 });
                 setTotalSkeleton(lines || 0)
             }
             if (elmnContent && type === "block") {
+                const computedStyles = window.getComputedStyle(elmnContent as Element);
+                const borderRadius = computedStyles.borderRadius;
                 setSkeletonStyle({
                     // @ts-ignore
                     width: elmnContent.offsetWidth,
                     // @ts-ignore
                     height: elmnContent.offsetHeight,
+                    borderRadius
                 });
                 setTotalSkeleton(1)
 
@@ -69,7 +74,7 @@ const Skeleton = (props: TProps) => {
                     {
                         [...new Array(totalSkeleton)]?.map((_, i) => <div key={i}
                             style={skeletonStyle}
-                            className="rounded-lg animate-pulse  bg-gray-300  shadow ">
+                            className=" animate-pulse  bg-gray-300  shadow ">
                         </div>)
                     }
                 </span>

@@ -1,16 +1,33 @@
 
 import CardIntroComponent from "@components/cards/CardIntroComponent";
+import CardVariantComp from "@components/cards/CardVariantComp";
+import Image from "@components/ui/Image";
 import Skeleton from "@components/ui/Skeleton";
+import dummyImage from "@lib/utils/data/dummy-image";
 
 const CardIntroSkeleton = () => {
 
   const listExample = [
     {
-      component: <div className="w-full">
-        <Skeleton isLoading={true} type={"text"}>
-          <span className="">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi recusandae, sunt repellat odit maiores aliquid illum qui adipisci molestiae nesciunt, corrupti quaerat distinctio, ex quas quo inventore cum? Molestiae explicabo voluptatibus odit repellendus officiis, atque maxime consequatur incidunt praesentium cupiditate odio corrupti. Culpa voluptate mollitia id sequi delectus natus odio architecto, nobis iste in corrupti ratione tenetur porro et perspiciatis! Earum possimus autem optio velit nobis maiores deleniti iste vel doloremque illo reiciendis consectetur aspernatur omnis natus quidem tempore molestiae quisquam ut, in eum neque quo commodi pariatur. Deleniti, fugiat.</span>
-        </Skeleton>
-
+      component: <div className="w-full flex flex-col gap-2">
+        <CardVariantComp
+          title={"Paragraph"}
+          Component={
+            <Skeleton isLoading={true} type={"text"}>
+              <span className="">Lorem ipsum dolor corrupti quaerat distinctio, ex quas quo inventore cum? Molestiae hifssdicu isdjcisdhvo sdicsdoio iosdcoisdoic icusodcsdicjsodi.</span>
+            </Skeleton>
+          }
+          withBorder={false}
+        />
+        <CardVariantComp
+          title={"Image"}
+          Component={
+            <Skeleton isLoading={true} type={"block"}>
+              <Image src={dummyImage[0]} className="w-[5rem] h-[5rem] rounded-full"/>
+            </Skeleton>
+          }
+          withBorder={false}
+        />
       </div>
     },
 

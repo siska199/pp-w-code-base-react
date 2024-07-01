@@ -40,7 +40,7 @@ export interface TPropsCard extends Omit<Partial<HTMLProps<HTMLDivElement>>, "ti
         footer?: string;
     };
     fit?: boolean;
-
+    isLoading? : boolean;
 }
 
 const Card: React.FC<TPropsCard> = (props) => {
@@ -62,6 +62,7 @@ const CardFill = (props: TPropsCard) => {
         link,
         ...otherProps
     } = props
+
     return <div className={cn(cardVariants({ layout, variant, fit }), customeClass.container, className)} {...otherProps}>
         {/* HEADER */}
         {header && (
