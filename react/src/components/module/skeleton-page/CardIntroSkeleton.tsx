@@ -3,6 +3,7 @@ import CardIntroComponent from "@components/cards/CardIntroComponent";
 import CardVariantComp from "@components/cards/CardVariantComp";
 import Image from "@components/ui/Image";
 import Skeleton from "@components/ui/Skeleton";
+import codeStringComponentUi from "@lib/utils/code-string/component-ui";
 import dummyImage from "@lib/utils/data/dummy-image";
 
 const CardIntroSkeleton = () => {
@@ -59,13 +60,12 @@ const CardIntroSkeleton = () => {
   return (
     <CardIntroComponent
       title={'Skeleton'}
-      subTitle="Description of Skeleton."
+      subTitle="Provides a visual cue to users that content is on its way, improving the perceived loading experience and reducing frustration. The Skeleton component is often used in scenarios where data fetching might take some time, such as loading user profiles, articles, images, etc."
       listExample={listExample}
-      displayCodeBase={displayCodeBase}
+      displayCodeBase={codeStringComponentUi.Skeleton}
     />
   );
 }
 
-const displayCodeBase = `// Code for Skeleton`;
 
 export default CardIntroSkeleton;
