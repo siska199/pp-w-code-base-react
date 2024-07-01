@@ -13,29 +13,42 @@ const CardIntroSkeleton = () => {
         <CardVariantComp
           title={"Paragraph"}
           Component={
-            <Skeleton isLoading={true} type={"text"}>
+            <div className="flex flex-col gap-2">
               <span className="">Lorem ipsum dolor corrupti quaerat distinctio, ex quas quo inventore cum? Molestiae hifssdicu isdjcisdhvo sdicsdoio iosdcoisdoic icusodcsdicjsodi.</span>
-            </Skeleton>
+
+              <Skeleton isLoading={true} type={"text"} >
+                <span className="">Lorem ipsum dolor corrupti quaerat distinctio, ex quas quo inventore cum? Molestiae hifssdicu isdjcisdhvo sdicsdoio iosdcoisdoic icusodcsdicjsodi.</span>
+              </Skeleton>
+            </div>
           }
           withBorder={false}
         />
         <CardVariantComp
           title={"Image"}
           Component={
-            <Skeleton isLoading={true} type={"block"}>
+            <div className="flex flex-col gap-2">
               <Image src={dummyImage[0]} className="w-[5rem] h-[5rem] rounded-full" />
-            </Skeleton>
+
+              <Skeleton isLoading={true} type={"block"}>
+                <Image src={dummyImage[0]} className="w-[5rem] h-[5rem] rounded-full" />
+              </Skeleton>
+            </div>
           }
           withBorder={false}
         />
         <CardVariantComp
           title={"Block"}
           Component={
-            <Skeleton isLoading={true} type={"block"} className={"w-full"}>
-              <div className="h-[4rem] w-full">
-                SISKA
+            <div className="flex flex-col gap-2 w-full">
+              <div className="h-[4rem] w-full bg-primary-50 border p-2 border-primary-100">
+                SISKA Apriana Rifianti
               </div>
-            </Skeleton>
+              <Skeleton isLoading={true} type={"block"} className={"w-full"}>
+                <div className="h-[4rem] w-full">
+                  SISKA
+                </div>
+              </Skeleton>
+            </div>
           }
           withBorder={false}
         />
