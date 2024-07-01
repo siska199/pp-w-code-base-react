@@ -63,7 +63,7 @@ const Skeleton = (props: TProps) => {
             {...otherProps}
         >
             <div ref={contentRefs} className={cn({
-                className: '',
+                "": true,
                 'opacity-0': isLoading
             })}>
                 {children}
@@ -74,7 +74,9 @@ const Skeleton = (props: TProps) => {
                     {
                         [...new Array(totalSkeleton)]?.map((_, i) => <div key={i}
                             style={skeletonStyle}
-                            className=" animate-pulse  bg-gray-300  shadow ">
+                            className={cn({
+                                "animate-pulse  bg-gray-300  shadow ": true
+                            })}>
                         </div>)
                     }
                 </span>
