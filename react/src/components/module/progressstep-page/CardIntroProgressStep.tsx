@@ -2,6 +2,7 @@
 import CardIntroComponent from "@components/cards/CardIntroComponent";
 import CardVariantComp from "@components/cards/CardVariantComp";
 import ProgressStep from "@components/ui/ProgressStep";
+import codeStringComponentUi from "@lib/utils/code-string/component-ui";
 
 const CardIntroProgressStep = () => {
   const listStep =[...Array(5)]?.map((_,i)=>({
@@ -42,13 +43,12 @@ const CardIntroProgressStep = () => {
   return (
     <CardIntroComponent
       title={'Progress Step'}
-      subTitle="Description of ProgressStep."
+      subTitle="The ProgressStep component is a versatile UI component designed to create step-by-step progress indicators or timelines. It allows developers to visually represent a series of steps or milestones in a process, providing flexibility in layout and styling."
       listExample={listExample }
-      displayCodeBase={displayCodeBase}
+      displayCodeBase={codeStringComponentUi.ProgressStep}
     />
   );
 }
 
-const displayCodeBase = `// Code for ProgressStep`;
 
 export default CardIntroProgressStep;
