@@ -24,18 +24,6 @@ const CardPropsProgressbar = () => {
         label: "variant",
         content: "Specifies different layout variants/styles for the progress bar: base, trailing-label, title-label, top-floating-label, bottom-floating-label, within-progress-bar, steps."
     },
-    {
-        label: "Progressbar Component",
-        content: "A React component that displays a progress bar with customizable styles based on the variant prop. It calculates the percentage filled based on the value and valueTotal props."
-    },
-    {
-        label: "labelComp",
-        content: "Component that dynamically renders a label based on the variant prop. It may show a badge if the variant is 'top-floating-label' or 'bottom-floating-label'."
-    },
-    {
-        label: "CSS Classes (cn Function)",
-        content: "The cn function, likely from a utility library, is used to conditionally apply Tailwind CSS classes or custom classes based on the props and state of the component."
-    }
 ];
 
 
