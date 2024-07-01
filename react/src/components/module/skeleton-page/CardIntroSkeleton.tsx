@@ -40,7 +40,7 @@ const CardIntroSkeleton = () => {
           title={"Block"}
           Component={
             <div className="flex flex-col gap-2 w-full">
-              <div className="h-[4rem] w-full bg-primary-50 border p-2 border-primary-100">
+              <div className="h-[4rem] w-full text-primary-700 bg-primary-50 border p-2 border-primary-100">
                 SISKA Apriana Rifianti
               </div>
               <Skeleton isLoading={true} type={"block"} className={"w-full"}>
