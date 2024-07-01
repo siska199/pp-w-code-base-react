@@ -1,7 +1,6 @@
 
 import CardVariousCompVariant from "@components/CardVariousCompVariant";
 import CardIntroComponent from "@components/cards/CardIntroComponent";
-import CardVariantComp from "@components/cards/CardVariantComp";
 import Progressbar from "@components/ui/Progressbar";
 import codeStringComponentUi from "@lib/utils/code-string/component-ui";
 
@@ -10,10 +9,10 @@ const CardIntroProgressbar = () => {
   const variantPorgressbar= {
     "base": {},
     "bottom-floating-label": {},
-    "top-floating-label": {},
     "within-progress-bar": {},
     "title-label":{},
-    "trailing-label":{}
+    "trailing-label":{},
+    "top-floating-label": {},
   }
 
     const listExample = [
