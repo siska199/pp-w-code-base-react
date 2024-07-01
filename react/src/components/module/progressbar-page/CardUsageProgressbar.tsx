@@ -12,6 +12,8 @@ const CardUsageProgressbar = () => {
   );
 }
 
-const displayUsage = `// Usage example for Progressbar`;
+const displayUsage = `
+  return <Progressbar value={50} />
+`;
 
 export default CardUsageProgressbar;
