@@ -74,7 +74,7 @@ const LibraryPage = () => {
   return (
     <>
       <h4 className="font-bold">Library Installed</h4>
-      <ProgressStep type="timeline" listStep={listLibrary} variant="vertical" />
+      <ProgressStep type="number" listStep={listLibrary} variant="vertical" />
     </>
 
   );

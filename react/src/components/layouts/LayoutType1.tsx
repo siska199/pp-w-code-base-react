@@ -88,7 +88,7 @@ const LayoutType1 = () => {
                         marginRight: showRightSidebar === false ? 0 : rightPosition,
                         width: showSidebar === false && showRightSidebar === false ? '100%' : `calc(100% - ${(showSidebar === false ? 0 : leftPosition) + (showRightSidebar === false ? 0 : rightPosition)}px)`,
                     }}>
-                    <div className="w-full max-w-full flex flex-col gap-10 pb-10">
+                    <div className="w-full max-w-full flex flex-col gap-4 pb-10">
                         <Outlet />
                     </div>
                     {showSidebar !== false && <RightSidebar />}

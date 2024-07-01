@@ -12,8 +12,8 @@ const LandingPage = () => {
                     Code Base 199 aims to provide developers with a clear picture of all possible component variations when creating a new component. This foresight helps in building a robust and flexible codebase that can easily accommodate future changes.
                 </p>
                 <div className="flex w-full md:w-auto gap-4 mt-4">
-                    <Button customeElement={"link"} variant={"solid-primary"} className="min-w-[7rem]" to={"/docs"} label={'Get Sarted'} />
-                    <Button customeElement={"link"} variant={"solid-white"} className="min-w-[7rem]" to={"https://github.com/siska199/my-code-base-199"} label={'Github'} target="_blank" />
+                    <Button variant={"solid-primary"} className="min-w-[7rem]" to={"/docs"} label={'Get Sarted'} />
+                    <Button variant={"solid-white"} className="min-w-[7rem]" to={"https://github.com/siska199/my-code-base-199"} label={'Github'} target="_blank" />
                 </div>
             </div>
         </article>

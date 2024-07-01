@@ -1,6 +1,5 @@
 import CardIntro from "@components/cards/CardIntro";
 import CodeBlock from "@components/ui/CodeBlock";
-import Container from "@components/ui/Container";
 import ProgressStep from "@components/ui/ProgressStep";
 import codeStringVariant from "@lib/utils/code-string/variant";
 
@@ -44,14 +43,14 @@ const VariantPage = () => {
     }
   ]
   return (
-    <Container gap={"base"}>
+    <>
       <CardIntro
         title={'Variant'}
         subTitle={'The provided code demonstrates a sophisticated approach to defining and managing design variants for various UI components such as Badge, Button, Alert, Avatar, and etc in a React application. These variants enable consistent styling across the application by using utility classes and predefined styles. Here’s an explanation of the key concepts and structure of the code:'}
       />
       <ProgressStep type="number" listStep={listVariant} variant="vertical" />
 
-    </Container>
+    </>
   );
 };
 
