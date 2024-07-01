@@ -7,7 +7,7 @@ import { TOption } from "@types";
 import clsx from "clsx";
 import { useRef, useState } from "react";
 
-type TOptionDropdown = TOption & {
+export type TOptionDropdown = TOption<string | React.ReactNode> & {
     className?: string;
     title?: string;
 }
@@ -33,7 +33,7 @@ const DropdownBase = (props: TProps) => {
     const [activeIndex, setActiveIndex] = useState(0) // start form 0 so first data have activeIndex 1 :)
     useOnClickOutside<HTMLDivElement>({ ref, refExceptions: [refBtn], handler: () => setIsOpen(false) });
 
-    const handleOnClickOption = (data: TOption) => {
+    const handleOnClickOption = (data: TOptionDropdown) => {
         handleOnClick(data)
         setActiveIndex(0)
         setIsOpen(false)

@@ -4,8 +4,7 @@ import CardIntroComponent from "@components/cards/CardIntroComponent";
 import CardVariantComp from "@components/cards/CardVariantComp";
 import Badge from "@components/ui/Badge";
 import Image from "@components/ui/Image";
-import DropdownBase from "@components/ui/dropdown/DropdownBase";
-import { TOption } from "@types";
+import DropdownBase, { TOptionDropdown } from "@components/ui/dropdown/DropdownBase";
 
 const CardIntroDropdown = () => {
   const listOption = [
@@ -89,7 +88,7 @@ const CardIntroDropdown = () => {
   ]
 
 
-  const handleOnClick = (data: TOption) => {
+  const handleOnClick = (data: TOptionDropdown) => {
     console.log("name: ", data)
   }
 
