@@ -15,7 +15,7 @@ const CardIntroProgressbar = () => {
     "top-floating-label": {},
   }
 
-    const listExample = [
+  const listExample = [
     {
       component:  <CardVariousCompVariant<typeof variantPorgressbar>
       customeClass={{

@@ -35,14 +35,15 @@ const ProgressStep = (props: TProps) => {
                                     'h-[1rem]': type === "timeline"
                                 })}>
                                     <span className={cn({
-                                        "flex justify-center items-center  rounded-sm": true,
+                                        "flex justify-center items-center rounded-sm": true,
                                         "rounded-full": shapeItem === "circle",
                                         'bg-primary p-1 text-white border-primary': isCompleted,
                                         "border-primary  bg-white border-[2px] ring-4 ring-primary-200": isActive,
-
+                                        "!w-3 !h-3":isActive && type === "default",
+                                        "border-[2px]":type === "default" && !isCompleted && !isActive,
                                         'w-[1.5rem] h-[1.5rem] !text-body-small !bg-primary-100 !border-[1px] !border-primary-100  font-medium text-primary-700 ': type === "number",
                                         "!w-3 !h-3 !bg-primary-100": type === "timeline",
-                                        [`w-4 h-4 ${(!isCompleted && !isActive) && "border-[2px]"}`]: type === "default",
+                                        'w-4 h-4': type === "default",
                                     })}>
 
                                         {
