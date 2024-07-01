@@ -147,11 +147,13 @@ const CardIntroDropdown = () => {
           withBorder={false}
           Component={<DropdownBase
             withButtonTriger={true}
+            isDefaultStyle={false}
             options={listOption}
             onClick={handleOnClick}
+
           />}
           customeClass={{
-            container:""
+            container: ""
           }}
         />
 
