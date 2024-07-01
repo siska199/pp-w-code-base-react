@@ -31,30 +31,6 @@ const CardAdditionalInfoProgressbar = () => {
             </p>
         )
     },
-    {
-        title: "Usage Examples",
-        caption: (
-            <p>
-                Provide examples demonstrating how to use the <code>Progressbar</code> component with different props and variants. Showcase variations in appearance and behavior based on different combinations of props.
-            </p>
-        )
-    },
-    {
-        title: "Performance Considerations",
-        caption: (
-            <p>
-                Consider performance implications, such as animations or computations related to updating the progress bar&apos;s width or label.
-            </p>
-        )
-    },
-    {
-        title: "Documentation and Support",
-        caption: (
-            <p>
-                For comprehensive documentation, examples, or support, refer to the appropriate resources. Feel free to reach out for assistance or clarification as needed.
-            </p>
-        )
-    }
   ];
 
 
