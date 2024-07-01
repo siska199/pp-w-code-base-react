@@ -26,7 +26,7 @@ export interface TPropsInput<TInput,> extends TBasePropsInput {
 const ContainerInput = <TInput,>(props: TPropsInput<TInput>) => {
     const { name, children, onCustomeClearHandler, customeClearValue, isNotUsingDefaultStyle, childrenOverlay, label, variant = "v1", isClerable = false, type, onlyContainer = false, errorMessage, customeElement, disabled, customeClass, value, onChange, ...attrsInput } = props;
     const [dynamicType, setDynamicType] = useState(type)
-
+    console.log("label: ", label, variant)
     const className = clsx({
         "peer w-full shrink !outline-none border-none focus:border-none focus:ring-0 p-0 text-body-base placeholder:text-gray-400": !isNotUsingDefaultStyle?.input,
         "!bg-disabled": disabled,
@@ -56,7 +56,7 @@ const ContainerInput = <TInput,>(props: TPropsInput<TInput>) => {
             <Container className={`${customeClass?.ciV4} relative flex flex-col gap-2`}>
                 {/* Container input lv1 : ciV3 */}
                 <section className={`${customeClass?.ciV3} flex flex-col gap-2 w-full`}>
-                    {label && variant !== "v2" && (
+                    {label && !["v2", "v6"]?.includes(variant) && (
                         <label htmlFor={name} className={clsx({
                             "font-medium w-fit": true,
                             "absolute top-[-0.65rem] left-[0.45rem] text-body-small bg-white px-1 z-[10]": variant === "v4"
@@ -74,6 +74,8 @@ const ContainerInput = <TInput,>(props: TPropsInput<TInput>) => {
                                 "!border-t-0 !border-l-0 !border-r-0 !rounded-none focus-within:!ring-0": variant === "v5",
                                 [customeClass?.ciV2 || ""]: customeClass?.ciV2,
                                 "px-3 py-2 ": !customeElement?.preStart && !customeElement?.preEnd,
+                                "py-4 focus-within:pb-2 focus-within:pt-5":variant==="v6",
+                                "pb-2 pt-5 ":variant==="v6" && value,
                                 "!px-0": variant === "v5",
                                 "overflow-hidden": customeElement?.preStart || customeElement?.preEnd,
                             }
@@ -99,15 +101,17 @@ const ContainerInput = <TInput,>(props: TPropsInput<TInput>) => {
                                 {
                                     typeof (children) === "function" ? <>
                                         {children({ ...attrsInput as TInput, className, name, type: dynamicType, disabled, value, onChange })}
-                                        {label && variant === "v2" && (
+                                        {label && ["v2", "v6"].includes(variant) && (
                                             <label
                                                 id="floating-label"
                                                 htmlFor={name}
                                                 className={clsx(
                                                     {
-                                                        "font-medium absolute left-0 text-sm text-gray duration-300 transform -translate-y-5 bg-white px-1 scale-75 top-0 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5 peer-focus:bg-white  z-10": true,
-                                                        [customeClass?.label || "peer-placeholder-shown:ml-[0px] peer-focus:ml-[-35px] ml-[-35px]"]: customeElement?.start,
-                                                        "ml-[-0.25rem] ": !customeElement?.start
+                                                        "font-medium absolute left-0 text-sm text-gray duration-300 transform -translate-y-5 bg-white px-1 scale-75 top-0 origin-[0]  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5 peer-focus:bg-white  z-10": true,
+                                                        [customeClass?.label||'']:customeClass?.label,
+                                                        ["peer-placeholder-shown:ml-[0px] peer-focus:ml-[-35px] ml-[-35px]"]: customeElement?.start,
+                                                        "ml-[-0.25rem] ": !customeElement?.start,
+
                                                     }
                                                 )}
                                             >

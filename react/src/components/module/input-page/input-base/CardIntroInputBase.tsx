@@ -9,7 +9,7 @@ import codeStringComponentUi from '@lib/utils/code-string/component-ui';
 import { HTMLProps } from 'react';
 
 const CardIntroInputBase = () => {
-  type TKey = 'variant-1' | 'variant-2' | 'variant-3' | 'variant-4' | 'variant-5' | 'disabled' | 'error' | 'icon-left' | 'icon-right' | 'icon-pre-start' | 'icon-pre-end'
+  type TKey = 'variant-1' | 'variant-2' | 'variant-3' | 'variant-4' | 'variant-5' |'variant-6' | 'disabled' | 'error' | 'icon-left' | 'icon-right' | 'icon-pre-start' | 'icon-pre-end'
   type TForm = Record<TKey, TBasePropsInput & HTMLProps<HTMLInputElement>>
 
   const initialForm: TForm = {
@@ -37,6 +37,11 @@ const CardIntroInputBase = () => {
       label: 'Variant 5',
       placeholder: "Variant 5",
       variant: "v5",
+    },
+    'variant-6': {
+      label: 'Variant 6',
+      placeholder: "Variant 6",
+      variant: "v6",
     },
     'disabled': {
       label: 'Disabled',
@@ -105,6 +110,10 @@ const CardIntroInputBase = () => {
     {
       title: 'Variant 5',
       props: form["variant-5"]
+    },
+    {
+      title: 'Variant 6',
+      props: form["variant-6"]
     },
   ]
 

@@ -7,7 +7,7 @@ import IconChevronToggle from '@assets/icons/IconChevronToggle';
 import Badge from '@components/ui/Badge';
 import ContainerInput from '@components/ui/inputs/ContainerInput';
 import useOnClickOutside from '@hooks/useOnClickOutside';
-import { debounce, getFieldLabelFromOptions, isolateEvent, spreadArrayAttemp } from '@lib/utils/helper';
+import { debounce, getFieldLabelFromOptions, isEmptyValue, isolateEvent, spreadArrayAttemp } from '@lib/utils/helper';
 import { TCustomeEventOnChange, TOption } from '@types';
 import clsx from 'clsx';
 import { useEffect, useRef, useState } from 'react';
@@ -120,7 +120,6 @@ const InputSelect = (props: TProps) => {
     }, [searchQuery])
 
     const filteredOptions = options?.filter(option => String(option?.label)?.toLowerCase().includes(searchQuery?.toLowerCase()))
-
     return (
         <ContainerInput<React.HTMLProps<HTMLInputElement>>
             {...attrs}
@@ -129,7 +128,9 @@ const InputSelect = (props: TProps) => {
             customeClearValue={isMultiple ? searchQuery : String(attrs?.value) || searchQuery}
             customeElement={{
                 ...attrs?.customeElement,
-                end: <span ref={refIconChevron} onClick={(e) => {
+                end: <span 
+                className={`${(isEmptyValue(attrs?.value) && attrs?.variant==="v6")&&'-mt-1'}`}
+                ref={refIconChevron} onClick={(e) => {
                     isolateEvent(e)
                     const updateIsOpen = !isOpen
                     if (updateIsOpen) {
@@ -146,6 +147,7 @@ const InputSelect = (props: TProps) => {
                 ciV2: " flex-no-wrap max-w-full",
                 input: "min-w-0",
                 ciV4: '!inline-block ',
+                label:`${(isEmptyValue(attrs?.value) && attrs?.variant==="v6" &&!isOpen)?'scale-100 -translate-y-1 ':''} `
             }}
             childrenOverlay={<div ref={refContainerDropdown} className={clsx({
                 "absolute  z-10 mt-2 origin-bottom-right rounded-md bg-white  ring-1 ring-black ring-opacity-5 focus:outline-none": true,

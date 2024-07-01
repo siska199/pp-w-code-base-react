@@ -33,10 +33,12 @@ const Progressbar = (props: TProps) => {
 
     //     return () => clearInterval(interval);
     // }, [width, valueTotal]); 
-    const labelComp =<label style={{marginLeft:["top-floating-label","bottom-floating-label"]?.includes(variant)&& value!==0? `${percentage-5}%`:0}} className={cn({
-            [customeClass?.label||'']:customeClass?.label,
-            ['mb-2 border']:["top-floating-label"]?.includes(variant),
-        })}>
+    const labelComp =<label 
+            style={{marginLeft:["top-floating-label","bottom-floating-label"]?.includes(variant)&& value!==0? `${percentage-5}%`:0}} 
+            className={cn({
+                [customeClass?.label||'']:customeClass?.label,
+                ['mb-2 ']:["top-floating-label"]?.includes(variant),
+            })}>
             {
                 ["top-floating-label","bottom-floating-label"]?.includes(variant) ? <Badge shape={"rounded"} variant={"softborder-primary"} label={`${percentage}%`}/>:`${percentage}%`
             }
@@ -45,7 +47,7 @@ const Progressbar = (props: TProps) => {
     return (
         <div className={cn({
             'relative w-full flex flex-col ':true,
-            "flex-col-reverse":variant=="top-floating-label",
+            "flex-col-reverse gap-2":variant=="bottom-floating-label",
             'flex-row-reverse gap-2 items-center':variant=="base",
             [customeClass?.container||'']:customeClass?.container
         })}>

@@ -14,7 +14,6 @@ const CardIntroBreadcrumb = () => {
           title={"Default"}
           Component={<Breadcrumb items={listMenuNavbar} activeItem={0} />}
           withBorder={false}
-
         />
 
         <CardVariantComp
