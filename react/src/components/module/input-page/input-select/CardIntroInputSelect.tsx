@@ -90,8 +90,6 @@ const CardIntroInputSelect = () => {
           isMultiple
           withSelectAll
           onLoadMore={handleOnLoadMore}
-          variant="v6"
-          label={"TESTED LABEL"}
         />}
       />
     },
