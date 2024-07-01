@@ -22,7 +22,7 @@ const InputDate = (props: TProps) => {
     const { name, value, iconPosition = "start", placeholder, onChange, ...attrs } = props;
     const [showTypeDate, setShowTypeDate] = useState<"date" | "month" | "year" | "">("date");
     const [isShouldCloseOnSelect, setIsShouldCloseOnSelect] = useState(true);
-
+    const [focus, setFocus] = useState(false)
     const handleOnChange = (valueDate: Date | [Date, Date] | null) => {
         setShowTypeDate(showTypeDate === "date" ? "" : "date");
         setIsShouldCloseOnSelect(true);
@@ -61,8 +61,14 @@ const InputDate = (props: TProps) => {
     };
 
     return (
-        <ContainerInput {...attrs}>
-            <DatePicker
+        <ContainerInput {...attrs} value={value} 
+            customeClass={{
+                label:`${!focus && !value && attrs?.variant==="v6"?'scale-100 translate-y-0 ml-[20px]':""}`
+            }}
+
+        >
+            {
+                ()=>  <DatePicker
                 onCalendarClose={handleOnCalenderClose}
                 selected={Array.isArray(value) ? value[0] : value} // Set selected date(s) based on value prop
                 startDate={Array.isArray(value) ? value[0] : value} // Set startDate for range or single date
@@ -76,6 +82,9 @@ const InputDate = (props: TProps) => {
                 showYearPicker={showTypeDate === "year"}
                 showMonthYearPicker={showTypeDate === "month"}
                 showFullMonthYearPicker={showTypeDate === "date"}
+                autoFocus={focus}
+                onFocus={()=>setFocus(true)}
+                onBlur={()=>setFocus(false)}
                 renderCustomHeader={({
                     date,
                     decreaseMonth,
@@ -148,6 +157,8 @@ const InputDate = (props: TProps) => {
                     "right-[0.65rem]": iconPosition === "end"
                 })}
             />
+            }
+          
         </ContainerInput>
     );
 };

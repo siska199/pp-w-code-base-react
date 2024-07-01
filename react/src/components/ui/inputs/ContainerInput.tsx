@@ -26,7 +26,7 @@ export interface TPropsInput<TInput,> extends TBasePropsInput {
 const ContainerInput = <TInput,>(props: TPropsInput<TInput>) => {
     const { name, children, onCustomeClearHandler, customeClearValue, isNotUsingDefaultStyle, childrenOverlay, label, variant = "v1", isClerable = false, type, onlyContainer = false, errorMessage, customeElement, disabled, customeClass, value, onChange, ...attrsInput } = props;
     const [dynamicType, setDynamicType] = useState(type)
-
+    console.log("label: ", label, variant)
     const className = clsx({
         "peer w-full shrink !outline-none border-none focus:border-none focus:ring-0 p-0 text-body-base placeholder:text-gray-400": !isNotUsingDefaultStyle?.input,
         "!bg-disabled": disabled,
@@ -107,10 +107,11 @@ const ContainerInput = <TInput,>(props: TPropsInput<TInput>) => {
                                                 htmlFor={name}
                                                 className={clsx(
                                                     {
-                                                        "font-medium absolute left-0 text-sm text-gray duration-300 transform -translate-y-5 bg-white px-1 scale-75 top-0 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5 peer-focus:bg-white  z-10": true,
-                                                        "":variant==="v6",
-                                                        [customeClass?.label || "peer-placeholder-shown:ml-[0px] peer-focus:ml-[-35px] ml-[-35px]"]: customeElement?.start,
-                                                        "ml-[-0.25rem] ": !customeElement?.start
+                                                        "font-medium absolute left-0 text-sm text-gray duration-300 transform -translate-y-5 bg-white px-1 scale-75 top-0 origin-[0]  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5 peer-focus:bg-white  z-10": true,
+                                                        [customeClass?.label||'']:customeClass?.label,
+                                                        ["peer-placeholder-shown:ml-[0px] peer-focus:ml-[-35px] ml-[-35px]"]: customeElement?.start,
+                                                        "ml-[-0.25rem] ": !customeElement?.start,
+
                                                     }
                                                 )}
                                             >
