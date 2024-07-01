@@ -9,11 +9,11 @@ type TProps = {
     variant?: "horizontal" | "vertical";
     type?: "number" | "default" | "timeline";
     shapeItem?: "rounded" | "circle",
-    customeClass? :{
+    customeClass?: {
         spanIcon?: string;
         stepperWrapper?: string;
-        stepperIcon? : string;
-        stepperItem? : string;
+        stepperIcon?: string;
+        stepperItem?: string;
     }
 }
 
@@ -42,15 +42,20 @@ const ProgressStep = (props: TProps) => {
                                 })}>
                                     <span className={cn({
                                         "flex justify-center items-center rounded-sm": true,
+                                        
                                         "rounded-full": shapeItem === "circle",
+                                        
                                         'bg-primary p-1 text-white border-primary': isCompleted,
                                         "border-primary  bg-white border-[2px] ring-4 ring-primary-200": isActive,
-                                        "!w-3 !h-3":isActive && type === "default",
-                                        "border-[2px]":type === "default" && !isCompleted && !isActive,
-                                        'w-[1.5rem] h-[1.5rem] !text-body-small !bg-primary-100 !border-[1px] !border-primary-100  font-medium text-primary-700 ': type === "number",
-                                        "!w-3 !h-3 !bg-primary-100": type === "timeline",
+                                        
                                         'w-4 h-4': type === "default",
-                                        [customeClass?.spanIcon||'']:customeClass?.spanIcon||''
+                                        "!w-3 !h-3 mb-1": isActive && type === "default",
+                                        "border-[2px]": type === "default" && !isCompleted && !isActive,
+
+                                        'w-[1.5rem] h-[1.5rem] !text-body-small !bg-primary-100 !border-[1px] !border-primary-100  font-medium text-primary-700 ': type === "number",
+                                        
+                                        "!w-3 !h-3 !bg-primary-100": type === "timeline",
+                                        [customeClass?.spanIcon || '']: customeClass?.spanIcon || ''
                                     })}>
 
                                         {
@@ -70,7 +75,8 @@ const ProgressStep = (props: TProps) => {
                                 variant === "horizontal" ? <div className={`step-name ${variant}`}>{data?.title}</div> : <div className="min-h-[1rem]">
                                     <div className={cn({
                                         'step-title text-gray ': true,
-                                        'mt-2': ["number", "default"]?.includes(type)
+                                        'mt-3': type === "number",
+                                        "mt-2": type === "default"
                                     })}>{data?.title}</div>
                                     <div className="step-caption font-normal text-gray-500 mt-2 mb-8 flex flex-col gap-4">{data?.caption}</div>
                                 </div>
