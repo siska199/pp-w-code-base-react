@@ -46,9 +46,7 @@ const Breadcrumb = (props: TProps) => {
                                     "": isActiveItem
                                 })}>
                                     {item?.label}
-                                    {
-                                        withIconDivider && <span className="px-2 ">{(customeIconDivider ?? <IconChevronRight className="" />)}</span>
-                                    }
+                                    {withIconDivider && <span className="px-2 flex items-center ">{(customeIconDivider ?? <IconChevronRight className="" />)}</span>}
                                 </div>
                             }
                             className={cn({
