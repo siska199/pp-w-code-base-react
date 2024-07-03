@@ -52,6 +52,7 @@ const CardIntroModal = () => {
 
   ]
   return (
+    
     <CardIntroComponent
       title={'Modal'}
       subTitle="Description of Modal."
