@@ -5,7 +5,6 @@ import EmptyData from "@components/ui/EmptyData";
 import InputCheckbox from "@components/ui/inputs/InputCheckbox";
 import { cn } from "@lib/utils/helper";
 import { TColumn, TSettingTable } from "@types";
-import clsx from "clsx";
 import React from "react";
 
 type WithId<T> = T & { id: string | number };
@@ -62,8 +61,6 @@ const Table = <TData, TIncludeChecked extends boolean = false>(props: TProps<TDa
             currentPage: pageNumber
         })
     }
-
-    console.log(data)
 
     return (
         <div className="border rounded-lg">
@@ -163,7 +160,7 @@ const PaginationTable = <TData, TIncludeChecked extends boolean>(props: TPropsPa
     const { setting, onChangePage: handleOnChangePage } = props
 
     const pageNumbers = React.useMemo(() => Array.from({ length: setting.totalPage }, (_, index) => index + 1), [setting.totalPage]);
-
+    const currentPage = setting?.currentPage
 
     let listPageNumberStart: number[] = []
     let listPageNumberEnd: number[] = []
@@ -189,31 +186,43 @@ const PaginationTable = <TData, TIncludeChecked extends boolean>(props: TPropsPa
     }
 
 
-    const ButtonPageNumber = (pageNumber: number) => <Button onClick={() => handleOnChangePage(pageNumber)} variant={"plain"} className={clsx({
-        "w-[2.5rem] h-[2.5rem]": true,
-        // eslint-disable-next-line react/prop-types
-        "!bg-gray-100 font-bold": pageNumber === setting?.currentPage
-    })} label={pageNumber} />
+    const ButtonPageNumber = (pageNumber: number) => (
+        <Button
+            onClick={() => handleOnChangePage(pageNumber)}
+            variant={"plain"}
+            className={cn({
+                "w-[2.5rem] h-[2.5rem]": true,
+                "!bg-gray-100 font-bold": pageNumber === currentPage
+            })}
+            label={pageNumber}
+        />
+    )
 
 
-    return <div className="flex items-center justify-between px-4 py-2 border-t">
-        <Button variant={"solid-white"} disabled={setting?.currentPage <= 1} onClick={() => handleOnChangePage(setting?.currentPage - 1)} className="font-medium text-gray" label={<><IconChevronLeft />Previous</>} />
+    return (
+        <div className="flex items-center justify-between px-4 py-2 border-t">
+            <Button variant={"solid-white"} disabled={currentPage <= 1} onClick={() => handleOnChangePage(setting?.currentPage - 1)} className="font-medium text-gray" label={<><IconChevronLeft />Previous</>} />
 
-        <div className="items-center hidden md:flex">
-            {
-                setting?.totalPage > 6 ? <div className="flex items-center gap-1">
-                    {listPageNumberStart.map((pageNumber, i) => <span key={i}>{ButtonPageNumber(pageNumber)}</span>)}
-                    {listPageNumberEnd[0] - listPageNumberStart[listPageNumberStart?.length - 1] !== 1 && <div>...</div>}
-                    {listPageNumberEnd?.map((pageNumber, i) => <span key={i}>{ButtonPageNumber(pageNumber)}</span>)}
-                </div> : pageNumbers.map((pageNumber, i) => <span key={i}>{ButtonPageNumber(pageNumber)}</span>)
-            }
+            <div className="items-center hidden md:flex">
+                {
+                    setting?.totalPage > 6 ? (
+                        <div className="flex items-center gap-1">
+                            {listPageNumberStart.map((pageNumber, i) => <span key={i}>{ButtonPageNumber(pageNumber)}</span>)}
+                            {listPageNumberEnd[0] - listPageNumberStart[listPageNumberStart?.length - 1] !== 1 && <div>...</div>}
+                            {listPageNumberEnd?.map((pageNumber, i) => <span key={i}>{ButtonPageNumber(pageNumber)}</span>)}
+                        </div>
+                    ) : (
+                        pageNumbers.map((pageNumber, i) => <span key={i}>{ButtonPageNumber(pageNumber)}</span>)
+                    )
+                }
+            </div>
+            <div className="md:hidden">
+                <p><span className="font-medium">{setting?.currentPage} </span>of <span className="font-medium">{setting.totalPage}</span></p>
+            </div>
+
+            <Button disabled={setting?.currentPage >= setting?.totalPage} onClick={() => handleOnChangePage(setting?.currentPage + 1)} variant={"solid-white"} className="font-medium text-gray" label={<>Next<IconChevronRight /></>} />
         </div>
-        <div className="md:hidden">
-            <p><span className="font-medium">{setting?.currentPage} </span>of <span className="font-medium">{setting.totalPage}</span></p>
-        </div>
-
-        <Button disabled={setting?.currentPage >= setting?.totalPage} onClick={() => handleOnChangePage(setting?.currentPage + 1)} variant={"solid-white"} className="font-medium text-gray" label={<>Next<IconChevronRight /></>} />
-    </div>
+    )
 }
 
 export default Table
