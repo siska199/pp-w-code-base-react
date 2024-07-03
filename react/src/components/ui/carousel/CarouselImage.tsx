@@ -31,7 +31,7 @@ const CarouselImage: React.FC<CarouselProps> = ({ items, className, itemsPerView
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const getItemsPerView = () => {
+    const handleGetItemsPerView = () => {
         const screenWidth = window.innerWidth;
         if (screenWidth >= 1024 && itemsPerView.lg) {
             return Math.min(itemsPerView.lg, items.length); // Ensure itemsPerView doesn't exceed items.length
@@ -46,10 +46,10 @@ const CarouselImage: React.FC<CarouselProps> = ({ items, className, itemsPerView
 
     const handlePrev = () => setCurrentIndex(prevIndex => Math.max(prevIndex - 1, 0));
 
-    const handleNext = () => setCurrentIndex(prevIndex => Math.min(prevIndex + 1, items.length - getItemsPerView()));
+    const handleNext = () => setCurrentIndex(prevIndex => Math.min(prevIndex + 1, items.length - handleGetItemsPerView()));
 
     const handleClickGroupItem = (group: number) => {
-        const itemsPerViewCount = getItemsPerView();
+        const itemsPerViewCount = handleGetItemsPerView();
         const itemsLength = items?.length || 0;
         const isLastGroup = Math.ceil(itemsLength / itemsPerViewCount) === (group + 1);
         let updateIndex = group * itemsPerViewCount;
@@ -62,10 +62,11 @@ const CarouselImage: React.FC<CarouselProps> = ({ items, className, itemsPerView
         setCurrentIndex(updateIndex);
     };
 
-    const itemWidth = containerWidth / getItemsPerView();
+    const itemWidth = containerWidth / handleGetItemsPerView();
 
     return (
         <div className={cn("relative w-full", className)} ref={containerRef}>
+            
             <div className="overflow-hidden w-full h-full">
                 <div className="relative w-full h-full flex transition-left duration-500 ease-in-out" style={{ left: `-${currentIndex * itemWidth}px`, width: `${items.length * itemWidth}px` }}>
                     {items.map((item, index) => (
@@ -89,18 +90,18 @@ const CarouselImage: React.FC<CarouselProps> = ({ items, className, itemsPerView
                 variant="transparent"
                 onClick={handleNext}
                 className="absolute top-1/2 right-2 transform -translate-y-1/2"
-                disabled={currentIndex >= items.length - getItemsPerView()}
+                disabled={currentIndex >= items.length - handleGetItemsPerView()}
             />
 
             <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex space-x-2 p-2">
-                {Array.from({ length: Math.ceil(items.length / getItemsPerView()) }).map((_, group) => {
-                    let isCurrentGroup = group * getItemsPerView() === currentIndex
-                    const isSpecialCase = items?.length % getItemsPerView() !== 0
-                    const lastGroupIndex = Math.ceil(items.length / getItemsPerView()) - 1
+                {Array.from({ length: Math.ceil(items.length / handleGetItemsPerView()) }).map((_, group) => {
+                    let isCurrentGroup = group * handleGetItemsPerView() === currentIndex
+                    const isSpecialCase = items?.length % handleGetItemsPerView() !== 0
+                    const lastGroupIndex = Math.ceil(items.length / handleGetItemsPerView()) - 1
 
                     if (isSpecialCase && group === lastGroupIndex) {
-                        const stepBack = items?.length % getItemsPerView() === 0 ? 0 : getItemsPerView() - (items.length % getItemsPerView());
-                        const updateIndex = lastGroupIndex * getItemsPerView() - stepBack
+                        const stepBack = items?.length % handleGetItemsPerView() === 0 ? 0 : handleGetItemsPerView() - (items.length % handleGetItemsPerView());
+                        const updateIndex = lastGroupIndex * handleGetItemsPerView() - stepBack
                         if (updateIndex === currentIndex) {
                             isCurrentGroup = true
                         }
@@ -116,6 +117,7 @@ const CarouselImage: React.FC<CarouselProps> = ({ items, className, itemsPerView
                     );
                 })}
             </div>
+            
         </div>
     );
 };

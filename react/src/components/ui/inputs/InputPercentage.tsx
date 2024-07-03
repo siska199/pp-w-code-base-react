@@ -27,10 +27,14 @@ const InputPercentage = (props: TProps) => {
         handleOnChange(e)
     }
     return (
-        <ContainerInput<React.HTMLProps<HTMLInputElement>>  {...attrs} customeElement={{
-            ...attrs?.customeElement,
-            end: <IconPercentage />
-        }} onChange={handleOnChange} value={value}>
+        <ContainerInput<React.HTMLProps<HTMLInputElement>>  
+            {...attrs} 
+            customeElement={{
+                ...attrs?.customeElement,
+                end: <IconPercentage />
+             }} 
+             onChange={handleOnChange} value={value}
+        >
             {
                 (attrsInput) => <input  {...attrsInput} onChange={handleOnChangeFormatedValue} value={value} id={attrsInput?.name} placeholder={attrs?.variant === "v2" ? "" : attrsInput?.placeholder || ""} />
             }

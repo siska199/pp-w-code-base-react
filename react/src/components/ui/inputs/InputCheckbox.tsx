@@ -39,9 +39,11 @@ const InputCheckbox = (props: TProps) => {
                 </span>
             </label>
             {
-                label && <label className="mt-px cursor-pointer select-none" htmlFor="radio">
-                    {label}
-                </label>
+                label && (
+                    <label className="mt-px cursor-pointer select-none" htmlFor="radio">
+                        {label}
+                    </label>
+                )
             }
 
         </Container>

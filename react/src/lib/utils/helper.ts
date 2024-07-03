@@ -66,6 +66,7 @@ export function checkElmnOnTopOfPage(elm: any) {
 }
 
 export const handleStopPropagation = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => e?.stopPropagation()
+export const handlePreventDefault = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => e?.preventDefault()
 
 export function arraysHaveSameMembers(array1: string[], array2: string[]) {
     if (array1.length !== array2.length) {

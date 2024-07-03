@@ -40,7 +40,7 @@ export interface TPropsCard extends Omit<Partial<HTMLProps<HTMLDivElement>>, "ti
         footer?: string;
     };
     fit?: boolean;
-    isLoading? : boolean;
+    isLoading?: boolean;
 }
 
 const Card: React.FC<TPropsCard> = (props) => {
@@ -63,51 +63,58 @@ const CardFill = (props: TPropsCard) => {
         ...otherProps
     } = props
 
-    return <div className={cn(cardVariants({ layout, variant, fit }), customeClass.container, className)} {...otherProps}>
-        {/* HEADER */}
-        {header && (
-            <div className={cn("header", customeClass.header?.content)}>
-                {header.content && <div className="bg-gray-50 p-4 border-b">{header.content}</div>}
-                {header.image && <Image src={header.image} className={cn("image-header h-full w-full", customeClass.header?.image)} />}
-            </div>
-        )}
+    return (
+        <div
+            className={cn(cardVariants({ layout, variant, fit }), customeClass.container, className)}
+            {...otherProps}
+        >
+            {header && (
+                <div
+                    className={cn("header", customeClass.header?.content)}
+                >
+                    {header.content && (<div className="bg-gray-50 p-4 border-b">{header.content}</div>)}
+                    {header.image && (<Image src={header.image} className={cn("image-header h-full w-full", customeClass.header?.image)} />)}
+                </div>
+            )}
 
-        {/* BODY */}
-        {body && <div className="p-4 flex flex-col gap-3 body">
-            {body.image && <Image src={body.image} className={`${customeClass.body?.image} h-[15rem]`} />}
-            {(body.title || body.subtitle) && (
-                <div className="flex flex-col gap-2">
-                    {body.title && (
-                        <div className={cn("body-title font-bold p-0 text-black text-body-large leading-none", customeClass.body?.title)}>
-                            {body.title}
+            {body && (
+                <div className="p-4 flex flex-col gap-3 body">
+                    {body.image && (
+                        <Image src={body.image} className={cn('h-[15rem]', customeClass.body?.image)} />
+                    )}
+                    {(body.title || body.subtitle) && (
+                        <div className="flex flex-col gap-2">
+                            {body.title && (
+                                <div className={cn("body-title font-bold p-0 text-black text-body-large leading-none", customeClass.body?.title)}>
+                                    {body.title}
+                                </div>
+                            )}
+                            {body.subtitle && <p className={cn(" body-subtitle font-medium leading-none", customeClass.body?.subtitle)}>{body.subtitle}</p>}
                         </div>
                     )}
-                    {body.subtitle && <p className={cn(" body-subtitle font-medium leading-none", customeClass.body?.subtitle)}>{body.subtitle}</p>}
-                </div>
-            )}
-            {body.content && (
-                <div className={cn("body-content", customeClass.body?.content)}>
-                    {body.content}
-                </div>
-            )}
-            {
-                link && <div>
-                    {
-                        link && <Button label={<div className="flex items-center">Card Link <IconChevronRight className="icon-primary w-[1rem] mt-[0.1rem]" /></div>} to={link?.to || ""} className="font-medium flex w-fit" />
+                    {body.content && (
+                        <div className={cn("body-content", customeClass.body?.content)}>
+                            {body.content}
+                        </div>
+                    )}
 
+                    {link && (
+                        <div>
+                            <Button label={<div className="flex items-center">Card Link <IconChevronRight className="icon-primary w-[1rem] mt-[0.1rem]" /></div>} to={link?.to || ""} className="font-medium flex w-fit" />
+                        </div>
+                    )
                     }
+
                 </div>
-            }
+            )}
 
-        </div>}
-
-        {/* FOOTER */}
-        {footer && (
-            <div className={cn("mb-auto p-4 text-gray bg-gray-50", customeClass.footer)}>
-                {footer}
-            </div>
-        )}
-    </div>
+            {footer && (
+                <div className={cn("mb-auto p-4 text-gray bg-gray-50", customeClass.footer)}>
+                    {footer}
+                </div>
+            )}
+        </div>
+    )
 }
 
 

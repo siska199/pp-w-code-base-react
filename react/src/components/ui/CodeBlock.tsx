@@ -41,7 +41,6 @@ const CodeBlock = (props: TProps) => {
       <CopyText text={codeString} classText='hidden' classContainer={'absolute w-fit right-4 top-9 z-[5]'} />
       <SyntaxHighlighter language="javascript" style={customStyle(customeStyle)}>
         {fileName ? `\r\n${codeString}` : codeString}
-
       </SyntaxHighlighter>
       {
         fileName && <div className='absolute top-6 bg-primary-100 text-primary-700 font-medium border rounded-br-lg p-1'>

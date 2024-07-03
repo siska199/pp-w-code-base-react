@@ -34,12 +34,11 @@ interface MultipleSelectProps extends TBasePropsInput, Omit<React.HTMLProps<HTML
 
 const InputSelect = (props: TProps) => {
     const { options, isMultiple, withSelectAll, onLoadMore, ...attrs } = props;
-    
+
     const refContainerDropdown = useRef<HTMLDivElement | null>(null);
     const refContainerValue = useRef<HTMLDivElement | null>(null);
     const refIconChevron = useRef<HTMLDivElement | null>(null);
     const refInput = useRef<HTMLInputElement | null>(null);
-    const filteredOptions = options?.filter(option => String(option?.label)?.toLowerCase().includes(searchQuery?.toLowerCase()))
 
     const [searchQuery, setSearchQuery] = useState('');
     const [isSearch, setIsSearch] = useState(false)
@@ -118,9 +117,8 @@ const InputSelect = (props: TProps) => {
 
     // @ts-ignore
     const debouncedLoadMoreOptions = useRef(debounce(onLoadMore, 1000)).current;
+    const filteredOptions = options?.filter(option => String(option?.label)?.toLowerCase().includes(searchQuery?.toLowerCase()))
 
-
-    
     return (
         <ContainerInput<React.HTMLProps<HTMLInputElement>>
             {...attrs}
@@ -151,108 +149,110 @@ const InputSelect = (props: TProps) => {
                 ciV4: '!inline-block ',
                 label: `${(isEmptyValue(attrs?.value) && attrs?.variant === "v6" && !isOpen) ? 'scale-100 -translate-y-1 ' : ''} `
             }}
-            childrenOverlay={<div ref={refContainerDropdown} className={clsx({
-                "absolute  z-10 mt-2 origin-bottom-right rounded-md bg-white  ring-1 ring-black ring-opacity-5 focus:outline-none": true,
-                " h-auto shadow-lg w-full": isOpen,
-                " h-0 shadow-none": !isOpen
-            })}
+            childrenOverlay={(
+                <div
+                    ref={refContainerDropdown}
+                    className={clsx({
+                        "absolute  z-10 mt-2 origin-bottom-right rounded-md bg-white  ring-1 ring-black ring-opacity-5 focus:outline-none": true,
+                        " h-auto shadow-lg w-full": isOpen,
+                        " h-0 shadow-none": !isOpen
+                    })}
+                >
+                    {isMultiple && isOpen && (
+                        // @ts-ignore
+                        <InputMultipleCheckbox
+                            options={filteredOptions}
+                            {...attrs}
+                            onScroll={handleOnScroll}
+                            customeClassMulCheckbox={{
+                                containerOption: '!px-0 !py-1 !max-h-[10rem] !flex-nowrap !overflow-y-scroll',
+                                containerCheckbox: '!px-4 !py-1'
+                            }}
+                            label={""}
+                            onChange={(e) => {
+                                attrs?.onChange(e)
+                                setSearchQuery('')
+                            }}
+                            withSelectAll={withSelectAll || false}
+                        />
+                    )}
+                    {!isMultiple && isOpen && (
+                        <div onScroll={handleOnScroll} className="py-0 overflow-y-auto max-h-[10rem]">
+                            {
+                                filteredOptions?.map((option, i) => {
+                                    const isSelected = option?.value === attrs?.value
+                                    return <div
+                                        key={i}
+                                        onMouseDown={(e) => e.preventDefault()}
+                                        onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => handleOnClickOption(e, option)}
+                                        className={clsx({
+                                            "hover:bg-gray-100 block px-4 py-2 cursor-pointer ": true,
+                                            "!bg-primary-50 text-primary-700 ": isSelected,
+                                            "!bg-gray-100": (isSearch && i === 0 && searchQuery),
 
-            >
-                {
-                    isOpen && <>
-                        {
-                            // @ts-ignore
-                            isMultiple ? <InputMultipleCheckbox
-                                options={filteredOptions}
-                                {...attrs}
-                                onScroll={handleOnScroll}
-                                customeClassMulCheckbox={{
-                                    containerOption: '!px-0 !py-1 !max-h-[10rem] !flex-nowrap !overflow-y-scroll',
-                                    containerCheckbox: '!px-4 !py-1'
-                                }}
-                                label={""}
-                                onChange={(e) => {
-                                    attrs?.onChange(e)
-                                    setSearchQuery('')
-                                }}
-                                withSelectAll={withSelectAll || false}
-                            /> : <div onScroll={handleOnScroll} className="py-0 overflow-y-auto max-h-[10rem]">
-                                {
-                                    filteredOptions?.map((option, i) => {
-                                        const isSelected = option?.value === attrs?.value
-                                        return <div
-                                            key={i}
-                                            onMouseDown={(e) => e.preventDefault()}
-                                            onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => handleOnClickOption(e, option)}
-                                            className={clsx({
-                                                "hover:bg-gray-100 block px-4 py-2 cursor-pointer ": true,
-                                                "!bg-primary-50 text-primary-700 ": isSelected,
-                                                "!bg-gray-100": (isSearch && i === 0 && searchQuery),
-
-                                            })} >
-                                            {option?.label}
-                                        </div>
-                                    })
-                                }
-                            </div>
-                        }
-                    </>
-                }
-
-            </div>}
+                                        })} >
+                                        {option?.label}
+                                    </div>
+                                })
+                            }
+                        </div>
+                    )}
+                </div>
+            )}
         >
 
             {
-                (attrsInput) => <div
-                    ref={refContainerValue}
-
-                    className={clsx({
-                        'flex shrink gap-2 flex-wrap  overflow-x-auto  scrollbar-hidden': true,
-                    })}
-                    onClick={() => {
-                        if (isMultiple) {
-                            const updateIsOpen = !isOpen
-                            if (updateIsOpen) {
-                                refInput?.current?.focus()
+                (attrsInput) => (
+                    <div
+                        ref={refContainerValue}
+                        className={clsx({
+                            'flex shrink gap-2 flex-wrap  overflow-x-auto  scrollbar-hidden': true,
+                        })}
+                        onClick={() => {
+                            if (isMultiple) {
+                                const updateIsOpen = !isOpen
+                                if (updateIsOpen) {
+                                    refInput?.current?.focus()
+                                }
+                                setIsOpen(updateIsOpen)
                             }
-                            setIsOpen(updateIsOpen)
-                        }
-                    }}
-                >
+                        }}
+                    >
 
-                    <div className=' w-full cursor-pointer flex flex-wrap gap-1 h-full '>
-                        {
-                            isMultiple && (attrs?.value as string[])?.map((data, i: number) => {
-                                const labelValue = getFieldLabelFromOptions({ array: options, value: data })
-                                return <Badge key={i} label={<div className='flex gap-1 items-center'>
-                                    {labelValue}
-                                    <div onClick={(e) => handleOnClickOption(e, { label: labelValue, value: data })} >
-                                        <IconClose className='icon-primary icon-primary-fill' />
-                                    </div>
-                                </div>}
-                                />
-                            })
-                        }
-                        <input
-                            {...attrsInput}
-                            onFocus={() => {
-                                setIsOpen(true)
-                            }}
-                            id={attrsInput?.name}
-                            onChange={(e) => {
-                                e?.stopPropagation()
-                                setIsSearch(true)
-                                handleSearchChange(e);
-                                setIsOpen(true)
-                            }}
-                            value={searchQuery}
-                            placeholder={attrs?.variant === "v2" ? "" : attrsInput?.placeholder || ""}
-                            ref={refInput}
-                            // onKeyDown={handleKeyDown}
-                            autoComplete={"off"}
-                        />
+                        <div className=' w-full cursor-pointer flex flex-wrap gap-1 h-full '>
+                            {
+                                isMultiple && (attrs?.value as string[])?.map((data, i: number) => {
+                                    const labelValue = getFieldLabelFromOptions({ array: options, value: data })
+                                    return <Badge key={i} label={<div className='flex gap-1 items-center'>
+                                        {labelValue}
+                                        <div onClick={(e) => handleOnClickOption(e, { label: labelValue, value: data })} >
+                                            <IconClose className='icon-primary icon-primary-fill' />
+                                        </div>
+                                    </div>}
+                                    />
+                                })
+                            }
+                            <input
+                                {...attrsInput}
+                                onFocus={() => {
+                                    setIsOpen(true)
+                                }}
+                                id={attrsInput?.name}
+                                onChange={(e) => {
+                                    e?.stopPropagation()
+                                    setIsSearch(true)
+                                    handleSearchChange(e);
+                                    setIsOpen(true)
+                                }}
+                                value={searchQuery}
+                                placeholder={attrs?.variant === "v2" ? "" : attrsInput?.placeholder || ""}
+                                ref={refInput}
+                                // onKeyDown={handleKeyDown}
+                                autoComplete={"off"}
+                            />
+                        </div>
                     </div>
-                </div>
+                )
             }
 
         </ContainerInput>

@@ -22,11 +22,16 @@ const InputPhoneNumber = (props: TProps) => {
         }
         handleOnChangeFormattedValue(e)
     }
+
     return (
-        <ContainerInput<React.HTMLProps<HTMLInputElement>> {...attrs} onChange={handleOnChange} customeElement={{
-            ...attrs?.customeElement,
-            start: <div>+62</div>
-        }}>
+        <ContainerInput<React.HTMLProps<HTMLInputElement>> 
+            {...attrs} 
+            onChange={handleOnChange} 
+            customeElement={{
+                ...attrs?.customeElement,
+                start: <div>+62</div>
+            }}
+        >
             {(attrsInput) => (
                 <input
                     {...attrsInput}
