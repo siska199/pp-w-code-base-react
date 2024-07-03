@@ -3,6 +3,7 @@ import CardVariousCompVariant from "@components/CardVariousCompVariant";
 import CardIntroComponent from "@components/cards/CardIntroComponent";
 import Button from "@components/ui/Button";
 import ContainerModal from "@components/ui/modal/ContainerModal";
+import codeStringComponentUi from "@lib/utils/code-string/component-ui";
 import { useState } from "react";
 
 const CardIntroModal = () => {
@@ -39,9 +40,16 @@ const CardIntroModal = () => {
         isLogicSplitGroupKey={false}
         Component={(variant) => <div>
           <Button label={`Show Modal`} onClick={() => handleToggleModal(variant)} />
-          <ContainerModal isShow={showModal[variant]} onClose={() => handleToggleModal(variant)} variant={variant}>
-            <div>
-              SISKA EFFECT VARIANT {variant}
+          <ContainerModal isShow={showModal[variant]} className={`${variant !== "drawer" && 'w-[25rem] !h-fit'}`} onClose={() => handleToggleModal(variant)} variant={variant}>
+            <div className={`${variant === "drawer" && 'w-[25rem] !h-fit mx-auto py-6'}`}>
+              <div>
+                <h5 className="text-body-large text-black font-medium">A short modal heading</h5>
+                <p>The message displayed in the modal dialog should be simple and easy to understand.</p>
+              </div>
+              <div className="grid grid-cols-2 gap-2 mt-3">
+                <Button label={'Cancel'} variant={"solid-white"} className="w-full" />
+                <Button label={'Save'} className="w-full" />
+              </div>
             </div>
           </ContainerModal>
         </div>}
@@ -49,19 +57,16 @@ const CardIntroModal = () => {
         withBorder={false}
       />
     },
-
   ]
   return (
-    
+
     <CardIntroComponent
       title={'Modal'}
-      subTitle="Description of Modal."
+      subTitle="A modal component is a UI element used to display content or functionality that temporarily overlays the main content of a webpage or application. It typically serves the purpose of focusing user attention on specific information or tasks while dimming or obscuring the rest of the interface."
       listExample={listExample}
-      displayCodeBase={displayCodeBase}
+      displayCodeBase={codeStringComponentUi?.ContainerModal}
     />
   );
 }
-
-const displayCodeBase = `// Code for Modal`;
 
 export default CardIntroModal;

@@ -1,19 +1,25 @@
 
 import CardSubMenu from "@components/cards/CardSubMenu";
-import CodeBlock from "@components/ui/CodeBlock";
+import Button from "@components/ui/Button";
 import ProgressStep from "@components/ui/ProgressStep";
 
 const CardAdditionalInfoModal = () => {
   const listAdditionalInfo = [
     {
-      title: "Additional Info 1",
-      caption: <CodeBlock codeString={info1} />
+      title: "Dependencies",
+      caption: <p> To use the ContainerModal component, you need to import it along with its dependencies, including icons, styles, and utility functions.</p>
+    },
+
+    {
+      title: "Styling Information",
+      caption: <p>The component relies on the &apos;@assets/styles/ui/modal.css&apos; file for its styles. Ensure that this CSS file is correctly imported and included in your project. You can see the file <Button label="here" to="/" /> </p>
     },
     {
-      title: "Additional Info 2",
-      caption: <CodeBlock codeString={info2} />
+      title: "Variants",
+      caption: <p>  The modalVariants function, created with the class-variance-authority library, allows you to apply different animation styles to the modal using the variant prop.</p>
     }
   ];
+
 
   return (
     <CardSubMenu title={'Additional Info'}>
@@ -21,8 +27,5 @@ const CardAdditionalInfoModal = () => {
     </CardSubMenu>
   );
 }
-
-const info1 = `// Additional info 1`;
-const info2 = `// Additional info 2`;
 
 export default CardAdditionalInfoModal;
