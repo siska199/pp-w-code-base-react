@@ -18,7 +18,7 @@ const CardPropsProgressStep = () => {
     },
     {
         label: "type",
-        content: "Specifies the visual style of each step item. Can be 'number', 'default', or 'timeline'. Defaults to 'default'."
+        content: "Specifies the visual style of each step item. Can be 'number', 'default', or 'dot'. Defaults to 'default'."
     },
     {
         label: "shapeItem",

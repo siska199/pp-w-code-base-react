@@ -27,7 +27,7 @@ const CardAdditionalInfoProgressStep = () => {
                     },
                     {
                       label:'type',
-                      content:<>Defines the visual style of each step item. Supported values include <code>&rdquo;number&rdquo;</code>, <code>&rdquo;default&rdquo;</code> (generic styling), and <code>&rdquo;timeline&rdquo;</code>.</>
+                      content:<>Defines the visual style of each step item. Supported values include <code>&rdquo;number&rdquo;</code>, <code>&rdquo;default&rdquo;</code> (generic styling), and <code>&rdquo;dot&rdquo;</code>.</>
                     },
                     {
                       label:'shapeItem',

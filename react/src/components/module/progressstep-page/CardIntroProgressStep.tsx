@@ -31,8 +31,8 @@ const CardIntroProgressStep = () => {
           withBorder={false}
         />
         <CardVariantComp
-          title={"Timeline"}
-          Component={<ProgressStep variant={"vertical"} type="timeline" listStep={listStep} />}
+          title={"Dot"}
+          Component={<ProgressStep variant={"vertical"} type="dot" listStep={listStep} />}
           withBorder={false}
         />
       </div>

@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import { cn } from "@lib/utils/helper";
 
 type TProps = {
@@ -7,7 +8,7 @@ type TProps = {
         caption?: string | React.ReactNode;
     }[];
     variant?: "horizontal" | "vertical";
-    type?: "number" | "default" | "timeline";
+    type?: "number" | "default" | "dot";
     shapeItem?: "rounded" | "circle",
     customeClass?: {
         spanIcon?: string;
@@ -30,7 +31,6 @@ const ProgressStep = (props: TProps) => {
         <ul className={`stepper-wrapper ${customeClass?.stepperWrapper} w-full ${variant === "vertical" && "vertical flex justify-start items-start flex-col"}`}>
             {
                 listStep?.map((data, i) => {
-                    // eslint-disable-next-line no-nested-ternary
                     const isCompleted = activeStep ? variant === "vertical" ? activeStep < i : activeStep > i : false
                     const isActive = activeStep === i
                     return (
@@ -38,7 +38,7 @@ const ProgressStep = (props: TProps) => {
                             <div className="">
                                 <div className={cn({
                                     [`step-counter ${variant} w-[2rem] relative z-[5] flex items-center justify-center  bg-white py-3`]: true,
-                                    'h-[1rem]': type === "timeline"
+                                    'h-[1rem]': type === "dot"
                                 })}>
                                     <span className={cn({
                                         "flex justify-center items-center rounded-sm": true,
@@ -54,7 +54,7 @@ const ProgressStep = (props: TProps) => {
 
                                         'w-[1.5rem] h-[1.5rem] !text-body-small !bg-primary-100 !border-[1px] !border-primary-100  font-medium text-primary-700 ': type === "number",
                                         
-                                        "!w-3 !h-3 !bg-primary-100": type === "timeline",
+                                        "!w-3 !h-3 !bg-primary-100": type === "dot",
                                         [customeClass?.spanIcon || '']: customeClass?.spanIcon || ''
                                     })}>
 
@@ -65,10 +65,9 @@ const ProgressStep = (props: TProps) => {
                                             type === "number" && i + 1
                                         }
                                         {
-                                            type === "timeline" && ""
+                                            type === "dot" && ""
                                         }
                                     </span>
-
                                 </div>
                             </div>
                             {
