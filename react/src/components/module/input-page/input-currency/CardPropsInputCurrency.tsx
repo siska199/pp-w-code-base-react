@@ -23,7 +23,7 @@ const CardPropsInputCurrency = () => {
     },
     {
       label: 'Inherit all props that ContainerInput have',
-      content: <>To see all available props that ContainerInput have you can see in <Button label="Here" to={`/docs/prerequisite/helper-component?id=container-input.tsx`} /> </>
+      content: <>To see all available props that ContainerInput have you can see in <Button label="here" to={`/docs/prerequisite/helper-component?id=container-input.tsx`} /> </>
     }
   ];
 

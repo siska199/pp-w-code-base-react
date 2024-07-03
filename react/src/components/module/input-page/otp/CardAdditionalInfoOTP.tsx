@@ -8,7 +8,7 @@ const CardAdditionalInfoOTP = () => {
 
     {
       title: "HelperMessage Component Usage",
-      caption:<p>The `InputOTP` component uses the `HelperMessage` component imported from &rsquo;@components/ui/HelperMessage&rsquo; to display error messages. Make sure the `HelperMessage` component is imported and configured with appropriate props for styling and error messaging functionality. You can see the component <Button label="Here" to="/docs/components/helper-message"/></p> 
+      caption:<p>The `InputOTP` component uses the `HelperMessage` component imported from &rsquo;@components/ui/HelperMessage&rsquo; to display error messages. Make sure the `HelperMessage` component is imported and configured with appropriate props for styling and error messaging functionality. You can see the component <Button label="here" to="/docs/components/helper-message"/></p> 
     },
     {
       title: "Event Handling and Focus Management",
