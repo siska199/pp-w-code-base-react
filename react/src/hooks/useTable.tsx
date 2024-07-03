@@ -5,7 +5,7 @@ interface TProps {
     initialColumn: any;
     initialData: any;
     initialSetting: any;
-    onFetchData: () => Promise<TObject>
+    onFetchData: (params: any) => Promise<TObject>
 }
 
 const useTable = (props: TProps) => {
@@ -30,12 +30,11 @@ const useTable = (props: TProps) => {
     }, [])
 
     const handleOnChange = async (params?: TSettingTable<TData>) => {
-        const response: TResponseAPI = await handleFetchData()
+        const response: TResponseAPI = await handleFetchData(params)
 
         if (response?.status) {
             setData(response?.data)
         }
-
 
         params && setSetting(params)
 

@@ -3,21 +3,8 @@ import Table from "@components/ui/Table";
 import useTable from "@hooks/useTable";
 
 const ExampleTable = () => {
-    const handleFetchData = async (): Promise<any> => {
-        try {
-            return await new Promise((resolve) => {
-                setTimeout(() => {
-                    resolve({
-                        status: 200,
-                        message: 'Success Get Data',
-                        data: listData
-                    });
-                }, 1000);
-            });
-        } catch (error) {
-            // console.log("error: ", error?.message)
-        }
-    }
+
+
     const { data, setData, columns, handleOnChange, setting } = useTable({
         initialColumn: [
             {
@@ -59,7 +46,23 @@ const ExampleTable = () => {
         onFetchData: handleFetchData
     })
 
-
+    async function handleFetchData(params: any): Promise<any> {
+        console.log("params: ", params)
+        try {
+            return await new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve({
+                        status: 200,
+                        message: 'Success Get Data',
+                        data: listData
+                    });
+                }, 1000);
+            });
+        } catch (error) {
+            // console.log("error: ", error?.message)
+        }
+    }
+    
 
     return (
         <div className="p-[5rem]">

@@ -1,6 +1,5 @@
-import Card from '@components/ui/Card'
-import Image from '@components/ui/Image'
-import { cn } from '@lib/utils/helper'
+import Image from '@components/ui/Image';
+import { cn } from '@lib/utils/helper';
 
 
 interface TProps {
@@ -14,34 +13,29 @@ interface TProps {
 const EmptyData = (props: TProps) => {
     const { customeClass } = props
     return (
-        <Card
-            body={{
-                content: <div
+        <div
+            className={cn({
+                "flex flex-col items-center justify-center gap-2": true,
+                [customeClass?.container || ""]: customeClass?.container
+            })}
+        >
+            <div className=''>
+                <Image
                     className={cn({
-                        "flex flex-col items-center justify-center": true,
-                        [customeClass?.container || ""]: customeClass?.container
+                        [customeClass?.img || ""]: customeClass?.img
                     })}
-                >
-                    <Image
-                        className={cn({
-                            [customeClass?.img || ""]: customeClass?.img
-                        })}
-                        src="empty-data.svg"
-                    />
-                    <p
-                        className={cn({
-                            "font-medium text-base-medium": true,
-                            [customeClass?.label || ""]: customeClass?.label
-                        })}
-                    >
-                        No data to show
-                    </p>
-                </div>
-            }}
-
-            variant='centered-body'
-            fit={false}
-        />
+                    src="empty-data.svg"
+                />
+            </div>
+            <p
+                className={cn({
+                    "font-medium text-base-medium": true,
+                    [customeClass?.label || ""]: customeClass?.label
+                })}
+            >
+                No data to show
+            </p>
+        </div>
     )
 }
 

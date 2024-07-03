@@ -1,6 +1,9 @@
+/* eslint-disable no-nested-ternary */
 import { IconArrowUp, IconChevronLeft, IconChevronRight, IconSort } from "@assets/icons";
 import Button from "@components/ui/Button";
+import EmptyData from "@components/ui/EmptyData";
 import InputCheckbox from "@components/ui/inputs/InputCheckbox";
+import { cn } from "@lib/utils/helper";
 import { TColumn, TSettingTable } from "@types";
 import clsx from "clsx";
 import React from "react";
@@ -14,13 +17,14 @@ interface TProps<TData, TIncludeChecked extends boolean = false> {
     setData: React.Dispatch<React.SetStateAction<WithOptionalChecked<TData, TIncludeChecked>[]>>
     setting: TSettingTable<TData>
     onChange: (params: any) => void;
+    isLoading?: boolean;
 }
 
 
 const Table = <TData, TIncludeChecked extends boolean = false>(props: TProps<TData, TIncludeChecked>) => {
-    const { columns, data, setData, setting, onChange, } = props
+    const { columns, isLoading, data, setData, setting, onChange, } = props
 
-    const isCheckedAll = !data?.some((dataRow: WithOptionalChecked<TData, TIncludeChecked>) => !dataRow.isChecked)
+    const isCheckedAll = data?.length > 0 ? !data?.some((dataRow: WithOptionalChecked<TData, TIncludeChecked>) => !dataRow.isChecked) : false
 
     const handleOnChangeChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
         const name = e.target.name
@@ -42,13 +46,14 @@ const Table = <TData, TIncludeChecked extends boolean = false>(props: TProps<TDa
     }
 
     const handleSortColumn = (params: { key: keyof TData }) => {
-        // eslint-disable-next-line no-nested-ternary
         const sortDir = params?.key !== setting?.sortBy ? 'desc' : setting?.sortDir === 'desc' ? 'asc' : 'desc'
-        onChange({
-            ...setting,
-            sortBy: params.key,
-            sortDir: sortDir
-        })
+        if (data?.length !== 0 && !isLoading) {
+            onChange({
+                ...setting,
+                sortBy: params.key,
+                sortDir: sortDir
+            })
+        }
     }
 
     const handleOnChangePage = (pageNumber: number) => {
@@ -58,69 +63,84 @@ const Table = <TData, TIncludeChecked extends boolean = false>(props: TProps<TDa
         })
     }
 
+    console.log(data)
 
     return (
         <div className="border rounded-lg">
             <div className="relative  overflow-y-auto  max-h-[30rem] ">
-                <table className="table-auto  w-full ">
-                    <thead className="sticky z-[2] top-0 text-gray-500 bg-gray-50 overflow-hidden">
+                <table className={`table-auto  w-full ${data?.length === 0 && 'flex flex-col'}`}>
+                    <thead className="sticky z-[2] top-0 text-gray-500 bg-gray-50 ">
                         <tr className="border-b">
                             {
-                                setting?.checked && handleOnChangeChecked && <th className="column-checked">
-                                    <InputCheckbox
-                                        checked={isCheckedAll}
-                                        value={'cheked-all'}
-                                        onChange={handleOnChangeChecked}
-                                        name={"cheked-all"} />
-                                </th>
+                                (setting?.checked) && (
+                                    <th className="column-checked">
+                                        <InputCheckbox
+                                            checked={isCheckedAll}
+                                            value={'cheked-all'}
+                                            onChange={handleOnChangeChecked}
+                                            name={"cheked-all"} />
+                                    </th>
+                                )
                             }
                             {
                                 columns?.map((column, i) => <th className={`column-data  ${column?.className}`} key={i}>
                                     <div className="flex items-center">
-                                        {column?.name}{column?.isSorted && <span onClick={() => handleSortColumn({ key: column.key })} className="cursor-pointer">
-                                            {
-                                                setting?.sortBy === column?.key ? <IconArrowUp
-                                                    className={clsx({
-                                                        'icon-gray h-[1.25rem] transition-transform duration-300': true,
-                                                        "rotate-180": setting?.sortDir === "desc" && setting?.sortBy === column?.key
-                                                    })} /> : <IconSort
-                                                    className="ml-1 w-[1.1rem] h-[1.1rem]"
-                                                />
-                                            }
-
-                                        </span>}
+                                        {column?.name}
+                                        {column?.isSorted && (
+                                            <span onClick={() => handleSortColumn({ key: column.key })} className={`cursor-pointer ${(isLoading || data?.length === 0) && "!cursor-not-allowed"}`}>
+                                                {
+                                                    setting?.sortBy === column?.key ? (
+                                                        <IconArrowUp
+                                                            className={cn({
+                                                                'icon-gray h-[1.25rem] transition-transform duration-300': true,
+                                                                "rotate-180": setting?.sortDir === "desc" && setting?.sortBy === column?.key
+                                                            })} />
+                                                    ) : (
+                                                        <IconSort
+                                                            className="ml-1 w-[1.1rem] h-[1.1rem]"
+                                                        />
+                                                    )
+                                                }
+                                            </span>
+                                        )}
                                     </div>
                                 </th>)
                             }
                         </tr>
                     </thead>
-                    <tbody className="text-gray">
-                        {
-                            data?.map((dataRow, i) => {
-
-                                return <tr key={i} className="border-b ">
-                                    {
-                                        setting?.checked && handleOnChangeChecked && <td className="column-checked"><InputCheckbox onChange={handleOnChangeChecked} checked={dataRow?.isChecked} value={JSON.stringify(dataRow)} name={`checked-${i}`} /></td>
+                    {
+                        data?.length !== 0 ? (
+                            <tbody className={`text-gray `}>
+                                {
+                                    data?.map((dataRow, i) => {
+                                        return <tr key={i} className="border-b ">
+                                            {
+                                                setting?.checked && handleOnChangeChecked && <td className="column-checked"><InputCheckbox onChange={handleOnChangeChecked} checked={dataRow?.isChecked} value={JSON.stringify(dataRow)} name={`checked-${i}`} /></td>
+                                            }
+                                            {
+                                                columns?.map((column, j) =>
+                                                    <td key={j} className={`column-data ${column?.className}`}>
+                                                        <div className="flex ">
+                                                            {
+                                                                column?.customeComponent ? column?.customeComponent(dataRow) : dataRow[column.key] as string
+                                                            }
+                                                        </div>
+                                                    </td>
+                                                )
+                                            }
+                                        </tr>
                                     }
-                                    {
-                                        columns?.map((column, j) =>
-                                            <td key={j} className={`column-data ${column?.className}`}>
-                                                <div className="flex ">
-                                                    {
-                                                        column?.customeComponent ? column?.customeComponent(dataRow) : dataRow[column.key] as string
-                                                    }
-                                                </div>
-                                            </td>
-                                        )
-                                    }
-                                </tr>
-                            }
 
-                            )
-                        }
-                    </tbody>
+                                    )
+                                }
+                            </tbody>
+                        ) : (
+                            <div className="w-full h-[20rem] flex items-center">
+                                <EmptyData customeClass={{ container: "w-full !border-none", img: "h-[5rem]" }} />
+                            </div>
+                        )
+                    }
                 </table>
-
             </div>
             {
                 setting?.pagination && <PaginationTable<TData, TIncludeChecked>
@@ -181,7 +201,7 @@ const PaginationTable = <TData, TIncludeChecked extends boolean>(props: TPropsPa
 
         <div className="items-center hidden md:flex">
             {
-                setting?.totalPage > 6 ? <div className="flex items-center">
+                setting?.totalPage > 6 ? <div className="flex items-center gap-1">
                     {listPageNumberStart.map((pageNumber, i) => <span key={i}>{ButtonPageNumber(pageNumber)}</span>)}
                     {listPageNumberEnd[0] - listPageNumberStart[listPageNumberStart?.length - 1] !== 1 && <div>...</div>}
                     {listPageNumberEnd?.map((pageNumber, i) => <span key={i}>{ButtonPageNumber(pageNumber)}</span>)}
