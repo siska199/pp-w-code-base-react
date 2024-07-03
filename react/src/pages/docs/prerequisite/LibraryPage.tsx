@@ -53,10 +53,15 @@ const LibraryPage = () => {
       title: 'Install vite-plugin-svgr plugin for easily using svg icon so you can dynamically change the color of svg icon without downloading the different color of the same icon',
       caption: <Container gap={"small"}>
         <CodeBlock codeString={'npm i vite-plugin-svgr'} />
-        <p>then, add <span className="italic">svgr()</span> object plugins in file <Badge label={'vite.config.js'} variant={"soft-gray"} /> </p>
+        <p>add <span className="italic">svgr()</span> object plugins in file <Badge label={'vite.config.js'} variant={"soft-gray"} />. </p>
         <CodeBlock fileName="vite.config.ts" codeString={`...\r\nplugins: [..., svgr(),]\r\n...`} />
+        
+        <p>then, add below code in file <Badge label={'vite-env.d.ts'} variant={"soft-gray"} />. </p>
+        <CodeBlock fileName="vite.config.ts" codeString={`...\r\n/// <reference types="vite-plugin-svgr/client" />\r\n...`} />
+        
+        
         <p>last, add this css in file <Badge label={'index.css'} variant={"soft-gray"} />. For icon with type outline you can dynamically change the color using class that have format <span className="italic">icon-[type]</span>, meanwhile
-          while you want to dynamically change icon contained you can use class that have format <span className="italic">icon-[type]-fill</span></p>
+          while you want to dynamically change icon contained you can use class that have format <span className="italic">icon-[type]-fill.</span>  Here, type refers to color examples such as white, black, red, warning, success, or primary</p>
         <CodeBlock fileName="styles/index.css" codeString={`.icon-white path { @apply stroke-white }\r\n.icon-white-fill path { @apply fill-white  }\r\n\r\n.icon-black path { @apply stroke-black }\r\n.icon-black-fill path { @apply fill-black  }\r\n\r\n.icon-gray path { @apply stroke-gray }\r\n.icon-gray-fill path { @apply fill-gray }\r\n\r\n.icon-primary path { @apply stroke-primary }\r\n.icon-primary-fill path { @apply fill-primary  }\r\n\r\n.icon-error path { @apply stroke-error }\r\n.icon-error-fill path {  @apply fill-error }\r\n\r\n.icon-warning path { @apply stroke-warning}\r\n.icon-warning-fill path { @apply fill-warning }\r\n\r\n.icon-success path { @apply  stroke-success}\r\n.icon-success-fill path { @apply  fill-success }`} />
         <p>Example usage:</p>
         <CodeBlock fileName="example.tsx" codeString={`import as IconCalender from '@assets/icons/calender.svg?react';\r\n...\r\n<IconCalender className='icon-primary'/>\r\n...`} />
