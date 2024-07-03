@@ -1,6 +1,5 @@
 
 import CardIntroComponent from "@components/cards/CardIntroComponent";
-import Table from "@components/ui/Table";
 
 const CardIntroTable = () => {
 

@@ -1,6 +1,5 @@
 
 import CardIntroComponent from "@components/cards/CardIntroComponent";
-import Tab from "@components/ui/Tab";
 
 const CardIntroTab = () => {
 

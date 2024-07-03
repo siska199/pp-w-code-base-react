@@ -14,7 +14,7 @@
 	-ms-transform: translateX(-50%) translateY(-50%);
 	transform: translateX(-50%) translateY(-50%);
 }
-.md-effect-1.md-modal,.md-effect-2.md-modal{
+.md-fadein-scaleup.md-modal,.md-slide-formright.md-modal{
 	top: 50%;
 }
 
@@ -67,7 +67,7 @@
 	visibility: visible;
 }
 /* Effect 1: Fade in and scale up */
-.md-effect-1 .md-content {
+.md-fadein-scaleup .md-content {
 	-webkit-transform: scale(0.7);
 	-moz-transform: scale(0.7);
 	-ms-transform: scale(0.7);
@@ -78,7 +78,7 @@
 	transition: all 0.3s;
 }
 
-.md-show.md-effect-1 .md-content {
+.md-show.md-fadein-scaleup .md-content {
 	-webkit-transform: scale(1);
 	-moz-transform: scale(1);
 	-ms-transform: scale(1);
@@ -88,7 +88,7 @@
 
 /* Effect 2: Slide from the right */
 
-.md-effect-2 .md-content {
+.md-slide-formright .md-content {
 	-webkit-transform: translateX(20%);
 	-moz-transform: translateX(20%);
 	-ms-transform: translateX(20%);
@@ -99,7 +99,7 @@
 	transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
 }
 
-.md-show.md-effect-2 .md-content {
+.md-show.md-slide-formright .md-content {
 	-webkit-transform: translateX(0);
 	-moz-transform: translateX(0);
 	-ms-transform: translateX(0);

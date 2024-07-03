@@ -7,7 +7,7 @@ import IconChevronToggle from '@assets/icons/IconChevronToggle';
 import Badge from '@components/ui/Badge';
 import ContainerInput from '@components/ui/inputs/ContainerInput';
 import useOnClickOutside from '@hooks/useOnClickOutside';
-import { debounce, getFieldLabelFromOptions, isEmptyValue, isolateEvent, spreadArrayAttemp } from '@lib/utils/helper';
+import { debounce, getFieldLabelFromOptions, isEmptyValue, spreadArrayAttemp } from '@lib/utils/helper';
 import { TCustomeEventOnChange, TOption } from '@types';
 import clsx from 'clsx';
 import { useEffect, useRef, useState } from 'react';
@@ -34,10 +34,12 @@ interface MultipleSelectProps extends TBasePropsInput, Omit<React.HTMLProps<HTML
 
 const InputSelect = (props: TProps) => {
     const { options, isMultiple, withSelectAll, onLoadMore, ...attrs } = props;
+    
     const refContainerDropdown = useRef<HTMLDivElement | null>(null);
     const refContainerValue = useRef<HTMLDivElement | null>(null);
     const refIconChevron = useRef<HTMLDivElement | null>(null);
     const refInput = useRef<HTMLInputElement | null>(null);
+    const filteredOptions = options?.filter(option => String(option?.label)?.toLowerCase().includes(searchQuery?.toLowerCase()))
 
     const [searchQuery, setSearchQuery] = useState('');
     const [isSearch, setIsSearch] = useState(false)
@@ -61,6 +63,12 @@ const InputSelect = (props: TProps) => {
             refInput.current.style.width = `${searchQuery?.length * 10 || 10}px`;
         }
     }, [searchQuery, isMultiple])
+
+    useEffect(() => {
+        if (searchQuery && onLoadMore) {
+            debouncedLoadMoreOptions();
+        }
+    }, [searchQuery])
 
     const handleOnClickOption = (e: React.KeyboardEvent<HTMLInputElement> | React.MouseEvent<HTMLDivElement, MouseEvent>, data: TOption) => {
         e?.stopPropagation()
@@ -108,18 +116,11 @@ const InputSelect = (props: TProps) => {
         }
     }
 
-
-
     // @ts-ignore
     const debouncedLoadMoreOptions = useRef(debounce(onLoadMore, 1000)).current;
 
-    useEffect(() => {
-        if (searchQuery && onLoadMore) {
-            debouncedLoadMoreOptions();
-        }
-    }, [searchQuery])
 
-    const filteredOptions = options?.filter(option => String(option?.label)?.toLowerCase().includes(searchQuery?.toLowerCase()))
+    
     return (
         <ContainerInput<React.HTMLProps<HTMLInputElement>>
             {...attrs}
@@ -128,16 +129,17 @@ const InputSelect = (props: TProps) => {
             customeClearValue={isMultiple ? searchQuery : String(attrs?.value) || searchQuery}
             customeElement={{
                 ...attrs?.customeElement,
-                end: <span 
-                className={`${(isEmptyValue(attrs?.value) && attrs?.variant==="v6")&&'-mt-1'}`}
-                ref={refIconChevron} onClick={(e) => {
-                    isolateEvent(e)
-                    const updateIsOpen = !isOpen
-                    if (updateIsOpen) {
-                        refInput?.current?.focus()
-                    }
-                    setIsOpen(updateIsOpen)
-                }}>
+                end: <span
+                    className={`${(isEmptyValue(attrs?.value) && attrs?.variant === "v6") && '-mt-1'}`}
+                    ref={refIconChevron} onClick={(e) => {
+                        e?.preventDefault();
+                        e?.stopPropagation()
+                        const updateIsOpen = !isOpen
+                        if (updateIsOpen) {
+                            refInput?.current?.focus()
+                        }
+                        setIsOpen(updateIsOpen)
+                    }}>
                     <IconChevronToggle isOpen={isOpen} />
                 </span>
             }}
@@ -147,7 +149,7 @@ const InputSelect = (props: TProps) => {
                 ciV2: " flex-no-wrap max-w-full",
                 input: "min-w-0",
                 ciV4: '!inline-block ',
-                label:`${(isEmptyValue(attrs?.value) && attrs?.variant==="v6" &&!isOpen)?'scale-100 -translate-y-1 ':''} `
+                label: `${(isEmptyValue(attrs?.value) && attrs?.variant === "v6" && !isOpen) ? 'scale-100 -translate-y-1 ' : ''} `
             }}
             childrenOverlay={<div ref={refContainerDropdown} className={clsx({
                 "absolute  z-10 mt-2 origin-bottom-right rounded-md bg-white  ring-1 ring-black ring-opacity-5 focus:outline-none": true,
@@ -185,7 +187,7 @@ const InputSelect = (props: TProps) => {
                                             className={clsx({
                                                 "hover:bg-gray-100 block px-4 py-2 cursor-pointer ": true,
                                                 "!bg-primary-50 text-primary-700 ": isSelected,
-                                                "!bg-gray-100": (isSearch && i === 0 && searchQuery) ,
+                                                "!bg-gray-100": (isSearch && i === 0 && searchQuery),
 
                                             })} >
                                             {option?.label}

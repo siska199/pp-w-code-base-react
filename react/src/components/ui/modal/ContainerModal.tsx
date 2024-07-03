@@ -14,7 +14,7 @@ interface TProps extends TBaseModal, VariantProps<typeof modalVariants> {
 
 
 const ContainerModal = (props: TProps) => {
-    const { isShow, customeClass, onClose: handleOnClose, children, variant = "effect-1" } = props
+    const { isShow, customeClass, onClose: handleOnClose, children, variant = "fadein-scaleup" } = props
 
     const handleStopPropagation = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         e.stopPropagation()
@@ -51,13 +51,13 @@ const modalVariants = cva(
     {
         variants: {
             variant: {
-                "effect-1": "md-effect-1", // Fade in and scale up
-                "effect-2": "md-effect-2", // Slide from the right 
-                "effect-3": "md-effect-3 p-0" // Drawer 
+                "fadein-scaleup": "md-fadein-scaleup", // Fade in and scale up
+                "slide-formright": "md-slide-formright", // Slide from the right 
+                "drawer": "md-drawer p-0" // Drawer 
             },
-
         },
 
     }
 )
+
 export default ContainerModal

@@ -1,6 +1,5 @@
 
 import CardIntroComponent from "@components/cards/CardIntroComponent";
-import Tooltip from "@components/ui/Tooltip";
 
 const CardIntroTooltip = () => {
 
