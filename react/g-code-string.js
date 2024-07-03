@@ -84,4 +84,8 @@ console.log('File components object has been created successfully!');
 // node g-code-string.js <componentsDir> <outputDir> <outputFile>
 
 // Example:
-// node g-code-string.js ./src/components/ui ./src/lib/utils/code-string component-ui.ts
+// Component: node g-code-string.js ./src/components/ui ./src/lib/utils/code-string component-ui.ts
+// Hook: node g-code-string.js ./src/hooks ./src/lib/utils/code-string hook.ts
+// Style: node g-code-string.js ./src/assets/styles ./src/lib/utils/code-string style.ts
+// SVG Icon: node g-code-string.js ./src/assets/icons ./src/lib/utils/code-string svg-icon.ts
+// Variant: node g-code-string.js ./src/lib/utils/variants ./src/lib/utils/code-string variant.ts
