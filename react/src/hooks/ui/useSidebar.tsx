@@ -10,7 +10,7 @@ const useSidebar = () => {
 
         const isToggle = sidebarContainer?.classList.contains('md-show')
 
-        const listClassSidebarContainer = ['md-show', 'md-modal', 'md-effect-1', 'min-w-full',]
+        const listClassSidebarContainer = ['md-show', 'md-modal', 'md-fadein-scaleup', 'min-w-full',]
         const listClassSidebar = ['!w-[20rem]', '!h-full', '!static', '!top-0', 'transition-all', 'duration-500']
         const listClassOverlay = ['md-show']
         const listClassIconClose = ['!flex', '!static', '!w-full', '!right-0']

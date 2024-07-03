@@ -122,7 +122,7 @@ const CSSFilePage = () => {
                                         content: 'Includes effects for modal visibility (md-show) and transitions.'
                                     },
                                     {
-                                        content: 'Configures different modal effects (md-effect-1, md-effect-2, md-effect-3) with various transitions and transformations.'
+                                        content: 'Configures different modal effects (md-fadein-scaleup, md-slide-formright, md-drawer) with various transitions and transformations.'
                                     }
                                 ]
                             },
