@@ -44,6 +44,17 @@ const readFilesRecursively = (directory, fileComponents) => {
   });
 };
 
+// Function to read a single file
+const readFile = (filePath, fileComponents) => {
+  const componentName = ['.svg'].includes(path.extname(filePath)) ? formatnameSVG(path.basename(filePath)) : formatnameComponent(path.basename(filePath));
+  const componentContent = fs.readFileSync(filePath, 'utf8');
+
+  // Add the file path to the object using the component name as key
+  if (componentName) {
+    fileComponents[componentName.split('.')[0]] = componentContent;
+  }
+};
+
 // Get command line arguments
 const args = process.argv.slice(2);
 const componentsDir = args[0] || path.join(dirname, 'src/components/ui');
@@ -53,8 +64,15 @@ const outputFile = args[2] || 'component-ui.ts';
 // Initialize the object to store the file components
 const fileComponents = {};
 
-// Read all files in the components directory
-readFilesRecursively(componentsDir, fileComponents);
+
+const stats = fs.statSync(componentsDir);
+if (stats.isDirectory()) {
+  // Read all files in the components directory
+  readFilesRecursively(componentsDir, fileComponents);
+} else {
+  // Read the single file
+  readFile(componentsDir, fileComponents);
+}
 
 function toPascalCase(str) {
   return str

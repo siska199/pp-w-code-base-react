@@ -27,10 +27,6 @@ export const spreadArrayAttemp = (params: TParamsSpreadArrayTemp) => {
     return isEmptyValue(array) ? [newValue] : [...array, newValue]
 }
 
-export const isolateEvent = (e: React.MouseEvent<HTMLDivElement | HTMLSpanElement, MouseEvent>) => {
-    e?.preventDefault();
-    e?.stopPropagation()
-}
 
 interface TParamsFieldFromObjectList {
     array: any[];
