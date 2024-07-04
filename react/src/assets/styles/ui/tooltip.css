@@ -79,7 +79,7 @@
 /* Left */
 .tooltip .tooltip-text.left {
     top: -5px;
-    left: 102%;
+    left: 105%;
 } 
 .tooltip .tooltip-text.left::after{
     top: 50%;
@@ -91,7 +91,7 @@
 /* Right */
 .tooltip .tooltip-text.right {
     top: -5px;
-    right: 102%;
+    right: 105%;
 } 
 .tooltip .tooltip-text.right::after{
     top: 50%;
