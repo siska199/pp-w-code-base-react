@@ -23,7 +23,7 @@ const CardIntroTooltip = () => {
           variant={variantTooltip }
           groups={Object.keys(variantTooltip )}
           isLogicSplitGroupKey={false}
-          Component={(variant) => <Tooltip text={`${variant}. lojidjs sdhcsiudhvi siduvhisdu`} variant={variant}>{variant} Siska Apriana RIfianti Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam ipsum animi perspiciatis placeat ex ad iusto repellat ducimus dolor ipsam!</Tooltip>}
+          Component={(variant) => <Tooltip text={`${variant}. lojidjs sdhcsiudhvi siduvhisdu`} variant={variant}>{variant} Siska Apriana RIfianti Lorem ipsum</Tooltip>}
           withGroupName={false}
           withBorder={false}
         />
