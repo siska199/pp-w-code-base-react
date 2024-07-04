@@ -95,7 +95,7 @@ const Tabs = (props: TProps) => {
                 ))}
             </ul>
             <div className={cn({
-                "transition-opacity duration-500 ease-in-out ": true,
+                "transition-opacity duration-500 ease-in-out w-full ": true,
                 "overflow-x-auto": layout === "vertical"
             })}>
                 {listTab[activeTab]?.content}

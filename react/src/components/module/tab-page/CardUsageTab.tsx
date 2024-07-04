@@ -12,23 +12,7 @@ const CardUsageTab = () => {
   );
 }
 
-const displayUsage = `
-  const listTab = [
-    {
-      id: "0",
-      label:"Tab 1",
-      content :<div className="w-full p-4 h-[10rem] rounded-md  border">
-        TAB CONTENT 1
-      </div>
-    },
-    {
-      id: "1",
-      label:"Tab 2",
-      content :<div className="w-full p-4 h-[10rem] rounded-md  border">
-        TAB CONTENT 2
-      </div>
-    }
-  ]
-  return <Tabs layout={'horizontal'} type={'bordered'} listTab={listTab}/>`;
+const displayUsage = `const listTab = [\n  {\n    id: "0",\n    label:"Tab 1",\n    content :<div className="w-full p-4 h-[10rem] rounded-md  border">\n      TAB CONTENT 1\n    </div>\n  },\n  {\n    id: "1",\n    label:"Tab 2",\n    content :<div className="w-full p-4 h-[10rem] rounded-md  border">\n      TAB CONTENT 2\n    </div>\n  }\n];\nreturn <Tabs layout={'horizontal'} type={'bordered'} listTab={listTab}/>`;
+
 
 export default CardUsageTab;
