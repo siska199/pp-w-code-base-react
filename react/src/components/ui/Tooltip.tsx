@@ -2,7 +2,7 @@ interface TProps {
     children: React.ReactNode;
     text: string;
     variant?: "top" | "bottom" | "left" | "right";
-    customeClass :{
+    customeClass? :{
         tooltip:string;
         rectangle:string;
     }
