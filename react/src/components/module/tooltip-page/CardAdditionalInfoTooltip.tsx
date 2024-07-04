@@ -1,18 +1,15 @@
 
 import CardSubMenu from "@components/cards/CardSubMenu";
-import CodeBlock from "@components/ui/CodeBlock";
+import Button from "@components/ui/Button";
 import ProgressStep from "@components/ui/ProgressStep";
 
 const CardAdditionalInfoTooltip = () => {
   const listAdditionalInfo = [
     {
-      title: "Additional Info 1",
-      caption: <CodeBlock codeString={info1} />
+      title: "CSS Customization",
+      caption: <p>The component uses several custom CSS classes for styling. These classes are likely defined in an external CSS file (tooltip.css), which customizes the appearance of the tooltip and its elements. You can see the css file that contain cusmte styling that use by component InputDate in <Button label={"here"} to={"/"} /></p>
     },
-    {
-      title: "Additional Info 2",
-      caption: <CodeBlock codeString={info2} />
-    }
+
   ];
 
   return (
@@ -22,7 +19,5 @@ const CardAdditionalInfoTooltip = () => {
   );
 }
 
-const info1 = `// Additional info 1`;
-const info2 = `// Additional info 2`;
 
 export default CardAdditionalInfoTooltip;

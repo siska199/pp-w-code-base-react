@@ -12,6 +12,6 @@ const CardUsageTooltip = () => {
   );
 }
 
-const displayUsage = `// Usage example for Tooltip`;
+const displayUsage = `return  <Tooltip text={"Tooltip Message"} variant={"top"}>Siska Apriana RIfianti</Tooltip>`;
 
 export default CardUsageTooltip;
