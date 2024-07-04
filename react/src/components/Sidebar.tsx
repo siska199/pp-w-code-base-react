@@ -59,21 +59,14 @@ const Sidebar = () => {
     }, [id, location])
 
     const handleChangeActiveMenu = (data: TParamsOnChangeMenu) => {
-        setSetting({
-            ...setting,
-            activeMenu: {
-                ...setting?.activeMenu,
-                level: data?.level,
-                name: data?.groupMenu?.name,
-                parentId: data?.parentId
-            }
-        })
+        console.log("data; ", data)
+        handleToggleSidebar()
     }
 
     return (
         <>
             <div id="container-sidebar" className=" h-full " onClick={handleToggleSidebar}>
-                <div id="sidebar" onClick={handleStopPropagation} style={{ top: topPosition, }} className={`fixed overflow-y-hidden  h-[calc(100%-3rem)] left-0   bg-white   w-0 ${showSidebar!==false && "md:w-[17rem]"} `}>
+                <div id="sidebar" onClick={handleStopPropagation} style={{ top: topPosition, }} className={`fixed overflow-y-hidden  h-[calc(100%-3rem)] left-0   bg-white   w-0 ${showSidebar !== false && "md:w-[17rem]"} `}>
 
                     <div className="p-8 w-full  flex flex-col gap-4 relative  h-full">
                         <div id="icon-close" className="hidden justify-between absolute top-6 right-6 cursor-pointer ml-auto">

@@ -1,6 +1,7 @@
 import Navbar from "@components/Navbar"
 import RightSidebar from "@components/RightSidebar"
 import Sidebar from "@components/Sidebar"
+import useMediaQuery from "@hooks/useMediaQuery"
 import useMenu from "@hooks/useMenu"
 import { useEffect, useState } from "react"
 import { Outlet, useSearchParams } from "react-router-dom"
@@ -8,14 +9,19 @@ import { Outlet, useSearchParams } from "react-router-dom"
 
 
 const LayoutType1 = () => {
-    const { showSidebar, showRightSidebar } = useMenu()
     const [searchParams,] = useSearchParams();
+
+    const { showSidebar, showRightSidebar } = useMenu()
+    const { isMinLg, isMinMd } = useMediaQuery();
+
 
     const [widthSidebar, setWidthSidebar] = useState(0)
     const [widthRightSidebar, setWidthRightSidebar] = useState(0)
     const [leftPosition, setLeftPosition] = useState(0)
     const [rightPosition, setRightPosition] = useState(0)
     const [isRender, setIsrender] = useState(false)
+
+
 
     useEffect(() => {
         const sidebarComp = document.getElementById("sidebar") as HTMLDivElement
@@ -34,33 +40,12 @@ const LayoutType1 = () => {
         setIsrender(!isRender)
     }, [showSidebar])
 
+    
     useEffect(() => {
-        // Set left position of page every media query change from > md to <md
-        const mediaQueryMinLg = window.matchMedia('(min-width: 1024px)');
-        const mediaQueryMinMd = window.matchMedia('(min-width: 768px)');
-
-        const handleMediaQueryChange = () => {
-            const isMinLg = mediaQueryMinLg?.matches
-            const isMinMd = mediaQueryMinMd?.matches
-
-            setRightPosition(isMinLg ? widthRightSidebar : 0)
-            setLeftPosition(isMinMd ? widthSidebar : 0)
-            setIsrender(!isRender)
-        }
-
-
-        mediaQueryMinLg.addEventListener('change', handleMediaQueryChange);
-        mediaQueryMinMd.addEventListener('change', handleMediaQueryChange);
-        window.addEventListener('resize', handleMediaQueryChange);
-
-        return () => {
-            mediaQueryMinLg.removeEventListener('change', handleMediaQueryChange);
-            mediaQueryMinMd.removeEventListener('change', handleMediaQueryChange);
-            window.removeEventListener('resize', handleMediaQueryChange);
-
-        };
-
-    }, [widthSidebar, widthRightSidebar, showSidebar])
+        setRightPosition(isMinLg ? widthRightSidebar : 0)
+        setLeftPosition(isMinMd ? widthSidebar : 0)
+        setIsrender(!isRender)
+    }, [isMinLg, isMinMd, widthSidebar, widthRightSidebar, showSidebar])
 
 
 

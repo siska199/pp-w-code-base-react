@@ -75,7 +75,12 @@ const RenderMenu = (props: TProps) => {
         }
 
         sessionStorage.setItem('setting', JSON.stringify(updateSetting))
-        setSetting(updateSetting)
+        setSetting(updateSetting);
+        handleOnChangeMenu({
+            groupMenu,
+            parentId: parentId || "",
+            level: level
+        })
     };
 
     return (
