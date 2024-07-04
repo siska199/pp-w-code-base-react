@@ -1,68 +1,63 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const mediaQueryConfig = {
     isMinLg: '(min-width: 1024px)',
     isMinMd: '(min-width: 768px)',
     isMaxMd: '(max-width: 768px)',
-
     isMinSm: '(min-width: 640px)'
-
 };
 
-interface TMediaQueryMatches {
-    isMinLg: boolean;
-    isMinMd: boolean;
-    isMaxMd: boolean;
-    isMinSm: boolean;
-}
+
+type TKeyMediaQuery = keyof typeof mediaQueryConfig
+
+type TMediaQueryConfig = typeof mediaQueryConfig;
+
+type TMediaQueryMatches = {
+    [key in keyof TMediaQueryConfig]: boolean;
+};
 
 const useMediaQuery = () => {
     const [matches, setMatches] = useState<TMediaQueryMatches>(() => {
-        const initialMatches: TMediaQueryMatches = {
-            isMinLg: window.matchMedia(mediaQueryConfig.isMinLg).matches,
-            isMinMd: window.matchMedia(mediaQueryConfig.isMinMd).matches,
-            isMaxMd: window.matchMedia(mediaQueryConfig.isMaxMd).matches,
-            isMinSm: window.matchMedia(mediaQueryConfig.isMinSm).matches,
-
-        };
+        const initialMatches: TMediaQueryMatches = {} as TMediaQueryMatches;
+        for (const key in mediaQueryConfig) {
+            initialMatches[key as TKeyMediaQuery] = window.matchMedia(mediaQueryConfig[key as TKeyMediaQuery]).matches;
+        }
         return initialMatches;
     });
 
     useEffect(() => {
-
-        const mediaQueryLists = {
-            isMinLg: window.matchMedia(mediaQueryConfig.isMinLg),
-            isMinMd: window.matchMedia(mediaQueryConfig.isMinMd),
-            isMaxMd: window.matchMedia(mediaQueryConfig.isMaxMd),
-            isMinSm: window.matchMedia(mediaQueryConfig.isMinSm),
+        const mediaQueryLists: { [key in keyof TMediaQueryConfig]: MediaQueryList } = {} as {
+            [key in keyof TMediaQueryConfig]: MediaQueryList;
         };
+
+        for (const key in mediaQueryConfig) {
+            mediaQueryLists[key as TKeyMediaQuery] = window.matchMedia(mediaQueryConfig[key as TKeyMediaQuery]);
+        }
 
         const handleMediaQueryChange = () => {
-            setMatches({
-                isMinLg: mediaQueryLists.isMinLg.matches,
-                isMinMd: mediaQueryLists.isMinMd.matches,
-                isMaxMd: mediaQueryLists.isMaxMd.matches,
-                isMinSm: mediaQueryLists.isMinLg.matches,
-            });
+            const updatedMatches: TMediaQueryMatches = {} as TMediaQueryMatches;
+            for (const key in mediaQueryConfig) {
+                updatedMatches[key as TKeyMediaQuery] = mediaQueryLists[key as TKeyMediaQuery].matches;
+            }
+            setMatches(updatedMatches);
         };
 
-        Object.values(mediaQueryLists).forEach(mediaQueryList => {
-            mediaQueryList.addEventListener('change', handleMediaQueryChange);
-        });
+        for (const key in mediaQueryLists) {
+            mediaQueryLists[key as TKeyMediaQuery].addEventListener('change', handleMediaQueryChange);
+        }
 
         const handleResize = () => {
             handleMediaQueryChange();
         };
 
+        handleMediaQueryChange();
+        
         window.addEventListener('resize', handleResize);
 
-        // Initial check
-        handleMediaQueryChange();
-
         return () => {
-            Object.values(mediaQueryLists).forEach(mediaQueryList => {
-                mediaQueryList.removeEventListener('change', handleMediaQueryChange);
-            });
+            for (const key in mediaQueryLists) {
+                mediaQueryLists[key as  TKeyMediaQuery].removeEventListener('change', handleMediaQueryChange);
+            }
             window.removeEventListener('resize', handleResize);
         };
     }, []);
