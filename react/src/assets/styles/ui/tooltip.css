@@ -5,13 +5,10 @@
   position: relative;
   display: inline-block;
 }
-
 .tooltip:hover .rectangle{
     border-width: 5px;
     border-style: solid;
 }
-
-
 .tooltip:hover.tooltip::before{
     content: attr(data-text); 
     position: absolute;
@@ -24,13 +21,11 @@
 }
 
 /* TOP */
-
 .tooltip.top:hover.tooltip::before{
     bottom: 105%;
     left: 50%;
     transform: translateX(-50%);
 }
-
 .tooltip:hover .rectangle.top{
     border-color: black transparent transparent transparent;
     position: absolute;
@@ -45,7 +40,6 @@
     left: 50%;
     transform: translateX(-50%);
 }
-
 .tooltip:hover .rectangle.bottom{
     border-color: transparent transparent black transparent;
     position: absolute;
@@ -58,7 +52,6 @@
 .tooltip.left:hover.tooltip::before{
     right:105%;
 }
-
 .tooltip:hover .rectangle.left{
     border-color: transparent transparent transparent black;
     position: absolute;
@@ -70,7 +63,6 @@
 .tooltip.right:hover.tooltip::before{
     left:105%;
 }
-
 
 .tooltip:hover .rectangle.right{
     border-color: transparent black transparent transparent;
