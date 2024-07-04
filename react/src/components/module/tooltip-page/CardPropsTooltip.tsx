@@ -17,6 +17,7 @@ const CardPropsTooltip = () => {
   return (
     <CardSubMenu title={'Props'}>
       <List items={listItem} />
+      
     </CardSubMenu>
   );
 }
