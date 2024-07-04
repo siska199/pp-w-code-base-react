@@ -9,6 +9,7 @@
     border-width: 5px;
     border-style: solid;
 }
+
 .tooltip:hover.tooltip::before{
     content: attr(data-text); 
     position: absolute;
@@ -22,7 +23,7 @@
 
 /* TOP */
 .tooltip.top:hover.tooltip::before{
-    bottom: 105%;
+    bottom: 100%;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -31,12 +32,12 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top:-2px;
+    top:0;
 }
 
 /* BOTTOM */
 .tooltip.bottom:hover.tooltip::before{
-    top: 105%;
+    top: 100%;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -45,29 +46,29 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    bottom:-2px;
+    bottom:0;
 }
 
 /* LEFT */
 .tooltip.left:hover.tooltip::before{
-    right:105%;
+    right:100%;
 }
 .tooltip:hover .rectangle.left{
     border-color: transparent transparent transparent black;
     position: absolute;
-    left:-11px;
+    left:0;
 }
 
 
 /* RIGHT */
 .tooltip.right:hover.tooltip::before{
-    left:105%;
+    left:100%;
 }
 
 .tooltip:hover .rectangle.right{
     border-color: transparent black transparent transparent;
     position: absolute;
-    right:-11px;
+    right:0;
 }
 
 
