@@ -4,7 +4,6 @@ import useTable from "@hooks/useTable";
 
 const ExampleTable = () => {
 
-
     const { data, setData, columns, handleOnChange, setting } = useTable({
         initialColumn: [
             {

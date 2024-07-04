@@ -3,6 +3,7 @@ import CardIntroComponent from "@components/cards/CardIntroComponent";
 
 const CardIntroTable = () => {
 
+
     const listExample = [
     {
       component: ""

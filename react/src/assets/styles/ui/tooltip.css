@@ -13,19 +13,20 @@
   text-align: center;
   position: absolute;
   z-index: 1;
-  
 }
-.tooltip .tooltip-text.left,.tooltip .tooltip-text.right{
+
+.tooltip .tooltip-text.left, 
+.tooltip .tooltip-text.right{
+    width: fit-content;
+} 
+
+.tooltip .tooltip-text.top .text, 
+.tooltip .tooltip-text.bottom .text,
+.tooltip .tooltip-text.left .text,
+.tooltip .tooltip-text.right .text{
     background-color:black;
     border-radius: 6px;
     padding: 5px ;
-}
-
-.tooltip .tooltip-text.top .text, .tooltip .tooltip-text.bottom .text{
-    border-radius: 6px;
-    background-color: black;
-    padding: 5px ;
-
 }
 
 .tooltip .tooltip-text::after {
@@ -78,24 +79,23 @@
 /* Left */
 .tooltip .tooltip-text.left {
     top: -5px;
-    left: 105%;
+    left: 102%;
 } 
 .tooltip .tooltip-text.left::after{
     top: 50%;
     right: 100%;
     margin-top: -5px;
     border-color: transparent black transparent transparent;
-
 }
 
 /* Right */
 .tooltip .tooltip-text.right {
     top: -5px;
-    right: 103%;
+    right: 120%;
 } 
 .tooltip .tooltip-text.right::after{
     top: 50%;
-    left: 101.5%;
+    left: 111.5%;
     margin-top: -5px;
     border-color: transparent transparent transparent black;
 
