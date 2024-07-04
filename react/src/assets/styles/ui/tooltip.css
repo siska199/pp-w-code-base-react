@@ -83,7 +83,7 @@
 } 
 .tooltip .tooltip-text.left::after{
     top: 50%;
-    right: 100%;
+    left:-10%;
     margin-top: -5px;
     border-color: transparent black transparent transparent;
 }
@@ -91,13 +91,12 @@
 /* Right */
 .tooltip .tooltip-text.right {
     top: -5px;
-    right: 120%;
+    right: 102%;
 } 
 .tooltip .tooltip-text.right::after{
     top: 50%;
-    left: 111.5%;
+    left: 112%;
     margin-top: -5px;
     border-color: transparent transparent transparent black;
-
 }
 

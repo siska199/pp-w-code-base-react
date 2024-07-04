@@ -1,7 +1,6 @@
 
 import CardVariousCompVariant from "@components/CardVariousCompVariant";
 import CardIntroComponent from "@components/cards/CardIntroComponent";
-import CardVariantComp from "@components/cards/CardVariantComp";
 import Tooltip from "@components/ui/Tooltip";
 
 const CardIntroTooltip = () => {
@@ -14,11 +13,20 @@ const CardIntroTooltip = () => {
 
   const listExample = [
     {
-      component: <CardVariantComp title={"Top"} Component={<Tooltip text={"tooltip message top"}>top</Tooltip>}/>
-    },
-
-    {
-      component: <CardVariantComp title={"Left"} Component={<Tooltip text={"tooltip message left"} variant="left">left</Tooltip>}/>
+      component: (
+        <CardVariousCompVariant
+          customeClass={{
+            container: "flex-col w-full",
+            containerCardVariant: "w-full"
+          }}
+          variant={variantTooltip }
+          groups={Object.keys(variantTooltip )}
+          isLogicSplitGroupKey={false}
+          Component={(variant) => <Tooltip text={variant} variant={variant}>{variant} Siska Apriana <br/>Rifianti</Tooltip>}
+          withGroupName={false}
+          withBorder={false}
+        />
+      )
     },
 
   ]
