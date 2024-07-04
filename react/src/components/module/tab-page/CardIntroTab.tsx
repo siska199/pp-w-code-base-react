@@ -19,14 +19,14 @@ const CardIntroTab = () => {
       id: "0",
       label:"Tab 1",
       content :<div className="w-full p-4 h-[10rem] rounded-md  border">
-        SISKA APRIANA RIFIANTI TAB CONTENT 1
+        TAB CONTENT 1
       </div>
     },
     {
       id: "1",
       label:"Tab 2",
       content :<div className="w-full p-4 h-[10rem] rounded-md  border">
-        SISKA APRIANA RIFIANTI TAB CONTENT 2
+        TAB CONTENT 2
       </div>
     }
   ]

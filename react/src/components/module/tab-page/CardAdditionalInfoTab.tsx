@@ -1,28 +1,24 @@
 
 import CardSubMenu from "@components/cards/CardSubMenu";
-import CodeBlock from "@components/ui/CodeBlock";
 import ProgressStep from "@components/ui/ProgressStep";
 
 const CardAdditionalInfoTab = () => {
   const listAdditionalInfo = [
     {
-      title: "Additional Info 1",
-      caption: <CodeBlock codeString={info1} />
+      title: "Overview of Tabs Component",
+      caption: "The `Tabs` component allows you to create tabbed navigation for organizing and displaying content. It supports both horizontal and vertical layouts."
     },
     {
-      title: "Additional Info 2",
-      caption: <CodeBlock codeString={info2} />
+      title: "Key Features of Tabs Component",
+      caption: "Key features include:\n- Dynamic switching of content based on tab selection.\n- Customizable styles using CSS classes through the `customeClass` prop.\n- Supports two types of tabs: 'bordered' and 'pilled'.\n- Handles tab navigation efficiently with state management using React's `useState` and `useRef` for element references."
     }
   ];
-
+  
   return (
     <CardSubMenu title={'Additional Info'}>
       <ProgressStep type="number" listStep={listAdditionalInfo} variant="vertical" />
     </CardSubMenu>
   );
 }
-
-const info1 = `// Additional info 1`;
-const info2 = `// Additional info 2`;
 
 export default CardAdditionalInfoTab;
