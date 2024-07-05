@@ -63,10 +63,8 @@ const Table = <TData, TIncludeChecked extends boolean = false>(props: TTableProp
         })
     }
 
-    console.log('is loading: ', isLoading)
-
     return (
-        <div className="border rounded-lg">
+        <div className="border rounded-lg w-full">
             <div className="relative  overflow-y-auto  max-h-[30rem] ">
                 <table className={`table-auto  w-full ${data?.length === 0 && 'flex flex-col'}`}>
                     <thead className="sticky z-[2] top-0 text-gray-500 bg-gray-50 ">
@@ -156,14 +154,17 @@ const Table = <TData, TIncludeChecked extends boolean = false>(props: TTableProp
                 </table>
                 {
                     data?.length === 0 && (
-                        <div className="w-full h-[20rem] flex items-center">
-                            <EmptyData customeClass={{ container: "w-full !border-none", img: "h-[5rem]" }} />
+                        <div className="w-full h-[20rem] flex items-center justify-center">
+                            {
+                                isLoading ? "Loading..." : <EmptyData customeClass={{ container: "w-full !border-none", img: "h-[5rem]" }} />
+
+                            }
                         </div>
                     )
                 }
             </div>
             {
-                setting?.pagination && <PaginationTable<TData, TIncludeChecked>
+                (setting?.pagination && data?.length !== 0) && <PaginationTable<TData, TIncludeChecked>
                     setting={setting}
                     onChangePage={handleOnChangePage}
                 />
@@ -223,7 +224,7 @@ const PaginationTable = <TData, TIncludeChecked extends boolean>(props: TPropsPa
 
     return (
         <div className="flex items-center justify-between px-4 py-2 border-t">
-            <Button variant={"solid-white"} disabled={currentPage <= 1} onClick={() => handleOnChangePage(setting?.currentPage - 1)} className="font-medium text-gray" label={<><IconChevronLeft />Previous</>} />
+            <Button variant={"solid-white"} disabled={currentPage <= 1} onClick={() => handleOnChangePage(setting?.currentPage - 1)} className="font-medium text-gray" label={<><IconChevronLeft /><span className="hidden md:block">Previous</span></>} />
 
             <div className="items-center hidden md:flex">
                 {
@@ -242,7 +243,7 @@ const PaginationTable = <TData, TIncludeChecked extends boolean>(props: TPropsPa
                 <p><span className="font-medium">{setting?.currentPage} </span>of <span className="font-medium">{setting.totalPage}</span></p>
             </div>
 
-            <Button disabled={setting?.currentPage >= setting?.totalPage} onClick={() => handleOnChangePage(setting?.currentPage + 1)} variant={"solid-white"} className="font-medium text-gray" label={<>Next<IconChevronRight /></>} />
+            <Button disabled={setting?.currentPage >= setting?.totalPage} onClick={() => handleOnChangePage(setting?.currentPage + 1)} variant={"solid-white"} className="font-medium text-gray" label={<><span className="hidden md:block">Next</span><IconChevronRight /></>} />
         </div>
     )
 }

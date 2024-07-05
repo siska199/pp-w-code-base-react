@@ -20,12 +20,13 @@ const ExampleTable = () => {
             {
                 name: "Title",
                 key: "title",
-                isSorted: true
+                isSorted: true,
+                className: "min-w-[20rem] md:min-w-0"
             },
             {
                 name: "Body",
                 key: "body",
-                className: " text-center justify-center",
+                className: " text-center justify-center min-w-[20rem] md:min-w-0",
             },
         ],
         initialSetting: {
@@ -44,13 +45,11 @@ const ExampleTable = () => {
 
 
     return (
-        <div className="p-[5rem]">
-            <Table<TData, false>
-                {...configTable}
-                withNo
-                isLoading={isLoading}
-            />
-        </div>
+        <Table<TData, false>
+            {...configTable}
+            withNo
+            isLoading={isLoading}
+        />
     )
 }
 

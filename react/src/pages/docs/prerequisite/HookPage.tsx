@@ -96,15 +96,15 @@ const HookPage = () => {
           items: [
             {
               label: "Dependencies:",
-              content: 'useEffect, useState from React.'
+              content: 'useEffect, useState, useMemo from React.'
             },
             {
               label: "Parameters:",
-              content: "initialColumn, initialData, and initialSetting"
+              content: "initialColumn, initialData, initialSetting, and onFetchData."
             },
             {
               label: 'Returns:',
-              content: 'An object containing setting, columns, setData, data, and handleOnChange.'
+              content: 'An object containing setting, columns, setData, data, onChange, and other table configuration props.'
             },
             {
               label: 'Functionality:',
@@ -115,8 +115,8 @@ const HookPage = () => {
                   content: ''
                 },
                 {
-                  label: 'handleOnChange',
-                  content: 'Fetches data (simulated with a timeout in this example) and updates state.'
+                  label: 'onChange',
+                  content: 'Fetches data using the onFetchData callback and updates state.'
                 },
                 {
                   label: 'Memoizes columns',

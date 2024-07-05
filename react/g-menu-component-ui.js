@@ -120,12 +120,13 @@ const CardAdditionalInfo${componentName} = () => {
   const listAdditionalInfo = [
     {
       title: "Additional Info 1",
-      caption: <CodeBlock codeString={info1} />
+      caption: ""
     },
     {
       title: "Additional Info 2",
-      caption: <CodeBlock codeString={info2} />
-    }
+      caption: ""
+    },
+    etc
   ];
 
   return (
