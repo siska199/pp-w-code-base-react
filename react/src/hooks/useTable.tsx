@@ -15,8 +15,11 @@ const useTable = (props: TProps) => {
     type TData = (typeof data)[0]
 
     const [setting, setSetting] = useState<TSettingTable<TData>>({
+        sortBy: "",
+        sortDir: "",
         currentPage: 1,
         totalPage: 10,
+        itemsPerPage: 10,
         ...initialSetting,
     })
 
@@ -30,12 +33,8 @@ const useTable = (props: TProps) => {
     }, [])
 
     const handleOnChange = async (params?: TSettingTable<TData>) => {
-        const response: TResponseAPI = await handleFetchData(params)
-
-        if (response?.status) {
-            setData(response?.data)
-        }
-
+        const data: TResponseAPI = await handleFetchData(params)
+        setData(data)
         params && setSetting(params)
 
     }

@@ -53,6 +53,7 @@ export interface TSettingTable<TData,> {
   pagination?: boolean;
   currentPage: number;
   totalPage: number;
+  itemsPerPage: number;
 };
 
 /*----------------FORM--------------------*/

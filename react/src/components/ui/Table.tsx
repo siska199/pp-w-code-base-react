@@ -17,11 +17,12 @@ interface TProps<TData, TIncludeChecked extends boolean = false> {
     setting: TSettingTable<TData>
     onChange: (params: any) => void;
     isLoading?: boolean;
+    withNo?: boolean;
 }
 
 
 const Table = <TData, TIncludeChecked extends boolean = false>(props: TProps<TData, TIncludeChecked>) => {
-    const { columns, isLoading, data, setData, setting, onChange, } = props
+    const { columns, isLoading, data, setData, setting, onChange, withNo } = props
 
     const isCheckedAll = data?.length > 0 ? !data?.some((dataRow: WithOptionalChecked<TData, TIncludeChecked>) => !dataRow.isChecked) : false
 
@@ -68,6 +69,7 @@ const Table = <TData, TIncludeChecked extends boolean = false>(props: TProps<TDa
                 <table className={`table-auto  w-full ${data?.length === 0 && 'flex flex-col'}`}>
                     <thead className="sticky z-[2] top-0 text-gray-500 bg-gray-50 ">
                         <tr className="border-b">
+
                             {
                                 (setting?.checked) && (
                                     <th className="column-checked">
@@ -76,6 +78,13 @@ const Table = <TData, TIncludeChecked extends boolean = false>(props: TProps<TDa
                                             value={'cheked-all'}
                                             onChange={handleOnChangeChecked}
                                             name={"cheked-all"} />
+                                    </th>
+                                )
+                            }
+                            {
+                                withNo && (
+                                    <th className="column-data ">
+                                        No.
                                     </th>
                                 )
                             }
@@ -110,22 +119,31 @@ const Table = <TData, TIncludeChecked extends boolean = false>(props: TProps<TDa
                             <tbody className={`text-gray `}>
                                 {
                                     data?.map((dataRow, i) => {
-                                        return <tr key={i} className="border-b ">
-                                            {
-                                                setting?.checked && handleOnChangeChecked && <td className="column-checked"><InputCheckbox onChange={handleOnChangeChecked} checked={dataRow?.isChecked} value={JSON.stringify(dataRow)} name={`checked-${i}`} /></td>
-                                            }
-                                            {
-                                                columns?.map((column, j) =>
-                                                    <td key={j} className={`column-data ${column?.className}`}>
-                                                        <div className="flex ">
-                                                            {
-                                                                column?.customeComponent ? column?.customeComponent(dataRow) : dataRow[column.key] as string
-                                                            }
-                                                        </div>
-                                                    </td>
-                                                )
-                                            }
-                                        </tr>
+                                        return (
+                                            <tr key={i} className="border-b ">
+                                                {
+                                                    setting?.checked && handleOnChangeChecked && <td className="column-checked"><InputCheckbox onChange={handleOnChangeChecked} checked={dataRow?.isChecked} value={JSON.stringify(dataRow)} name={`checked-${i}`} /></td>
+                                                }
+                                                {
+                                                    withNo && (
+                                                        <td className="column-data">
+                                                            {(setting?.currentPage - 1) * setting?.itemsPerPage + i + 1}
+                                                        </td>
+                                                    )
+                                                }
+                                                {
+                                                    columns?.map((column, j) =>
+                                                        <td key={j} className={`column-data ${column?.className}`}>
+                                                            <div className="flex ">
+                                                                {
+                                                                    column?.customeComponent ? column?.customeComponent(dataRow) : dataRow[column.key] as string
+                                                                }
+                                                            </div>
+                                                        </td>
+                                                    )
+                                                }
+                                            </tr>
+                                        )
                                     }
 
                                     )
