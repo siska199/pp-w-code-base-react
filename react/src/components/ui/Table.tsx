@@ -64,8 +64,9 @@ const Table = <TData, TIncludeChecked extends boolean = false>(props: TTableProp
     }
 
     const style = {
-        columnChecked: "flex items-center justify-center py-3 px-4",
-        columnData: "py-3 px-6"
+        columnChecked: "flex items-center justify-center py-3 px-4  align-top",
+        columnData: "py-3 px-6  align-top",
+        columnNo: "py-3 px-4   align-top"
     }
 
     return (
@@ -88,7 +89,7 @@ const Table = <TData, TIncludeChecked extends boolean = false>(props: TTableProp
                             }
                             {
                                 withNo && (
-                                    <th className={`${style.columnData}`}>
+                                    <th className={`${style.columnNo}`}>
                                         No.
                                     </th>
                                 )
@@ -131,7 +132,7 @@ const Table = <TData, TIncludeChecked extends boolean = false>(props: TTableProp
                                                 }
                                                 {
                                                     withNo && (
-                                                        <td className={`${style.columnData}`}>
+                                                        <td className={`${style.columnNo}`}>
                                                             {(setting?.currentPage - 1) * setting?.itemsPerPage + i + 1}
                                                         </td>
                                                     )
