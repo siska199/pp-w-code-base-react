@@ -6,11 +6,12 @@ interface TProps<TData, TIncludeChecked extends boolean = false> {
     initialColumn: TTableProps<TData, TIncludeChecked>["columns"]
     initialData?: TData[]
     initialSetting: Partial<TSettingTable<TData>>
-    onFetchData: (params: TSettingTable<TData>) => Promise<TData[]>
+    onFetchData: (params: TSettingTable<TData>) => Promise<TData[]>;
+
 }
 
-const useTable = <TData extends object, TIncludeChecked extends boolean = false>(props: TProps<TData, TIncludeChecked>) => {
-    const { initialColumn, initialData, initialSetting, onFetchData: handleFetchData } = props
+const useTable = <TData extends object, TIncludeChecked extends boolean = false>(props: TProps<TData, TIncludeChecked> & Omit<TTableProps<TData, TIncludeChecked>,"setting" |"data" | "columns" | "settings" | "onChange" | "setData">) => {
+    const { initialColumn, initialData, initialSetting, onFetchData: handleFetchData, ...anotherConfigTable } = props
     const [data, setData] = useState<TData[]>(initialData || [])
 
 
@@ -43,7 +44,8 @@ const useTable = <TData extends object, TIncludeChecked extends boolean = false>
         setData,
         data,
         onChange,
-    }
+        ...anotherConfigTable
+}
 }
 
 

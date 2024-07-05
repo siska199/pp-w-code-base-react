@@ -25,6 +25,7 @@ const EmptyData = (props: TProps) => {
                         [customeClass?.img || ""]: customeClass?.img
                     })}
                     src="empty-data.svg"
+                    withLoadEffect={false}
                 />
             </div>
             <p

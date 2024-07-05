@@ -63,6 +63,8 @@ const Table = <TData, TIncludeChecked extends boolean = false>(props: TTableProp
         })
     }
 
+    console.log('is loading: ', isLoading)
+
     return (
         <div className="border rounded-lg">
             <div className="relative  overflow-y-auto  max-h-[30rem] ">
@@ -115,7 +117,7 @@ const Table = <TData, TIncludeChecked extends boolean = false>(props: TTableProp
                         </tr>
                     </thead>
                     {
-                        data?.length !== 0 ? (
+                        data?.length >= 0 && (
                             <tbody className={`text-gray `}>
                                 {
                                     data?.map((dataRow, i) => {
@@ -149,13 +151,16 @@ const Table = <TData, TIncludeChecked extends boolean = false>(props: TTableProp
                                     )
                                 }
                             </tbody>
-                        ) : (
-                            <div className="w-full h-[20rem] flex items-center">
-                                <EmptyData customeClass={{ container: "w-full !border-none", img: "h-[5rem]" }} />
-                            </div>
                         )
                     }
                 </table>
+                {
+                    data?.length === 0 && (
+                        <div className="w-full h-[20rem] flex items-center">
+                            <EmptyData customeClass={{ container: "w-full !border-none", img: "h-[5rem]" }} />
+                        </div>
+                    )
+                }
             </div>
             {
                 setting?.pagination && <PaginationTable<TData, TIncludeChecked>

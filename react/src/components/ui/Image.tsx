@@ -17,7 +17,8 @@ interface TProps extends Omit<Partial<HTMLProps<HTMLImageElement>>, ""> {
         isShowOnHover?: boolean;
         withBackdrop?: boolean;
         content?: React.ReactNode;
-    }
+    };
+    withLoadEffect?: boolean;
 
 }
 
@@ -38,13 +39,13 @@ interface TProps extends Omit<Partial<HTMLProps<HTMLImageElement>>, ""> {
  * @param {number} [props.timeoutLoadImage=0] - Timeout duration before removing the loading state.
  * @param {Object} [props.overlay] - Overlay configuration.
  * @param {boolean} [props.overlay.isShowOnHover] - Whether to show the overlay content on hover.
- * @param {React.ReactNode} [props.overlay.content] - The content to display in the overlay.
- * 
+ * @param {React.ReactNode} [props.withLoadEffect] - To use blur effect of image while load image.
+ * @param {boolean} [props.overlay.isShowOnHover] - Whether to show the overlay content on hover.
  * @returns {JSX.Element} The rendered Image component.
  */
 
 const Image = (props: TProps) => {
-    const { src, alt, className, timeoutLoadImage = 0, withSkeleton, customeClassName, overlay, ...attrs } = props;
+    const { src, alt, className, timeoutLoadImage = 0, withSkeleton, withLoadEffect = true, customeClassName, overlay, ...attrs } = props;
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     const handleLoad = () => {
@@ -66,7 +67,7 @@ const Image = (props: TProps) => {
                 className={cn({
                     'w-full h-full object-cover object-center': true,
                     'clear-effect': !isLoading,
-                    'blur-effect': isLoading,
+                    'blur-effect': isLoading && withLoadEffect,
 
                     [customeClassName?.image || '']: customeClassName?.image
 
