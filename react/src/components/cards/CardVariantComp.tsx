@@ -8,7 +8,6 @@ interface TProps {
     customeClass?: {
         container?: string;
     };
-
 }
 
 const CardVariantComp = (props: TProps) => {
