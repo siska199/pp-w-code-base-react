@@ -14,7 +14,11 @@ const listMenuNavbar = [
     {
         label: 'Github',
         url: 'https://github.com/siska199/my-code-base-199'
-    }
+    },
+    {
+        label: 'Forum',
+        url: '/forum'
+    },
 ]
 
 
