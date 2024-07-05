@@ -12,11 +12,13 @@ interface TParamsApiClient {
 }
 
 const useAPI = () => {
-    const { handleAlertConfig } = useGlobalStore()
+    const { setAlertConfig, setIsLoading } = useGlobalStore()
 
     const apiClient = async (params: TParamsApiClient): Promise<{ data: TObject | null; success: boolean; message: string; }> => {
         const { baseUrl, method = "get", bareerToken, endpoint, payload } = params
         try {
+
+            setIsLoading(true)
 
             axios.defaults.baseURL = baseUrl || baseURLAPI
             axios.defaults.headers.common['Authorization'] = bareerToken ? `Bearer ${bareerToken}` : null
@@ -28,7 +30,7 @@ const useAPI = () => {
                 data: payload
             })
 
-            handleAlertConfig({
+            setAlertConfig({
                 show: true,
                 message: 'Successfully get data',
                 type: "success"
@@ -42,8 +44,8 @@ const useAPI = () => {
         } catch (error: any) {
             // console.log("error message: ", error?.message)
             // console.log("error messag api: ", error?.response)
-            
-            handleAlertConfig({
+
+            setAlertConfig({
                 show: true,
                 message: globalErrorMessage,
                 type: "error"
@@ -53,6 +55,8 @@ const useAPI = () => {
                 data: null,
                 message: ''
             }
+        } finally {
+            setIsLoading(false)
         }
 
     }

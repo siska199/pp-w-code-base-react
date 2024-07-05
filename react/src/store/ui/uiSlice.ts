@@ -6,8 +6,8 @@ export interface TUISlice {
     isLoading: boolean;
     alertConfig: TAlertProps;
 
-    handleToggleIsLoading: (stateModal: boolean) => void;
-    handleAlertConfig: (alertConfig: TAlertProps) => void;
+    setIsLoading: (stateModal: boolean) => void;
+    setAlertConfig: (alertConfig: TAlertProps) => void;
 }
 
 const uiSlice: StateCreator<TUISlice> = (set, get) => ({
@@ -18,8 +18,9 @@ const uiSlice: StateCreator<TUISlice> = (set, get) => ({
         autoClose: true,
     },
 
-    handleToggleIsLoading: (stateModal) => set({ isLoading: stateModal }),
-    handleAlertConfig: (alertConfig) => {
+    setIsLoading: (stateModal) => set({ isLoading: stateModal }),
+    
+    setAlertConfig: (alertConfig) => {
         set({
             // @ts-ignore
             alertConfig: {

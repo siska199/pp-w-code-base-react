@@ -1,22 +1,20 @@
-import { TColumn, TObject, TResponseAPI, TSettingTable } from "@types";
+import { TTableProps } from "@components/ui/Table";
+import { TColumn, TSettingTable } from "@types";
 import React, { useEffect, useState } from "react";
 
-interface TProps {
-    initialColumn: any;
-    initialData: any;
-    initialSetting: any;
-    onFetchData: (params: any) => Promise<TObject>
+interface TProps<TData, TIncludeChecked extends boolean = false> {
+    initialColumn: TTableProps<TData, TIncludeChecked>["columns"]
+    initialData?: TData[]
+    initialSetting: Partial<TSettingTable<TData>>
+    onFetchData: (params: TSettingTable<TData>) => Promise<TData[]>
 }
 
-const useTable = (props: TProps) => {
+const useTable = <TData extends object, TIncludeChecked extends boolean = false>(props: TProps<TData, TIncludeChecked>) => {
     const { initialColumn, initialData, initialSetting, onFetchData: handleFetchData } = props
-    const [data, setData] = useState(initialData)
+    const [data, setData] = useState<TData[]>(initialData || [])
 
-    type TData = (typeof data)[0]
 
     const [setting, setSetting] = useState<TSettingTable<TData>>({
-        sortBy: "",
-        sortDir: "",
         currentPage: 1,
         totalPage: 10,
         itemsPerPage: 10,
@@ -29,11 +27,11 @@ const useTable = (props: TProps) => {
     );
 
     useEffect(() => {
-        handleOnChange()
+        onChange(setting)
     }, [])
 
-    const handleOnChange = async (params?: TSettingTable<TData>) => {
-        const data: TResponseAPI = await handleFetchData(params)
+    const onChange = async (params: TSettingTable<TData>) => {
+        const data = await handleFetchData(params)
         setData(data)
         params && setSetting(params)
 
@@ -44,8 +42,7 @@ const useTable = (props: TProps) => {
         columns,
         setData,
         data,
-        handleOnChange,
-
+        onChange,
     }
 }
 

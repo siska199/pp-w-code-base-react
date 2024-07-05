@@ -10,7 +10,7 @@ import React from "react";
 type WithId<T> = T & { id: string | number };
 type WithOptionalChecked<T, TInclude extends boolean> = TInclude extends true ? T & { isChecked: boolean } : T & { isChecked?: never }; // Adjusted here
 
-interface TProps<TData, TIncludeChecked extends boolean = false> {
+export interface TTableProps<TData, TIncludeChecked extends boolean = false> {
     columns: TColumn<TData, keyof TData>[];
     data: WithId<WithOptionalChecked<TData, TIncludeChecked>>[];
     setData: React.Dispatch<React.SetStateAction<WithOptionalChecked<TData, TIncludeChecked>[]>>
@@ -21,7 +21,7 @@ interface TProps<TData, TIncludeChecked extends boolean = false> {
 }
 
 
-const Table = <TData, TIncludeChecked extends boolean = false>(props: TProps<TData, TIncludeChecked>) => {
+const Table = <TData, TIncludeChecked extends boolean = false>(props: TTableProps<TData, TIncludeChecked>) => {
     const { columns, isLoading, data, setData, setting, onChange, withNo } = props
 
     const isCheckedAll = data?.length > 0 ? !data?.some((dataRow: WithOptionalChecked<TData, TIncludeChecked>) => !dataRow.isChecked) : false
@@ -89,8 +89,8 @@ const Table = <TData, TIncludeChecked extends boolean = false>(props: TProps<TDa
                                 )
                             }
                             {
-                                columns?.map((column, i) => <th className={`column-data  ${column?.className}`} key={i}>
-                                    <div className="flex items-center">
+                                columns?.map((column, i) => <th key={i}>
+                                    <div className={`flex column-data   items-center text-center ${column?.className}`}>
                                         {column?.name}
                                         {column?.isSorted && (
                                             <span onClick={() => handleSortColumn({ key: column.key })} className={`cursor-pointer ${(isLoading || data?.length === 0) && "!cursor-not-allowed"}`}>
@@ -165,12 +165,11 @@ const Table = <TData, TIncludeChecked extends boolean = false>(props: TProps<TDa
 
             }
         </div>
-
     )
 }
 
 
-type TPropsPagination<TData, TIncludeChecked extends boolean> = Pick<TProps<TData, TIncludeChecked>, "setting"> & {
+type TPropsPagination<TData, TIncludeChecked extends boolean> = Pick<TTableProps<TData, TIncludeChecked>, "setting"> & {
     onChangePage: (params: any) => void;
 }
 
