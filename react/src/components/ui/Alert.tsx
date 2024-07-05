@@ -4,7 +4,7 @@ import { cn } from "@lib/utils/helper"
 import variantsAlert, { variantAlertError, variantAlertSuccess, variantAlertWarning } from "@lib/utils/variants/ui/variant-alert"
 import variant from "@lib/utils/variants/variant-color"
 import { VariantProps, cva } from "class-variance-authority"
-import { HTMLProps, useEffect } from "react"
+import { HTMLProps, useEffect, useState } from "react"
 
 
 interface TPropsVariantError extends VariantProps<typeof alertVariantError> {
@@ -22,7 +22,7 @@ interface TPropsVariantGeneral extends VariantProps<typeof alertVariantGeneral> 
     type?: 'notification' | 'info'
 }
 
-type TProps = HTMLProps<HTMLButtonElement> & {
+export type TAlertProps = HTMLProps<HTMLButtonElement> & {
     position?: "top-left" | "top-right" | 'bottom-left' | "bottom-right";
     timeout?: number;
     onDismiss?: () => void;
@@ -37,13 +37,16 @@ type TProps = HTMLProps<HTMLButtonElement> & {
 
 
 
-const Alert = (props: TProps) => {
-    const { variant, customeIcon, type='info', withIcon, show, message, isFixed = true, withCloseBtn = false, autoClose = true, className = '', position = "top-right", timeout = 3000, onDismiss: handleOnDismiss } = props
+const Alert = (props: TAlertProps) => {
+    const { variant, customeIcon, type = 'info', withIcon, show, message, isFixed = true, withCloseBtn = false, autoClose = true, className = '', position = "top-right", timeout = 3000, onDismiss: handleOnDismiss } = props
+    const [isCloseAlert, setIsCloseAlert] = useState(show)
+
 
     useEffect(() => {
-        if (timeout > 0 && handleOnDismiss && autoClose && show) {
+        if (timeout > 0 && autoClose && show) {
             const timer = setTimeout(() => {
-                handleOnDismiss();
+                setIsCloseAlert(true)
+                handleOnDismiss && handleOnDismiss();
             }, timeout);
             return () => clearTimeout(timer);
         }
@@ -67,7 +70,7 @@ const Alert = (props: TProps) => {
 
     const paramsAlertVariant = { className, variant, position, isFixed }
     const alertVariant = getAlertVariant()
-    return show ? (
+    return show && !isCloseAlert ? (
         // @ts-expect-error
         <div className={cn(alertVariant(paramsAlertVariant))}>
             <div className={cn({
