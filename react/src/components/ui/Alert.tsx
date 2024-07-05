@@ -41,7 +41,6 @@ const Alert = (props: TAlertProps) => {
     const { variant, customeIcon, type = 'info', withIcon, show, message, isFixed = true, withCloseBtn = false, autoClose = true, className = '', position = "top-right", timeout = 3000, onDismiss: handleOnDismiss } = props
     const [isCloseAlert, setIsCloseAlert] = useState(show)
 
-
     useEffect(() => {
         if (timeout > 0 && autoClose && show) {
             const timer = setTimeout(() => {
