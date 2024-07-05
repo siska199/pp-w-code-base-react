@@ -63,6 +63,11 @@ const Table = <TData, TIncludeChecked extends boolean = false>(props: TTableProp
         })
     }
 
+    const style = {
+        columnChecked: "flex items-center justify-center py-3 px-4",
+        columnData: "py-3 px-6"
+    }
+
     return (
         <div className="border rounded-lg w-full">
             <div className="relative  overflow-y-auto  max-h-[30rem] ">
@@ -72,7 +77,7 @@ const Table = <TData, TIncludeChecked extends boolean = false>(props: TTableProp
 
                             {
                                 (setting?.checked) && (
-                                    <th className="column-checked">
+                                    <th className={`${style.columnChecked}`}>
                                         <InputCheckbox
                                             checked={isCheckedAll}
                                             value={'cheked-all'}
@@ -83,14 +88,14 @@ const Table = <TData, TIncludeChecked extends boolean = false>(props: TTableProp
                             }
                             {
                                 withNo && (
-                                    <th className="column-data ">
+                                    <th className={`${style.columnData}`}>
                                         No.
                                     </th>
                                 )
                             }
                             {
                                 columns?.map((column, i) => <th key={i}>
-                                    <div className={`flex column-data   items-center text-center ${column?.className}`}>
+                                    <div className={`flex ${style.columnData}  items-center text-center ${column?.className}`}>
                                         {column?.name}
                                         {column?.isSorted && (
                                             <span onClick={() => handleSortColumn({ key: column.key })} className={`cursor-pointer ${(isLoading || data?.length === 0) && "!cursor-not-allowed"}`}>
@@ -122,18 +127,18 @@ const Table = <TData, TIncludeChecked extends boolean = false>(props: TTableProp
                                         return (
                                             <tr key={i} className="border-b ">
                                                 {
-                                                    setting?.checked && handleOnChangeChecked && <td className="column-checked"><InputCheckbox onChange={handleOnChangeChecked} checked={dataRow?.isChecked} value={JSON.stringify(dataRow)} name={`checked-${i}`} /></td>
+                                                    setting?.checked && handleOnChangeChecked && <td className={`${style.columnChecked}`}><InputCheckbox onChange={handleOnChangeChecked} checked={dataRow?.isChecked} value={JSON.stringify(dataRow)} name={`checked-${i}`} /></td>
                                                 }
                                                 {
                                                     withNo && (
-                                                        <td className="column-data">
+                                                        <td className={`${style.columnData}`}>
                                                             {(setting?.currentPage - 1) * setting?.itemsPerPage + i + 1}
                                                         </td>
                                                     )
                                                 }
                                                 {
                                                     columns?.map((column, j) =>
-                                                        <td key={j} className={`column-data ${column?.className}`}>
+                                                        <td key={j} className={`${style.columnData} ${column?.className}`}>
                                                             <div className="flex ">
                                                                 {
                                                                     column?.customeComponent ? column?.customeComponent(dataRow) : dataRow[column.key] as string
@@ -170,7 +175,7 @@ const Table = <TData, TIncludeChecked extends boolean = false>(props: TTableProp
                 />
 
             }
-        </div>
+        </div >
     )
 }
 
