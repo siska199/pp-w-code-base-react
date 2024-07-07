@@ -77,9 +77,10 @@ const ContainerInput = <TInput,>(props: TPropsInput<TInput>) => {
                             "border-error focus-within:!ring-error-200 focus-within:!border-error": errorMessage,
 
                             "!rounded-[5rem]": variant === "v3",
+                            'focus-within:!ring-0': ["v2", "v4", "v6"]?.includes(variant),
                             "!border-t-0 !px-0 !border-l-0 !border-r-0 !rounded-none focus-within:!ring-0": variant === "v5",
-                            "py-4 focus-within:pb-2 focus-within:pt-5": variant === "v6",
-                            "pb-2 pt-5 ": variant === "v6" && value,
+                            "!py-4 focus-within:!pb-2 focus-within:!pt-5": variant === "v6",
+                            "!pb-2 !pt-5 ": (variant === "v6" && value),
 
                             "px-3 py-2 ": !customeElement?.preStart && !customeElement?.preEnd,
                             "overflow-hidden": customeElement?.preStart || customeElement?.preEnd,
@@ -102,7 +103,7 @@ const ContainerInput = <TInput,>(props: TPropsInput<TInput>) => {
                             <div className={`${customeClass?.ciV1} flex flex-col w-full relative `}>
                                 {
                                     typeof (children) === "function" ? <>
-                                        {children({ ...attrsInput as TInput, className:classNameInput, name, type: dynamicType, disabled, value, onChange })}
+                                        {children({ ...attrsInput as TInput, className: classNameInput, name, type: dynamicType, disabled, value, onChange })}
                                         {label && ["v2", "v6"].includes(variant) && (
                                             <label
                                                 id="floating-label"
