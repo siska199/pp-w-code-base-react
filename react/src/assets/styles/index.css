@@ -81,13 +81,13 @@
         backdrop-filter: blur(10px) !important;
     }
     /* FOR SVG ICON set color dinamically */
-    .icon-white path ,  .icon-white react { @apply !stroke-white }
+    .icon-white path ,  .icon-white rect, .icon-white circle { @apply !stroke-white }
     .icon-white-fill path { @apply fill-white  }
 
-    .icon-black path ,  .icon-black react { @apply stroke-black }
+    .icon-black path ,  .icon-black rect { @apply stroke-black }
     .icon-black-fill path { @apply fill-black  }
 
-    .icon-gray path, .icon-gray react { @apply stroke-gray }
+    .icon-gray path, .icon-gray rect { @apply stroke-gray }
     .icon-gray-fill path { @apply fill-gray }
 
     .icon-primary path, .icon-primary rect { @apply stroke-primary }
