@@ -23,7 +23,7 @@ const LayoutType1 = () => {
     const [leftPosition, setLeftPosition] = useState(0)
     const [rightPosition, setRightPosition] = useState(0)
     const [isRender, setIsrender] = useState(false)
-
+    const [load, setLoad] = useState(true)
     useEffect(() => {
         const sidebarComp = document.getElementById("sidebar") as HTMLDivElement
         const rightsSidebarComp = document.getElementById("right-sidebar") as HTMLDivElement
@@ -57,9 +57,18 @@ const LayoutType1 = () => {
 
     }, [location?.pathname])
 
+    useEffect(() => {
+        setTimeout(() => {
+            setLoad(false)
+        }, 1500)
+    }, [load])
+
     return (
         <>
-            <main id="layout" className=" overflow-x-hidden relative bg-white h-screen min-h-screen w-full overflow-y-auto">
+            <div className={`${load ? 'h-screen items-center flex justify-center' : 'hidden'} `}>
+                loading...
+            </div>
+            <main id="layout" className={`${load && 'opacity-0'} overflow-x-hidden relative bg-white h-screen min-h-screen w-full overflow-y-auto`}>
                 <Navbar />
                 <div className="flex relative overflow-x-hidden ">
                     <Sidebar />
