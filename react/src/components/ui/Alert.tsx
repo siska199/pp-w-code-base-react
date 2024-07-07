@@ -69,7 +69,7 @@ const Alert = (props: TAlertProps) => {
 
     const paramsAlertVariant = { className, variant, position, isFixed }
     const alertVariant = getAlertVariant()
-    return show && !isCloseAlert ? (
+    return ((show && !isCloseAlert) || !isFixed) ? (
         // @ts-expect-error
         <div className={cn(alertVariant(paramsAlertVariant))}>
             <div className={cn({
