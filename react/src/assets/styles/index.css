@@ -81,7 +81,7 @@
         backdrop-filter: blur(10px) !important;
     }
     /* FOR SVG ICON set color dinamically */
-    .icon-white path ,  .icon-white react { @apply stroke-white }
+    .icon-white path ,  .icon-white react { @apply !stroke-white }
     .icon-white-fill path { @apply fill-white  }
 
     .icon-black path ,  .icon-black react { @apply stroke-black }
