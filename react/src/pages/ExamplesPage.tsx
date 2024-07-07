@@ -11,6 +11,8 @@ const ExamplesPage = () => {
     <div className="h-full">
 
       <Timeline listStep={listStep} />
+      <Timeline listStep={listStep} variant="v2" />
+
     </div>
   );
 };
