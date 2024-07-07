@@ -32,6 +32,7 @@ const ExampleTable = () => {
         initialSetting: {
             checked: true,
             pagination: true,
+            totalPage:10
         },
         onFetchData: handleFetchData
     })

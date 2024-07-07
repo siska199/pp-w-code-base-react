@@ -191,15 +191,13 @@ const PaginationTable = <TData, TIncludeChecked extends boolean>(props: TPropsPa
     const pageNumbers = React.useMemo(() => Array.from({ length: setting.totalPage }, (_, index) => index + 1), [setting.totalPage]);
     const currentPage = setting?.currentPage
 
-    let listPageNumberStart: number[] = []
-    let listPageNumberEnd: number[] = []
-    let startIndex = 0
-    let endIndex = 0
+    const [listPageNumberStart, listPageNumberEnd] = React.useMemo(() => {
+        if (setting?.totalPage <= 6) return [pageNumbers, []];
 
-    if (setting?.totalPage > 6) {
         const adjacentPageCount = 1;
-        startIndex = setting?.currentPage - adjacentPageCount - 1;
-        endIndex = setting?.currentPage + adjacentPageCount;
+        let startIndex = currentPage - adjacentPageCount - 1;
+        let endIndex = currentPage + adjacentPageCount;
+        
         if (startIndex < 0) {
             startIndex = 0;
             endIndex = Math.min(3, setting?.totalPage);
@@ -210,10 +208,12 @@ const PaginationTable = <TData, TIncludeChecked extends boolean>(props: TPropsPa
             startIndex = 0
             endIndex = 3
         }
-        listPageNumberStart = pageNumbers.slice(startIndex, endIndex);
-        listPageNumberEnd = pageNumbers.slice(setting?.totalPage - 3, setting?.totalPage);
-    }
 
+        const startPages = pageNumbers.slice(startIndex, endIndex);
+        const endPages = pageNumbers.slice(setting?.totalPage - 3, setting?.totalPage);
+
+        return [startPages, endPages];
+    }, [setting.totalPage, currentPage, pageNumbers]);
 
     const ButtonPageNumber = (pageNumber: number) => (
         <Button
