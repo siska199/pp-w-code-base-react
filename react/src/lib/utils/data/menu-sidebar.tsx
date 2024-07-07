@@ -278,6 +278,12 @@ const listMenuSidebar: TMenuItem[] = [
         url: '/docs/components/tooltip',
         parentId: '0-C0'
     },
+    {
+        id: '1-T19',
+        name: 'Timeline',
+        url: '/docs/components/timeline',
+        parentId: '0-C0'
+    },
 
 ]
 

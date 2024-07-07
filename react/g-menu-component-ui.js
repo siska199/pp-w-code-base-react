@@ -126,7 +126,6 @@ const CardAdditionalInfo${componentName} = () => {
       title: "Additional Info 2",
       caption: ""
     },
-    etc
   ];
 
   return (

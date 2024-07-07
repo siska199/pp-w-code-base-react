@@ -42,6 +42,7 @@ import TablePage from '@pages/docs/components/TablePage';
 import TabPage from '@pages/docs/components/TabPage';
 import TooltipPage from '@pages/docs/components/TooltipPage';
 import ModalPage from '@pages/docs/components/ModalPage';
+import TimelinePage from '@pages/docs/components/TimelinePage';
 import { createBrowserRouter } from "react-router-dom";
 import ListPage from '@pages/docs/components/ListPage';
 
@@ -330,6 +331,7 @@ const docRouter = {
                                 id: '2-TA11'
                             }
                         },
+
                     ]
                 },
                 {
@@ -386,6 +388,13 @@ const docRouter = {
                     element: <ModalPage />,
                     handle: {
                         id: '1-M16'
+                    }
+                },
+                {
+                    path: 'timeline',
+                    element: <TimelinePage />,
+                    handle: {
+                        id: '1-T19'
                     }
                 },
             ]
