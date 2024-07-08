@@ -72,7 +72,7 @@ const CarouselImage: React.FC<CarouselProps> = ({ items, className, itemsPerView
 
 
     return (
-        <div className={cn("relative w-full overflow-hidden", className)} ref={containerRef}>
+        <div className={cn("relative w-full h-full overflow-hidden", className)} ref={containerRef}>
 
             <div style={{ left: `-${currentIndex * itemWidth}px`, width: `${itemWidth * items?.length}px` }} className={`relative h-full flex overflow-hidden ${!load && 'transition-left duration-500 ease-in-out'} `} >
                 {items.map((item, index) => (
