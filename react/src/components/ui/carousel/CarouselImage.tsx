@@ -29,7 +29,7 @@ const CarouselImage: React.FC<CarouselProps> = ({ items, className, itemsPerView
         };
         setTimeout(() => {
             handleResize();
-        }, 1500)
+        }, 100)
 
         setTimeout(() => {
             setLoad(false)
