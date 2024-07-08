@@ -70,17 +70,16 @@ const CarouselImage: React.FC<CarouselProps> = ({ items, className, itemsPerView
     const itemWidth = containerWidth / handleGetItemsPerView();
 
     return (
-        <div className={cn("relative w-full", className)} ref={containerRef}>
+        <div className={cn("relative w-full overflow-hidden", className)} ref={containerRef}>
 
-            <div className="overflow-hidden w-full h-full">
-                <div className={`relative w-full h-full flex${!load && ' transition-left duration-500 ease-in-out '} `} style={{ left: `-${currentIndex * itemWidth}px`, width: `${items.length * itemWidth}px` }}>
-                    {items.map((item, index) => (
-                        <div key={index} className="flex w-full h-full bg-primary-100 justify-center items-center" style={{ width: `${itemWidth}px` }}>
-                            {item}
-                        </div>
-                    ))}
-                </div>
+            <div style={{ left: `-${currentIndex * itemWidth}px`, width: `${items.length * itemWidth}px` }} className={`relative h-full flex ${!load && 'transition-left duration-500 ease-in-out'} `} >
+                {items.map((item, index) => (
+                    <div key={index} className="flex w-full h-full bg-primary-100 justify-center items-center" style={{ width: `${itemWidth}px` }}>
+                        {item}
+                    </div>
+                ))}
             </div>
+
 
             <Button
                 label={<IconChevronLeft className='icon-white w-[2rem] h-[2rem]' />}

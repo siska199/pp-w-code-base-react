@@ -9,9 +9,9 @@ const CardIntroCarousel = () => {
 
   const listExample = [
     {
-      component: <Container variant={"hcc"}>
+      component: <Container variant={"hcc"} className="overflow-auto w-full">
         <CarouselImage
-          className="w-[30rem] h-[30rem]"
+          className="h-[30rem]"
           itemsPerView={{
             lg: 1,
             md: 1,
