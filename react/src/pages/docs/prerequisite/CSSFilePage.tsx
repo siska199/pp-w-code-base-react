@@ -35,11 +35,7 @@ const CSSFilePage = () => {
             caption: <CodeBlock fileName="styles/ui/progress-step.css"
                 codeString={codeStringStyle?.progressStep} />
         },
-        {
-            title: <>File <Badge label="table.css" variant={"soft-gray"} /> terletak pada folder <span className="italic">styles/ui</span></>,
-            caption: <CodeBlock fileName="styles/ui/table.css"
-                codeString={codeStringStyle?.table} />
-        },
+
         {
             title: <>File <Badge label="tooltip.css" variant={"soft-gray"} /> terletak pada folder <span className="italic">styles/ui</span></>,
             caption: <CodeBlock fileName="styles/ui/tooltip.css" codeString={codeStringStyle.tooltip} />
