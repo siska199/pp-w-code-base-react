@@ -14,8 +14,8 @@ const CardIntroCarousel = () => {
         <CarouselImage
           className="h-[30rem]"
           itemsPerView={{
-            lg: 3,
-            md: 2,
+            lg: 1,
+            md: 1,
             sm: 1
           }}
           items={[
