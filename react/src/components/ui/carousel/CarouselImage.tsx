@@ -23,17 +23,17 @@ const CarouselImage: React.FC<CarouselProps> = ({ items, className, itemsPerView
     useEffect(() => {
         const handleResize = () => {
             if (containerRef.current) {
-                setTimeout(() => {
-                    const containerWidth = containerRef?.current?.offsetWidth || 0
-                    setItemWidth(containerWidth / handleGetItemsPerView())
-                }, 600)
+                const containerWidth = containerRef?.current?.offsetWidth || 0
+                setItemWidth(containerWidth / handleGetItemsPerView())
             }
         };
-        handleResize();
+        setTimeout(()=>{
+            handleResize();
+        },600)
 
         setTimeout(() => {
             setLoad(false)
-        }, 150)
+        }, 1500)
 
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
@@ -76,7 +76,7 @@ const CarouselImage: React.FC<CarouselProps> = ({ items, className, itemsPerView
 
             <div style={{ left: `-${currentIndex * itemWidth}px`, width: `${itemWidth * items?.length}px` }} className={`relative h-full flex overflow-hidden ${!load && 'transition-left duration-500 ease-in-out'} `} >
                 {items.map((item, index) => (
-                    <div style={{ width: `${itemWidth}px` }} key={index} className="flex flex-grow h-full  bg-primary-100 justify-center items-center">
+                    <div style={{ width: `${itemWidth}px` }} key={index} className="flex flex-grow h-full   bg-primary-100 justify-center items-center">
                         {item}
                     </div>
                 ))}
