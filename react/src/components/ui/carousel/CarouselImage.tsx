@@ -18,6 +18,7 @@ const CarouselImage: React.FC<CarouselProps> = ({ items, className, itemsPerView
     const containerRef = useRef<HTMLDivElement>(null);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [containerWidth, setContainerWidth] = useState(0);
+    const [load, setLoad] = useState(true)
 
     useEffect(() => {
         const handleResize = () => {
@@ -25,8 +26,12 @@ const CarouselImage: React.FC<CarouselProps> = ({ items, className, itemsPerView
                 setContainerWidth(containerRef.current.offsetWidth);
             }
         };
-
         handleResize();
+
+        setTimeout(() => {
+            setLoad(false)
+        }, 100)
+
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
@@ -66,9 +71,9 @@ const CarouselImage: React.FC<CarouselProps> = ({ items, className, itemsPerView
 
     return (
         <div className={cn("relative w-full", className)} ref={containerRef}>
-            
+
             <div className="overflow-hidden w-full h-full">
-                <div className="relative w-full h-full flex transition-left duration-500 ease-in-out" style={{ left: `-${currentIndex * itemWidth}px`, width: `${items.length * itemWidth}px` }}>
+                <div className={`relative w-full h-full flex${!load && ' transition-left duration-500 ease-in-out '} `} style={{ left: `-${currentIndex * itemWidth}px`, width: `${items.length * itemWidth}px` }}>
                     {items.map((item, index) => (
                         <div key={index} className="flex w-full h-full bg-primary-100 justify-center items-center" style={{ width: `${itemWidth}px` }}>
                             {item}
@@ -117,7 +122,7 @@ const CarouselImage: React.FC<CarouselProps> = ({ items, className, itemsPerView
                     );
                 })}
             </div>
-            
+
         </div>
     );
 };
