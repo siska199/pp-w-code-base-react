@@ -8,16 +8,20 @@ interface TProps {
         subtitle?: string | React.ReactNode;
         description?: string | React.ReactNode;
     }[];
+    customeClass?: {
+        containerContent?: string;
+    }
 }
 
 const Timeline = (props: TProps) => {
-    const { listStep, variant = "v1" } = props
+    const { listStep, variant = "v1", customeClass } = props
 
     const Content = (data: TProps["listStep"][0], i: number, position: "left" | "right") => (
         <div className={cn({
             'w-[20rem] mb-8 "opacity-0"}': true,
             "hidden md:block": (position === "left") && variant === "v1",
-            'md:opacity-0': ((i % 2 == 0 && position === "right") || (i % 2 !== 0 && position === "left")) && variant === "v1"
+            'md:opacity-0': ((i % 2 == 0 && position === "right") || (i % 2 !== 0 && position === "left")) && variant === "v1",
+            [customeClass?.containerContent || '']: customeClass?.containerContent
         })}>
             {
                 variant === "v1" && <p className="text-body-small">{data?.subtitle}</p>
