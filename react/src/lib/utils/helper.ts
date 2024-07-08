@@ -97,6 +97,14 @@ export const debounce = (func: (...args: any[]) => void, wait: number) => {
 };
 
 
+export function findLargestIndexWithValue(arr: any[]) {
+    for (let i = arr.length - 1; i >= 0; i--) {
+        if (arr[i] !== null && arr[i] !== "" && arr[i] !== undefined) {
+            return i;
+        }
+    }
+    return -1; 
+}
 
 
 
