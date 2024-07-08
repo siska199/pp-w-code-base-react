@@ -3,6 +3,7 @@ import CardIntroComponent from "@components/cards/CardIntroComponent";
 import Container from "@components/ui/Container";
 import Image from "@components/ui/Image";
 import CarouselImage from "@components/ui/carousel/CarouselImage";
+import codeStringComponentUi from "@lib/utils/code-string/component-ui";
 import dummyImage from "@lib/utils/data/dummy-image";
 
 const CardIntroCarousel = () => {
@@ -14,7 +15,7 @@ const CardIntroCarousel = () => {
           className="h-[30rem]"
           itemsPerView={{
             lg: 3,
-            md: 1,
+            md: 2,
             sm: 1
           }}
           items={[
@@ -51,13 +52,12 @@ const CardIntroCarousel = () => {
   return (
     <CardIntroComponent
       title={'Carousel'}
-      subTitle="Description of Carousel."
+      subTitle="A carousel component, also known as a slideshow or image slider, is a common UI element used to cycle through a series of content, such as images, text, or other elements. Carousels can be used in various contexts like displaying product images on an e-commerce site, highlighting key features or news, or showcasing portfolio items."
       listExample={listExample}
-      displayCodeBase={displayCodeBase}
+      displayCodeBase={codeStringComponentUi.CarouselImage}
     />
   );
 }
 
-const displayCodeBase = `// Code for Carousel`;
 
 export default CardIntroCarousel;
