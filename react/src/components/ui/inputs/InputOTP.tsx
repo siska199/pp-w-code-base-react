@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-handler-names */
 import Alert from '@components/ui/Alert';
 import Container from '@components/ui/Container';
-import { findLargestIndexWithValue } from '@lib/utils/helper';
+import { findLargestIndexWithValue, findSmallestIndexWithEmptyValue } from '@lib/utils/helper';
 import { TCustomeEventOnChange } from '@types';
 import React, { useEffect, useRef, useState } from 'react';
 
@@ -65,32 +65,37 @@ const InputOTP = (props: TProps) => {
 
     const handleChange = (value: string, index: number) => {
         const newArr = [...otp];
-        const isFirstInputEmpty = !((otpBoxReference?.current[0] as HTMLInputElement)?.value)
-        const lastIndexLargestValue = findLargestIndexWithValue(otp)
-        console.log(value, index)
-
-        if (isFirstInputEmpty && index !== 0) {
-            otpBoxReference?.current[0]?.focus()
-            newArr[0] = value;
-            otpBoxReference?.current[1]?.focus()
-        } else if (lastIndexLargestValue > index && !value) {
-            newArr[lastIndexLargestValue] = value
+        const firstIndexWithEmptyValue = findSmallestIndexWithEmptyValue(otp)
+        const lastIndexWithHaveValue = findLargestIndexWithValue(otp);
+        if (index > firstIndexWithEmptyValue && firstIndexWithEmptyValue !== -1) {
+            // If there is an empty value before the current index and it's not the first index:
+            // then move the focus to the input at the firstIndexWithEmptyValue and fill the value to the input with firstIndexWithEmptyValue
+            otpBoxReference?.current[index]?.focus();
+            newArr[firstIndexWithEmptyValue] = value;
+            otpBoxReference?.current[firstIndexWithEmptyValue]?.focus();
+        } else if (lastIndexWithHaveValue > index && !value) {
+            // If the user tries to delete a value from a non-last input box while there are values in later inputs,
+            // then move the focus to the lastIndexWithHaveValue input with a value and clear that value.
+            newArr[lastIndexWithHaveValue] = value;
         } else if (value && index < numberOfDigits - 1) {
+            // If the user fills a value in a non-last input box, 
+            // then update the value and move the focus to the next input.
             newArr[index] = value;
-            otpBoxReference?.current[index + 1]?.focus()
+            otpBoxReference?.current[index + 1]?.focus();
         } else {
+            // handle filling or clearing the first or last input box.
             newArr[index] = value;
         }
         setOtp(newArr);
+    };
 
-    }
 
     const handleBackspaceAndEnter = (e: React.KeyboardEvent<HTMLInputElement>, index: number) => {
         const value = (e?.target as HTMLInputElement)?.value
-        const lastIndexLargestValue = findLargestIndexWithValue(otp)
+        const lastIndexWithHaveValue = findLargestIndexWithValue(otp)
 
-        if (e.key === "Backspace" && lastIndexLargestValue > index) {
-            otpBoxReference?.current[lastIndexLargestValue]?.focus()
+        if (e.key === "Backspace" && lastIndexWithHaveValue > index) {
+            otpBoxReference?.current[lastIndexWithHaveValue]?.focus()
         } else if (e.key === "Backspace" && !value && index > 0) {
             otpBoxReference?.current[index - 1]?.focus()
         }
@@ -108,11 +113,11 @@ const InputOTP = (props: TProps) => {
                         key={index}
                         value={digit}
                         onChange={(e) => handleChange(e.target.value?.slice(-1), index)}
-                onKeyUp={(e) => handleBackspaceAndEnter(e, index)}
-                ref={(reference) => {
-                    return otpBoxReference.current[index] = reference
-                }}
-                className={`border-gray-100 bg-gray-100 flex items-center justify-center text-center p-2 w-[2.5rem] h-[2.5rem] !outline-none `}
+                        onKeyUp={(e) => handleBackspaceAndEnter(e, index)}
+                        ref={(reference) => {
+                            return otpBoxReference.current[index] = reference
+                        }}
+                        className={`border-gray-100 bg-gray-100 flex items-center justify-center text-center p-2 w-[2.5rem] h-[2.5rem] !outline-none `}
                     />
                 ))}
             </div>

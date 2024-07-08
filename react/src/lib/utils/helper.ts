@@ -103,8 +103,10 @@ export function findLargestIndexWithValue(arr: any[]) {
             return i;
         }
     }
-    return -1; 
+    return -1;
 }
 
-
+export function findSmallestIndexWithEmptyValue(arr: any[]) {
+    return arr.findIndex(value => !value);
+}
 
