@@ -51,7 +51,7 @@ const CardIcon = (props: TProps) => {
           <Container gap={"base"} variant={"vcc"} fit className="mb-autos">
             <p className="text-body-2xl text-primary-700 rounded-full w-fit px-4 bg-primary-50 font-medium">{name}</p>
             {/* @ts-ignore */}
-            <Icon className=' icon-white  w-[10rem] h-[10rem] border bg-gray-100 rounded-lg' />
+            <Icon className='icon-gray  w-[10rem] h-[10rem] border bg-gray-100 rounded-lg' />
           </Container>
           <Container variant={"vcc"} className="overflow-x-auto flex-grow">
             <CodeBlock codeString={codeStringSVG[name as keyof typeof codeStringSVG]?.replace('`', '')} />
