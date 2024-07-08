@@ -17,20 +17,23 @@ interface CarouselProps {
 const CarouselImage: React.FC<CarouselProps> = ({ items, className, itemsPerView = { sm: 1, md: 3, lg: 4 } }) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [containerWidth, setContainerWidth] = useState(0);
+    const [itemWidth, setItemWidth] = useState(0)
     const [load, setLoad] = useState(true)
 
     useEffect(() => {
         const handleResize = () => {
             if (containerRef.current) {
-                setContainerWidth(containerRef.current.offsetWidth);
+                setTimeout(() => {
+                    const containerWidth = containerRef?.current?.offsetWidth || 0
+                    setItemWidth(containerWidth / handleGetItemsPerView())
+                }, 600)
             }
         };
         handleResize();
 
         setTimeout(() => {
             setLoad(false)
-        }, 100)
+        }, 150)
 
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
@@ -67,14 +70,13 @@ const CarouselImage: React.FC<CarouselProps> = ({ items, className, itemsPerView
         setCurrentIndex(updateIndex);
     };
 
-    const itemWidth = containerWidth / handleGetItemsPerView();
 
     return (
         <div className={cn("relative w-full overflow-hidden", className)} ref={containerRef}>
 
-            <div style={{ left: `-${currentIndex * itemWidth}px`, width: `${items.length * itemWidth}px` }} className={`relative h-full flex ${!load && 'transition-left duration-500 ease-in-out'} `} >
+            <div style={{ left: `-${currentIndex * itemWidth}px`, width: `${itemWidth * items?.length}px` }} className={`relative h-full flex overflow-hidden ${!load && 'transition-left duration-500 ease-in-out'} `} >
                 {items.map((item, index) => (
-                    <div key={index} className="flex w-full h-full bg-primary-100 justify-center items-center" style={{ width: `${itemWidth}px` }}>
+                    <div style={{ width: `${itemWidth}px` }} key={index} className="flex flex-grow h-full  bg-primary-100 justify-center items-center">
                         {item}
                     </div>
                 ))}
