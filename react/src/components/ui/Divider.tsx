@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { cn } from "@lib/utils/helper";
 
 interface TProps {
     variant?: "left-aligned" | 'center-aligned' | 'right-aligned';
@@ -18,7 +18,7 @@ const Divider = (props: TProps) => {
             {
                 ["right-aligned", 'center-aligned']?.includes(variant) && <div style={{ width, height }} className="flex-grow border-t "></div>
             }
-            <span className={clsx({
+            <span className={cn({
                 "flex-shrink mx-4 text-gray": true,
                 [customeClass?.text || ""]: customeClass?.text
             })}>{text}</span>
