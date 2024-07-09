@@ -1,7 +1,7 @@
 
 import CardSubMenu from "@components/cards/CardSubMenu";
-import Button from "@components/ui/Button";
 import ProgressStep from "@components/ui/ProgressStep";
+import Filename from "@components/ui/text/Filename";
 
 const CardAdditionalInfoBreadcrumb = () => {
   const listAdditionalInfo = [
@@ -14,24 +14,18 @@ const CardAdditionalInfoBreadcrumb = () => {
       ),
     },
     {
-      title: "Variant",
-      caption: (
-        <p>
-          The list of variants available for the breadcrumb component can be seen{" "}
-          <Button label="here" to="/docs/pre-requisite" />.
-        </p>
-      ),
-    },
-    {
       title: "Dependencies:",
       caption: (
         <p>
           The Breadcrumb component relies on several dependencies and utility functions imported from external sources (
-          <span className="italic">@assets/icons</span>,{" "}
-          <span className="italic">@lib/utils/helper</span>,{" "}
-          <span className="italic">class-variance-authority</span>,{" "}
-          <span className="italic">react</span>,{" "}
-          <span className="italic">Button</span>
+          <Filename name="IconChevronRight" to="/docs/prerequisite/helper-component?id=IconChevronRight" />,
+          <Filename name="cn" to="/docs/prerequisite/helper-function?id=cn" />
+          <Filename name="cva" importFrom="class-variance-authority" />,
+          <Filename name="VariantProps" importFrom="class-variance-authority" />,
+          <Filename name="HTMLProps" importFrom="react" />
+          <Filename name="Button" to="/docs/components/button" />
+
+
           ). Ensure these dependencies are properly installed and imported for the component to function correctly.
         </p>
       ),
