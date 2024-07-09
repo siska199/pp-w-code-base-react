@@ -29,7 +29,7 @@ const CardIcon = (props: TProps) => {
 
   const handleToggleModal = () => {
     const updateShowModal = !showModal
-    navigate(`${location?.pathname}${updateShowModal ? `?name=${name}` : ''}`)
+    navigate(`${location?.pathname}${updateShowModal ? `?name=${name}` : ''}`, { replace: true })
     setShowModal(updateShowModal)
   }
 

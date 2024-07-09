@@ -8,7 +8,7 @@ const CardPropsAlert = () => {
     {
       label: "variant",
       content: <>
-        specifies the appearance variant of the alert based on its type (<span className="italic">error</span>, <span className="italic">success</span>, <span className="italic">warning</span>, <span className="italic">notification</span>, <span className="italic">info</span>).
+        Specifies the appearance variant of the alert based on its type (<span className="italic">error</span>, <span className="italic">success</span>, <span className="italic">warning</span>, <span className="italic">notification</span>, <span className="italic">info</span>).
       </>
     },
     {
@@ -58,8 +58,13 @@ const CardPropsAlert = () => {
     {
       label: "className (optional)",
       content: "Additional CSS classes to be applied to the alert container."
+    },
+    {
+      label: "withCloseBtn (optional)",
+      content: "If true, includes a close button in the alert for manual dismissal."
     }
-  ]
+  ];
+
 
   return (
     <CardSubMenu title={'Props'}>

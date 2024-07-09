@@ -39,7 +39,12 @@ export type TAlertProps = HTMLProps<HTMLButtonElement> & {
 
 const Alert = (props: TAlertProps) => {
     const { variant, customeIcon, type = 'info', withIcon, show, message, isFixed = true, withCloseBtn = false, autoClose = true, className = '', position = "top-right", timeout = 3000, onDismiss: handleOnDismiss } = props
-    const [isCloseAlert, setIsCloseAlert] = useState(show)
+    const [isCloseAlert, setIsCloseAlert] = useState(false)
+
+    useEffect(() => {
+        setIsCloseAlert(!show)
+    }, [show])
+
 
     useEffect(() => {
         if (timeout > 0 && autoClose && show) {
@@ -49,7 +54,7 @@ const Alert = (props: TAlertProps) => {
             }, timeout);
             return () => clearTimeout(timer);
         }
-    }, [handleOnDismiss, timeout, autoClose, show]);
+    }, [show]);
 
     const getAlertVariant = () => {
         switch (type) {
@@ -69,6 +74,8 @@ const Alert = (props: TAlertProps) => {
 
     const paramsAlertVariant = { className, variant, position, isFixed }
     const alertVariant = getAlertVariant()
+
+
     return ((show && !isCloseAlert) || !isFixed) ? (
         // @ts-expect-error
         <div className={cn(alertVariant(paramsAlertVariant))}>
