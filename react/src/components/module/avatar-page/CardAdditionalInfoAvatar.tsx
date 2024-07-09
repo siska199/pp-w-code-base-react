@@ -19,8 +19,9 @@ const CardAdditionalInfoAvatar = () => {
           <Filename name="Image" to='/docs/components/image' />,
           <Filename name="cn" to="/docs/prerequisite/helper-function?id=cn" />,
           <Filename name="variantsAvatar" to="/docs/prerequisite/variant?id=variant-avatar.ts" />,
-          <Filename name="cva" />,<Filename name="VariantProps" />,
-          and  <Filename name="HTMLProps" />). Ensure these dependencies are properly installed and imported for the component to function correctly.
+          <Filename name="cva" importFrom="class-variance-authority" />,
+          <Filename name="VariantProps" importFrom="class-variance-authority" />,
+          and  <Filename name="HTMLProps" importFrom="react"/>). Ensure these dependencies are properly installed and imported for the component to function correctly.
         </p >
 
       ),

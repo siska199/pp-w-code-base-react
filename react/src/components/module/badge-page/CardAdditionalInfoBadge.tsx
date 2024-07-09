@@ -26,7 +26,8 @@ const CardAdditionalInfoBadge = () => {
           The Badge component relies on several dependencies and utility functions imported from external sources (
           <Filename name="variantBadge" to="/docs/prerequisite/variant?id=variant-badge.ts" />
           <Filename name="cn" to="/docs/prerequisite/helper-function?id=cn" />,
-          <Filename name="cva" importFrom="class-variance-authority" />,<Filename name="VariantProps" importFrom="class-variance-authority" />,
+          <Filename name="cva" importFrom="class-variance-authority" />,
+          <Filename name="VariantProps" importFrom="class-variance-authority" />,
           <Filename name="React" importFrom="react"/>, and <Filename name="HTMLProps" importFrom="react"/>
           ). Ensure these dependencies are properly installed and imported for the component to function correctly.
         </p>

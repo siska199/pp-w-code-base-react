@@ -22,8 +22,12 @@ const CardAdditionalInfoAlert = () => {
           <Filename name="IconSuccess" to="/docs/prerequisite/icon?name=IconSuccess" />,
           <Filename name="cn" to="/docs/prerequisite/helper-function?id=cn" />,
           <Filename name="variantsAlert, variantAlertError, variantAlertSuccess, variantAlertWarning" to="/docs/prerequisite/variant?id=variant-alert.ts" />,
-          <Filename name="variant" to="/docs/prerequisite/variant?id=variant-color.ts" />, <Filename name="cva" />,<Filename name="VariantProps" />
-          <Filename name="HTMLProps" />, <Filename name="useEffect" />, and <Filename name="useState" />).
+          <Filename name="variant" to="/docs/prerequisite/variant?id=variant-color.ts" />,
+          <Filename name="cva" importFrom="class-variance-authority" />,
+          <Filename name="VariantProps" importFrom="class-variance-authority" />
+          <Filename name="HTMLProps" importFrom="react" />,
+          <Filename name="useEffect" importFrom="react" />, and
+          <Filename name="useState" importFrom="react" />).
           Ensure these
           dependencies are properly installed and imported for the component to
           function correctly.
