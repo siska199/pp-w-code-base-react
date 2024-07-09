@@ -2,6 +2,7 @@
 import CardSubMenu from "@components/cards/CardSubMenu";
 import List from "@components/ui/List";
 import ProgressStep from "@components/ui/ProgressStep";
+import Filename from "@components/ui/text/Filename";
 
 const CardAdditionalInfoDropdown = () => {
   const listAdditionalInfo = [
@@ -9,23 +10,25 @@ const CardAdditionalInfoDropdown = () => {
       title: "Default Behavior",
       caption: (
         <p>
-          The `DropdownBase` component toggles the visibility of its dropdown menu when the button is clicked. It supports keyboard navigation for accessibility, allowing users to navigate through options using arrow keys and select an option with the Enter key.
+          The DropdownBase component toggles the visibility of its dropdown menu when the button is clicked. It supports keyboard navigation for accessibility, allowing users to navigate through options using arrow keys and select an option with the Enter key.
         </p>
       )
     },
     {
       title: "Dependencies",
       caption: (
-        <div className="flex flex-col gap-4">
-          <p>The `DropdownBase` component relies on the following dependencies:</p>
-          <ul>
-            <li>- React Hooks (`useState`, `useRef`): For managing state (dropdown visibility and active index) and referencing DOM elements.</li>
-            <li>- `useOnClickOutside` hook: Enables closing the dropdown when clicking outside of it, enhancing user experience.</li>
-            <li>- Utility functions (`cn`, `clsx`): Used for conditional class name handling and combining class names for styling.</li>
-            <li>- Icons: Imports icons like `IconMoreVertical` and `IconChevronToggle` for visual indicators and interactions within the dropdown.</li>
-          </ul>
-          <p>These dependencies ensure proper functionality, user interaction handling, and customizable styling options for the `DropdownBase` component.</p>
-        </div>
+        <p>The Alert component relies on several dependencies and utility
+          functions imported from external sources (
+          <Filename name="IconMoreVertical" to="/docs/prerequisite/icon?name=IconMoreVertical" />,
+          <Filename name="IconChevronToggle" to="/docs/prerequisite/helper-component?id=IconChevronToggle.tsx" />,
+          <Filename name="useOnClickOutside" to="/docs/prerequisite/hook?id=useOnClickOutside" />,
+          <Filename name="cn" to="/docs/prerequisite/helper-function?id=cn" />,
+          <Filename name="TOption" to="/docs/prerequisite/types" />,
+          <Filename name="useRef" importFrom="react" />, and
+          <Filename name="useState" importFrom="react" />). Ensure these
+          dependencies are properly installed and imported for the component to
+          function correctly.
+        </p>
       )
     },
     {
@@ -101,61 +104,33 @@ const CardAdditionalInfoDropdown = () => {
     },
     {
       title: "Handling Click Outside",
-      caption: `
-        The component uses a custom hook, \`useOnClickOutside\`, to handle clicks outside the dropdown. 
-        This hook ensures that the dropdown closes when a user clicks outside of it. 
-        It takes an object with a \`ref\` to the dropdown container, \`refExceptions\` for elements that should not trigger the outside click event (like the dropdown button), and a \`handler\` function to execute when an outside click is detected.
-      `
+      caption: <p>
+        The component uses a custom hook, &apos;useOnClickOutside&apos;, to handle clicks outside the dropdown.
+        This hook ensures that the dropdown closes when a user clicks outside of it.
+        It takes an object with a &apos;ref&apos; to the dropdown container, &apos;refExceptions&apos; for elements that should not trigger the outside click event (like the dropdown button), and a &apos;handler&apos; function to execute when an outside click is detected.
+      </p>
     },
     {
       title: "Keyboard Accessibility",
-      caption: `
-        The component supports keyboard interactions. 
-        - Pressing \`Enter\` selects the currently highlighted option.
-        - Pressing \`ArrowDown\` moves the highlight to the next option.
-        - Pressing \`ArrowUp\` moves the highlight to the previous option.
-        This behavior is managed in the \`handleKeyDown\` function, which stops the default behavior and propagation of key events, and updates the \`activeIndex\` accordingly.
-      `
-    },
-    {
-      title: "Custom Styling",
-      caption: `
-        The \`customeClass\` prop allows for custom CSS class names for the container and the button. 
-        - \`containerDropdown\`: A custom class for the dropdown container.
-        - \`btnDropdown\`: A custom class for the dropdown button.
-        If \`isDefaultStyle\` is set to true, the default styles are applied. Users can override these styles by providing their own class names via the \`customeClass\` prop.
-      `
-    },
-    {
-      title: "Options Structure",
-      caption: `
-        Each option in the \`options\` array can have the following properties:
-        - \`label\`: The text or content to be displayed for the option.
-        - \`className\`: (Optional) Custom class name for the option.
-        - \`title\`: (Optional) A title that can be displayed above the option.
-        
-        Example:
-        \`\`\`javascript
-        const options = [
-          { label: "Option 1", className: "custom-class-1", title: "Group 1" },
-          { label: "Option 2", className: "custom-class-2" },
-        ];
-        \`\`\`
-      `
-    },
-    {
-      title: "Header Prop",
-      caption: `
-        The \`header\` prop allows for adding a header or additional information at the top of the dropdown menu. 
-        This can be any React node and is useful for providing context or additional options to the user.
-        
-        Example:
-        \`\`\`javascript
-        const header = <div className="header-content">Header Content</div>;
-        \`\`\`
-      `
-    },
+      caption: <div>
+        The component supports keyboard interactions:
+        <List
+          items={[
+            {
+              content: 'Pressing \'Enter\' selects the currently highlighted option'
+            },
+            {
+              content: 'Pressing \'ArrowDown\' moves the highlight to the next option.'
+            },
+            {
+              content: ' Pressing \'ArrowUp\' moves the highlight to the previous option'
+            }
+          ]}
+        />
 
+        This behavior is managed in the &rsquo;handleKeyDown&rsquo; function, which stops the default behavior and propagation of key events, and updates the &rsquo;activeIndex&rsquo; accordingly.
+      </div>
+    },
   ];
 
 

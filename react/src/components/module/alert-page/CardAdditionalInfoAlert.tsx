@@ -15,7 +15,8 @@ const CardAdditionalInfoAlert = () => {
       caption: (
         <p>
           The Alert component relies on several dependencies and utility
-          functions imported from external sources (<Filename name="IconClose" to="/docs/prerequisite/icon?name=IconClose" />,
+          functions imported from external sources (
+          <Filename name="IconClose" to="/docs/prerequisite/icon?name=IconClose" />,
           <Filename name="IconDanger" to="/docs/prerequisite/icon?name=IconDanger" />,
           <Filename name="IconInfo" to="/docs/prerequisite/icon?name=IconInfo" />,
           <Filename name="IconNotification" to="/docs/prerequisite/icon?name=IconNotification" />,

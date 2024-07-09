@@ -3,7 +3,6 @@ import IconChevronToggle from "@assets/icons/IconChevronToggle";
 import useOnClickOutside from "@hooks/useOnClickOutside";
 import { cn } from "@lib/utils/helper";
 import { TOption } from "@types";
-import clsx from "clsx";
 import { useRef, useState } from "react";
 
 export type TOptionDropdown = TOption<string | React.ReactNode> & {
@@ -74,7 +73,7 @@ const DropdownBase = (props: TProps) => {
                 <button
                     type="button"
                     onKeyDown={handleKeyDown}
-                    className={clsx({
+                    className={cn({
                         "inline-flex w-full justify-center items-center gap-x-2 outline-none": true,
                         "rounded-md bg-white px-3 py-2 text-sm font-semibold shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50": isDefaultStyle,
                         [customeClass?.btnDropdown || ""]: customeClass?.btnDropdown

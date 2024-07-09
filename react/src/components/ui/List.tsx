@@ -20,7 +20,7 @@ const List = (props: TProps) => {
     const renderItems = (items: TItemList[],level:number) => {
         return (
 
-            <ul className={`${customeClass?.ul} ${title && "ml-4"} list-disc px-4 flex flex-col mt-2`}>
+            <ul className={`${customeClass?.ul} ${title && "ml-4"} list-disc px-4 flex flex-col `}>
                 {items.map((item, i) => (
                     <li key={i} className={`${customeClass?.li} ${item?.label ? 'my-1' : 'mb-0'}`}>
                         {item.label && <Badge label={item.label} variant={variantBadge?.[level]||'soft-primary'} className="mr-2" />}
