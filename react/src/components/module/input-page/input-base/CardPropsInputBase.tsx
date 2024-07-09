@@ -15,17 +15,17 @@ const CardPropsInputBase = () => {
       childs: [
         {
           label: 'e',
-          content: 'React.ChangeEvent<HTMLInputElement> type event.'
+          content: <><code>{`React.ChangeEvent<HTMLInputElement>`}</code> type event.</>
         }
       ]
     },
     {
       label: 'HTMLProps',
-      content: 't defines all properties (props) that an <input> element in HTML can accept. These include attributes like className, style, value, and event handlers like onChange, onFocus, etc.'
+      content: <>It defines all properties (props) that an <code>{`<input> `}</code> element in HTML can accept. These include attributes like className, style, value, and event handlers like onChange, onFocus, etc.</>
     },
     {
       label: 'Inherit all props that ContainerInput have',
-      content: <>To see all available props that ContainerInput have you can see in <Button label="here" to={`/docs/prerequisite/helper-component?id=container-input.tsx`} /> </>
+      content: <>To see all available props that ContainerInput have you can see in <Button label="here" to={`/docs/prerequisite/helper-component?id=ContainerInputProps.tsx`} /> </>
     }
   ]
 

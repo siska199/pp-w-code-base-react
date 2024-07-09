@@ -53,7 +53,9 @@ const HelperComponentPage = () => {
                         fileName="src/components/ui/input/ContainerInput.tsx"
                         codeString={codeStringComponentUi?.ContainerInput}
                     />
-                    <List title={"Props"} items={listPropsContainerInput} />
+                    <div id="ContainerInputProps.tsx">
+                        <List title={"Props"} items={listPropsContainerInput} />
+                    </div>
                 </Container>
             )
         }
