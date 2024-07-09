@@ -1,5 +1,6 @@
 
 import CardSubMenu from "@components/cards/CardSubMenu";
+import Button from "@components/ui/Button";
 import ProgressStep from "@components/ui/ProgressStep";
 import Filename from "@components/ui/text/Filename";
 
@@ -21,9 +22,9 @@ const CardAdditionalInfoAlert = () => {
           <Filename name="IconSuccess" to="/docs/prerequisite/icon?name=IconSuccess" />,
           <Filename name="cn" to="/docs/prerequisite/helper-function?id=cn" />,
           <Filename name="variantsAlert, variantAlertError, variantAlertSuccess, variantAlertWarning" to="/docs/prerequisite/variant?id=variant-alert.ts" />,
-          <Filename name="variant" to="/docs/prerequisite/variant?id=variant-color.ts" />,
-          <Filename name="class-variance-authority" />,
-          <Filename name="react" />). Ensure these
+          <Filename name="variant" to="/docs/prerequisite/variant?id=variant-color.ts" />, <Filename name="cva" />,<Filename name="VariantProps" />
+          <Filename name="HTMLProps" />, <Filename name="useEffect" />, and <Filename name="useState" />).
+          Ensure these
           dependencies are properly installed and imported for the component to
           function correctly.
         </p>
@@ -39,6 +40,10 @@ const CardAdditionalInfoAlert = () => {
           ). These variants determine the visual style and behavior based on the
           alert type (<span className="italic">error</span>, <span className="italic">success</span>, <span className="italic">warning</span>
           , <span className="italic">notification</span>, <span className="italic">info</span>).
+          <p>
+            The list of variants available for the Alert component can be seen{" "}
+            <Button label="here" to="/docs/prerequisite/variant?id=variant-alert.ts" />.
+          </p>
         </p>
       ),
     },

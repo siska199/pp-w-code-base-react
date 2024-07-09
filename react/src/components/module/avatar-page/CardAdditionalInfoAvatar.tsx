@@ -21,15 +21,17 @@ const CardAdditionalInfoAvatar = () => {
     {
       title: "Dependencies",
       caption: (
+
         <p>
           The Avatar component relies on several dependencies and utility functions imported from external sources (
-          <span className="italic">@components/ui/Image</span>,{" "}
-          <span className="italic">@lib/utils/helper</span>,{" "}
-          <span className="italic">@lib/utils/variants/ui/variant-avatar</span>,{" "}
-          <span className="italic">class-variance-authority</span>,{" "}
-          <span className="italic">react</span>
+          <span className="italic">Image</span> from <span className="italic">@components/ui/Image</span>,{" "}
+          <span className="italic">cn</span> from <span className="italic">@lib/utils/helper</span>,{" "}
+          <span className="italic">variantsAvatar</span> from <span className="italic">@lib/utils/variants/ui/variant-avatar</span>,{" "}
+          <span className="italic">cva</span> from <span className="italic">class-variance-authority</span>,{" "}
+          <span className="italic">HTMLProps</span> from <span className="italic">react</span>
           ). Ensure these dependencies are properly installed and imported for the component to function correctly.
         </p>
+
       ),
     },
   ];
