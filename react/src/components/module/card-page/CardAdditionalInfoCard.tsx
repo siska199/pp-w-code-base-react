@@ -3,6 +3,7 @@ import CardSubMenu from "@components/cards/CardSubMenu";
 import Button from "@components/ui/Button";
 import List from "@components/ui/List";
 import ProgressStep from "@components/ui/ProgressStep";
+import Filename from "@components/ui/text/Filename";
 
 const CardAdditionalInfoCard = () => {
   const listAdditionalInfo = [
@@ -14,19 +15,28 @@ const CardAdditionalInfoCard = () => {
         </p>
       ),
     },
+
+    {
+      title: "Dependencies",
+      caption: (
+        <p>
+          The Card component relies on several dependencies and utility functions imported from external sources (
+          <Filename name="IconChevronRight" to="/docs/prerequisite/icon?name=IconChevronRight" />,
+          <Filename name="Button" to="/docs/components/button" />
+          <Filename name="Image" to='/docs/components/image' />,
+          <Filename name="cn" to="/docs/prerequisite/helper-function?id=cn" />,
+          <Filename name="VariantProps" importFrom="class-variance-authority" />,
+          <Filename name="React" importFrom="react" />,and
+          <Filename name="HTMLProps" importFrom="react" />).
+          Ensure these dependencies are properly installed and imported for the component to function correctly.
+        </p>
+      ),
+    },
     {
       title: "Variant",
       caption: (
         <p>
           The Card component supports multiple variants such as &lsquo;top-bordered&lsquo;, &lsquo;centered-body&lsquo;, and &lsquo;overlay&lsquo;. Each variant provides a different visual style to the card. For more details on the available variants, refer to the <Button to="/docs/prerequisite/variant#card" label="here" />.
-        </p>
-      ),
-    },
-    {
-      title: "Dependencies",
-      caption: (
-        <p>
-          The Card component relies on several dependencies and utility functions imported from external sources (<span className="italic">@assets/icons</span>, <span className="italic">@components/ui/Button</span>, <span className="italic">@components/ui/Image</span>, <span className="italic">@lib/utils/helper</span>, <span className="italic">class-variance-authority</span>, <span className="italic">react</span>). Ensure these dependencies are properly installed and imported for the component to function correctly.
         </p>
       ),
     },

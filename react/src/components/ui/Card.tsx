@@ -25,7 +25,6 @@ export interface TPropsCard extends Omit<Partial<HTMLProps<HTMLDivElement>>, "ti
         to?: string;
     };
     customeClass?: {
-        imageOverlay?: string;
         container?: string;
         header?: {
             image?: string;
@@ -44,8 +43,9 @@ export interface TPropsCard extends Omit<Partial<HTMLProps<HTMLDivElement>>, "ti
 }
 
 const Card: React.FC<TPropsCard> = (props) => {
+    const { imageOverlay, ...attrs } = props
     return (
-        props.variant === "overlay" ? <Image className={props?.customeClass?.imageOverlay} customeClassName={{ container: "rounded-xl border" }} src={props?.imageOverlay || ""} overlay={{ content: <CardFill {...props} /> }} /> : <CardFill {...props} />
+        props.variant === "overlay" ? <Image customeClassName={{ container: "rounded-xl border" }} src={imageOverlay || ""} overlay={{ content: <CardFill {...attrs} /> }} /> : <CardFill {...attrs} />
 
     );
 };
@@ -116,7 +116,6 @@ const CardFill = (props: TPropsCard) => {
         </div>
     )
 }
-
 
 const cardVariants = cva(
     'border rounded-xl flex overflow-hidden bg-white',

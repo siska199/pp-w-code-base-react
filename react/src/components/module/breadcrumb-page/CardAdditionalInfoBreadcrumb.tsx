@@ -22,7 +22,7 @@ const CardAdditionalInfoBreadcrumb = () => {
           <Filename name="cn" to="/docs/prerequisite/helper-function?id=cn" />
           <Filename name="cva" importFrom="class-variance-authority" />,
           <Filename name="VariantProps" importFrom="class-variance-authority" />,
-          <Filename name="HTMLProps" importFrom="react" />
+          <Filename name="HTMLProps" importFrom="react" />, and
           <Filename name="Button" to="/docs/components/button" />
 
 

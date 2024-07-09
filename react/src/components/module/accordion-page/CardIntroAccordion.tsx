@@ -3,7 +3,6 @@ import Accordion from "@components/ui/Accordion"
 
 const CardIntroAccordion = () => {
 
-
   const listItemAccordion = [
     {
       label: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',

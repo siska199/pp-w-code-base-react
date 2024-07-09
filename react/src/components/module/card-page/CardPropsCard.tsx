@@ -34,11 +34,15 @@ const CardPropsCard = () => {
     },
     {
       label: "customeClass",
-      content: "An object to provide custom CSS classes for various parts of the card: 'imageOverlay', 'container', 'header', 'body', and 'footer'."
+      content: "An object to provide custom CSS classes for various parts of the card: 'container', 'header', 'body', and 'footer'."
     },
     {
       label: "fit",
       content: 'Determines whether the card should fit its content. Accepts true or false. Default is true.'
+    },
+    {
+      label: "isLoading",
+      content: 'Boolean flag to indicate whether the card is in a loading state.'
     },
     {
       label: "className",
@@ -49,6 +53,7 @@ const CardPropsCard = () => {
       content: "Any other HTML props that are valid for a div element."
     }
   ];
+
 
 
   return (
