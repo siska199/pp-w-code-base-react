@@ -11,7 +11,6 @@ interface TPropsLink {
   target?: '_blank' | ''
 }
 
-
 type TProps = Omit<Partial<HTMLProps<HTMLButtonElement | HTMLLinkElement>>, "label" | "size" | "shape">
   & VariantProps<typeof buttonVariants>
   & {
@@ -32,19 +31,14 @@ const Button = (props: TProps) => {
     updateVariant = "link-primary"
   }
 
-
-
   return (
     <CompButton
       {...attrs}
       disabled={isLoading || attrs?.disabled}
       className={cn(buttonVariants({ className, variant: updateVariant, size, shape, }))}
-    // target={target}
     >
       {
-        isLoading ? <span>
-          <IconLoading />Loading...
-        </span> : label
+        isLoading ? <span><IconLoading />Loading...</span> : label
       }
     </CompButton>
 

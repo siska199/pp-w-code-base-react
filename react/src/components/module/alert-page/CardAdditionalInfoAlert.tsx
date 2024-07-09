@@ -24,7 +24,7 @@ const CardAdditionalInfoAlert = () => {
           <Filename name="variantsAlert, variantAlertError, variantAlertSuccess, variantAlertWarning" to="/docs/prerequisite/variant?id=variant-alert.ts" />,
           <Filename name="variant" to="/docs/prerequisite/variant?id=variant-color.ts" />,
           <Filename name="cva" importFrom="class-variance-authority" />,
-          <Filename name="VariantProps" importFrom="class-variance-authority" />
+          <Filename name="VariantProps" importFrom="class-variance-authority" />,
           <Filename name="HTMLProps" importFrom="react" />,
           <Filename name="useEffect" importFrom="react" />, and
           <Filename name="useState" importFrom="react" />).

@@ -3,7 +3,7 @@ import CardSubMenu from "@components/cards/CardSubMenu";
 import List from "@components/ui/List";
 
 const CardPropsButton = () => {
-  const listItem = [
+  const listItem =[
     {
       label: "variant",
       content: "The variant style of the button, e.g., 'solid-primary', 'link-primary'."
@@ -49,7 +49,8 @@ const CardPropsButton = () => {
       content: "Specifies the target window or frame for the link if `customeElement` is `'link'`."
     },
   ];
-  
+
+
 
   return (
     <CardSubMenu title={'Props'}>

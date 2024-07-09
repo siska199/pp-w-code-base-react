@@ -7,3 +7,6 @@ export const endpoints = {
     posts: '/posts'
 }
 
+export const pages = {
+    
+}

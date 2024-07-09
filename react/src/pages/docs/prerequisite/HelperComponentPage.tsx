@@ -21,6 +21,17 @@ const HelperComponentPage = () => {
             )
         },
         {
+            title: <div id={"IconLoading.tsx"}>IconLoading</div>,
+            caption: (
+                <Container gap={"small"} >
+                    <CodeBlock
+                        fileName="src/assets/icons/IconLoading.tsx"
+                        codeString={codeStringSvgIcon.IconLoading}
+                    />
+                </Container>
+            )
+        },
+        {
             title: <div id={"Container.tsx"}>Container.tsx</div>,
             caption: (
                 <Container gap={"small"} >

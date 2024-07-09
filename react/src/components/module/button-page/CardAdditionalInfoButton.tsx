@@ -2,6 +2,7 @@
 import CardSubMenu from "@components/cards/CardSubMenu";
 import Button from "@components/ui/Button";
 import ProgressStep from "@components/ui/ProgressStep";
+import Filename from "@components/ui/text/Filename";
 
 const CardAdditionalInfoButton = () => {
   const listAdditionalInfo = [
@@ -14,36 +15,32 @@ const CardAdditionalInfoButton = () => {
       ),
     },
     {
-      title: "Variant",
-      caption: <p>
-        The list of variants available for the Button component can be seen <Button to="/docs/prerequisite/variant#button" label="here" />.
-      </p>
-    },
-    {
       title: "Dependencies:",
       caption: (
         <p>
           The Button component relies on several dependencies and utility functions imported from external sources (
-          <span className="italic">@assets/icons/IconLoading</span>,{" "}
-          <span className="italic">@lib/utils/helper</span>,{" "}
-          <span className="italic">@lib/utils/variants/variant-color</span>,{" "}
-          <span className="italic">class-variance-authority</span>,{" "}
-          <span className="italic">react</span>,{" "}
-          <span className="italic">react-router-dom</span>
+          <Filename name="IconLoading" to="/docs/prerequisite/helper-component?id=IconLoading.tsx" />
+          <Filename name="cn" to="/docs/prerequisite/helper-function?id=cn" />,
+          <Filename name="cva" importFrom="class-variance-authority" />,
+          <Filename name="VariantProps" importFrom="class-variance-authority" />
+          <Filename name="variantButton" to="/docs/prerequisite/variant?id=variant-button.ts" />,
+          <Filename name="HTMLProps" importFrom="react" />, and
+          <Filename name="Link" importFrom="react-router-dom" />
           ). Ensure these dependencies are properly installed and imported for the component to function correctly.
         </p>
       ),
     },
     {
-      title: "Icon Loading",
+      title: "Variant",
       caption: <p>
-        For the icons loading used by component Button, you can find it in the <Button to="/docs/prerequisite/icon" label="here" />
+        The list of variants available for the Button component can be seen <Button to="/docs/prerequisite/variant?id=variant-button.ts" label="here" />.
       </p>
     },
+
     {
       title: "Component Link Behavior",
       caption: <p>
-        The <code>Button</code> component can act as a link by setting <code>customeElement=&quot;link&quot;</code> and providing a <code>to</code> prop with the URL. It then renders as a <code>Link</code> component from React Router.
+        The <code>Button</code> component can act as a link by setting <code>customeElement=&quot;link&quot;</code> just by providing a <code>to</code> prop with the URL. It then it will renders as a <code>Link</code> component from React Router.
       </p>
     }
   ];
