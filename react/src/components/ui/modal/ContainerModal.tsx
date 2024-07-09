@@ -28,25 +28,27 @@ const ContainerModal = (props: TModalProps) => {
                     variant,
                     className: clsx({
                         "md-modal ": true,
-                        "md-show": isShow,
+                        "md-show flex ": isShow,
                         [className || '']: className
                     })
                 }))}
             >
                 <div
                     className={cn({
-                        'md-content bottom-0 relative  flex flex-col gap-2': true,
+                        'md-content bottom-0 relative  flex flex-col gap-2  w-full ': true,
                         [customeClass?.mdContent || '']: customeClass?.mdContent
                     })}
                     onClick={handleStopPropagation}
                 >
                     <Button
                         label={<IconClose />}
-                        className="absolute top-2 right-3 rounded-full w-[2rem] h-[2rem]"
+                        className="absolute top-2 right-2 rounded-full w-[2rem] h-[2rem] "
                         variant={"plain"}
                         onClick={handleOnClose}
                     />
-                    {children}
+                    <div className='max-h-[90vh] flex overflow-y-auto my-2'>
+                        {children}
+                    </div>
                 </div>
             </div >
 
@@ -57,7 +59,7 @@ const ContainerModal = (props: TModalProps) => {
 
 
 const modalVariants = cva(
-    ' min-w-full p-4 md:min-w-[20rem] ',
+    ' min-w-full p-4 md:min-w-[20rem] max-w-[90%] ',
     {
         variants: {
             variant: {

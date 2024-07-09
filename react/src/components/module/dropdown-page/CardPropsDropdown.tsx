@@ -30,7 +30,6 @@ const CardPropsDropdown = () => {
     }
   ];
 
-
   return (
     <CardSubMenu title={'Props'}>
       <List items={listItem} />

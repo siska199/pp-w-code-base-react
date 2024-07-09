@@ -7,25 +7,26 @@ interface TProps {
     customeClass?: {
         ul?: string;
         li?: string;
+        label?: string;
     },
     title?: string;
-    variantBadge?:{
-        [key:number]:keyof typeof variantBadge
+    variantBadge?: {
+        [key: number]: keyof typeof variantBadge
     }
 }
 
 const List = (props: TProps) => {
-    const { title, items, customeClass,variantBadge } = props;
+    const { title, items, customeClass, variantBadge } = props;
 
-    const renderItems = (items: TItemList[],level:number) => {
+    const renderItems = (items: TItemList[], level: number) => {
         return (
 
             <ul className={`${customeClass?.ul} ${title && "ml-4"} list-disc px-4 flex flex-col `}>
                 {items.map((item, i) => (
-                    <li key={i} className={`${customeClass?.li} ${item?.label ? 'my-1' : 'mb-0'}`}>
-                        {item.label && <Badge label={item.label} variant={variantBadge?.[level]||'soft-primary'} className="mr-2" />}
+                    <li key={i} className={` ${customeClass?.li} ${item?.label ? 'my-1' : 'mb-0'}`}>
+                        {item.label && <Badge label={item.label} variant={variantBadge?.[level] || 'soft-primary'} className={`mr-2  ${customeClass?.label}`} />}
                         {item.content}
-                        {item.childs && renderItems(item.childs, level+1)}
+                        {item.childs && renderItems(item.childs, level + 1)}
                     </li>
                 ))}
             </ul>

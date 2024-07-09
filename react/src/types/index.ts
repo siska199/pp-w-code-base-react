@@ -31,7 +31,7 @@ export interface TItemAccordion {
 }
 
 export interface TItemList {
-  label?: string;
+  label?: string | React.ReactNode;
   content: React.ReactNode;
   childs?: TItemList[]; // Make it recursive
 }
