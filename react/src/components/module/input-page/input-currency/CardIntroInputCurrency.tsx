@@ -6,11 +6,15 @@ import useForm from "@hooks/useForm";
 import codeStringComponentUi from "@lib/utils/code-string/component-ui";
 
 const CardIntroInputCurrency = () => {
-  const {form, handleOnChange} =useForm({
+  const { form, handleOnChange } = useForm({
     initialForm: {
-      'input-currency':{}
+      'input-currency': {
+        placeholder: '000,000,000.00',
+        value: 8800000000,
+        
+      }
     }
-  }) 
+  })
 
   const listExample = [
     {
