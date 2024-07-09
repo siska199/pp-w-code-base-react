@@ -24,8 +24,6 @@ const CardAdditionalInfoBreadcrumb = () => {
           <Filename name="VariantProps" importFrom="class-variance-authority" />,
           <Filename name="HTMLProps" importFrom="react" />, and
           <Filename name="Button" to="/docs/components/button" />
-
-
           ). Ensure these dependencies are properly installed and imported for the component to function correctly.
         </p>
       ),
