@@ -1,13 +1,28 @@
 
 import CardSubMenu from "@components/cards/CardSubMenu";
-import CodeBlock from "@components/ui/CodeBlock";
 import ProgressStep from "@components/ui/ProgressStep";
+import Filename from "@components/ui/text/Filename";
 
 const CardAdditionalInfoImage = () => {
   const listAdditionalInfo = [
     {
+      title: "Default Behavior",
+      caption: <p>The Image component renders an image with customizable options such as <span className="italic">src</span>, <span className="italic">alt</span>, and <span className="italic">overlay</span>. It supports loading states with optional skeleton loaders <span>(withSkeleton)</span> and blur effects <span> (withLoadEffect)</span>. Custom CSS classes can be applied to the image container <span>(container)</span>, the image itself <span>(image)</span>, and the overlay container <span>(containerOverlay)</span>.</p>
+    },
+    {
+      title: "Dependencies",
+      caption: <p>The Image component depends on
+        <Filename name="cn" to="/docs/prerequisite/helper-function?id=cn" />, (class name utility) and
+        <Filename name="getAssetURL" to="/docs/prerequisite/helper-function?id=getAssetURL" />(helper function for getting asset URLs).
+        It also uses React&apos;s
+        <Filename name="useState" importFrom="react" />
+        hook for managing loading states and effects.</p>
+    },
+    {
       title: "Loading State",
-      caption: "The component uses an internal loading state to apply a blur effect to the image while it is loading. This is managed by the `isLoading` state variable, which is set to `false` once the image has fully loaded. While the image is loading, a CSS class `blur-effect` is applied to give a visual indication that the image is not yet fully loaded. Once the image has loaded, the `clear-effect` class is applied to remove the blur."
+      caption: <div>
+        The component uses an internal loading state to apply a blur effect to the image while it is loading. This is managed by the &apos;isLoading&apos; state variable, which is set to &apos;false&apos; once the image has fully loaded. While the image is loading, a CSS class &apos;blur-effect&apos; is applied to give a visual indication that the image is not yet fully loaded. Once the image has loaded, the &apos;clear-effect&apos; class is applied to remove the blur.
+      </div>
     },
     {
       title: "Skeleton Loader",
@@ -19,43 +34,9 @@ const CardAdditionalInfoImage = () => {
     },
     {
       title: "Asset URL",
-      caption: "The `getAssetURL` function is used to generate the full URL of the image if the provided `src` does not include 'http'. This function constructs the full path based on the given name."
+      caption: <p>The getAssetURL function is used to generate the full URL of the image if the provided &apos;src&apos; does not include &apos;http&apos;. This function constructs the full path based on the given name.</p>
     },
-    {
-      title: "getAssetURL Function",
-      caption: (
-        <div>
-          <p>
-            The `getAssetURL` function helps in constructing the URL for assets stored in the project. It takes an object with the following properties:
-          </p>
-          <ul>
-            <li>
-              <strong>name:</strong> The name of the asset file (required).
-            </li>
-            <li>
-              <strong>folder:</strong> The folder where the asset is stored (optional, defaults to &rsquo;images&rsquo;).
-            </li>
-          </ul>
-          <p>
-            This function returns the full URL of the asset by combining the base URL of the project with the specified folder and file name.
-          </p>
-          <CodeBlock
-            codeString={`export const getAssetURL = (params: TParamsGetAssetURl) => {
-  const { name, folder = 'images' } = params;
-  return new URL(\`../../assets/\${folder}/\${name}\`, import.meta.url)?.href;
-}`}
-          />
-        </div>
-      ),
-    },
-    {
-      title: "Animation",
-      caption: (
-        <p>
-          The overlay slides up from the bottom on hover, achieved with the `translate-y` and `opacity` classes.
-        </p>
-      ),
-    },
+
   ];
 
 

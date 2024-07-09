@@ -8,7 +8,7 @@ const CardAdditionalInfoOTP = () => {
 
     {
       title: "HelperMessage Component Usage",
-      caption:<p>The `InputOTP` component uses the `HelperMessage` component imported from &rsquo;@components/ui/HelperMessage&rsquo; to display error messages. Make sure the `HelperMessage` component is imported and configured with appropriate props for styling and error messaging functionality. You can see the component <Button label="here" to="/docs/components/helper-message"/></p> 
+      caption: <p>The `InputOTP` component uses the `HelperMessage` component imported from &rsquo;@components/ui/HelperMessage&rsquo; to display error messages. Make sure the `HelperMessage` component is imported and configured with appropriate props for styling and error messaging functionality. You can see the component <Button label="here" to="/docs/components/helper-message" /></p>
     },
     {
       title: "Event Handling and Focus Management",
@@ -19,7 +19,7 @@ const CardAdditionalInfoOTP = () => {
       caption: "State management in the `InputOTP` component utilizes `useState` to manage OTP input (`otp`) and error state (`otpError`). Ensure that state updates (`setOtp` and `setOtpError`) are handled correctly to maintain component integrity and update UI based on user input and validation results."
     }
   ];
-  
+
   return (
     <CardSubMenu title={'Additional Info'}>
       <ProgressStep type="number" listStep={listAdditionalInfo} variant="vertical" />

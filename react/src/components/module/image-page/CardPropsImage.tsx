@@ -14,7 +14,7 @@ const CardPropsImage = () => {
     },
     {
       label: "customeClassName",
-      content: `An object containing custom class names:`,
+      content: "An object containing custom class names:",
       childs: [
         {
           label: "container",
@@ -40,7 +40,7 @@ const CardPropsImage = () => {
     },
     {
       label: "overlay",
-      content: `An object containing overlay configuration`,
+      content: "An object containing overlay configuration:",
       childs: [
         {
           label: "isShowOnHover",
@@ -61,7 +61,6 @@ const CardPropsImage = () => {
       content: "Any other HTML props to be passed to the image element."
     }
   ];
-
 
   return (
     <CardSubMenu title={'Props'} >
