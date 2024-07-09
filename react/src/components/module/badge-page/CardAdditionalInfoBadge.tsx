@@ -2,6 +2,7 @@
 import CardSubMenu from "@components/cards/CardSubMenu";
 import Button from "@components/ui/Button";
 import ProgressStep from "@components/ui/ProgressStep";
+import Filename from "@components/ui/text/Filename";
 
 const CardAdditionalInfoBadge = () => {
   const listAdditionalInfo = [
@@ -14,7 +15,7 @@ const CardAdditionalInfoBadge = () => {
       caption: (
         <p>
           The list of variants available for the Badge component can be seen{" "}
-          <Button label="here"  to="/docs/pre-requisite" />.
+          <Button label="here" to="/docs/prerequisite/variant?id=variant-badge.ts" />.
         </p>
       ),
     },
@@ -23,10 +24,10 @@ const CardAdditionalInfoBadge = () => {
       caption: (
         <p>
           The Badge component relies on several dependencies and utility functions imported from external sources (
-          <span className="italic">@lib/utils/variants/variant-color</span>,{" "}
-          <span className="italic">@lib/utils/helper</span>,{" "}
-          <span className="italic">class-variance-authority</span>,{" "}
-          <span className="italic">react</span>
+          <Filename name="variantBadge" to="/docs/prerequisite/variant?id=variant-badge.ts" />
+          <Filename name="cn" to="/docs/prerequisite/helper-function?id=cn" />,
+          <Filename name="cva" importFrom="class-variance-authority" />,<Filename name="VariantProps" importFrom="class-variance-authority" />,
+          <Filename name="React" importFrom="react"/>, and <Filename name="HTMLProps" importFrom="react"/>
           ). Ensure these dependencies are properly installed and imported for the component to function correctly.
         </p>
       ),

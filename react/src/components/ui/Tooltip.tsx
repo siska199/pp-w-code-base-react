@@ -11,9 +11,9 @@ interface TProps {
 const Tooltip = (props: TProps) => {
     const { children, text, variant = "top", customeClass } = props
     return (
-        <div data-text={text} className={`tooltip ${customeClass?.tooltip} ${variant} relative flex justify-center items-center w-fit p-1`}>
+        <div data-text={text} className={`${text && 'tooltip'} ${customeClass?.tooltip} ${variant} inline-block relative w-fit p-1`}>
             {children}
-            <div className={`rectangle ${variant}  ${customeClass?.rectangle}`}></div>
+            {text && <div className={`rectangle ${variant}  ${customeClass?.rectangle}`}></div>}
         </div>
     )
 }
