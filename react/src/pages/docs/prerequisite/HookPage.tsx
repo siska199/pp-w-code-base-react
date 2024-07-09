@@ -11,7 +11,7 @@ const HookPage = () => {
 
   const listHook = [
     {
-      title: 'useFormattedInput',
+      title: <div id="useFormattedInput">useFormattedInput</div>,
       caption: generateCaptionListItemHook({
         description: 'This hook is designed to handle formatted input fields, such as phone numbers, credit card numbers, or any other input that requires a specific pattern.',
         list: {
@@ -52,7 +52,7 @@ const HookPage = () => {
       })
     },
     {
-      title: 'useOnClickOutside',
+      title: <div id='useOnClickOutside'>useOnClickOutside</div>,
       caption: generateCaptionListItemHook({
         description: 'This hook detects and handles clicks outside of a specified element, which is useful for dropdowns, modals, or any component that should close when the user clicks outside of it.',
         list: {
@@ -89,7 +89,7 @@ const HookPage = () => {
       })
     },
     {
-      title: 'useTable',
+      title: <div id='useTable'>useTable</div>,
       caption: generateCaptionListItemHook({
         description: 'This hook is for managing table data, columns, and settings in a React component, encapsulating logic related to data fetching and state management for tables.',
         list: {
@@ -141,7 +141,11 @@ const HookPage = () => {
         title={'Hook'}
         subTitle={`The codebase you provided makes use of three custom hooks in React, each with specific functionality and use cases. Here's an overview of each hook and its general purpose:`}
       />
-      <ProgressStep type="number" listStep={listHook} variant="vertical" />
+      <ProgressStep
+        type="number"
+        listStep={listHook}
+        variant="vertical"
+      />
     </Container>
   );
 };

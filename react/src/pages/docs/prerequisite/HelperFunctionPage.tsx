@@ -9,7 +9,7 @@ const HelperFunctionPage = () => {
 
     const listHelper = [
         {
-            title: 'cn',
+            title: <div id="cn">cn</div>,
             caption: generateCaptionListItemFunction({
                 codeString: codeStringFunction.cn,
                 purposeDescrition: 'Combines multiple class names into a single string, merging Tailwind CSS class names if necessary.',
@@ -20,7 +20,7 @@ const HelperFunctionPage = () => {
             })
         },
         {
-            title: 'isEmptyValue',
+            title: <div id="isEmptyValue">isEmptyValue</div>,
             caption: generateCaptionListItemFunction({
                 codeString: codeStringFunction.isEmptyValue,
                 purposeDescrition: 'Checks if a value is empty.',
@@ -31,18 +31,18 @@ const HelperFunctionPage = () => {
             })
         },
         {
-            title: 'spreadArrayAttemp',
+            title: <div id="spreadArrayAttemp">spreadArrayAttemp</div>,
             caption: generateCaptionListItemFunction({
                 codeString: codeStringFunction.spreadArrayAttemp,
                 purposeDescrition: 'Adds a new value to an array, creating a new array if the original is empty.',
                 listParameter: [
-                    { label: 'params: TParamsSpreadArrayTemp', content: 'An object containing the new value and the array.'}
+                    { label: 'params: TParamsSpreadArrayTemp', content: 'An object containing the new value and the array.' }
                 ],
                 returnDescription: 'A new array with the added value.'
             })
         },
         {
-            title: 'getFieldFromObjectList',
+            title: <div id="getFieldFromObjectList">getFieldFromObjectList</div>,
             caption: generateCaptionListItemFunction({
                 codeString: codeStringFunction?.getFieldFromObjectList,
                 purposeDescrition: 'Retrieves a field value from an object list based on a matching field value.',
@@ -53,18 +53,18 @@ const HelperFunctionPage = () => {
             })
         },
         {
-            title: 'getFieldLabelFromOptions',
+            title: <div id='getFieldLabelFromOptions'>getFieldLabelFromOptions</div>,
             caption: generateCaptionListItemFunction({
                 codeString: codeStringFunction?.getFieldLabelFromOptions,
                 purposeDescrition: 'Retrieves the label of an option from a list based on a matching value.',
                 listParameter: [
-                    {label: 'params: Pick<TParamsFieldFromObjectList, "array" | "value"> ',content: 'An object containing the array and value to match.'}
+                    { label: 'params: Pick<TParamsFieldFromObjectList, "array" | "value"> ', content: 'An object containing the array and value to match.' }
                 ],
                 returnDescription: 'The label of the matched option.'
             })
         },
         {
-            title: 'getAssetURL',
+            title: <div id='getAssetURL'>getAssetURL</div>,
             caption: generateCaptionListItemFunction({
                 codeString: codeStringFunction?.getAssetURL,
                 purposeDescrition: 'Generates a URL for an asset file located in the specified folder.',
@@ -75,7 +75,7 @@ const HelperFunctionPage = () => {
             })
         },
         {
-            title: 'checkVisibleElmnInScreen',
+            title: <div id='checkVisibleElmnInScreen'>checkVisibleElmnInScreen</div>,
             caption: generateCaptionListItemFunction({
                 codeString: codeStringFunction.checkElmnOnTopOfPage,
                 purposeDescrition: 'Checks if an element is visible within the viewport.',
@@ -86,7 +86,7 @@ const HelperFunctionPage = () => {
             })
         },
         {
-            title: 'checkElmnOnTopOfPage',
+            title: <div id='checkElmnOnTopOfPage'>checkElmnOnTopOfPage</div>,
             caption: generateCaptionListItemFunction({
                 codeString: codeStringFunction.checkElmnOnTopOfPage,
                 purposeDescrition: 'Checks if an element is at the top of the page.',
@@ -97,7 +97,7 @@ const HelperFunctionPage = () => {
             })
         },
         {
-            title: 'handleStopPropagation',
+            title: <div id='handleStopPropagation'>handleStopPropagation</div>,
             caption: generateCaptionListItemFunction({
                 codeString: `export const handleStopPropagation = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => e?.stopPropagation();`,
                 purposeDescrition: 'Stops the propagation of an event.',
@@ -108,7 +108,7 @@ const HelperFunctionPage = () => {
             })
         },
         {
-            title: 'generateDisplayComponent',
+            title: <div id='generateDisplayComponent'>generateDisplayComponent</div>,
             caption: generateCaptionListItemFunction({
                 codeString: codeStringFunction?.generateDisplayComponent,
                 purposeDescrition: 'Generates a display component string based on the provided component name and dynamic content.',
@@ -178,7 +178,7 @@ const generateCaptionListItemFunction = (params: TParamsGenerateItemFunction) =>
 
         ]}
         variantBadge={{
-            1:'outline-gray'
+            1: 'outline-gray'
         }}
     />
 

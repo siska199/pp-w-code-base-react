@@ -1,44 +1,60 @@
 import CardIntro from "@components/cards/CardIntro";
-import Badge from "@components/ui/Badge";
 import CodeBlock from "@components/ui/CodeBlock";
 import Container from "@components/ui/Container";
 import List from "@components/ui/List";
 import ProgressStep from "@components/ui/ProgressStep";
+import Filename from "@components/ui/text/Filename";
+import Pathname from "@components/ui/text/Pathname";
 import codeStringStyle from "@lib/utils/code-string/style";
 
 const CSSFilePage = () => {
 
-
     const listCSSFile = [
         {
-            title: <div id="index.css">File <Badge label="index.css" variant={"soft-gray"} /> terletak pada folder <span className="italic">styles</span></div>,
-            caption: <CodeBlock
-                fileName="styles/index.css"
-                codeString={codeStringStyle.index}
-            />
+            title: <div id="index.css">File <Filename name="index.css" /> terletak pada folder <Pathname path="assets/styles" /> </div>,
+            caption: (
+                <CodeBlock
+                    fileName="styles/index.css"
+                    codeString={codeStringStyle.index}
+                />
+            )
         },
         {
-            title: <>File <Badge label="input.css" variant={"soft-gray"} /> terletak pada folder <span className="italic">styles/ui</span></>,
-            caption: <CodeBlock
-                fileName="styles/ui/input.css"
-                codeString={codeStringStyle?.input}
-            />
+            title: <div id="input.css">File <Filename name="input.css" /> terletak pada folder <Pathname path="assets/styles/ui" /></div>,
+            caption: (
+                <CodeBlock
+                    fileName="styles/ui/input.css"
+                    codeString={codeStringStyle?.input}
+                />
+            )
         },
         {
-            title: <>File <Badge label="modal.css" variant={"soft-gray"} /> terletak pada folder <span className="italic">styles/ui</span></>,
-            caption: <CodeBlock
-                fileName="styles/ui/modal.css"
-                codeString={codeStringStyle.modal} />
+            title: <div id="modal.css">File <Filename name="modal.css" /> terletak pada folder <Pathname path="assets/styles/ui" /> </div>,
+            caption: (
+                <CodeBlock
+                    fileName="styles/ui/modal.css"
+                    codeString={codeStringStyle.modal}
+                />
+            )
         },
         {
-            title: <>File <Badge label="progress-step.css" variant={"soft-gray"} /> terletak pada folder <span className="italic">styles/ui</span></>,
-            caption: <CodeBlock fileName="styles/ui/progress-step.css"
-                codeString={codeStringStyle?.progressStep} />
+            title: <div id="progress-step.css">File <Filename name="progress-step.css" /> terletak pada folder <Pathname path="assets/styles/ui" /></div>,
+            caption: (
+                <CodeBlock
+                    fileName="styles/ui/progress-step.css"
+                    codeString={codeStringStyle?.progressStep}
+                />
+            )
         },
 
         {
-            title: <>File <Badge label="tooltip.css" variant={"soft-gray"} /> terletak pada folder <span className="italic">styles/ui</span></>,
-            caption: <CodeBlock fileName="styles/ui/tooltip.css" codeString={codeStringStyle.tooltip} />
+            title: <div id="tooltip.css">File  <Filename name="tooltip.css" /> terletak pada folder <Pathname path="assets/styles/ui" /></div>,
+            caption: (
+                <CodeBlock
+                    fileName="styles/ui/tooltip.css"
+                    codeString={codeStringStyle.tooltip}
+                />
+            )
         }
     ]
     return (

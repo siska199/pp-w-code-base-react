@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import { cn } from "@lib/utils/helper";
 
-type TProps = {
+export interface TProgressStepProps {
     activeStep?: number;
     listStep: {
         title: string | React.ReactNode;
@@ -20,7 +20,7 @@ type TProps = {
 
 
 
-const ProgressStep = (props: TProps) => {
+const ProgressStep = (props: TProgressStepProps) => {
     const { listStep, shapeItem = "circle", activeStep, variant = "horizontal", type = "default", customeClass } = props
 
     const IconCheckPS = (props: any) => <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" {...props} >
@@ -42,18 +42,18 @@ const ProgressStep = (props: TProps) => {
                                 })}>
                                     <span className={cn({
                                         "flex justify-center items-center rounded-sm": true,
-                                        
+
                                         "rounded-full": shapeItem === "circle",
-                                        
+
                                         'bg-primary p-1 text-white border-primary': isCompleted,
                                         "border-primary  bg-white border-[2px] ring-4 ring-primary-200": isActive,
-                                        
+
                                         'w-4 h-4': type === "default",
                                         "!w-3 !h-3 mb-1": isActive && type === "default",
                                         "border-[2px]": type === "default" && !isCompleted && !isActive,
 
                                         'w-[1.5rem] h-[1.5rem] !text-body-small !bg-primary-100 !border-[1px] !border-primary-100  font-medium text-primary-700 ': type === "number",
-                                        
+
                                         "!w-3 !h-3 !bg-primary-100": type === "dot",
                                         [customeClass?.spanIcon || '']: customeClass?.spanIcon || ''
                                     })}>

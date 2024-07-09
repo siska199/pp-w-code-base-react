@@ -2,33 +2,49 @@ import CardIntro from "@components/cards/CardIntro";
 import CodeBlock from "@components/ui/CodeBlock";
 import Container from "@components/ui/Container";
 import List from "@components/ui/List";
-import ProgressStep from "@components/ui/ProgressStep";
+import ProgressStep, { TProgressStepProps } from "@components/ui/ProgressStep";
 import codeStringComponentUi from "@lib/utils/code-string/component-ui";
+import codeStringSvgIcon from "@lib/utils/code-string/svg-icon";
 
 const HelperComponentPage = () => {
 
-    const listHelperComponent = [
+    const listHelperComponent: TProgressStepProps['listStep'] = [
         {
-            title: 'Container.tsx',
-            caption: <Container gap={"small"} id={"container.tsx"}>
-                <p>The Container component is a versatile, highly customizable container for various layout configurations. It leverages the class-variance-authority (CVA) library to manage and apply a variety of CSS classes based on the provided props. This component is designed to offer flexible layout options using CSS flexbox properties, enabling developers to create consistent and reusable layouts.</p>
-                <CodeBlock
-                    fileName="src/components/ui/Container.tsx"
-                    codeString={codeStringComponentUi.Container}
-                />
-                <List title={"Props"} items={listPropsContainer} />
-            </Container>
+            title: <div id={"IconChevronToggle.tsx"}>IconChevronToggle</div>,
+            caption: (
+                <Container gap={"small"} >
+                    <CodeBlock
+                        fileName="src/assets/icons/IconChevronToggle.tsx"
+                        codeString={codeStringSvgIcon.IconChevronToggle}
+                    />
+                </Container>
+            )
         },
         {
-            title: 'ContainerInput.tsx',
-            caption: <Container gap={"small"} id={"container-input.tsx"}>
-                <p>The ContainerInput component is a versatile wrapper designed to handle almost all types of input components. It simplifies the process of creating input fields by providing a common structure and handling various functionalities, such as clearing the input, toggling password visibility, and displaying error messages. This component helps ensure that input fields have a consistent look and feel across the application and reduces the need for repetitive code</p>
-                <CodeBlock
-                    fileName="src/components/ui/input/ContainerInput.tsx"
-                    codeString={codeStringComponentUi?.ContainerInput}
-                />
-                <List title={"Props"} items={listPropsContainerInput} />
-            </Container>
+            title: <div id={"Container.tsx"}>Container.tsx</div>,
+            caption: (
+                <Container gap={"small"} >
+                    <p>The Container component is a versatile, highly customizable container for various layout configurations. It leverages the class-variance-authority (CVA) library to manage and apply a variety of CSS classes based on the provided props. This component is designed to offer flexible layout options using CSS flexbox properties, enabling developers to create consistent and reusable layouts.</p>
+                    <CodeBlock
+                        fileName="src/components/ui/Container.tsx"
+                        codeString={codeStringComponentUi.Container}
+                    />
+                    <List title={"Props"} items={listPropsContainer} />
+                </Container>
+            )
+        },
+        {
+            title: <div id={"ContainerInput.tsx"}>ContainerInput.tsx</div>,
+            caption: (
+                <Container gap={"small"} >
+                    <p>The ContainerInput component is a versatile wrapper designed to handle almost all types of input components. It simplifies the process of creating input fields by providing a common structure and handling various functionalities, such as clearing the input, toggling password visibility, and displaying error messages. This component helps ensure that input fields have a consistent look and feel across the application and reduces the need for repetitive code</p>
+                    <CodeBlock
+                        fileName="src/components/ui/input/ContainerInput.tsx"
+                        codeString={codeStringComponentUi?.ContainerInput}
+                    />
+                    <List title={"Props"} items={listPropsContainerInput} />
+                </Container>
+            )
         }
     ]
 
@@ -38,8 +54,11 @@ const HelperComponentPage = () => {
                 title={'Helper Component'}
                 subTitle={'Helper components are specialized components created to build other components. They encapsulate reusable logic and structures, allowing for more efficient and organized development. By providing common functionalities, helper components make the codebase more maintainable and consistent.'}
             />
-
-            <ProgressStep type="number" variant="vertical" listStep={listHelperComponent} />
+            <ProgressStep
+                type="number"
+                variant="vertical"
+                listStep={listHelperComponent}
+            />
         </>
 
     );
