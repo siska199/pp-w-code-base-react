@@ -30,7 +30,7 @@ const CardAdditionalInfoAvatar = () => {
       caption: (
         <p>
           The list of variants available for the Badge component can be seen{" "}
-          <Button label="here" to="/docs/prerequisite/variant?id=variant-badge.ts" />.
+          <Button label="here" to="/docs/prerequisite/variant?id=variant-avatar.ts" />.
         </p>
       ),
     },
