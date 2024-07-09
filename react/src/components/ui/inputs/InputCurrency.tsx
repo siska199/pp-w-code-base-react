@@ -15,12 +15,7 @@ const InputCurrency = (props: TProps) => {
 
     useEffect(() => {
         setFormattedValue(handleFormatDoubleDigitAfterDot(formatValue(value)));
-
     }, [])
-
-    useEffect(() => {
-        setFormattedValue(formatValue(value));
-    }, [value]);
 
     const formatValue = (value: string): string => {
         let valueFormatted = String(value)
@@ -51,6 +46,7 @@ const InputCurrency = (props: TProps) => {
             }
         }
         e.target.value = formattedValue
+        setFormattedValue(formatValue(e.target.value));
 
         handleOnChange(e);
         setTimeout(() => {
@@ -74,6 +70,7 @@ const InputCurrency = (props: TProps) => {
             }
         }
         e.target.value = valueFormatted;
+        setFormattedValue(e.target.value)
         handleOnChange(e);
     };
 
