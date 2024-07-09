@@ -46,7 +46,7 @@ const ContainerModal = (props: TModalProps) => {
                         variant={"plain"}
                         onClick={handleOnClose}
                     />
-                    <div className='max-h-[90vh] flex overflow-y-auto py-2'>
+                    <div className='max-h-[90vh] flex overflow-y-auto p-2'>
                         {children}
                     </div>
                 </div>
