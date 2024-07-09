@@ -41,9 +41,7 @@ const CardPropsAvatar = () => {
       content: "Sets the status indicator on the avatar. Accepts 'offline', 'online', 'away', 'dontdistrub', 'icon'."
     }
   ];
-
-
-
+  
   return (
     <CardSubMenu title={'Props'}>
       <List items={listItem} />

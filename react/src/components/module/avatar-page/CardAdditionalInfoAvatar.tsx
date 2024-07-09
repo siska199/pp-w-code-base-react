@@ -2,6 +2,7 @@
 import CardSubMenu from "@components/cards/CardSubMenu";
 import Button from "@components/ui/Button";
 import ProgressStep from "@components/ui/ProgressStep";
+import Filename from "@components/ui/text/Filename";
 
 const CardAdditionalInfoAvatar = () => {
   const listAdditionalInfo = [
@@ -10,30 +11,30 @@ const CardAdditionalInfoAvatar = () => {
       caption: <p>The default variant of the avatar is &apos;soft-gray&apos;, the default size is &apos;base&apos;, and the default shape is &apos;circular&apos;.</p>
     },
     {
-      title: "Variant",
-      caption: (
-        <p>
-          The list of variants available for the Badge component can be seen{" "}
-          <Button label="here" to="/docs/pre-requisite" />.
-        </p>
-      ),
-    },
-    {
       title: "Dependencies",
       caption: (
 
         <p>
           The Avatar component relies on several dependencies and utility functions imported from external sources (
-          <span className="italic">Image</span> from <span className="italic">@components/ui/Image</span>,{" "}
-          <span className="italic">cn</span> from <span className="italic">@lib/utils/helper</span>,{" "}
-          <span className="italic">variantsAvatar</span> from <span className="italic">@lib/utils/variants/ui/variant-avatar</span>,{" "}
-          <span className="italic">cva</span> from <span className="italic">class-variance-authority</span>,{" "}
-          <span className="italic">HTMLProps</span> from <span className="italic">react</span>
-          ). Ensure these dependencies are properly installed and imported for the component to function correctly.
-        </p>
+          <Filename name="Image" to='/docs/components/image' />,
+          <Filename name="cn" to="/docs/prerequisite/helper-function?id=cn" />,
+          <Filename name="variantsAvatar" to="/docs/prerequisite/variant?id=variant-avatar.ts" />,
+          <Filename name="cva" />,<Filename name="VariantProps" />,
+          and  <Filename name="HTMLProps" />). Ensure these dependencies are properly installed and imported for the component to function correctly.
+        </p >
 
       ),
     },
+    {
+      title: "Variant",
+      caption: (
+        <p>
+          The list of variants available for the Badge component can be seen{" "}
+          <Button label="here" to="/docs/prerequisite/variant?id=variant-badge.ts" />.
+        </p>
+      ),
+    },
+
   ];
 
 
