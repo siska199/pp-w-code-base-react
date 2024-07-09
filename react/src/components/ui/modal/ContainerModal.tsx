@@ -6,7 +6,7 @@ import { cn } from "@lib/utils/helper";
 import { VariantProps, cva } from "class-variance-authority";
 import clsx from "clsx";
 
-interface TProps extends TBaseModal, VariantProps<typeof modalVariants> {
+export interface TModalProps extends TBaseModal, VariantProps<typeof modalVariants> {
     customeClass?: {
         mdContent?: string;
     };
@@ -14,7 +14,7 @@ interface TProps extends TBaseModal, VariantProps<typeof modalVariants> {
 }
 
 
-const ContainerModal = (props: TProps) => {
+const ContainerModal = (props: TModalProps) => {
     const { isShow, customeClass, className, onClose: handleOnClose, children, variant = "fadein-scaleup" } = props
 
     const handleStopPropagation = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {

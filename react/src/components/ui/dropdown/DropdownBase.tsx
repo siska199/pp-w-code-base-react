@@ -80,8 +80,12 @@ const DropdownBase = (props: TProps) => {
                         [customeClass?.btnDropdown || ""]: customeClass?.btnDropdown
                     })}>
                     {
-                        label && <>{label}
-                            <IconChevronToggle isOpen={isOpen} className="w-[1rem]" /></>
+                        label && (
+                            <>
+                                {label}
+                                <IconChevronToggle isOpen={isOpen} className="w-[1rem]" />
+                            </>
+                        )
                     }
                     {
                         withButtonTriger && <IconMoreVertical />

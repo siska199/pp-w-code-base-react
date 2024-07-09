@@ -42,15 +42,11 @@ const displayUsage = `
       className: ""
     }
   ]
-  return <CardVariantComp
-          title={"Title"}
-          withBorder={false}
-          Component={<DropdownBase
+  return <DropdownBase
             label={"Action"}
             options={listOptionTitle}
             onClick={handleOnClick}
-          />}
-        />
+          />
 `;
 
 export default CardUsageDropdown;

@@ -6,7 +6,30 @@ import ProgressStep from "@components/ui/ProgressStep";
 const CardAdditionalInfoDropdown = () => {
   const listAdditionalInfo = [
     {
-      title: "Usage with Dropdown Variants",
+      title: "Default Behavior",
+      caption: (
+        <p>
+          The `DropdownBase` component toggles the visibility of its dropdown menu when the button is clicked. It supports keyboard navigation for accessibility, allowing users to navigate through options using arrow keys and select an option with the Enter key.
+        </p>
+      )
+    },
+    {
+      title: "Dependencies",
+      caption: (
+        <div className="flex flex-col gap-4">
+          <p>The `DropdownBase` component relies on the following dependencies:</p>
+          <ul>
+            <li>- React Hooks (`useState`, `useRef`): For managing state (dropdown visibility and active index) and referencing DOM elements.</li>
+            <li>- `useOnClickOutside` hook: Enables closing the dropdown when clicking outside of it, enhancing user experience.</li>
+            <li>- Utility functions (`cn`, `clsx`): Used for conditional class name handling and combining class names for styling.</li>
+            <li>- Icons: Imports icons like `IconMoreVertical` and `IconChevronToggle` for visual indicators and interactions within the dropdown.</li>
+          </ul>
+          <p>These dependencies ensure proper functionality, user interaction handling, and customizable styling options for the `DropdownBase` component.</p>
+        </div>
+      )
+    },
+    {
+      title: "Variants",
       caption: <div className="flex flex-col gap-4">
         <p>Each variant of the DropdownBase component demonstrates different configurations and features:</p>
         <List

@@ -48,14 +48,20 @@ const LayoutType1 = () => {
     }, [isMinLg, isMinMd, widthSidebar, widthRightSidebar, showSidebar])
 
     useEffect(() => {
-        const elmContainerLayout = document?.getElementById('layout')
-        elmContainerLayout?.scrollTo(0, 0)
 
-        const id = searchParams?.get('id')
-        const elm = document?.getElementById(id || '')
-        elm?.scrollIntoView()
+        if (!load) {
+            const elmContainerLayout = document?.getElementById('layout')
+            const id = searchParams?.get('id')
+            const elm = document?.getElementById(id || '')
 
-    }, [location?.pathname])
+            if (id) {
+                elm?.scrollIntoView()
+            } else {
+                elmContainerLayout?.scrollTo(0, 0)
+            }
+        }
+
+    }, [location?.pathname, load])
 
     useEffect(() => {
         setTimeout(() => {
@@ -68,7 +74,7 @@ const LayoutType1 = () => {
             <div className={`${load ? 'h-screen items-center flex justify-center' : 'hidden'} `}>
                 loading...
             </div>
-            <main id="layout" className={`${load && 'opacity-0'} overflow-x-hidden relative bg-white h-screen min-h-screen w-full overflow-y-auto`}>
+            <main id="layout" className={`${load && 'opacity-0'} !scroll-pt-[5rem] overflow-x-hidden relative bg-white h-screen min-h-screen w-full overflow-y-auto`}>
                 <Navbar />
                 <div className="flex relative overflow-x-hidden ">
                     <Sidebar />
