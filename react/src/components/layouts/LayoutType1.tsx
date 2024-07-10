@@ -69,17 +69,17 @@ const LayoutType1 = () => {
       <div className={`${load ? "h-screen items-center flex justify-center" : "hidden"} `}>loading...</div>
       <main id="layout" className={`${load && "opacity-0"} !scroll-pt-[5rem] overflow-x-hidden relative bg-white h-screen min-h-screen w-full overflow-y-auto`}>
         <Navbar />
-        <div className="flex relative overflow-x-hidden ">
+        <div className="flex relative overflow-x-hidden  ">
           <Sidebar />
           <div
-            className=" p-8 flex  transtion-all duration-10 overflow-x-auto"
+            className=" p-8 flex  transtion-all duration-10 overflow-x-auto !overflow-visible"
             style={{
               marginLeft: showSidebar === false ? 0 : leftPosition,
               marginRight: showRightSidebar === false ? 0 : rightPosition,
               width: showSidebar === false && showRightSidebar === false ? "100%" : `calc(100% - ${(showSidebar === false ? 0 : leftPosition) + (showRightSidebar === false ? 0 : rightPosition)}px)`,
             }}
           >
-            <div className="w-full max-w-full flex flex-col gap-4 pb-10">
+            <div className="w-full max-w-full flex flex-col gap-4 pb-10 !overflow-visible">
               <Outlet />
             </div>
             {showSidebar !== false && <RightSidebar />}

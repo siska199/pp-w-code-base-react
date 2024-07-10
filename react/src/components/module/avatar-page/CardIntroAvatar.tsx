@@ -6,7 +6,6 @@ import codeStringComponentUi from "@lib/utils/code-string/component-ui";
 import variantsAvatar from "@lib/utils/variants/ui/variant-avatar";
 
 const CardIntroAvatar = () => {
-  console.log(Object.keys(variantsAvatar.shape));
   const listExample = [
     {
       component: (

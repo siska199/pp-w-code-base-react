@@ -7,20 +7,20 @@ const CardAdditionalInfoBadge = () => {
   const listAdditionalInfo = [
     {
       title: "Default Behavior",
-      caption: <p>The default variant of the badge is &apos;soft-primary&apos;, the default size is &apos;base&apos;, and the default shape is &apos;pilled&apos;.</p>,
+      caption: <div>The default variant of the badge is &apos;soft-primary&apos;, the default size is &apos;base&apos;, and the default shape is &apos;pilled&apos;.</div>,
     },
     {
       title: "Variant",
       caption: (
-        <p>
+        <div>
           The list of variants available for the Badge component can be seen <Here to="/docs/prerequisite/variant?id=variant-badge.ts" />.
-        </p>
+        </div>
       ),
     },
     {
       title: "Dependencies:",
       caption: (
-        <p>
+        <div>
           The Badge component relies on several dependencies and utility functions imported from external sources (
           <Filename name="variantBadge" to="/docs/prerequisite/variant?id=variant-badge.ts" />
           <Filename name="cn" to="/docs/prerequisite/helper-function?id=cn" />
@@ -31,7 +31,7 @@ const CardAdditionalInfoBadge = () => {
           ,
           <Filename name="React" importFrom="react" />, and <Filename name="HTMLProps" importFrom="react" />
           ). Ensure these dependencies are properly installed and imported for the component to function correctly.
-        </p>
+        </div>
       ),
     },
   ];
