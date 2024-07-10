@@ -8,7 +8,7 @@ const CardIntroInputPercentage = () => {
   const { form, handleOnChange } = useForm<"input-percentage">({
     initialForm: {
       "input-percentage": {
-        value: "",
+        value: "90000",
       },
     },
   });

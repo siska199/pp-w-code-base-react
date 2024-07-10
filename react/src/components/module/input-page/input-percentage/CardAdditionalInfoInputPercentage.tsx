@@ -12,23 +12,23 @@ const CardAdditionalInfoInputPercentage = () => {
     {
       title: "Dependencies",
       caption: (
-        <p>
+        <div>
           The <code>InputPercentage</code> component relies on several dependencies and utility functions imported from external sources (
           <Filename name="ContainerInput" to="/docs/prerequisite/helper-component?id=ContainerInput.tsx" />
           <Filename name="TBasePropsInput" to="/docs/prerequisite/types" />,
           <Filename name="IconPercentage" to="/docs/prerequisite/icon?name=IconPercentage" />, and
           <Filename name="React" importFrom="react" />
           ). Ensure these dependencies are properly installed and imported for the component to function correctly.
-        </p>
+        </div>
       ),
     },
     {
       title: "Variant",
       caption: (
-        <p>
+        <div>
           The <code>InputPercentage</code> component supports six variants: &apos;v1&apos;, &apos;v2&apos;, &apos;v3&apos;, &apos;v4&apos;, &apos;v5&apos;, and &apos;v6&apos;. The default variant is &apos;v1&apos;. If the &apos;variant&apos; prop is set to &apos;v2&apos;, the placeholder is set to
           an empty string. Otherwise, it uses the provided placeholder or an empty string. For example of each variant you can see in <Here to="/docs/components/input/base" />
-        </p>
+        </div>
       ),
     },
     {
