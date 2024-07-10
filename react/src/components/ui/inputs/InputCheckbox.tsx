@@ -24,7 +24,7 @@ const InputCheckbox = (props: TProps) => {
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const isChecked = e.target.checked;
-    const updatedValue = checked !== undefined ? value : String(isChecked);
+    const updatedValue = ["true", "false"]?.includes(String(value)) ? String(isChecked) : value;
 
     onChange({
       ...e,
