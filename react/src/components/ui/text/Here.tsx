@@ -7,7 +7,7 @@ interface TProps {
 const Here = (props: TProps) => {
     const { to } = props
     return (
-        <Button label="here" to={to} />
+        <Button label="here" to={to} target="_blank"/>
     )
 }
 

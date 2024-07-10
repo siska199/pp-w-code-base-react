@@ -1,6 +1,7 @@
 import CardSubMenu from "@components/cards/CardSubMenu";
 import ProgressStep from "@components/ui/ProgressStep";
 import Filename from "@components/ui/text/Filename";
+import Here from "@components/ui/text/Here";
 
 const CardAdditionalInfoInputNPWP = () => {
   const listAdditionalInfo = [
@@ -29,7 +30,8 @@ const CardAdditionalInfoInputNPWP = () => {
       title: "Variant",
       caption: (
         <p>
-          The <code>variant</code> prop can be used to control the placeholder behavior. If the variant is set to &apos;v2&apos;, the placeholder will be empty. For other variants, the default placeholder &apos;XX.XXX.XXX.X-XXX.XXX&apos; will be displayed.
+          The <code>InputNPWP</code> component supports six variants: &apos;v1&apos;, &apos;v2&apos;, &apos;v3&apos;, &apos;v4&apos;, &apos;v5&apos;, and &apos;v6&apos;. The default variant is &apos;v1&apos;. If the &apos;variant&apos; prop is set to &apos;v2&apos;, the placeholder is set to an
+          empty string. Otherwise, it uses the provided placeholder or an empty string. For example of each variant you can see in <Here to="/docs/components/input/base" />
         </p>
       ),
     },

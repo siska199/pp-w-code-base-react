@@ -1,6 +1,7 @@
 import CardSubMenu from "@components/cards/CardSubMenu";
 import ProgressStep from "@components/ui/ProgressStep";
 import Filename from "@components/ui/text/Filename";
+import Here from "@components/ui/text/Here";
 
 const CardAdditionalInfoInputCurrency = () => {
   const listAdditionalInfo = [
@@ -16,7 +17,8 @@ const CardAdditionalInfoInputCurrency = () => {
       title: "Variants",
       caption: (
         <p>
-          The component supports different variants through the <code>variant</code> prop. If <code>variant</code> is set to &quot;v2&quot;, the placeholder text will be empty. For other variants, the placeholder text will default to the <code>attrs.placeholder</code> value.
+          The <code>InputPercentage</code> component supports six variants: &apos;v1&apos;, &apos;v2&apos;, &apos;v3&apos;, &apos;v4&apos;, &apos;v5&apos;, and &apos;v6&apos;. The default variant is &apos;v1&apos;. If the &apos;variant&apos; prop is set to &apos;v2&apos;, the placeholder is set to
+          an empty string. Otherwise, it uses the provided placeholder or an empty string. For example of each variant you can see in <Here to="/docs/components/input/base" />
         </p>
       ),
     },
