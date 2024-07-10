@@ -1,13 +1,38 @@
 import CardSubMenu from "@components/cards/CardSubMenu";
 import ProgressStep from "@components/ui/ProgressStep";
+import Filename from "@components/ui/text/Filename";
 
 const CardAdditionalInfoInputCurrency = () => {
   const listAdditionalInfo = [
     {
-      title: "Currency Formatting",
+      title: "Default Behaviour",
       caption: (
         <p>
-          The <code>InputCurrency</code> component automatically formats input values as currency. It adds commas for thousands separators and ensures values are displayed with two decimal places.
+          The <code>InputCurrency</code> component automatically formats the input value to include commas as thousand separators and ensures the value always has two decimal places.
+        </p>
+      ),
+    },
+    {
+      title: "Variants",
+      caption: (
+        <p>
+          The component supports different variants through the <code>variant</code> prop. If <code>variant</code> is set to &quot;v2&quot;, the placeholder text will be empty. For other variants, the placeholder text will default to the <code>attrs.placeholder</code> value.
+        </p>
+      ),
+    },
+    {
+      title: "Dependencies",
+      caption: (
+        <p>
+          The InputCurrency The Alert component relies on several dependencies and utility functions imported from external sources (
+          <Filename name="ContainerInput" to="/docs/prerequisite/helper-component?id=ContainerInput.tsx" />
+          <Filename name="TBasePropsInput" to="/docs/prerequisite/types" />,
+          <Filename name="React" importFrom="react" />,
+          <Filename name="useRef" importFrom="react" />
+          <Filename name="useEffect" importFrom="react" />
+          , and
+          <Filename name="useState" importFrom="react" />
+          ). Ensure these dependencies are properly installed and imported for the component to function correctly.
         </p>
       ),
     },
@@ -20,34 +45,19 @@ const CardAdditionalInfoInputCurrency = () => {
       ),
     },
     {
+      title: "Currency Formatting",
+      caption: (
+        <p>
+          The <code>InputCurrency</code> component automatically formats input values as currency. It adds commas for thousands separators and ensures values are displayed with two decimal places.
+        </p>
+      ),
+    },
+
+    {
       title: "Handling User Input",
       caption: (
         <p>
           The component provides two event handlers: <code>onChange</code> and <code>onBlur</code>. Use <code>onChange</code> to handle input value changes with formatted updates, and <code>onBlur</code> to finalize the formatted value when the input field loses focus.
-        </p>
-      ),
-    },
-    {
-      title: "Required Props",
-      caption: (
-        <p>
-          Ensure the component is provided with required props such as <code>onChange</code>, <code>value</code>, and <code>name</code> to function properly. These props are essential for controlling the input&apos;s behavior and value.
-        </p>
-      ),
-    },
-    {
-      title: "Placeholder Behavior",
-      caption: (
-        <p>
-          The placeholder behavior depends on the <code>variant</code> prop. If <code>variant</code> is set to &apos;v2&apos;, the placeholder text will be empty. For other variants, the placeholder text will default to the <code>attrs.placeholder</code> value.
-        </p>
-      ),
-    },
-    {
-      title: "Ref Usage",
-      caption: (
-        <p>
-          You can use the <code>inputRef</code> provided by the component to access the underlying DOM input element. This can be useful for focusing the input programmatically or obtaining its current value directly.
         </p>
       ),
     },

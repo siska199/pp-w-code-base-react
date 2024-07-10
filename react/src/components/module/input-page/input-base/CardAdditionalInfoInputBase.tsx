@@ -14,6 +14,14 @@ const CardAdditionalInfoInputBase = () => {
         </p>
       ),
     },
+    {
+      title: "Controlled Component",
+      caption: (
+        <p>
+          <code>InputCurrency</code> is a controlled component, meaning the input value is controlled by the <code>value</code> prop. Ensure that the <code>value</code> prop is updated correctly to reflect changes in the input field.
+        </p>
+      ),
+    },
   ];
 
   return (
