@@ -1,29 +1,52 @@
-
 import CardSubMenu from "@components/cards/CardSubMenu";
-import Button from "@components/ui/Button";
 import ProgressStep from "@components/ui/ProgressStep";
+import Filename from "@components/ui/text/Filename";
 
 const CardAdditionalInfoOTP = () => {
   const listAdditionalInfo = [
+    {
+      title: "Default Behaviour",
+      caption: (
+        <p>
+          The <code>InputOTP</code> component automatically validates the OTP input against the provided <code>correctOTP</code> prop and displays appropriate messages using the <code>alert</code> state. It manages focus dynamically to ensure a smooth user experience during input.
+        </p>
+      ),
+    },
 
     {
-      title: "HelperMessage Component Usage",
-      caption: <p>The `InputOTP` component uses the `HelperMessage` component imported from &rsquo;@components/ui/HelperMessage&rsquo; to display error messages. Make sure the `HelperMessage` component is imported and configured with appropriate props for styling and error messaging functionality. You can see the component <Button label="here" to="/docs/components/helper-message" /></p>
+      title: "Dependencies",
+      caption: (
+        <p>
+          The <code>InputOTP</code> component relies on several dependencies and utility functions imported from external sources (
+          <Filename name="Alert" to="/docs/components/alert" />
+          <Filename name="Container" to="/docs/prerequisite/helper-component?id=Container.tsx" />,
+          <Filename name="findLargestIndexWithValue" to="/docs/prerequisite/helper-function?id=findLargestIndexWithValue" />
+          <Filename name="findSmallestIndexWithEmptyValue" to="/docs/prerequisite/helper-function?id=findSmallestIndexWithEmptyValue" />,
+          <Filename name="TCustomeEventOnChange" to="/docs/prerequisite/types" />,
+          <Filename name="React" importFrom="react" />,
+          <Filename name="useRef" importFrom="react" />
+          <Filename name="useEffect" importFrom="react" />
+          , and
+          <Filename name="useState" importFrom="react" />
+          ). Ensure these dependencies are properly installed and imported for the component to function correctly.
+        </p>
+      ),
     },
+
     {
-      title: "Event Handling and Focus Management",
-      caption: "The `InputOTP` component handles keyboard events (`onChange` and `onKeyUp`) for OTP input and manages input focus dynamically using `useRef` and DOM manipulation. Ensure that event handlers (`handleChange` and `handleBackspaceAndEnter`) are correctly implemented and tested for your application's usability."
+      title: "OTP Formatting",
+      caption: (
+        <p>
+          The <code>InputOTP</code> component handles the OTP input by managing individual input boxes for each digit. It ensures the correct format by dynamically updating the state and managing focus.
+        </p>
+      ),
     },
-    {
-      title: "State Management with Hooks",
-      caption: "State management in the `InputOTP` component utilizes `useState` to manage OTP input (`otp`) and error state (`otpError`). Ensure that state updates (`setOtp` and `setOtpError`) are handled correctly to maintain component integrity and update UI based on user input and validation results."
-    }
   ];
 
   return (
-    <CardSubMenu title={'Additional Info'}>
+    <CardSubMenu title={"Additional Info"}>
       <ProgressStep type="number" listStep={listAdditionalInfo} variant="vertical" />
     </CardSubMenu>
   );
-}
+};
 export default CardAdditionalInfoOTP;
