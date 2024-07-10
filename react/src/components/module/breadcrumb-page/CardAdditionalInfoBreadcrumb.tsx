@@ -1,4 +1,3 @@
-
 import CardSubMenu from "@components/cards/CardSubMenu";
 import ProgressStep from "@components/ui/ProgressStep";
 import Filename from "@components/ui/text/Filename";
@@ -7,11 +6,7 @@ const CardAdditionalInfoBreadcrumb = () => {
   const listAdditionalInfo = [
     {
       title: "Default Behavior",
-      caption: (
-        <p>
-          The Breadcrumb component defaults to using icon dividers (Chevron Right), with an active item determined by the current URL path or the specified activeItem prop. It renders the items as links using the Button component.
-        </p>
-      ),
+      caption: <p>The Breadcrumb component defaults to using icon dividers (Chevron Right), with an active item determined by the current URL path or the specified activeItem prop. It renders the items as links using the Button component.</p>,
     },
     {
       title: "Dependencies:",
@@ -30,13 +25,11 @@ const CardAdditionalInfoBreadcrumb = () => {
     },
   ];
 
-
   return (
-    <CardSubMenu title={'Additional Info'}>
+    <CardSubMenu title={"Additional Info"}>
       <ProgressStep type="number" listStep={listAdditionalInfo} variant="vertical" />
     </CardSubMenu>
   );
-}
-
+};
 
 export default CardAdditionalInfoBreadcrumb;

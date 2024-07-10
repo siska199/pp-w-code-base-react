@@ -1,51 +1,55 @@
-
 import CardSubMenu from "@components/cards/CardSubMenu";
 import ProgressStep from "@components/ui/ProgressStep";
+import Filename from "@components/ui/text/Filename";
 
 const CardAdditionalInfoHelperMessage = () => {
   const listAdditionalInfo = [
     {
-      title: "Styling with className",
-      caption: `
-        You can customize the visual style of the helper message by adding additional CSS classes through the \`className\` prop. This allows you to change text color, font size, or add other decorations as per your design needs.
-        
-        Example:
-        \`\`\`jsx
-        <HelperMessage message="Error message" variant="error" className="my-custom-class" />
-        \`\`\`
-      `
+      title: "Default Behaviour",
+      caption: (
+        <p>
+          The <code>CopyText</code> component displays a text and a button to copy that text to the clipboard. By default, the component&apos;s layout is horizontal start-center (<code>&quot;hsc&quot;</code>) if no layout prop is provided. When the copy button is clicked, the text is copied to the
+          clipboard, and an icon indicating success is displayed for 3 seconds.
+        </p>
+      ),
     },
     {
-      title: "Using Different Variants",
-      caption: `
-        The \`variant\` prop allows you to specify different visual styles for the helper message based on the type of message you want to convey. Choose from \`error\`, \`success\`, or \`warning\` depending on your application context.
-        
-        Example:
-        \`\`\`jsx
-        <HelperMessage message="Success message" variant="success" />
-        \`\`\`
-      `
+      title: "Dependencies",
+      caption: (
+        <p>
+          The HelperMessage component relies on several dependencies and utility functions imported from external sources (
+          <Filename name="cn" to="/docs/prerequisite/helper-function?id=cn" />, and <Filename name="HTMLProps" importFrom="react" />
+          ). Ensure these dependencies are properly installed and imported for the component to function correctly.
+        </p>
+      ),
+    },
+    {
+      title: "Variants",
+      caption: (
+        <p>
+          The CopyTextcomponent accepts a <span className="italic">layout</span> prop to determine the alignment of the container. The possible values are:
+          <ul className="list-disc ml-4">
+            <li>
+              <code>hbc</code>: Horizontal layout with space between content.
+            </li>
+            <li>
+              <code>hsc</code>: Horizontal layout with start-center alignment (default).
+            </li>
+          </ul>
+        </p>
+      ),
     },
     {
       title: "Adding Additional HTML Attributes",
-      caption: `
-        The \`...attrs\` prop allows you to add additional HTML attributes to the underlying <p> element. This can be useful for adding an id, style, or other attributes based on your application requirements.
-        
-        Example:
-        \`\`\`jsx
-        <HelperMessage message="Warning message" variant="warning" style={{ marginTop: '10px' }} />
-        \`\`\`
-      `
-    }
+      caption: <>The &apos;...attrs&apos; prop allows you to add additional HTML attributes to the underlying {" <p> "}element. This can be useful for adding an id, style, or other attributes based on your application requirements.</>,
+    },
   ];
 
-
-
   return (
-    <CardSubMenu title={'Additional Info'}>
+    <CardSubMenu title={"Additional Info"}>
       <ProgressStep type="number" listStep={listAdditionalInfo} variant="vertical" />
     </CardSubMenu>
   );
-}
+};
 
 export default CardAdditionalInfoHelperMessage;

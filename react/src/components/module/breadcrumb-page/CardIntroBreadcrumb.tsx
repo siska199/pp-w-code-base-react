@@ -1,47 +1,31 @@
-
 import CardIntroComponent from "@components/cards/CardIntroComponent";
 import CardVariantComp from "@components/cards/CardVariantComp";
 import Breadcrumb from "@components/ui/Breadcrumb";
 import listMenuNavbar from "@lib/utils/data/menu-navbar";
 
 const CardIntroBreadcrumb = () => {
-
   const listExample = [
     {
       title: "",
-      component: <div className="flex flex-col ">
-        <CardVariantComp
-          title={"Default"}
-          Component={<Breadcrumb items={listMenuNavbar} activeItem={0} />}
-          withBorder={false}
-        />
-
-        <CardVariantComp
-          title={"No Divider"}
-          Component={<Breadcrumb items={listMenuNavbar} withIconDivider={false} activeItem={1} />}
-          withBorder={false}
-        />
-
-        <CardVariantComp
-          title={"Custome Icon Divider"}
-          Component={<Breadcrumb items={listMenuNavbar} customeIconDivider={"/"} activeItem={2} />}
-          withBorder={false}
-
-        />
-      </div>
-    }
-  ]
-
+      component: (
+        <div className="flex flex-col ">
+          <CardVariantComp title={"Default"} Component={<Breadcrumb items={listMenuNavbar} activeItem={0} />} withBorder={false} />
+          <CardVariantComp title={"No Divider"} Component={<Breadcrumb items={listMenuNavbar} withIconDivider={false} activeItem={1} />} withBorder={false} />
+          <CardVariantComp title={"Custome Icon Divider"} Component={<Breadcrumb items={listMenuNavbar} customeIconDivider={"/"} activeItem={2} />} withBorder={false} />
+        </div>
+      ),
+    },
+  ];
 
   return (
     <CardIntroComponent
-      title={'Breadcrumb'}
+      title={"Breadcrumb"}
       subTitle="A breadcrumb component is used as navigational aid that visually shows the user's location within a website or application hierarchy. It typically appears as a horizontal trail of links, usually at the top of a page or section, indicating the path from the homepage or main menu to the current page or location."
       listExample={listExample}
       displayCodeBase={displayCodeBase}
     />
   );
-}
+};
 
 const displayCodeBase = `import { IconChevronRight } from "@assets/icons";
 import { cn } from "@lib/utils/helper";

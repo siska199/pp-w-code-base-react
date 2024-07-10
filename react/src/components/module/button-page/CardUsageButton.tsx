@@ -1,16 +1,15 @@
-
-import CardSubMenu from '@components/cards/CardSubMenu';
-import CodeBlock from '@components/ui/CodeBlock';
-import { generateDisplayComponent } from '@lib/utils/helper';
+import CardSubMenu from "@components/cards/CardSubMenu";
+import CodeBlock from "@components/ui/CodeBlock";
+import { generateDisplayComponent } from "@lib/utils/helper";
 
 const CardUsageButton = () => {
   return (
     <CardSubMenu title="Usage">
       <p>Example usage of Button:</p>
-      <CodeBlock codeString={generateDisplayComponent('Button', displayUsage)} />
+      <CodeBlock codeString={generateDisplayComponent("Button", displayUsage)} />
     </CardSubMenu>
   );
-}
+};
 
 const displayUsage = `<>
     <Button variant={"solid-primary"} label={'Button'} />

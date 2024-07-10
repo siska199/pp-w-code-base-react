@@ -1,4 +1,3 @@
-
 import CardSubMenu from "@components/cards/CardSubMenu";
 import List from "@components/ui/List";
 
@@ -22,12 +21,11 @@ const CardPropsHelperMessage = () => {
     },
   ];
 
-
   return (
-    <CardSubMenu title={'Props'}>
+    <CardSubMenu title={"Props"}>
       <List items={listItem} />
     </CardSubMenu>
   );
-}
+};
 
 export default CardPropsHelperMessage;

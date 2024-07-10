@@ -1,7 +1,6 @@
-
-import CardSubMenu from '@components/cards/CardSubMenu';
-import CodeBlock from '@components/ui/CodeBlock';
-import { generateDisplayComponent } from '@lib/utils/helper';
+import CardSubMenu from "@components/cards/CardSubMenu";
+import CodeBlock from "@components/ui/CodeBlock";
+import { generateDisplayComponent } from "@lib/utils/helper";
 
 const CardUsageBreadcrumb = () => {
   return (
@@ -10,7 +9,7 @@ const CardUsageBreadcrumb = () => {
       <CodeBlock codeString={generateDisplayComponent("Breadcrumb", displayUsage)} />
     </CardSubMenu>
   );
-}
+};
 
 const displayUsage = `
   const listMenuNavbar = [

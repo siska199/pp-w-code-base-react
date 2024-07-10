@@ -1,224 +1,202 @@
-
-import { TBasePropsInput } from '@/types/ui/index';
+import { TBasePropsInput } from "@/types/ui/index";
 import { IconMessage } from "@assets/icons";
 import CardIntroComponent from "@components/cards/CardIntroComponent";
 import CardVariantComp from "@components/cards/CardVariantComp";
 import InputBase from "@components/ui/inputs/InputBase";
-import useForm from '@hooks/useForm';
-import codeStringComponentUi from '@lib/utils/code-string/component-ui';
-import { HTMLProps } from 'react';
+import useForm from "@hooks/useForm";
+import codeStringComponentUi from "@lib/utils/code-string/component-ui";
+import { TForm } from "@types";
 
 const CardIntroInputBase = () => {
-  type TKey = 'variant-1' | 'variant-2' | 'variant-3' | 'variant-4' | 'variant-5' |'variant-6' | 'disabled' | 'error' | 'icon-left' | 'icon-right' | 'icon-pre-start' | 'icon-pre-end'
-  type TForm = Record<TKey, TBasePropsInput & HTMLProps<HTMLInputElement>>
+  type TKey = "variant-1" | "variant-2" | "variant-3" | "variant-4" | "variant-5" | "variant-6" | "disabled" | "error" | "icon-left" | "icon-right" | "icon-pre-start" | "icon-pre-end";
 
-  const initialForm: TForm = {
-    'variant-1': {
-      label: 'Variant 1',
+  const initialForm: TForm<TKey> = {
+    "variant-1": {
+      label: "Variant 1",
       placeholder: "Variant 1",
       variant: "v1",
     },
-    'variant-2': {
-      label: 'Variant 2',
+    "variant-2": {
+      label: "Variant 2",
       placeholder: "Variant 2",
       variant: "v2",
     },
-    'variant-3': {
-      label: 'Variant 3',
+    "variant-3": {
+      label: "Variant 3",
       placeholder: "Variant 3",
       variant: "v3",
     },
-    'variant-4': {
-      label: 'Variant 4',
+    "variant-4": {
+      label: "Variant 4",
       placeholder: "Variant 4",
       variant: "v4",
     },
-    'variant-5': {
-      label: 'Variant 5',
+    "variant-5": {
+      label: "Variant 5",
       placeholder: "Variant 5",
       variant: "v5",
     },
-    'variant-6': {
-      label: 'Variant 6',
+    "variant-6": {
+      label: "Variant 6",
       placeholder: "Variant 6",
       variant: "v6",
     },
-    'disabled': {
-      label: 'Disabled',
+    disabled: {
+      label: "Disabled",
       placeholder: "Disabled",
       variant: "v1",
       disabled: true,
     },
-    'error': {
-      label: 'Error',
+    error: {
+      label: "Error",
       placeholder: "Error",
       variant: "v1",
       errorMessage: "Invalid Input",
     },
     "icon-left": {
-      label: 'Icon Left',
+      label: "Icon Left",
       variant: "v1",
       customeElement: {
-        start: <IconMessage />
-      }
+        start: <IconMessage />,
+      },
     },
-    'icon-right': {
-      label: 'Icon right',
+    "icon-right": {
+      label: "Icon right",
       variant: "v1",
       customeElement: {
-        end: <IconMessage />
-      }
+        end: <IconMessage />,
+      },
     },
-    'icon-pre-start': {
-      label: 'Pre End',
+    "icon-pre-start": {
+      label: "Pre End",
       variant: "v1",
       customeElement: {
-        preStart: "Http"
-      }
+        preStart: "Http",
+      },
     },
-    'icon-pre-end': {
-      name: 'icon-pre-end',
-      label: 'Pre End',
+    "icon-pre-end": {
+      name: "icon-pre-end",
+      label: "Pre End",
       customeElement: {
-        preEnd: "Text Preend"
-      }
-    }
-  }
-
+        preEnd: "Text Preend",
+      },
+    },
+  };
 
   const { form, handleOnChange } = useForm<TKey>({
-    initialForm: initialForm
-  })
+    initialForm: initialForm,
+  });
 
   const listExample1 = [
     {
-      title: 'Variant 1',
-      props: form["variant-1"]
+      title: "Variant 1",
+      props: form["variant-1"],
     },
     {
-      title: 'Variant 2',
-      props: form["variant-2"]
+      title: "Variant 2",
+      props: form["variant-2"],
     },
     {
-      title: 'Variant 3',
-      props: form["variant-3"]
+      title: "Variant 3",
+      props: form["variant-3"],
     },
     {
-      title: 'Variant 4',
-      props: form["variant-4"]
+      title: "Variant 4",
+      props: form["variant-4"],
     },
     {
-      title: 'Variant 5',
-      props: form["variant-5"]
+      title: "Variant 5",
+      props: form["variant-5"],
     },
     {
-      title: 'Variant 6',
-      props: form["variant-6"]
+      title: "Variant 6",
+      props: form["variant-6"],
     },
-  ]
+  ];
 
   const listExample2 = [
     {
-      title: 'Disabled',
-      props: form["disabled"]
+      title: "Disabled",
+      props: form["disabled"],
     },
     {
-      title: 'Error',
-      props: form["error"]
+      title: "Error",
+      props: form["error"],
     },
-
-  ]
+  ];
 
   const listExample3 = [
     {
-      title: 'Icon left',
-      props: form["icon-left"]
+      title: "Icon left",
+      props: form["icon-left"],
     },
     {
-      title: 'Icon Right',
-      props: form["icon-right"]
+      title: "Icon Right",
+      props: form["icon-right"],
     },
     {
-      title: 'Pre Start',
-      props: form["icon-pre-start"]
+      title: "Pre Start",
+      props: form["icon-pre-start"],
     },
     {
-      title: 'Pre End',
-      props: form["icon-pre-end"]
+      title: "Pre End",
+      props: form["icon-pre-end"],
     },
-  ]
+  ];
 
   const listExample = [
     {
-      title: 'Variant',
+      title: "Variant",
       component: listExample1?.map((data, i) => (
         <CardVariantComp
           key={i}
           title={data.title}
           withBorder={false}
-
           customeClass={{
-            container: "w-full"
+            container: "w-full",
           }}
-          Component={<InputBase
-            onChange={handleOnChange}
-            {...data?.props}
-            variant={data?.props?.variant as TBasePropsInput['variant']}
-          />}
+          Component={<InputBase onChange={handleOnChange} {...data?.props} variant={data?.props?.variant as TBasePropsInput["variant"]} />}
         />
-      ))
+      )),
     },
     {
-      title: 'State',
+      title: "State",
       component: listExample2?.map((data, i) => (
         <CardVariantComp
           key={i}
           title={data.title}
           withBorder={false}
           customeClass={{
-            container: "w-full"
+            container: "w-full",
           }}
-          Component={<InputBase
-            onChange={handleOnChange}
-            {...data?.props}
-            variant={data?.props?.variant as TBasePropsInput['variant']}
-          />}
+          Component={<InputBase onChange={handleOnChange} {...data?.props} variant={data?.props?.variant as TBasePropsInput["variant"]} />}
         />
-      ))
+      )),
     },
     {
-      title: 'With Icon',
+      title: "With Icon",
       component: listExample3?.map((data, i) => (
         <CardVariantComp
           key={i}
           title={data.title}
           withBorder={false}
           customeClass={{
-            container: "w-full"
+            container: "w-full",
           }}
-          Component={<InputBase
-            onChange={handleOnChange}
-            {...data?.props}
-            variant={data?.props?.variant as TBasePropsInput['variant']}
-            customeElement={data?.props.customeElement}
-          />}
+          Component={<InputBase onChange={handleOnChange} {...data?.props} variant={data?.props?.variant as TBasePropsInput["variant"]} customeElement={data?.props.customeElement} />}
         />
-      ))
+      )),
     },
-
-  ]
-
+  ];
 
   return (
     <CardIntroComponent
-      title={'Input Base'}
-      subTitle='An Input component is a UI element that allows users to enter and interact with data in web or mobile applications. It comes in various forms such as text fields, checkboxes, radio buttons, and dropdowns, each designed for specific types of data input. Properly designed Input components enhance user experience by making data entry intuitive and efficient.'
+      title={"Input Base"}
+      subTitle="An Input component is a UI element that allows users to enter and interact with data in web or mobile applications. It comes in various forms such as text fields, checkboxes, radio buttons, and dropdowns, each designed for specific types of data input. Properly designed Input components enhance user experience by making data entry intuitive and efficient."
       listExample={listExample}
       displayCodeBase={codeStringComponentUi.InputBase}
     />
   );
-}
-
-
+};
 
 export default CardIntroInputBase;

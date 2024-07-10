@@ -1,18 +1,21 @@
+import { TBasePropsInput } from "@/types/ui/index";
+import { HTMLProps } from "react";
+
 /*----------------GENERAL--------------------*/
 export interface TObject {
-  [key: string]: any
+  [key: string]: any;
 }
 
-export type TResponseAPI = TObject
+export type TResponseAPI = TObject;
 
 export interface TCustomeEventOnChange<V> {
   target: {
-    name: string
-    value: V
-  }
+    name: string;
+    value: V;
+  };
 }
 
-export type TEmptyValue = "" | null | undefined
+export type TEmptyValue = "" | null | undefined;
 
 export interface TOption<TLabel = string> {
   label: TLabel;
@@ -36,8 +39,6 @@ export interface TItemList {
   childs?: TItemList[]; // Make it recursive
 }
 
-
-
 export interface TColumn<TData, TKey extends keyof TData> {
   name: string;
   key: TKey;
@@ -46,7 +47,7 @@ export interface TColumn<TData, TKey extends keyof TData> {
   isSorted?: boolean;
 }
 
-export interface TSettingTable<TData,> {
+export interface TSettingTable<TData> {
   sortBy?: keyof TData;
   sortDir?: "asc" | "desc";
   checked?: boolean;
@@ -54,11 +55,9 @@ export interface TSettingTable<TData,> {
   currentPage: number;
   totalPage: number;
   itemsPerPage: number;
-};
+}
 
 /*----------------FORM--------------------*/
+export type TForm<TKey extends string> = Record<TKey, TBasePropsInput & HTMLProps<HTMLInputElement>>;
 
-
-export type TEventOnChange = React.ChangeEvent<HTMLInputElement> | TCustomeEventOnChange<any>
-
-
+export type TEventOnChange = React.ChangeEvent<HTMLInputElement> | TCustomeEventOnChange<any>;

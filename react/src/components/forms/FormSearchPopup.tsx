@@ -1,9 +1,5 @@
-
-
 const FormSearchPopup = () => {
-  return (
-    <div>FormSearchPopup</div>
-  )
-}
+  return <div>FormSearchPopup</div>;
+};
 
-export default FormSearchPopup
+export default FormSearchPopup;
