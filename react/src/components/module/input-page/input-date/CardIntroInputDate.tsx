@@ -8,7 +8,7 @@ const CardIntroInputDate = () => {
   const { form, handleOnChange } = useForm<"input-date" | "input-date-multi-select">({
     initialForm: {
       "input-date": {
-        value: "",
+        value: String(new Date()),
       },
       "input-date-multi-select": {
         selectsRange: true,
