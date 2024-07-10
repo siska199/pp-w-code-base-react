@@ -12,23 +12,21 @@ interface TProps extends TBasePropsInput, React.HTMLProps<HTMLInputElement> {
 const InputPhoneNumber = (props: TProps) => {
   const { onChange: handleOnChange, ...attrs } = props;
   const formatPattern = "XX-XXX-XXX-XXX";
-  const { inputRef, handleOnChangeFormattedValue, formatValue } = useFormattedInput({ value: attrs?.value, onChange: handleOnChange, formatPattern });
+
+  const updateValue = attrs?.value?.replace(/^0+/, "");
+  const { inputRef, handleOnChangeFormattedValue, formatValue } = useFormattedInput({ value: updateValue, onChange: handleOnChange, formatPattern });
   const [formatedValue, setFormatedValue] = useState("");
 
   useEffect(() => {
-    setFormatedValue(formatValue(attrs?.value, formatPattern)?.replace(/^0+/, ""));
+    setFormatedValue(formatValue(updateValue, formatPattern));
   }, []);
 
   const handleOnChangeUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
-    const updatedValue = value?.replace(/^0+/, "");
-
     if (value[0] === "0") {
       e.preventDefault();
       return;
     }
-
-    e.target.value = updatedValue;
     handleOnChangeFormattedValue(e);
     setFormatedValue(formatValue(e.target.value, formatPattern));
   };

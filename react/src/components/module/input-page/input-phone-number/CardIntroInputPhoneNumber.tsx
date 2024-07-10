@@ -8,7 +8,7 @@ const CardIntroInputPhoneNumber = () => {
   const { form, handleOnChange } = useForm({
     initialForm: {
       "input-phone-number": {
-        value: "09099572935",
+        value: "089099572935",
       },
     },
   });
