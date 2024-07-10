@@ -11,7 +11,6 @@ const LabelWithModal = (props: TProps) => {
     const [showModal, setShowModal] = useState(false)
 
     const handleToggleModal = () => {
-        console.log(!showModal)
         setShowModal(!showModal)
     }
 
