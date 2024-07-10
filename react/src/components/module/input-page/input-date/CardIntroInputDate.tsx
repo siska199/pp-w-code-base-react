@@ -12,7 +12,7 @@ const CardIntroInputDate = () => {
       },
       "input-date-multi-select": {
         selectsRange: true,
-        value: [String(new Date()), String(new Date())],
+        value: [new Date(), new Date()],
       },
     },
   });

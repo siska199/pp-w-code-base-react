@@ -4,6 +4,11 @@ import ProgressStep from "@components/ui/ProgressStep";
 const CardAdditionalInfoInputCheckbox = () => {
   const listAdditionalInfo = [
     {
+      title: "Default Behavior",
+      caption: "The component defaults to an unchecked state unless the `checked` prop is explicitly set to true.",
+    },
+    
+    {
       title: "Handling Checkbox State",
       caption: "Ensure the state of the checkbox (checked or unchecked) is managed properly through the `checked` prop. Use a state management solution like React's `useState` or a form library to handle state changes and updates.",
     },

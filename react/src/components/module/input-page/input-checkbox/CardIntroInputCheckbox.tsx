@@ -5,14 +5,14 @@ import useForm from "@hooks/useForm";
 import codeStringComponentUi from "@lib/utils/code-string/component-ui";
 
 const CardIntroInputCheckbox = () => {
-  const initialForm = {
-    "input-checkbox": {
-      value: [],
-      label: "Siska Apriana Rifianti",
+  const { form, handleOnChange } = useForm<"input-checkbox">({
+    initialForm: {
+      "input-checkbox": {
+        value: true,
+        checked: true,
+        label: "Siska Apriana Rifianti",
+      },
     },
-  };
-  const { form, handleOnChange } = useForm<keyof typeof initialForm>({
-    initialForm,
   });
 
   const listExample = [
