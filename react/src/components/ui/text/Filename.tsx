@@ -11,7 +11,7 @@ interface TProps {
 
 const Filename = (props: TProps) => {
   const { name, to, importFrom } = props;
-  const tooltipMessage = importFrom ? "import from" + importFrom : "";
+  const tooltipMessage = importFrom ? "import from " + importFrom : "";
 
   const Label = (
     <Tooltip text={tooltipMessage} customeClass={{ tooltip: "before:min-w-[10rem]" }}>

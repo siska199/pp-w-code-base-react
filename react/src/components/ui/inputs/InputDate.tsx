@@ -12,8 +12,8 @@ import "react-datepicker/dist/react-datepicker.css";
 
 interface TProps<TWithRange extends boolean, TWIthMultiple extends boolean> extends TBasePropsInput, Omit<Partial<ReactDatePickerProps<TWithRange, TWIthMultiple>>, "onChange" | "value"> {
   name: string;
-  value: Date | [Date, Date]; // Updated to handle single Date or [Date, Date]
-  onChange: (e: TCustomeEventOnChange<Date | [Date, Date]>) => void; // Updated onChange handler
+  value: TWithRange extends true ? [Date, Date] : Date; // Updated to handle single Date or [Date, Date]
+  onChange: (e: TCustomeEventOnChange<TWithRange extends true ? [Date, Date] : Date>) => void; // Updated onChange handler
   placeholder?: string;
   iconPosition?: "start" | "end";
 }
@@ -25,13 +25,13 @@ const InputDate = <TWithRange extends boolean = false, TWIthMultiple extends boo
   const [isShouldCloseOnSelect, setIsShouldCloseOnSelect] = useState(true);
   const [focus, setFocus] = useState(false);
 
-  const handleOnChange = (valueDate: Date | [Date, Date] | null) => {
+  const handleOnChange = (valueDate: TWithRange extends true ? [Date, Date] : Date) => {
     setShowTypeDate(showTypeDate === "date" ? "" : "date");
     setIsShouldCloseOnSelect(true);
     onChange({
       target: {
         name,
-        value: attrs.selectsRange && Array.isArray(valueDate) ? valueDate : (valueDate as Date),
+        value: valueDate,
       },
     });
   };
