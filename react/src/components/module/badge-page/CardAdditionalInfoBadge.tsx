@@ -1,7 +1,7 @@
 import CardSubMenu from "@components/cards/CardSubMenu";
-import Button from "@components/ui/Button";
 import ProgressStep from "@components/ui/ProgressStep";
 import Filename from "@components/ui/text/Filename";
+import Here from "@components/ui/text/Here";
 
 const CardAdditionalInfoBadge = () => {
   const listAdditionalInfo = [
@@ -13,7 +13,7 @@ const CardAdditionalInfoBadge = () => {
       title: "Variant",
       caption: (
         <p>
-          The list of variants available for the Badge component can be seen <Button label="here" to="/docs/prerequisite/variant?id=variant-badge.ts" />.
+          The list of variants available for the Badge component can be seen <Here to="/docs/prerequisite/variant?id=variant-badge.ts" />.
         </p>
       ),
     },

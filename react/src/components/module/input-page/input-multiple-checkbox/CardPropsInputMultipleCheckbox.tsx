@@ -1,6 +1,6 @@
 import CardSubMenu from "@components/cards/CardSubMenu";
-import Button from "@components/ui/Button";
 import List from "@components/ui/List";
+import Here from "@components/ui/text/Here";
 
 const CardPropsInputMultipleCheckbox = () => {
   const listItem = [
@@ -12,7 +12,7 @@ const CardPropsInputMultipleCheckbox = () => {
       label: "Inherit all props that ContainerInput has",
       content: (
         <>
-          To see all available props that ContainerInput has, you can check them out <Button label="here" to={`/docs/prerequisite/helper-component?id=container-input.tsx`} />.
+          To see all available props that ContainerInput has, you can check them out <Here to={`/docs/prerequisite/helper-component?id=container-input.tsx`} />.
         </>
       ),
     },

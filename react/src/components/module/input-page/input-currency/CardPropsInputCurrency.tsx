@@ -1,6 +1,6 @@
 import CardSubMenu from "@components/cards/CardSubMenu";
-import Button from "@components/ui/Button";
 import List from "@components/ui/List";
+import Here from "@components/ui/text/Here";
 
 const CardPropsInputCurrency = () => {
   const listItem = [
@@ -24,7 +24,7 @@ const CardPropsInputCurrency = () => {
       label: "Inherit all props that ContainerInput have",
       content: (
         <>
-          To see all available props that ContainerInput have you can see in <Button label="here" to={`/docs/prerequisite/helper-component?id=ContainerInputProps.tsx`} />{" "}
+          To see all available props that ContainerInput have you can see in <Here to={`/docs/prerequisite/helper-component?id=ContainerInputProps.tsx`} />{" "}
         </>
       ),
     },

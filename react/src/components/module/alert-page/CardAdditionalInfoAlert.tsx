@@ -1,7 +1,7 @@
 import CardSubMenu from "@components/cards/CardSubMenu";
-import Button from "@components/ui/Button";
 import ProgressStep from "@components/ui/ProgressStep";
 import Filename from "@components/ui/text/Filename";
+import Here from "@components/ui/text/Here";
 
 const CardAdditionalInfoAlert = () => {
   const listAdditionalInfo = [
@@ -38,7 +38,7 @@ const CardAdditionalInfoAlert = () => {
           The appearance of the alert can be customized using variants (<span className="italic">alertVariantError</span>, <span className="italic">alertVariantSuccess</span>, <span className="italic">alertVariantWarning</span>, <span className="italic">alertVariantGeneral</span>
           ). These variants determine the visual style and behavior based on the alert type (<span className="italic">error</span>, <span className="italic">success</span>, <span className="italic">warning</span>, <span className="italic">notification</span>, <span className="italic">info</span>).
           <p>
-            The list of variants available for the Alert component can be seen <Button label="here" to="/docs/prerequisite/variant?id=variant-alert.ts" />.
+            The list of variants available for the Alert component can be seen <Here to="/docs/prerequisite/variant?id=variant-alert.ts" />.
           </p>
         </p>
       ),

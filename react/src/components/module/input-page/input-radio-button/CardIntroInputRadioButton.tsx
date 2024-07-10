@@ -8,7 +8,7 @@ const CardIntroInputRadioButton = () => {
   const { form, handleOnChange } = useForm({
     initialForm: {
       "input-phone-number": {
-        value: "",
+        value: "bob-smith",
       },
     },
   });
