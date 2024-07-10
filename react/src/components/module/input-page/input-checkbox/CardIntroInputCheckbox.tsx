@@ -17,7 +17,7 @@ const CardIntroInputCheckbox = () => {
 
   const listExample = [
     {
-      component: <CardVariantComp title={"default "} withBorder={false} Component={<InputCheckbox onChange={handleOnChange} {...form["input-checkbox"]} />} />,
+      component: <CardVariantComp title={"default "} withBorder={false} Component={<InputCheckbox onChange={handleOnChange} {...form["input-checkbox"]} checked={undefined} />} />,
     },
   ];
 
