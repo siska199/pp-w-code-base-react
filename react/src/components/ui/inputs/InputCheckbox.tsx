@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-handler-names */
-import { TBasePropsInput } from '@/types/ui/index';
 import { IconCheck } from "@assets/icons";
 import Container from "@components/ui/Container";
+import { TBasePropsInput } from "@types";
 
 interface TProps extends Omit<TBasePropsInput, "errorMessage">, Omit<React.HTMLProps<HTMLInputElement>, "value" | "onChange"> {
     name: string;

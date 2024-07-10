@@ -14,43 +14,51 @@ const CardIntroInputBase = () => {
         label: "Variant 1",
         placeholder: "Variant 1",
         variant: "v1",
+        value: "",
       },
       "variant-2": {
         label: "Variant 2",
         placeholder: "Variant 2",
         variant: "v2",
+        value: "",
       },
       "variant-3": {
         label: "Variant 3",
         placeholder: "Variant 3",
         variant: "v3",
+        value: "",
       },
       "variant-4": {
         label: "Variant 4",
         placeholder: "Variant 4",
         variant: "v4",
+        value: "",
       },
       "variant-5": {
         label: "Variant 5",
         placeholder: "Variant 5",
         variant: "v5",
+        value: "",
       },
       "variant-6": {
         label: "Variant 6",
         placeholder: "Variant 6",
         variant: "v6",
+        value: "",
       },
       disabled: {
         label: "Disabled",
         placeholder: "Disabled",
         variant: "v1",
         disabled: true,
+        value: "",
       },
       error: {
         label: "Error",
         placeholder: "Error",
         variant: "v1",
         errorMessage: "Invalid Input",
+        value: "",
       },
       "icon-left": {
         label: "Icon Left",
@@ -59,6 +67,7 @@ const CardIntroInputBase = () => {
           start: <IconMessage />,
         },
         name: "variant-1",
+        value: "",
       },
       "icon-right": {
         label: "Icon right",
@@ -66,6 +75,7 @@ const CardIntroInputBase = () => {
         customeElement: {
           end: <IconMessage />,
         },
+        value: "",
       },
       "icon-pre-start": {
         label: "Pre End",
@@ -73,12 +83,14 @@ const CardIntroInputBase = () => {
         customeElement: {
           preStart: "Http",
         },
+        value: "",
       },
       "icon-pre-end": {
         label: "Pre End",
         customeElement: {
           preEnd: "Text Preend",
         },
+        value: "",
       },
     },
   });

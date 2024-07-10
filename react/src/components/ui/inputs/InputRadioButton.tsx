@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-handler-names */
-import { TBasePropsInput } from '@/types/ui/index';
 import Container from '@components/ui/Container';
 import ContainerInput from '@components/ui/inputs/ContainerInput';
+import { TBasePropsInput } from '@types';
 import clsx from 'clsx';
 
 

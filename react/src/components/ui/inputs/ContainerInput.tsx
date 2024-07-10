@@ -1,8 +1,8 @@
-import { TBasePropsInput } from '@/types/ui/index';
 import { IconClose, IconEye, IconEyeClose } from "@assets/icons";
 import Container from "@components/ui/Container";
 import HelperMessage from "@components/ui/HelperMessage";
 import { cn, isEmptyValue } from '@lib/utils/helper';
+import { TBasePropsInput } from "@types";
 import clsx from "clsx";
 import { useState } from "react";
 

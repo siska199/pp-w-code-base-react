@@ -1,6 +1,6 @@
-import { TBaseModal } from '@/types/ui/index';
 import Button from '@components/ui/Button';
 import ContainerModal from '@components/ui/modal/ContainerModal';
+import { TBaseModal } from '@types';
 
 interface TProps extends TBaseModal {
     title?: string;

@@ -1,9 +1,8 @@
-import { TBasePropsInput } from '@/types/ui/index';
 import { IconCheck } from "@assets/icons";
 import Container from "@components/ui/Container";
 import ContainerInput from "@components/ui/inputs/ContainerInput";
 import { arraysHaveSameMembers, cn, handlePreventDefault } from '@lib/utils/helper';
-import { TCustomeEventOnChange } from "@types";
+import { TBasePropsInput, TCustomeEventOnChange } from "@types";
 import { useEffect, useState } from 'react';
 
 interface TProps extends TBasePropsInput, Omit<React.HTMLProps<HTMLInputElement>, "value" | "onChange"> {

@@ -7,7 +7,9 @@ import codeStringComponentUi from "@lib/utils/code-string/component-ui";
 const CardIntroInputNPWP = () => {
   const { form, handleOnChange } = useForm({
     initialForm: {
-      "input-npwp": {},
+      "input-npwp": {
+        value: "",
+      },
     },
   });
 

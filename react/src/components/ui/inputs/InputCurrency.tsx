@@ -1,5 +1,5 @@
-import { TBasePropsInput } from '@/types/ui/index';
 import ContainerInput from "@components/ui/inputs/ContainerInput";
+import { TBasePropsInput } from "@types";
 import React, { useEffect, useRef, useState } from 'react';
 
 interface TProps extends TBasePropsInput, React.HTMLProps<HTMLInputElement> {

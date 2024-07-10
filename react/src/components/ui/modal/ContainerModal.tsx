@@ -1,8 +1,8 @@
-import { TBaseModal } from '@/types/ui/index';
 import { IconClose } from "@assets/icons";
 import "@assets/styles/ui/modal.css";
 import Button from "@components/ui/Button";
 import { cn } from "@lib/utils/helper";
+import { TBaseModal } from "@types";
 import { VariantProps, cva } from "class-variance-authority";
 import clsx from "clsx";
 

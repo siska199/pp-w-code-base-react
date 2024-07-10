@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable react/jsx-handler-names */
-import { TBasePropsInput } from "@/types/ui/index";
 import { IconCalender, IconChevronLeft, IconChevronRight } from "@assets/icons";
 import Button from "@components/ui/Button";
 import ContainerInput from "@components/ui/inputs/ContainerInput";
-import { TCustomeEventOnChange } from "@types";
+import { TBasePropsInput, TCustomeEventOnChange } from "@types";
 import clsx from "clsx";
 import { format } from "date-fns";
 import { useState } from "react";

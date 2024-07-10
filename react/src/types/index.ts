@@ -1,4 +1,3 @@
-import { TBasePropsInput } from "@/types/ui/index";
 import { ReactDatePickerProps } from "react-datepicker";
 
 /*----------------GENERAL--------------------*/
@@ -57,9 +56,33 @@ export interface TSettingTable<TData> {
   itemsPerPage: number;
 }
 
-/*----------------FORM--------------------*/
+export interface TBasePropsInput {
+  errorMessage?: string;
+  label?: string;
+  variant?: "v1" | "v2" | "v3" | "v4" | "v5" | "v6";
+  customeClass?: {
+    label?: string;
+    input?: string;
+    ciV1?: string;
+    ciV2?: string;
+    ciV3?: string;
+    ciV4?: string;
+  };
+  customeElement?: {
+    start?: React.ReactNode;
+    end?: React.ReactNode;
+    preStart?: string;
+    preEnd?: string;
+  };
+}
 
-type TObjectForm = TBasePropsInput & { value: any } & Omit<Partial<React.HTMLProps<HTMLInputElement>>, "name" | "value" | "onChange"> & Omit<Partial<ReactDatePickerProps<true, true>>, "onChange" | "value">;
+export interface TBaseModal {
+  isShow: boolean;
+  onClose: () => void;
+  children: React.ReactNode;
+}
+
+type TObjectForm = TBasePropsInput & { value: any } & Omit<Partial<React.HTMLProps<HTMLInputElement>>, "name" | "value" | "onChange"> & Omit<Partial<ReactDatePickerProps<true, true>>, "onChange" | "value"> & Omit<Partial<React.HTMLProps<HTMLTextAreaElement>>, "onChange">;
 export type TForm<TKey extends string, TNameRequired extends boolean = true> = Record<TKey, TNameRequired extends true ? TObjectForm & { name: string } : TObjectForm & { name?: string }>;
 
-export type TEventOnChange = React.ChangeEvent<HTMLInputElement> | TCustomeEventOnChange<any>;
+export type TEventOnChange = React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement> | TCustomeEventOnChange<any>;

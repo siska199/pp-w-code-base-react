@@ -12,7 +12,7 @@ const CardIntroInputDate = () => {
       },
       "input-date-multi-select": {
         selectsRange: true,
-        value: [new Date(), new Date()],
+        value: [String(new Date()), String(new Date())],
       },
     },
   });
@@ -21,7 +21,7 @@ const CardIntroInputDate = () => {
       component: <CardVariantComp title={"Single Date "} withBorder={false} Component={<InputDate onChange={handleOnChange} {...form["input-date"]} />} />,
     },
     {
-      component: <CardVariantComp title={"Range Date "} withBorder={false} Component={<InputDate onChange={handleOnChange} {...form["input-date-multi-select"]} />} />,
+      component: <CardVariantComp title={"Range Date "} withBorder={false} Component={<InputDate<true, true> onChange={handleOnChange} {...form["input-date-multi-select"]} />} />,
     },
   ];
   return (

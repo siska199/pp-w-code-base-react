@@ -1,14 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable react/jsx-handler-names */
-import { TBasePropsInput } from '@/types/ui/index';
 import { IconClose } from '@assets/icons';
 import IconChevronToggle from '@assets/icons/IconChevronToggle';
 import Badge from '@components/ui/Badge';
 import ContainerInput from '@components/ui/inputs/ContainerInput';
 import useOnClickOutside from '@hooks/useOnClickOutside';
 import { debounce, getFieldLabelFromOptions, isEmptyValue, spreadArrayAttemp } from '@lib/utils/helper';
-import { TCustomeEventOnChange, TOption } from '@types';
+import { TBasePropsInput, TCustomeEventOnChange, TOption } from '@types';
 import clsx from 'clsx';
 import { useEffect, useRef, useState } from 'react';
 import InputMultipleCheckbox from './InputMultipleCheckbox';
