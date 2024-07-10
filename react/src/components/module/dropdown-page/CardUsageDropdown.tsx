@@ -11,40 +11,7 @@ const CardUsageDropdown = () => {
   );
 };
 
-const displayUsage = `
-  const listOptionTitle = [
-    {
-      title: 'Setting',
-      label: <><IconNotification /> Newsletter</>,
-      value: "Siska",
-    },
-    {
-      label: <><IconReceipt />Purchase</>,
-      value: "Siska"
-    },
-    {
-      label: <><IconDownload /> Download</>,
-      value: "Siska",
-      className: ""
-    },
-    {
-      label: <><IconUsers />Team Account</>,
-      value: "Siska",
-      className: "border-b"
-    },
-
-    {
-      title: "Contact",
-      label: <>Contact Support</>,
-      value: "Siska",
-      className: ""
-    }
-  ]
-  return <DropdownBase
-            label={"Action"}
-            options={listOptionTitle}
-            onClick={handleOnClick}
-          />
-`;
+const displayUsage =
+  '\n  const listOptionTitle = [\n    {\n      title: \'Setting\',\n      label: <><IconNotification /> Newsletter</>,\n      value: "Siska",\n    },\n    {\n      label: <><IconReceipt />Purchase</>,\n      value: "Siska"\n    },\n    {\n      label: <><IconDownload /> Download</>,\n      value: "Siska",\n      className: ""\n    },\n    {\n      label: <><IconUsers />Team Account</>,\n      value: "Siska",\n      className: "border-b"\n    },\n\n    {\n      title: "Contact",\n      label: <>Contact Support</>,\n      value: "Siska",\n      className: ""\n    }\n  ]\n  return <DropdownBase\n            label={"Action"}\n            options={listOptionTitle}\n            onClick={handleOnClick}\n          />\n';
 
 export default CardUsageDropdown;

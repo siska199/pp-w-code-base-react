@@ -130,8 +130,8 @@ const CardAdditionalInfoDropdown = () => {
                           Set the <span className="italic">withButtonTriger</span> prop to true in the DropdownBase component.
                         </li>
                       </ul>
-                    </div>
-                    {" "}Example code to acieve this dropdown you can see{" "}
+                    </div>{" "}
+                    Example code to acieve this dropdown you can see{" "}
                     <LabelWithModal
                       label={"here"}
                       content={
