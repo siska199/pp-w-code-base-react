@@ -176,6 +176,7 @@ const CardIntroDropdown = () => {
       ),
     },
   ];
+
   return (
     <CardIntroComponent
       title={"Dropdown"}

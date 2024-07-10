@@ -30,7 +30,7 @@ const CardAdditionalInfoDropdown = () => {
     {
       title: "Variants",
       caption: (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2">
           <p>Each variant of the DropdownBase component demonstrates different configurations and features:</p>
           <List
             items={[
@@ -39,14 +39,14 @@ const CardAdditionalInfoDropdown = () => {
                 content: "Basic dropdown without additional features. No additional props needed.",
               },
               {
-                label: <>Dividers</>,
+                label: "Dividers",
                 content: (
                   <>
                     This variant adds dividers between groups of options within the dropdown menu. To implement this:
                     <div className="inline ">
-                      <ul className="">
-                        <li>- Use the className property in the options array to add specific CSS classes that define the styling for the dividers.</li>
-                        <li>- Typically, you would add a bottom border (border-b) or other styling to visually separate different sections of options.</li>
+                      <ul className="list-disc ml-4">
+                        <li> Use the className property in the options array to add specific CSS classes that define the styling for the dividers.</li>
+                        <li> Typically, you would add a bottom border (border-b) or other styling to visually separate different sections of options.</li>
                       </ul>
                     </div>
                     Example code to acieve this dropdown you can see{" "}
@@ -72,9 +72,9 @@ const CardAdditionalInfoDropdown = () => {
                   <>
                     This variant allows displaying titles above groups of options in the dropdown menu. To implement this:
                     <div className="inline ">
-                      <ul className="">
-                        <li>- Include the title property in specific options of the options array.</li>
-                        <li>- The title property should be a string or a React node that represents the title for that group of options.</li>
+                      <ul className="list-disc ml-4">
+                        <li>Include the title property in specific options of the options array.</li>
+                        <li>The title property should be a string or a React node that represents the title for that group of options.</li>
                       </ul>
                     </div>
                     Example code to acieve this dropdown you can see{" "}
@@ -97,9 +97,9 @@ const CardAdditionalInfoDropdown = () => {
                   <>
                     This variant allows integrating a custom header component at the top of the dropdown menu. To implement this:
                     <div className="inline ">
-                      <ul className="">
-                        <li>- Use the header prop in the DropdownBase component to pass a React node representing the custom header.</li>
-                        <li>- The header component can include any content such as images, text, or additional controls to provide context or enhance the dropdown&apos;s functionality.</li>
+                      <ul className="list-disc ml-4">
+                        <li>Use the header prop in the DropdownBase component to pass a React node representing the custom header.</li>
+                        <li>The header component can include any content such as images, text, or additional controls to provide context or enhance the dropdown&apos;s functionality.</li>
                       </ul>
                     </div>
                     Example code to acieve this dropdown you can see{" "}
@@ -123,13 +123,15 @@ const CardAdditionalInfoDropdown = () => {
                 label: "Button Trigger",
                 content: (
                   <>
-                    <div className="inline ">
-                      <p>This variant adds a trigger button to open the dropdown on click. To implement this:</p>
-                      <ul className="">
-                        <li>- Set the withButtonTriger prop to true in the DropdownBase component.</li>
+                    This variant adds a trigger button to open the dropdown on click. To implement this:
+                    <div className="inline-block ">
+                      <ul className="list-disc ml-4">
+                        <li>
+                          Set the <span className="italic">withButtonTriger</span> prop to true in the DropdownBase component.
+                        </li>
                       </ul>
                     </div>
-                    Example code to acieve this dropdown you can see{" "}
+                    {" "}Example code to acieve this dropdown you can see{" "}
                     <LabelWithModal
                       label={"here"}
                       content={

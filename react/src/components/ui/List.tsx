@@ -31,7 +31,16 @@ const List = (props: TProps) => {
       >
         {items.map((item, i) => (
           <li key={i} className={` ${customeClass?.li} ${item?.label ? "my-1" : "mb-0"}`}>
-            {item.label && <Badge label={item.label} variant={variantBadge?.[level] || "soft-primary"} className={`mr-2  ${customeClass?.label}`} />}
+            {item.label && (
+              <Badge
+                label={item.label}
+                variant={variantBadge?.[level] || "soft-primary"}
+                className={cn({
+                  "mr-2 ": true,
+                  [customeClass?.label || ""]: customeClass?.label,
+                })}
+              />
+            )}
             {item.content}
             {item.childs && renderItems(item.childs, level + 1)}
           </li>
