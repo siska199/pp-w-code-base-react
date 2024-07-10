@@ -20,7 +20,7 @@ const CardAdditionalInfoInputNPWP = () => {
           The <code>InputNPWP</code> component relies on several dependencies and utility functions imported from external sources (
           <Filename name="ContainerInput" to="/docs/prerequisite/helper-component?id=ContainerInput.tsx" />
           <Filename name="TBasePropsInput" to="/docs/prerequisite/types" />,
-          <Filename name="useFormattedInput" to="/docs/prerequisite/hook?id=useFormattedInput" />, , and
+          <Filename name="useFormattedInput" to="/docs/prerequisite/hook?id=useFormattedInput" />,and
           <Filename name="React" importFrom="react" />
           ). Ensure these dependencies are properly installed and imported for the component to function correctly.
         </p>
