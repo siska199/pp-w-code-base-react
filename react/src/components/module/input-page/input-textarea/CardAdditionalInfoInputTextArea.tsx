@@ -1,37 +1,45 @@
-
 import CardSubMenu from "@components/cards/CardSubMenu";
 import ProgressStep from "@components/ui/ProgressStep";
+import Filename from "@components/ui/text/Filename";
+import Here from "@components/ui/text/Here";
 
 const CardAdditionalInfoInputTextArea = () => {
   const listAdditionalInfo = [
     {
-      title: "Custom Styling",
-      caption: "Use the `customeClass` prop to apply custom styles to the textarea container. This allows for flexibility in styling and aligning the component with your application's design system."
+      title: "Dependencies",
+      caption: (
+        <div>
+          The InputTextArea component relies on several dependencies and utility functions imported from external sources (
+          <Filename name="ContainerInput" to="/docs/prerequisite/helper-component?id=ContainerInput.tsx" />, ). Ensure these dependencies are properly installed and imported for the component to function correctly.
+          <Filename name="TBasePropsInput" to="/docs/prerequisite/types" />, and
+          <Filename name="React" importFrom="react" />
+        </div>
+      ),
     },
     {
-      title: "Variant Support",
-      caption: "The component supports different variants (`v1` until `v5`) that can change its appearance. Ensure to set the `variant` prop accordingly to apply specific styles or behaviors."
+      title: "Variants",
+      caption: (
+        <p>
+          The <code>InputPercentage</code> component supports six variants: &apos;v1&apos;, &apos;v2&apos;, &apos;v3&apos;, &apos;v4&apos;, &apos;v5&apos;, and &apos;v6&apos;. The default variant is &apos;v1&apos;. an empty string. Otherwise, it uses the provided placeholder or an empty string. For
+          example of each variant you can see in <Here to="/docs/components/input/base" />
+        </p>
+      ),
     },
     {
-      title: "Event Handling",
-      caption: "The `onChange` prop is used to handle changes in the textarea's content. Ensure that the `onChange` handler updates the state or performs any necessary actions when the textarea content changes."
+      title: "Controlled Component",
+      caption: (
+        <p>
+          <code>InputCurrency</code> is a controlled component, meaning the input value is controlled by the <code>value</code> prop. Ensure that the <code>value</code> prop is updated correctly to reflect changes in the input field.
+        </p>
+      ),
     },
-    {
-      title: "Placeholder Management",
-      caption: "Use the `placeholder` prop to display instructional text within the textarea. Adjust the placeholder text based on the `variant` prop to provide context-specific guidance."
-    },
-    {
-      title: "Accessibility Considerations",
-      caption: "Ensure that the textarea has appropriate attributes and labels for accessibility. Use `aria-label` or `aria-labelledby` to describe the textarea's purpose when necessary."
-    }
   ];
 
   return (
-    <CardSubMenu title={'Additional Info'}>
+    <CardSubMenu title={"Additional Info"}>
       <ProgressStep type="number" listStep={listAdditionalInfo} variant="vertical" />
     </CardSubMenu>
   );
-}
-
+};
 
 export default CardAdditionalInfoInputTextArea;

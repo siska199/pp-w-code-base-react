@@ -19,8 +19,8 @@ const CardAdditionalInfoInputBase = () => {
       title: "Variants",
       caption: (
         <p>
-          The <code>InputPercentage</code> component supports six variants: &apos;v1&apos;, &apos;v2&apos;, &apos;v3&apos;, &apos;v4&apos;, &apos;v5&apos;, and &apos;v6&apos;. The default variant is &apos;v1&apos;.
-          an empty string. Otherwise, it uses the provided placeholder or an empty string. For example of each variant you can see in <Here to="/docs/components/input/base" />
+          The <code>InputPercentage</code> component supports six variants: &apos;v1&apos;, &apos;v2&apos;, &apos;v3&apos;, &apos;v4&apos;, &apos;v5&apos;, and &apos;v6&apos;. The default variant is &apos;v1&apos;. an empty string. Otherwise, it uses the provided placeholder or an empty string. For
+          example of each variant you can see in <Here to="/docs/components/input/base" />
         </p>
       ),
     },
