@@ -1,32 +1,30 @@
-import { TEventOnChange } from '@types';
-import { TBasePropsInput } from '@/types/ui/index';
-import { useMemo, useState } from 'react';
+import { TEventOnChange, TForm } from "@types";
+import { useMemo, useState } from "react";
 
-interface TPropsForm {
-  initialForm: Record<string, any>; // Adjust TObject as needed
+interface TPropsForm<TKey extends string> {
+  initialForm: TForm<TKey, false>; // Adjust TObject as needed
 }
 
-type TForm<T extends string> = Record<T, Record<string, any> & TBasePropsInput & { name: T; value: any }>;
-
-const useForm = <T extends string>({ initialForm }: TPropsForm) => {
+const useForm = <TKey extends string>({ initialForm }: TPropsForm<TKey>) => {
   const defaultForm = useMemo(() => {
-    const form: TForm<T> = {} as TForm<T>;
+    const form: TForm<TKey> = {} as TForm<TKey>;
 
     Object.keys(initialForm).forEach((key) => {
-      form[key as T] = {
+      const rKey = key as TKey;
+      form[rKey] = {
         name: key,
-        ...initialForm[key],
-        value: initialForm[key]?.value || '',
+        ...initialForm[rKey],
+        value: initialForm[rKey]?.value || "",
       };
     });
 
     return form;
   }, [initialForm]);
 
-  const [form, setForm] = useState<TForm<T>>(defaultForm);
+  const [form, setForm] = useState<TForm<TKey>>(defaultForm);
 
   const handleOnChange = (e: TEventOnChange) => {
-    const name = e.target.name as T;
+    const name = e.target.name as TKey;
     const value = e.target.value;
     setForm({
       ...form,

@@ -1,5 +1,4 @@
 import { TBasePropsInput } from "@/types/ui/index";
-import { HTMLProps } from "react";
 
 /*----------------GENERAL--------------------*/
 export interface TObject {
@@ -58,6 +57,8 @@ export interface TSettingTable<TData> {
 }
 
 /*----------------FORM--------------------*/
-export type TForm<TKey extends string> = Record<TKey, TBasePropsInput & HTMLProps<HTMLInputElement>>;
+
+type TObjectForm = TBasePropsInput & Omit<Partial<React.HTMLProps<HTMLInputElement>>, "name">;
+export type TForm<TKey extends string, TNameRequired extends boolean = true> = Record<TKey, TNameRequired extends true ? TObjectForm & { name: string } : TObjectForm & { name?: string }>;
 
 export type TEventOnChange = React.ChangeEvent<HTMLInputElement> | TCustomeEventOnChange<any>;

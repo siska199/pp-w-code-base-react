@@ -1,90 +1,86 @@
-import { TBasePropsInput } from "@/types/ui/index";
 import { IconMessage } from "@assets/icons";
 import CardIntroComponent from "@components/cards/CardIntroComponent";
 import CardVariantComp from "@components/cards/CardVariantComp";
 import InputBase from "@components/ui/inputs/InputBase";
 import useForm from "@hooks/useForm";
 import codeStringComponentUi from "@lib/utils/code-string/component-ui";
-import { TForm } from "@types";
 
 const CardIntroInputBase = () => {
   type TKey = "variant-1" | "variant-2" | "variant-3" | "variant-4" | "variant-5" | "variant-6" | "disabled" | "error" | "icon-left" | "icon-right" | "icon-pre-start" | "icon-pre-end";
 
-  const initialForm: TForm<TKey> = {
-    "variant-1": {
-      label: "Variant 1",
-      placeholder: "Variant 1",
-      variant: "v1",
-    },
-    "variant-2": {
-      label: "Variant 2",
-      placeholder: "Variant 2",
-      variant: "v2",
-    },
-    "variant-3": {
-      label: "Variant 3",
-      placeholder: "Variant 3",
-      variant: "v3",
-    },
-    "variant-4": {
-      label: "Variant 4",
-      placeholder: "Variant 4",
-      variant: "v4",
-    },
-    "variant-5": {
-      label: "Variant 5",
-      placeholder: "Variant 5",
-      variant: "v5",
-    },
-    "variant-6": {
-      label: "Variant 6",
-      placeholder: "Variant 6",
-      variant: "v6",
-    },
-    disabled: {
-      label: "Disabled",
-      placeholder: "Disabled",
-      variant: "v1",
-      disabled: true,
-    },
-    error: {
-      label: "Error",
-      placeholder: "Error",
-      variant: "v1",
-      errorMessage: "Invalid Input",
-    },
-    "icon-left": {
-      label: "Icon Left",
-      variant: "v1",
-      customeElement: {
-        start: <IconMessage />,
-      },
-    },
-    "icon-right": {
-      label: "Icon right",
-      variant: "v1",
-      customeElement: {
-        end: <IconMessage />,
-      },
-    },
-    "icon-pre-start": {
-      label: "Pre End",
-      variant: "v1",
-      customeElement: {
-        preStart: "Http",
-      },
-    },
-    "icon-pre-end": {
-      name: "icon-pre-end",
-      label: "Pre End",
-      customeElement: {
-        preEnd: "Text Preend",
-      },
-    },
-  };
-
   const { form, handleOnChange } = useForm<TKey>({
-    initialForm: initialForm,
+    initialForm: {
+      "variant-1": {
+        label: "Variant 1",
+        placeholder: "Variant 1",
+        variant: "v1",
+      },
+      "variant-2": {
+        label: "Variant 2",
+        placeholder: "Variant 2",
+        variant: "v2",
+      },
+      "variant-3": {
+        label: "Variant 3",
+        placeholder: "Variant 3",
+        variant: "v3",
+      },
+      "variant-4": {
+        label: "Variant 4",
+        placeholder: "Variant 4",
+        variant: "v4",
+      },
+      "variant-5": {
+        label: "Variant 5",
+        placeholder: "Variant 5",
+        variant: "v5",
+      },
+      "variant-6": {
+        label: "Variant 6",
+        placeholder: "Variant 6",
+        variant: "v6",
+      },
+      disabled: {
+        label: "Disabled",
+        placeholder: "Disabled",
+        variant: "v1",
+        disabled: true,
+      },
+      error: {
+        label: "Error",
+        placeholder: "Error",
+        variant: "v1",
+        errorMessage: "Invalid Input",
+      },
+      "icon-left": {
+        label: "Icon Left",
+        variant: "v1",
+        customeElement: {
+          start: <IconMessage />,
+        },
+        name: "variant-1",
+      },
+      "icon-right": {
+        label: "Icon right",
+        variant: "v1",
+        customeElement: {
+          end: <IconMessage />,
+        },
+      },
+      "icon-pre-start": {
+        label: "Pre End",
+        variant: "v1",
+        customeElement: {
+          preStart: "Http",
+        },
+      },
+      "icon-pre-end": {
+        label: "Pre End",
+        customeElement: {
+          preEnd: "Text Preend",
+        },
+      },
+    },
   });
 
   const listExample1 = [
@@ -155,7 +151,7 @@ const CardIntroInputBase = () => {
           customeClass={{
             container: "w-full",
           }}
-          Component={<InputBase onChange={handleOnChange} {...data?.props} variant={data?.props?.variant as TBasePropsInput["variant"]} />}
+          Component={<InputBase onChange={handleOnChange} {...data?.props} />}
         />
       )),
     },
@@ -169,7 +165,7 @@ const CardIntroInputBase = () => {
           customeClass={{
             container: "w-full",
           }}
-          Component={<InputBase onChange={handleOnChange} {...data?.props} variant={data?.props?.variant as TBasePropsInput["variant"]} />}
+          Component={<InputBase onChange={handleOnChange} {...data?.props} />}
         />
       )),
     },
@@ -183,7 +179,7 @@ const CardIntroInputBase = () => {
           customeClass={{
             container: "w-full",
           }}
-          Component={<InputBase onChange={handleOnChange} {...data?.props} variant={data?.props?.variant as TBasePropsInput["variant"]} customeElement={data?.props.customeElement} />}
+          Component={<InputBase onChange={handleOnChange} {...data?.props} />}
         />
       )),
     },
