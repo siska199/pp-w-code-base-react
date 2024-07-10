@@ -1,4 +1,5 @@
 import { TBasePropsInput } from "@/types/ui/index";
+import { ReactDatePickerProps } from "react-datepicker";
 
 /*----------------GENERAL--------------------*/
 export interface TObject {
@@ -58,7 +59,7 @@ export interface TSettingTable<TData> {
 
 /*----------------FORM--------------------*/
 
-type TObjectForm = TBasePropsInput & Omit<Partial<React.HTMLProps<HTMLInputElement>>, "name">;
+type TObjectForm = TBasePropsInput & { value: any } & Omit<Partial<React.HTMLProps<HTMLInputElement>>, "name" | "value" | "onChange"> & Omit<Partial<ReactDatePickerProps<true, true>>, "onChange" | "value">;
 export type TForm<TKey extends string, TNameRequired extends boolean = true> = Record<TKey, TNameRequired extends true ? TObjectForm & { name: string } : TObjectForm & { name?: string }>;
 
 export type TEventOnChange = React.ChangeEvent<HTMLInputElement> | TCustomeEventOnChange<any>;

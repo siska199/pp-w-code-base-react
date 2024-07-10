@@ -14,7 +14,7 @@ const useForm = <TKey extends string>({ initialForm }: TPropsForm<TKey>) => {
       form[rKey] = {
         name: key,
         ...initialForm[rKey],
-        value: initialForm[rKey]?.value || "",
+        value: initialForm[rKey]?.value,
       };
     });
 
