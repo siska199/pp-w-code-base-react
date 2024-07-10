@@ -39,7 +39,6 @@ const CardAdditionalInfoInputDate = () => {
         </div>
       ),
     },
-
     {
       title: "Dynamic Display Modes",
       caption: "The component can dynamically switch between different date display modes (date, month, year) using internal state (showTypeDate). This allows users to select dates, months, or years based on the current mode.",
