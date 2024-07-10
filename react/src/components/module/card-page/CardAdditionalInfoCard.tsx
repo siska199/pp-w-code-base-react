@@ -8,9 +8,7 @@ const CardAdditionalInfoCard = () => {
   const listAdditionalInfo = [
     {
       title: "Default Behavior",
-      caption: (
-        <p>The default layout of the Card component is &lsquo;vertical&lsquo;. The default variant is &lsquo;top-bordered&lsquo;, and the default fit is &lsquo;true&lsquo;, meaning the card width will adjust to fit its content. These defaults can be changed by specifying the respective props.</p>
-      ),
+      caption: <p>The default layout of the Card component is &apos;vertical&apos;. The default variant is &apos;top-bordered&apos;, and the default fit is &apos;true&apos;, meaning the card width will adjust to fit its content. These defaults can be changed by specifying the respective props.</p>,
     },
 
     {
@@ -34,7 +32,7 @@ const CardAdditionalInfoCard = () => {
       title: "Variant",
       caption: (
         <p>
-          The Card component supports multiple variants such as &lsquo;top-bordered&lsquo;, &lsquo;centered-body&lsquo;, and &lsquo;overlay&lsquo;. Each variant provides a different visual style to the card. For more details on the available variants, refer to the{" "}
+          The Card component supports multiple variants such as &apos;top-bordered&apos;, &apos;centered-body&apos;, and &apos;overlay&apos;. Each variant provides a different visual style to the card. For more details on the available variants, refer to the{" "}
           <Button to="/docs/prerequisite/variant#card" label="here" />.
         </p>
       ),
@@ -51,7 +49,7 @@ const CardAdditionalInfoCard = () => {
       title: "Component Link Behavior",
       caption: (
         <p>
-          The Card component can include a link by setting the <code>link</code> prop with an object containing &lsquo;label&lsquo; and &lsquo;to&lsquo; properties. The link will be rendered as a button inside the card&lsquo;s body, directing users to the specified URL.
+          The Card component can include a link by setting the <code>link</code> prop with an object containing &apos;label&apos; and &apos;to&apos; properties. The link will be rendered as a button inside the card&apos;s body, directing users to the specified URL.
         </p>
       ),
     },

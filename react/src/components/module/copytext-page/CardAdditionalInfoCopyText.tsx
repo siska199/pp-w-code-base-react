@@ -39,7 +39,7 @@ const CardAdditionalInfoCopyText = () => {
     },
     {
       title: "Copy Confirmation",
-      caption: <p>When the text is successfully copied to the clipboard, the icon in the button changes to &lsquo;IconClipboard&lsquo; icon.</p>,
+      caption: <p>When the text is successfully copied to the clipboard, the icon in the button changes to &apos;IconClipboard&apos; icon.</p>,
     },
     {
       title: "Event Handling",

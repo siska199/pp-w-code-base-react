@@ -24,7 +24,7 @@ const CardAdditionalInfoInputCurrency = () => {
       title: "Dependencies",
       caption: (
         <p>
-          The InputCurrency The Alert component relies on several dependencies and utility functions imported from external sources (
+          The InputCurrency component relies on several dependencies and utility functions imported from external sources (
           <Filename name="ContainerInput" to="/docs/prerequisite/helper-component?id=ContainerInput.tsx" />
           <Filename name="TBasePropsInput" to="/docs/prerequisite/types" />,
           <Filename name="React" importFrom="react" />,
