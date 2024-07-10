@@ -1,32 +1,33 @@
 import CardSubMenu from "@components/cards/CardSubMenu";
 import ProgressStep from "@components/ui/ProgressStep";
+import Filename from "@components/ui/text/Filename";
 
 const CardAdditionalInfoInputCheckbox = () => {
   const listAdditionalInfo = [
     {
       title: "Default Behavior",
-      caption: "The component defaults to an unchecked state unless the `checked` prop is explicitly set to true.",
-    },
-    
-    {
-      title: "Handling Checkbox State",
-      caption: "Ensure the state of the checkbox (checked or unchecked) is managed properly through the `checked` prop. Use a state management solution like React's `useState` or a form library to handle state changes and updates.",
+      caption: <>The component defaults to an unchecked state unless the &apos;checked&apos; prop is explicitly set to true or the value is true as boolean or &apos;true&apos; (string).</>,
     },
     {
-      title: "Custom Styling",
-      caption: "Use the `customeClassnameCheckbox` prop to apply custom styles to the checkbox container. This allows for flexibility in styling and aligning the checkbox with your application's design system.",
+      title: "Dependencies",
+      caption: (
+        <div>
+          The InputBase component relies on several dependencies and utility functions imported from external sources (
+          <Filename name="IconCheck" to="/docs/prerequisite/icon?name=IconCheck" />,
+          <Filename name="Container" to="/docs/prerequisite/helper-component?id=Container.tsx" />, ). Ensure these dependencies are properly installed and imported for the component to function correctly.
+          <Filename name="TBasePropsInput" to="/docs/prerequisite/types" />, and
+          <Filename name="useMemo" importFrom="react" />
+        </div>
+      ),
     },
     {
-      title: "Label Accessibility",
-      caption: "Always provide a meaningful label using the `label` prop for accessibility purposes. This helps screen readers to announce the purpose of the checkbox to users with visual impairments.",
-    },
-    {
-      title: "Event Handling",
-      caption: "The `onChange` prop should be used to handle changes to the checkbox's value. Ensure that the `onChange` handler updates the state or performs any necessary actions when the checkbox state changes.",
-    },
-    {
-      title: "Additional HTML Attributes",
-      caption: "Use the `...attrsInput` spread operator to pass additional HTML attributes to the checkbox input element. This can include attributes like `id`, `disabled`, `required`, and more, providing greater control and customization.",
+      title: "Single Checkbox Value",
+      caption: (
+        <>
+          When using this component as a single checkbox, ensure that the &apos;value&apos; prop is either &apos;true&apos; or &apos;false&apos; (string type). This allows the component to correctly manage its checked state using the &apos;useMemo&apos; hook to determine if it should be checked or
+          unchecked.
+        </>
+      ),
     },
   ];
 
