@@ -32,7 +32,7 @@ const CardPropsInputPercentage = () => {
       label: "ContainerInput Props",
       content: (
         <>
-          Inherits all props from the ContainerInput component, providing additional styling and functionality. For details on available props, refer to the <Button label="ContainerInput documentation" to={`/docs/prerequisite/helper-component?id=container-input.tsx`} />.
+          Inherits all props from the ContainerInput component, providing additional styling and functionality. For details on available props, refer to the <Button label="ContainerInput documentation" to={`/docs/prerequisite/helper-component?id=ContainerInput.tsx`} />.
         </>
       ),
     },

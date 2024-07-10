@@ -12,7 +12,7 @@ const CardPropsInputMultipleCheckbox = () => {
       label: "Inherit all props that ContainerInput has",
       content: (
         <>
-          To see all available props that ContainerInput has, you can check them out <Here to={`/docs/prerequisite/helper-component?id=container-input.tsx`} />.
+          To see all available props that ContainerInput has, you can check them out <Here to={`/docs/prerequisite/helper-component?id=ContainerInput.tsx`} />.
         </>
       ),
     },
