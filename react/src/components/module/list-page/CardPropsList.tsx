@@ -15,8 +15,17 @@ const CardPropsList = () => {
     {
       label: "customeClass",
       content: "Optional object allowing customization of CSS classes for <ul> (unordered list) and <li> (list item) elements within the List component."
+    },
+    {
+      label: "variantBadge",
+      content: "Optional object that maps levels (numbers) to variants for Badge components, allowing customization of badge appearances based on item nesting levels."
+    },
+    {
+      label: "customeIconLi",
+      content: "Optional React node to customize the icon rendered next to each list item. If not provided, a default small dot icon is displayed."
     }
   ];
+
 
   return (
     <CardSubMenu title={'Props'}>
