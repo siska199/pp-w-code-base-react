@@ -24,27 +24,20 @@ const CardIntroList = () => {
     }
   ]
 
-  const listItemWithChild =[
-    ...listItem,
-    {
-      label:'Label5',
-      content:'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      childs:[
-        {
-          label:'child-label1',
-          content:'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-        },
-        {
-          label:'child-label2',
-          content:'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-        },
-        {
-          label:'child-label3',
-          content:'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-        },
-      ]
-    },
-  ]
+  const listItemWithChild =[...Array(3)]?.map((_,i)=>({
+    label:'Label'+i,
+    content:'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+    childs:[
+      {
+        label:'child-label1',
+        content:'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+      },
+      {
+        label:'child-label2',
+        content:'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+      },
+    ]
+  }))
 
   const listExample = [
     {
@@ -53,6 +46,9 @@ const CardIntroList = () => {
         withBorder={false}
         Component={<List
           items={listItem}
+          customeIconLi={{
+            0:"🌻"
+          }}
         />}
       />
     },
@@ -65,6 +61,9 @@ const CardIntroList = () => {
         variantBadge={{
           0:"softborder-success",
           1 :"softborder-warning"
+        }}
+        customeIconLi={{
+          1:<div className="w-[0.35rem] h-[0.35rem] mt-2 flex-shrink-0 bg-gray-500 rounded-[50%]"/>
         }}
       />}
     />

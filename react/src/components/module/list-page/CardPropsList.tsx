@@ -10,7 +10,7 @@ const CardPropsList = () => {
     },
     {
       label: "items",
-      content: "An array of objects (TItemList) where each object represents an item to be rendered in the list"
+      content: "An array of objects (TItemList) where each object represents an item to be rendered in the list."
     },
     {
       label: "customeClass",
@@ -21,10 +21,14 @@ const CardPropsList = () => {
       content: "Optional object that maps levels (numbers) to variants for Badge components, allowing customization of badge appearances based on item nesting levels."
     },
     {
+      label: "defaultIconLi",
+      content: "Optional React node to customize the default icon rendered next to each list item. If not provided, a default small dot icon ('🌸') is displayed."
+    },
+    {
       label: "customeIconLi",
-      content: "Optional React node to customize the icon rendered next to each list item. If not provided, a default small dot icon is displayed."
+      content: "Optional object that maps levels (numbers) to React nodes, allowing customization of the icon rendered next to each list item. If not provided for a level, the defaultIconLi will be used."
     }
-  ];
+];
 
 
   return (

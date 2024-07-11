@@ -12,46 +12,6 @@ const CardUsageList = () => {
   );
 }
 
-const displayUsage = `
-  const listItemWithChild =[
-    {
-      label:'Label1',
-      content:'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
-    },
-    {
-      label:'Label2',
-      content:'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
-    },
-    {
-      label:'Label3',
-      content:'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
-    },
-    {
-      label:'Label4',
-      content:'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
-    }
-    {
-      label:'Label5',
-      content:'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      childs:[
-        {
-          label:'child-label1',
-          content:'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-        },
-        {
-          label:'child-label2',
-          content:'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-        },
-        {
-          label:'child-label3',
-          content:'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-        },
-      ]
-    },
-  ]
-  return <List
-          items={listItem}
-        />
-`;
+const displayUsage = "\n  const listItem =[...Array(3)]?.map((_,i)=>({\n    label:'Label'+i,\n    content:'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',\n    childs:[\n      {\n        label:'child-label1',\n        content:'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',\n      },\n      {\n        label:'child-label2',\n        content:'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',\n      },\n    ]\n  }))\n  return <List\n        items={listItemWithChild}\n        variantBadge={{\n          0:\"softborder-success\",\n          1 :\"softborder-warning\"\n        }}\n        customeIconLi={{\n          1:<div className=\"w-[0.35rem] h-[0.35rem] mt-2 flex-shrink-0 bg-gray-500 rounded-[50%]\"/>\n        }}\n      />"
 
 export default CardUsageList;

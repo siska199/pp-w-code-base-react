@@ -1,45 +1,37 @@
 
 import CardSubMenu from "@components/cards/CardSubMenu";
 import ProgressStep from "@components/ui/ProgressStep";
+import Filename from "@components/ui/text/Filename";
 
 const CardAdditionalInfoList = () => {
   const listAdditionalInfo = [
     {
-      title: "Handling Nested Lists",
+      title: "Default Behavior",
       caption: (
-        <p>
-          The <code>List</code> component supports nested lists through recursive rendering.
-          This means you can include lists within lists by defining the <code>childs</code> property
-          in your item objects. The component will handle rendering these nested structures
-          efficiently.
-        </p>
+        <div>
+            By default, the <code>List</code> component renders each item in a vertical layout
+            with optional nested lists supported. The default icon rendered next to each list item
+            is a small dot icon (🌸), but this can be customized using the <code>defaultIconLi</code> prop.
+            The component also supports customizing badge variants based on item nesting levels using
+            the <code>variantBadge</code> prop, ensuring visual differentiation for different levels of items.
+        </div>
       )
     },
     {
-      title: "Custom Styling with customeClass",
+      title: "Dependencies",
       caption: (
         <p>
-          Use the <code>customeClass</code> prop to apply custom CSS classes to the rendered
-          <code>&lt;ul&gt;</code> (unordered list) and <code>&lt;li&gt;</code> (list item) elements.
-          This allows you to easily adjust the appearance of the list to match your design
-          requirements. Pass an object with <code>ul</code> and/or <code>li</code> properties, each
-          containing CSS class names.
+          The <code>List</code> component relies on several dependencies and utility functions imported from external sources (
+          <Filename name="variantBadge" to="/docs/prerequisite/variant?id=variant-badge.ts" />,
+          <Filename name="Badge" to="/docs/components/badge" />,
+          <Filename name="TItemList" to="/docs/prerequisite/types" />, and
+          <Filename name="cn" importFrom="cn" />,
+          ). Ensure these dependencies are properly installed and imported for the component to function correctly.
         </p>
-      )
-    },
-    {
-      title: "Using Title for List Organization",
-      caption: (
-        <p>
-          If you provide a <code>title</code> prop, it will be displayed prominently at the top of
-          the list using a <code>Badge</code> component. This helps in organizing and identifying
-          the purpose of the list within your application&apos;s interface.
-        </p>
-      )
+      ),
     }
   ];
   
-
   return (
     <CardSubMenu title={'Additional Info'}>
       <ProgressStep type="number" listStep={listAdditionalInfo} variant="vertical" />

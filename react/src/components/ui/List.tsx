@@ -14,18 +14,22 @@ interface TProps {
   variantBadge?: {
     [key: number]: keyof typeof variantBadge;
   };
-  customeIconLi? : React.ReactNode;
+  defaultIconLi? :  React.ReactNode;
+  customeIconLi? :  {
+    [key: number]: React.ReactNode;
+  };
 }
 
 const List = (props: TProps) => {
-  const { title, items, customeClass, variantBadge, customeIconLi,...attrs } = props;
-
+  const { title, items, customeClass,defaultIconLi:defaultIconLiProp, variantBadge, customeIconLi,...attrs } = props;
+  
+  const defaultIconLi=defaultIconLiProp??"🌸"??<div className="w-[0.35rem] h-[0.35rem] mt-2 flex-shrink-0 bg-gray-500 rounded-[50%]"/>
+  
   const renderItems = (items: TItemList[], level: number) => {
     return (
       <ul
         className={cn({
           "px-4 flex flex-col ": true,
-          // "ml-4": title,
           [customeClass?.ul || ""]: customeClass?.ul,
         })}
         {...attrs}
@@ -36,9 +40,7 @@ const List = (props: TProps) => {
             "my-1":item?.label,
             [customeClass?.li||'']:customeClass?.li,
           })}>
-            {
-              customeIconLi ?? <div className="w-[0.35rem] h-[0.35rem] mt-2 flex-shrink-0 bg-gray-500 rounded-[50%]"/>
-            }
+            {customeIconLi?.[level] ?? defaultIconLi}
             <div>
               {item.label && (
                 <Badge
