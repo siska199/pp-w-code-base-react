@@ -7,7 +7,6 @@ interface TProps<TData, TIncludeChecked extends boolean = false> {
     initialData?: TData[]
     initialSetting: Partial<TSettingTable<TData>>
     onFetchData: (params: TSettingTable<TData>) => Promise<TData[]>;
-
 }
 
 const useTable = <TData extends object, TIncludeChecked extends boolean = false>(props: TProps<TData, TIncludeChecked> & Omit<TTableProps<TData, TIncludeChecked>,"setting" |"data" | "columns" | "settings" | "onChange" | "setData">) => {

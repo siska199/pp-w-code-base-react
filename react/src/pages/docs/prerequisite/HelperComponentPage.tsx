@@ -58,6 +58,19 @@ const HelperComponentPage = () => {
                     </div>
                 </Container>
             )
+        },
+        {
+            title: <div id={"EmptyData"}>EmptyData.tsx</div>,
+            caption: (
+                <Container gap={"small"} >
+                    <p>The EmptyData component is a React component designed to display a message and an image when there is no data to show in a given context.</p>
+                    <CodeBlock
+                        fileName="src/components/ui/EmptyData.tsx"
+                        codeString={codeStringComponentUi?.EmptyData}
+                    />
+                    <List title={"Props"} items={listPropsEmptyData} />
+                </Container>
+            )
         }
     ]
 
@@ -209,5 +222,25 @@ const listPropsContainerInput = [
         content: "Additional string attribute that can be used for styling or positioning after the end element.",
     },
 ];
+
+const listPropsEmptyData =[
+    {
+        label: "customeClass",
+        content: "An optional object for customizing CSS classes applied to different elements within the EmptyData component.",
+    },
+    {
+        label: "customeClass.container",
+        content: "CSS class for the outer container div that wraps the image and text.",
+    },
+    {
+        label: "customeClass.img",
+        content: "CSS class for the image displayed when there is no data.",
+    },
+    {
+        label: "customeClass.label",
+        content: "CSS class for the text label indicating there is no data.",
+    },
+];
+
 
 export default HelperComponentPage;

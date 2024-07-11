@@ -1,58 +1,59 @@
 import CardSubMenu from "@components/cards/CardSubMenu";
 import ProgressStep from "@components/ui/ProgressStep";
-import Here from "@components/ui/text/Here";
+import Filename from "@components/ui/text/Filename";
 
 const CardAdditionalInfoTable = () => {
   const listAdditionalInfo = [
     {
-      title: "Default Column Structure",
-      caption: "Each column should have a `key` (unique identifier for the column), `name` (display name), and `className` (CSS classes for styling). Optionally, a column can have a `customeComponent` property for custom rendering.",
-    },
-    {
-      title: "Handling Data Updates",
-      caption: "Use the `setData` function to update the table data state. This is useful for handling changes like selecting/deselecting rows or updating data after an API call.",
-    },
-    {
-      title: "Sorting Functionality",
-      caption: "The table supports sorting by clicking on column headers. The `onChange` function will be called with updated sorting settings, which should then fetch new sorted data.",
-    },
-    {
-      title: "Pagination Control",
-      caption: "The table supports pagination. The `setting` prop should include pagination-related settings such as `currentPage`, `totalPage`, and `itemsPerPage`. The `onChange` function will handle page changes.",
-    },
-    {
-      title: "Loading State",
-      caption: "Use the `isLoading` prop to indicate loading state. When `isLoading` is true, interactions like sorting are disabled to prevent user actions during data fetching.",
-    },
-    {
-      title: "Checkbox Selection",
-      caption: "If the table includes checkboxes (when `setting.checked` is true), the table will manage the checked state for each row. The `handleOnChangeChecked` function updates the checked state for all or individual rows.",
-    },
-    {
-      title: "Empty Data Handling",
-      caption: "When there is no data, the table will display an `EmptyData` component to indicate that there are no records to show.",
-    },
-    {
-      title: "Customization and Extensibility",
-      caption: "The table component can be customized further by extending the `TColumn` and `TSettingTable` types and by passing additional props through the `anotherConfigTable` spread.",
-    },
-    {
-      title: "Responsive Design",
-      caption: "Ensure the table is responsive by using appropriate CSS classes and container sizes. The table layout adapts to different screen sizes.",
-    },
-    {
-      title: "Component Usage with useTable Hook",
+      title: "Default Behaviour",
       caption: (
-        <p>
-          To use this table component with the `useTable` hook, first initialize the hook with necessary parameters such as `initialColumn`, `initialData`, `initialSetting`, and `onFetchData`. The hook will manage table data, settings, and provide necessary handlers for sorting, pagination, and data
-          fetching.
-          <span>
-            You can see the hook file in <Here to="/" />
-          </span>
-        </p>
+        <div>
+          The Table component provides essential functionalities such as handling data updates, sorting by column headers, pagination control, checkbox selection for rows, handling empty data scenarios, customization through types, and responsiveness. Additionally, it supports usage with the &apos;useTable&apos; hook for efficient data management and interaction.
+        </div>
       ),
     },
-  ];
+    {
+      title: "Dependencies",
+      caption: (
+        <div>
+          The Table component relies on several dependencies and utility functions imported from external sources (
+          <Filename name="IconArrowUp" to="/docs/prerequisite/icon?name=IconArrowUp" />,
+          <Filename name="IconChevronLeft" to="/docs/prerequisite/icon?name=IconChevronLeft" />,
+          <Filename name="IconChevronRight" to="/docs/prerequisite/icon?name=IconChevronRight" />,
+          <Filename name="IconSort" to="/docs/prerequisite/icon?name=IconSort" />,
+          <Filename name="Button" to="/docs/components/button" />, and
+          <Filename name="useTable" to="/docs/prerequisite/helper-component?id=useTable" />
+          ). Ensure these dependencies are properly installed and imported for the component to function correctly.
+        </div>
+      ),
+    },
+    {
+      title: "Variant",
+      caption: (
+        <div>
+          The Table component supports variant handling through the <span className="italic">modalVariants</span> function from the <span className="italic">class-variance-authority</span> library. This allows applying different animation styles based on the variant prop.
+        </div>
+      ),
+    },
+    {
+      title: "Usage with useTable Hook",
+      caption: (
+        <div>
+          The useTable hook enhances the functionality of the Table component by centralizing data management and interaction logic. Here’s how it integrates with the Table component:
+          <ul className="list-disc pl-6">
+            <li><strong>Data Management:</strong> Manages table data, including fetching from APIs and updating states.</li>
+            <li><strong>Sorting:</strong> Handles column sorting logic based on user interactions.</li>
+            <li><strong>Pagination:</strong> Controls pagination state and allows navigation between pages.</li>
+            <li><strong>Checkbox Selection:</strong> Manages row selection using checkboxes with a master selection option.</li>
+            <li><strong>Empty Data Handling:</strong> Displays an empty state message when no data is available.</li>
+            <li><strong>Customization:</strong> Enables customization of table columns, data rendering, and UI components.</li>
+            <li><strong>Responsiveness:</strong> Ensures the table adapts well to different screen sizes and devices.</li>
+          </ul>
+          To use the Table component effectively, integrate it with the `useTable` hook to streamline data handling and provide a seamless user experience.
+        </div>
+      ),
+    },
+  ]
 
   return (
     <CardSubMenu title={"Additional Info"}>
