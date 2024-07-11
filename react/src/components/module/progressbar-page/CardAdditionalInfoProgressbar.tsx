@@ -1,6 +1,7 @@
 
 import CardSubMenu from "@components/cards/CardSubMenu";
 import ProgressStep from "@components/ui/ProgressStep";
+import Filename from "@components/ui/text/Filename";
 
 const CardAdditionalInfoProgressbar = () => {
   const listAdditionalInfo =  [
@@ -8,11 +9,12 @@ const CardAdditionalInfoProgressbar = () => {
         title: "Dependencies",
         caption: (
             <p>
-                This component relies on the following dependencies:<code>cn</code> function from <code>@lib/utils/helper</code>,
-                <code>Badge</code> component from <code>&ldquo;./Badge&ldquo;</code>
-                Make sure these dependencies are installed and imported correctly in your project.
+              The Progressbar component relies on several dependencies and utility functions imported from external sources (
+              <Filename name="cn" importFrom="cn" />, and
+              
+              ). Ensure these dependencies are properly installed and imported for the component to function correctly.
             </p>
-        )
+          ),
     },
     {
         title: "Functionality",
