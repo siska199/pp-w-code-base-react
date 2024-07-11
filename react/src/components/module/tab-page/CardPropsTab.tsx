@@ -6,21 +6,46 @@ const CardPropsTab = () => {
   const listItem = [
     {
       label: "layout",
-      content: "Specifies the layout direction of the tabs. Can be 'horizontal' or 'vertical'. Defaults to 'horizontal'."
+      content: <div>Specifies the layout direction of the tabs. Can be <span className="italic">horizontal</span> or <span className="italic">vertical</span>. Defaults to <span className="italic">horizontal</span>.</div>
     },
     {
       label: "type",
-      content: "Specifies the type of tabs. Can be 'bordered' or 'pilled'. Defaults to 'bordered'."
+      content: <div>Specifies the type of tabs. Can be <span className="italic">bordered</span> or <span className="italic">pilled</span>. Defaults to <span className="italic">bordered</span>.</div>
     },
     {
       label: "listTab",
-      content: "An array of objects representing each tab. Each object should have a 'label' property for the tab title and a 'content' property for the tab's content to display."
+      content: <div>An array of objects representing each tab. Each object should have a <span className="italic">label</span> property for the tab title and a <span className="italic">content</span> property for the tab&apos;s content to display.</div>
     },
     {
-      label: "customeClass",
-      content: "Optional. An object containing custom CSS classes for styling purposes:\n- 'container': CSS class for the container wrapping the tabs.\n- 'tabList': CSS class for the <ul> element containing the tab items.\n- 'tabItem': CSS class for individual tab items.\n- 'activeTabItem': CSS class for the active tab item.\n- 'indicator': CSS class for the indicator line or background that highlights the active tab."
+      label: "customeClass (Optional)",
+      content: (
+        <div>
+          An object containing custom CSS classes for styling purposes:
+          <List
+            customeIconLi={{
+              0:<div className="w-[0.35rem] h-[0.35rem] mt-2 flex-shrink-0 bg-gray-500 rounded-[50%]"/>
+            }}
+            items={[
+              {
+                label:'ul:',
+                content:<>CSS class for the <code>&lt;ul&gt;</code> element containing the tab items.</>
+              },
+              {
+                label:'li:',
+                content:<>CSS class for individual tab items.</>
+              },
+              {
+                label:'label:',
+                content:<>CSS class for the label within each tab item.</>
+              }
+            ]}
+          />
+          These classes can be applied to customize the appearance of the tabs and their contents.
+        </div>
+      )
     }
   ];
+  
   
 
   return (

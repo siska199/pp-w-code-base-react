@@ -30,7 +30,7 @@ const CardAdditionalInfoModal = () => {
           <Filename name={'@assets/styles/ui/modal.css'} to="/docs/prerequisite/helper-function?id=cn" />,
           <Filename name="Button" to="/docs/components/button" />,
           <Filename name="cn" to="/docs/prerequisite/helper-function?id=cn" />,
-          <Filename name="TBaseModal" to="/docs/prerequisite/types" />
+          <Filename name="TBaseModal" to="/docs/prerequisite/types" />,
           <Filename name="VariantProps" importFrom="class-variance-authority" />,
           <Filename name="cva" importFrom="class-variance-authority" />, and
           <Filename name="clsx" importFrom="clsx" />

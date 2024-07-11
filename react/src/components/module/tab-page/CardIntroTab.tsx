@@ -28,6 +28,13 @@ const CardIntroTab = () => {
       content :<div className="w-full p-4 h-[10rem] rounded-md  border">
         TAB CONTENT 2
       </div>
+    },
+    {
+      id: "2",
+      label:"Tab 3",
+      content :<div className="w-full p-4 h-[10rem] rounded-md  border">
+        TAB CONTENT 3
+      </div>
     }
   ]
 

@@ -11,7 +11,6 @@ const CardAdditionalInfoProgressbar = () => {
             <p>
               The Progressbar component relies on several dependencies and utility functions imported from external sources (
               <Filename name="cn" importFrom="cn" />, and
-              
               ). Ensure these dependencies are properly installed and imported for the component to function correctly.
             </p>
           ),
