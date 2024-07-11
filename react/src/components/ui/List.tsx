@@ -14,7 +14,7 @@ interface TProps {
   variantBadge?: {
     [key: number]: keyof typeof variantBadge;
   };
-  customeIconLi : React.ReactNode;
+  customeIconLi? : React.ReactNode;
 }
 
 const List = (props: TProps) => {
