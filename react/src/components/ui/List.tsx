@@ -14,25 +14,34 @@ interface TProps {
   variantBadge?: {
     [key: number]: keyof typeof variantBadge;
   };
+  customeIconLi : React.ReactNode;
 }
 
 const List = (props: TProps) => {
-  const { title, items, customeClass, variantBadge, ...attrs } = props;
+  const { title, items, customeClass, variantBadge, customeIconLi,...attrs } = props;
 
   const renderItems = (items: TItemList[], level: number) => {
     return (
       <ul
         className={cn({
-          "list-disc px-4 flex flex-col ": true,
-          "ml-4": title,
+          "px-4 flex flex-col ": true,
+          // "ml-4": title,
           [customeClass?.ul || ""]: customeClass?.ul,
         })}
         {...attrs}
       >
         {items.map((item, i) => (
-          <li key={i} className={` ${customeClass?.li} ${item?.label ? "my-1" : "mb-0"}`}>
-            {item.label && (
-              <Badge
+          <li key={i} className={cn({
+            'mb-0 inline-flex gap-2':true,
+            "my-1":item?.label,
+            [customeClass?.li||'']:customeClass?.li,
+          })}>
+            {
+              customeIconLi ?? <div className="w-[0.35rem] h-[0.35rem] mt-2 flex-shrink-0 bg-gray-500 rounded-[50%]"/>
+            }
+            <div>
+              {item.label && (
+                <Badge
                 label={item.label}
                 variant={variantBadge?.[level] || "soft-primary"}
                 className={cn({
@@ -40,9 +49,10 @@ const List = (props: TProps) => {
                   [customeClass?.label || ""]: customeClass?.label,
                 })}
               />
-            )}
-            {item.content}
-            {item.childs && renderItems(item.childs, level + 1)}
+              )}
+              {item.content}
+              {item.childs && renderItems(item.childs, level + 1)}
+            </div>
           </li>
         ))}
       </ul>
