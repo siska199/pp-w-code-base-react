@@ -9,7 +9,7 @@ const CardAdditionalInfoTab = () => {
       title: "Default Behaviour",
       caption: (
         <div>
-          The Tabs component defaults to a horizontal layout <span className="italic">(layout=&quot;horizontal&quot;) </span> and bordered tabs <span className="italic">(type=&quot;bordered&quot;)</span>. The first tab (&apos;listTab[0]&apos;) is active by default.
+          The Tabs component defaults to a horizontal layout <span className="italic">(layout=&quot;horizontal&quot;) </span> and bordered tabs <span className="italic">(type=&quot;bordered&quot;)</span>. The first tab <span className="italic">(listTab[0])</span> is active by default.
         </div>
       ),
     },
