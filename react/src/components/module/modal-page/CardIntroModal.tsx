@@ -9,13 +9,13 @@ import { useState } from "react";
 const CardIntroModal = () => {
   const variantModal = {
     "fadein-scaleup": "",
-    "slide-formright": "",
+    "slide-from-right": "",
     "drawer": ""
   }
 
   const [showModal, setShowModal] = useState({
     "fadein-scaleup": false,
-    "slide-formright": false,
+    "slide-from-right": false,
     "drawer": false
   })
 
@@ -26,6 +26,8 @@ const CardIntroModal = () => {
       [variant]: !showModal[variant]
     })
   }
+
+
 
 
   const listExample = [
@@ -47,8 +49,8 @@ const CardIntroModal = () => {
                 <p>The message displayed in the modal dialog should be simple and easy to understand.</p>
               </div>
               <div className="grid grid-cols-2 gap-2 mt-3">
-                <Button label={'Cancel'} variant={"solid-white"} className="w-full" />
-                <Button label={'Save'} className="w-full" />
+                <Button onClick={() => handleToggleModal(variant)} label={'Cancel'} variant={"solid-white"} className="w-full" />
+                <Button onClick={() => handleToggleModal(variant)} label={'Save'} className="w-full" />
               </div>
             </div>
           </ContainerModal>

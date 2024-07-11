@@ -25,7 +25,7 @@ const CardAdditionalInfoList = () => {
           <Filename name="variantBadge" to="/docs/prerequisite/variant?id=variant-badge.ts" />,
           <Filename name="Badge" to="/docs/components/badge" />,
           <Filename name="TItemList" to="/docs/prerequisite/types" />, and
-          <Filename name="cn" importFrom="cn" />,
+          <Filename name="cn" to="/docs/prerequisite/helper-function?id=cn" />,
           ). Ensure these dependencies are properly installed and imported for the component to function correctly.
         </p>
       ),

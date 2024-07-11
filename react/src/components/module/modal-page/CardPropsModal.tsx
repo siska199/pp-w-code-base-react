@@ -10,30 +10,30 @@ const CardPropsModal = () => {
     },
     {
       label: "customeClass",
-      content: "Object containing custom CSS classes to apply to specific elements within the modal.",
+      content: "Object containing custom CSS classes to apply to specific elements within the modal."
     },
     {
       label: "customeClass.mdContent",
-      content: "Custom CSS class for styling the main content area (`md-content`) of the modal.",
+      content: "Custom CSS class for styling the main content area (`md-content`) of the modal."
     },
     {
       label: "className",
-      content: "Additional CSS class names to apply to the root modal container (`md-modal`).",
+      content: "Additional CSS class names to apply to the root modal container (`md-modal`)."
     },
     {
       label: "onClose",
-      content: "Callback function invoked when the modal is closed, typically triggered by clicking the close button.",
+      content: "Callback function invoked when the modal is closed, typically triggered by clicking the close button."
     },
     {
       label: "children",
-      content: "Content to be rendered inside the modal, typically components or elements.",
+      content: "Content to be rendered inside the modal, typically components or elements."
     },
     {
       label: "variant",
-      content: "Specifies the visual variant or animation style of the modal. Supported variants include 'fadein-scaleup', 'slide-formright', and 'drawer'.",
-    },
+      content: "Specifies the visual variant or animation style of the modal. Supported variants include 'fadein-scaleup', 'slide-from-right', and 'drawer'."
+    }
   ];
-
+  
 
   return (
     <CardSubMenu title={'Props'}>

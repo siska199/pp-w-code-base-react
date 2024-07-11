@@ -64,7 +64,7 @@ const modalVariants = cva(
         variants: {
             variant: {
                 "fadein-scaleup": "md-fadein-scaleup min-h-[10rem]", // Fade in and scale up
-                "slide-formright": "md-slide-formright min-h-[10rem]", // Slide from the right 
+                "slide-from-right": "md-slide-from-right min-h-[10rem]", // Slide from the right 
                 "drawer": "md-drawer p-0 w-full" // Drawer 
             },
         },
