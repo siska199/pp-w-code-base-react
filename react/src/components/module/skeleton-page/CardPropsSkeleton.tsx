@@ -37,7 +37,7 @@ const CardPropsSkeleton = () => {
       content: "Any additional props to be passed down to the outer div element."
     }
   ];
-
+  
 
   return (
     <CardSubMenu title={'Props'}>

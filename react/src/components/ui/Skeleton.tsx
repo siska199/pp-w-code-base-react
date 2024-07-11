@@ -14,7 +14,7 @@ interface TProps extends HTMLProps<HTMLDivElement> {
 
 const Skeleton = (props: TProps) => {
     const { children, className, isLoading = false, type = "text", ...otherProps } = props;
-    const contentRefs = useRef<(HTMLDivElement | null)>(null);
+    const contentRefs = useRef<(HTMLDivElement)>(null);
     const [totalSkeleton, setTotalSkeleton] = useState(0)
     const [skeletonStyle, setSkeletonStyle] = useState({
         width: 0,
@@ -24,15 +24,11 @@ const Skeleton = (props: TProps) => {
 
     useEffect(() => {
         setTimeout(() => {
-            // @ts-ignore
-            const elmnContent = contentRefs?.current?.firstChild
+            const elmnContent = contentRefs?.current?.firstChild as any
             if (elmnContent && type == "text") {
-                // @ts-ignore
                 const lineHeight = parseFloat(getComputedStyle(elmnContent).lineHeight);
-                // @ts-ignore
                 const lines = Math.ceil(elmnContent.offsetHeight / lineHeight);
                 setSkeletonStyle({
-                    // @ts-ignore
                     width: elmnContent.offsetWidth,
                     height: lineHeight - 8,
                     borderRadius: "0.5rem"
@@ -43,9 +39,7 @@ const Skeleton = (props: TProps) => {
                 const computedStyles = window.getComputedStyle(elmnContent as Element);
                 const borderRadius = computedStyles.borderRadius;
                 setSkeletonStyle({
-                    // @ts-ignore
                     width: elmnContent.offsetWidth,
-                    // @ts-ignore
                     height: elmnContent.offsetHeight,
                     borderRadius
                 });

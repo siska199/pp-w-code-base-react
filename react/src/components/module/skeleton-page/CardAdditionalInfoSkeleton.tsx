@@ -1,36 +1,40 @@
 
 import CardSubMenu from "@components/cards/CardSubMenu";
 import ProgressStep from "@components/ui/ProgressStep";
+import Filename from "@components/ui/text/Filename";
 
 const CardAdditionalInfoSkeleton = () => {
   const listAdditionalInfo = [
     {
-      title: "Animation",
-      caption: "The Skeleton component uses a pulse animation to indicate loading. This can be customized or disabled by modifying the CSS classes."
+      title: "Default Behavior",
+      caption: (
+        <div>
+          The &apos;Skeleton&apos; component renders a placeholder that mimics the dimensions and appearance of the content to be loaded. If &apos;isLoading&apos; is &apos;true&apos;, it shows the Skeleton placeholder instead of the actual &apos;children&apos; content.
+          The &apos;type&apos; prop determines whether the Skeleton is rendered as &apos;text&apos; (multiple lines) or &apos;block&apos; (single block). The dimensions (width and height) of the Skeleton are derived from the content&apos;s computed styles.
+        </div>
+      )
     },
     {
-      title: "Customization",
-      caption: "You can customize the appearance of the Skeleton by providing additional CSS classes through the `className` prop. The Skeleton will inherit these classes."
-    },
-    {
-      title: "Timeout for Skeleton Calculation",
-      caption: "The component uses a timeout of 600ms to calculate the dimensions and number of skeleton elements. This is to ensure that the content has enough time to render. You may need to adjust this value depending on your use case."
+      title: "Dependencies",
+      caption: (
+        <div>
+          The Alert component relies on several dependencies and utility functions imported from external sources (
+          <Filename name="cn" to="/docs/prerequisite/helper-function?id=cn" />,
+          <Filename name="HTMLProps" importFrom="react" />,
+          <Filename name="useRef" importFrom="react" />,
+          <Filename name="useEffect" importFrom="react" />, and
+          <Filename name="useState" importFrom="react" />
+          ). Ensure these dependencies are properly installed and imported for the component to function correctly.
+        </div>
+      ),
     },
     {
       title: "Handling Dynamic Content",
-      caption: "If the content size changes dynamically, ensure that the `children` prop is updated accordingly to trigger recalculation of the skeleton dimensions."
+      caption: <div>If the content size changes dynamically, ensure that the &apos;children&apos; prop is updated accordingly to trigger recalculation of the skeleton dimensions.</div>
     },
-    {
-      title: "Browser Compatibility",
-      caption: "The component relies on `getComputedStyle` to determine the dimensions and styles of the content. Ensure that your target browsers support this method."
-    },
-    {
-      title: "Fallback for Unsupported Browsers",
-      caption: "For older or unsupported browsers, consider providing a fallback mechanism or static placeholder elements instead of relying solely on the Skeleton component."
-    },
+
   ];
   
-
   return (
     <CardSubMenu title={'Additional Info'}>
       <ProgressStep type="number" listStep={listAdditionalInfo} variant="vertical" />
