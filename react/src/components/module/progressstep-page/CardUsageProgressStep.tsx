@@ -14,12 +14,5 @@ const CardUsageProgressStep = () => {
 
 
 
-const displayUsage = `
-  const listStep =[...Array(5)]?.map((_,i)=>({
-    title: \`Step \${i+1}\`,
-    caption: \`Siska Apriana Rifianti \${i+1}\`
-  }))
-  return <ProgressStep variant={"horizontal"} activeStep={1} listStep={listStep}  />
-`;
-
+const displayUsage = "\n  const listStep =[...Array(5)]?.map((_,i)=>({\n    title: `Step ${i+1}`,\n    caption: `Siska Apriana Rifianti ${i+1}`\n  }))\n  return <ProgressStep variant={\"horizontal\"} activeStep={1} listStep={listStep}  />\n"
 export default CardUsageProgressStep;

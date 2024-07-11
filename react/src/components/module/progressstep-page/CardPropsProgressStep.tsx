@@ -28,7 +28,7 @@ const CardPropsProgressStep = () => {
         label: "customeClass",
         content: "An optional object containing custom CSS classes to override or extend the component's styles. It can include the following properties: 'spanIcon' for the step indicator, 'stepperWrapper' for the overall wrapper of the stepper, 'stepperIcon' for individual step icons, and 'stepperItem' for each step item."
     }
-  ];
+];
 
 
   return (

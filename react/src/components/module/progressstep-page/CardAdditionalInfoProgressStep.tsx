@@ -2,42 +2,53 @@
 import CardSubMenu from "@components/cards/CardSubMenu";
 import List from "@components/ui/List";
 import ProgressStep from "@components/ui/ProgressStep";
+import Filename from "@components/ui/text/Filename";
 
 const CardAdditionalInfoProgressStep = () => {
   const listAdditionalInfo =  [
     {
-        title: "Icon for Completed Steps",
-        caption: (
-            <p>
-                Completed steps are indicated by a checkmark icon. You can customize this icon by modifying the <code>IconCheckPS</code> component located within the main component code.
-                To change the appearance of the checkmark icon, adjust the SVG path or attributes within the <code>IconCheckPS</code> component.
-            </p>
-        )
+      title: "Default Behavior",
+      caption: (
+        <p>
+          The component renders a list of steps (&apos;listStep&apos;), where each step displays a title and optionally a caption. Steps can be oriented horizontally or vertically (&apos;variant&apos;), with customizable styles for step indicators (&apos;type&apos;) and shapes (&apos;shapeItem&apos;).
+          Completed steps are marked with a checkmark icon by default. Users can define custom CSS classes (&apos;customeClass&apos;) to further personalize the component&apos;s appearance.
+        </p>
+      )
     },
     {
-        title: "Supported Variants and Types",
-        caption: (
-            <div>
-                    The component supports different variants and types:
-                <List
-                  items={[
-                    {
-                      label:'variant',
-                      content:<>Controls the layout orientation of the progress steps. It can be set to <code>&rdquo;horizontal&rdquo;</code> (default) or <code>&rdquo;vertical&rdquo;</code>.</>
-                    },
-                    {
-                      label:'type',
-                      content:<>Defines the visual style of each step item. Supported values include <code>&rdquo;number&rdquo;</code>, <code>&rdquo;default&rdquo;</code> (generic styling), and <code>&rdquo;dot&rdquo;</code>.</>
-                    },
-                    {
-                      label:'shapeItem',
-                      content:<>Specifies the shape of the step indicator. Options are <code>&rdquo;rounded&rdquo;</code> (default) and <code>&rdquo;circle&rdquo;</code>.</>
-                    }
-                  ]}
-                />
-            </div>
-        )
-    }
+      title: "Dependencies",
+      caption: (
+        <div>
+          The Alert component relies on several dependencies and utility functions imported from external sources (
+          <Filename name="cn" to="/docs/prerequisite/helper-function?id=cn" />
+          ). Ensure these dependencies are properly installed and imported for the component to function correctly.
+        </div>
+      ),
+    },
+    {
+      title: "Supported Variants and Types",
+      caption: (
+        <div>
+          The component supports different variants and types:
+          <List
+            items={[
+              {
+                label: 'variant',
+                content: <>Controls the layout orientation of the progress steps. It can be set to <code>&rdquo;horizontal&rdquo;</code> (default) or <code>&rdquo;vertical&rdquo;</code>.</>
+              },
+              {
+                label: 'type',
+                content: <>Defines the visual style of each step item. Supported values include <code>&rdquo;number&rdquo;</code>, <code>&rdquo;default&rdquo;</code> (generic styling), and <code>&rdquo;dot&rdquo;</code>.</>
+              },
+              {
+                label: 'shapeItem',
+                content: <>Specifies the shape of the step indicator. Options are <code>&rdquo;rounded&rdquo;</code> (default) and <code>&rdquo;circle&rdquo;</code>.</>
+              }
+            ]}
+          />
+        </div>
+      )
+    },
 ];
 
 
