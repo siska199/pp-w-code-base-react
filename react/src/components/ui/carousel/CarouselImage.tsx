@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { cn } from "@lib/utils/helper"; // Assuming you have this utility
 import Button from "@components/ui/Button";
 import { IconChevronLeft, IconChevronRight } from "@assets/icons";
+import useMediaQuery from "@hooks/useMediaQuery";
 
 interface CarouselProps {
   items: React.ReactNode[];
@@ -14,13 +15,14 @@ interface CarouselProps {
   };
 }
 
-const CarouselImage: React.FC<CarouselProps> = ({ items, className, itemsPerView = { sm: 1, md: 3, lg: 4 } }) => {
+const CarouselImage: React.FC<CarouselProps> = ({ items, className, itemsPerView = { sm: 1, md: 1, lg: 1 } }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemWidth, setItemWidth] = useState(0);
   const [load, setLoad] = useState(true);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const containerItemRef = useRef<HTMLDivElement | null>(null);
+  const { isMinLg, isMinMd } = useMediaQuery();
 
   useEffect(() => {
     const handleResize = () => {
@@ -62,22 +64,23 @@ const CarouselImage: React.FC<CarouselProps> = ({ items, className, itemsPerView
   }, [itemWidth]);
 
   const handleGetItemsPerView = () => {
-    const screenWidth = window.innerWidth;
-    if (screenWidth >= 1024 && itemsPerView.lg) {
+    if (isMinLg && itemsPerView.lg) {
       return Math.min(itemsPerView.lg, items.length); // Ensure itemsPerView doesn't exceed items.length
-    } else if (screenWidth >= 768 && itemsPerView.md) {
+    } else if (isMinMd && itemsPerView.md) {
       return Math.min(itemsPerView.md, items.length);
-    } else if (itemsPerView.sm) {
-      return Math.min(itemsPerView.sm, items.length);
     } else {
-      return Math.min(1, items.length); // Default fallback, ensure at least one item visible
+      return Math.min(itemsPerView.sm || 1, items.length);
     }
   };
 
   const handlePrev = () => {
     setCurrentIndex((prevIndex) => {
       const newIndex = Math.max(prevIndex - 1, 0);
-      itemRefs.current[newIndex]?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
+      const scrollPosition = itemWidth * newIndex;
+      containerItemRef.current?.scrollTo({
+        left: scrollPosition,
+        behavior: "smooth",
+      });
       return newIndex;
     });
   };
@@ -85,7 +88,11 @@ const CarouselImage: React.FC<CarouselProps> = ({ items, className, itemsPerView
   const handleNext = () => {
     setCurrentIndex((prevIndex) => {
       const newIndex = Math.min(prevIndex + 1, items.length - handleGetItemsPerView());
-      itemRefs.current[newIndex]?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
+      const scrollPosition = itemWidth * newIndex;
+      containerItemRef.current?.scrollTo({
+        left: scrollPosition,
+        behavior: "smooth",
+      });
       return newIndex;
     });
   };
@@ -104,8 +111,6 @@ const CarouselImage: React.FC<CarouselProps> = ({ items, className, itemsPerView
     setCurrentIndex(updateIndex);
     itemRefs.current[updateIndex]?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
   };
-
-  // left: `-${currentIndex * itemWidth}px`,
 
   return (
     <div className={cn("relative w-full h-full overflow-hidden", className)} ref={containerRef}>
