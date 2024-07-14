@@ -34,3 +34,4 @@ export { default as IconMoreVertical} from '@assets/icons/more-vertical.svg?reac
 export { default as IconLove} from '@assets/icons/love.svg?react';
 export { default as IconCart} from '@assets/icons/cart.svg?react';
 export { default as IconZoom} from '@assets/icons/zoom.svg?react';
+export { default as IconFile} from '@assets/icons/file.svg?react';

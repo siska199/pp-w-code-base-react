@@ -26,6 +26,7 @@ const useForm = <TKey extends string>({ initialForm }: TPropsForm<TKey>) => {
   const handleOnChange = (e: TEventOnChange) => {
     const name = e.target.name as TKey;
     const value = e.target.value;
+
     setForm({
       ...form,
       [name]: {
