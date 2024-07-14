@@ -1,3 +1,5 @@
+import { cn } from "@lib/utils/helper";
+
 interface TProps {
   children: React.ReactNode;
   text: string;
@@ -11,9 +13,25 @@ interface TProps {
 const Tooltip = (props: TProps) => {
   const { children, text, variant = "top", customeClass } = props;
   return (
-    <span data-text={text} className={`${text && "tooltip"} ${customeClass?.tooltip} ${variant} inline-block relative w-fit p-1`}>
+    <span
+      data-text={text}
+      className={cn({
+        " inline-block relative w-fit p-1": true,
+        [customeClass?.tooltip || ""]: customeClass?.tooltip,
+        "tooltip ": text,
+        [`${variant}`]: variant,
+      })}
+    >
       {children}
-      {text && <span className={`rectangle ${variant}  ${customeClass?.rectangle}`}></span>}
+      {text && (
+        <span
+          className={cn({
+            "rectangle ": true,
+            [customeClass?.rectangle || ""]: customeClass?.rectangle,
+            [`${variant}`]: variant,
+          })}
+        ></span>
+      )}
     </span>
   );
 };

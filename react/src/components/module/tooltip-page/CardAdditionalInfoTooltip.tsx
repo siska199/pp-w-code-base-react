@@ -1,16 +1,26 @@
 import CardSubMenu from "@components/cards/CardSubMenu";
-import Button from "@components/ui/Button";
 import ProgressStep from "@components/ui/ProgressStep";
+import Filename from "@components/ui/text/Filename";
 
 const CardAdditionalInfoTooltip = () => {
   const listAdditionalInfo = [
     {
-      title: "CSS Customization",
+      title: "Default Behavior",
       caption: (
         <p>
-          The component uses several custom CSS classes for styling. These classes are likely defined in an external CSS file (tooltip.css), which customizes the appearance of the tooltip and its elements. You can see the css file that contain cusmte styling that use by component InputDate in{" "}
-          <Button label={"here"} to={"/"} />
+          By default, the tooltip appears when hovering over the child element. The position of the tooltip is determined by the <code>variant</code> prop, which can be &quot;top&quot;, &quot;bottom&quot;, &quot;left&quot;, or &quot;right&quot;. If no variant is specified, the tooltip defaults to
+          appearing at the top of the child element.
         </p>
+      ),
+    },
+    {
+      title: "Dependencies",
+      caption: (
+        <div>
+          The Tooltip component relies on several dependencies and utility functions imported from external sources (
+          <Filename name="cn" to="/docs/prerequisite/helper-function?id=cn" />
+          ). Ensure these dependencies are properly installed and imported for the component to function correctly.
+        </div>
       ),
     },
     {
