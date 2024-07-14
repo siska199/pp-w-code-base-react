@@ -1,15 +1,17 @@
 import { IconFile } from "@assets/icons";
 import Container from "@components/ui/Container";
 import ContainerInput from "@components/ui/inputs/ContainerInput";
-import { TAcceptFileType, TBasePropsInput, TCustomeEventOnChange, TValueFile } from "@types";
+import { TAcceptFileType, TBasePropsInput, TCustomeEventOnChange } from "@types";
 import React, { useEffect, useRef, useState } from "react";
 
-interface TProps extends TBasePropsInput, Omit<Partial<React.HTMLProps<HTMLInputElement>>, "value" | "onChange"> {
-  onChange: (e: TCustomeEventOnChange<TValueFile>) => void;
-  name: string;
-  listAcceptedFile?: TAcceptFileType[];
-  value: TValueFile;
-}
+type TProps = TBasePropsInput &
+  Omit<Partial<React.HTMLProps<HTMLInputElement>>, "value" | "onChange"> & {
+    multiple?: boolean;
+    name: string;
+    listAcceptedFile?: TAcceptFileType[];
+    onChange: (e: TCustomeEventOnChange<TProps["multiple"] extends true ? File[] : File>) => void;
+    value: TProps["multiple"] extends true ? File[] : File;
+  };
 
 const InputFile = (props: TProps) => {
   const { listAcceptedFile = ["*"], onChange: handleOnChange, ...attrs } = props;
@@ -24,13 +26,13 @@ const InputFile = (props: TProps) => {
     inputFileRef?.current?.click();
   };
 
-  const handleUpdateOnChange = (e: TCustomeEventOnChange<TValueFile, { files: TValueFile }>) => {
+  const handleUpdateOnChange = (e: TCustomeEventOnChange<TProps["multiple"] extends true ? File[] : File, { files: File[] }>) => {
     handleOnChange({
       target: {
         name: attrs?.name,
-        value: e.target.files,
+        value:attrs?.multiple? e.target?.files:e.target?.files[0],
       },
-    });
+    } as TCustomeEventOnChange<TProps["multiple"] extends true ? File[] : File>);
   };
 
   return (
