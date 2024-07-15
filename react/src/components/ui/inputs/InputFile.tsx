@@ -1,22 +1,26 @@
 import { IconFile } from "@assets/icons";
 import Container from "@components/ui/Container";
 import ContainerInput from "@components/ui/inputs/ContainerInput";
-import { TAcceptFileType, TBasePropsInput, TCustomeEventOnChange } from "@types";
+import { bytesToMegabytes } from "@lib/utils/helper";
+import { TBasePropsInput, TCustomeEventOnChange, TFileType } from "@types";
 import React, { useEffect, useRef, useState } from "react";
+
 
 type TProps = TBasePropsInput &
   Omit<Partial<React.HTMLProps<HTMLInputElement>>, "value" | "onChange"> & {
     multiple?: boolean;
     name: string;
-    listAcceptedFile?: TAcceptFileType[];
+    listAcceptedFile?: TFileType[] | [];
     onChange: (e: TCustomeEventOnChange<TProps["multiple"] extends true ? File[] : File>) => void;
-    value: TProps["multiple"] extends true ? File[] : File;
+    value: (TProps["multiple"] extends true ? File[] : File) | null;
+    totalSizeMax?: number;
   };
 
 const InputFile = (props: TProps) => {
-  const { listAcceptedFile = ["*"], onChange: handleOnChange, ...attrs } = props;
+  const { listAcceptedFile = [TFileType.ALL], onChange: handleOnChange, totalSizeMax = 5 /*(megabyte)*/, ...attrs } = props;
   const inputFileRef = useRef<HTMLInputElement | null>(null);
   const [acceptedFile, setAcceptedFile] = useState("");
+  const [errorMessageDynamic, setErrorMessageDynamic] = useState("");
 
   useEffect(() => {
     setAcceptedFile(listAcceptedFile?.join(","));
@@ -27,12 +31,40 @@ const InputFile = (props: TProps) => {
   };
 
   const handleUpdateOnChange = (e: TCustomeEventOnChange<TProps["multiple"] extends true ? File[] : File, { files: File[] }>) => {
-    handleOnChange({
-      target: {
-        name: attrs?.name,
-        value:attrs?.multiple? e.target?.files:e.target?.files[0],
-      },
-    } as TCustomeEventOnChange<TProps["multiple"] extends true ? File[] : File>);
+    const value = attrs?.multiple ? Array.from(e.target?.files) : e.target?.files[0];
+    const isValid = handleValidationInputFile(value);
+
+    isValid &&
+      handleOnChange({
+        target: {
+          name: attrs?.name,
+          value,
+        },
+      } as TCustomeEventOnChange<TProps["multiple"] extends true ? File[] : File>);
+  };
+
+  const handleValidationInputFile = (value: File[] | File): boolean => {
+    const isValid = true;
+    const totalSize: number = bytesToMegabytes(Array.isArray(value) ? value?.reduce((acc, data) => acc + data?.size, 0) : value?.size);
+
+    if (totalSize > totalSizeMax) {
+      setErrorMessageDynamic("File upload cancelled due to size limit exceeded.");
+      return false;
+    }
+
+    const fileTypes = (Array.isArray(value) ? value?.map((data) => handleGetFileTypeFromName(data?.name)) : [handleGetFileTypeFromName(value?.name)]) as TFileType[];
+    const isAllFileTypesAllowed = fileTypes?.every((fileType) => listAcceptedFile?.includes(fileType));
+    
+    if(!isAllFileTypesAllowed){
+      setErrorMessageDynamic('Please upload the correct type file')
+    }
+
+    return isValid;
+  };
+
+  const handleGetFileTypeFromName = (name: string) => {
+    const type = name?.split(".")?.slice(-1)[0];
+    return `.${type}`;
   };
 
   return (
@@ -42,6 +74,7 @@ const InputFile = (props: TProps) => {
       customeClass={{
         ciV2: "!border-none !p-0",
       }}
+      errorMessage={errorMessageDynamic}
     >
       {(attrsInput) => (
         <>

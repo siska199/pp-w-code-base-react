@@ -77,15 +77,26 @@ export interface TBasePropsInput {
   };
 }
 
-type TAcceptImage = ".jpg" | ".jpeg" | ".png" | ".gif" | ".bmp" | ".webp";
 
-type TAcceptDocument = ".doc" | ".docx" | ".pdf" | ".txt";
 
-type TAcceptSpreadsheet = ".xls" | ".xlsx" | ".csv";
+export enum TFileType {
+  JPG = ".jpg",
+  JPEG = ".jpeg",
+  PNG = ".png",
+  GIF = ".gif",
+  BMP = ".bmp",
+  WEBP = ".webp",
+  DOC = ".doc",
+  DOCX = ".docx",
+  PDF = ".pdf",
+  TXT = ".txt",
+  XLS = ".xls",
+  XLSX = ".xlsx",
+  CSV = ".csv",
+  ALL = "*"
+}
 
-type TAcceptAllFiles = "*";
 
-export type TAcceptFileType = TAcceptImage | TAcceptDocument | TAcceptSpreadsheet | TAcceptAllFiles;
 
 export interface TBaseModal {
   isShow: boolean;

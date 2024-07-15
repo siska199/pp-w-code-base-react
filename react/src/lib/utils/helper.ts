@@ -1,6 +1,9 @@
 import clsx, { ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
+export const bytesToMegabytes=(bytes:number):number=> {
+    return (bytes / (1024 * 1024));
+}
 
 export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs))
 
