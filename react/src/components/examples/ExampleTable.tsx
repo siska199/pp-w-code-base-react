@@ -13,8 +13,9 @@ type TData = {
 
 const ExampleTable = () => {
   const { isLoading } = useGlobalStore();
-  const { apiClient } = useAPI();
+  const { apiClient , progress} = useAPI();
 
+  console.log("progress; ", progress)
   const configTable = useTable<TData, false>({
     initialColumn: [
       {
