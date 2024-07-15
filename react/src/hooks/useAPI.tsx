@@ -2,8 +2,8 @@ import { baseURLAPI, globalErrorMessage } from "@lib/config/global-variable";
 import { isEmptyValue } from "@lib/utils/helper";
 import useGlobalStore from "@store";
 import { TObject } from "@types";
-import axios from "axios";
-import { useState } from "react";
+import axios, { CancelTokenSource } from "axios";
+import { useRef, useState } from "react";
 
 interface TParamsApiClient {
   baseUrl?: string;
@@ -17,11 +17,14 @@ interface TParamsApiClient {
 const useAPI = () => {
   const { setAlertConfig, setIsLoading } = useGlobalStore();
   const [progress, setProgress] = useState(0);
+  const cancelTokenRef = useRef<CancelTokenSource | null>(null);
 
   const apiClient = async (params: TParamsApiClient): Promise<{ data: TObject | null; success: boolean; message: string }> => {
     const { baseUrl, method = "get", bareerToken, endpoint, isForm = false, payload } = params;
     try {
       setIsLoading(true);
+      // Create a new CancelToken for each request
+      cancelTokenRef.current = axios.CancelToken.source();
 
       axios.defaults.baseURL = baseUrl || baseURLAPI;
       axios.defaults.headers.common["Authorization"] = bareerToken ? `Bearer ${bareerToken}` : null;
@@ -35,6 +38,7 @@ const useAPI = () => {
         onUploadProgress: (event) => {
           setProgress(Math.round((100 * event.loaded) / (event?.total || 100)));
         },
+        cancelToken: cancelTokenRef.current.token,
       });
 
       setAlertConfig({
@@ -67,9 +71,17 @@ const useAPI = () => {
     }
   };
 
+  const cancelRequest = () => {
+    if (cancelTokenRef.current) {
+      cancelTokenRef.current.cancel("Operation canceled by the user.");
+    }
+  };
+
   return {
     apiClient,
     progress,
+    cancelRequest,
+    setProgress,
   };
 };
 

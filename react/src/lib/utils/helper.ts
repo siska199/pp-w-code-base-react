@@ -113,3 +113,7 @@ export function findSmallestIndexWithEmptyValue(arr: any[]) {
     return arr.findIndex(value => !value);
 }
 
+export function delay(ms: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+  

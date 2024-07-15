@@ -7,7 +7,7 @@ export interface TObject {
 
 export type TResponseAPI = TObject;
 
-export interface TCustomeEventOnChange<V, T extends object =NonNullable<unknown>> {
+export interface TCustomeEventOnChange<V, T extends object = NonNullable<unknown>> {
   target: {
     name: string;
     value: V;
@@ -77,8 +77,6 @@ export interface TBasePropsInput {
   };
 }
 
-
-
 export enum TFileType {
   JPG = ".jpg",
   JPEG = ".jpeg",
@@ -93,10 +91,8 @@ export enum TFileType {
   XLS = ".xls",
   XLSX = ".xlsx",
   CSV = ".csv",
-  ALL = "*"
+  ALL = "*",
 }
-
-
 
 export interface TBaseModal {
   isShow: boolean;
@@ -106,7 +102,17 @@ export interface TBaseModal {
 
 export type TValueFile<TIsMultiple extends boolean = true> = TIsMultiple extends false ? File | null : File[] | null;
 
-type TObjectForm = TBasePropsInput & { value: any } & Omit<Partial<React.HTMLProps<HTMLInputElement>>, "name" | "value" | "onChange"> & Omit<Partial<ReactDatePickerProps<true, true>>, "onChange" | "value"> & Omit<Partial<React.HTMLProps<HTMLTextAreaElement>>, "onChange" | "value">;
+type TObjectForm = TBasePropsInput & { value: any; listUploadedFile?: TUploadedFile[] } & Omit<Partial<React.HTMLProps<HTMLInputElement>>, "name" | "value" | "onChange"> &
+  Omit<Partial<ReactDatePickerProps<true, true>>, "onChange" | "value"> &
+  Omit<Partial<React.HTMLProps<HTMLTextAreaElement>>, "onChange" | "value">;
 export type TForm<TKey extends string, TNameRequired extends boolean = true> = Record<TKey, TNameRequired extends true ? TObjectForm & { name: string } : TObjectForm & { name?: string }>;
 
-export type TEventOnChange = React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement> | TCustomeEventOnChange<any> | TCustomeEventOnChange<TValueFile, { files: FileList }>;
+export interface TUploadedFile {
+  id: number;
+  status: "onprogress" | "done";
+  name: string;
+  type: TFileType;
+  size: number;
+}
+
+export type TEventOnChange = React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement> | TCustomeEventOnChange<any> | TCustomeEventOnChange<TValueFile, { files: FileList; listUploadedFile?: TUploadedFile[] }>;

@@ -27,13 +27,21 @@ const useForm = <TKey extends string>({ initialForm }: TPropsForm<TKey>) => {
     const name = e.target.name as TKey;
     const value = e.target.value;
 
-    setForm({
+    const updatedForm = {
       ...form,
       [name]: {
         ...form[name],
         value,
       },
-    });
+    };
+
+    if (Object.keys(form[name]).includes("listUploadedFile")) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      updatedForm[name].listUploadedFile = e.target.listUploadedFile;
+    }
+
+    setForm(updatedForm);
   };
 
   return {
