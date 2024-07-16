@@ -154,6 +154,7 @@ const listMenuSidebar: TMenuItem[] = [
         parentId: '1-IN11'
     },
 
+
     {
         id: '1-C21',
         name: 'Carousel',
@@ -228,6 +229,12 @@ const listMenuSidebar: TMenuItem[] = [
         id: '2-TA11',
         name: 'Text Area',
         url: '/docs/components/input/text-area',
+        parentId: '1-IN11'
+    },
+    {
+        id: '2-U12',
+        name: 'Upload',
+        url: '/docs/components/input/upload',
         parentId: '1-IN11'
     },
     {

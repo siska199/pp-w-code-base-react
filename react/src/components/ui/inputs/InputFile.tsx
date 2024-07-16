@@ -3,7 +3,7 @@ import ContainerInput from "@components/ui/inputs/ContainerInput";
 import Progressbar from "@components/ui/Progressbar";
 import Tooltip from "@components/ui/Tooltip";
 import useAPI from "@hooks/useAPI";
-import { bytesToMegabytes, delay, isEmptyValue, truncateName } from "@lib/utils/helper";
+import { bytesToMegabytes, cn, delay, isEmptyValue, truncateName } from "@lib/utils/helper";
 import { TBasePropsInput, TCustomeEventOnChange, TFileType, TObject, TUploadedFile } from "@types";
 import React, { useEffect, useRef, useState } from "react";
 
@@ -33,11 +33,12 @@ type TProps = TBasePropsInput &
 const InputFile = (props: TProps) => {
   const { listAcceptedFile = [TFileType.ALL], onChange: handleOnChange, totalSizeMax = 5 /*(megabyte)*/, endpoint, additionalPayload, isDirectUpload = false, listUploadedFile: listUploadedFilePersist, ...attrs } = props;
   const inputFileRef = useRef<HTMLInputElement | null>(null);
-  const [acceptedFile, setAcceptedFile] = useState("");
-  const [errorMessageDynamic, setErrorMessageDynamic] = useState("");
   const { progress, apiClient, cancelRequest, setProgress } = useAPI();
 
+  const [acceptedFile, setAcceptedFile] = useState("");
+  const [errorMessageDynamic, setErrorMessageDynamic] = useState("");
   const [listUploadedFile, setListUploadedFile] = useState<TUploadedFile[]>([]);
+  const [dragActive, setDragActive] = useState(false);
 
   useEffect(() => {
     Array.isArray(listUploadedFilePersist) && setListUploadedFile(listUploadedFilePersist);
@@ -47,14 +48,32 @@ const InputFile = (props: TProps) => {
     setAcceptedFile(listAcceptedFile?.join(","));
   }, [listAcceptedFile]);
 
+  const handleDrag = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.type === "dragenter" || e.type === "dragover") {
+      setDragActive(true);
+    } else if (e.type === "dragleave") {
+      setDragActive(false);
+    }
+  };
+
+  const handleFileDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const files = [...e.dataTransfer.files];
+    handleUpdateOnChange(files);
+    setDragActive(false);
+  };
+
   const handleOnClickInput = () => {
     inputFileRef?.current?.click();
   };
 
-  const handleUpdateOnChange = async (e: TCustomeEventOnChange<TProps["multiple"] extends true ? File[] : File, { files: File[] }>) => {
+  const handleUpdateOnChange = async (filesParams: File[]) => {
     try {
       setProgress(0);
-      const files = Array?.from(e.target?.files) || [];
+      const files = [...filesParams];
       const isValid = handleValidationInputFile(files);
 
       if (isDirectUpload && isValid && !isEmptyValue(files)) {
@@ -126,7 +145,6 @@ const InputFile = (props: TProps) => {
 
     const fileTypes = (Array.isArray(value) ? value?.map((data) => handleGetFileTypeFromName(data?.name)) : [handleGetFileTypeFromName(value?.name)]) as TFileType[];
     const isAllFileTypesAllowed = fileTypes?.every((fileType) => listAcceptedFile?.includes(fileType));
-
     if (!isAllFileTypesAllowed) {
       setErrorMessageDynamic("Please upload the correct type file");
     }
@@ -157,7 +175,7 @@ const InputFile = (props: TProps) => {
   return (
     <ContainerInput<React.HTMLProps<HTMLInputElement>>
       {...attrs}
-      onChange={handleUpdateOnChange}
+      onChange={(e) => handleUpdateOnChange(e.target.files)}
       customeClass={{
         ciV2: "!border-none !p-0",
       }}
@@ -165,14 +183,29 @@ const InputFile = (props: TProps) => {
     >
       {(attrsInput) => (
         <>
-          <div className="flex flex-col gap-4 w-full sm:w-[20rem]">
-            <div className="flex flex-col items-center justify-center gap-2 rounded-md cursor-pointer-custome  text-center border border-primary p-4 md:p-8 h-fit md:h-[10rem]" onClick={handleOnClickInput}>
+          <div
+            className={cn({
+              "flex flex-col gap-4 w-full sm:w-[20rem]": true,
+            })}
+          >
+            <div
+              onDragEnter={handleDrag}
+              onDragOver={handleDrag}
+              onDragLeave={handleDrag}
+              onDrop={handleFileDrop}
+              className={cn({
+                "flex flex-col items-center justify-center gap-2 rounded-md cursor-pointer-custome  text-center border-2 border-dashed  p-4 md:p-8 h-fit md:h-[10rem]": true,
+                " border-primary": dragActive,
+              })}
+              onClick={handleOnClickInput}
+            >
               <div className="p-3 rounded-full w-fit bg-gray-100">
                 <IconFile className="icon-gray" />
               </div>
               <p className="text-gray-900 text-center">Select Files to Upload</p>
               <p className="text-gray text-body-small text-center">Drag and Drop Files Here to Upload</p>
             </div>
+
             <div className="flex flex-col gap-2">{listUploadedFile?.map((uploadedFile, i) => <CardFileUploaded key={i} i={i} progress={progress} uploadedFile={uploadedFile} onRemoveItem={handleRemoveItem} />)}</div>
           </div>
           <input ref={inputFileRef} {...attrsInput} className="hidden" type="file" accept={acceptedFile} value={""} />
