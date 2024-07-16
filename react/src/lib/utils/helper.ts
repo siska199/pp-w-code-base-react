@@ -115,7 +115,6 @@ export function delay(ms: number): Promise<void> {
 }
 
 export const truncateName = (name: string, tooltipWidth: number) => {
-  console.log("name: ", name,tooltipWidth )
   const maxLength = tooltipWidth / 8; 
   return name.length > maxLength ? `${name.slice(0, maxLength)}...` : name;
 };
