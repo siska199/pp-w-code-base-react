@@ -71,7 +71,6 @@ const InputFile = (props: TProps) => {
           await delay(100);
 
           const result = await handleOnUpload(file);
-          console.log("result; ", result);
           if (result?.success) {
             listUploadedFile[id].status = "done";
           } else {
