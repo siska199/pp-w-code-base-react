@@ -2,7 +2,6 @@ import CardIntroComponent from "@components/cards/CardIntroComponent";
 import CardVariantComp from "@components/cards/CardVariantComp";
 import InputFile from "@components/ui/inputs/InputFile";
 import useForm from "@hooks/useForm";
-import { endpoints } from "@lib/config/global-variable";
 import codeStringComponentUi from "@lib/utils/code-string/component-ui";
 import { TFileType } from "@types";
 
@@ -13,7 +12,7 @@ const CardIntroInputFile = () => {
         value: null,
         multiple: true,
         errorMessage: "",
-        listUploadedFile: [],
+        listUploadedFile:[]
       },
     },
   });
@@ -30,12 +29,7 @@ const CardIntroInputFile = () => {
               {...form["file-input"]}
               totalSizeMax={10}
               listAcceptedFile={[TFileType.JPG, TFileType.XLSX]}
-              isDirectUpload={true}
-              endpoint={endpoints.uploadFile}
-              additionalPayload={{
-                upload_preset: "my-uploads",
-              }}
-              listUploadedFile={form?.["file-input"]?.listUploadedFile || []}
+              listUploadedFile={form["file-input"]?.listUploadedFile||[]}
             />
           }
         />

@@ -15,18 +15,17 @@ type TProps = TBasePropsInput &
     onChange: (e: TCustomeEventOnChange<(TProps["multiple"] extends true ? File[] : File) | null>) => void;
     value: (TProps["multiple"] extends true ? File[] : File) | null;
     totalSizeMax?: number;
+    listUploadedFile: TUploadedFile[];
   } & (
     | {
-        isDirectUpload: true;
-        endpoint: string;
+        isDirectUpload?: true;
+        endpoint?: string;
         additionalPayload?: TObject;
-        listUploadedFile: TUploadedFile[];
       }
     | {
         isDirectUpload?: false;
         endpoint?: undefined;
         additionalPayload?: undefined;
-        listUploadedFile?: undefined;
       }
   );
 
@@ -76,7 +75,7 @@ const InputFile = (props: TProps) => {
       const files = [...filesParams];
       const isValid = handleValidationInputFile(files);
 
-      if (isDirectUpload && isValid && !isEmptyValue(files)) {
+      if (isValid && !isEmptyValue(files)) {
         for (let i = 0; i < files?.length; i++) {
           const file = files[i];
           const id = attrs?.multiple ? listUploadedFile?.length : 0;
@@ -89,7 +88,9 @@ const InputFile = (props: TProps) => {
           };
           await delay(100);
 
-          const result = await handleOnUpload(file);
+          const result = isDirectUpload ? await handleOnUpload(file) : { success: true };
+
+          console.log("result: ", result);
           if (result?.success) {
             listUploadedFile[id].status = "done";
           } else {
@@ -220,15 +221,22 @@ interface TPropsCardFileUploaded {
 const CardFileUploaded = (props: TPropsCardFileUploaded) => {
   const { uploadedFile, onRemoveItem: handleRemoveItem, progress, i } = props;
   const tooltipRef = useRef<HTMLDivElement | null>(null);
+  const [widthTooltip, setWidthTooltip] = useState(0);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setWidthTooltip(tooltipRef?.current?.offsetWidth || 0);
+    }, 0);
+  }, []);
 
   return (
     <div className="bg-gray-50 border items-center rounded-md p-2 relative flex gap-2 ">
       <IconFile className="w-10 h-10 flex-shrink-0 flex" />
 
       <div className="flex flex-col gap-2 flex-grow max-w-[calc(100%-3rem)] ">
-        <div className="flex justify-between items-center gap-2 ">
+        <div className="flex justify-between items-center gap-2 w-full">
           <Tooltip text={uploadedFile?.name} customeClass={{ tooltip: "w-[calc(100%-1rem)] max-w-[calc(100%-1rem)] !px-0 text-wrap text-black font-medium  truncate" }} ref={tooltipRef}>
-            {truncateName(uploadedFile?.name, tooltipRef.current?.offsetWidth || 0)}
+            {truncateName(uploadedFile?.name, widthTooltip || 0)}
           </Tooltip>
           <IconClose className="cursor-pointer-custome" onClick={() => handleRemoveItem(uploadedFile, i)} />
         </div>
