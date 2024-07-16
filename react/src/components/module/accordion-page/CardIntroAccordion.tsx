@@ -5,17 +5,14 @@ import codeStringComponentUi from "@lib/utils/code-string/component-ui";
 const CardIntroAccordion = () => {
   const listItemAccordion = [...Array(3)]?.map(() => ({
     label: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-        molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-        numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-        optio,`,
+    content: <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio,</div>,
   }));
 
   const listExample = [
     {
       title: "Basic Usage",
       component: (
-        <div className="px-10">
+        <div className="px-10 ">
           <Accordion items={listItemAccordion} />
         </div>
       ),

@@ -52,7 +52,7 @@ const Tabs = (props: TProps) => {
 
     return (
         <div className={cn({
-            "w-full flex flex-col gap-4 overflow-x-auto ": true,
+            "w-full flex flex-col gap-4 overflow-x-auto !overflow-visible": true,
             [customeClass?.container || '']: true,
             "flex-row gap-6": layout === "vertical"
         })}>

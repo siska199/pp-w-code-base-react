@@ -44,7 +44,7 @@ const CardIntroComponent = (props: TProps) => {
   return (
     <>
       <CardIntro title={title} subTitle={subTitle} />
-      <Tabs listTab={listTab} />
+      <Tabs listTab={listTab} customeClass={{  }} />
     </>
   );
 };

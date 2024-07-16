@@ -30,7 +30,7 @@ export interface TTab {
 
 export interface TItemAccordion {
   label: string;
-  content: string;
+  content: string | React.ReactNode;
 }
 
 export interface TItemList {
