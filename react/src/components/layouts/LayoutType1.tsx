@@ -64,6 +64,7 @@ const LayoutType1 = () => {
     }, 1500);
   }, [load]);
 
+
   return (
     <>
       <div className={`${load ? "h-screen items-center flex justify-center" : "hidden"} `}>loading...</div>

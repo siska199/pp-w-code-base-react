@@ -12,6 +12,10 @@ interface TParamsApiClient {
   endpoint: string;
   payload?: TObject;
   isForm?: boolean;
+  message?: {
+    success?: string;
+    error?: string;
+  };
 }
 
 const useAPI = () => {
@@ -20,10 +24,9 @@ const useAPI = () => {
   const cancelTokenRef = useRef<CancelTokenSource | null>(null);
 
   const apiClient = async (params: TParamsApiClient): Promise<{ data: TObject | null; success: boolean; message: string }> => {
-    const { baseUrl, method = "get", bareerToken, endpoint, isForm = false, payload } = params;
+    const { baseUrl, method = "get", bareerToken, endpoint, isForm = false, payload, message } = params;
     try {
       setIsLoading(true);
-      // Create a new CancelToken for each request
       cancelTokenRef.current = axios.CancelToken.source();
 
       axios.defaults.baseURL = baseUrl || baseURLAPI;
@@ -43,14 +46,15 @@ const useAPI = () => {
 
       setAlertConfig({
         show: true,
-        message: "Successfully get data",
+        message: message?.success || "Successfully",
         type: "success",
+        withIcon: true,
       });
 
       return {
         success: true,
         data: response.data,
-        message: "Success get data",
+        message: "Success",
       };
     } catch (error: any) {
       // console.log("error message: ", error?.message)
@@ -58,13 +62,14 @@ const useAPI = () => {
 
       setAlertConfig({
         show: true,
-        message: globalErrorMessage,
+        message: message?.error || globalErrorMessage,
         type: "error",
+        withIcon: true,
       });
       return {
         success: false,
         data: null,
-        message: "",
+        message: "error",
       };
     } finally {
       setIsLoading(false);

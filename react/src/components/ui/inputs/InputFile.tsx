@@ -3,7 +3,7 @@ import ContainerInput from "@components/ui/inputs/ContainerInput";
 import Progressbar from "@components/ui/Progressbar";
 import Tooltip from "@components/ui/Tooltip";
 import useAPI from "@hooks/useAPI";
-import { bytesToMegabytes, delay, isEmptyValue } from "@lib/utils/helper";
+import { bytesToMegabytes, delay, isEmptyValue, truncateName } from "@lib/utils/helper";
 import { TBasePropsInput, TCustomeEventOnChange, TFileType, TObject, TUploadedFile } from "@types";
 import React, { useEffect, useRef, useState } from "react";
 
@@ -57,7 +57,7 @@ const InputFile = (props: TProps) => {
       const files = Array?.from(e.target?.files) || [];
       const isValid = handleValidationInputFile(files);
 
-      if (isDirectUpload && isValid) {
+      if (isDirectUpload && isValid && !isEmptyValue(files)) {
         for (let i = 0; i < files?.length; i++) {
           const file = files[i];
           const id = attrs?.multiple ? listUploadedFile?.length : 0;
@@ -69,18 +69,14 @@ const InputFile = (props: TProps) => {
             size: bytesToMegabytes(file?.size),
           };
           await delay(100);
-          await handleOnUpload(file);
-          setListUploadedFile(
-            listUploadedFile?.map((data) => {
-              return data?.id === id
-                ? {
-                    ...data,
-                    status: "done",
-                  }
-                : data;
-            }),
-          );
-          listUploadedFile[id].status = "done";
+
+          const result = await handleOnUpload(file);
+          console.log("result; ", result);
+          if (result?.success) {
+            listUploadedFile[id].status = "done";
+          } else {
+            delete listUploadedFile[id];
+          }
         }
       }
 
@@ -109,9 +105,12 @@ const InputFile = (props: TProps) => {
           file: file,
           ...additionalPayload,
         },
+        message: {
+          success: "Success upload data",
+          error: "Error upload data",
+        },
       });
-
-      console.log("result: ", result);
+      return result;
     } catch (error: any) {
       console.log("error: ", error?.message);
     }
@@ -193,6 +192,7 @@ interface TPropsCardFileUploaded {
 
 const CardFileUploaded = (props: TPropsCardFileUploaded) => {
   const { uploadedFile, onRemoveItem: handleRemoveItem, progress, i } = props;
+  const tooltipRef = useRef<HTMLDivElement | null>(null);
 
   return (
     <div className="bg-gray-50 border items-center rounded-md p-2 relative flex gap-2 ">
@@ -202,8 +202,8 @@ const CardFileUploaded = (props: TPropsCardFileUploaded) => {
 
       <div className="flex flex-col gap-2 flex-grow max-w-[calc(100%-3rem)] ">
         <div className="flex justify-between items-center gap-2 ">
-          <Tooltip text={uploadedFile?.name} customeClass={{ tooltip: "max-w-[calc(100%-3rem)] !px-0 text-wrap text-black font-medium  truncate" }}>
-            {uploadedFile?.name?.length > 25 ? `${uploadedFile?.name?.slice(0, 25)}...` : uploadedFile?.name}
+          <Tooltip text={uploadedFile?.name} customeClass={{ tooltip: "w-[calc(100%-1rem)] max-w-[calc(100%-1rem)] !px-0 text-wrap text-black font-medium  truncate" }} ref={tooltipRef}>
+            {truncateName(uploadedFile?.name, tooltipRef.current?.offsetWidth || 0)}
           </Tooltip>
           <IconClose className="cursor-pointer-custome" onClick={() => handleRemoveItem(uploadedFile, i)} />
         </div>
