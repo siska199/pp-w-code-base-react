@@ -175,36 +175,48 @@ const InputFile = (props: TProps) => {
               <p className="text-gray-900 text-center">Select Files to Upload</p>
               <p className="text-gray text-body-small text-center">Drag and Drop Files Here to Upload</p>
             </div>
-            <div className="flex flex-col gap-2">
-              {listUploadedFile?.map((uploadedFile, i) => (
-                <div key={i} className="bg-gray-50 border items-center rounded-md p-2 relative flex gap-2 ">
-                  <div className="w-10 h-10 flex-shrink-0 flex">
-                    <IconFile className="w-full h-full" />
-                  </div>
-                  <div className="flex flex-col gap-2 flex-grow max-w-[calc(100%-3rem)] ">
-                    <div className="flex justify-between items-center gap-2 ">
-                      <Tooltip text={uploadedFile?.name} customeClass={{ tooltip: "text-wrap text-black font-medium w-full truncate" }}>
-                        {uploadedFile?.name}
-                      </Tooltip>
-                      <IconClose className=" cursor-pointer-custome" onClick={() => handleRemoveItem(uploadedFile, i)} />
-                    </div>
-                    {uploadedFile?.status === "onprogress" && <Progressbar customeClass={{ label: "hidden" }} value={progress} />}
-                    <div className="flex fap-2 justify-between">
-                      <p className="text-body-small">
-                        {uploadedFile?.status === "onprogress" && <>{((uploadedFile?.size * progress) / 100)?.toFixed(2)}MB of </>}
-                        {uploadedFile?.size?.toFixed(2)}MB
-                      </p>
-                      {uploadedFile?.status === "onprogress" && <p className="font-light text-gray text-body-small">Uploading... {progress}%</p>}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <div className="flex flex-col gap-2">{listUploadedFile?.map((uploadedFile, i) => <CardFileUploaded key={i} i={i} progress={progress} uploadedFile={uploadedFile} onRemoveItem={handleRemoveItem} />)}</div>
           </div>
           <input ref={inputFileRef} {...attrsInput} className="hidden" type="file" accept={acceptedFile} value={""} />
         </>
       )}
     </ContainerInput>
+  );
+};
+
+interface TPropsCardFileUploaded {
+  uploadedFile: TUploadedFile;
+  onRemoveItem: (uploadedFile: TUploadedFile, i: number) => void;
+  progress: number;
+  i: number;
+}
+
+const CardFileUploaded = (props: TPropsCardFileUploaded) => {
+  const { uploadedFile, onRemoveItem: handleRemoveItem, progress, i } = props;
+
+  return (
+    <div className="bg-gray-50 border items-center rounded-md p-2 relative flex gap-2 ">
+      <div className="w-10 h-10 flex-shrink-0 flex">
+        <IconFile className="w-full h-full" />
+      </div>
+
+      <div className="flex flex-col gap-2 flex-grow max-w-[calc(100%-3rem)] ">
+        <div className="flex justify-between items-center gap-2 ">
+          <Tooltip text={uploadedFile?.name} customeClass={{ tooltip: "max-w-[calc(100%-3rem)] !px-0 text-wrap text-black font-medium  truncate" }}>
+            {uploadedFile?.name?.length > 25 ? `${uploadedFile?.name?.slice(0, 25)}...` : uploadedFile?.name}
+          </Tooltip>
+          <IconClose className="cursor-pointer-custome" onClick={() => handleRemoveItem(uploadedFile, i)} />
+        </div>
+        {uploadedFile?.status === "onprogress" && <Progressbar customeClass={{ label: "hidden" }} value={progress} />}
+        <div className="flex fap-2 justify-between">
+          <p className="text-body-small">
+            {uploadedFile?.status === "onprogress" && <>{((uploadedFile?.size * progress) / 100)?.toFixed(2)}MB of </>}
+            {uploadedFile?.size?.toFixed(2)}MB
+          </p>
+          {uploadedFile?.status === "onprogress" && <p className="font-light text-gray text-body-small">Uploading... {progress}%</p>}
+        </div>
+      </div>
+    </div>
   );
 };
 

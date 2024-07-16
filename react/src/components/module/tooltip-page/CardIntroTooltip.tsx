@@ -23,7 +23,7 @@ const CardIntroTooltip = () => {
           variant={variantTooltip}
           groups={Object.keys(variantTooltip)}
           isLogicSplitGroupKey={false}
-          Component={(variant) => <Tooltip text={`${variant}-tooltip message`} variant={variant}>{variant}</Tooltip>} //customeClass={{tooltip:"hover:before:min-w-[10rem]"}}
+          Component={(variant) => <Tooltip text={`${variant}-tooltip message`} variant={variant}>{variant} Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia vel, eos repudiandae odio reprehenderit eum molestias unde recusandae facere. Placeat. </Tooltip>} //customeClass={{tooltip:"hover:before:min-w-[10rem]"}}
           withGroupName={false}
           withBorder={false}
         />

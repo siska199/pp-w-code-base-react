@@ -13,10 +13,10 @@ interface TProps {
 const Tooltip = (props: TProps) => {
   const { children, text, variant = "top", customeClass } = props;
   return (
-    <p
+    <div
       data-text={text}
       className={cn({
-        " inline-block relative w-fit py-1": true,
+        "p-1 inline-block relative !overflow-visible w-fit": true,
         [customeClass?.tooltip || ""]: customeClass?.tooltip,
         "tooltip ": text,
         [`${variant}`]: variant,
@@ -32,7 +32,7 @@ const Tooltip = (props: TProps) => {
           })}
         ></span>
       )}
-    </p>
+    </div>
   );
 };
 
