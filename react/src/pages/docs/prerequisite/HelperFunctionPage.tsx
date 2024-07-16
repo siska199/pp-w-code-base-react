@@ -3,16 +3,31 @@ import CodeBlock from "@components/ui/CodeBlock";
 import Container from "@components/ui/Container";
 import List from "@components/ui/List";
 import ProgressStep from "@components/ui/ProgressStep";
-import { arraysHaveSameMembers, checkElmnOnTopOfPage, checkVisibleElmnInScreen, cn, debounce, findLargestIndexWithValue, findSmallestIndexWithEmptyValue, generateDisplayComponent, getAssetURL, getFieldFromObjectList, getFieldLabelFromOptions, handlePreventDefault, handleStopPropagation, isEmptyValue, spreadArrayAttemp } from "@lib/utils/helper";
+import {
+  arraysHaveSameMembers,
+  checkElmnOnTopOfPage,
+  checkVisibleElmnInScreen,
+  cn,
+  debounce,
+  findLargestIndexWithValue,
+  findSmallestIndexWithEmptyValue,
+  generateDisplayComponent,
+  getAssetURL,
+  getFieldFromObjectList,
+  getFieldLabelFromOptions,
+  handlePreventDefault,
+  handleStopPropagation,
+  isEmptyValue,
+  spreadArrayAttemp,
+} from "@lib/utils/helper";
 import { TItemList } from "@types";
-
 
 const HelperFunctionPage = () => {
   const listHelper = [
     {
       title: <div id="cn">cn</div>,
       caption: generateCaptionListItemFunction({
-        codeString: cn.toString(),
+        codeString: `import clsx, { ClassValue } from "clsx";\n\rimport { twMerge } from "tailwind-merge";\r\n${cn.toString()}`,
         purposeDescrition: "Combines multiple class names into a single string, merging Tailwind CSS class names if necessary.",
         listParameter: [{ label: "...inputs", content: ": ClassValue[] - A list of class values." }],
         returnDescription: "A single string with combined class names.",
@@ -30,7 +45,7 @@ const HelperFunctionPage = () => {
     {
       title: <div id="spreadArrayAttemp">spreadArrayAttemp</div>,
       caption: generateCaptionListItemFunction({
-        codeString: spreadArrayAttemp.toString(),
+        codeString: `interface TParamsSpreadArrayTemp {\n\r newValue: any;\n\r array: any[];\n\r}\r\n${spreadArrayAttemp.toString()}`,
         purposeDescrition: "Adds a new value to an array, creating a new array if the original is empty.",
         listParameter: [{ label: "params: TParamsSpreadArrayTemp", content: "An object containing the new value and the array." }],
         returnDescription: "A new array with the added value.",
@@ -39,7 +54,7 @@ const HelperFunctionPage = () => {
     {
       title: <div id="getFieldFromObjectList">getFieldFromObjectList</div>,
       caption: generateCaptionListItemFunction({
-        codeString: getFieldFromObjectList.toString(),
+        codeString: `interface TParamsFieldFromObjectList {\n\r  array: any[];\n\r  fieldNameTarget: string;\n\r  fieldNameValue: string;\n\r  value: any;\n\r}\n\r${getFieldFromObjectList.toString()}`,
         purposeDescrition: "Retrieves a field value from an object list based on a matching field value.",
         listParameter: [{ label: "params: TParamsFieldFromObjectList", content: "An object containing the array, target field name, value field name, and value to match." }],
         returnDescription: "The value of the target field from the matched object.",
@@ -57,7 +72,7 @@ const HelperFunctionPage = () => {
     {
       title: <div id="getAssetURL">getAssetURL</div>,
       caption: generateCaptionListItemFunction({
-        codeString: getAssetURL.toString(),
+        codeString: `interface TParamsGetAssetURl {\n\r  name: string;\n\r  folder?: "images" | "icons";\n\r}\n\r${getAssetURL.toString()}`,
         purposeDescrition: "Generates a URL for an asset file located in the specified folder.",
         listParameter: [{ label: "params: TParamsGetAssetURl", content: 'An object containing the asset name and optional folder (default is "images").' }],
         returnDescription: "The URL of the asset file.",
