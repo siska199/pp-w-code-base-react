@@ -1,6 +1,6 @@
 import CardIntro from "@components/cards/CardIntro";
 import CodeBlock from "@components/ui/CodeBlock";
-import Tabs from "@components/ui/Tabs";
+import Tabs, { TTabProps } from "@components/ui/Tabs";
 import { cn } from "@lib/utils/helper";
 
 interface TProps {
@@ -11,10 +11,13 @@ interface TProps {
     title?: string;
     component: React.ReactNode;
   }[];
+  customeClass?: {
+    tab: TTabProps["customeClass"];
+  };
 }
 
 const CardIntroComponent = (props: TProps) => {
-  const { title, listExample, subTitle, displayCodeBase } = props;
+  const { title, listExample, subTitle, displayCodeBase, customeClass } = props;
   const listTab = [
     {
       id: "0",
@@ -44,7 +47,7 @@ const CardIntroComponent = (props: TProps) => {
   return (
     <>
       <CardIntro title={title} subTitle={subTitle} />
-      <Tabs listTab={listTab} customeClass={{  }} />
+      <Tabs listTab={listTab} customeClass={customeClass?.tab} />
     </>
   );
 };

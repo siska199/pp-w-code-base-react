@@ -2,7 +2,7 @@ import { cn } from "@lib/utils/helper";
 import { TObject, TTab } from "@types";
 import { useEffect, useRef, useState } from "react";
 
-interface TProps {
+export interface TTabProps {
     layout?: "horizontal" | "vertical"
     type?: "bordered" | "pilled";
     listTab: TTab[];
@@ -15,7 +15,7 @@ interface TProps {
     };
 }
 
-const Tabs = (props: TProps) => {
+const Tabs = (props: TTabProps) => {
     const { listTab, type = "bordered", customeClass, layout = "horizontal" } = props;
     const [activeTab, setActiveTab] = useState(0);
     const [bgStyle, setBgStyle] = useState({});
@@ -52,14 +52,14 @@ const Tabs = (props: TProps) => {
 
     return (
         <div className={cn({
-            "w-full flex flex-col gap-4 overflow-x-auto !overflow-visible": true,
+            "w-full flex flex-col gap-4 overflow-x-auto ": true,
             [customeClass?.container || '']: true,
             "flex-row gap-6": layout === "vertical"
         })}>
             <ul className={cn({
                 "flex relative ": true,
                 [customeClass?.tabList || ""]: customeClass?.tabList,
-                "flex-col min-w-[10rem] ": layout === "vertical",
+                "flex-col w-fit flex-shrink-0 ": layout === "vertical",
                 "border-b": layout === "horizontal" && type === "bordered"
 
             })}>
@@ -79,14 +79,14 @@ const Tabs = (props: TProps) => {
                         onClick={() => handleChangeActiveTab(i)}
                         key={i}
                         className={cn(
-                            "px-8 py-2 relative  cursor-pointer border-0 transition-colors duration-500 z-10",
+                            "flex-grow  justify-center py-2 relative flex  cursor-pointer border-0 transition-colors duration-500 z-10",
                             {
                                 [`${activeTab === i && 'font-medium'}`]: true,
                                 [`${activeTab === i ? "text-primary" : "text-gray"}`]: type === "bordered",
                                 [`${activeTab === i ? "text-white" : "text-gray"}`]: type === "pilled",
                                 [customeClass?.tabItem || ""]: true,
                                 [customeClass?.activeTabItem || ""]: activeTab === i,
-                                "px-3": layout === "vertical"
+                                "flex-grow-0 px-3": layout === "vertical"
                             }
                         )}
                     >
@@ -95,7 +95,7 @@ const Tabs = (props: TProps) => {
                 ))}
             </ul>
             <div className={cn({
-                "transition-opacity duration-500 ease-in-out w-full ": true,
+                "flex-grow flex-shrink-0 transition-opacity duration-500 ease-in-out w-full ": true,
                 "overflow-x-auto": layout === "vertical"
             })}>
                 {listTab[activeTab]?.content}
