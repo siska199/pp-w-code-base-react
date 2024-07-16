@@ -1,24 +1,55 @@
-
 import CardIntroComponent from "@components/cards/CardIntroComponent";
+import CardVariantComp from "@components/cards/CardVariantComp";
+import InputFile from "@components/ui/inputs/InputFile";
+import useForm from "@hooks/useForm";
+import { endpoints } from "@lib/config/global-variable";
+import codeStringComponentUi from "@lib/utils/code-string/component-ui";
+import { TFileType } from "@types";
 
 const CardIntroInputFile = () => {
-
-    const listExample = [
-    {
-      component: ""
+  const { form, handleOnChange } = useForm({
+    initialForm: {
+      "file-input": {
+        value: null,
+        multiple: true,
+        errorMessage: "",
+        listUploadedFile: [],
+      },
     },
+  });
 
-  ]
+  const listExample = [
+    {
+      component: (
+        <CardVariantComp
+          title={"default "}
+          withBorder={false}
+          Component={
+            <InputFile
+              onChange={handleOnChange}
+              {...form["file-input"]}
+              totalSizeMax={10}
+              listAcceptedFile={[TFileType.JPG, TFileType.XLSX]}
+              isDirectUpload={true}
+              endpoint={endpoints.uploadFile}
+              additionalPayload={{
+                upload_preset: "my-uploads",
+              }}
+              listUploadedFile={form?.["file-input"]?.listUploadedFile || []}
+            />
+          }
+        />
+      ),
+    },
+  ];
   return (
     <CardIntroComponent
-      title={'Input File'}
-      subTitle="Description of InputFile."
-      listExample={listExample }
-      displayCodeBase={displayCodeBase}
+      title={"Upload"}
+      subTitle="The Upload component serves the purpose of allowing users to select one or more files from their device and then transfer them to a server for storage or processing. This functionality is crucial in various applications, including content management systems, cloud storage platforms, and multimedia sharing platforms."
+      listExample={listExample}
+      displayCodeBase={codeStringComponentUi.InputFile}
     />
   );
-}
-
-const displayCodeBase = `// Code for InputFile`;
+};
 
 export default CardIntroInputFile;
