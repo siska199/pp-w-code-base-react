@@ -13,7 +13,7 @@ const CardIntroTimeline = () => {
     {
       title: "Variant 1",
       component: (
-        <div className="w-full overflow-x-auto ">
+        <div className="w-full overflow-x-auto flex justify-center">
           <Timeline listStep={listStep} customeClass={{ containerContent: "w-[12rem] ", container: "ml-6 md:ml-0 " }} />
         </div>
       ),
