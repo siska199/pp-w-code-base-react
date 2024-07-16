@@ -50,6 +50,7 @@ const CardIntroTab = () => {
         }}
         isLogicSplitGroupKey={true}
         withBorder={false}
+        customeClass={{containerCardVariant:"overflow-x-auto "}}
       />
     },
 
