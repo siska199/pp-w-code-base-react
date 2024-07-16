@@ -31,7 +31,6 @@ const Timeline = (props: TProps) => {
             {
                 variant === "v1" && <p className="text-body-small">{data?.subtitle}</p>
             }
-
             <p className="text-body-medium text-wrap text-black font-medium">{data.title}</p>
             <p className="mt-2">{data?.description}</p>
         </div>
@@ -46,7 +45,7 @@ const Timeline = (props: TProps) => {
                         {variant === "v1" && Content(data, i, "left")}
                         {variant === "v2" && <p className="text-body-small font-medium">{data?.subtitle}</p>}
 
-                        <div className={`table-cell w-[1px] border-primary-100 border items-stretch relative ${customeClass?.lineBorder}`}>
+                        <div className={` table-cell w-[1px] border-primary-100 border items-stretch relative ${customeClass?.lineBorder}`}>
                             <div className={`${customeClass?.containerIcon} p-2 flex items-center justify-center  right-1/2 transform translate-x-1/2  bg-primary-500 rounded-full  absolute`}>
                                 {
                                     customeIcon ?? <IconCalender className="text-white " />
