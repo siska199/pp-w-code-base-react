@@ -34,3 +34,6 @@
     <path d="M7.66667 11H8.33333" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
     <path d="M11 11H11.6667" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
+
+3. Generate secret key form cmd:
+node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"
