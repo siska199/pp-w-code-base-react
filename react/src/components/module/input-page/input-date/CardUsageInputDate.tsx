@@ -1,40 +1,17 @@
-
-import CardSubMenu from '@components/cards/CardSubMenu';
-import CodeBlock from '@components/ui/CodeBlock';
-import { generateDisplayComponent } from '@lib/utils/helper';
+import CardSubMenu from "@components/cards/CardSubMenu";
+import CodeBlock from "@components/ui/CodeBlock";
+import { generateDisplayComponent } from "@lib/utils/helper";
 
 const CardUsageInputDate = () => {
   return (
     <CardSubMenu title="Usage">
       <p>Example usage of InputDate:</p>
-      <CodeBlock codeString={generateDisplayComponent('InputDate', displayUsage)} />
+      <CodeBlock codeString={generateDisplayComponent("InputDate", displayUsage)} />
     </CardSubMenu>
   );
-}
+};
 
-const displayUsage = `const [form, setForm] = useState({
-    'input-date': {
-      value: '',
-      name : 'input-date'
-    },
-  })
-  
-  const handleOnChange = (e: TEventOnChange) => {
-    const name = e.target.name as keyof typeof form
-    const value = e.target.value
-
-    setForm({
-      ...form,
-      [name]: {
-        ...form[name],
-        value
-      }
-    })
-  }
-
-  return <InputDate
-            onChange={handleOnChange}
-            {...form['input-date']}
-          />`;
+const displayUsage =
+  "const [form, setForm] = useState({\n    'input-date': {\n      value: '',\n      name : 'input-date'\n    },\n  })\n  \n  const handleOnChange = (e: TEventOnChange) => {\n    const name = e.target.name as keyof typeof form\n    const value = e.target.value\n\n    setForm({\n      ...form,\n      [name]: {\n        ...form[name],\n        value\n      }\n    })\n  }\n\n  return <InputDate\n            onChange={handleOnChange}\n            {...form['input-date']}\n          />";
 
 export default CardUsageInputDate;

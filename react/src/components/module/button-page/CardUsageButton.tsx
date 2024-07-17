@@ -11,9 +11,6 @@ const CardUsageButton = () => {
   );
 };
 
-const displayUsage = `<>
-    <Button variant={"solid-primary"} label={'Button'} />
-    <Button label={'Button'} to={"https://github.com/siska199/my-code-base-199"}  target="_blank"/>
-</>`;
+const displayUsage = '<>\n    <Button variant={"solid-primary"} label={\'Button\'} />\n    <Button label={\'Button\'} to={"https://github.com/siska199/my-code-base-199"}  target="_blank"/>\n</>';
 
 export default CardUsageButton;
