@@ -72,6 +72,11 @@ const CardIntroInputSelect = () => {
       subTitle="The InputSelect component is a user interface element commonly used in web development. It presents users with a dropdown list of selectable options, allowing them to choose one option at a time. Developers configure it with props such as options, value, and onChange to control its behavior and appearance within their applications."
       listExample={listExample}
       displayCodeBase={codeStringComponentUi.InputSelect}
+      customeClass={{
+        tab: {
+          container:"!overflow-visible"
+        }
+      }}
     />
   );
 };
