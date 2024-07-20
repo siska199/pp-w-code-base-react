@@ -24,24 +24,24 @@ const useAPI = () => {
   const cancelTokenRef = useRef<CancelTokenSource | null>(null);
 
   const apiClient = async (params: TParamsApiClient): Promise<{ data: TObject | null; success: boolean; message: string }> => {
+    setIsLoading(true);
     const { baseUrl, method = "get", bareerToken, endpoint, isForm = false, payload, message } = params;
     try {
-      setIsLoading(true);
       cancelTokenRef.current = axios.CancelToken.source();
-
-      axios.defaults.baseURL = baseUrl || baseURLAPI;
-      axios.defaults.headers.common["Authorization"] = bareerToken ? `Bearer ${bareerToken}` : null;
-      axios.defaults.method = !isEmptyValue(payload) ? "post" : method;
-      axios.defaults.headers.common["Content-Type"] = isForm ? "multipart/form-data" : "application/json";
-
       const response = await axios({
-        withCredentials: !!bareerToken,
+        baseURL: baseUrl || baseURLAPI,
         url: endpoint,
+        method: !isEmptyValue(payload) ? "post" : method,
+        headers: {
+          Authorization: bareerToken ? `Bearer ${bareerToken}` : null,
+          "Content-Type": isForm ? "multipart/form-data" : "application/json",
+        },
+        withCredentials: !!bareerToken,
+        cancelToken: cancelTokenRef.current.token,
         data: payload,
         onUploadProgress: (event) => {
           setProgress(Math.round((100 * event.loaded) / (event?.total || 100)));
         },
-        cancelToken: cancelTokenRef.current.token,
       });
 
       setAlertConfig({
