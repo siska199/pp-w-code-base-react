@@ -20,10 +20,11 @@ interface TProps {
   };
   isDefaultStyle?: boolean;
   header?: React.ReactNode;
+  position?: "left" | "right";
 }
 
 const DropdownBase = (props: TProps) => {
-  const { options, label, withButtonTriger, onClick: handleOnClick, customeClass, isDefaultStyle = true, header } = props;
+  const { options, position, label, withButtonTriger, onClick: handleOnClick, customeClass, isDefaultStyle = true, header } = props;
 
   const ref = useRef<HTMLDivElement | null>(null);
   const refBtn = useRef<HTMLDivElement | null>(null);
@@ -65,7 +66,7 @@ const DropdownBase = (props: TProps) => {
   return (
     <div
       className={cn({
-        "relative inline-block text-left w-fit": true,
+        "relative inline-block text-left w-fit ": true,
         [customeClass?.containerDropdown || ""]: customeClass?.containerDropdown,
       })}
     >
@@ -93,9 +94,10 @@ const DropdownBase = (props: TProps) => {
         ref={ref}
         className={cn({
           "absolute py-2 z-10 mt-2 transition-all overflow-hidden origin-top-right rounded-md bg-white  ring-1 ring-black ring-opacity-5 focus:outline-none": true,
-          " h-auto shadow-lg w-56  opacity-100": isOpen,
+          " h-auto shadow-lg w-fit min-w-[12rem]  opacity-100": isOpen,
           " h-0 shadow-none opacity-0": !isOpen,
           "!py-0": header,
+          "right-0": position === "right",
         })}
       >
         <div
