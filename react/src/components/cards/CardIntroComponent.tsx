@@ -45,10 +45,10 @@ const CardIntroComponent = (props: TProps) => {
   ];
 
   return (
-    <>
+    <div className=''>
       <CardIntro title={title} subTitle={subTitle} />
       <Tabs listTab={listTab} customeClass={customeClass?.tab} />
-    </>
+    </div>
   );
 };
 
