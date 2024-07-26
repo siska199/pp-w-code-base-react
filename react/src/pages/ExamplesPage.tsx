@@ -14,7 +14,7 @@ const ExamplesPage = () => {
       },
     },
   });
-  
+
   return (
     <div className="h-full">
       <InputFile
@@ -28,6 +28,19 @@ const ExamplesPage = () => {
           upload_preset: "my-uploads",
         }}
         listUploadedFile={form?.["file-input"]?.listUploadedFile || []}
+      />
+      <InputFile
+        onChange={handleOnChange}
+        {...form["file-input"]}
+        totalSizeMax={10}
+        listAcceptedFile={[TFileType.JPG, TFileType.XLSX]}
+        isDirectUpload={true}
+        endpoint={endpoints.uploadFile}
+        additionalPayload={{
+          upload_preset: "my-uploads",
+        }}
+        listUploadedFile={form?.["file-input"]?.listUploadedFile || []}
+        capture={true}
       />
     </div>
   );
