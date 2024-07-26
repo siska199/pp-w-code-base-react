@@ -202,7 +202,7 @@ const InputFile = (props: TProps) => {
             </div>
             <div className="flex flex-col gap-2">{listUploadedFile?.map((uploadedFile, i) => <CardFileUploaded key={i} i={i} progress={progress} uploadedFile={uploadedFile} onRemoveItem={handleRemoveItem} />)}</div>
           </div>
-          <input ref={inputFileRef} {...attrsInput} className="hidden" type="file" accept={acceptedFile} value={""} />
+          <input ref={inputFileRef} {...attrsInput} className="hidden" type="file" environt accept={acceptedFile} value={""} />
         </>
       )}
     </ContainerInput>
