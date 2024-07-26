@@ -42,6 +42,8 @@ const ExamplesPage = () => {
         listUploadedFile={form?.["file-input"]?.listUploadedFile || []}
         capture={true}
       />
+
+      <input capture={"user"} type="file" accept="image/*" />
     </div>
   );
 };
