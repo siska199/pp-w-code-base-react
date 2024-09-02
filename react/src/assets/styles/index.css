@@ -1,7 +1,6 @@
-
 @font-face {
-    font-family: 'Staryssa';
-    src: url('../fonts/staryssa.ttf');
+  font-family: "Staryssa";
+  src: url("../fonts/staryssa.ttf");
 }
 
 @tailwind base;
@@ -9,120 +8,150 @@
 @tailwind utilities;
 
 @layer base {
-    *{
-        @apply m-0 p-0 box-border 	;
-    }
-    html{
-        @apply scroll-smooth;
-    }
-    body{
-        @apply overflow-x-hidden relative text-body-base bg-white text-gray-800;
-
-    }
-    h1{
-        @apply text-heading-01;
-    }
-    h2{
-        @apply text-heading-02;
-    }
-    h3{
-        @apply text-heading-03;
-    }
-    h4{
-        @apply text-heading-04;
-    }
-    h5{
-        @apply text-heading-05;
-    }
-    p{
-        @apply text-body-base text-gray text-justify;
-    }
-    li{
-        @apply text-gray
-    }
-    th{
-        @apply text-left font-medium;
-    }
-
+  * {
+    @apply m-0 p-0 box-border;
+  }
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply overflow-x-hidden relative text-body-base bg-white text-gray-800;
+  }
+  h1 {
+    @apply text-heading-01;
+  }
+  h2 {
+    @apply text-heading-02;
+  }
+  h3 {
+    @apply text-heading-03;
+  }
+  h4 {
+    @apply text-heading-04;
+  }
+  h5 {
+    @apply text-heading-05;
+  }
+  p {
+    @apply text-body-base text-gray text-justify;
+  }
+  li {
+    @apply text-gray;
+  }
+  th {
+    @apply text-left font-medium;
+  }
 }
 
 @layer utilities {
+  /* Blur effect for iamge */
+  .blur-effect {
+    filter: blur(10px);
+    transition: filter 0.3s ease-out;
+  }
 
-    /* Blur effect for iamge */
-    .blur-effect {
-        filter: blur(10px);
-        transition: filter 0.3s ease-out;
-    }
-    
-    .clear-effect {
-        filter: blur(0);
-        transition: filter 0.3s ease-out;
-    }
+  .clear-effect {
+    filter: blur(0);
+    transition: filter 0.3s ease-out;
+  }
 
-    /* Create bounce effect while click component */
-    .bounce-effect {
-        @apply transition-all duration-[50] hover:scale-[1.03] active:scale-[0.98] disabled:!scale-[1] disabled:cursor-not-allowed
-    }
+  /* Create bounce effect while click component */
+  .bounce-effect {
+    @apply transition-all duration-[50] hover:scale-[1.03] active:scale-[0.98] disabled:!scale-[1] disabled:cursor-not-allowed;
+  }
 
-    .bounce-effect-disabled {
-        @apply transition-none hover:scale-100 active:scale-100;
-    }
+  .bounce-effect-disabled {
+    @apply transition-none hover:scale-100 active:scale-100;
+  }
 
-    .cursor-pointer-custome{
-       @apply bounce-effect cursor-pointer
-    }
+  .cursor-pointer-custome {
+    @apply bounce-effect cursor-pointer;
+  }
 
-    /* Blur background effect */
-	.bg-blur{
-        background: transparent !important;
-        backdrop-filter: blur(10px) !important;
-    }
-    /* FOR SVG ICON set color dinamically */
-    .icon-white path ,  .icon-white rect, .icon-white circle { @apply !stroke-white }
-    .icon-white-fill path { @apply fill-white  }
+  /* Blur background effect */
+  .bg-blur {
+    background: transparent !important;
+    backdrop-filter: blur(10px) !important;
+  }
+  /* FOR SVG ICON set color dinamically */
+  .icon-white path,
+  .icon-white rect,
+  .icon-white circle {
+    @apply !stroke-white;
+  }
+  .icon-white-fill path {
+    @apply fill-white;
+  }
 
-    .icon-black path ,  .icon-black rect { @apply stroke-black }
-    .icon-black-fill path { @apply fill-black  }
+  .icon-black path,
+  .icon-black rect {
+    @apply stroke-black;
+  }
+  .icon-black-fill path {
+    @apply fill-black;
+  }
 
-    .icon-gray path, .icon-gray rect { @apply stroke-gray }
-    .icon-gray-fill path { @apply fill-gray }
+  .icon-gray path,
+  .icon-gray rect {
+    @apply stroke-gray;
+  }
+  .icon-gray-fill path {
+    @apply fill-gray;
+  }
 
-    .icon-primary path, .icon-primary rect { @apply stroke-primary }
-    .icon-primary-fill path { @apply fill-primary  }
+  .icon-primary path,
+  .icon-primary rect {
+    @apply stroke-primary;
+  }
+  .icon-primary-fill path {
+    @apply fill-primary;
+  }
 
-    .icon-error path, .icon-error rect   { @apply stroke-error }
-    .icon-error-fill path {  @apply fill-error }
+  .icon-error path,
+  .icon-error rect {
+    @apply stroke-error;
+  }
+  .icon-error-fill path {
+    @apply fill-error;
+  }
 
-    .icon-warning path, .icon-warning rect { @apply !stroke-warning}
-    .icon-warning-fill path { @apply fill-warning }
+  .icon-warning path,
+  .icon-warning rect {
+    @apply !stroke-warning;
+  }
+  .icon-warning-fill path {
+    @apply fill-warning;
+  }
 
-    .icon-success path, .icon-success rect  { @apply  stroke-success}
-    .icon-success-fill path { @apply  fill-success}
+  .icon-success path,
+  .icon-success rect {
+    @apply stroke-success;
+  }
+  .icon-success-fill path {
+    @apply fill-success;
+  }
 
-    /* Customize scrollbar */
-    ::-webkit-scrollbar{
-        @apply w-2 h-2
-    }
-    ::-webkit-scrollbar-track {
-        box-shadow: none;
-        border-radius: 10px;
-        background:white;
-    }
-    ::-webkit-scrollbar-thumb {
-        @apply rounded-lg bg-gray-300
-    }
-    ::-webkit-scrollbar-thumb:hover {
-        @apply bg-gray-300
-    }
-    /* Hide scrollbar */
-    .scrollbar-hidden::-webkit-scrollbar {
-        display: none;
-      }
-    .scrollbar-hidden {
-        -ms-overflow-style: none;
-        scrollbar-width: none; /* Firefox */
-    }
-    
+  /* Customize scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+  ::-webkit-scrollbar-track {
+    box-shadow: none;
+    border-radius: 10px;
+    background: white;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-lg bg-gray-300;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-300;
+  }
+  /* Hide scrollbar */
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none; /* Firefox */
+  }
 }
-
-  
