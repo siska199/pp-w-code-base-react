@@ -9,7 +9,7 @@ const HelperMessage = (props: TProps) => {
   const { message, variant, className, ...attrs } = props;
 
   return message ? (
-    <p
+    <div
       className={cn({
         [className || ""]: className,
         "text-body-small font-normal": true,
@@ -20,7 +20,7 @@ const HelperMessage = (props: TProps) => {
       {...attrs}
     >
       {message}
-    </p>
+    </div>
   ) : null;
 };
 
