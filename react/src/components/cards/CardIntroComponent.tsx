@@ -25,7 +25,7 @@ const CardIntroComponent = (props: TProps) => {
       content: (
         <div
           className={cn({
-            "flex flex-col items-center gap-4 border rounded-md py-4 px-8 transition-all duration-500": true,
+            "flex flex-col  items-center gap-4 border rounded-md py-4 px-8 transition-all duration-500": true,
           })}
         >
           {listExample?.map((example, i) => (

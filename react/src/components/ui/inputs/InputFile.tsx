@@ -1,19 +1,19 @@
-import { IconClose, IconFile } from "@assets/icons";
-import ContainerInput from "@components/ui/inputs/ContainerInput";
-import Progressbar from "@components/ui/Progressbar";
-import Tooltip from "@components/ui/Tooltip";
-import useAPI from "@hooks/useAPI";
-import { bytesToMegabytes, cn, delay, isEmptyValue, truncateName } from "@lib/utils/helper";
-import { TBasePropsInput, TCustomeEventOnChange, TFileType, TObject, TUploadedFile } from "@types";
-import React, { useEffect, useRef, useState } from "react";
+import { IconClose, IconFile } from '@assets/icons';
+import ContainerInput from '@components/ui/inputs/ContainerInput';
+import Progressbar from '@components/ui/Progressbar';
+import Tooltip from '@components/ui/Tooltip';
+import useAPI from '@hooks/useAPI';
+import { bytesToMegabytes, cn, delay, isEmptyValue, truncateName } from '@lib/utils/helper';
+import { TBasePropsInput, TCustomeEventOnChange, TFileType, TObject, TUploadedFile } from '@types';
+import React, { useEffect, useRef, useState } from 'react';
 
 type TProps = TBasePropsInput &
-  Omit<Partial<React.HTMLProps<HTMLInputElement>>, "value" | "onChange"> & {
+  Omit<Partial<React.HTMLProps<HTMLInputElement>>, 'value' | 'onChange'> & {
     multiple?: boolean;
     name: string;
     listAcceptedFile?: TFileType[] | [];
-    onChange: (e: TCustomeEventOnChange<(TProps["multiple"] extends true ? File[] : File) | null>) => void;
-    value: (TProps["multiple"] extends true ? File[] : File) | null;
+    onChange: (e: TCustomeEventOnChange<(TProps['multiple'] extends true ? File[] : File) | null>) => void;
+    value: (TProps['multiple'] extends true ? File[] : File) | null;
     totalSizeMax?: number;
     listUploadedFile: TUploadedFile[];
   } & (
@@ -34,8 +34,8 @@ const InputFile = (props: TProps) => {
   const inputFileRef = useRef<HTMLInputElement | null>(null);
   const { progress, apiClient, cancelRequest, setProgress } = useAPI();
 
-  const [acceptedFile, setAcceptedFile] = useState("");
-  const [errorMessageDynamic, setErrorMessageDynamic] = useState("");
+  const [acceptedFile, setAcceptedFile] = useState('');
+  const [errorMessageDynamic, setErrorMessageDynamic] = useState('');
   const [listUploadedFile, setListUploadedFile] = useState<TUploadedFile[]>([]);
   const [dragActive, setDragActive] = useState(false);
 
@@ -44,15 +44,15 @@ const InputFile = (props: TProps) => {
   }, [listUploadedFilePersist]);
 
   useEffect(() => {
-    setAcceptedFile(listAcceptedFile?.join(","));
+    setAcceptedFile(listAcceptedFile?.join(','));
   }, [listAcceptedFile]);
 
   const handleDrag = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.stopPropagation();
-    if (e.type === "dragenter" || e.type === "dragover") {
+    if (e.type === 'dragenter' || e.type === 'dragover') {
       setDragActive(true);
-    } else if (e.type === "dragleave") {
+    } else if (e.type === 'dragleave') {
       setDragActive(false);
     }
   };
@@ -83,14 +83,14 @@ const InputFile = (props: TProps) => {
             id: id,
             name: file.name,
             type: handleGetFileTypeFromName(file.name) as TFileType,
-            status: "onprogress",
+            status: 'onprogress',
             size: bytesToMegabytes(file?.size),
           };
           await delay(100);
 
           const result = isDirectUpload ? await handleOnUpload(file) : { success: true };
           if (result?.success) {
-            listUploadedFile[id].status = "done";
+            listUploadedFile[id].status = 'done';
           } else {
             delete listUploadedFile[id];
           }
@@ -107,29 +107,29 @@ const InputFile = (props: TProps) => {
             value: attrs?.multiple && !isEmptyValue(attrs?.value) ? [...files, ...Array.from(attrs?.value)] : value,
             listUploadedFile,
           },
-        } as TCustomeEventOnChange<TProps["multiple"] extends true ? File[] : File>);
+        } as TCustomeEventOnChange<TProps['multiple'] extends true ? File[] : File>);
     } catch (error: any) {
-      console.log("error; ", error?.message);
+      console.log('error; ', error?.message);
     }
   };
 
   const handleOnUpload = async (file: File) => {
     try {
       const result = await apiClient({
-        endpoint: endpoint || "",
+        endpoint: endpoint || '',
         isForm: true,
         payload: {
           file: file,
           ...additionalPayload,
         },
         message: {
-          success: "Success upload data",
-          error: "Error upload data",
+          success: 'Success upload data',
+          error: 'Error upload data',
         },
       });
       return result;
     } catch (error: any) {
-      console.log("error: ", error?.message);
+      console.log('error: ', error?.message);
     }
   };
 
@@ -138,21 +138,21 @@ const InputFile = (props: TProps) => {
     const totalSize: number = bytesToMegabytes(Array.isArray(value) ? value?.reduce((acc, data) => acc + data?.size, 0) : value?.size);
 
     if (totalSize > totalSizeMax) {
-      setErrorMessageDynamic("File upload cancelled due to size limit exceeded.");
+      setErrorMessageDynamic('File upload cancelled due to size limit exceeded.');
       return false;
     }
 
     const fileTypes = (Array.isArray(value) ? value?.map((data) => handleGetFileTypeFromName(data?.name)) : [handleGetFileTypeFromName(value?.name)]) as TFileType[];
     const isAllFileTypesAllowed = fileTypes?.every((fileType) => listAcceptedFile?.includes(fileType));
     if (!isAllFileTypesAllowed) {
-      setErrorMessageDynamic("Please upload the correct type file");
+      setErrorMessageDynamic('Please upload the correct type file');
     }
 
     return isValid;
   };
 
   const handleGetFileTypeFromName = (name: string) => {
-    const type = name?.split(".")?.slice(-1)[0];
+    const type = name?.split('.')?.slice(-1)[0];
     return `.${type}`;
   };
 
@@ -168,7 +168,7 @@ const InputFile = (props: TProps) => {
         listUploadedFile: listUploadedFileUpdated,
       },
     });
-    if (data?.status === "onprogress") cancelRequest();
+    if (data?.status === 'onprogress') cancelRequest();
   };
 
   return (
@@ -176,21 +176,21 @@ const InputFile = (props: TProps) => {
       {...attrs}
       onChange={(e) => handleUpdateOnChange(e.target.files)}
       customeClass={{
-        ciV2: "!border-none !p-0",
+        ciV2: '!border-none !p-0',
       }}
       errorMessage={errorMessageDynamic}
     >
       {(attrsInput) => (
         <>
-          <div className={"flex flex-col gap-4 w-full sm:w-[20rem]"}>
+          <div className={'flex flex-col gap-4 w-full sm:w-[20rem]'}>
             <div
               onDragEnter={handleDrag}
               onDragOver={handleDrag}
               onDragLeave={handleDrag}
               onDrop={handleFileDrop}
               className={cn({
-                "flex flex-col items-center justify-center gap-2 rounded-md cursor-pointer-custome  text-center border-2 border-dashed  p-4 md:p-8 h-fit md:h-[10rem]": true,
-                " border-primary": dragActive,
+                'flex flex-col items-center justify-center gap-2 rounded-md cursor-pointer-custome  text-center border-2 border-dashed  p-4 md:p-8 h-fit md:h-[10rem]': true,
+                ' border-primary': dragActive,
               })}
               onClick={handleOnClickInput}
             >
@@ -202,7 +202,7 @@ const InputFile = (props: TProps) => {
             </div>
             <div className="flex flex-col gap-2">{listUploadedFile?.map((uploadedFile, i) => <CardFileUploaded key={i} i={i} progress={progress} uploadedFile={uploadedFile} onRemoveItem={handleRemoveItem} />)}</div>
           </div>
-          <input ref={inputFileRef} {...attrsInput} className="hidden" type="file" accept={acceptedFile} value={""} />
+          <input ref={inputFileRef} {...attrsInput} className="hidden" type="file" accept={acceptedFile} value={''} />
         </>
       )}
     </ContainerInput>
@@ -233,21 +233,21 @@ const CardFileUploaded = (props: TPropsCardFileUploaded) => {
 
       <div className="flex flex-col gap-2 flex-grow max-w-[calc(100%-3rem)] ">
         <div className="flex justify-between items-center gap-2 w-full">
-          <Tooltip text={uploadedFile?.name} customeClass={{ tooltip: "w-[calc(100%-1rem)] max-w-[calc(100%-1rem)] !px-0 text-wrap text-black font-medium  truncate" }} ref={tooltipRef}>
+          <Tooltip text={uploadedFile?.name} customeClass={{ tooltip: 'w-[calc(100%-1rem)] max-w-[calc(100%-1rem)] !px-0 text-wrap text-black font-medium  truncate' }} ref={tooltipRef}>
             {truncateName(uploadedFile?.name, widthTooltip || 0)}
           </Tooltip>
           <IconClose className="cursor-pointer-custome" onClick={() => handleRemoveItem(uploadedFile, i)} />
         </div>
-        <Progressbar customeClass={{ container: uploadedFile?.status !== "onprogress" ? "hidden" : "", label: "hidden" }} value={progress} />
+        <Progressbar customeClass={{ container: uploadedFile?.status !== 'onprogress' ? 'hidden' : '', label: 'hidden' }} value={progress} />
         <div className="flex fap-2 justify-between">
           <p className="text-body-small">
-            {uploadedFile?.status === "onprogress" && <>{((uploadedFile?.size * progress) / 100)?.toFixed(2)}MB of </>}
+            {uploadedFile?.status === 'onprogress' && <>{((uploadedFile?.size * progress) / 100)?.toFixed(2)}MB of </>}
             {uploadedFile?.size?.toFixed(2)}MB
           </p>
           <p
             className={cn({
-              "font-light text-gray text-body-small": true,
-              hidden: uploadedFile?.status !== "onprogress",
+              'font-light text-gray text-body-small': true,
+              hidden: uploadedFile?.status !== 'onprogress',
             })}
           >
             Uploading... {progress}%
