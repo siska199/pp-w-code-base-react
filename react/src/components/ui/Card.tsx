@@ -14,9 +14,9 @@ export interface TPropsCard extends Omit<Partial<HTMLProps<HTMLDivElement>>, "ti
         content?: React.ReactNode | string;
     };
     body?: {
+        image?: string;
         title?: React.ReactNode | string;
         subtitle?: React.ReactNode | string;
-        image?: string;
         content?: React.ReactNode | string;
     };
     footer?: React.ReactNode | string;
