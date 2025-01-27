@@ -1,0 +1,15 @@
+
+
+
+
+
+@use './variables/_colors' as colors;
+@use 'bootstrap/scss/bootstrap'  with (
+    $primary: colors.$primary-50, 
+    $secondary: colors.$secondary-50, 
+    $danger: colors.$danger-50, 
+    $warning: colors.$warning-50, 
+    $black: colors.$black-50, 
+
+);
+

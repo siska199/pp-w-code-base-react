@@ -1,0 +1,86 @@
+<template>
+  <div>
+    <!-- Button to trigger the drawer -->
+    <b-button variant="primary" @click="showDrawer">Open Drawer</b-button>
+
+    <!-- Drawer Modal -->
+    <b-modal
+      id="drawer-modal"
+      hide-header-close
+      hide-footer
+      :static="true"
+      :no-close-on-backdrop="true"
+      :no-close-on-esc="true"
+      size="lg"
+      @hidden="onClose"
+      modal-class="drawer-modal"
+    >
+      <template #modal-header>
+        <div class="d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">Drawer Title</h5>
+          <b-button variant="outline-danger" size="sm" @click="hideDrawer">
+            Close
+          </b-button>
+        </div>
+      </template>
+
+      <div>
+        <p>This is the content of the drawer.</p>
+        <p>You can add any content you like here!</p>
+      </div>
+    </b-modal>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {};
+  },
+  methods: {
+    showDrawer() {
+      this.$bvModal.show('drawer-modal');
+    },
+    hideDrawer() {
+      this.$bvModal.hide('drawer-modal');
+    },
+    onClose() {
+      console.log('Drawer closed');
+    },
+  },
+};
+</script>
+
+<style scoped>
+/* Custom Drawer Styles */
+.drawer-modal {
+  top: 0 !important;
+  left: auto !important;
+  right: 0 !important;
+  height: 100vh !important;
+  width: 30vw !important;
+  max-width: none !important;
+  overflow-y: auto;
+  transform: translateX(100%);
+  animation: slide-in 0.3s forwards;
+}
+
+.drawer-modal .modal-dialog {
+  margin: 0;
+  max-width: none;
+}
+
+.drawer-modal .modal-content {
+  border-radius: 0;
+  height: 100vh;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+</style>
