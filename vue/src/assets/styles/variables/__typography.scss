@@ -1,0 +1,132 @@
+@import "./_colors";
+
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700,800');
+
+$font-family-sans-serif: 'Nunito Sans', sans-serif;
+$font-family-base: $font-family-sans-serif;
+
+
+:root{
+    --font-family-sans-serif: #{$font-family-sans-serif};
+    --font-family-base: #{$font-family-base};
+}
+
+
+$typography-weights: (
+    "normal": 600,
+    "bold": 800,
+);
+
+$typography-styles: (
+    "normal": normal,
+    "italic": italic
+);
+
+$typography-sizes: (
+  "alpha": (
+    "font-size": 4.5rem, // 72px
+    "line-height": 6.75rem, // 108px
+    "color": map-get($colors, "black-80" ), // Default color
+    "font-weight":  map-get($typography-weights, "bold")
+  ),
+  "beta": (
+    "font-size": 3.75rem, // 60px
+    "line-height": 5.625rem, // 90px
+    "color": map-get($colors, "black-80" ), // Default color
+    "font-weight":  map-get($typography-weights, "bold")
+  ),
+  "gamma": (
+    "font-size": 3rem, // 48px
+    "line-height": 4.5rem, // 72px
+    "color": map-get($colors, "black-80" ), // Default color
+    "font-weight":  map-get($typography-weights, "bold")
+  ),
+  "delta": (
+    "font-size": 2.25rem, // 36px
+    "line-height": 3.375rem, // 54px
+    "color": map-get($colors, "black-80" ), // Default color
+    "font-weight":  map-get($typography-weights, "bold")
+  ),
+  "epsilon": (
+    "font-size": 1.875rem, // 30px
+    "line-height": 2.75rem, // 44px
+    "color": map-get($colors, "black-80" ), // Default color
+    "font-weight":  map-get($typography-weights, "bold")
+  ),
+  "zeta": (
+    "font-size": 1.5rem, // 24px
+    "line-height": 2.25rem, // 36px
+    "color": map-get($colors, "black-80" ), // Default color
+    "font-weight":  map-get($typography-weights, "bold")
+  ),
+  "kappa": (
+    "font-size": 1.25rem, // 20px
+    "line-height": 1.875rem, // 30px
+    "color": map-get($colors, "black-80" ), // Default color
+    "font-weight":  map-get($typography-weights, "bold")
+  ),
+  "lambda": (
+    "font-size": 1.125rem, // 18px
+    "line-height": 1.625rem, // 26px
+    "color": map-get($colors, "black-80" ), // Default color
+    "font-weight":  map-get($typography-weights, "bold")
+  ),
+  "omicron": (
+    "font-size": 1rem, // 16px
+    "line-height": 1.5rem, // 24px
+    "color": map-get($colors, "black-80" ), // Default color
+    "font-weight":  map-get($typography-weights, "normal")
+  ),
+  "sigma": (
+    "font-size": 0.875rem, // 14px
+    "line-height": 1.25rem, // 20px
+    "color": map-get($colors, "black-50" ), // Default color
+    "font-weight":  map-get($typography-weights, "normal")
+  ),
+  "omega": (
+    "font-size": 0.75rem, // 12px
+    "line-height": 1.125rem, // 18px
+    "color": map-get($colors, "black-50" ), // Default color
+    "font-weight":  map-get($typography-weights, "normal")
+  ),
+  "atom": (
+    "font-size": 0.625rem, // 10px
+    "line-height": 0.875rem, // 14px
+    "color": map-get($colors, "black-50" ), // Default color
+    "font-weight":  map-get($typography-weights, "normal")
+  )
+);
+
+
+@each $name, $properties in $typography-sizes{
+  .text-#{$name} {
+    font-size: map-get($properties, "font-size");
+    line-height: map-get($properties, "line-height");
+    color: map-get($properties, "color");
+    font-weight: map-get($properties, "font-weight");
+  }
+  :root {
+    --font-size-#{$name}: #{map-get($properties, "font-size")};
+    --line-height-#{$name}: #{map-get($properties, "line-height")};
+    --color-#{$name}: #{map-get($properties, "color")};
+    --font-weight-#{$name}: #{map-get($properties, "font-weight")};
+  }
+}
+
+@each $name, $properties in $typography-weights{
+  .font-#{$name} {
+    font-weight: $properties;
+  }
+  :root {
+    --font-weight-#{$name}: #{$properties};
+  }
+}
+
+@each $name, $properties in $typography-styles{
+  .#{$name} {
+    font-style: $properties;
+  }
+  :root {
+    --font-style-#{$name}: #{$properties};
+  }
+}

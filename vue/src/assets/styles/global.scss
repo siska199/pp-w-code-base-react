@@ -1,15 +1,35 @@
-
-
-
-
-
+@use './variables/_sizing' as sizing;
+@use './variables/_spacing' as spacing;
 @use './variables/_colors' as colors;
+@use './variables/_typography' as typography;
+@use './variables/_border' as border;
+@use './variables/_grid' as grid;
 @use 'bootstrap/scss/bootstrap'  with (
     $primary: colors.$primary-50, 
     $secondary: colors.$secondary-50, 
     $danger: colors.$danger-50, 
     $warning: colors.$warning-50, 
     $black: colors.$black-50, 
-
 );
 
+*{
+    margin: 0;
+    padding: 0;
+}
+
+htlm,body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-omicron); 
+  line-height: var(--line-height-omicron); 
+  font-weight: var(--font-weight-omicron);
+  color: var(--color-omicron);
+}
+
+button {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  appearance: none;
+}

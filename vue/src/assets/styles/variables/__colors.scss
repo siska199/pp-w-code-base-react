@@ -105,11 +105,6 @@ $colors: (
     "black-10": $black-10
 );
 
-:root{
-    @each $color-name, $color-value in $colors{
-        --#{$color-name} : #{$color-value};
-    }
-}
 
 @each $color-name, $color-value in $colors{
     .text-#{$color-name} {
@@ -118,7 +113,26 @@ $colors: (
     .bg-#{$color-name}{
         background: $color-value;
     }
+    .border-#{$color-name}{
+        border-color: $color-value;
+    }
+    :root{
+        --#{$color-name} : #{$color-value};
+    }
 }
+
+.text-primary-t{
+    color : $black-80;
+}
+
+.text-secondary-t{
+    color : $black-60;
+}
+
+.text-tertiary-t{
+    color : $black-50;
+}
+
 
 
 

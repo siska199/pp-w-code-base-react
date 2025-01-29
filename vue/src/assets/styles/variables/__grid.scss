@@ -1,0 +1,64 @@
+// Base grid container class
+.grid {
+  display: grid;
+}
+
+// Grid columns classes
+@each $i in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12) {
+  .grid-cols-#{$i} {
+    grid-template-columns: repeat(#{$i}, 1fr);
+  }
+}
+
+// Define responsive grid columns
+@each $i in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12) {
+  .sm-grid-cols-#{$i} {
+    @media (min-width: 640px) {
+      grid-template-columns: repeat(#{$i}, 1fr);
+    }
+  }
+  .md-grid-cols-#{$i} {
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(#{$i}, 1fr);
+    }
+  }
+  .lg-grid-cols-#{$i} {
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(#{$i}, 1fr);
+    }
+  }
+  .xl-grid-cols-#{$i} {
+    @media (min-width: 1280px) {
+      grid-template-columns: repeat(#{$i}, 1fr);
+    }
+  }
+  .xxl-grid-cols-#{$i} {
+    @media (min-width: 1536px) {
+      grid-template-columns: repeat(#{$i}, 1fr);
+    }
+  }
+}
+
+// Grid row classes
+@each $i in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12) {
+  .row-span-#{$i} {
+    grid-row: span #{$i} / span #{$i};
+  }
+}
+
+// Grid column classes
+@each $i in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12) {
+  .col-span-#{$i} {
+    grid-column: span #{$i} / span #{$i};
+  }
+}
+
+// Grid item start classes
+@each $i in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12) {
+  .col-start-#{$i} {
+    grid-column-start: #{$i};
+  }
+  .row-start-#{$i} {
+    grid-row-start: #{$i};
+  }
+}

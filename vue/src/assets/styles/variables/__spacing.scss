@@ -1,0 +1,62 @@
+// Define the spacing scale
+$spacing-scale: (
+  0: 0px,        // 0px
+  1: 4px,        // 0.25rem
+  2: 8px,        // 0.5rem
+  3: 12px,       // 0.75rem
+  4: 16px,       // 1rem
+  5: 20px,       // 1.25rem
+  6: 24px,       // 1.5rem
+  8: 32px,       // 2rem
+  10: 40px,      // 2.5rem
+  12: 48px,      // 3rem
+  14: 56px,      // 3.5rem
+  16: 64px,      // 4rem
+  20: 80px,      // 5rem
+  24: 96px,      // 6rem
+  28: 112px,     // 7rem
+  32: 128px,     // 8rem
+  36: 144px,     // 9rem
+  40: 160px,     // 10rem
+  44: 176px,     // 11rem
+  48: 192px,     // 12rem
+  52: 208px,     // 13rem
+  56: 224px,     // 14rem
+  60: 240px,     // 15rem
+  64: 256px,     // 16rem
+  72: 288px,     // 18rem
+  80: 320px,     // 20rem
+  96: 384px      // 24rem
+);
+
+@each $key, $value in $spacing-scale {
+  .m-#{$key} { margin: $value; }
+  .mt-#{$key} { margin-top: $value; }
+  .mr-#{$key} { margin-right: $value; }
+  .mb-#{$key} { margin-bottom: $value; }
+  .ml-#{$key} { margin-left: $value; }
+  .mx-#{$key} { margin-left: $value; margin-right: $value; }
+  .my-#{$key} { margin-top: $value; margin-bottom: $value; }
+
+
+  .p-#{$key} { padding: $value; }
+  .pt-#{$key} { padding-top: $value; }
+  .pr-#{$key} { padding-right: $value; }
+  .pb-#{$key} { padding-bottom: $value; }
+  .pl-#{$key} { padding-left: $value; }
+  .px-#{$key} { padding-left: $value; padding-right: $value; }
+  .py-#{$key} { padding-top: $value; padding-bottom: $value; }
+
+  .space-x-#{$key} > * + * {
+    margin-left: $value;
+  }
+  .space-y-#{$key} > * + * {
+    margin-top: $value;
+  }
+
+ .gap-#{$key} {
+    gap: $value;
+  }
+}
+
+
