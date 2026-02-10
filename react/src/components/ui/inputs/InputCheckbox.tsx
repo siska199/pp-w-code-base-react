@@ -39,8 +39,8 @@ const InputCheckbox = (props: TProps) => {
   };
 
   return (
-    <Container onMouseDown={(e) => e.preventDefault()} variant={'hsc'} gap={'base'} className={`${!label && '!w-fit'} ${customeClassnameCheckbox?.container} ${updatedChecked && '!bg-teald-50'} `}>
-      <label className="  relative flex items-center py-1 rounded-full cursor-pointer w-full" htmlFor="radio">
+    <Container onMouseDown={(e) => e.preventDefault()} variant={'hsc'} gap={'base'} className={`${!label && '!w-fit'} ${customeClassnameCheckbox?.container} ${updatedChecked && !withCheckbox && '!bg-teal-50'} `}>
+      <label className={` relative flex items-center py-1 rounded-full cursor-pointer ${!withCheckbox && 'w-full'}`} htmlFor="radio">
         <input
           {...attrsInput}
           type="checkbox"
@@ -57,7 +57,7 @@ const InputCheckbox = (props: TProps) => {
           </span>
         ) : (
           <label htmlFor={value} className=" w-full px-4 cursor-pointer">
-              <HighlightText highlight={searchQuery} text={ label} />
+            <HighlightText highlight={searchQuery} text={label} />
           </label>
         )}
       </label>

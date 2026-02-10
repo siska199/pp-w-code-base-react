@@ -9,6 +9,7 @@ import clsx from 'clsx';
 import { useEffect, useRef, useState } from 'react';
 import InputMultipleCheckbox from './InputMultipleCheckbox';
 import InputBase from '@components/ui/inputs/InputBase';
+import HighlightText from '@components/ui/text/HighlightText';
 
 type TProps = {
   name: string;
@@ -61,11 +62,6 @@ const InputSelectMakyo = (props: TProps) => {
     }
   }, [isOpen]);
 
-  useEffect(() => {
-    if (refInput?.current && multiple) {
-      refInput.current.style.width = `${searchQuery?.length * 10 || 10}px`;
-    }
-  }, [searchQuery, multiple]);
 
   const handleOnClickOption = (e: React.KeyboardEvent<HTMLInputElement> | React.MouseEvent<HTMLDivElement, MouseEvent>, data: TOption) => {
     e?.stopPropagation();
@@ -105,7 +101,6 @@ const InputSelectMakyo = (props: TProps) => {
     }
   };
 
-
   return (
     <ContainerInput<React.HTMLProps<HTMLInputElement>>
       {...attrs}
@@ -135,7 +130,7 @@ const InputSelectMakyo = (props: TProps) => {
       customeClass={{
         ...attrs?.customeClass,
         ciV1: '',
-        ciV2: `flex-no-wrap max-w-full !rounded-[0.25rem] ${!outlined && 'bg-gray-200'}`,
+        ciV2: `flex-no-wrap max-w-full !rounded-[0.25rem] !pl-0 !py-0 ${!outlined && 'bg-gray-200'}`,
         input: 'min-w-0',
         ciV4: '!inline-block ',
         label: `${isEmptyValue(attrs?.value) && attrs?.variant === 'v6' && !isOpen ? 'scale-100 -translate-y-1 ' : ''} `,
@@ -198,12 +193,12 @@ const InputSelectMakyo = (props: TProps) => {
                     onMouseDown={(e) => e.preventDefault()}
                     onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => handleOnClickOption(e, option)}
                     className={clsx({
-                      'hover:bg-gray-100 block px-4 py-2 cursor-pointer ': true,
-                      '!bg-primary-50 text-primary-700 ': isSelected,
-                      '!bg-gray-100': isSearch && i === 0 && searchQuery,
+                      'hover:bg-teal-50 block px-4 cursor-pointer py-2': true,
+                      '!bg-teal-50   ': isSelected,
+                      '!bg-teal-50': isSearch && i === 0 && searchQuery,
                     })}
                   >
-                    {option?.label}
+                    <HighlightText highlight={searchQuery} text={option?.label} />
                   </div>
                 );
               })}
@@ -216,19 +211,19 @@ const InputSelectMakyo = (props: TProps) => {
         <div
           ref={refContainerValue}
           className={clsx({
-            'flex shrink gap-2 flex-wrap  overflow-x-auto  scrollbar-hidden': true,
+            'flex shrink gap-2 flex-wrap  overflow-x-auto   scrollbar-hidden': true,
+            'py-4': attrs.value.length === 0,
+            'py-1': attrs.value.length > 0,
           })}
           onClick={() => {
-            if (multiple) {
-              const updateIsOpen = !isOpen;
-              if (updateIsOpen) {
-                refInput?.current?.focus();
-              }
-              setIsOpen(updateIsOpen);
+            const updateIsOpen = !isOpen;
+            if (updateIsOpen) {
+              refInput?.current?.focus();
             }
+            setIsOpen(updateIsOpen);
           }}
         >
-          <div className=" w-full cursor-pointer flex flex-wrap gap-1 h-full ">
+          <div ref={refInput} className=" w-full cursor-pointer  flex flex-wrap gap-1  pl-3">
             {multiple &&
               (attrs?.value as string[])?.map((data, i: number) => {
                 const labelValue = getFieldLabelFromOptions({ array: options, value: data });
@@ -247,7 +242,7 @@ const InputSelectMakyo = (props: TProps) => {
                   />
                 );
               })}
-            <input ref={refInput} disabled={true} className={`${outlined ? '!bg-white' : 'bg-gray-200'}`} />
+            {!multiple && <div className={``}>{getFieldLabelFromOptions({ array: options, value: attrs?.value })}</div>}
           </div>
         </div>
       )}
