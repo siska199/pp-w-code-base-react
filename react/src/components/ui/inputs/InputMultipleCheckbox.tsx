@@ -1,11 +1,11 @@
-import Container from "@components/ui/Container";
-import ContainerInput from "@components/ui/inputs/ContainerInput";
-import InputCheckbox from "@components/ui/inputs/InputCheckbox";
-import { arraysHaveSameMembers, cn, handlePreventDefault } from "@lib/utils/helper";
-import { TBasePropsInput, TCustomeEventOnChange } from "@types";
-import { useEffect, useState } from "react";
+import Container from '@components/ui/Container';
+import ContainerInput from '@components/ui/inputs/ContainerInput';
+import InputCheckbox from '@components/ui/inputs/InputCheckbox';
+import { arraysHaveSameMembers, cn, handlePreventDefault } from '@lib/utils/helper';
+import { TBasePropsInput, TCustomeEventOnChange } from '@types';
+import { useEffect, useState } from 'react';
 
-interface TProps extends TBasePropsInput, Omit<React.HTMLProps<HTMLInputElement>, "value" | "onChange"> {
+interface TProps extends TBasePropsInput, Omit<React.HTMLProps<HTMLInputElement>, 'value' | 'onChange'> {
   name: string;
   onChange: (e: TCustomeEventOnChange<string[]>) => void;
   options: {
@@ -19,10 +19,12 @@ interface TProps extends TBasePropsInput, Omit<React.HTMLProps<HTMLInputElement>
   };
   withSelectAll?: boolean;
   activeIndex?: number;
+  withCheckbox: boolean;
+  searchQuery?: string;
 }
 
 const InputMultipleCheckbox = (props: TProps) => {
-  const { name, onChange, options, value, customeClassMulCheckbox, withSelectAll, onScroll: handleOnScroll, errorMessage, ...attrsInput } = props;
+  const { searchQuery, name, onChange, options, value, customeClassMulCheckbox, withSelectAll, onScroll: handleOnScroll, errorMessage, withCheckbox = true, ...attrsInput } = props;
   const [isCheckAll, setIsCheckAll] = useState(false);
 
   useEffect(() => {
@@ -41,7 +43,7 @@ const InputMultipleCheckbox = (props: TProps) => {
     const valueInput = e.target?.value;
 
     let updateValue = isChecked ? [...value, valueInput] : value?.filter((data) => data !== valueInput);
-    if (valueInput === "all") {
+    if (valueInput === 'all') {
       updateValue = isChecked ? options?.map((data) => data?.value) : [];
     }
 
@@ -57,13 +59,13 @@ const InputMultipleCheckbox = (props: TProps) => {
     return (
       <Container
         className={cn({
-          [customeClassMulCheckbox?.containerCheckbox || ""]: customeClassMulCheckbox?.containerCheckbox,
+          [customeClassMulCheckbox?.containerCheckbox || '']: customeClassMulCheckbox?.containerCheckbox,
         })}
         onMouseDown={handlePreventDefault}
-        variant={"hsc"}
-        gap={"base"}
+        variant={'hsc'}
+        gap={'base'}
       >
-        <InputCheckbox label={props?.option?.label} type="checkbox" name={name} checked={props?.isChecked} value={props?.option?.value} onChange={handleOnChange} />
+        <InputCheckbox label={props?.option?.label} type="checkbox" name={name} checked={props?.isChecked} value={props?.option?.value} onChange={handleOnChange} withCheckbox={withCheckbox} searchQuery={searchQuery} />
       </Container>
     );
   };
@@ -71,7 +73,7 @@ const InputMultipleCheckbox = (props: TProps) => {
   return (
     <ContainerInput {...attrsInput} errorMessage={errorMessage} onlyContainer={true}>
       <Container className={`${customeClassMulCheckbox?.containerOption}`} onScroll={handleOnScroll}>
-        {withSelectAll && <Checkbox isChecked={isCheckAll} option={{ label: "Select All", value: "all" }} />}
+        {withSelectAll && <Checkbox isChecked={isCheckAll} option={{ label: 'Select All', value: 'all' }} />}
         {options?.map((option, i) => {
           const isChecked = value?.some((data) => data === option?.value);
           return <Checkbox key={i} index={i} isChecked={isChecked} option={option} />;

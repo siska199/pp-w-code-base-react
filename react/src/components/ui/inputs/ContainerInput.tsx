@@ -21,10 +21,11 @@ export interface TPropsInput<TInput> extends TBasePropsInput {
   };
   onCustomeClearHandler?: () => void;
   customeClearValue?: string;
+  attrsContainer? :React.HTMLProps<HTMLDivElement>
 }
 
 const ContainerInput = <TInput,>(props: TPropsInput<TInput>) => {
-  const { name, children, onCustomeClearHandler, customeClearValue, isNotUsingDefaultStyle, childrenOverlay, label, variant = "v1", isClerable = false, type, onlyContainer = false, errorMessage, customeElement, disabled, customeClass, value, onChange, ...attrsInput } = props;
+  const { name, children, onCustomeClearHandler, customeClearValue, isNotUsingDefaultStyle, childrenOverlay, label, variant = "v1", isClerable = false, type, onlyContainer = false, errorMessage, customeElement, disabled, customeClass, value, onChange,attrsContainer, ...attrsInput } = props;
   const [dynamicType, setDynamicType] = useState(type);
 
   const classNameInput = cn({
@@ -52,46 +53,47 @@ const ContainerInput = <TInput,>(props: TPropsInput<TInput>) => {
   };
 
   return (
-    <Container className={`${customeClass?.ciV4} relative flex flex-col gap-2`}>
+    <Container className={`${customeClass?.ciV4} relative flex flex-col gap-2`} {...attrsContainer}>
       <section className={`${customeClass?.ciV3} flex flex-col gap-2 w-full`}>
-        {label && !["v2", "v6"]?.includes(variant) && (
+        {label && !['v2', 'v6']?.includes(variant) && (
           <label
             htmlFor={name}
             className={cn({
-              "font-medium w-fit": true,
-              "absolute top-[-0.65rem] left-[0.45rem] text-body-small bg-white px-1 z-[10]": variant === "v4",
+              'font-medium w-fit': true,
+              'absolute top-[-0.65rem] left-[0.45rem] text-body-small bg-white px-1 z-[10]': variant === 'v4',
             })}
           >
             {label}
           </label>
         )}
 
-        {onlyContainer && typeof children !== "function" ? (
+        {onlyContainer && typeof children !== 'function' ? (
           children
         ) : (
           <div
             className={cn({
-              "bg-white flex flex-nowrap items-center gap-2 text-body-base border border-input rounded-lg  w-full ": true,
-              [customeClass?.ciV2 || ""]: customeClass?.ciV2,
+              'bg-white flex flex-nowrap items-center gap-2 text-body-base border border-input rounded-lg  w-full ': true,
+              [customeClass?.ciV2 || '']: customeClass?.ciV2,
 
-              "!bg-disabled !border": disabled,
-              "focus-within:ring-primary-200 focus-within:!border-primary": !errorMessage,
-              "border-error focus-within:!ring-error-200 focus-within:!border-error": errorMessage,
+              '!bg-disabled !border': disabled,
+              'focus-within:ring-primary-200 focus-within:!border-primary': !errorMessage,
+              'border-error focus-within:!ring-error-200 focus-within:!border-error': errorMessage,
 
-              "!rounded-[5rem]": variant === "v3",
-              "focus-within:!ring-0": ["v2", "v4", "v6"]?.includes(variant),
-              "!border-t-0 !px-0 !border-l-0 !border-r-0 !rounded-none ": variant === "v5",
-              "!py-4 focus-within:!pb-2 focus-within:!pt-5": variant === "v6",
-              "!pb-2 !pt-5 ": variant === "v6" && value,
+              '!rounded-[5rem]': variant === 'v3',
+              'focus-within:!ring-0': ['v2', 'v4', 'v6']?.includes(variant),
+              '!border-t-0 !px-0 !border-l-0 !border-r-0 !rounded-none ': variant === 'v5',
+              '!py-4 focus-within:!pb-2 focus-within:!pt-5': variant === 'v6',
+              '!pb-2 !pt-5 ': variant === 'v6' && value,
+              '!border-t-0  !border-b-0 !border-l-0 !border-r-0 !rounded-none ': variant === 'v7',
 
-              "px-3 py-2 ": !customeElement?.preStart && !customeElement?.preEnd,
-              "overflow-hidden": customeElement?.preStart || customeElement?.preEnd,
+              'px-3 py-2 ': !customeElement?.preStart && !customeElement?.preEnd,
+              'overflow-hidden': customeElement?.preStart || customeElement?.preEnd,
             })}
           >
             <div
               className={cn({
                 hidden: true,
-                "shrink-0 !flex bg-gray-100 p-2 ": customeElement?.preStart,
+                'shrink-0 !flex bg-gray-100 p-2 ': customeElement?.preStart,
               })}
             >
               {customeElement?.preStart}
@@ -100,26 +102,26 @@ const ContainerInput = <TInput,>(props: TPropsInput<TInput>) => {
             <div
               className={cn({
                 hidden: true,
-                "shrink-0 !flex ": customeElement?.start,
+                'shrink-0 !flex ': customeElement?.start,
               })}
             >
               {customeElement?.start}
             </div>
 
             <div className={`${customeClass?.ciV1} flex flex-col w-full relative `}>
-              {typeof children === "function" ? (
+              {typeof children === 'function' ? (
                 <>
                   {children({ ...(attrsInput as TInput), className: classNameInput, name, type: dynamicType, disabled, value, onChange })}
-                  {label && ["v2", "v6"].includes(variant) && (
+                  {label && ['v2', 'v6'].includes(variant) && (
                     <label
                       id="floating-label"
                       htmlFor={name}
                       className={cn({
-                        "font-medium absolute left-0 text-sm text-gray duration-300 transform -translate-y-5 bg-white px-1 scale-75 top-0 origin-[0]  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5 peer-focus:bg-white  z-10": true,
-                        [customeClass?.label || ""]: customeClass?.label,
-                        "!cursor-auto": variant === "v6",
-                        ["peer-placeholder-shown:ml-[0px] peer-focus:ml-[-35px] ml-[-35px]"]: customeElement?.start,
-                        "ml-[-0.25rem] ": !customeElement?.start,
+                        'font-medium absolute left-0 text-sm text-gray duration-300 transform -translate-y-5 bg-white px-1 scale-75 top-0 origin-[0]  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5 peer-focus:bg-white  z-10': true,
+                        [customeClass?.label || '']: customeClass?.label,
+                        '!cursor-auto': variant === 'v6',
+                        ['peer-placeholder-shown:ml-[0px] peer-focus:ml-[-35px] ml-[-35px]']: customeElement?.start,
+                        'ml-[-0.25rem] ': !customeElement?.start,
                       })}
                     >
                       {label}
@@ -135,7 +137,7 @@ const ContainerInput = <TInput,>(props: TPropsInput<TInput>) => {
             <div
               className={clsx({
                 hidden: true,
-                "shrink-0 !flex": customeElement?.end,
+                'shrink-0 !flex': customeElement?.end,
               })}
             >
               {customeElement?.end}
@@ -143,22 +145,22 @@ const ContainerInput = <TInput,>(props: TPropsInput<TInput>) => {
             <div
               className={cn({
                 hidden: true,
-                "shrink-0 !flex bg-gray-100 p-2 ": customeElement?.preEnd,
+                'shrink-0 !flex bg-gray-100 p-2 ': customeElement?.preEnd,
               })}
             >
               {customeElement?.preEnd}
             </div>
 
-            {type === "password" && (
+            {type === 'password' && (
               <div onClick={handleToggleTypePassword} className="cursor-pointer-custome ">
-                {dynamicType === "password" ? <IconEye /> : <IconEyeClose />}
+                {dynamicType === 'password' ? <IconEye /> : <IconEyeClose />}
               </div>
             )}
           </div>
         )}
       </section>
       {childrenOverlay}
-      <HelperMessage variant={"error"} message={errorMessage} />
+      <HelperMessage variant={'error'} message={errorMessage} />
     </Container>
   );
 };
